@@ -5,22 +5,31 @@ An app to help restaurants use customer reviews to make informed decisions
 
 **Required Must-have Stories**
 
- * [fill in your required user stories here]
- * ...
+ * form for customers after they eat
+ * restaurant profile
+    - selected theme - types of emojis, layout, etc
+    - different number of accounts per restaurant (signed into multiple devices)
+    - restaurant stats
+        - most popular dishes
+        - least popular dishes
+        - stats for each dish
+        - comments on each dish
+        - most and least frequently ordered dish
+        - themed form chosen by restaurant 
+    - restaurant profile consisting of 
+        - their own menu
 
 **Optional Nice-to-have Stories**
 
- * [fill in your required user stories here]
- * ...
+ * waiter reviews (waiter profiles)
+ * top competitors (based on price, category and location)
 
 ## 2. Screen Archetypes
 
- * [list first screen here]
-   * [list associated required story here]
-   * ...
- * [list second screen here]
-   * [list associated required story here]
-   * ...
+ * screen with form for customers to fill out
+ * screen for waiter profile
+ * settings to change profile
+ *  ...
 
 ## 3. Navigation
 
