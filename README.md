@@ -29,7 +29,8 @@ An app to help restaurants use customer reviews to make informed decisions
  * screen with form for customers to fill out
  * screen for waiter profile
  * settings to change profile
- *  ...
+ * Screen with restaurant stats (most popular dish, least popular dish etc.)
+ * Login Screen
 
 ## 3. Navigation
 
