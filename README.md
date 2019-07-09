@@ -26,25 +26,33 @@ An app to help restaurants use customer reviews to make informed decisions
 
 ## 2. Screen Archetypes
 
- * screen with form for customers to fill out
+ * Login Screen/Sign up
+ * Restaurant profile (editable)
+ * Competitor screen (uses to Yelp API)
  * screen for waiter profile
- * settings to change profile
  * Screen with restaurant stats (most popular dish, least popular dish etc.)
- * Login Screen
+ * waiter profiles/stats
+ * screen with form for customers to fill out
+
 
 ## 3. Navigation
 
 **Tab Navigation** (Tab to Screen)
 
- * [fill out your first tab]
- * [fill out your second tab]
- * [fill out your third tab]
+ * Restaurant Profile
+ * Restaurant Data
+ * Competitors
 
 **Flow Navigation** (Screen to Screen)
 
- * [list first screen here]
-   * [list screen navigation here]
+ * Restaurant Profile
+   * menu (editable)
    * ...
- * [list second screen here]
-   * [list screen navigation here]
-   * ...
+ * Restaurant Data
+   * List of menu items with stats (ie. number sold, reviews etc)
+   * graphical display (ie. histogram, pie charts etc)
+   * summary view (shortened list view)
+ * Competitors based on:
+   * location
+   * price
+   * category/type of food
