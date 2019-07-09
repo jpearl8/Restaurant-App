@@ -41,6 +41,7 @@ An app to help restaurants use customer reviews to make informed decisions
 
  * Restaurant Profile
  * Restaurant Data
+ * Waiter Profiles
  * Competitors
 
 **Flow Navigation** (Screen to Screen)
@@ -52,6 +53,8 @@ An app to help restaurants use customer reviews to make informed decisions
    * List of menu items with stats (ie. number sold, reviews etc)
    * graphical display (ie. histogram, pie charts etc)
    * summary view (shortened list view)
+ * Waiter Profiles
+   * Details for a waiter with comments and ratings
  * Competitors based on:
    * location
    * price
