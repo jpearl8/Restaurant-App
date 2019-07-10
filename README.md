@@ -59,3 +59,6 @@ An app to help restaurants use customer reviews to make informed decisions
    * location
    * price
    * category/type of food
+   
+ **Low Fidelity Wireframe Sketch**
+ ![](https://scontent-sjc3-1.xx.fbcdn.net/v/t1.15752-0/p280x280/66153801_2413268448949883_6371729063316291584_n.jpg?_nc_cat=110&_nc_oc=AQmAb_63jJdMhk7KmYRkgVX6QgBZyJhJO03hekLQ8xdZPq7uTJlLM2S1Xv8qXi16Csk&_nc_ht=scontent-sjc3-1.xx&oh=8e037924045997a9a48d49bfb22e47d9&oe=5DA3B778)
