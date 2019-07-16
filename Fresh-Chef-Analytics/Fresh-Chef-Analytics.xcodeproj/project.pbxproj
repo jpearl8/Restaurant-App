@@ -10,8 +10,9 @@
 		04AFA30B5ED81F3A4751557F /* Pods_Fresh_Chef_AnalyticsUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42A241F1C3DD4F89E8FCF59F /* Pods_Fresh_Chef_AnalyticsUITests.framework */; };
 		3E28F5D2BA1F9BD1703EEE6F /* Pods_Fresh_Chef_Analytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FDB55402FC2976479D728C9F /* Pods_Fresh_Chef_Analytics.framework */; };
 		610645E0378F7831106AAEF4 /* Pods_Fresh_Chef_AnalyticsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F807EA952E6B093FACEDA469 /* Pods_Fresh_Chef_AnalyticsTests.framework */; };
+		B6D7B35322DE6D27002093CB /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6D7B35222DE6D27002093CB /* LoginViewController.m */; };
+		B6D7B35622DE6D40002093CB /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6D7B35522DE6D40002093CB /* SignUpViewController.m */; };
 		FF46E19222DE436400E15A0E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FF46E19122DE436400E15A0E /* AppDelegate.m */; };
-		FF46E19522DE436400E15A0E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF46E19422DE436400E15A0E /* ViewController.m */; };
 		FF46E19822DE436400E15A0E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF46E19622DE436400E15A0E /* Main.storyboard */; };
 		FF46E19A22DE436400E15A0E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF46E19922DE436400E15A0E /* Assets.xcassets */; };
 		FF46E19D22DE436400E15A0E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF46E19B22DE436400E15A0E /* LaunchScreen.storyboard */; };
@@ -42,6 +43,10 @@
 		42A241F1C3DD4F89E8FCF59F /* Pods_Fresh_Chef_AnalyticsUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Fresh_Chef_AnalyticsUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		444D934F6C5257E53419EC99 /* Pods-Fresh-Chef-Analytics.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fresh-Chef-Analytics.release.xcconfig"; path = "Target Support Files/Pods-Fresh-Chef-Analytics/Pods-Fresh-Chef-Analytics.release.xcconfig"; sourceTree = "<group>"; };
 		8FD3E4AFDEEFA0300D55D72D /* Pods-Fresh-Chef-AnalyticsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fresh-Chef-AnalyticsTests.release.xcconfig"; path = "Target Support Files/Pods-Fresh-Chef-AnalyticsTests/Pods-Fresh-Chef-AnalyticsTests.release.xcconfig"; sourceTree = "<group>"; };
+		B6D7B35122DE6D27002093CB /* LoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		B6D7B35222DE6D27002093CB /* LoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		B6D7B35422DE6D3F002093CB /* SignUpViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SignUpViewController.h; sourceTree = "<group>"; };
+		B6D7B35522DE6D40002093CB /* SignUpViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SignUpViewController.m; sourceTree = "<group>"; };
 		E0C930C3020050C5A39A8F92 /* Pods-Fresh-Chef-Analytics.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fresh-Chef-Analytics.debug.xcconfig"; path = "Target Support Files/Pods-Fresh-Chef-Analytics/Pods-Fresh-Chef-Analytics.debug.xcconfig"; sourceTree = "<group>"; };
 		EB80B1150EADC91FB15DCF37 /* Pods-Fresh-Chef-AnalyticsUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fresh-Chef-AnalyticsUITests.debug.xcconfig"; path = "Target Support Files/Pods-Fresh-Chef-AnalyticsUITests/Pods-Fresh-Chef-AnalyticsUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		F3C29AA8318918BF176BC866 /* Pods-Fresh-Chef-AnalyticsUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fresh-Chef-AnalyticsUITests.release.xcconfig"; path = "Target Support Files/Pods-Fresh-Chef-AnalyticsUITests/Pods-Fresh-Chef-AnalyticsUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -50,8 +55,6 @@
 		FF46E18D22DE436400E15A0E /* Fresh-Chef-Analytics.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Fresh-Chef-Analytics.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF46E19022DE436400E15A0E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		FF46E19122DE436400E15A0E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		FF46E19322DE436400E15A0E /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		FF46E19422DE436400E15A0E /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		FF46E19722DE436400E15A0E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FF46E19922DE436400E15A0E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FF46E19C22DE436400E15A0E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -120,8 +123,10 @@
 		A535D7B622DE6B95002B79CA /* View Controller */ = {
 			isa = PBXGroup;
 			children = (
-				FF46E19322DE436400E15A0E /* ViewController.h */,
-				FF46E19422DE436400E15A0E /* ViewController.m */,
+				B6D7B35122DE6D27002093CB /* LoginViewController.h */,
+				B6D7B35222DE6D27002093CB /* LoginViewController.m */,
+				B6D7B35422DE6D3F002093CB /* SignUpViewController.h */,
+				B6D7B35522DE6D40002093CB /* SignUpViewController.m */,
 			);
 			path = "View Controller";
 			sourceTree = "<group>";
@@ -416,7 +421,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FF46E19522DE436400E15A0E /* ViewController.m in Sources */,
+				B6D7B35322DE6D27002093CB /* LoginViewController.m in Sources */,
+				B6D7B35622DE6D40002093CB /* SignUpViewController.m in Sources */,
 				FF46E1A022DE436400E15A0E /* main.m in Sources */,
 				FF46E19222DE436400E15A0E /* AppDelegate.m in Sources */,
 			);
