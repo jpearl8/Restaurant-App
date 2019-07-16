@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -103,6 +103,29 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		A535D7B422DE6B8C002B79CA /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		A535D7B522DE6B92002B79CA /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		A535D7B622DE6B95002B79CA /* View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				FF46E19322DE436400E15A0E /* ViewController.h */,
+				FF46E19422DE436400E15A0E /* ViewController.m */,
+			);
+			path = "View Controller";
+			sourceTree = "<group>";
+		};
 		B2353C68BCB0DF7918364525 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -113,7 +136,6 @@
 				EB80B1150EADC91FB15DCF37 /* Pods-Fresh-Chef-AnalyticsUITests.debug.xcconfig */,
 				F3C29AA8318918BF176BC866 /* Pods-Fresh-Chef-AnalyticsUITests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -142,10 +164,11 @@
 		FF46E18F22DE436400E15A0E /* Fresh-Chef-Analytics */ = {
 			isa = PBXGroup;
 			children = (
+				A535D7B622DE6B95002B79CA /* View Controller */,
+				A535D7B522DE6B92002B79CA /* Views */,
+				A535D7B422DE6B8C002B79CA /* Models */,
 				FF46E19022DE436400E15A0E /* AppDelegate.h */,
 				FF46E19122DE436400E15A0E /* AppDelegate.m */,
-				FF46E19322DE436400E15A0E /* ViewController.h */,
-				FF46E19422DE436400E15A0E /* ViewController.m */,
 				FF46E19622DE436400E15A0E /* Main.storyboard */,
 				FF46E19922DE436400E15A0E /* Assets.xcassets */,
 				FF46E19B22DE436400E15A0E /* LaunchScreen.storyboard */,
