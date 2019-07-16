@@ -1,0 +1,6 @@
+framework module Pods_Fresh_Chef_AnalyticsTests {
+  umbrella header "Pods-Fresh-Chef-AnalyticsTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
