@@ -184,6 +184,7 @@
 				FF46E18922DE436400E15A0E /* Sources */,
 				FF46E18A22DE436400E15A0E /* Frameworks */,
 				FF46E18B22DE436400E15A0E /* Resources */,
+				53D8944CC6AA674F8362C6B8 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -302,6 +303,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		53D8944CC6AA674F8362C6B8 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Fresh-Chef-Analytics/Pods-Fresh-Chef-Analytics-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Fresh-Chef-Analytics/Pods-Fresh-Chef-Analytics-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Fresh-Chef-Analytics/Pods-Fresh-Chef-Analytics-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		5677C1720220E3D0F100ED00 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
