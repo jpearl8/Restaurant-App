@@ -6,6 +6,7 @@ target 'Fresh-Chef-Analytics' do
   use_frameworks!
 
   # Pods for Fresh-Chef-Analytics
+  pod 'Parse'
 
   target 'Fresh-Chef-AnalyticsTests' do
     inherit! :search_paths
