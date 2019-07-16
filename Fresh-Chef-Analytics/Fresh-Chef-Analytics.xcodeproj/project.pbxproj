@@ -113,7 +113,6 @@
 				EB80B1150EADC91FB15DCF37 /* Pods-Fresh-Chef-AnalyticsUITests.debug.xcconfig */,
 				F3C29AA8318918BF176BC866 /* Pods-Fresh-Chef-AnalyticsUITests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -550,7 +549,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = HSX3BRP6J4;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "Fresh-Chef-Analytics/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -568,7 +567,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = HSX3BRP6J4;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "Fresh-Chef-Analytics/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
