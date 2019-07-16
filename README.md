@@ -1,4 +1,4 @@
-# Restaurant-App
+# Fresh Chef Analytics
 An app to help restaurants use customer reviews to make informed decisions
 
 ## 1. User Stories (Required and Optional)
