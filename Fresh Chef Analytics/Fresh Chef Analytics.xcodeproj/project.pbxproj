@@ -1,0 +1,580 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		FFCB885A22DE414D00310B99 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FFCB885922DE414D00310B99 /* AppDelegate.m */; };
+		FFCB885D22DE414D00310B99 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FFCB885C22DE414D00310B99 /* ViewController.m */; };
+		FFCB886022DE414D00310B99 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FFCB885E22DE414D00310B99 /* Main.storyboard */; };
+		FFCB886222DE414E00310B99 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FFCB886122DE414E00310B99 /* Assets.xcassets */; };
+		FFCB886522DE414E00310B99 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FFCB886322DE414E00310B99 /* LaunchScreen.storyboard */; };
+		FFCB886822DE414E00310B99 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FFCB886722DE414E00310B99 /* main.m */; };
+		FFCB887222DE414E00310B99 /* Fresh_Chef_AnalyticsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FFCB887122DE414E00310B99 /* Fresh_Chef_AnalyticsTests.m */; };
+		FFCB887D22DE414E00310B99 /* Fresh_Chef_AnalyticsUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = FFCB887C22DE414E00310B99 /* Fresh_Chef_AnalyticsUITests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		FFCB886E22DE414E00310B99 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FFCB884D22DE414D00310B99 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FFCB885422DE414D00310B99;
+			remoteInfo = "Fresh Chef Analytics";
+		};
+		FFCB887922DE414E00310B99 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FFCB884D22DE414D00310B99 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FFCB885422DE414D00310B99;
+			remoteInfo = "Fresh Chef Analytics";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		FFCB885522DE414D00310B99 /* Fresh Chef Analytics.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Fresh Chef Analytics.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FFCB885822DE414D00310B99 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		FFCB885922DE414D00310B99 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		FFCB885B22DE414D00310B99 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		FFCB885C22DE414D00310B99 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		FFCB885F22DE414D00310B99 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		FFCB886122DE414E00310B99 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		FFCB886422DE414E00310B99 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		FFCB886622DE414E00310B99 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FFCB886722DE414E00310B99 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		FFCB886D22DE414E00310B99 /* Fresh Chef AnalyticsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Fresh Chef AnalyticsTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FFCB887122DE414E00310B99 /* Fresh_Chef_AnalyticsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Fresh_Chef_AnalyticsTests.m; sourceTree = "<group>"; };
+		FFCB887322DE414E00310B99 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FFCB887822DE414E00310B99 /* Fresh Chef AnalyticsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Fresh Chef AnalyticsUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FFCB887C22DE414E00310B99 /* Fresh_Chef_AnalyticsUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Fresh_Chef_AnalyticsUITests.m; sourceTree = "<group>"; };
+		FFCB887E22DE414E00310B99 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		FFCB885222DE414D00310B99 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FFCB886A22DE414E00310B99 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FFCB887522DE414E00310B99 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		FFCB884C22DE414D00310B99 = {
+			isa = PBXGroup;
+			children = (
+				FFCB885722DE414D00310B99 /* Fresh Chef Analytics */,
+				FFCB887022DE414E00310B99 /* Fresh Chef AnalyticsTests */,
+				FFCB887B22DE414E00310B99 /* Fresh Chef AnalyticsUITests */,
+				FFCB885622DE414D00310B99 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		FFCB885622DE414D00310B99 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FFCB885522DE414D00310B99 /* Fresh Chef Analytics.app */,
+				FFCB886D22DE414E00310B99 /* Fresh Chef AnalyticsTests.xctest */,
+				FFCB887822DE414E00310B99 /* Fresh Chef AnalyticsUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		FFCB885722DE414D00310B99 /* Fresh Chef Analytics */ = {
+			isa = PBXGroup;
+			children = (
+				FFCB885822DE414D00310B99 /* AppDelegate.h */,
+				FFCB885922DE414D00310B99 /* AppDelegate.m */,
+				FFCB885B22DE414D00310B99 /* ViewController.h */,
+				FFCB885C22DE414D00310B99 /* ViewController.m */,
+				FFCB885E22DE414D00310B99 /* Main.storyboard */,
+				FFCB886122DE414E00310B99 /* Assets.xcassets */,
+				FFCB886322DE414E00310B99 /* LaunchScreen.storyboard */,
+				FFCB886622DE414E00310B99 /* Info.plist */,
+				FFCB886722DE414E00310B99 /* main.m */,
+			);
+			path = "Fresh Chef Analytics";
+			sourceTree = "<group>";
+		};
+		FFCB887022DE414E00310B99 /* Fresh Chef AnalyticsTests */ = {
+			isa = PBXGroup;
+			children = (
+				FFCB887122DE414E00310B99 /* Fresh_Chef_AnalyticsTests.m */,
+				FFCB887322DE414E00310B99 /* Info.plist */,
+			);
+			path = "Fresh Chef AnalyticsTests";
+			sourceTree = "<group>";
+		};
+		FFCB887B22DE414E00310B99 /* Fresh Chef AnalyticsUITests */ = {
+			isa = PBXGroup;
+			children = (
+				FFCB887C22DE414E00310B99 /* Fresh_Chef_AnalyticsUITests.m */,
+				FFCB887E22DE414E00310B99 /* Info.plist */,
+			);
+			path = "Fresh Chef AnalyticsUITests";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		FFCB885422DE414D00310B99 /* Fresh Chef Analytics */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FFCB888122DE414E00310B99 /* Build configuration list for PBXNativeTarget "Fresh Chef Analytics" */;
+			buildPhases = (
+				FFCB885122DE414D00310B99 /* Sources */,
+				FFCB885222DE414D00310B99 /* Frameworks */,
+				FFCB885322DE414D00310B99 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Fresh Chef Analytics";
+			productName = "Fresh Chef Analytics";
+			productReference = FFCB885522DE414D00310B99 /* Fresh Chef Analytics.app */;
+			productType = "com.apple.product-type.application";
+		};
+		FFCB886C22DE414E00310B99 /* Fresh Chef AnalyticsTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FFCB888422DE414E00310B99 /* Build configuration list for PBXNativeTarget "Fresh Chef AnalyticsTests" */;
+			buildPhases = (
+				FFCB886922DE414E00310B99 /* Sources */,
+				FFCB886A22DE414E00310B99 /* Frameworks */,
+				FFCB886B22DE414E00310B99 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FFCB886F22DE414E00310B99 /* PBXTargetDependency */,
+			);
+			name = "Fresh Chef AnalyticsTests";
+			productName = "Fresh Chef AnalyticsTests";
+			productReference = FFCB886D22DE414E00310B99 /* Fresh Chef AnalyticsTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		FFCB887722DE414E00310B99 /* Fresh Chef AnalyticsUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FFCB888722DE414E00310B99 /* Build configuration list for PBXNativeTarget "Fresh Chef AnalyticsUITests" */;
+			buildPhases = (
+				FFCB887422DE414E00310B99 /* Sources */,
+				FFCB887522DE414E00310B99 /* Frameworks */,
+				FFCB887622DE414E00310B99 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FFCB887A22DE414E00310B99 /* PBXTargetDependency */,
+			);
+			name = "Fresh Chef AnalyticsUITests";
+			productName = "Fresh Chef AnalyticsUITests";
+			productReference = FFCB887822DE414E00310B99 /* Fresh Chef AnalyticsUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		FFCB884D22DE414D00310B99 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 1020;
+				ORGANIZATIONNAME = "julia@ipearl.net";
+				TargetAttributes = {
+					FFCB885422DE414D00310B99 = {
+						CreatedOnToolsVersion = 10.2.1;
+					};
+					FFCB886C22DE414E00310B99 = {
+						CreatedOnToolsVersion = 10.2.1;
+						TestTargetID = FFCB885422DE414D00310B99;
+					};
+					FFCB887722DE414E00310B99 = {
+						CreatedOnToolsVersion = 10.2.1;
+						TestTargetID = FFCB885422DE414D00310B99;
+					};
+				};
+			};
+			buildConfigurationList = FFCB885022DE414D00310B99 /* Build configuration list for PBXProject "Fresh Chef Analytics" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = FFCB884C22DE414D00310B99;
+			productRefGroup = FFCB885622DE414D00310B99 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				FFCB885422DE414D00310B99 /* Fresh Chef Analytics */,
+				FFCB886C22DE414E00310B99 /* Fresh Chef AnalyticsTests */,
+				FFCB887722DE414E00310B99 /* Fresh Chef AnalyticsUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		FFCB885322DE414D00310B99 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FFCB886522DE414E00310B99 /* LaunchScreen.storyboard in Resources */,
+				FFCB886222DE414E00310B99 /* Assets.xcassets in Resources */,
+				FFCB886022DE414D00310B99 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FFCB886B22DE414E00310B99 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FFCB887622DE414E00310B99 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		FFCB885122DE414D00310B99 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FFCB885D22DE414D00310B99 /* ViewController.m in Sources */,
+				FFCB886822DE414E00310B99 /* main.m in Sources */,
+				FFCB885A22DE414D00310B99 /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FFCB886922DE414E00310B99 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FFCB887222DE414E00310B99 /* Fresh_Chef_AnalyticsTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FFCB887422DE414E00310B99 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FFCB887D22DE414E00310B99 /* Fresh_Chef_AnalyticsUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		FFCB886F22DE414E00310B99 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FFCB885422DE414D00310B99 /* Fresh Chef Analytics */;
+			targetProxy = FFCB886E22DE414E00310B99 /* PBXContainerItemProxy */;
+		};
+		FFCB887A22DE414E00310B99 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FFCB885422DE414D00310B99 /* Fresh Chef Analytics */;
+			targetProxy = FFCB887922DE414E00310B99 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		FFCB885E22DE414D00310B99 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FFCB885F22DE414D00310B99 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		FFCB886322DE414E00310B99 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FFCB886422DE414E00310B99 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		FFCB887F22DE414E00310B99 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		FFCB888022DE414E00310B99 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		FFCB888222DE414E00310B99 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = HSX3BRP6J4;
+				INFOPLIST_FILE = "Fresh Chef Analytics/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.jpearl.Fresh-Chef-Analytics";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		FFCB888322DE414E00310B99 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = HSX3BRP6J4;
+				INFOPLIST_FILE = "Fresh Chef Analytics/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.jpearl.Fresh-Chef-Analytics";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		FFCB888522DE414E00310B99 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "Fresh Chef AnalyticsTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.jpearl.Fresh-Chef-AnalyticsTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Fresh Chef Analytics.app/Fresh Chef Analytics";
+			};
+			name = Debug;
+		};
+		FFCB888622DE414E00310B99 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "Fresh Chef AnalyticsTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.jpearl.Fresh-Chef-AnalyticsTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Fresh Chef Analytics.app/Fresh Chef Analytics";
+			};
+			name = Release;
+		};
+		FFCB888822DE414E00310B99 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "Fresh Chef AnalyticsUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.jpearl.Fresh-Chef-AnalyticsUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "Fresh Chef Analytics";
+			};
+			name = Debug;
+		};
+		FFCB888922DE414E00310B99 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "Fresh Chef AnalyticsUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.jpearl.Fresh-Chef-AnalyticsUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "Fresh Chef Analytics";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		FFCB885022DE414D00310B99 /* Build configuration list for PBXProject "Fresh Chef Analytics" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FFCB887F22DE414E00310B99 /* Debug */,
+				FFCB888022DE414E00310B99 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FFCB888122DE414E00310B99 /* Build configuration list for PBXNativeTarget "Fresh Chef Analytics" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FFCB888222DE414E00310B99 /* Debug */,
+				FFCB888322DE414E00310B99 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FFCB888422DE414E00310B99 /* Build configuration list for PBXNativeTarget "Fresh Chef AnalyticsTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FFCB888522DE414E00310B99 /* Debug */,
+				FFCB888622DE414E00310B99 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FFCB888722DE414E00310B99 /* Build configuration list for PBXNativeTarget "Fresh Chef AnalyticsUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FFCB888822DE414E00310B99 /* Debug */,
+				FFCB888922DE414E00310B99 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = FFCB884D22DE414D00310B99 /* Project object */;
+}
