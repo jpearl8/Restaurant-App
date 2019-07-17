@@ -12,6 +12,23 @@
 		610645E0378F7831106AAEF4 /* Pods_Fresh_Chef_AnalyticsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F807EA952E6B093FACEDA469 /* Pods_Fresh_Chef_AnalyticsTests.framework */; };
 		A535D7B922DE6CE9002B79CA /* Dish.m in Sources */ = {isa = PBXBuildFile; fileRef = A535D7B822DE6CE9002B79CA /* Dish.m */; };
 		A535D7BC22DE8FB2002B79CA /* Restaurant.m in Sources */ = {isa = PBXBuildFile; fileRef = A535D7BB22DE8FB2002B79CA /* Restaurant.m */; };
+		FF03BF2E22DE963B00719E8C /* WaiterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF03BF2D22DE963B00719E8C /* WaiterViewController.m */; };
+		FF03BF3122DE96EC00719E8C /* FunFormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF03BF3022DE96EC00719E8C /* FunFormViewController.m */; };
+		FF03BF3422DE971600719E8C /* ComfortableFormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF03BF3322DE971600719E8C /* ComfortableFormViewController.m */; };
+		FF03BF3722DE973B00719E8C /* ElegantFormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF03BF3622DE973B00719E8C /* ElegantFormViewController.m */; };
+		FF03BF3A22DE975B00719E8C /* ReceiptViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF03BF3922DE975B00719E8C /* ReceiptViewController.m */; };
+		FF03BF3D22DE97AD00719E8C /* ThankYouViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF03BF3C22DE97AD00719E8C /* ThankYouViewController.m */; };
+		FF03BF4022DE97C900719E8C /* AnotherTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF03BF3F22DE97C900719E8C /* AnotherTableViewController.m */; };
+		FF03BF4322DE9FA700719E8C /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF03BF4222DE9FA700719E8C /* ProfileViewController.m */; };
+		FF03BF4622DE9FC700719E8C /* EditMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF03BF4522DE9FC700719E8C /* EditMenuViewController.m */; };
+		FF03BF4922DE9FE000719E8C /* EditWaitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF03BF4822DE9FE000719E8C /* EditWaitViewController.m */; };
+		FF03BF4C22DE9FFD00719E8C /* MenuListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF03BF4B22DE9FFD00719E8C /* MenuListViewController.m */; };
+		FF03BF5022DEA04900719E8C /* DishDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF03BF4F22DEA04900719E8C /* DishDetailsViewController.m */; };
+		FF03BF5322DEA07700719E8C /* WaitListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF03BF5222DEA07700719E8C /* WaitListViewController.m */; };
+		FF03BF5622DEA0A000719E8C /* WaitDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF03BF5522DEA0A000719E8C /* WaitDetailsViewController.m */; };
+		FF03BF5922DEA0C700719E8C /* CompetitorDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF03BF5822DEA0C700719E8C /* CompetitorDetailsViewController.m */; };
+		FF03BF5C22DEA16600719E8C /* CompetitorListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF03BF5B22DEA16600719E8C /* CompetitorListViewController.m */; };
+		FF03BF5F22DEA19100719E8C /* MenuDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF03BF5E22DEA19100719E8C /* MenuDataViewController.m */; };
 		FF46E19222DE436400E15A0E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FF46E19122DE436400E15A0E /* AppDelegate.m */; };
 		FF46E19522DE436400E15A0E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF46E19422DE436400E15A0E /* ViewController.m */; };
 		FF46E19822DE436400E15A0E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF46E19622DE436400E15A0E /* Main.storyboard */; };
@@ -53,6 +70,40 @@
 		F3C29AA8318918BF176BC866 /* Pods-Fresh-Chef-AnalyticsUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fresh-Chef-AnalyticsUITests.release.xcconfig"; path = "Target Support Files/Pods-Fresh-Chef-AnalyticsUITests/Pods-Fresh-Chef-AnalyticsUITests.release.xcconfig"; sourceTree = "<group>"; };
 		F807EA952E6B093FACEDA469 /* Pods_Fresh_Chef_AnalyticsTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Fresh_Chef_AnalyticsTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FDB55402FC2976479D728C9F /* Pods_Fresh_Chef_Analytics.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Fresh_Chef_Analytics.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FF03BF2C22DE963B00719E8C /* WaiterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WaiterViewController.h; sourceTree = "<group>"; };
+		FF03BF2D22DE963B00719E8C /* WaiterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WaiterViewController.m; sourceTree = "<group>"; };
+		FF03BF2F22DE96EC00719E8C /* FunFormViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FunFormViewController.h; sourceTree = "<group>"; };
+		FF03BF3022DE96EC00719E8C /* FunFormViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FunFormViewController.m; sourceTree = "<group>"; };
+		FF03BF3222DE971600719E8C /* ComfortableFormViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ComfortableFormViewController.h; sourceTree = "<group>"; };
+		FF03BF3322DE971600719E8C /* ComfortableFormViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ComfortableFormViewController.m; sourceTree = "<group>"; };
+		FF03BF3522DE973B00719E8C /* ElegantFormViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ElegantFormViewController.h; sourceTree = "<group>"; };
+		FF03BF3622DE973B00719E8C /* ElegantFormViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ElegantFormViewController.m; sourceTree = "<group>"; };
+		FF03BF3822DE975B00719E8C /* ReceiptViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReceiptViewController.h; sourceTree = "<group>"; };
+		FF03BF3922DE975B00719E8C /* ReceiptViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReceiptViewController.m; sourceTree = "<group>"; };
+		FF03BF3B22DE97AD00719E8C /* ThankYouViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ThankYouViewController.h; sourceTree = "<group>"; };
+		FF03BF3C22DE97AD00719E8C /* ThankYouViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ThankYouViewController.m; sourceTree = "<group>"; };
+		FF03BF3E22DE97C900719E8C /* AnotherTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AnotherTableViewController.h; sourceTree = "<group>"; };
+		FF03BF3F22DE97C900719E8C /* AnotherTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AnotherTableViewController.m; sourceTree = "<group>"; };
+		FF03BF4122DE9FA700719E8C /* ProfileViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
+		FF03BF4222DE9FA700719E8C /* ProfileViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
+		FF03BF4422DE9FC700719E8C /* EditMenuViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EditMenuViewController.h; sourceTree = "<group>"; };
+		FF03BF4522DE9FC700719E8C /* EditMenuViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EditMenuViewController.m; sourceTree = "<group>"; };
+		FF03BF4722DE9FE000719E8C /* EditWaitViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EditWaitViewController.h; sourceTree = "<group>"; };
+		FF03BF4822DE9FE000719E8C /* EditWaitViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EditWaitViewController.m; sourceTree = "<group>"; };
+		FF03BF4A22DE9FFD00719E8C /* MenuListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MenuListViewController.h; sourceTree = "<group>"; };
+		FF03BF4B22DE9FFD00719E8C /* MenuListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MenuListViewController.m; sourceTree = "<group>"; };
+		FF03BF4E22DEA04900719E8C /* DishDetailsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DishDetailsViewController.h; sourceTree = "<group>"; };
+		FF03BF4F22DEA04900719E8C /* DishDetailsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DishDetailsViewController.m; sourceTree = "<group>"; };
+		FF03BF5122DEA07700719E8C /* WaitListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WaitListViewController.h; sourceTree = "<group>"; };
+		FF03BF5222DEA07700719E8C /* WaitListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WaitListViewController.m; sourceTree = "<group>"; };
+		FF03BF5422DEA0A000719E8C /* WaitDetailsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WaitDetailsViewController.h; sourceTree = "<group>"; };
+		FF03BF5522DEA0A000719E8C /* WaitDetailsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WaitDetailsViewController.m; sourceTree = "<group>"; };
+		FF03BF5722DEA0C700719E8C /* CompetitorDetailsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CompetitorDetailsViewController.h; sourceTree = "<group>"; };
+		FF03BF5822DEA0C700719E8C /* CompetitorDetailsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CompetitorDetailsViewController.m; sourceTree = "<group>"; };
+		FF03BF5A22DEA16600719E8C /* CompetitorListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CompetitorListViewController.h; sourceTree = "<group>"; };
+		FF03BF5B22DEA16600719E8C /* CompetitorListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CompetitorListViewController.m; sourceTree = "<group>"; };
+		FF03BF5D22DEA19100719E8C /* MenuDataViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MenuDataViewController.h; sourceTree = "<group>"; };
+		FF03BF5E22DEA19100719E8C /* MenuDataViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MenuDataViewController.m; sourceTree = "<group>"; };
 		FF46E18D22DE436400E15A0E /* Fresh-Chef-Analytics.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Fresh-Chef-Analytics.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF46E19022DE436400E15A0E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		FF46E19122DE436400E15A0E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -130,6 +181,9 @@
 		A535D7B622DE6B95002B79CA /* View Controller */ = {
 			isa = PBXGroup;
 			children = (
+				FF03BF2B22DE95E400719E8C /* Login VCs */,
+				FF03BF2A22DE95DA00719E8C /* Manager VCs */,
+				FF03BF2922DE95C900719E8C /* Waiter VCs */,
 				FF46E19322DE436400E15A0E /* ViewController.h */,
 				FF46E19422DE436400E15A0E /* ViewController.m */,
 			);
@@ -147,6 +201,69 @@
 				F3C29AA8318918BF176BC866 /* Pods-Fresh-Chef-AnalyticsUITests.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		FF03BF2922DE95C900719E8C /* Waiter VCs */ = {
+			isa = PBXGroup;
+			children = (
+				FF03BF3E22DE97C900719E8C /* AnotherTableViewController.h */,
+				FF03BF3F22DE97C900719E8C /* AnotherTableViewController.m */,
+				FF03BF3B22DE97AD00719E8C /* ThankYouViewController.h */,
+				FF03BF3C22DE97AD00719E8C /* ThankYouViewController.m */,
+				FF03BF3822DE975B00719E8C /* ReceiptViewController.h */,
+				FF03BF3922DE975B00719E8C /* ReceiptViewController.m */,
+				FF03BF3522DE973B00719E8C /* ElegantFormViewController.h */,
+				FF03BF3622DE973B00719E8C /* ElegantFormViewController.m */,
+				FF03BF3222DE971600719E8C /* ComfortableFormViewController.h */,
+				FF03BF3322DE971600719E8C /* ComfortableFormViewController.m */,
+				FF03BF2C22DE963B00719E8C /* WaiterViewController.h */,
+				FF03BF2D22DE963B00719E8C /* WaiterViewController.m */,
+				FF03BF2F22DE96EC00719E8C /* FunFormViewController.h */,
+				FF03BF3022DE96EC00719E8C /* FunFormViewController.m */,
+			);
+			path = "Waiter VCs";
+			sourceTree = "<group>";
+		};
+		FF03BF2A22DE95DA00719E8C /* Manager VCs */ = {
+			isa = PBXGroup;
+			children = (
+				FF03BF5D22DEA19100719E8C /* MenuDataViewController.h */,
+				FF03BF5E22DEA19100719E8C /* MenuDataViewController.m */,
+				FF03BF5A22DEA16600719E8C /* CompetitorListViewController.h */,
+				FF03BF5B22DEA16600719E8C /* CompetitorListViewController.m */,
+				FF03BF5122DEA07700719E8C /* WaitListViewController.h */,
+				FF03BF5222DEA07700719E8C /* WaitListViewController.m */,
+				FF03BF4D22DEA03700719E8C /* Details VCs */,
+				FF03BF4A22DE9FFD00719E8C /* MenuListViewController.h */,
+				FF03BF4B22DE9FFD00719E8C /* MenuListViewController.m */,
+				FF03BF4722DE9FE000719E8C /* EditWaitViewController.h */,
+				FF03BF4822DE9FE000719E8C /* EditWaitViewController.m */,
+				FF03BF4422DE9FC700719E8C /* EditMenuViewController.h */,
+				FF03BF4522DE9FC700719E8C /* EditMenuViewController.m */,
+				FF03BF4122DE9FA700719E8C /* ProfileViewController.h */,
+				FF03BF4222DE9FA700719E8C /* ProfileViewController.m */,
+			);
+			path = "Manager VCs";
+			sourceTree = "<group>";
+		};
+		FF03BF2B22DE95E400719E8C /* Login VCs */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Login VCs";
+			sourceTree = "<group>";
+		};
+		FF03BF4D22DEA03700719E8C /* Details VCs */ = {
+			isa = PBXGroup;
+			children = (
+				FF03BF5722DEA0C700719E8C /* CompetitorDetailsViewController.h */,
+				FF03BF5822DEA0C700719E8C /* CompetitorDetailsViewController.m */,
+				FF03BF5422DEA0A000719E8C /* WaitDetailsViewController.h */,
+				FF03BF5522DEA0A000719E8C /* WaitDetailsViewController.m */,
+				FF03BF4E22DEA04900719E8C /* DishDetailsViewController.h */,
+				FF03BF4F22DEA04900719E8C /* DishDetailsViewController.m */,
+			);
+			path = "Details VCs";
 			sourceTree = "<group>";
 		};
 		FF46E18422DE436400E15A0E = {
@@ -427,10 +544,27 @@
 			buildActionMask = 2147483647;
 			files = (
 				FF46E19522DE436400E15A0E /* ViewController.m in Sources */,
+				FF03BF5F22DEA19100719E8C /* MenuDataViewController.m in Sources */,
 				A535D7BC22DE8FB2002B79CA /* Restaurant.m in Sources */,
+				FF03BF3D22DE97AD00719E8C /* ThankYouViewController.m in Sources */,
+				FF03BF4C22DE9FFD00719E8C /* MenuListViewController.m in Sources */,
 				A535D7B922DE6CE9002B79CA /* Dish.m in Sources */,
+				FF03BF3A22DE975B00719E8C /* ReceiptViewController.m in Sources */,
+				FF03BF3422DE971600719E8C /* ComfortableFormViewController.m in Sources */,
 				FF46E1A022DE436400E15A0E /* main.m in Sources */,
+				FF03BF4622DE9FC700719E8C /* EditMenuViewController.m in Sources */,
+				FF03BF3722DE973B00719E8C /* ElegantFormViewController.m in Sources */,
+				FF03BF2E22DE963B00719E8C /* WaiterViewController.m in Sources */,
+				FF03BF5622DEA0A000719E8C /* WaitDetailsViewController.m in Sources */,
+				FF03BF5022DEA04900719E8C /* DishDetailsViewController.m in Sources */,
+				FF03BF5922DEA0C700719E8C /* CompetitorDetailsViewController.m in Sources */,
+				FF03BF5C22DEA16600719E8C /* CompetitorListViewController.m in Sources */,
+				FF03BF4322DE9FA700719E8C /* ProfileViewController.m in Sources */,
+				FF03BF5322DEA07700719E8C /* WaitListViewController.m in Sources */,
 				FF46E19222DE436400E15A0E /* AppDelegate.m in Sources */,
+				FF03BF3122DE96EC00719E8C /* FunFormViewController.m in Sources */,
+				FF03BF4922DE9FE000719E8C /* EditWaitViewController.m in Sources */,
+				FF03BF4022DE97C900719E8C /* AnotherTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
