@@ -10,10 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Manager Login View Controller-->
         <scene sceneID="PeM-wp-Wi3">
             <objects>
-                <viewController id="oRH-8P-Qfb" sceneMemberID="viewController">
+                <viewController id="oRH-8P-Qfb" customClass="ManagerLoginViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="0fD-qj-YqH">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -23,12 +23,18 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="35"/>
                                 <state key="normal" title="Continue As Waiter"/>
+                                <connections>
+                                    <segue destination="avW-EL-1xc" kind="show" id="f36-UD-Twc"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cOa-pR-OlD">
                                 <rect key="frame" x="78" y="548" width="261" height="54"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="35"/>
                                 <state key="normal" title="Login as Manager"/>
+                                <connections>
+                                    <action selector="didTapLoginAsManager:" destination="oRH-8P-Qfb" eventType="touchUpInside" id="t5x-Gx-QT1"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="or" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PIq-tU-hXQ">
                                 <rect key="frame" x="186" y="438" width="16" height="21"/>
@@ -49,6 +55,10 @@
                         <viewLayoutGuide key="safeArea" id="xs1-CK-o9U"/>
                     </view>
                     <navigationItem key="navigationItem" id="67q-Qh-gWG"/>
+                    <connections>
+                        <outlet property="managerPasswordField" destination="ZZC-wG-XrR" id="3ZK-uH-oda"/>
+                        <segue destination="Sm8-Wr-bQA" kind="show" identifier="managerLoginSegue" id="RLv-hb-y49"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="T5T-NF-MPp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -690,7 +700,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wd0-Hz-bjH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="270" y="2356"/>
+            <point key="canvasLocation" x="325" y="2321"/>
         </scene>
         <!--Menu Data-->
         <scene sceneID="rrj-h5-OI6">
@@ -971,7 +981,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fcD-6v-94H" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="270" y="3785"/>
+            <point key="canvasLocation" x="325" y="3785"/>
         </scene>
         <!--Wait List View Controller-->
         <scene sceneID="jgw-6H-0pf">
@@ -1035,7 +1045,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Lp-Tw-GUk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1179.7101449275362" y="4493.3035714285716"/>
+            <point key="canvasLocation" x="1180" y="4493"/>
         </scene>
         <!--Waiter Info-->
         <scene sceneID="hRb-j3-WFg">
@@ -1054,7 +1064,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="n6R-Lh-3Ea" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="270" y="4494"/>
+            <point key="canvasLocation" x="325" y="4493"/>
         </scene>
         <!--Wait Details View Controller-->
         <scene sceneID="EoQ-wR-u7Y">
@@ -1198,7 +1208,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7S4-ry-Nm8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1151" y="5178"/>
+            <point key="canvasLocation" x="1180" y="5210"/>
         </scene>
         <!--Competitor View-->
         <scene sceneID="o0a-FR-Jto">
@@ -1217,7 +1227,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="y8p-Ev-53w" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="270" y="5164"/>
+            <point key="canvasLocation" x="325" y="5210"/>
         </scene>
         <!--Competitor Details View Controller-->
         <scene sceneID="MeH-g1-cRf">
@@ -1345,7 +1355,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ei1-lI-py7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2077" y="5164"/>
+            <point key="canvasLocation" x="2075" y="5210"/>
         </scene>
         <!--Comfortable Form View Controller-->
         <scene sceneID="Icz-AJ-4li">
@@ -1555,6 +1565,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="eop-xl-c0C"/>
+        <segue reference="yOU-L2-H8u"/>
+        <segue reference="bWY-no-UtB"/>
+        <segue reference="f36-UD-Twc"/>
     </inferredMetricsTieBreakers>
 </document>

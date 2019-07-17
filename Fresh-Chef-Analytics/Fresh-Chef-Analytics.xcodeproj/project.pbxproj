@@ -15,7 +15,7 @@
 		A535D7BF22DE9FBF002B79CA /* Waiter.m in Sources */ = {isa = PBXBuildFile; fileRef = A535D7BE22DE9FBF002B79CA /* Waiter.m */; };
 		B6D7B35322DE6D27002093CB /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6D7B35222DE6D27002093CB /* LoginViewController.m */; };
 		B6D7B35622DE6D40002093CB /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6D7B35522DE6D40002093CB /* SignUpViewController.m */; };
-		B6D7B35922DEA6F0002093CB /* ManagerPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6D7B35822DEA6F0002093CB /* ManagerPasswordViewController.m */; };
+		B6D7B35C22DF95BA002093CB /* ManagerLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6D7B35B22DF95BA002093CB /* ManagerLoginViewController.m */; };
 		FF03BF2E22DE963B00719E8C /* WaiterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF03BF2D22DE963B00719E8C /* WaiterViewController.m */; };
 		FF03BF3122DE96EC00719E8C /* FunFormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF03BF3022DE96EC00719E8C /* FunFormViewController.m */; };
 		FF03BF3422DE971600719E8C /* ComfortableFormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF03BF3322DE971600719E8C /* ComfortableFormViewController.m */; };
@@ -73,8 +73,8 @@
 		B6D7B35222DE6D27002093CB /* LoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		B6D7B35422DE6D3F002093CB /* SignUpViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SignUpViewController.h; sourceTree = "<group>"; };
 		B6D7B35522DE6D40002093CB /* SignUpViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SignUpViewController.m; sourceTree = "<group>"; };
-		B6D7B35722DEA6F0002093CB /* ManagerPasswordViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ManagerPasswordViewController.h; sourceTree = "<group>"; };
-		B6D7B35822DEA6F0002093CB /* ManagerPasswordViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ManagerPasswordViewController.m; sourceTree = "<group>"; };
+		B6D7B35A22DF95BA002093CB /* ManagerLoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ManagerLoginViewController.h; sourceTree = "<group>"; };
+		B6D7B35B22DF95BA002093CB /* ManagerLoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ManagerLoginViewController.m; sourceTree = "<group>"; };
 		E0C930C3020050C5A39A8F92 /* Pods-Fresh-Chef-Analytics.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fresh-Chef-Analytics.debug.xcconfig"; path = "Target Support Files/Pods-Fresh-Chef-Analytics/Pods-Fresh-Chef-Analytics.debug.xcconfig"; sourceTree = "<group>"; };
 		EB80B1150EADC91FB15DCF37 /* Pods-Fresh-Chef-AnalyticsUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fresh-Chef-AnalyticsUITests.debug.xcconfig"; path = "Target Support Files/Pods-Fresh-Chef-AnalyticsUITests/Pods-Fresh-Chef-AnalyticsUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		F3C29AA8318918BF176BC866 /* Pods-Fresh-Chef-AnalyticsUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fresh-Chef-AnalyticsUITests.release.xcconfig"; path = "Target Support Files/Pods-Fresh-Chef-AnalyticsUITests/Pods-Fresh-Chef-AnalyticsUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -196,12 +196,6 @@
 				FF03BF2B22DE95E400719E8C /* Login VCs */,
 				FF03BF2A22DE95DA00719E8C /* Manager VCs */,
 				FF03BF2922DE95C900719E8C /* Waiter VCs */,
-				B6D7B35122DE6D27002093CB /* LoginViewController.h */,
-				B6D7B35222DE6D27002093CB /* LoginViewController.m */,
-				B6D7B35422DE6D3F002093CB /* SignUpViewController.h */,
-				B6D7B35522DE6D40002093CB /* SignUpViewController.m */,
-				B6D7B35722DEA6F0002093CB /* ManagerPasswordViewController.h */,
-				B6D7B35822DEA6F0002093CB /* ManagerPasswordViewController.m */,
 			);
 			path = "View Controller";
 			sourceTree = "<group>";
@@ -265,6 +259,12 @@
 		FF03BF2B22DE95E400719E8C /* Login VCs */ = {
 			isa = PBXGroup;
 			children = (
+				B6D7B35122DE6D27002093CB /* LoginViewController.h */,
+				B6D7B35222DE6D27002093CB /* LoginViewController.m */,
+				B6D7B35422DE6D3F002093CB /* SignUpViewController.h */,
+				B6D7B35522DE6D40002093CB /* SignUpViewController.m */,
+				B6D7B35A22DF95BA002093CB /* ManagerLoginViewController.h */,
+				B6D7B35B22DF95BA002093CB /* ManagerLoginViewController.m */,
 			);
 			path = "Login VCs";
 			sourceTree = "<group>";
@@ -559,6 +559,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B6D7B35C22DF95BA002093CB /* ManagerLoginViewController.m in Sources */,
 				FF03BF5F22DEA19100719E8C /* MenuDataViewController.m in Sources */,
 				A535D7BC22DE8FB2002B79CA /* (null) in Sources */,
 				FF03BF3D22DE97AD00719E8C /* ThankYouViewController.m in Sources */,
@@ -570,7 +571,6 @@
 				B6D7B35322DE6D27002093CB /* LoginViewController.m in Sources */,
 				B6D7B35622DE6D40002093CB /* SignUpViewController.m in Sources */,
 				A535D7B922DE6CE9002B79CA /* Dish.m in Sources */,
-				B6D7B35922DEA6F0002093CB /* ManagerPasswordViewController.m in Sources */,
 				FF46E1A022DE436400E15A0E /* main.m in Sources */,
 				FF03BF4622DE9FC700719E8C /* EditMenuViewController.m in Sources */,
 				FF03BF3722DE973B00719E8C /* ElegantFormViewController.m in Sources */,
