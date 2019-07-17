@@ -14,6 +14,7 @@
 @interface EditMenuViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NSArray *dishes;
+
 @end
 
 @implementation EditMenuViewController
@@ -26,14 +27,9 @@
     // Do any additional setup after loading the view.
 }
 - (IBAction)saveItem:(id)sender {
-    [Dish postNewDish:self.nameField.text withType:self.typeField.text withDescription:self.descriptionView.text withPrice:[NSNumber numberWithFloat:[self.priceField.text floatValue]] withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
+    Dish * newDish = [Dish postNewDish:self.nameField.text withType:self.typeField.text withDescription:self.descriptionView.text withPrice:[NSNumber numberWithFloat:[self.priceField.text floatValue]] withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
         if (succeeded)
         {
-            PFUser *restaurant = [PFUser currentUser];
-            [[MenuManager shared] fetchMenuItems:restaurant];
-            self.dishes = [[MenuManager shared] dishes];
-
-            [self.tableView reloadData];
             // Here we should add the table view reload so new value pops up
             NSLog(@"yay");
         }
@@ -41,6 +37,14 @@
             NSLog(@"%@", error.localizedDescription);
         }
     }];
+    [self didAddItem:newDish];
+
+}
+- (void) didAddItem: (Dish *) dish
+{
+    NSArray *newMenu = [self.dishes arrayByAddingObject:dish];
+    self.dishes = newMenu;
+    [self.tableView reloadData];
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
