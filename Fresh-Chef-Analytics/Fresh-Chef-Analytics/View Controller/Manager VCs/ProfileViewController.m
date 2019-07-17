@@ -33,14 +33,14 @@
         self.restaurantPriceLabel.text = @"Set Restaurant Price Range";
     }
 }
-
-- (IBAction)didTapEditMenu:(id)sender {
+//
+//- (IBAction)didTapEditMenu:(id)sender {
 //    [self performSegueWithIdentifier:@"editMenuSegue" sender:nil];
-}
-
-- (IBAction)didTapEditWaiterStaff:(id)sender {
+//}
+//
+//- (IBAction)didTapEditWaiterStaff:(id)sender {
 //    [self performSegueWithIdentifier:@"editWaiterStaffSegue" sender:nil];
-}
+//}
 
 /*
 #pragma mark - Navigation

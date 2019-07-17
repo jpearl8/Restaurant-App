@@ -266,7 +266,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Edit/Update Menu"/>
                                 <connections>
-                                    <action selector="didTapEditMenu:" destination="oPt-aN-7eF" eventType="touchUpInside" id="apP-tV-Bsw"/>
+                                    <segue destination="uzj-qU-w7u" kind="show" id="PQX-Xk-ieV"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xLn-ch-YFG">
@@ -274,7 +274,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Edit/Update Wait Staff"/>
                                 <connections>
-                                    <action selector="didTapEditWaiterStaff:" destination="oPt-aN-7eF" eventType="touchUpInside" id="Ay7-OW-KoV"/>
+                                    <segue destination="EbG-Zx-Unn" kind="show" id="MMn-P7-QOu"/>
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="profile_tab" translatesAutoresizingMaskIntoConstraints="NO" id="O38-GS-DPD">
@@ -301,8 +301,6 @@
                         <outlet property="restaurantNameLabel" destination="nkK-qc-fWd" id="5QV-fY-mxE"/>
                         <outlet property="restaurantPriceLabel" destination="Obd-ko-qxI" id="cH8-aB-PO5"/>
                         <outlet property="restaurantProfileImage" destination="O38-GS-DPD" id="ucG-TP-kxN"/>
-                        <segue destination="uzj-qU-w7u" kind="show" identifier="editMenuSegue" id="UR5-Gv-6zO"/>
-                        <segue destination="EbG-Zx-Unn" kind="show" identifier="editWaiterStaffSegue" id="49c-Rf-80s"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="y4g-fL-3Ld" userLabel="First Responder" sceneMemberID="firstResponder"/>
