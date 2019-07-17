@@ -7,15 +7,9 @@ target 'Fresh-Chef-Analytics' do
 
   # Pods for Fresh-Chef-Analytics
   pod 'Parse'
-<<<<<<< HEAD
   pod 'BEMCheckBox', '~> 1.4'
   pod 'MKDropdownMenu'
   pod 'UITextView+Placeholder'
-=======
-  pod 'MKDropdownMenu'
-  pod 'UITextView+Placeholder'
-
->>>>>>> 71a53b5ff4514daceec2f7978bad70d19c087fea
 
   target 'Fresh-Chef-AnalyticsTests' do
     inherit! :search_paths
