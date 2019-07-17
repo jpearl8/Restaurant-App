@@ -11,7 +11,11 @@
 		3E28F5D2BA1F9BD1703EEE6F /* Pods_Fresh_Chef_Analytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FDB55402FC2976479D728C9F /* Pods_Fresh_Chef_Analytics.framework */; };
 		610645E0378F7831106AAEF4 /* Pods_Fresh_Chef_AnalyticsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F807EA952E6B093FACEDA469 /* Pods_Fresh_Chef_AnalyticsTests.framework */; };
 		A535D7B922DE6CE9002B79CA /* Dish.m in Sources */ = {isa = PBXBuildFile; fileRef = A535D7B822DE6CE9002B79CA /* Dish.m */; };
-		A535D7BC22DE8FB2002B79CA /* Restaurant.m in Sources */ = {isa = PBXBuildFile; fileRef = A535D7BB22DE8FB2002B79CA /* Restaurant.m */; };
+		A535D7BC22DE8FB2002B79CA /* (null) in Sources */ = {isa = PBXBuildFile; };
+		A535D7BF22DE9FBF002B79CA /* Waiter.m in Sources */ = {isa = PBXBuildFile; fileRef = A535D7BE22DE9FBF002B79CA /* Waiter.m */; };
+		B6D7B35322DE6D27002093CB /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6D7B35222DE6D27002093CB /* LoginViewController.m */; };
+		B6D7B35622DE6D40002093CB /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6D7B35522DE6D40002093CB /* SignUpViewController.m */; };
+		B6D7B35922DEA6F0002093CB /* ManagerPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6D7B35822DEA6F0002093CB /* ManagerPasswordViewController.m */; };
 		FF03BF2E22DE963B00719E8C /* WaiterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF03BF2D22DE963B00719E8C /* WaiterViewController.m */; };
 		FF03BF3122DE96EC00719E8C /* FunFormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF03BF3022DE96EC00719E8C /* FunFormViewController.m */; };
 		FF03BF3422DE971600719E8C /* ComfortableFormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF03BF3322DE971600719E8C /* ComfortableFormViewController.m */; };
@@ -29,11 +33,7 @@
 		FF03BF5922DEA0C700719E8C /* CompetitorDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF03BF5822DEA0C700719E8C /* CompetitorDetailsViewController.m */; };
 		FF03BF5C22DEA16600719E8C /* CompetitorListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF03BF5B22DEA16600719E8C /* CompetitorListViewController.m */; };
 		FF03BF5F22DEA19100719E8C /* MenuDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF03BF5E22DEA19100719E8C /* MenuDataViewController.m */; };
-		B6D7B35322DE6D27002093CB /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6D7B35222DE6D27002093CB /* LoginViewController.m */; };
-		B6D7B35622DE6D40002093CB /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6D7B35522DE6D40002093CB /* SignUpViewController.m */; };
-		B6D7B35922DEA6F0002093CB /* ManagerPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6D7B35822DEA6F0002093CB /* ManagerPasswordViewController.m */; };
-		A535D7B922DE6CE9002B79CA /* Dish.m in Sources */ = {isa = PBXBuildFile; fileRef = A535D7B822DE6CE9002B79CA /* Dish.m */; };
-		A535D7BF22DE9FBF002B79CA /* Waiter.m in Sources */ = {isa = PBXBuildFile; fileRef = A535D7BE22DE9FBF002B79CA /* Waiter.m */; };
+		FF03BF6222DF763300719E8C /* MenuListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FF03BF6122DF763300719E8C /* MenuListTableViewCell.m */; };
 		FF46E19222DE436400E15A0E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FF46E19122DE436400E15A0E /* AppDelegate.m */; };
 		FF46E19822DE436400E15A0E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF46E19622DE436400E15A0E /* Main.storyboard */; };
 		FF46E19A22DE436400E15A0E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF46E19922DE436400E15A0E /* Assets.xcassets */; };
@@ -67,16 +67,14 @@
 		8FD3E4AFDEEFA0300D55D72D /* Pods-Fresh-Chef-AnalyticsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fresh-Chef-AnalyticsTests.release.xcconfig"; path = "Target Support Files/Pods-Fresh-Chef-AnalyticsTests/Pods-Fresh-Chef-AnalyticsTests.release.xcconfig"; sourceTree = "<group>"; };
 		A535D7B722DE6CE9002B79CA /* Dish.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Dish.h; sourceTree = "<group>"; };
 		A535D7B822DE6CE9002B79CA /* Dish.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Dish.m; sourceTree = "<group>"; };
+		A535D7BD22DE9FBF002B79CA /* Waiter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Waiter.h; sourceTree = "<group>"; };
+		A535D7BE22DE9FBF002B79CA /* Waiter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Waiter.m; sourceTree = "<group>"; };
 		B6D7B35122DE6D27002093CB /* LoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		B6D7B35222DE6D27002093CB /* LoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		B6D7B35422DE6D3F002093CB /* SignUpViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SignUpViewController.h; sourceTree = "<group>"; };
 		B6D7B35522DE6D40002093CB /* SignUpViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SignUpViewController.m; sourceTree = "<group>"; };
 		B6D7B35722DEA6F0002093CB /* ManagerPasswordViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ManagerPasswordViewController.h; sourceTree = "<group>"; };
 		B6D7B35822DEA6F0002093CB /* ManagerPasswordViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ManagerPasswordViewController.m; sourceTree = "<group>"; };
-		A535D7B722DE6CE9002B79CA /* Dish.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Dish.h; sourceTree = "<group>"; };
-		A535D7B822DE6CE9002B79CA /* Dish.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Dish.m; sourceTree = "<group>"; };
-		A535D7BD22DE9FBF002B79CA /* Waiter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Waiter.h; sourceTree = "<group>"; };
-		A535D7BE22DE9FBF002B79CA /* Waiter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Waiter.m; sourceTree = "<group>"; };
 		E0C930C3020050C5A39A8F92 /* Pods-Fresh-Chef-Analytics.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fresh-Chef-Analytics.debug.xcconfig"; path = "Target Support Files/Pods-Fresh-Chef-Analytics/Pods-Fresh-Chef-Analytics.debug.xcconfig"; sourceTree = "<group>"; };
 		EB80B1150EADC91FB15DCF37 /* Pods-Fresh-Chef-AnalyticsUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fresh-Chef-AnalyticsUITests.debug.xcconfig"; path = "Target Support Files/Pods-Fresh-Chef-AnalyticsUITests/Pods-Fresh-Chef-AnalyticsUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		F3C29AA8318918BF176BC866 /* Pods-Fresh-Chef-AnalyticsUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fresh-Chef-AnalyticsUITests.release.xcconfig"; path = "Target Support Files/Pods-Fresh-Chef-AnalyticsUITests/Pods-Fresh-Chef-AnalyticsUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -116,6 +114,8 @@
 		FF03BF5B22DEA16600719E8C /* CompetitorListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CompetitorListViewController.m; sourceTree = "<group>"; };
 		FF03BF5D22DEA19100719E8C /* MenuDataViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MenuDataViewController.h; sourceTree = "<group>"; };
 		FF03BF5E22DEA19100719E8C /* MenuDataViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MenuDataViewController.m; sourceTree = "<group>"; };
+		FF03BF6022DF763300719E8C /* MenuListTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MenuListTableViewCell.h; path = "Fresh-Chef-Analytics/View Controller/Manager VCs/MenuListTableViewCell.h"; sourceTree = SOURCE_ROOT; };
+		FF03BF6122DF763300719E8C /* MenuListTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = MenuListTableViewCell.m; path = "Fresh-Chef-Analytics/View Controller/Manager VCs/MenuListTableViewCell.m"; sourceTree = SOURCE_ROOT; };
 		FF46E18D22DE436400E15A0E /* Fresh-Chef-Analytics.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Fresh-Chef-Analytics.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF46E19022DE436400E15A0E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		FF46E19122DE436400E15A0E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -184,6 +184,8 @@
 		A535D7B522DE6B92002B79CA /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				FF03BF6022DF763300719E8C /* MenuListTableViewCell.h */,
+				FF03BF6122DF763300719E8C /* MenuListTableViewCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -194,8 +196,6 @@
 				FF03BF2B22DE95E400719E8C /* Login VCs */,
 				FF03BF2A22DE95DA00719E8C /* Manager VCs */,
 				FF03BF2922DE95C900719E8C /* Waiter VCs */,
-				FF46E19322DE436400E15A0E /* ViewController.h */,
-				FF46E19422DE436400E15A0E /* ViewController.m */,
 				B6D7B35122DE6D27002093CB /* LoginViewController.h */,
 				B6D7B35222DE6D27002093CB /* LoginViewController.m */,
 				B6D7B35422DE6D3F002093CB /* SignUpViewController.h */,
@@ -559,12 +559,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FF46E19522DE436400E15A0E /* ViewController.m in Sources */,
 				FF03BF5F22DEA19100719E8C /* MenuDataViewController.m in Sources */,
-				A535D7BC22DE8FB2002B79CA /* Restaurant.m in Sources */,
+				A535D7BC22DE8FB2002B79CA /* (null) in Sources */,
 				FF03BF3D22DE97AD00719E8C /* ThankYouViewController.m in Sources */,
 				FF03BF4C22DE9FFD00719E8C /* MenuListViewController.m in Sources */,
 				A535D7B922DE6CE9002B79CA /* Dish.m in Sources */,
+				FF03BF6222DF763300719E8C /* MenuListTableViewCell.m in Sources */,
 				FF03BF3A22DE975B00719E8C /* ReceiptViewController.m in Sources */,
 				FF03BF3422DE971600719E8C /* ComfortableFormViewController.m in Sources */,
 				B6D7B35322DE6D27002093CB /* LoginViewController.m in Sources */,

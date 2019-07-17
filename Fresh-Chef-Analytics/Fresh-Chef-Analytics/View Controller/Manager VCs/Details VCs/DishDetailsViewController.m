@@ -9,6 +9,12 @@
 #import "DishDetailsViewController.h"
 
 @interface DishDetailsViewController ()
+@property (weak, nonatomic) IBOutlet UILabel *dishName;
+@property (weak, nonatomic) IBOutlet UIImageView *dishPic;
+@property (weak, nonatomic) IBOutlet UILabel *dishDescription;
+@property (weak, nonatomic) IBOutlet UILabel *dishRating;
+@property (weak, nonatomic) IBOutlet UILabel *dishPrice;
+@property (weak, nonatomic) IBOutlet UITableView *dishCommentsTable;
 
 @end
 

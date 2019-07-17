@@ -9,6 +9,7 @@
 #import "MenuListViewController.h"
 
 @interface MenuListViewController ()
+@property (weak, nonatomic) IBOutlet UITableView *menuList;
 
 @end
 
