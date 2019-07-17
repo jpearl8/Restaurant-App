@@ -41,6 +41,7 @@
 		FF46E1A022DE436400E15A0E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FF46E19F22DE436400E15A0E /* main.m */; };
 		FF46E1AA22DE436400E15A0E /* Fresh_Chef_AnalyticsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FF46E1A922DE436400E15A0E /* Fresh_Chef_AnalyticsTests.m */; };
 		FF46E1B522DE436400E15A0E /* Fresh_Chef_AnalyticsUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = FF46E1B422DE436400E15A0E /* Fresh_Chef_AnalyticsUITests.m */; };
+		FFB3224722DF9DF700BF966F /* WaitTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FFB3224622DF9DF700BF966F /* WaitTableViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -130,6 +131,8 @@
 		FF46E1B022DE436400E15A0E /* Fresh-Chef-AnalyticsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Fresh-Chef-AnalyticsUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF46E1B422DE436400E15A0E /* Fresh_Chef_AnalyticsUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Fresh_Chef_AnalyticsUITests.m; sourceTree = "<group>"; };
 		FF46E1B622DE436400E15A0E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FFB3224522DF9DF700BF966F /* WaitTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = WaitTableViewCell.h; path = "Fresh-Chef-Analytics/View Controller/Waiter VCs/WaitTableViewCell.h"; sourceTree = SOURCE_ROOT; };
+		FFB3224622DF9DF700BF966F /* WaitTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = WaitTableViewCell.m; path = "Fresh-Chef-Analytics/View Controller/Waiter VCs/WaitTableViewCell.m"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -184,6 +187,8 @@
 		A535D7B522DE6B92002B79CA /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				FFB3224522DF9DF700BF966F /* WaitTableViewCell.h */,
+				FFB3224622DF9DF700BF966F /* WaitTableViewCell.m */,
 				FF03BF6022DF763300719E8C /* MenuListTableViewCell.h */,
 				FF03BF6122DF763300719E8C /* MenuListTableViewCell.m */,
 			);
@@ -573,6 +578,7 @@
 				B6D7B35922DEA6F0002093CB /* ManagerPasswordViewController.m in Sources */,
 				FF46E1A022DE436400E15A0E /* main.m in Sources */,
 				FF03BF4622DE9FC700719E8C /* EditMenuViewController.m in Sources */,
+				FFB3224722DF9DF700BF966F /* WaitTableViewCell.m in Sources */,
 				FF03BF3722DE973B00719E8C /* ElegantFormViewController.m in Sources */,
 				FF03BF2E22DE963B00719E8C /* WaiterViewController.m in Sources */,
 				FF03BF5622DEA0A000719E8C /* WaitDetailsViewController.m in Sources */,
