@@ -22,8 +22,6 @@
     [super viewDidLoad];
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
-    PFUser *restaurant = [PFUser currentUser];
-    [[MenuManager shared] fetchMenuItems:restaurant];
     self.dishes = [[MenuManager shared] dishes];
     // Do any additional setup after loading the view.
 }
@@ -31,6 +29,11 @@
     [Dish postNewDish:self.nameField.text withType:self.typeField.text withDescription:self.descriptionView.text withPrice:[NSNumber numberWithFloat:[self.priceField.text floatValue]] withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
         if (succeeded)
         {
+            PFUser *restaurant = [PFUser currentUser];
+            [[MenuManager shared] fetchMenuItems:restaurant];
+            self.dishes = [[MenuManager shared] dishes];
+
+            [self.tableView reloadData];
             // Here we should add the table view reload so new value pops up
             NSLog(@"yay");
         }
@@ -48,7 +51,7 @@
     cell.dishPrice.text = [NSString stringWithFormat:@"%@", dish.price];
     cell.dishRating.text = [NSString stringWithFormat:@"%@", dish.rating];
     cell.dishFrequency.text = [NSString stringWithFormat:@"%@", dish.orderFrequency];
-    cell.dishDescription.text = dish.description;
+    cell.dishDescription.text = dish.dishDescription;
     return cell;
 }
 
