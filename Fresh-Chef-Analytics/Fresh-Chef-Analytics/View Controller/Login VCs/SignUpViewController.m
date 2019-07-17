@@ -8,6 +8,7 @@
 
 #import "SignUpViewController.h"
 #import "Parse/Parse.h"
+#import "AppDelegate.h"
 
 @interface SignUpViewController ()
 
@@ -34,7 +35,11 @@
         } else {
             NSLog(@"User registered successfully");
             // manually segue to profile view for new user to set their preferences
-            [self performSegueWithIdentifier:@"signUpSegue" sender:nil];
+//            [self performSegueWithIdentifier:@"signUpSegue" sender:nil];
+            AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+            UINavigationController *navigationController = [storyboard instantiateViewControllerWithIdentifier:@"mainTabs"];
+            appDelegate.window.rootViewController = navigationController;
         }
     }];
 }

@@ -1,8 +1,8 @@
 //
-//  ManagerPasswordViewController.h
+//  ManagerLoginViewController.h
 //  Fresh-Chef-Analytics
 //
-//  Created by rgallardo on 7/16/19.
+//  Created by rgallardo on 7/17/19.
 //  Copyright © 2019 julia@ipearl.net. All rights reserved.
 //
 
@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface ManagerPasswordViewController : UIViewController
+@interface ManagerLoginViewController : UIViewController
 
 @end
 
