@@ -29,8 +29,12 @@
 		FF03BF5922DEA0C700719E8C /* CompetitorDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF03BF5822DEA0C700719E8C /* CompetitorDetailsViewController.m */; };
 		FF03BF5C22DEA16600719E8C /* CompetitorListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF03BF5B22DEA16600719E8C /* CompetitorListViewController.m */; };
 		FF03BF5F22DEA19100719E8C /* MenuDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF03BF5E22DEA19100719E8C /* MenuDataViewController.m */; };
+		B6D7B35322DE6D27002093CB /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6D7B35222DE6D27002093CB /* LoginViewController.m */; };
+		B6D7B35622DE6D40002093CB /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6D7B35522DE6D40002093CB /* SignUpViewController.m */; };
+		B6D7B35922DEA6F0002093CB /* ManagerPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6D7B35822DEA6F0002093CB /* ManagerPasswordViewController.m */; };
+		A535D7B922DE6CE9002B79CA /* Dish.m in Sources */ = {isa = PBXBuildFile; fileRef = A535D7B822DE6CE9002B79CA /* Dish.m */; };
+		A535D7BF22DE9FBF002B79CA /* Waiter.m in Sources */ = {isa = PBXBuildFile; fileRef = A535D7BE22DE9FBF002B79CA /* Waiter.m */; };
 		FF46E19222DE436400E15A0E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FF46E19122DE436400E15A0E /* AppDelegate.m */; };
-		FF46E19522DE436400E15A0E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF46E19422DE436400E15A0E /* ViewController.m */; };
 		FF46E19822DE436400E15A0E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF46E19622DE436400E15A0E /* Main.storyboard */; };
 		FF46E19A22DE436400E15A0E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF46E19922DE436400E15A0E /* Assets.xcassets */; };
 		FF46E19D22DE436400E15A0E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF46E19B22DE436400E15A0E /* LaunchScreen.storyboard */; };
@@ -63,8 +67,16 @@
 		8FD3E4AFDEEFA0300D55D72D /* Pods-Fresh-Chef-AnalyticsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fresh-Chef-AnalyticsTests.release.xcconfig"; path = "Target Support Files/Pods-Fresh-Chef-AnalyticsTests/Pods-Fresh-Chef-AnalyticsTests.release.xcconfig"; sourceTree = "<group>"; };
 		A535D7B722DE6CE9002B79CA /* Dish.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Dish.h; sourceTree = "<group>"; };
 		A535D7B822DE6CE9002B79CA /* Dish.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Dish.m; sourceTree = "<group>"; };
-		A535D7BA22DE8FB2002B79CA /* Restaurant.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Restaurant.h; sourceTree = "<group>"; };
-		A535D7BB22DE8FB2002B79CA /* Restaurant.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Restaurant.m; sourceTree = "<group>"; };
+		B6D7B35122DE6D27002093CB /* LoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		B6D7B35222DE6D27002093CB /* LoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		B6D7B35422DE6D3F002093CB /* SignUpViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SignUpViewController.h; sourceTree = "<group>"; };
+		B6D7B35522DE6D40002093CB /* SignUpViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SignUpViewController.m; sourceTree = "<group>"; };
+		B6D7B35722DEA6F0002093CB /* ManagerPasswordViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ManagerPasswordViewController.h; sourceTree = "<group>"; };
+		B6D7B35822DEA6F0002093CB /* ManagerPasswordViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ManagerPasswordViewController.m; sourceTree = "<group>"; };
+		A535D7B722DE6CE9002B79CA /* Dish.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Dish.h; sourceTree = "<group>"; };
+		A535D7B822DE6CE9002B79CA /* Dish.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Dish.m; sourceTree = "<group>"; };
+		A535D7BD22DE9FBF002B79CA /* Waiter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Waiter.h; sourceTree = "<group>"; };
+		A535D7BE22DE9FBF002B79CA /* Waiter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Waiter.m; sourceTree = "<group>"; };
 		E0C930C3020050C5A39A8F92 /* Pods-Fresh-Chef-Analytics.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fresh-Chef-Analytics.debug.xcconfig"; path = "Target Support Files/Pods-Fresh-Chef-Analytics/Pods-Fresh-Chef-Analytics.debug.xcconfig"; sourceTree = "<group>"; };
 		EB80B1150EADC91FB15DCF37 /* Pods-Fresh-Chef-AnalyticsUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fresh-Chef-AnalyticsUITests.debug.xcconfig"; path = "Target Support Files/Pods-Fresh-Chef-AnalyticsUITests/Pods-Fresh-Chef-AnalyticsUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		F3C29AA8318918BF176BC866 /* Pods-Fresh-Chef-AnalyticsUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fresh-Chef-AnalyticsUITests.release.xcconfig"; path = "Target Support Files/Pods-Fresh-Chef-AnalyticsUITests/Pods-Fresh-Chef-AnalyticsUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -107,8 +119,6 @@
 		FF46E18D22DE436400E15A0E /* Fresh-Chef-Analytics.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Fresh-Chef-Analytics.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF46E19022DE436400E15A0E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		FF46E19122DE436400E15A0E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		FF46E19322DE436400E15A0E /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		FF46E19422DE436400E15A0E /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		FF46E19722DE436400E15A0E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FF46E19922DE436400E15A0E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FF46E19C22DE436400E15A0E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -165,8 +175,8 @@
 			children = (
 				A535D7B722DE6CE9002B79CA /* Dish.h */,
 				A535D7B822DE6CE9002B79CA /* Dish.m */,
-				A535D7BA22DE8FB2002B79CA /* Restaurant.h */,
-				A535D7BB22DE8FB2002B79CA /* Restaurant.m */,
+				A535D7BD22DE9FBF002B79CA /* Waiter.h */,
+				A535D7BE22DE9FBF002B79CA /* Waiter.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -186,6 +196,12 @@
 				FF03BF2922DE95C900719E8C /* Waiter VCs */,
 				FF46E19322DE436400E15A0E /* ViewController.h */,
 				FF46E19422DE436400E15A0E /* ViewController.m */,
+				B6D7B35122DE6D27002093CB /* LoginViewController.h */,
+				B6D7B35222DE6D27002093CB /* LoginViewController.m */,
+				B6D7B35422DE6D3F002093CB /* SignUpViewController.h */,
+				B6D7B35522DE6D40002093CB /* SignUpViewController.m */,
+				B6D7B35722DEA6F0002093CB /* ManagerPasswordViewController.h */,
+				B6D7B35822DEA6F0002093CB /* ManagerPasswordViewController.m */,
 			);
 			path = "View Controller";
 			sourceTree = "<group>";
@@ -551,6 +567,10 @@
 				A535D7B922DE6CE9002B79CA /* Dish.m in Sources */,
 				FF03BF3A22DE975B00719E8C /* ReceiptViewController.m in Sources */,
 				FF03BF3422DE971600719E8C /* ComfortableFormViewController.m in Sources */,
+				B6D7B35322DE6D27002093CB /* LoginViewController.m in Sources */,
+				B6D7B35622DE6D40002093CB /* SignUpViewController.m in Sources */,
+				A535D7B922DE6CE9002B79CA /* Dish.m in Sources */,
+				B6D7B35922DEA6F0002093CB /* ManagerPasswordViewController.m in Sources */,
 				FF46E1A022DE436400E15A0E /* main.m in Sources */,
 				FF03BF4622DE9FC700719E8C /* EditMenuViewController.m in Sources */,
 				FF03BF3722DE973B00719E8C /* ElegantFormViewController.m in Sources */,
@@ -565,6 +585,7 @@
 				FF03BF3122DE96EC00719E8C /* FunFormViewController.m in Sources */,
 				FF03BF4922DE9FE000719E8C /* EditWaitViewController.m in Sources */,
 				FF03BF4022DE97C900719E8C /* AnotherTableViewController.m in Sources */,
+				A535D7BF22DE9FBF002B79CA /* Waiter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -737,7 +758,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = HSX3BRP6J4;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "Fresh-Chef-Analytics/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -755,7 +776,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = HSX3BRP6J4;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "Fresh-Chef-Analytics/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

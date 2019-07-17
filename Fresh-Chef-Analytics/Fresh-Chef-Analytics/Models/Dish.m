@@ -26,24 +26,36 @@
 }
 + (void) postNewDish: ( NSString * _Nullable )name withType: ( NSString * _Nullable )type withDescription: ( NSString * _Nullable )description withPrice: ( NSNumber * _Nullable )price withCompletion: (PFBooleanResultBlock  _Nullable)completion {
     Dish *newDish = [Dish new];
+    
+    // Uncomment when sign up/log in works //
+    //newDish.restaurant = [PFUser currentUser];
+    //newDish.restaurantID = newDish.restaurant.objectId;
+    
     newDish.name = name;
     newDish.type = type;
     newDish.dishDescription = description;
     newDish.price = price;
     newDish.rating = nil;
-    newDish.orderFrequency = 0;
+    newDish.orderFrequency = @(0);
     newDish.comments = [[NSArray alloc] init];
+    [newDish saveInBackgroundWithBlock:completion];
 }
 + (void) postNewDish: ( NSString * _Nullable )name withType: ( NSString * _Nullable )type withDescription: ( NSString * _Nullable )description withPrice: ( NSNumber * _Nullable )price withImage: ( UIImage * _Nullable )image withCompletion: (PFBooleanResultBlock  _Nullable)completion {
     Dish *newDish = [Dish new];
+    
+    // Uncomment when sign up/log in works //
+    //newDish.restaurant = [PFUser currentUser];
+    //newDish.restaurantID = newDish.restaurant.objectId;
     newDish.image = [self getPFFileFromImage:image];
     newDish.name = name;
     newDish.type = type;
     newDish.dishDescription = description;
     newDish.price = price;
     newDish.rating = nil;
-    newDish.orderFrequency = 0;
+    newDish.orderFrequency = @(0);
     newDish.comments = [[NSArray alloc] init];
+    [newDish saveInBackgroundWithBlock:completion];
+
 }
 + (PFFileObject *)getPFFileFromImage: (UIImage * _Nullable)image {
     
