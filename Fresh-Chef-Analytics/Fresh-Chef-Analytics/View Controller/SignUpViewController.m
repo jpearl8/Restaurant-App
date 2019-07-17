@@ -26,7 +26,7 @@
     // set user properties
     newUser.username = self.usernameField.text;
     newUser.password = self.passwordField.text;
-//    newUser.managerPassword = self.managerPasswordField.text;
+    newUser[@"managerPassword"] = self.managerPasswordField.text;
     // call sign up function on the object
     [newUser signUpInBackgroundWithBlock:^(BOOL succeeded, NSError * error) {
         if (error != nil) {
@@ -37,8 +37,6 @@
             [self performSegueWithIdentifier:@"signUpSegue" sender:nil];
         }
     }];
-    // add managerPassword to the new User
-    //......
 }
 
 - (IBAction)didTapSignUp:(id)sender {

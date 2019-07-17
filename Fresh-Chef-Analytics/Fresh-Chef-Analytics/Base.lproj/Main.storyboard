@@ -11,6 +11,50 @@
     </dependencies>
     <scenes>
         <!--View Controller-->
+        <scene sceneID="PeM-wp-Wi3">
+            <objects>
+                <viewController id="oRH-8P-Qfb" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="0fD-qj-YqH">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t8Q-nU-2QN">
+                                <rect key="frame" x="69" y="348" width="280" height="54"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="35"/>
+                                <state key="normal" title="Continue As Waiter"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cOa-pR-OlD">
+                                <rect key="frame" x="78" y="548" width="261" height="54"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="35"/>
+                                <state key="normal" title="Login as Manager"/>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="or" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PIq-tU-hXQ">
+                                <rect key="frame" x="186" y="438" width="16" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="17"/>
+                                <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Manager Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZZC-wG-XrR">
+                                <rect key="frame" x="125" y="509" width="166" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="xs1-CK-o9U"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="67q-Qh-gWG"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="T5T-NF-MPp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1860.8695652173915" y="1409.5982142857142"/>
+        </scene>
+        <!--View Controller-->
         <scene sceneID="Prp-0H-dph">
             <objects>
                 <viewController id="avW-EL-1xc" sceneMemberID="viewController">
@@ -92,7 +136,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iW6-5g-hzU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1514" y="1028"/>
+            <point key="canvasLocation" x="-604.34782608695662" y="1027.9017857142858"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="agn-q8-f4L">
@@ -360,7 +404,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="62t-fg-QOB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="324.63768115942031" y="1239.5089285714284"/>
+            <point key="canvasLocation" x="1234.7826086956522" y="1239.5089285714284"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -414,11 +458,12 @@
                     <connections>
                         <outlet property="passwordField" destination="CHl-Kb-Yg7" id="aAJ-g2-FLH"/>
                         <outlet property="usernameField" destination="jJP-nI-o7W" id="ayy-Lm-eSq"/>
+                        <segue destination="JWr-HG-cWi" kind="presentation" identifier="loginSegue" id="xGa-sy-ZDe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="137.68115942028987" y="133.92857142857142"/>
+            <point key="canvasLocation" x="-3964" y="2063"/>
         </scene>
         <!--Sign Up View Controller-->
         <scene sceneID="uwI-dw-2Wz">
@@ -472,11 +517,12 @@
                         <outlet property="managerPasswordField" destination="Pb5-aa-hph" id="MCT-gS-KgM"/>
                         <outlet property="passwordField" destination="xlt-Lc-qLn" id="osc-vb-aJ2"/>
                         <outlet property="usernameField" destination="a6p-GR-iZd" id="yD3-PM-qrR"/>
+                        <segue destination="Sm8-Wr-bQA" kind="show" identifier="signUpSegue" id="bWY-no-UtB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pJt-48-TWk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="889.85507246376824" y="133.92857142857142"/>
+            <point key="canvasLocation" x="-2439" y="2813"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="Mwk-HJ-d4o">
@@ -509,7 +555,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VFi-MH-MgW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1121.7391304347827" y="1239.5089285714284"/>
+            <point key="canvasLocation" x="2031.8840579710147" y="1239.5089285714284"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="F5c-dp-3iW">
@@ -542,7 +588,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tVp-lJ-7RO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1897" y="1240"/>
+            <point key="canvasLocation" x="2805.7971014492755" y="1239.5089285714284"/>
         </scene>
         <!--Item 1-->
         <scene sceneID="3Ak-IO-zVV">
@@ -865,7 +911,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IVU-40-6YF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-630.43478260869574" y="1220.7589285714284"/>
+            <point key="canvasLocation" x="279.71014492753625" y="1220.7589285714284"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="sns-C8-it7">
@@ -937,7 +983,25 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GIr-ID-JGb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-630.43478260869574" y="1886.3839285714284"/>
+            <point key="canvasLocation" x="279.71014492753625" y="1886.3839285714284"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="6Ir-rj-h3S">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="JWr-HG-cWi" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Qo8-tr-Io9">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="oRH-8P-Qfb" kind="relationship" relationship="rootViewController" id="fOI-Np-ciL"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kUD-wW-Dqn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2771.0144927536235" y="1409.5982142857142"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
