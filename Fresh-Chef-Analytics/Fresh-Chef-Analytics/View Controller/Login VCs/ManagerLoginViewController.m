@@ -9,6 +9,7 @@
 #import "ManagerLoginViewController.h"
 #import "Parse/Parse.h"
 #import "AppDelegate.h"
+#import "LoginViewController.h"
 
 @interface ManagerLoginViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *managerPasswordField;
@@ -39,6 +40,16 @@
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     UINavigationController *navigationController = [storyboard instantiateViewControllerWithIdentifier:@"waiterView"];
     appDelegate.window.rootViewController = navigationController;
+}
+
+- (IBAction)didTapLogout:(id)sender {
+    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    LoginViewController *loginViewController = [storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
+    appDelegate.window.rootViewController = loginViewController;
+    [PFUser logOutInBackgroundWithBlock:^(NSError * _Nullable error) {
+        // PFUser.current() will now be nil
+    }];
 }
 
 /*
