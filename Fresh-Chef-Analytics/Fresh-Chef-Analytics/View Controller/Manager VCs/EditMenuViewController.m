@@ -7,6 +7,7 @@
 //
 
 #import "EditMenuViewController.h"
+#import "Dish.h"
 
 @interface EditMenuViewController ()
 
@@ -16,7 +17,21 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    
     // Do any additional setup after loading the view.
+}
+- (IBAction)saveItem:(id)sender {
+    [Dish postNewDish:self.nameField.text withType:self.typeField.text withDescription:self.descriptionView.text withPrice:[NSNumber numberWithFloat:[self.priceField.text floatValue]] withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
+        if (succeeded)
+        {
+            // Here we should add the table view reload so new value pops up
+            NSLog(@"yay");
+        }
+        else{
+            NSLog(@"%@", error.localizedDescription);
+        }
+    }];
 }
 
 /*

@@ -31,6 +31,7 @@
         } else {
             NSLog(@"User logged in successfully");
             // display view controller that needs to shown after successful login
+            user[@"types"] = [[NSArray alloc] init];
             
             // Testing to make sure dishes can be created //
             //
