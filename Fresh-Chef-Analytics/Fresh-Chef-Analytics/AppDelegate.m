@@ -29,25 +29,16 @@
     
     // Testing to make sure dishes can be created //
     
-//    Dish *testDish = [Dish new];
-//    [Dish postNewDish:@"testing" withType:@"american" withDescription:@"This is a test not a dish." withPrice:0 withCompletion:^(BOOL success, NSError *error)
-//     {
-//         if (success) {
-//             NSLog(@"Object saved");
-//
-//         }
-//         else {
-//             NSLog(@"Error: %@", error.description);
-//         }
-//     }];
-//    [testDish saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
-//        if (succeeded){
-//            NSLog(@"Object saved!");
-//        }
-//        else{
-//            NSLog(@"Error: %@", error.description);
-//        }
-//    }];
+    [Dish postNewDish:@"testing" withType:@"american" withDescription:@"This is a test not a dish." withPrice:@(0) withCompletion:^(BOOL success, NSError *error)
+     {
+         if (success) {
+             NSLog(@"Object saved");
+
+         }
+         else {
+             NSLog(@"Error: %@", error.description);
+         }
+     }];
     return YES;
 }
 
