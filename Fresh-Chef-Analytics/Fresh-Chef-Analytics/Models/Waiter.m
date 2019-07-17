@@ -27,8 +27,8 @@
     Waiter *newWaiter = [Waiter new];
     
     // Uncomment when sign up/log in works //
-    //newWaiter.restaurant = [PFUser currentUser];
-    //newWaiter.restaurantID = newWaiter.restaurant.objectId;
+    newWaiter.restaurant = [PFUser currentUser];
+    newWaiter.restaurantID = newWaiter.restaurant.objectId;
     
     newWaiter.name = name;
     newWaiter.yearsWorked = years;
@@ -43,8 +43,8 @@
     Waiter *newWaiter = [Waiter new];
     
     // Uncomment when sign up/log in works //
-    //newWaiter.restaurant = [PFUser currentUser];
-    //newWaiter.restaurantID = newWaiter.restaurant.objectId;
+    newWaiter.restaurant = [PFUser currentUser];
+    newWaiter.restaurantID = newWaiter.restaurant.objectId;
     newWaiter.image = [self getPFFileFromImage:image];
     newWaiter.name = name;
     newWaiter.yearsWorked = years;
