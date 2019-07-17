@@ -26,6 +26,7 @@
 }
 + (void) postNewDish: ( NSString * _Nullable )name withType: ( NSString * _Nullable )type withDescription: ( NSString * _Nullable )description withPrice: ( NSNumber * _Nullable )price withCompletion: (PFBooleanResultBlock  _Nullable)completion {
     Dish *newDish = [Dish new];
+    
     newDish.name = name;
     newDish.type = type;
     newDish.dishDescription = description;
