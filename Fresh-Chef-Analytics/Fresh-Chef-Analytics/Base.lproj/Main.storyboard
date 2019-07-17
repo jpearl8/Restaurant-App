@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="uaP-dk-Jdk">
     <device id="retina6_1" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -24,7 +24,7 @@
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="35"/>
                                 <state key="normal" title="Continue As Waiter"/>
                                 <connections>
-                                    <segue destination="avW-EL-1xc" kind="show" id="f36-UD-Twc"/>
+                                    <action selector="didTapContinueAsWaiter:" destination="oRH-8P-Qfb" eventType="touchUpInside" id="9fo-0e-nuf"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cOa-pR-OlD">
@@ -57,17 +57,16 @@
                     <navigationItem key="navigationItem" id="67q-Qh-gWG"/>
                     <connections>
                         <outlet property="managerPasswordField" destination="ZZC-wG-XrR" id="3ZK-uH-oda"/>
-                        <segue destination="Sm8-Wr-bQA" kind="show" identifier="managerLoginSegue" id="RLv-hb-y49"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="T5T-NF-MPp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1860.8695652173915" y="1409.5982142857142"/>
+            <point key="canvasLocation" x="-2439" y="1760"/>
         </scene>
         <!--Waiter View Controller-->
         <scene sceneID="Prp-0H-dph">
             <objects>
-                <viewController id="avW-EL-1xc" customClass="WaiterViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="waiterView" id="avW-EL-1xc" customClass="WaiterViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="pyB-1T-uhP">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -235,7 +234,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="y4g-fL-3Ld" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1121.7391304347827" y="2320.9821428571427"/>
+            <point key="canvasLocation" x="2031.8840579710147" y="2320.9821428571427"/>
         </scene>
         <!--Edit Menu View Controller-->
         <scene sceneID="Ql2-c2-ij3">
@@ -279,12 +278,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cVL-A5-4KW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1945" y="1981"/>
+            <point key="canvasLocation" x="2855.072463768116" y="1980.8035714285713"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="hxY-K7-5n5">
             <objects>
-                <tabBarController id="Sm8-Wr-bQA" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="mainTabs" id="Sm8-Wr-bQA" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="0sN-5h-tnc"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="nkn-au-Aul">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
@@ -548,15 +547,16 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <navigationItem key="navigationItem" id="t5N-eO-qeX"/>
                     <connections>
                         <outlet property="passwordField" destination="CHl-Kb-Yg7" id="aAJ-g2-FLH"/>
                         <outlet property="usernameField" destination="jJP-nI-o7W" id="ayy-Lm-eSq"/>
-                        <segue destination="JWr-HG-cWi" kind="presentation" identifier="loginSegue" id="xGa-sy-ZDe"/>
+                        <segue destination="oRH-8P-Qfb" kind="show" identifier="loginSegue" id="1KG-em-zD3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3964" y="2063"/>
+            <point key="canvasLocation" x="-3546" y="2063"/>
         </scene>
         <!--Sign Up View Controller-->
         <scene sceneID="uwI-dw-2Wz">
@@ -610,12 +610,11 @@
                         <outlet property="managerPasswordField" destination="Pb5-aa-hph" id="MCT-gS-KgM"/>
                         <outlet property="passwordField" destination="xlt-Lc-qLn" id="osc-vb-aJ2"/>
                         <outlet property="usernameField" destination="a6p-GR-iZd" id="yD3-PM-qrR"/>
-                        <segue destination="Sm8-Wr-bQA" kind="show" identifier="signUpSegue" id="bWY-no-UtB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pJt-48-TWk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2439" y="2813"/>
+            <point key="canvasLocation" x="-2439" y="2554"/>
         </scene>
         <!--Thank You View Controller-->
         <scene sceneID="Mwk-HJ-d4o">
@@ -700,7 +699,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wd0-Hz-bjH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="325" y="2321"/>
+            <point key="canvasLocation" x="1234.7826086956522" y="2320.9821428571427"/>
         </scene>
         <!--Menu Data-->
         <scene sceneID="rrj-h5-OI6">
@@ -1501,24 +1500,6 @@
             </objects>
             <point key="canvasLocation" x="742" y="1298"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="6Ir-rj-h3S">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="JWr-HG-cWi" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Qo8-tr-Io9">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="oRH-8P-Qfb" kind="relationship" relationship="rootViewController" id="fOI-Np-ciL"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="kUD-wW-Dqn" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-2771.0144927536235" y="1409.5982142857142"/>
-        </scene>
         <!--Edit Wait View Controller-->
         <scene sceneID="ddZ-b9-iIW">
             <objects>
@@ -1561,12 +1542,29 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dfo-0e-XJP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1944.9275362318842" y="2686.6071428571427"/>
+            <point key="canvasLocation" x="2855.072463768116" y="2686.6071428571427"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="y7a-Kh-vAk">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="uaP-dk-Jdk" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="soT-nz-Smk">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="Ovd-TF-eYt"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8aX-xL-Y0n" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-4243" y="2063"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="f42-w9-CrC"/>
         <segue reference="yOU-L2-H8u"/>
-        <segue reference="bWY-no-UtB"/>
-        <segue reference="f36-UD-Twc"/>
     </inferredMetricsTieBreakers>
 </document>

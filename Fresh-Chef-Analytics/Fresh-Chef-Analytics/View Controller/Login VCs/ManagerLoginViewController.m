@@ -8,6 +8,7 @@
 
 #import "ManagerLoginViewController.h"
 #import "Parse/Parse.h"
+#import "AppDelegate.h"
 
 @interface ManagerLoginViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *managerPasswordField;
@@ -24,10 +25,20 @@
     PFUser *currentUser = [PFUser currentUser];
     NSString *managerPassword = currentUser[@"managerPassword"];
     if([self.managerPasswordField.text isEqualToString: managerPassword]){
-        [self performSegueWithIdentifier:@"managerLoginSegue" sender:nil];
+//        [self performSegueWithIdentifier:@"managerLoginSegue" sender:nil];
+        AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        UINavigationController *navigationController = [storyboard instantiateViewControllerWithIdentifier:@"mainTabs"];
+        appDelegate.window.rootViewController = navigationController;
     } else {
         NSLog(@"wrong password");
     }
+}
+- (IBAction)didTapContinueAsWaiter:(id)sender {
+    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    UINavigationController *navigationController = [storyboard instantiateViewControllerWithIdentifier:@"waiterView"];
+    appDelegate.window.rootViewController = navigationController;
 }
 
 /*
