@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Menu.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -16,9 +15,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UITextField *typeField;
 @property (weak, nonatomic) IBOutlet UITextField *nameField;
 @property (weak, nonatomic) IBOutlet UITextField *priceField;
-@property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UITextView *descriptionView;
 @property (weak, nonatomic) IBOutlet UIButton *addButton;
+@property (weak, nonatomic) IBOutlet UIImageView *dishView;
 
 @end
 
