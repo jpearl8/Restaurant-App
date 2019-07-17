@@ -7,6 +7,7 @@
 //
 
 #import "DishDetailsViewController.h"
+#import "Parse/Parse.h"
 
 @interface DishDetailsViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *dishName;
@@ -22,6 +23,17 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.dishName.text = self.dish.name;
+    self.dishDescription.text = self.dish.description;
+    double rating = ([self.dish.rating doubleValue] / [self.dish.orderFrequency doubleValue]) * 10.00;
+    self.dishRating.text = [NSString stringWithFormat:@"%.20lf", rating];
+    self.dishPrice.text = [self.dish.price stringValue];
+    PFFileObject *dishImageFile = (PFFileObject *)self.dish.image;
+    [dishImageFile getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
+        if(!error){
+            self.dishPic.image = [UIImage imageWithData:imageData];
+        }
+    }];
     // Do any additional setup after loading the view.
 }
 
