@@ -13,7 +13,7 @@
         <!--Manager Login View Controller-->
         <scene sceneID="PeM-wp-Wi3">
             <objects>
-                <viewController id="oRH-8P-Qfb" customClass="ManagerLoginViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ManagerPasswordVC" id="oRH-8P-Qfb" customClass="ManagerLoginViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="0fD-qj-YqH">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
