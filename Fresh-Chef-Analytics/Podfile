@@ -7,6 +7,9 @@ target 'Fresh-Chef-Analytics' do
 
   # Pods for Fresh-Chef-Analytics
   pod 'Parse'
+  pod 'MKDropdownMenu'
+  pod 'UITextView+Placeholder'
+
 
   target 'Fresh-Chef-AnalyticsTests' do
     inherit! :search_paths
