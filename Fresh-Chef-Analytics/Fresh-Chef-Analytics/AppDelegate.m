@@ -27,11 +27,10 @@
     }];
     
     [Parse initializeWithConfiguration:config];
-    // Code for persisting user accross sessions
+    // Code for persisting user across sessions
     if (PFUser.currentUser) {
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-        
-        self.window.rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"ManagerPasswordVC"];
+        self.window.rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"ManagerPasswordVCNavigationController"];
     }
     
     // Testing to make sure dishes can be created //
