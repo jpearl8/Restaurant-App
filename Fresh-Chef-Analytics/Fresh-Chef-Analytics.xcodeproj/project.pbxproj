@@ -14,6 +14,8 @@
 		B6D7B35322DE6D27002093CB /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6D7B35222DE6D27002093CB /* LoginViewController.m */; };
 		B6D7B35622DE6D40002093CB /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6D7B35522DE6D40002093CB /* SignUpViewController.m */; };
 		B6D7B35922DEA6F0002093CB /* ManagerPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6D7B35822DEA6F0002093CB /* ManagerPasswordViewController.m */; };
+		A535D7B922DE6CE9002B79CA /* Dish.m in Sources */ = {isa = PBXBuildFile; fileRef = A535D7B822DE6CE9002B79CA /* Dish.m */; };
+		A535D7BF22DE9FBF002B79CA /* Waiter.m in Sources */ = {isa = PBXBuildFile; fileRef = A535D7BE22DE9FBF002B79CA /* Waiter.m */; };
 		FF46E19222DE436400E15A0E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FF46E19122DE436400E15A0E /* AppDelegate.m */; };
 		FF46E19822DE436400E15A0E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF46E19622DE436400E15A0E /* Main.storyboard */; };
 		FF46E19A22DE436400E15A0E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF46E19922DE436400E15A0E /* Assets.xcassets */; };
@@ -53,6 +55,10 @@
 		B6D7B35522DE6D40002093CB /* SignUpViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SignUpViewController.m; sourceTree = "<group>"; };
 		B6D7B35722DEA6F0002093CB /* ManagerPasswordViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ManagerPasswordViewController.h; sourceTree = "<group>"; };
 		B6D7B35822DEA6F0002093CB /* ManagerPasswordViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ManagerPasswordViewController.m; sourceTree = "<group>"; };
+		A535D7B722DE6CE9002B79CA /* Dish.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Dish.h; sourceTree = "<group>"; };
+		A535D7B822DE6CE9002B79CA /* Dish.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Dish.m; sourceTree = "<group>"; };
+		A535D7BD22DE9FBF002B79CA /* Waiter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Waiter.h; sourceTree = "<group>"; };
+		A535D7BE22DE9FBF002B79CA /* Waiter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Waiter.m; sourceTree = "<group>"; };
 		E0C930C3020050C5A39A8F92 /* Pods-Fresh-Chef-Analytics.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fresh-Chef-Analytics.debug.xcconfig"; path = "Target Support Files/Pods-Fresh-Chef-Analytics/Pods-Fresh-Chef-Analytics.debug.xcconfig"; sourceTree = "<group>"; };
 		EB80B1150EADC91FB15DCF37 /* Pods-Fresh-Chef-AnalyticsUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fresh-Chef-AnalyticsUITests.debug.xcconfig"; path = "Target Support Files/Pods-Fresh-Chef-AnalyticsUITests/Pods-Fresh-Chef-AnalyticsUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		F3C29AA8318918BF176BC866 /* Pods-Fresh-Chef-AnalyticsUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fresh-Chef-AnalyticsUITests.release.xcconfig"; path = "Target Support Files/Pods-Fresh-Chef-AnalyticsUITests/Pods-Fresh-Chef-AnalyticsUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -117,6 +123,8 @@
 			children = (
 				A535D7B722DE6CE9002B79CA /* Dish.h */,
 				A535D7B822DE6CE9002B79CA /* Dish.m */,
+				A535D7BD22DE9FBF002B79CA /* Waiter.h */,
+				A535D7BE22DE9FBF002B79CA /* Waiter.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -437,6 +445,7 @@
 				B6D7B35922DEA6F0002093CB /* ManagerPasswordViewController.m in Sources */,
 				FF46E1A022DE436400E15A0E /* main.m in Sources */,
 				FF46E19222DE436400E15A0E /* AppDelegate.m in Sources */,
+				A535D7BF22DE9FBF002B79CA /* Waiter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
