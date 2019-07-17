@@ -14,6 +14,8 @@
 		A535D7BC22DE8FB2002B79CA /* (null) in Sources */ = {isa = PBXBuildFile; };
 		A535D7BF22DE9FBF002B79CA /* Waiter.m in Sources */ = {isa = PBXBuildFile; fileRef = A535D7BE22DE9FBF002B79CA /* Waiter.m */; };
 		A535D7C222DFA94E002B79CA /* Menu.m in Sources */ = {isa = PBXBuildFile; fileRef = A535D7C122DFA94E002B79CA /* Menu.m */; };
+		A535D7C522DFD4B5002B79CA /* MenuManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A535D7C422DFD4B5002B79CA /* MenuManager.m */; };
+		A535D7C822DFD6DB002B79CA /* EditMenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A535D7C722DFD6DB002B79CA /* EditMenuCell.m */; };
 		B6D7B35322DE6D27002093CB /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6D7B35222DE6D27002093CB /* LoginViewController.m */; };
 		B6D7B35622DE6D40002093CB /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6D7B35522DE6D40002093CB /* SignUpViewController.m */; };
 		B6D7B35C22DF95BA002093CB /* ManagerLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6D7B35B22DF95BA002093CB /* ManagerLoginViewController.m */; };
@@ -73,6 +75,10 @@
 		A535D7BE22DE9FBF002B79CA /* Waiter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Waiter.m; sourceTree = "<group>"; };
 		A535D7C022DFA94E002B79CA /* Menu.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Menu.h; sourceTree = "<group>"; };
 		A535D7C122DFA94E002B79CA /* Menu.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Menu.m; sourceTree = "<group>"; };
+		A535D7C322DFD4B5002B79CA /* MenuManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MenuManager.h; sourceTree = "<group>"; };
+		A535D7C422DFD4B5002B79CA /* MenuManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MenuManager.m; sourceTree = "<group>"; };
+		A535D7C622DFD6DB002B79CA /* EditMenuCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EditMenuCell.h; sourceTree = "<group>"; };
+		A535D7C722DFD6DB002B79CA /* EditMenuCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EditMenuCell.m; sourceTree = "<group>"; };
 		B6D7B35122DE6D27002093CB /* LoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		B6D7B35222DE6D27002093CB /* LoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		B6D7B35422DE6D3F002093CB /* SignUpViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SignUpViewController.h; sourceTree = "<group>"; };
@@ -185,6 +191,8 @@
 				A535D7BE22DE9FBF002B79CA /* Waiter.m */,
 				A535D7C022DFA94E002B79CA /* Menu.h */,
 				A535D7C122DFA94E002B79CA /* Menu.m */,
+				A535D7C322DFD4B5002B79CA /* MenuManager.h */,
+				A535D7C422DFD4B5002B79CA /* MenuManager.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -196,6 +204,8 @@
 				FFB3224622DF9DF700BF966F /* WaitTableViewCell.m */,
 				FF03BF6022DF763300719E8C /* MenuListTableViewCell.h */,
 				FF03BF6122DF763300719E8C /* MenuListTableViewCell.m */,
+				A535D7C622DFD6DB002B79CA /* EditMenuCell.h */,
+				A535D7C722DFD6DB002B79CA /* EditMenuCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -587,9 +597,11 @@
 				FF03BF3722DE973B00719E8C /* ElegantFormViewController.m in Sources */,
 				FF03BF2E22DE963B00719E8C /* WaiterViewController.m in Sources */,
 				FF03BF5622DEA0A000719E8C /* WaitDetailsViewController.m in Sources */,
+				A535D7C522DFD4B5002B79CA /* MenuManager.m in Sources */,
 				FF03BF5022DEA04900719E8C /* DishDetailsViewController.m in Sources */,
 				FF03BF5922DEA0C700719E8C /* CompetitorDetailsViewController.m in Sources */,
 				FF03BF5C22DEA16600719E8C /* CompetitorListViewController.m in Sources */,
+				A535D7C822DFD6DB002B79CA /* EditMenuCell.m in Sources */,
 				FF03BF4322DE9FA700719E8C /* ProfileViewController.m in Sources */,
 				FF03BF5322DEA07700719E8C /* WaitListViewController.m in Sources */,
 				A535D7C222DFA94E002B79CA /* Menu.m in Sources */,

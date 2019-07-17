@@ -35,27 +35,27 @@
             
             // Testing to make sure dishes can be created //
             //
-                [Dish postNewDish:@"testing" withType:@"american" withDescription:@"This is a test not a dish." withPrice:@(0) withCompletion:^(BOOL success, NSError *error)
-                 {
-                     if (success) {
-                         NSLog(@"Object saved");
-            
-                     }
-                     else {
-                         NSLog(@"Error: %@", error.description);
-                     }
-                 }];
-            
-            // Testing to make sure waiter can be created //
-                [Waiter addNewWaiter:@"john" withYears:@(3) withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
-                    if (succeeded) {
-                        NSLog(@"Waiter saved");
-            
-                    }
-                    else {
-                        NSLog(@"Error: %@", error.description);
-                    }
-                }];
+//                [Dish postNewDish:@"testing" withType:@"american" withDescription:@"This is a test not a dish." withPrice:@(0) withCompletion:^(BOOL success, NSError *error)
+//                 {
+//                     if (success) {
+//                         NSLog(@"Object saved");
+//
+//                     }
+//                     else {
+//                         NSLog(@"Error: %@", error.description);
+//                     }
+//                 }];
+//
+//            // Testing to make sure waiter can be created //
+//                [Waiter addNewWaiter:@"john" withYears:@(3) withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
+//                    if (succeeded) {
+//                        NSLog(@"Waiter saved");
+//
+//                    }
+//                    else {
+//                        NSLog(@"Error: %@", error.description);
+//                    }
+//                }];
             [self performSegueWithIdentifier:@"loginSegue" sender:nil];
         }
     }];

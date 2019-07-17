@@ -8,10 +8,12 @@
 
 #import "EditMenuViewController.h"
 #import "Dish.h"
+#import "MenuManager.h"
+#import "EditMenuCell.h"
 
 @interface EditMenuViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-
+@property (strong, nonatomic) NSArray *dishes;
 @end
 
 @implementation EditMenuViewController
@@ -20,9 +22,9 @@
     [super viewDidLoad];
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
-    
-    
-    
+    PFUser *restaurant = [PFUser currentUser];
+    [[MenuManager shared] fetchMenuItems:restaurant];
+    self.dishes = [[MenuManager shared] dishes];
     // Do any additional setup after loading the view.
 }
 - (IBAction)saveItem:(id)sender {
@@ -37,16 +39,34 @@
         }
     }];
 }
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    EditMenuCell *cell = [tableView dequeueReusableCellWithIdentifier:@"EditMenuCell" forIndexPath:indexPath];
+    Dish *dish = self.dishes[indexPath.row];
+    cell.dishName.text = dish.name;
+    cell.dishType.text = dish.type;
+    cell.dishPrice.text = [NSString stringWithFormat:@"%@", dish.price];
+    cell.dishRating.text = [NSString stringWithFormat:@"%@", dish.rating];
+    cell.dishFrequency.text = [NSString stringWithFormat:@"%@", dish.orderFrequency];
+    cell.dishDescription.text = dish.description;
+    return cell;
+}
 
+- (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return self.dishes.count;
+}
+
+
+// Table View Protocol Methods
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 @end
