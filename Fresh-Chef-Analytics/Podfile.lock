@@ -9,7 +9,10 @@ PODS:
   - "UITextView+Placeholder (1.2.1)"
 
 DEPENDENCIES:
+<<<<<<< HEAD
   - BEMCheckBox (~> 1.4)
+=======
+>>>>>>> 71a53b5ff4514daceec2f7978bad70d19c087fea
   - MKDropdownMenu
   - Parse
   - "UITextView+Placeholder"
@@ -29,6 +32,10 @@ SPEC CHECKSUMS:
   Parse: 3b31a3dd1777b07ee7f0caee32fafbff544483a5
   "UITextView+Placeholder": 0c3efd97f37ea64bde7f34cc6e90fe02e87b3909
 
+<<<<<<< HEAD
 PODFILE CHECKSUM: a8091bf4ae70e9736a440ccd1e0625bd2264759f
+=======
+PODFILE CHECKSUM: 31a5dc29929b48ecda91b897132ff498240aa26a
+>>>>>>> 71a53b5ff4514daceec2f7978bad70d19c087fea
 
 COCOAPODS: 1.7.4

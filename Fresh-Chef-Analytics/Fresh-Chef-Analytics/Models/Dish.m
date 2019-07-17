@@ -28,8 +28,8 @@
     Dish *newDish = [Dish new];
     
     // Uncomment when sign up/log in works //
-    //newDish.restaurant = [PFUser currentUser];
-    //newDish.restaurantID = newDish.restaurant.objectId;
+    newDish.restaurant = [PFUser currentUser];
+    newDish.restaurantID = newDish.restaurant.objectId;
     
     newDish.name = name;
     newDish.type = type;
@@ -44,8 +44,8 @@
     Dish *newDish = [Dish new];
     
     // Uncomment when sign up/log in works //
-    //newDish.restaurant = [PFUser currentUser];
-    //newDish.restaurantID = newDish.restaurant.objectId;
+    newDish.restaurant = [PFUser currentUser];
+    newDish.restaurantID = newDish.restaurant.objectId;
     newDish.image = [self getPFFileFromImage:image];
     newDish.name = name;
     newDish.type = type;

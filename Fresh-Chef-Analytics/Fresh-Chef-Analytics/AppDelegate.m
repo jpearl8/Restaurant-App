@@ -42,15 +42,15 @@
 //     }];
     
     // Testing to make sure waiter can be created //
-    [Waiter addNewWaiter:@"john" withYears:@(3) withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
-        if (succeeded) {
-            NSLog(@"Waiter saved");
-            
-        }
-        else {
-            NSLog(@"Error: %@", error.description);
-        }
-    }];
+//    [Waiter addNewWaiter:@"john" withYears:@(3) withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
+//        if (succeeded) {
+//            NSLog(@"Waiter saved");
+//
+//        }
+//        else {
+//            NSLog(@"Error: %@", error.description);
+//        }
+//    }];
     
     return YES;
 }
