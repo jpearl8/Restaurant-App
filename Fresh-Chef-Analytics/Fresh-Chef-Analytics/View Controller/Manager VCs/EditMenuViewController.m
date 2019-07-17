@@ -10,6 +10,7 @@
 #import "Dish.h"
 
 @interface EditMenuViewController ()
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end
 
@@ -17,6 +18,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.tableView.dataSource = self;
+    self.tableView.delegate = self;
+    
     
     
     // Do any additional setup after loading the view.
@@ -33,6 +37,7 @@
         }
     }];
 }
+
 
 /*
 #pragma mark - Navigation

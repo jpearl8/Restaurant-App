@@ -7,10 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Menu.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface EditMenuViewController : UIViewController
+@interface EditMenuViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UINavigationControllerDelegate>
+
 @property (weak, nonatomic) IBOutlet UITextField *typeField;
 @property (weak, nonatomic) IBOutlet UITextField *nameField;
 @property (weak, nonatomic) IBOutlet UITextField *priceField;

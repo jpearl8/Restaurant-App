@@ -196,11 +196,17 @@
                                 <rect key="frame" x="121" y="453" width="124" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Edit/Update Menu"/>
+                                <connections>
+                                    <segue destination="uzj-qU-w7u" kind="show" id="eXE-si-xqh"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xLn-ch-YFG">
                                 <rect key="frame" x="107" y="507" width="153" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Edit/Update Wait Staff"/>
+                                <connections>
+                                    <segue destination="EbG-Zx-Unn" kind="show" id="O45-Mm-EH8"/>
+                                </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="O38-GS-DPD">
                                 <rect key="frame" x="63" y="187" width="240" height="128"/>
@@ -218,10 +224,6 @@
                         <viewLayoutGuide key="safeArea" id="k2y-EF-l1R"/>
                     </view>
                     <navigationItem key="navigationItem" id="6fq-Ft-TGT"/>
-                    <connections>
-                        <segue destination="uzj-qU-w7u" kind="show" id="JU6-6s-ZMd"/>
-                        <segue destination="EbG-Zx-Unn" kind="show" id="bqE-R5-elR"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="y4g-fL-3Ld" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -289,7 +291,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             </textField>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="D6G-QL-0ta">
                                 <rect key="frame" x="292" y="167" width="102" height="68"/>
@@ -313,7 +315,8 @@
                         <outlet property="imageView" destination="D6G-QL-0ta" id="kpd-RB-Rab"/>
                         <outlet property="nameField" destination="s9b-pC-IIS" id="4h9-iJ-hJo"/>
                         <outlet property="priceField" destination="KJH-23-XU5" id="uz0-cD-NT9"/>
-                        <outlet property="typeField" destination="s9b-pC-IIS" id="cNT-7R-r0m"/>
+                        <outlet property="tableView" destination="Ibe-af-v1A" id="0FO-kl-osY"/>
+                        <outlet property="typeField" destination="W65-9H-3Os" id="Hcq-sX-oFG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cVL-A5-4KW" userLabel="First Responder" sceneMemberID="firstResponder"/>

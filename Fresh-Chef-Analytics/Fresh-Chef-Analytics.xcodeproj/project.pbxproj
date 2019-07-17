@@ -13,6 +13,7 @@
 		A535D7B922DE6CE9002B79CA /* Dish.m in Sources */ = {isa = PBXBuildFile; fileRef = A535D7B822DE6CE9002B79CA /* Dish.m */; };
 		A535D7BC22DE8FB2002B79CA /* (null) in Sources */ = {isa = PBXBuildFile; };
 		A535D7BF22DE9FBF002B79CA /* Waiter.m in Sources */ = {isa = PBXBuildFile; fileRef = A535D7BE22DE9FBF002B79CA /* Waiter.m */; };
+		A535D7C222DFA94E002B79CA /* Menu.m in Sources */ = {isa = PBXBuildFile; fileRef = A535D7C122DFA94E002B79CA /* Menu.m */; };
 		B6D7B35322DE6D27002093CB /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6D7B35222DE6D27002093CB /* LoginViewController.m */; };
 		B6D7B35622DE6D40002093CB /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6D7B35522DE6D40002093CB /* SignUpViewController.m */; };
 		B6D7B35922DEA6F0002093CB /* ManagerPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6D7B35822DEA6F0002093CB /* ManagerPasswordViewController.m */; };
@@ -69,6 +70,8 @@
 		A535D7B822DE6CE9002B79CA /* Dish.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Dish.m; sourceTree = "<group>"; };
 		A535D7BD22DE9FBF002B79CA /* Waiter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Waiter.h; sourceTree = "<group>"; };
 		A535D7BE22DE9FBF002B79CA /* Waiter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Waiter.m; sourceTree = "<group>"; };
+		A535D7C022DFA94E002B79CA /* Menu.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Menu.h; sourceTree = "<group>"; };
+		A535D7C122DFA94E002B79CA /* Menu.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Menu.m; sourceTree = "<group>"; };
 		B6D7B35122DE6D27002093CB /* LoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		B6D7B35222DE6D27002093CB /* LoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		B6D7B35422DE6D3F002093CB /* SignUpViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SignUpViewController.h; sourceTree = "<group>"; };
@@ -177,6 +180,8 @@
 				A535D7B822DE6CE9002B79CA /* Dish.m */,
 				A535D7BD22DE9FBF002B79CA /* Waiter.h */,
 				A535D7BE22DE9FBF002B79CA /* Waiter.m */,
+				A535D7C022DFA94E002B79CA /* Menu.h */,
+				A535D7C122DFA94E002B79CA /* Menu.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -581,6 +586,7 @@
 				FF03BF5C22DEA16600719E8C /* CompetitorListViewController.m in Sources */,
 				FF03BF4322DE9FA700719E8C /* ProfileViewController.m in Sources */,
 				FF03BF5322DEA07700719E8C /* WaitListViewController.m in Sources */,
+				A535D7C222DFA94E002B79CA /* Menu.m in Sources */,
 				FF46E19222DE436400E15A0E /* AppDelegate.m in Sources */,
 				FF03BF3122DE96EC00719E8C /* FunFormViewController.m in Sources */,
 				FF03BF4922DE9FE000719E8C /* EditWaitViewController.m in Sources */,
