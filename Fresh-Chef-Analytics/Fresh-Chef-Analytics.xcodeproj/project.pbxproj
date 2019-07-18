@@ -273,7 +273,6 @@
 				FF03BF5B22DEA16600719E8C /* CompetitorListViewController.m */,
 				FF03BF5122DEA07700719E8C /* WaitListViewController.h */,
 				FF03BF5222DEA07700719E8C /* WaitListViewController.m */,
-				FF03BF4D22DEA03700719E8C /* Details VCs */,
 				FF03BF4A22DE9FFD00719E8C /* MenuListViewController.h */,
 				FF03BF4B22DE9FFD00719E8C /* MenuListViewController.m */,
 				FF03BF4722DE9FE000719E8C /* EditWaitViewController.h */,
@@ -282,6 +281,7 @@
 				FF03BF4522DE9FC700719E8C /* EditMenuViewController.m */,
 				FF03BF4122DE9FA700719E8C /* ProfileViewController.h */,
 				FF03BF4222DE9FA700719E8C /* ProfileViewController.m */,
+				FF03BF4D22DEA03700719E8C /* Details VCs */,
 			);
 			path = "Manager VCs";
 			sourceTree = "<group>";

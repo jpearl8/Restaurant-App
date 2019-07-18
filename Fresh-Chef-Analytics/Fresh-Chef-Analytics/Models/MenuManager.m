@@ -36,18 +36,19 @@
 - (void) categorizeDishes
 {
     self.categoriesOfDishes = [[NSMutableDictionary alloc] init];
+    NSArray * dishesOfType;
+
     for (Dish *dish in self.dishes)
     {
-        NSMutableArray * dishesOfType;
         if (self.categoriesOfDishes[dish.type]!=nil)
         {
             dishesOfType = self.categoriesOfDishes[dish.type];
-            [dishesOfType arrayByAddingObject:dish];
+            dishesOfType = [dishesOfType arrayByAddingObject:dish];
 
         }
         else
         {
-            dishesOfType = [NSMutableArray arrayWithObject:dish];
+            dishesOfType = [NSArray arrayWithObject:dish];
         }
         [self.categoriesOfDishes setObject:dishesOfType forKey:dish.type];
     }
