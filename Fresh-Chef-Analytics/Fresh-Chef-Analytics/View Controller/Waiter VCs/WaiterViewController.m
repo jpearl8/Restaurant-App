@@ -20,11 +20,15 @@ pass final array on submit button of data table
 #import "ElegantFormViewController.h"
 #import "ComfortableFormViewController.h"
 #import "MenuManager.h"
+#import "MKDropdownMenu.h"
+#import "Waiter.h"
 
-@interface WaiterViewController () <UITableViewDelegate, UITableViewDataSource>
+@interface WaiterViewController () <UITableViewDelegate, UITableViewDataSource, MKDropdownMenuDataSource, MKDropdownMenuDelegate>
+@property (weak, nonatomic) IBOutlet MKDropdownMenu *dropDown;
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (weak, nonatomic) IBOutlet UITableView *menuItems;
 @property (strong, nonatomic) NSArray <Dish *>*dishes;
+@property (strong, nonatomic) NSArray <Waiter *>*waiters;
 @property (strong, nonatomic) NSArray <Dish *>*filteredDishes;
 @property (strong, nonatomic) NSMutableArray <order *>*customerOrder;
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
@@ -43,7 +47,8 @@ pass final array on submit button of data table
     self.searchBar.delegate = self;
     self.customerOrder = [[NSMutableArray alloc] init];;
     // Do any additional setup after loading the view.
-    
+    self.dropDown.dataSource = self;
+    self.dropDown.delegate = self;
     [self runDishQuery];
     UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
     [refreshControl addTarget:self action:@selector(runDishQuery) forControlEvents:UIControlEventValueChanged];
@@ -77,8 +82,17 @@ pass final array on submit button of data table
     cell.amount.text = [NSString stringWithFormat:@"%.0f", cell.stepper.value];
     return cell;
 }
-
-
+- (NSInteger)numberOfComponentsInDropdownMenu:(MKDropdownMenu *)dropdownMenu{
+    return self.waiters.count;
+}
+- (NSInteger)dropdownMenu:(MKDropdownMenu *)dropdownMenu numberOfRowsInComponent:(NSInteger)component{
+    return 1;
+}
+- (NSString *)dropdownMenu:(MKDropdownMenu *)dropdownMenu titleForComponent:(NSInteger)component {
+    
+    
+    return self.waiters[component].name;
+}
 -(void)runDishQuery{
 //    NSArray <Dish *>*dishes = [[MenuManager shared] dishes];
 //    if (dishes.count != 0){
@@ -91,7 +105,7 @@ pass final array on submit button of data table
 //        [self.refreshControl endRefreshing];
 //    }
     PFQuery *dishQuery = [Dish query];
-    [dishQuery includeKey:@"restaurantID"];
+    //[dishQuery includeKey:@"restaurantID"];
     // id test = [PFUser currentUser].objectId;
     NSString *test = @"XuLMO3Jh3r";
     [dishQuery whereKey:@"restaurantID" containsString:test];
@@ -136,6 +150,7 @@ pass final array on submit button of data table
         NSLog(@"%@", order.dish.name);
         NSLog(@"%.f", order.amount);
     }
+    [self performSegueWithIdentifier:@"toForm" sender:self];
 }
 
 - (IBAction)stepperChange:(specialStepper *)sender {
