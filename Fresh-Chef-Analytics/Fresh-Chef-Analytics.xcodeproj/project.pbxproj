@@ -15,6 +15,8 @@
 		A535D7BF22DE9FBF002B79CA /* Waiter.m in Sources */ = {isa = PBXBuildFile; fileRef = A535D7BE22DE9FBF002B79CA /* Waiter.m */; };
 		A535D7C522DFD4B5002B79CA /* MenuManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A535D7C422DFD4B5002B79CA /* MenuManager.m */; };
 		A535D7C822DFD6DB002B79CA /* EditMenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A535D7C722DFD6DB002B79CA /* EditMenuCell.m */; };
+		A5C06F5622E114E500F634E3 /* WaiterManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C06F5522E114E500F634E3 /* WaiterManager.m */; };
+		A5C06F5922E11D3500F634E3 /* EditWaiterCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C06F5822E11D3500F634E3 /* EditWaiterCell.m */; };
 		B6D7B35322DE6D27002093CB /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6D7B35222DE6D27002093CB /* LoginViewController.m */; };
 		B6D7B35622DE6D40002093CB /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6D7B35522DE6D40002093CB /* SignUpViewController.m */; };
 		B6D7B35C22DF95BA002093CB /* ManagerLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6D7B35B22DF95BA002093CB /* ManagerLoginViewController.m */; };
@@ -79,6 +81,10 @@
 		A535D7C422DFD4B5002B79CA /* MenuManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MenuManager.m; sourceTree = "<group>"; };
 		A535D7C622DFD6DB002B79CA /* EditMenuCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EditMenuCell.h; sourceTree = "<group>"; };
 		A535D7C722DFD6DB002B79CA /* EditMenuCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EditMenuCell.m; sourceTree = "<group>"; };
+		A5C06F5422E114E500F634E3 /* WaiterManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WaiterManager.h; sourceTree = "<group>"; };
+		A5C06F5522E114E500F634E3 /* WaiterManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WaiterManager.m; sourceTree = "<group>"; };
+		A5C06F5722E11D3500F634E3 /* EditWaiterCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EditWaiterCell.h; sourceTree = "<group>"; };
+		A5C06F5822E11D3500F634E3 /* EditWaiterCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EditWaiterCell.m; sourceTree = "<group>"; };
 		B6D7B35122DE6D27002093CB /* LoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		B6D7B35222DE6D27002093CB /* LoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		B6D7B35422DE6D3F002093CB /* SignUpViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SignUpViewController.h; sourceTree = "<group>"; };
@@ -201,6 +207,8 @@
 				FF6EE1A222E01D85000AD729 /* order.m */,
 				FFF1C48B22E02A8200C2AC03 /* specialStepper.h */,
 				FFF1C48C22E02A8200C2AC03 /* specialStepper.m */,
+				A5C06F5422E114E500F634E3 /* WaiterManager.h */,
+				A5C06F5522E114E500F634E3 /* WaiterManager.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -216,6 +224,8 @@
 				FF03BF6122DF763300719E8C /* MenuListTableViewCell.m */,
 				A535D7C622DFD6DB002B79CA /* EditMenuCell.h */,
 				A535D7C722DFD6DB002B79CA /* EditMenuCell.m */,
+				A5C06F5722E11D3500F634E3 /* EditWaiterCell.h */,
+				A5C06F5822E11D3500F634E3 /* EditWaiterCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -612,6 +622,7 @@
 				FF03BF5022DEA04900719E8C /* DishDetailsViewController.m in Sources */,
 				FF03BF5922DEA0C700719E8C /* CompetitorDetailsViewController.m in Sources */,
 				FF03BF5C22DEA16600719E8C /* CompetitorListViewController.m in Sources */,
+				A5C06F5622E114E500F634E3 /* WaiterManager.m in Sources */,
 				A535D7C822DFD6DB002B79CA /* EditMenuCell.m in Sources */,
 				FF03BF4322DE9FA700719E8C /* ProfileViewController.m in Sources */,
 				FF03BF5322DEA07700719E8C /* WaitListViewController.m in Sources */,
@@ -622,6 +633,7 @@
 				FFF1C48D22E02A8200C2AC03 /* specialStepper.m in Sources */,
 				FF6EE1A322E01D85000AD729 /* order.m in Sources */,
 				A535D7BF22DE9FBF002B79CA /* Waiter.m in Sources */,
+				A5C06F5922E11D3500F634E3 /* EditWaiterCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

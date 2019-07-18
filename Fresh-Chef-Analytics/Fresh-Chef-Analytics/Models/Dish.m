@@ -41,7 +41,8 @@
     [newDish saveInBackgroundWithBlock:completion];
     return newDish;
 }
-+ (void) postNewDish: ( NSString * _Nullable )name withType: ( NSString * _Nullable )type withDescription: ( NSString * _Nullable )description withPrice: ( NSNumber * _Nullable )price withImage: ( UIImage * _Nullable )image withCompletion: (PFBooleanResultBlock  _Nullable)completion {
++ (Dish *
+   ) postNewDish: ( NSString * _Nullable )name withType: ( NSString * _Nullable )type withDescription: ( NSString * _Nullable )description withPrice: ( NSNumber * _Nullable )price withImage: ( UIImage * _Nullable )image withCompletion: (PFBooleanResultBlock  _Nullable)completion {
     Dish *newDish = [Dish new];
     
     // Uncomment when sign up/log in works //
@@ -56,6 +57,7 @@
     newDish.orderFrequency = @(0);
     newDish.comments = [[NSArray alloc] init];
     [newDish saveInBackgroundWithBlock:completion];
+    return newDish;
 
 }
 + (PFFileObject *)getPFFileFromImage: (UIImage * _Nullable)image {
