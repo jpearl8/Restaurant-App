@@ -20,6 +20,8 @@ pass final array on submit button of data table
 #import "ElegantFormViewController.h"
 #import "ComfortableFormViewController.h"
 #import "MenuManager.h"
+#import "AppDelegate.h"
+#import "LoginViewController.h"
 
 @interface WaiterViewController () <UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
@@ -137,6 +139,17 @@ pass final array on submit button of data table
         NSLog(@"%.f", order.amount);
     }
 }
+
+- (IBAction)didTapLogout:(id)sender {
+    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    LoginViewController *loginViewController = [storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
+    appDelegate.window.rootViewController = loginViewController;
+    [PFUser logOutInBackgroundWithBlock:^(NSError * _Nullable error) {
+        // PFUser.current() will now be nil
+    }];
+}
+
 
 - (IBAction)stepperChange:(specialStepper *)sender {
     double orderAmount = [self searchForAmount:self.customerOrder withDish:sender.dish];
