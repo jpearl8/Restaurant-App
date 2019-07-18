@@ -19,6 +19,7 @@ pass final array on submit button of data table
 #import "FunFormViewController.h"
 #import "ElegantFormViewController.h"
 #import "ComfortableFormViewController.h"
+#import "MenuManager.h"
 
 @interface WaiterViewController () <UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
@@ -79,6 +80,16 @@ pass final array on submit button of data table
 
 
 -(void)runDishQuery{
+//    NSArray <Dish *>*dishes = [[MenuManager shared] dishes];
+//    if (dishes.count != 0){
+//        self.dishes = dishes;
+//        self.filteredDishes = dishes;
+//        [self.menuItems reloadData];
+//        [self.refreshControl endRefreshing];
+//    }
+//    else {
+//        [self.refreshControl endRefreshing];
+//    }
     PFQuery *dishQuery = [Dish query];
     [dishQuery includeKey:@"restaurantID"];
     // id test = [PFUser currentUser].objectId;

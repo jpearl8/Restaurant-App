@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "order.h"
+#import "FunTableViewCell.h"
 
 NS_ASSUME_NONNULL_BEGIN
 

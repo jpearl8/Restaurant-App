@@ -22,6 +22,28 @@
     // Do any additional setup after loading the view.
 }
 
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return self.customerOrder.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    FunTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier: @"Fun"];
+    Dish *dish = self.filteredDishes[indexPath.row];
+//    cell.dish = dish;
+//    cell.name.text = dish.name;
+//    cell.type.text = dish.type;
+//    cell.stepper.dish = dish;
+//    cell.stepper.value = [self searchForAmount:self.customerOrder withDish:dish];
+//    cell.dishDescription.text = dish.dishDescription;
+//    PFFileObject *dishImageFile = (PFFileObject *)dish.image;
+//    [dishImageFile getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
+//        if(!error){
+//            cell.image.image = [UIImage imageWithData:imageData];
+//        }
+//    }];
+//    cell.amount.text = [NSString stringWithFormat:@"%.0f", cell.stepper.value];
+//    return cell;
+}
 /*
 #pragma mark - Navigation
 
