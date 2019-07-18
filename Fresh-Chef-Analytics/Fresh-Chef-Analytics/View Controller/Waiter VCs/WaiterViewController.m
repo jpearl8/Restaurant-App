@@ -20,13 +20,11 @@ pass final array on submit button of data table
 #import "ElegantFormViewController.h"
 #import "ComfortableFormViewController.h"
 #import "MenuManager.h"
-<<<<<<< HEAD
 #import "MKDropdownMenu.h"
 #import "Waiter.h"
-=======
 #import "AppDelegate.h"
 #import "LoginViewController.h"
->>>>>>> 54e0712438748e46b7011c23da2eed8f5becfee1
+
 
 @interface WaiterViewController () <UITableViewDelegate, UITableViewDataSource, MKDropdownMenuDataSource, MKDropdownMenuDelegate>
 @property (weak, nonatomic) IBOutlet MKDropdownMenu *dropDown;
