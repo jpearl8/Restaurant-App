@@ -13,6 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface MenuManager : NSObject
 @property (strong, nonatomic) NSArray * dishes;
+@property (strong, nonatomic) NSMutableDictionary *categoriesOfDishes;
 + (instancetype) shared;
 - (void) fetchMenuItems : (PFUser *) restaurant;
 

@@ -30,7 +30,26 @@
     // fetch data asynchronously
     [dishQuery findObjectsInBackgroundWithBlock:^(NSArray<Dish *> * _Nullable dishes, NSError * _Nullable error) {
         self.dishes = dishes;
-
+        [self categorizeDishes];
     }];
+}
+- (void) categorizeDishes
+{
+    self.categoriesOfDishes = [[NSMutableDictionary alloc] init];
+    for (Dish *dish in self.dishes)
+    {
+        NSMutableArray * dishesOfType;
+        if (self.categoriesOfDishes[dish.type]!=nil)
+        {
+            dishesOfType = self.categoriesOfDishes[dish.type];
+            [dishesOfType arrayByAddingObject:dish];
+
+        }
+        else
+        {
+            dishesOfType = [NSMutableArray arrayWithObject:dish];
+        }
+        [self.categoriesOfDishes setObject:dishesOfType forKey:dish.type];
+    }
 }
 @end
