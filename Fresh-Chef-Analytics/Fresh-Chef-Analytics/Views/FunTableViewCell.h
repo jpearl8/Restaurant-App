@@ -7,10 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Dish.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface FunTableViewCell : UITableViewCell
+@property (strong, nonatomic) Dish *dish;
 @property (weak, nonatomic) IBOutlet UILabel *dishName;
 @property (weak, nonatomic) IBOutlet UILabel *dishType;
 @property (weak, nonatomic) IBOutlet UILabel *dishDescription;

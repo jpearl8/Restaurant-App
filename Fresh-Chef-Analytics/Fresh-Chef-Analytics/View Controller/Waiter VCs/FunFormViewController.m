@@ -28,9 +28,21 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     FunTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier: @"Fun"];
-    Dish *dish = self.filteredDishes[indexPath.row];
-//    cell.dish = dish;
-//    cell.name.text = dish.name;
+    order *order = self.customerOrder[indexPath.row];
+    cell.dish = order.dish;
+    cell.dishName.text = order.dish.name;
+    cell.dishType.text = order.dish.type;
+    cell.dishDescription.text = order.dish.dishDescription;
+    cell.amount.text = [NSString stringWithFormat:@"%.0f", order.amount];
+    cell.image = nil;
+    
+//
+//    @property (strong, nonatomic) Dish *dish;
+//    @property (weak, nonatomic) IBOutlet UILabel *dishName;
+//    @property (weak, nonatomic) IBOutlet UILabel *dishType;
+//    @property (weak, nonatomic) IBOutlet UILabel *dishDescription;
+//    @property (weak, nonatomic) IBOutlet UIImageView *image;
+//    @property (weak, nonatomic) IBOutlet UILabel *amount;
 //    cell.type.text = dish.type;
 //    cell.stepper.dish = dish;
 //    cell.stepper.value = [self searchForAmount:self.customerOrder withDish:dish];
@@ -42,7 +54,7 @@
 //        }
 //    }];
 //    cell.amount.text = [NSString stringWithFormat:@"%.0f", cell.stepper.value];
-//    return cell;
+    return cell;
 }
 /*
 #pragma mark - Navigation
