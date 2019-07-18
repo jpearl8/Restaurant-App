@@ -49,7 +49,7 @@
     EditWaiterCell *cell = [tableView dequeueReusableCellWithIdentifier:@"EditWaiterCell" forIndexPath:indexPath];
     Waiter *waiter = self.roster[indexPath.row];
     cell.waiterName.text = waiter.name;
-    //cell.waiterYearsAt.text = waiter.yearsWorked;
+    cell.waiterYearsAt.text = [NSString stringWithFormat:@"%@", waiter.yearsWorked];
     return cell;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
