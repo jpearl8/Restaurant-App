@@ -8,7 +8,8 @@
 
 #import "FunFormViewController.h"
 
-@interface FunFormViewController ()
+@interface FunFormViewController () <UITableViewDelegate, UITableViewDataSource>
+@property (weak, nonatomic) IBOutlet UITableView *menuRatings;
 
 @end
 
@@ -16,6 +17,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.menuRatings.delegate = self;
+    self.menuRatings.dataSource = self;
     // Do any additional setup after loading the view.
 }
 

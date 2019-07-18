@@ -7,11 +7,12 @@
 //
 
 #import "ProfileViewController.h"
-#import "Parse/Parse.h"
 #import "AppDelegate.h"
 #import "LoginViewController.h"
 
 @interface ProfileViewController ()
+
+@property (nonatomic, assign) BOOL isEditable;
 
 @end
 
@@ -20,20 +21,23 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Set restaurant name, category and price labels
-    PFUser *currentUser = [PFUser currentUser];
-    self.restaurantNameLabel.text = currentUser[@"username"];
-    NSString *category = currentUser[@"category"];
-    
-    if(category != nil){ self.restaurantCategoryLabel.text = currentUser[@"category"];
+    self.user = [PFUser currentUser];
+    self.restaurantNameLabel.text = self.user[@"username"];
+    NSString *category = self.user[@"category"];
+    self.isEditable = NO; // the profile is not editable initially
+    if(category != nil){
+        self.restaurantCategoryLabel.text = self.user[@"category"];
     } else {
         self.restaurantCategoryLabel.text = @"Set Restaurant Category";
     }
-    NSString *price = currentUser[@"priceRange"];
+    NSString *price = self.user[@"price"];
     if (price != nil) {
         self.restaurantPriceLabel.text = price;
     } else {
         self.restaurantPriceLabel.text = @"Set Restaurant Price Range";
     }
+    // show label and hide text field initially
+    [self showLabels:YES];
 }
 
 - (IBAction)didTapLogout:(id)sender {
@@ -46,15 +50,61 @@
     }];
 }
 
+- (IBAction)didTapEdit:(id)sender {
+    // not implemented yet, should allow user to edit profile
+    if(self.isEditable == NO){
+        self.isEditable = YES;
+        //change edit label to 'save' and logout button to 'cancel'
+        self.editButton.title = @"Save";
+        //add logout --> cancel
+        //..............
+        
+        // show text fields and hide labels
+        [self showLabels:NO];
+        //set text fields
+        self.restaurantNameField.text = self.restaurantNameLabel.text;
+        self.restaurantCategoryField.text = self.restaurantCategoryLabel.text;
+        self.restaurantPriceField.text = self.restaurantPriceLabel.text;
+    } else {
+        //User pressed 'save' button
+        self.isEditable = NO;
+        self.editButton.title = @"Edit";
+        // Hide text fields, show labels, and save values
+        [self showLabels:YES];
+        //save values to PFUser
+        self.user[@"username"] = self.restaurantNameField.text;
+        self.user[@"category"] = self.restaurantCategoryField.text;
+//        self.user[@"price"] = self.restaurantPriceField;
+        [self.user saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+            if(succeeded){
+                NSLog(@"successfully saved updates");
+                // set labels to correspond to inputs
+                self.restaurantNameLabel.text = self.restaurantNameField.text;
+                self.restaurantCategoryLabel.text = self.restaurantCategoryField.text;
+                self.restaurantPriceLabel.text = self.restaurantPriceField.text;
+            } else {
+                NSLog(@"Error saving updates: %@", error.localizedDescription);
+            }
+        }];
+    }
+}
 
-//
-//- (IBAction)didTapEditMenu:(id)sender {
-//    [self performSegueWithIdentifier:@"editMenuSegue" sender:nil];
-//}
-//
-//- (IBAction)didTapEditWaiterStaff:(id)sender {
-//    [self performSegueWithIdentifier:@"editWaiterStaffSegue" sender:nil];
-//}
+-(void) showLabels: (BOOL)trueFalse {
+    // if trueFalse is YES then show labels and hide fields
+    // if trueFalse is NO then do the reverse
+    //name
+    self.restaurantNameLabel.hidden = !trueFalse;
+    self.restaurantNameField.enabled = !trueFalse;
+    self.restaurantNameField.hidden = trueFalse;
+    //category
+    self.restaurantCategoryLabel.hidden = !trueFalse;
+    self.restaurantCategoryField.enabled = !trueFalse;
+    self.restaurantCategoryField.hidden = trueFalse;
+    //price
+    self.restaurantPriceLabel.hidden = !trueFalse;
+    self.restaurantPriceField.enabled = !trueFalse;
+    self.restaurantPriceField.hidden = trueFalse;
+}
 
 /*
 #pragma mark - Navigation
