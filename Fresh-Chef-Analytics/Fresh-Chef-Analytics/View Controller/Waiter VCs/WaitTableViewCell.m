@@ -13,13 +13,26 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
+
+    //[self didTapCheckBox:self.checkBox];
     // Initialization code
 }
+//-(void)didTapCheckBox:(BEMCheckBox *)checkBox{
+//    self.checked = self.checkBox.on;
+//}
+
+- (IBAction)didStep:(UIStepper *)sender;{
+    self.amount.text = [NSString stringWithFormat:@"%.20lf",sender.value];
+    self.orderAmount = [self.amount.text integerValue];
+}
+
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
-    self.checkBox.boxType = BEMBoxTypeSquare;
+    
     // Configure the view for the selected state
 }
+
+
 
 @end
