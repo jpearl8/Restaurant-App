@@ -106,6 +106,12 @@
     self.restaurantPriceField.hidden = trueFalse;
 }
 
+- (IBAction)didTapBackground:(id)sender {
+    //dismiss keyboard
+    [self.view endEditing:YES];
+}
+
+
 /*
 #pragma mark - Navigation
 
