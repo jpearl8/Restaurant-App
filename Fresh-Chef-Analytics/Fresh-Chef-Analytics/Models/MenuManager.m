@@ -7,7 +7,6 @@
 //
 
 #import "MenuManager.h"
-#import "Dish.h"
 
 @implementation MenuManager
 // singleton generates a single instance and initiates itself
@@ -37,20 +36,25 @@
 {
     self.categoriesOfDishes = [[NSMutableDictionary alloc] init];
     NSArray * dishesOfType;
-
+    
     for (Dish *dish in self.dishes)
     {
-        if (self.categoriesOfDishes[dish.type]!=nil)
-        {
-            dishesOfType = self.categoriesOfDishes[dish.type];
-            dishesOfType = [dishesOfType arrayByAddingObject:dish];
-
-        }
-        else
-        {
-            dishesOfType = [NSArray arrayWithObject:dish];
-        }
-        [self.categoriesOfDishes setObject:dishesOfType forKey:dish.type];
+        [self addDishToDict:dish toArray:dishesOfType];
     }
+}
+
+- (void) addDishToDict : (Dish *) dish toArray: (NSArray *) dishesOfType
+{
+    if (self.categoriesOfDishes[dish.type]!=nil)
+    {
+        dishesOfType = self.categoriesOfDishes[dish.type];
+        dishesOfType = [dishesOfType arrayByAddingObject:dish];
+        
+    }
+    else
+    {
+        dishesOfType = [NSArray arrayWithObject:dish];
+    }
+    [self.categoriesOfDishes setObject:dishesOfType forKey:dish.type];
 }
 @end
