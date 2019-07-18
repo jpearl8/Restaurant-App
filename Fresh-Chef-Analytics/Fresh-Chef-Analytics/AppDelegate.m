@@ -32,13 +32,9 @@
     if (PFUser.currentUser) {
     
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-<<<<<<< HEAD
         [[MenuManager shared] fetchMenuItems:PFUser.currentUser];
 
-        self.window.rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"ManagerPasswordVC"];
-=======
         self.window.rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"ManagerPasswordVCNavigationController"];
->>>>>>> f306156768780a3811053ae86edeb9f56d022dc0
     }
     
     // Testing to make sure dishes can be created //
