@@ -51,6 +51,9 @@
         // PFUser.current() will now be nil
     }];
 }
+- (IBAction)didTapBackground:(id)sender {
+    [self.view endEditing:YES]; //dismiss keyboard
+}
 
 /*
 #pragma mark - Navigation
