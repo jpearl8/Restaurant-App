@@ -14,7 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface FunFormViewController : UIViewController
 @property (strong, nonatomic) NSMutableArray <order *>*customerOrder;
 @property (strong, nonatomic) NSString *waiterName;
-@property (assign, nonatomic) int customerNumber;
+@property (strong, nonatomic) NSString *customerNumber;
 @end
 
 NS_ASSUME_NONNULL_END

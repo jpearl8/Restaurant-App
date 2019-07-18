@@ -17,6 +17,8 @@ pass final array on submit button of data table
 #import "order.h"
 #import "Parse/Parse.h"
 #import "FunFormViewController.h"
+#import "ElegantFormViewController.h"
+#import "ComfortableFormViewController.h"
 
 @interface WaiterViewController () <UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
@@ -157,7 +159,26 @@ pass final array on submit button of data table
 
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    
+    // id test = [PFUser currentUser].theme;
+    NSString *category = @"Fun";
+    if ([category isEqualToString:@"Fun"]){
+        FunFormViewController *funVC = [segue destinationViewController];
+        funVC.customerOrder = self.customerOrder;
+        funVC.waiterName = self.waiterName.text;
+        funVC.customerNumber = self.customerNumber.text;
+    }
+    if ([category isEqualToString:@"Comfortable"]){
+        ComfortableFormViewController *comfVC = [segue destinationViewController];
+        comfVC.customerOrder = self.customerOrder;
+        comfVC.waiterName = self.waiterName.text;
+        comfVC.customerNumber = self.customerNumber.text;
+    }
+    if ([category isEqualToString:@"Elegant"]){
+        ElegantFormViewController *elegantVC = [segue destinationViewController];
+        elegantVC.customerOrder = self.customerOrder;
+        elegantVC.waiterName = self.waiterName.text;
+        elegantVC.customerNumber = self.customerNumber.text;
+    }
 }
 
 

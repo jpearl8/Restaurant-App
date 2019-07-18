@@ -7,11 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "order.h"
+
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface ComfortableFormViewController : UIViewController
-
+@property (strong, nonatomic) NSMutableArray <order *>*customerOrder;
+@property (strong, nonatomic) NSString *waiterName;
+@property (strong, nonatomic) NSString *customerNumber;
 @end
 
 NS_ASSUME_NONNULL_END
