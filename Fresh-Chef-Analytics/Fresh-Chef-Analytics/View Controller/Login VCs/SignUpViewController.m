@@ -48,6 +48,11 @@
     [self registerUser];
 }
 
+- (IBAction)didTapBackground:(id)sender {
+    [self.view endEditing:YES]; //dismiss keyboard
+}
+
+
 /*
 #pragma mark - Navigation
 

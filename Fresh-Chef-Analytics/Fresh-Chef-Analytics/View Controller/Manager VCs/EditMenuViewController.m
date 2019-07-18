@@ -14,7 +14,8 @@
 @interface EditMenuViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NSArray *dishes;
-
+@property (strong, nonatomic) NSMutableDictionary *categoriesOfDishes;
+@property (strong, nonatomic) NSArray *categories;
 @end
 
 @implementation EditMenuViewController
@@ -24,6 +25,9 @@
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     self.dishes = [[MenuManager shared] dishes];
+    self.categoriesOfDishes = [[MenuManager shared] categoriesOfDishes];
+    self.categories = [self.categoriesOfDishes allKeys];
+
     // Do any additional setup after loading the view.
 }
 - (IBAction)saveItem:(id)sender {
@@ -42,14 +46,15 @@
 }
 - (void) didAddItem: (Dish *) dish
 {
-    NSArray *newMenu = [self.dishes arrayByAddingObject:dish];
-    self.dishes = newMenu;
+    NSArray *dishesOfType;
+    [[MenuManager shared] addDishToDict:dish toArray:dishesOfType];
     [self.tableView reloadData];
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    NSInteger section = indexPath.section;
     EditMenuCell *cell = [tableView dequeueReusableCellWithIdentifier:@"EditMenuCell" forIndexPath:indexPath];
-    Dish *dish = self.dishes[indexPath.row];
+    Dish *dish = self.categoriesOfDishes[ self.categories[section]][indexPath.row];
     cell.dishName.text = dish.name;
     cell.dishType.text = dish.type;
     cell.dishPrice.text = [NSString stringWithFormat:@"%@", dish.price];
@@ -58,9 +63,17 @@
     cell.dishDescription.text = dish.dishDescription;
     return cell;
 }
-
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return self.categoriesOfDishes.count;
+}
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    return self.categories[section];
+}
 - (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.dishes.count;
+    NSLog(@"%lu", (unsigned long)[self.categoriesOfDishes[self.categories[section]] count]);
+    return [self.categoriesOfDishes[self.categories[section]] count];
 }
 
 

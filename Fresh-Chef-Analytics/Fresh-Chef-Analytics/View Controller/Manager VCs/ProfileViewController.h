@@ -11,7 +11,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface ProfileViewController : UIViewController
+@interface ProfileViewController : UIViewController <UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 @property (weak, nonatomic) IBOutlet UIImageView *restaurantProfileImage;
 @property (weak, nonatomic) IBOutlet UILabel *restaurantNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *restaurantCategoryLabel;
@@ -20,6 +20,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UITextField *restaurantNameField;
 @property (weak, nonatomic) IBOutlet UITextField *restaurantCategoryField;
 @property (weak, nonatomic) IBOutlet UITextField *restaurantPriceField;
+@property (weak, nonatomic) IBOutlet UILabel *tapToEditLabel;
 
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *editButton;
 @property (weak, nonatomic) PFUser *user;

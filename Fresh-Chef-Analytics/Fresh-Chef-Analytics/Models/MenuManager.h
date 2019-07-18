@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "Parse/Parse.h"
+#import "Dish.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -16,7 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong, nonatomic) NSMutableDictionary *categoriesOfDishes;
 + (instancetype) shared;
 - (void) fetchMenuItems : (PFUser *) restaurant;
-
+- (void) addDishToDict : (Dish *) dish toArray: (NSArray *) dishesOfType;
 @end
 
 NS_ASSUME_NONNULL_END

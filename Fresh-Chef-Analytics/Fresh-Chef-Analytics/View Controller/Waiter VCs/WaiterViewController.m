@@ -20,8 +20,13 @@ pass final array on submit button of data table
 #import "ElegantFormViewController.h"
 #import "ComfortableFormViewController.h"
 #import "MenuManager.h"
+<<<<<<< HEAD
 #import "MKDropdownMenu.h"
 #import "Waiter.h"
+=======
+#import "AppDelegate.h"
+#import "LoginViewController.h"
+>>>>>>> 54e0712438748e46b7011c23da2eed8f5becfee1
 
 @interface WaiterViewController () <UITableViewDelegate, UITableViewDataSource, MKDropdownMenuDataSource, MKDropdownMenuDelegate>
 @property (weak, nonatomic) IBOutlet MKDropdownMenu *dropDown;
@@ -152,6 +157,17 @@ pass final array on submit button of data table
     }
     [self performSegueWithIdentifier:@"toForm" sender:self];
 }
+
+- (IBAction)didTapLogout:(id)sender {
+    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    LoginViewController *loginViewController = [storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
+    appDelegate.window.rootViewController = loginViewController;
+    [PFUser logOutInBackgroundWithBlock:^(NSError * _Nullable error) {
+        // PFUser.current() will now be nil
+    }];
+}
+
 
 - (IBAction)stepperChange:(specialStepper *)sender {
     double orderAmount = [self searchForAmount:self.customerOrder withDish:sender.dish];
