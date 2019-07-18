@@ -46,8 +46,8 @@
 }
 - (void) didAddItem: (Dish *) dish
 {
-    NSArray *newMenu = [self.dishes arrayByAddingObject:dish];
-    self.dishes = newMenu;
+    NSArray *dishesOfType;
+    [[MenuManager shared] addDishToDict:dish toArray:dishesOfType];
     [self.tableView reloadData];
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
