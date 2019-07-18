@@ -8,14 +8,16 @@
 
 #import <UIKit/UIKit.h>
 #import "Dish.h"
-#import "BEMCheckBox.h"
+#import "specialStepper.h"
+
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface WaitTableViewCell : UITableViewCell 
-    @property (assign, nonatomic) int orderAmount;
+ 
+- (IBAction)didStep:(specialStepper *)sender;
+@property (weak, nonatomic) IBOutlet specialStepper *stepper;
 
-- (IBAction)didStep:(UIStepper *)sender;
 
 @property (nonatomic, strong) Dish *dish;
 //   @property (weak, nonatomic) IBOutlet BEMCheckBox *checkBox;
@@ -24,7 +26,7 @@ NS_ASSUME_NONNULL_BEGIN
     @property (weak, nonatomic) IBOutlet UILabel *type;
     @property (weak, nonatomic) IBOutlet UILabel *dishDescription;
     @property (weak, nonatomic) IBOutlet UITextField *amount;
-
+- (void) prepareForReuse;
 @end
 
 NS_ASSUME_NONNULL_END

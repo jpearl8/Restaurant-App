@@ -44,7 +44,10 @@
 		FF46E1A022DE436400E15A0E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FF46E19F22DE436400E15A0E /* main.m */; };
 		FF46E1AA22DE436400E15A0E /* Fresh_Chef_AnalyticsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FF46E1A922DE436400E15A0E /* Fresh_Chef_AnalyticsTests.m */; };
 		FF46E1B522DE436400E15A0E /* Fresh_Chef_AnalyticsUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = FF46E1B422DE436400E15A0E /* Fresh_Chef_AnalyticsUITests.m */; };
+		FF6EE1A322E01D85000AD729 /* order.m in Sources */ = {isa = PBXBuildFile; fileRef = FF6EE1A222E01D85000AD729 /* order.m */; };
 		FFB3224722DF9DF700BF966F /* WaitTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FFB3224622DF9DF700BF966F /* WaitTableViewCell.m */; };
+		FFF1C48D22E02A8200C2AC03 /* specialStepper.m in Sources */ = {isa = PBXBuildFile; fileRef = FFF1C48C22E02A8200C2AC03 /* specialStepper.m */; };
+		FFF1C49022E03B5300C2AC03 /* FunTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FFF1C48F22E03B5300C2AC03 /* FunTableViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -140,8 +143,14 @@
 		FF46E1B022DE436400E15A0E /* Fresh-Chef-AnalyticsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Fresh-Chef-AnalyticsUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF46E1B422DE436400E15A0E /* Fresh_Chef_AnalyticsUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Fresh_Chef_AnalyticsUITests.m; sourceTree = "<group>"; };
 		FF46E1B622DE436400E15A0E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FF6EE1A122E01D85000AD729 /* order.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = order.h; sourceTree = "<group>"; };
+		FF6EE1A222E01D85000AD729 /* order.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = order.m; sourceTree = "<group>"; };
 		FFB3224522DF9DF700BF966F /* WaitTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = WaitTableViewCell.h; path = "Fresh-Chef-Analytics/View Controller/Waiter VCs/WaitTableViewCell.h"; sourceTree = SOURCE_ROOT; };
 		FFB3224622DF9DF700BF966F /* WaitTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = WaitTableViewCell.m; path = "Fresh-Chef-Analytics/View Controller/Waiter VCs/WaitTableViewCell.m"; sourceTree = SOURCE_ROOT; };
+		FFF1C48B22E02A8200C2AC03 /* specialStepper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = specialStepper.h; sourceTree = "<group>"; };
+		FFF1C48C22E02A8200C2AC03 /* specialStepper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = specialStepper.m; sourceTree = "<group>"; };
+		FFF1C48E22E03B5300C2AC03 /* FunTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FunTableViewCell.h; sourceTree = "<group>"; };
+		FFF1C48F22E03B5300C2AC03 /* FunTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FunTableViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -193,6 +202,10 @@
 				A535D7C122DFA94E002B79CA /* Menu.m */,
 				A535D7C322DFD4B5002B79CA /* MenuManager.h */,
 				A535D7C422DFD4B5002B79CA /* MenuManager.m */,
+				FF6EE1A122E01D85000AD729 /* order.h */,
+				FF6EE1A222E01D85000AD729 /* order.m */,
+				FFF1C48B22E02A8200C2AC03 /* specialStepper.h */,
+				FFF1C48C22E02A8200C2AC03 /* specialStepper.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -200,6 +213,8 @@
 		A535D7B522DE6B92002B79CA /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				FFF1C48E22E03B5300C2AC03 /* FunTableViewCell.h */,
+				FFF1C48F22E03B5300C2AC03 /* FunTableViewCell.m */,
 				FFB3224522DF9DF700BF966F /* WaitTableViewCell.h */,
 				FFB3224622DF9DF700BF966F /* WaitTableViewCell.m */,
 				FF03BF6022DF763300719E8C /* MenuListTableViewCell.h */,
@@ -590,6 +605,7 @@
 				FF03BF3422DE971600719E8C /* ComfortableFormViewController.m in Sources */,
 				B6D7B35322DE6D27002093CB /* LoginViewController.m in Sources */,
 				B6D7B35622DE6D40002093CB /* SignUpViewController.m in Sources */,
+				FFF1C49022E03B5300C2AC03 /* FunTableViewCell.m in Sources */,
 				A535D7B922DE6CE9002B79CA /* Dish.m in Sources */,
 				FF46E1A022DE436400E15A0E /* main.m in Sources */,
 				FF03BF4622DE9FC700719E8C /* EditMenuViewController.m in Sources */,
@@ -609,6 +625,8 @@
 				FF03BF3122DE96EC00719E8C /* FunFormViewController.m in Sources */,
 				FF03BF4922DE9FE000719E8C /* EditWaitViewController.m in Sources */,
 				FF03BF4022DE97C900719E8C /* AnotherTableViewController.m in Sources */,
+				FFF1C48D22E02A8200C2AC03 /* specialStepper.m in Sources */,
+				FF6EE1A322E01D85000AD729 /* order.m in Sources */,
 				A535D7BF22DE9FBF002B79CA /* Waiter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -14,15 +14,20 @@ pass final array on submit button of data table
 #import "WaiterViewController.h"
 #import "Dish.h"
 #import "WaitTableViewCell.h"
+#import "order.h"
 #import "Parse/Parse.h"
+#import "FunFormViewController.h"
 
 @interface WaiterViewController () <UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (weak, nonatomic) IBOutlet UITableView *menuItems;
 @property (strong, nonatomic) NSArray <Dish *>*dishes;
 @property (strong, nonatomic) NSArray <Dish *>*filteredDishes;
-
+@property (strong, nonatomic) NSMutableArray <order *>*customerOrder;
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
+@property (weak, nonatomic) IBOutlet UITextField *waiterName;
+@property (weak, nonatomic) IBOutlet UILabel *customerNumber;
+
 
 @end
 
@@ -33,6 +38,7 @@ pass final array on submit button of data table
     self.menuItems.delegate = self;
     self.menuItems.dataSource = self;
     self.searchBar.delegate = self;
+    self.customerOrder = [[NSMutableArray alloc] init];;
     // Do any additional setup after loading the view.
     
     [self runDishQuery];
@@ -56,6 +62,8 @@ pass final array on submit button of data table
     cell.dish = dish;
     cell.name.text = dish.name;
     cell.type.text = dish.type;
+    cell.stepper.dish = dish;
+    cell.stepper.value = [self searchForAmount:self.customerOrder withDish:dish];
     cell.dishDescription.text = dish.dishDescription;
     PFFileObject *dishImageFile = (PFFileObject *)dish.image;
     [dishImageFile getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
@@ -63,6 +71,7 @@ pass final array on submit button of data table
             cell.image.image = [UIImage imageWithData:imageData];
         }
     }];
+    cell.amount.text = [NSString stringWithFormat:@"%.0f", cell.stepper.value];
     return cell;
 }
 
@@ -80,14 +89,12 @@ pass final array on submit button of data table
         }
         if (dishes.count != 0) {
             // do something with the data fetched
-            NSLog(@"%@", dishes);
             self.dishes = dishes;
             self.filteredDishes = dishes;
             [self.menuItems reloadData];
             [self.refreshControl endRefreshing];
         }
         else {
-            NSLog(@"no error but nothin here");
             [self.refreshControl endRefreshing];
         }
     }];
@@ -106,24 +113,52 @@ pass final array on submit button of data table
     }
     [self.menuItems reloadData];
 }
+
 - (IBAction)onSubmit:(id)sender{
-    NSArray *cells = [self.menuItems visibleCells];
-    for (WaitTableViewCell *cell in cells)
+    NSLog(@"SUBMIT");
+    NSLog(@"%.f", self.customerOrder.count);
+    for (order *order in self.customerOrder)
     {
        // UILabel *labelF = [cell name];
-        NSLog(@"%d", cell.orderAmount);
+        NSLog(@"%@", order.dish.name);
+        NSLog(@"%.f", order.amount);
+    }
+}
+
+- (IBAction)stepperChange:(specialStepper *)sender {
+    double orderAmount = [self searchForAmount:self.customerOrder withDish:sender.dish];
+    order *newOrder = [order makeOrderItem:sender.dish withAmount:sender.value];
+    if (orderAmount == 0.0){
+        [self.customerOrder addObject:newOrder];
+    } else {
+        for (int i = 0; i < self.customerOrder.count; i++){
+            if ([self.customerOrder[i].dish.name isEqualToString:sender.dish.name]){
+                self.customerOrder[i] = newOrder;
+                break;
+            }
+        }
     }
 }
 
 
 
-//#pragma mark - Navigation
-//
-////// In a storyboard-based application, you will often want to do a little preparation before navigation
-////- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-////    // Get the new view controller using [segue destinationViewController].
-////    // Pass the selected object to the new view controller.
-////}
-////*/
+
+
+-(double )searchForAmount:(NSArray<order *> *)orderList withDish:(Dish *)dish{
+    for (order *item in orderList){
+        if ([item.dish.name isEqualToString:dish.name]){
+            return item.amount;
+        }
+    }
+    return 0;
+}
+
+
+
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    
+}
+
 
 @end
