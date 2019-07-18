@@ -308,9 +308,13 @@
                                     <segue destination="EbG-Zx-Unn" kind="show" id="MMn-P7-QOu"/>
                                 </connections>
                             </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="profile_tab" translatesAutoresizingMaskIntoConstraints="NO" id="O38-GS-DPD">
+                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="profile_tab" translatesAutoresizingMaskIntoConstraints="NO" id="O38-GS-DPD">
                                 <rect key="frame" x="63" y="187" width="240" height="128"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="I9X-di-8Zs" appends="YES" id="1dy-Fn-jTT"/>
+                                </connections>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Profile" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rhh-lG-jB7">
                                 <rect key="frame" x="134" y="109" width="111" height="70"/>
@@ -347,6 +351,15 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.40000000000000002" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Tap to Edit" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rTE-KO-oIA">
+                                <rect key="frame" x="203" y="293" width="82" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.78689940680000003" green="0.80025415379999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                                <color key="shadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <gestureRecognizers/>
@@ -376,16 +389,22 @@
                         <outlet property="restaurantPriceField" destination="DUQ-GU-Qp9" id="UTI-G6-jg9"/>
                         <outlet property="restaurantPriceLabel" destination="Obd-ko-qxI" id="cH8-aB-PO5"/>
                         <outlet property="restaurantProfileImage" destination="O38-GS-DPD" id="ucG-TP-kxN"/>
+                        <outlet property="tapToEditLabel" destination="rTE-KO-oIA" id="5hz-Kg-yhN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="y4g-fL-3Ld" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="WFV-9k-VHE">
+                <tapGestureRecognizer id="WFV-9k-VHE" userLabel="Tap Gesture Recognizer Background">
                     <connections>
                         <action selector="didTapBackground:" destination="oPt-aN-7eF" id="iOq-6C-PXy"/>
                     </connections>
                 </tapGestureRecognizer>
+                <tapGestureRecognizer id="I9X-di-8Zs" userLabel="Tap Gesture Recognizer Profile Image">
+                    <connections>
+                        <action selector="didTapProfilePic:" destination="oPt-aN-7eF" id="cIg-Rz-0cu"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="2031.8840579710147" y="2348.4375"/>
+            <point key="canvasLocation" x="1180" y="2348"/>
         </scene>
         <!--Edit Menu View Controller-->
         <scene sceneID="Ql2-c2-ij3">
@@ -551,7 +570,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cVL-A5-4KW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2931.8840579710145" y="1998.8839285714284"/>
+            <point key="canvasLocation" x="2075" y="2063"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="hxY-K7-5n5">
@@ -1057,7 +1076,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wd0-Hz-bjH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1234.7826086956522" y="2348.4375"/>
+            <point key="canvasLocation" x="325" y="2348"/>
         </scene>
         <!--Menu Data-->
         <scene sceneID="rrj-h5-OI6">
@@ -1900,7 +1919,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dfo-0e-XJP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2930" y="2738"/>
+            <point key="canvasLocation" x="2075" y="2784"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="y7a-Kh-vAk">
@@ -1943,6 +1962,7 @@
         <image name="profile_tab" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="hoJ-de-heN"/>
         <segue reference="VpL-yV-74Y"/>
     </inferredMetricsTieBreakers>
 </document>

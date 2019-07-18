@@ -38,6 +38,9 @@
     }
     // show label and hide text field initially
     [self showLabels:YES];
+    if(self.user[@"image"] != nil){
+        [self setProfilePicture];
+    }
 }
 
 - (IBAction)didTapLogout:(id)sender {
@@ -104,6 +107,7 @@
     self.restaurantPriceLabel.hidden = !trueFalse;
     self.restaurantPriceField.enabled = !trueFalse;
     self.restaurantPriceField.hidden = trueFalse;
+    self.tapToEditLabel.hidden = trueFalse;
 }
 
 - (IBAction)didTapBackground:(id)sender {
@@ -111,6 +115,67 @@
     [self.view endEditing:YES];
 }
 
+- (IBAction)didTapProfilePic:(id)sender {
+    if(self.isEditable == YES){
+        NSLog(@"tapped camera image");
+        UIImagePickerController *imagePickerVC = [UIImagePickerController new];
+        imagePickerVC.delegate = self;
+        imagePickerVC.allowsEditing = YES;
+        // if camera is available, use it, else, use camera roll
+        if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+            imagePickerVC.sourceType = UIImagePickerControllerSourceTypeCamera;
+        }
+        else {
+            NSLog(@"Camera 🚫 available so we will use photo library instead");
+            imagePickerVC.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+        }
+        [self presentViewController:imagePickerVC animated:YES completion:nil];
+    }
+}
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
+    
+    // Get the image captured by the UIImagePickerController
+    UIImage *editedImage = info[UIImagePickerControllerEditedImage];
+    // Resize image to avoid memory issues in Parse
+//    UIImage *resizedImage = [self resizeImage:editedImage withSize:CGSizeMake(400, 400)];
+    self.user[@"image"] = [self getPFFileFromImage:editedImage];
+    [self.user saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+        if(succeeded){
+            NSLog(@"successfully saved profile picture");
+            [self setProfilePicture];
+        } else {
+            NSLog(@"Error saving profile image: %@", error.localizedDescription);
+        }
+    }];
+    // Dismiss UIImagePickerController to go back to original view controller
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (PFFileObject *)getPFFileFromImage: (UIImage * _Nullable)image {
+    // check if image is not nil
+    if (!image) {
+        return nil;
+    }
+    NSData *imageData = UIImagePNGRepresentation(image);
+    // get image data and check if that is not nil
+    if (!imageData) {
+        return nil;
+    }
+    return [PFFileObject fileObjectWithName:@"image.png" data:imageData];
+}
+
+- (void)setProfilePicture {
+    PFFileObject *userImageFile = self.user[@"image"];
+    [userImageFile getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
+        if(!error){
+            self.restaurantProfileImage.image = [UIImage imageWithData:imageData];
+        }
+    }];
+
+//    self.restaurantProfileImage.image = self.user[@"image"];
+//    [self.restaurantProfileImage loadInBackground];
+}
 
 /*
 #pragma mark - Navigation
