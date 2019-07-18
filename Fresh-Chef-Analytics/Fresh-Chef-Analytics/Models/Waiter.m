@@ -23,7 +23,7 @@
 + (nonnull NSString *)parseClassName {
     return @"Waiter";
 }
-+ (void) addNewWaiter: ( NSString * _Nullable )name withYears: ( NSNumber * _Nullable )years withCompletion: (PFBooleanResultBlock  _Nullable)completion {
++ (Waiter *) addNewWaiter: ( NSString * _Nullable )name withYears: ( NSNumber * _Nullable )years withCompletion: (PFBooleanResultBlock  _Nullable)completion {
     Waiter *newWaiter = [Waiter new];
     
     // Uncomment when sign up/log in works //
@@ -38,8 +38,9 @@
     newWaiter.tipsMade = @(0);
     newWaiter.comments = [[NSArray alloc] init];
     [newWaiter saveInBackgroundWithBlock:completion];
+    return newWaiter;
 }
-+ (void) addNewWaiter: ( NSString * _Nullable )name withYears: ( NSNumber * _Nullable )years withImage: ( UIImage * _Nullable )image withCompletion: (PFBooleanResultBlock  _Nullable)completion {
++ (Waiter *) addNewWaiter: ( NSString * _Nullable )name withYears: ( NSNumber * _Nullable )years withImage: ( UIImage * _Nullable )image withCompletion: (PFBooleanResultBlock  _Nullable)completion {
     Waiter *newWaiter = [Waiter new];
     
     // Uncomment when sign up/log in works //
@@ -54,6 +55,7 @@
     newWaiter.tipsMade = @(0);
     newWaiter.comments = [[NSArray alloc] init];
     [newWaiter saveInBackgroundWithBlock:completion];
+    return newWaiter;
 }
 + (PFFileObject *)getPFFileFromImage: (UIImage * _Nullable)image {
     

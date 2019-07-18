@@ -22,8 +22,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSNumber *yearsWorked;
 @property (nonatomic, strong) NSNumber *tipsMade;
 @property (nonatomic, strong) NSArray *comments;
-+ (void) addNewWaiter: ( NSString * _Nullable )name withYears: ( NSNumber * _Nullable )years withImage: ( UIImage * _Nullable )image withCompletion: (PFBooleanResultBlock  _Nullable)completion;
-+ (void) addNewWaiter: ( NSString * _Nullable )name withYears: ( NSNumber * _Nullable )years withCompletion: (PFBooleanResultBlock  _Nullable)completion;
++ (Waiter *) addNewWaiter: ( NSString * _Nullable )name withYears: ( NSNumber * _Nullable )years withImage: ( UIImage * _Nullable )image withCompletion: (PFBooleanResultBlock  _Nullable)completion;
++ (Waiter *) addNewWaiter: ( NSString * _Nullable )name withYears: ( NSNumber * _Nullable )years withCompletion: (PFBooleanResultBlock  _Nullable)completion;
 @end
 
 NS_ASSUME_NONNULL_END

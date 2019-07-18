@@ -10,6 +10,9 @@
 
 @interface FunFormViewController () <UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *menuRatings;
+@property (weak, nonatomic) IBOutlet UILabel *waiterNameLabel;
+
+@property (weak, nonatomic) IBOutlet UIImageView *waiterPic;
 
 @end
 
@@ -19,6 +22,8 @@
     [super viewDidLoad];
     self.menuRatings.delegate = self;
     self.menuRatings.dataSource = self;
+    self.waiterNameLabel.text = self.waiterName;
+    
     // Do any additional setup after loading the view.
 }
 
@@ -29,33 +34,39 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     FunTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier: @"Fun"];
     order *order = self.customerOrder[indexPath.row];
-    cell.dish = order.dish;
+    cell.order = order;
     cell.dishName.text = order.dish.name;
     cell.dishType.text = order.dish.type;
     cell.dishDescription.text = order.dish.dishDescription;
     cell.amount.text = [NSString stringWithFormat:@"%.0f", order.amount];
-    cell.image = nil;
-    
-//
-//    @property (strong, nonatomic) Dish *dish;
-//    @property (weak, nonatomic) IBOutlet UILabel *dishName;
-//    @property (weak, nonatomic) IBOutlet UILabel *dishType;
-//    @property (weak, nonatomic) IBOutlet UILabel *dishDescription;
-//    @property (weak, nonatomic) IBOutlet UIImageView *image;
-//    @property (weak, nonatomic) IBOutlet UILabel *amount;
-//    cell.type.text = dish.type;
-//    cell.stepper.dish = dish;
-//    cell.stepper.value = [self searchForAmount:self.customerOrder withDish:dish];
-//    cell.dishDescription.text = dish.dishDescription;
-//    PFFileObject *dishImageFile = (PFFileObject *)dish.image;
-//    [dishImageFile getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
-//        if(!error){
-//            cell.image.image = [UIImage imageWithData:imageData];
-//        }
-//    }];
-//    cell.amount.text = [NSString stringWithFormat:@"%.0f", cell.stepper.value];
+    PFFileObject *dishImageFile = (PFFileObject *)order.dish.image;
+    [dishImageFile getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
+        if(!error){
+            cell.image.image = [UIImage imageWithData:imageData];
+        }
+    }];
     return cell;
 }
+- (IBAction)didSubmit:(UIButton *)sender {
+    [self updateDishesWithOrder:self.customerOrder];
+     [self performSegueWithIdentifier:@"toReceipt" sender:nil];
+}
+- (void) updateDishesWithOrder: ( NSMutableArray <order*> *)orderList{
+    for (int i = 0; i < orderList.count; i++){
+        if (orderList[i].customerRating != -1){
+            float totalRating = [orderList[i].dish.rating floatValue];
+            orderList[i].dish.rating = [NSNumber numberWithFloat: (orderList[i].customerRating + totalRating)];
+        }
+        if (!([orderList[i].customerComments isEqualToString:@""])){
+            orderList[i].dish.comments=[orderList[i].dish.comments arrayByAddingObject:orderList[i].customerComments];
+        }
+        float totalFrequency = [orderList[i].dish.orderFrequency floatValue];
+        orderList[i].dish.orderFrequency = [NSNumber numberWithFloat: (orderList[i].amount + totalFrequency)];
+        [orderList[i].dish saveInBackground];
+    }
+}
+
+
 /*
 #pragma mark - Navigation
 
@@ -65,5 +76,6 @@
     // Pass the selected object to the new view controller.
 }
 */
+
 
 @end
