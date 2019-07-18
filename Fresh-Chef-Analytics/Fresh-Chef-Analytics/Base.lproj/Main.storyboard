@@ -308,8 +308,8 @@
                                     <segue destination="EbG-Zx-Unn" kind="show" id="MMn-P7-QOu"/>
                                 </connections>
                             </button>
-                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="profile_tab" translatesAutoresizingMaskIntoConstraints="NO" id="O38-GS-DPD">
-                                <rect key="frame" x="63" y="187" width="240" height="128"/>
+                            <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="profile_tab" translatesAutoresizingMaskIntoConstraints="NO" id="O38-GS-DPD">
+                                <rect key="frame" x="63" y="187" width="240" height="159"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <gestureRecognizers/>
                                 <connections>
@@ -351,8 +351,16 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.40000000000000002" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Tap to Edit" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rTE-KO-oIA">
-                                <rect key="frame" x="203" y="293" width="82" height="21"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P6E-nN-b1J">
+                                <rect key="frame" x="159" y="715" width="48" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Logout"/>
+                                <connections>
+                                    <action selector="didTapLogout:" destination="oPt-aN-7eF" eventType="touchUpInside" id="aXr-zS-rf2"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.40000000000000002" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Tap to Edit" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rTE-KO-oIA">
+                                <rect key="frame" x="134" y="246" width="100" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.78689940680000003" green="0.80025415379999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -368,10 +376,11 @@
                             <outletCollection property="gestureRecognizers" destination="WFV-9k-VHE" appends="YES" id="ppO-qI-eKn"/>
                         </connections>
                     </view>
+                    <toolbarItems/>
                     <navigationItem key="navigationItem" title="Profile" id="6fq-Ft-TGT">
-                        <barButtonItem key="leftBarButtonItem" title="Logout" id="9MB-lc-y7t">
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="Xzg-GN-LbH">
                             <connections>
-                                <action selector="didTapLogout:" destination="oPt-aN-7eF" id="XTZ-vL-Oi6"/>
+                                <action selector="didTapCancel:" destination="oPt-aN-7eF" id="ib4-zX-LfJ"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Edit" id="iyW-hx-2JC">
@@ -380,8 +389,11 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="cancelButton" destination="Xzg-GN-LbH" id="8bo-V9-p59"/>
                         <outlet property="editButton" destination="iyW-hx-2JC" id="IaJ-AK-C1d"/>
+                        <outlet property="logoutButton" destination="P6E-nN-b1J" id="68H-dB-u1f"/>
                         <outlet property="restaurantCategoryField" destination="8kZ-yh-Uor" id="BWX-e8-NUM"/>
                         <outlet property="restaurantCategoryLabel" destination="GF2-RC-xDN" id="NUL-UU-brh"/>
                         <outlet property="restaurantNameField" destination="uoW-xZ-jGl" id="soT-dK-pBJ"/>
@@ -404,7 +416,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1180" y="2348"/>
+            <point key="canvasLocation" x="1179.7101449275362" y="2347.0982142857142"/>
         </scene>
         <!--Edit Menu View Controller-->
         <scene sceneID="Ql2-c2-ij3">
@@ -1962,7 +1974,6 @@
         <image name="profile_tab" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="hoJ-de-heN"/>
         <segue reference="VpL-yV-74Y"/>
     </inferredMetricsTieBreakers>
 </document>
