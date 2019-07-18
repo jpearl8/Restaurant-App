@@ -10,6 +10,7 @@
 #import "Parse/Parse.h"
 #import "Dish.h"
 #import "Waiter.h"
+#import "MenuManager.h"
 
 @interface AppDelegate ()
 
@@ -27,6 +28,14 @@
     }];
     
     [Parse initializeWithConfiguration:config];
+    // Code for persisting user across sessions
+    if (PFUser.currentUser) {
+    
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        [[MenuManager shared] fetchMenuItems:PFUser.currentUser];
+
+        self.window.rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"ManagerPasswordVCNavigationController"];
+    }
     
     // Testing to make sure dishes can be created //
 //

@@ -8,9 +8,12 @@
 
 #import "EditMenuViewController.h"
 #import "Dish.h"
+#import "MenuManager.h"
+#import "EditMenuCell.h"
 
 @interface EditMenuViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (strong, nonatomic) NSArray *dishes;
 
 @end
 
@@ -20,13 +23,11 @@
     [super viewDidLoad];
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
-    
-    
-    
+    self.dishes = [[MenuManager shared] dishes];
     // Do any additional setup after loading the view.
 }
 - (IBAction)saveItem:(id)sender {
-    [Dish postNewDish:self.nameField.text withType:self.typeField.text withDescription:self.descriptionView.text withPrice:[NSNumber numberWithFloat:[self.priceField.text floatValue]] withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
+    Dish * newDish = [Dish postNewDish:self.nameField.text withType:self.typeField.text withDescription:self.descriptionView.text withPrice:[NSNumber numberWithFloat:[self.priceField.text floatValue]] withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
         if (succeeded)
         {
             // Here we should add the table view reload so new value pops up
@@ -36,17 +37,43 @@
             NSLog(@"%@", error.localizedDescription);
         }
     }];
+    [self didAddItem:newDish];
+
+}
+- (void) didAddItem: (Dish *) dish
+{
+    NSArray *newMenu = [self.dishes arrayByAddingObject:dish];
+    self.dishes = newMenu;
+    [self.tableView reloadData];
+}
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    EditMenuCell *cell = [tableView dequeueReusableCellWithIdentifier:@"EditMenuCell" forIndexPath:indexPath];
+    Dish *dish = self.dishes[indexPath.row];
+    cell.dishName.text = dish.name;
+    cell.dishType.text = dish.type;
+    cell.dishPrice.text = [NSString stringWithFormat:@"%@", dish.price];
+    cell.dishRating.text = [NSString stringWithFormat:@"%@", dish.rating];
+    cell.dishFrequency.text = [NSString stringWithFormat:@"%@", dish.orderFrequency];
+    cell.dishDescription.text = dish.dishDescription;
+    return cell;
 }
 
+- (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return self.dishes.count;
+}
+
+
+// Table View Protocol Methods
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 @end

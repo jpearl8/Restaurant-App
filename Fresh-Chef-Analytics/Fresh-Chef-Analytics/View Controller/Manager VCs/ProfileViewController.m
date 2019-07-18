@@ -7,6 +7,9 @@
 //
 
 #import "ProfileViewController.h"
+#import "Parse/Parse.h"
+#import "AppDelegate.h"
+#import "LoginViewController.h"
 
 @interface ProfileViewController ()
 
@@ -16,8 +19,42 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    // Set restaurant name, category and price labels
+    PFUser *currentUser = [PFUser currentUser];
+    self.restaurantNameLabel.text = currentUser[@"username"];
+    NSString *category = currentUser[@"category"];
+    
+    if(category != nil){ self.restaurantCategoryLabel.text = currentUser[@"category"];
+    } else {
+        self.restaurantCategoryLabel.text = @"Set Restaurant Category";
+    }
+    NSString *price = currentUser[@"priceRange"];
+    if (price != nil) {
+        self.restaurantPriceLabel.text = price;
+    } else {
+        self.restaurantPriceLabel.text = @"Set Restaurant Price Range";
+    }
 }
+
+- (IBAction)didTapLogout:(id)sender {
+    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    LoginViewController *loginViewController = [storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
+    appDelegate.window.rootViewController = loginViewController;
+    [PFUser logOutInBackgroundWithBlock:^(NSError * _Nullable error) {
+        // PFUser.current() will now be nil
+    }];
+}
+
+
+//
+//- (IBAction)didTapEditMenu:(id)sender {
+//    [self performSegueWithIdentifier:@"editMenuSegue" sender:nil];
+//}
+//
+//- (IBAction)didTapEditWaiterStaff:(id)sender {
+//    [self performSegueWithIdentifier:@"editWaiterStaffSegue" sender:nil];
+//}
 
 /*
 #pragma mark - Navigation
