@@ -157,18 +157,11 @@
     // Get the image captured by the UIImagePickerController
     UIImage *editedImage = info[UIImagePickerControllerEditedImage];
     // Resize image to avoid memory issues in Parse
+    //----------- Necessary???????????-----------------
+    
+    
 //    UIImage *resizedImage = [self resizeImage:editedImage withSize:CGSizeMake(400, 400)];
-
-    [self.user saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
-        if(succeeded){
-            NSLog(@"successfully saved profile picture");
-            //temporarily set profile picture until loaded
-            self.restaurantProfileImage.image = editedImage;
-//            [self setProfilePicture];
-        } else {
-            NSLog(@"Error saving profile image: %@", error.localizedDescription);
-        }
-    }];
+    self.restaurantProfileImage.image = editedImage;
     // Dismiss UIImagePickerController to go back to original view controller
     [self dismissViewControllerAnimated:YES completion:nil];
 }
