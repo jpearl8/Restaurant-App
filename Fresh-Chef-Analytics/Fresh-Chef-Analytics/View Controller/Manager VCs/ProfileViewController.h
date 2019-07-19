@@ -16,10 +16,12 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UILabel *restaurantNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *restaurantCategoryLabel;
 @property (weak, nonatomic) IBOutlet UILabel *restaurantPriceLabel;
+@property (weak, nonatomic) IBOutlet UILabel *restaurantEmailLabel;
 
 @property (weak, nonatomic) IBOutlet UITextField *restaurantNameField;
 @property (weak, nonatomic) IBOutlet UITextField *restaurantCategoryField;
 @property (weak, nonatomic) IBOutlet UITextField *restaurantPriceField;
+@property (weak, nonatomic) IBOutlet UITextField *restaurantEmailField;
 @property (weak, nonatomic) IBOutlet UILabel *tapToEditLabel;
 
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *editButton;

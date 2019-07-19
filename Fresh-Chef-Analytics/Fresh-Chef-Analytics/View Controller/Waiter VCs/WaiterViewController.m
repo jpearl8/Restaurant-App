@@ -36,7 +36,8 @@ pass final array on submit button of data table
 @property (strong, nonatomic) NSArray <Dish *>*filteredDishes;
 @property (strong, nonatomic) NSMutableArray <order *>*customerOrder;
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
-@property (weak, nonatomic) IBOutlet UILabel *customerNumber;
+@property (weak, nonatomic) IBOutlet UITextField *customerNumber;
+
 @property (strong, nonatomic) Waiter* waiter;
 
 
