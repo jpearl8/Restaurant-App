@@ -7,6 +7,7 @@
 //
 
 #import "FunFormViewController.h"
+#import "ReceiptViewController.h"
 
 @interface FunFormViewController () <UITableViewDelegate, UITableViewDataSource, UITextViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *menuRatings;
@@ -53,7 +54,7 @@
 }
 - (IBAction)didSubmit:(UIButton *)sender {
     [self updateWithOrder:self.customerOrder];
-     [self performSegueWithIdentifier:@"toReceipt" sender:nil];
+     [self performSegueWithIdentifier:@"toReceipt" sender:self];
 }
 - (void) updateWithOrder: ( NSMutableArray <order*> *)orderList{
     for (int i = 0; i < orderList.count; i++){
@@ -97,8 +98,9 @@
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    ReceiptViewController *recVC = [segue destinationViewController];
+    recVC.customerOrders = self.customerOrder;
+
 }
 
 

@@ -45,6 +45,7 @@
 		FF46E1A022DE436400E15A0E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FF46E19F22DE436400E15A0E /* main.m */; };
 		FF46E1AA22DE436400E15A0E /* Fresh_Chef_AnalyticsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FF46E1A922DE436400E15A0E /* Fresh_Chef_AnalyticsTests.m */; };
 		FF46E1B522DE436400E15A0E /* Fresh_Chef_AnalyticsUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = FF46E1B422DE436400E15A0E /* Fresh_Chef_AnalyticsUITests.m */; };
+		FF5924FF22E2155D00F66EC6 /* ReceiptTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FF5924FE22E2155D00F66EC6 /* ReceiptTableViewCell.m */; };
 		FF6EE1A322E01D85000AD729 /* order.m in Sources */ = {isa = PBXBuildFile; fileRef = FF6EE1A222E01D85000AD729 /* order.m */; };
 		FFB3224722DF9DF700BF966F /* WaitTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FFB3224622DF9DF700BF966F /* WaitTableViewCell.m */; };
 		FFF1C48D22E02A8200C2AC03 /* specialStepper.m in Sources */ = {isa = PBXBuildFile; fileRef = FFF1C48C22E02A8200C2AC03 /* specialStepper.m */; };
@@ -146,6 +147,8 @@
 		FF46E1B022DE436400E15A0E /* Fresh-Chef-AnalyticsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Fresh-Chef-AnalyticsUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF46E1B422DE436400E15A0E /* Fresh_Chef_AnalyticsUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Fresh_Chef_AnalyticsUITests.m; sourceTree = "<group>"; };
 		FF46E1B622DE436400E15A0E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FF5924FD22E2155D00F66EC6 /* ReceiptTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReceiptTableViewCell.h; sourceTree = "<group>"; };
+		FF5924FE22E2155D00F66EC6 /* ReceiptTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReceiptTableViewCell.m; sourceTree = "<group>"; };
 		FF6EE1A122E01D85000AD729 /* order.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = order.h; sourceTree = "<group>"; };
 		FF6EE1A222E01D85000AD729 /* order.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = order.m; sourceTree = "<group>"; };
 		FFB3224522DF9DF700BF966F /* WaitTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = WaitTableViewCell.h; path = "Fresh-Chef-Analytics/View Controller/Waiter VCs/WaitTableViewCell.h"; sourceTree = SOURCE_ROOT; };
@@ -216,6 +219,8 @@
 		A535D7B522DE6B92002B79CA /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				FF5924FD22E2155D00F66EC6 /* ReceiptTableViewCell.h */,
+				FF5924FE22E2155D00F66EC6 /* ReceiptTableViewCell.m */,
 				FFF1C48E22E03B5300C2AC03 /* FunTableViewCell.h */,
 				FFF1C48F22E03B5300C2AC03 /* FunTableViewCell.m */,
 				FFB3224522DF9DF700BF966F /* WaitTableViewCell.h */,
@@ -599,6 +604,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FF5924FF22E2155D00F66EC6 /* ReceiptTableViewCell.m in Sources */,
 				B6D7B35C22DF95BA002093CB /* ManagerLoginViewController.m in Sources */,
 				FF03BF5F22DEA19100719E8C /* MenuDataViewController.m in Sources */,
 				A535D7BC22DE8FB2002B79CA /* (null) in Sources */,
