@@ -79,11 +79,14 @@
 - (void)editMenuCell:(EditMenuCell *)editMenuCell didTap:(Dish *)dish
 {
     [[MenuManager shared] removeDishFromTable:dish withCompletion:^(NSMutableDictionary * _Nonnull categoriesOfDishes, NSError * _Nonnull error) {
-        if (error!=nil)
+        if (error==nil)
         {
+            NSLog(@"Step 5");
+
+            NSLog(@"Updating ui");
             self.categoriesOfDishes = categoriesOfDishes;
             self.categories = [self.categoriesOfDishes allKeys];
-
+            
             //[self updateLocalFromData];
             [self.tableView reloadData];
         }

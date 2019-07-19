@@ -33,8 +33,12 @@
     if (PFUser.currentUser) {
     
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-        [[MenuManager shared] fetchMenuItems:PFUser.currentUser];
-        [[WaiterManager shared] fetchWaiters:PFUser.currentUser];
+        [[MenuManager shared] fetchMenuItems:PFUser.currentUser withCompletion:^(NSMutableDictionary * _Nonnull categoriesOfDishes, NSError * _Nullable error) {
+            if (error!=nil)
+            {
+                NSLog(@"fetched restaurant's data");
+            }
+        }];        [[WaiterManager shared] fetchWaiters:PFUser.currentUser];
         self.window.rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"ManagerPasswordVCNavigationController"];
     }
     

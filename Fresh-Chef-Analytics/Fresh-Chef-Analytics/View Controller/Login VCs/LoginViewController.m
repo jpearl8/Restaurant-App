@@ -34,7 +34,13 @@
             NSLog(@"User logged in successfully");
             // display view controller that needs to shown after successful login
             user[@"types"] = [[NSArray alloc] init];
-            [[MenuManager shared] fetchMenuItems:user];
+            [[MenuManager shared] fetchMenuItems:user withCompletion:^(NSMutableDictionary * _Nonnull categoriesOfDishes, NSError * _Nullable error) {
+                if (error!=nil)
+                {
+                    NSLog(@"fetched restaurant's data");
+                }
+            }];
+            
             [[WaiterManager shared] fetchWaiters:user];
             // Testing to make sure dishes can be created //
             //
