@@ -8,12 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import "order.h"
+#import "Waiter.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface ElegantFormViewController : UIViewController
 @property (strong, nonatomic) NSMutableArray <order *>*customerOrder;
-@property (strong, nonatomic) NSString *waiterName;
+@property (strong, nonatomic) Waiter *waiter;
 @property (strong, nonatomic) NSString *customerNumber;
 @end
 
