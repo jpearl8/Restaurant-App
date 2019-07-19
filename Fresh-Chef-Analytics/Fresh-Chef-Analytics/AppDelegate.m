@@ -36,9 +36,15 @@
         [[MenuManager shared] fetchMenuItems:PFUser.currentUser withCompletion:^(NSMutableDictionary * _Nonnull categoriesOfDishes, NSError * _Nullable error) {
             if (error!=nil)
             {
-                NSLog(@"fetched restaurant's data");
+                NSLog(@"fetched restaurant's menu");
             }
-        }];        [[WaiterManager shared] fetchWaiters:PFUser.currentUser];
+        }];
+        [[WaiterManager shared] fetchWaiters:PFUser.currentUser withCompletion:^(NSError * _Nullable error) {
+            if (!error)
+            {
+                NSLog(@"fetched restaurant's waiters");
+            }
+        }];
         self.window.rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"ManagerPasswordVCNavigationController"];
     }
     
