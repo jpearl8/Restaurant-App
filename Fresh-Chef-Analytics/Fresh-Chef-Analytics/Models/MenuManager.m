@@ -33,7 +33,7 @@
         
     }];
 }
-- (void) removeDishFromTable : (Dish *) delDish withCompletion:(void(^)(NSDictionary *categoriesOfDishes, NSError *error))completion
+- (void) removeDishFromTable : (Dish *) delDish withCompletion:(void(^)(NSMutableDictionary *categoriesOfDishes, NSError *error))completion
 {
     PFQuery *dishQuery;
     dishQuery = [Dish query];
