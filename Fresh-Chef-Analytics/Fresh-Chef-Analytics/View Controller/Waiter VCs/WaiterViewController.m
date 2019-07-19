@@ -132,8 +132,8 @@ pass final array on submit button of data table
 //    }
     PFQuery *dishQuery = [Dish query];
     //[dishQuery includeKey:@"restaurantID"];
-    // id test = [PFUser currentUser].objectId;
-    NSString *test = @"XuLMO3Jh3r";
+    NSString* test = [PFUser currentUser].objectId;
+    //NSString *test = @"XuLMO3Jh3r";
     [dishQuery whereKey:@"restaurantID" containsString:test];
     // fetch data asynchronously
     [dishQuery findObjectsInBackgroundWithBlock:^(NSArray<Dish *> * _Nullable dishes, NSError * _Nullable error) {
@@ -157,8 +157,8 @@ pass final array on submit button of data table
 -(void)runWaiterQuery{
     PFQuery *waiterQuery = [Waiter query];
     //[dishQuery includeKey:@"restaurantID"];
-    // id test = [PFUser currentUser].objectId;
-    NSString *test = @"XuLMO3Jh3r";
+    NSString* test = [PFUser currentUser].objectId;
+    //NSString *test = @"XuLMO3Jh3r";
     [waiterQuery whereKey:@"restaurantID" containsString:test];
     // fetch data asynchronously
     [waiterQuery findObjectsInBackgroundWithBlock:^(NSArray<Waiter *> * _Nullable waiters, NSError * _Nullable error) {

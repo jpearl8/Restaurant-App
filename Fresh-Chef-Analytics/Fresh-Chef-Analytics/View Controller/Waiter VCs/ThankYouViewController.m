@@ -7,16 +7,23 @@
 //
 
 #import "ThankYouViewController.h"
+#import "Parse/Parse.h"
 
 @interface ThankYouViewController ()
+@property (weak, nonatomic) IBOutlet UILabel *restaurantName;
 
 @end
 
 @implementation ThankYouViewController
 
 - (void)viewDidLoad {
+    PFUser *currentUser = [PFUser currentUser];
+    self.restaurantName.text = currentUser.username;
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+}
+- (IBAction)didContinue:(id)sender {
+    [self performSegueWithIdentifier:@"toNext" sender:self];
 }
 
 /*
