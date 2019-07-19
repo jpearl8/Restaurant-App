@@ -1551,6 +1551,7 @@
                                             <outlet property="price" destination="nwu-kI-uec" id="46n-sT-qeI"/>
                                             <outlet property="rating" destination="w8J-Cu-SYS" id="bZ7-dd-4qE"/>
                                             <outlet property="type" destination="fbe-c9-RtM" id="1QH-9b-jZZ"/>
+                                            <segue destination="gl1-Ag-ae1" kind="show" identifier="dishDetails" id="2ao-at-IwH"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -1580,7 +1581,6 @@
                     <navigationItem key="navigationItem" id="4an-xR-03C"/>
                     <connections>
                         <outlet property="menuList" destination="eFu-XR-8oP" id="v0F-WP-Q0D"/>
-                        <segue destination="gl1-Ag-ae1" kind="show" id="r3R-H8-hdI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lBY-Yr-Z70" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1787,6 +1787,7 @@
                                             <outlet property="waiterTabletops" destination="nD3-R8-6Zn" id="y0Q-MT-ts1"/>
                                             <outlet property="waiterTime" destination="EGa-uB-rN5" id="7J6-Ue-CUh"/>
                                             <outlet property="waiterTips" destination="zoi-tX-COb" id="kXK-vs-Nkr"/>
+                                            <segue destination="8oz-Ux-idU" kind="show" identifier="waiterDetails" id="cmi-UF-eNz"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -1822,8 +1823,8 @@
                     </view>
                     <navigationItem key="navigationItem" id="Syc-br-INy"/>
                     <connections>
+                        <outlet property="searchBar" destination="jWN-cr-Ykq" id="paB-16-5y6"/>
                         <outlet property="tableView" destination="xh9-4R-Uw7" id="32w-49-oVu"/>
-                        <segue destination="8oz-Ux-idU" kind="show" id="7PE-ZU-4gB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Lp-Tw-GUk" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1925,10 +1926,26 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Average Tips" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iBH-rk-ywj">
+                                <rect key="frame" x="148" y="259" width="99" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="4DF-Dl-UTq"/>
                     </view>
+                    <connections>
+                        <outlet property="waiterName" destination="itm-a3-EzC" id="usu-NA-66n"/>
+                        <outlet property="waiterNumCustomers" destination="lap-i4-Efr" id="mMT-tX-vLf"/>
+                        <outlet property="waiterProfileImage" destination="Qwy-kU-fwe" id="IEi-pB-lp0"/>
+                        <outlet property="waiterRating" destination="gHJ-Xo-aBZ" id="3vd-de-ynL"/>
+                        <outlet property="waiterTabletops" destination="fdj-jo-pYc" id="tNP-2I-216"/>
+                        <outlet property="waiterTime" destination="AOC-4K-ZgB" id="Vob-hb-9nT"/>
+                        <outlet property="waiterTips" destination="iBH-rk-ywj" id="zqy-56-jAZ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="obY-y6-btA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
