@@ -23,10 +23,13 @@
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     self.roster = [[WaiterManager shared] roster];
+    //make profile pictures round
+    self.profileImage.layer.cornerRadius = 0.5 * self.profileImage.bounds.size.height;
+    self.profileImage.layer.masksToBounds = YES;
     // Do any additional setup after loading the view.
 }
 - (IBAction)saveWaiter:(id)sender {
-    Waiter *newWaiter = [Waiter addNewWaiter:self.nameField.text withYears:[NSNumber numberWithFloat:[self.yearsField.text floatValue]] withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
+    Waiter *newWaiter = [Waiter addNewWaiter:self.nameField.text withYears:[NSNumber numberWithFloat:[self.yearsField.text floatValue]] withImage:self.profileImage.image withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
         if (succeeded)
         {
             NSLog(@"yay");
@@ -37,8 +40,32 @@
         }
     }];
     [self didAddWaiter:newWaiter];
-    
 }
+
+- (IBAction)didTapWaiterImage:(id)sender {
+    NSLog(@"tapped camera image");
+    UIImagePickerController *imagePickerVC = [UIImagePickerController new];
+    imagePickerVC.delegate = self;
+    imagePickerVC.allowsEditing = YES;
+    // if camera is available, use it, else, use camera roll
+    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+        imagePickerVC.sourceType = UIImagePickerControllerSourceTypeCamera;
+    }
+    else {
+        NSLog(@"Camera 🚫 available so we will use photo library instead");
+        imagePickerVC.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    }
+    [self presentViewController:imagePickerVC animated:YES completion:nil];
+}
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
+    // Get the image captured by the UIImagePickerController
+    UIImage *editedImage = info[UIImagePickerControllerEditedImage];
+    self.profileImage.image = editedImage;
+    // Dismiss UIImagePickerController to go back to original view controller
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
 - (void) didAddWaiter: (Waiter *) waiter
 {
     [[WaiterManager shared] addWaiter:waiter];
@@ -56,6 +83,17 @@
     cell.waiterTableTops.text = [NSString stringWithFormat:@"%@", waiter.tableTops];
     cell.waiterNumCustomers.text = [NSString stringWithFormat:@"%@", waiter.numOfCustomers];
     cell.waiterTips.text = [NSString stringWithFormat:@"%@", waiter.tipsMade];
+    if(waiter.image!=nil){
+        [waiter.image getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
+            if(!error){
+                cell.profileImage.image = [UIImage imageWithData:imageData];
+            } else {
+                NSLog(@"Error setting waiter image with error: %@", error.localizedDescription);
+            }
+        }];
+    } else {
+        cell.profileImage.image = nil;
+    }
     return cell;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section

@@ -8,10 +8,12 @@
 
 #import "ReceiptViewController.h"
 #import "ReceiptTableViewCell.h"
+#import "Parse/Parse.h"
 
 @interface ReceiptViewController () <UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *receiptTable;
 @property (weak, nonatomic) IBOutlet UILabel *totalPrice;
+@property (assign, nonatomic) float priceTracker;
 @property (weak, nonatomic) IBOutlet UITextField *tip;
 @property (weak, nonatomic) IBOutlet UILabel *finalPrice;
 @property (weak, nonatomic) IBOutlet UILabel *date;
@@ -27,6 +29,12 @@
     [super viewDidLoad];
     self.receiptTable.dataSource = self;
     self.receiptTable.delegate = self;
+    PFUser *currentUser = [PFUser currentUser];
+    self.restaurantName.text = currentUser.username;
+    self.restaurantAddress.text = currentUser[@"address"];
+    self.date.text = self.customerOrder[0].waiter[@"updatedAt"];
+    
+    //NSString *test = @"XuLMO3Jh3r";
     // Do any additional setup after loading the view.
 }
 
@@ -40,8 +48,13 @@
     cell.order = order;
     cell.dishName.text = order.dish.name;
     cell.dishAmount.text = [NSString stringWithFormat:@"%.0f", order.amount];
-    cell.calculatedPrice.text = [NSString stringWithFormat:@"%.0f", ([order.dish.price floatValue] * order.amount)];
+    cell.calculatedPrice.text = [NSString stringWithFormat:@"%.2f", ([order.dish.price floatValue] * order.amount)];
+    self.priceTracker += [cell.calculatedPrice.text floatValue];
+    self.totalPrice.text = [NSString stringWithFormat:@"%.2f", self.priceTracker];
     return cell;
+}
+- (IBAction)editingChange:(id)sender {
+    self.finalPrice.text = [NSString stringWithFormat:@"%.2f", ([self.tip.text floatValue] + self.priceTracker)];
 }
 /*
 #pragma mark - Navigation
@@ -52,5 +65,12 @@
     // Pass the selected object to the new view controller.
 }
 */
+- (IBAction)didSubmit:(id)sender {
+    float pastTotalTips = [self.customerOrder[0].waiter.tipsMade floatValue];
+    self.customerOrder[0].waiter.tipsMade = [NSNumber numberWithFloat: ([self.tip.text floatValue] + pastTotalTips)];
+    [self.customerOrder[0].waiter saveInBackground];
+    [self performSegueWithIdentifier:@"toThankYou" sender:self];
+
+}
 
 @end

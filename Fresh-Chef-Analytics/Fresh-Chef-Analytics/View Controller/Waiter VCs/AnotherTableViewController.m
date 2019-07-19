@@ -18,6 +18,9 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 }
+- (IBAction)didClick:(id)sender {
+    [self performSegueWithIdentifier:@"toBeginning" sender:self];
+}
 
 /*
 #pragma mark - Navigation

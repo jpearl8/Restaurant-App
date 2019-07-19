@@ -10,6 +10,7 @@ target 'Fresh-Chef-Analytics' do
   pod 'BEMCheckBox', '~> 1.4'
   pod 'MKDropdownMenu'
   pod 'UITextView+Placeholder'
+  pod 'DateTools'
 
 
 
