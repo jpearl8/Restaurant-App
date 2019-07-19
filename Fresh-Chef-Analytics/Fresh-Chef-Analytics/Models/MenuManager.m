@@ -18,8 +18,8 @@
     });
     return sharedManager;
 }
-
-- (void) fetchMenuItems : (PFUser *) restaurant {
+- (void)fetchMenuItems:(PFUser *)restaurant withCompletion:(void (^)(NSMutableDictionary * _Nonnull, NSError * _Nullable))fetchedDishes
+{
     // construct PFQuery
     PFQuery *dishQuery;
     dishQuery = [Dish query];
@@ -30,33 +30,49 @@
     [dishQuery findObjectsInBackgroundWithBlock:^(NSArray<Dish *> * _Nullable dishes, NSError * _Nullable error) {
         self.dishes = dishes;
         [self categorizeDishes];
+        NSLog(@"Step 3");
         
+        fetchedDishes(self.categoriesOfDishes, nil);
     }];
+
+
 }
-- (void) removeDishFromTable : (Dish *) delDish withCompletion:(void(^)(NSMutableDictionary *categoriesOfDishes, NSError *error))completion
+- (void)removeDishFromTable:(Dish *)delDish withCompletion:(void (^)(NSMutableDictionary * _Nonnull, NSError * _Nullable))removedDish
 {
     PFQuery *dishQuery;
     dishQuery = [Dish query];
     [dishQuery whereKey:@"objectId" equalTo:delDish.objectId];
-    [dishQuery findObjectsInBackgroundWithBlock:^(NSArray * _Nullable dishes, NSError * _Nullable error) {
+    [dishQuery findObjectsInBackgroundWithBlock:^(NSArray * _Nullable dishes, NSError *  error) {
         for (Dish *dish in dishes)
         {
             [dish deleteInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
                 if (succeeded)
                 {
                     NSLog(@"Object removed");
-                    [self fetchMenuItems:PFUser.currentUser];
-                    completion(self.categoriesOfDishes, nil);
+                    [self fetchMenuItems:PFUser.currentUser withCompletion:^(NSMutableDictionary * _Nonnull categoriesOfDishes, NSError * _Nullable error) {
+                        if (error==nil)
+                        {
+                            self.categoriesOfDishes = categoriesOfDishes;
+                            NSLog(@"New menu successfuly fetched");
+                            NSLog(@"Step 4");
+
+                            removedDish(self.categoriesOfDishes, nil);
+
+                        }
+                    }];
                 }
                 else
                 {
                     NSLog(@"%@", error.localizedDescription);
-                    completion(self.categoriesOfDishes, error);
+                    
                 }
             }];
         }
     }];
+
+
 }
+
 - (void) categorizeDishes
 {
     self.categoriesOfDishes = [[NSMutableDictionary alloc] init];
@@ -66,6 +82,7 @@
     {
         [self addDishToDict:dish toArray:dishesOfType];
     }
+    NSLog(@"Step 2");
 }
 
 - (void) addDishToDict : (Dish *) dish toArray: (NSArray *) dishesOfType
