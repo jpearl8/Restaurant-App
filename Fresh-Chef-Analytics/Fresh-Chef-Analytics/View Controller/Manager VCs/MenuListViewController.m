@@ -42,12 +42,16 @@
     cell.orderFrequency.text = [dish.orderFrequency stringValue];
     cell.type.text = dish.type;
     cell.price.text = [dish.price stringValue];
-    PFFileObject *dishImageFile = (PFFileObject *)dish.image;
-    [dishImageFile getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
-        if(!error){
-            cell.image.image = [UIImage imageWithData:imageData];
-        }
-    }];
+    if(dish.image != nil){
+        PFFileObject *dishImageFile = (PFFileObject *)dish.image;
+        [dishImageFile getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
+            if(!error){
+                cell.image.image = [UIImage imageWithData:imageData];
+            }
+        }];
+    } else {
+        cell.image.image = [UIImage imageNamed:@"image_placeholder"];
+    }
     return cell;
 }
 
