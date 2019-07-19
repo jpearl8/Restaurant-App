@@ -17,7 +17,9 @@
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
-
+    //make profile pictures round
+    self.profileImage.layer.cornerRadius = 0.5 * self.profileImage.bounds.size.height;
+    self.profileImage.layer.masksToBounds = YES;
     // Configure the view for the selected state
 }
 
