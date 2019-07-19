@@ -23,6 +23,9 @@
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     self.roster = [[WaiterManager shared] roster];
+    //make profile pictures round
+    self.profileImage.layer.cornerRadius = 0.5 * self.profileImage.bounds.size.height;
+    self.profileImage.layer.masksToBounds = YES;
     // Do any additional setup after loading the view.
 }
 - (IBAction)saveWaiter:(id)sender {
