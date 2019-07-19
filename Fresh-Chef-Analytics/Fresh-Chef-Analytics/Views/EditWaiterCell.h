@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Waiter.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -18,7 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UILabel *waiterTips;
 @property (weak, nonatomic) IBOutlet UILabel *waiterTableTops;
 @property (weak, nonatomic) IBOutlet UILabel *waiterNumCustomers;
-
+@property (strong, nonatomic) Waiter *waiter;
 @end
 
 NS_ASSUME_NONNULL_END

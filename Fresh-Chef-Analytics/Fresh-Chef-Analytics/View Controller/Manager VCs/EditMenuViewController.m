@@ -25,8 +25,8 @@
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     self.dishes = [[MenuManager shared] dishes];
-    self.categoriesOfDishes = [[MenuManager shared] categoriesOfDishes];
-    self.categories = [self.categoriesOfDishes allKeys];
+    
+    [self updateLocalFromData];
 
     // Do any additional setup after loading the view.
 }
@@ -48,13 +48,23 @@
 {
     NSArray *dishesOfType;
     [[MenuManager shared] addDishToDict:dish toArray:dishesOfType];
+    self.categories = [self.categories arrayByAddingObject:dish.type];
     [self.tableView reloadData];
 }
+- (void)editMenuCell:(EditMenuCell *)editMenuCell didTap:(Dish *)dish
+{
+    [[MenuManager shared] removeDishFromTable:dish];
+    [self updateLocalFromData];
+    [self.tableView reloadData];
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSInteger section = indexPath.section;
     EditMenuCell *cell = [tableView dequeueReusableCellWithIdentifier:@"EditMenuCell" forIndexPath:indexPath];
+    cell.delegate = self;
     Dish *dish = self.categoriesOfDishes[ self.categories[section]][indexPath.row];
+    cell.dish = dish;
     cell.dishName.text = dish.name;
     cell.dishType.text = dish.type;
     cell.dishPrice.text = [NSString stringWithFormat:@"%@", dish.price];
@@ -75,8 +85,11 @@
     NSLog(@"%lu", (unsigned long)[self.categoriesOfDishes[self.categories[section]] count]);
     return [self.categoriesOfDishes[self.categories[section]] count];
 }
-
-
+- (void) updateLocalFromData
+{
+    self.categoriesOfDishes = [[MenuManager shared] categoriesOfDishes];
+    self.categories = [self.categoriesOfDishes allKeys];
+}
 // Table View Protocol Methods
 
 /*

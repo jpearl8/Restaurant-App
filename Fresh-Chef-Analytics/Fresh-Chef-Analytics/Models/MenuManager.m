@@ -32,6 +32,28 @@
         [self categorizeDishes];
     }];
 }
+- (void) removeDishFromTable : (Dish *) delDish
+{
+    PFQuery *dishQuery;
+    dishQuery = [Dish query];
+    [dishQuery whereKey:@"objectId" equalTo:delDish.objectId];
+    [dishQuery findObjectsInBackgroundWithBlock:^(NSArray * _Nullable dishes, NSError * _Nullable error) {
+        for (Dish *dish in dishes)
+        {
+            [dish deleteInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+                if (error)
+                {
+                    NSLog(@"%@", error.localizedDescription);
+                }
+                else
+                {
+                    NSLog(@"Object removed");
+                }
+            }];
+        }
+    }];
+    [self fetchMenuItems:PFUser.currentUser];
+}
 - (void) categorizeDishes
 {
     self.categoriesOfDishes = [[NSMutableDictionary alloc] init];

@@ -11,6 +11,7 @@
 #import "Dish.h"
 #import "Waiter.h"
 #import "MenuManager.h"
+#import "WaiterManager.h"
 
 @interface AppDelegate ()
 
@@ -33,7 +34,7 @@
     
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
         [[MenuManager shared] fetchMenuItems:PFUser.currentUser];
-
+        [[WaiterManager shared] fetchWaiters:PFUser.currentUser];
         self.window.rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"ManagerPasswordVCNavigationController"];
     }
     
