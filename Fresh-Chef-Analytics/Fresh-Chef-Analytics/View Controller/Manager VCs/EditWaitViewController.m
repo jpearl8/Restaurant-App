@@ -7,7 +7,6 @@
 //
 
 #import "EditWaitViewController.h"
-#import "Waiter.h"
 #import "WaiterManager.h"
 #import "EditWaiterCell.h"
 

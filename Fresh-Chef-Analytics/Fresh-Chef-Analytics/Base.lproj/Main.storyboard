@@ -1714,7 +1714,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="xh9-4R-Uw7">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="300" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="xh9-4R-Uw7">
                                 <rect key="frame" x="0.0" y="238" width="414" height="658"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1724,7 +1724,7 @@
                                     <textInputTraits key="textInputTraits"/>
                                 </searchBar>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="130" id="hYb-On-eAl">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="WaiterListCell" rowHeight="130" id="hYb-On-eAl" customClass="WaiterListTableViewCell">
                                         <rect key="frame" x="0.0" y="72" width="414" height="130"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="hYb-On-eAl" id="EQX-1z-u9B">
@@ -1779,6 +1779,15 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="waiterName" destination="KAv-Ee-Jf1" id="EtI-Jf-MNc"/>
+                                            <outlet property="waiterNumCustomers" destination="XME-ER-MLB" id="7bU-Ve-Gb9"/>
+                                            <outlet property="waiterProfileImage" destination="iQd-Xc-B4C" id="0EE-dX-BOK"/>
+                                            <outlet property="waiterRating" destination="ASL-yy-QJl" id="dBf-Mw-ESY"/>
+                                            <outlet property="waiterTabletops" destination="nD3-R8-6Zn" id="y0Q-MT-ts1"/>
+                                            <outlet property="waiterTime" destination="EGa-uB-rN5" id="7J6-Ue-CUh"/>
+                                            <outlet property="waiterTips" destination="zoi-tX-COb" id="kXK-vs-Nkr"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -1813,6 +1822,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="Syc-br-INy"/>
                     <connections>
+                        <outlet property="tableView" destination="xh9-4R-Uw7" id="32w-49-oVu"/>
                         <segue destination="8oz-Ux-idU" kind="show" id="7PE-ZU-4gB"/>
                     </connections>
                 </viewController>
