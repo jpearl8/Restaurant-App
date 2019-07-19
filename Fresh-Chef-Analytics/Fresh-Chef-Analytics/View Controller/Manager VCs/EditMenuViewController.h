@@ -11,7 +11,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface EditMenuViewController : UIViewController <EditMenuCellDelegate, UITableViewDelegate, UITableViewDataSource, UINavigationControllerDelegate>
+@interface EditMenuViewController : UIViewController <EditMenuCellDelegate, UITableViewDelegate, UITableViewDataSource, UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField *typeField;
 @property (weak, nonatomic) IBOutlet UITextField *nameField;

@@ -54,15 +54,15 @@
 }
 
 - (IBAction)didTapEdit:(id)sender {
-    // not implemented yet, should allow user to edit profile
+    /*
+     if button says edit then the profile will become editable and
+     if button says 'save' then the profile will save edits
+     */
     if(self.isEditable == NO){
         self.isEditable = YES;
         //change edit label to 'save' and logout button to 'cancel'
         self.editButton.title = @"Save";
-        //add logout --> cancel
-        //..............
-        
-        // show text fields and hide labels
+        // show text fields and cancel and hide labels
         [self showLabels:NO];
         //set text fields
         self.restaurantNameField.text = self.restaurantNameLabel.text;
@@ -77,6 +77,7 @@
         //save values to PFUser
         self.user[@"username"] = self.restaurantNameField.text;
         self.user[@"category"] = self.restaurantCategoryField.text;
+        self.user[@"image"] = [self getPFFileFromImage:self.restaurantProfileImage.image];
 //        self.user[@"price"] = self.restaurantPriceField;
         [self.user saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
             if(succeeded){
@@ -90,6 +91,13 @@
             }
         }];
     }
+}
+
+- (IBAction)didTapCancel:(id)sender {
+    [self showLabels:YES];
+    [self setProfilePicture];
+    self.isEditable = NO;
+    self.editButton.title = @"Edit";
 }
 
 -(void) showLabels: (BOOL)trueFalse {
@@ -108,6 +116,17 @@
     self.restaurantPriceField.enabled = !trueFalse;
     self.restaurantPriceField.hidden = trueFalse;
     self.tapToEditLabel.hidden = trueFalse;
+//    self.logoutButton.accessibilityElementsHidden = !trueFalse;
+    self.cancelButton.enabled = !trueFalse;
+//    self.logoutButton.enabled = trueFalse;
+    if(trueFalse == YES){
+        self.cancelButton.tintColor = UIColor.clearColor;
+//        self.logoutButton.tintColor = UIColor.;
+    } else {
+        self.cancelButton.tintColor = self.view.tintColor;
+//        self.logoutButton.tintColor = UIColor.clearColor;
+    }
+    
 }
 
 - (IBAction)didTapBackground:(id)sender {
@@ -138,16 +157,11 @@
     // Get the image captured by the UIImagePickerController
     UIImage *editedImage = info[UIImagePickerControllerEditedImage];
     // Resize image to avoid memory issues in Parse
+    //----------- Necessary???????????-----------------
+    
+    
 //    UIImage *resizedImage = [self resizeImage:editedImage withSize:CGSizeMake(400, 400)];
-    self.user[@"image"] = [self getPFFileFromImage:editedImage];
-    [self.user saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
-        if(succeeded){
-            NSLog(@"successfully saved profile picture");
-            [self setProfilePicture];
-        } else {
-            NSLog(@"Error saving profile image: %@", error.localizedDescription);
-        }
-    }];
+    self.restaurantProfileImage.image = editedImage;
     // Dismiss UIImagePickerController to go back to original view controller
     [self dismissViewControllerAnimated:YES completion:nil];
 }

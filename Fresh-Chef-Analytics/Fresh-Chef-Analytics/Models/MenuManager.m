@@ -30,9 +30,10 @@
     [dishQuery findObjectsInBackgroundWithBlock:^(NSArray<Dish *> * _Nullable dishes, NSError * _Nullable error) {
         self.dishes = dishes;
         [self categorizeDishes];
+        
     }];
 }
-- (void) removeDishFromTable : (Dish *) delDish
+- (void) removeDishFromTable : (Dish *) delDish withCompletion:(void(^)(NSDictionary *categoriesOfDishes, NSError *error))completion
 {
     PFQuery *dishQuery;
     dishQuery = [Dish query];
@@ -41,18 +42,20 @@
         for (Dish *dish in dishes)
         {
             [dish deleteInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
-                if (error)
+                if (succeeded)
                 {
-                    NSLog(@"%@", error.localizedDescription);
+                    NSLog(@"Object removed");
+                    [self fetchMenuItems:PFUser.currentUser];
+                    completion(self.categoriesOfDishes, nil);
                 }
                 else
                 {
-                    NSLog(@"Object removed");
+                    NSLog(@"%@", error.localizedDescription);
+                    completion(self.categoriesOfDishes, error);
                 }
             }];
         }
     }];
-    [self fetchMenuItems:PFUser.currentUser];
 }
 - (void) categorizeDishes
 {

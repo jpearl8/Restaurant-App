@@ -14,6 +14,9 @@ NS_ASSUME_NONNULL_BEGIN
 @interface order : NSObject
 @property (nonatomic, strong) Dish *dish;
 @property (nonatomic, assign) float amount;
+@property (nonatomic, assign) float customerRating;
+@property (nonatomic, strong) NSString *customerComments;
+
 +(order *)makeOrderItem: (Dish*)dish withAmount: (float)amount;
 @end
  
