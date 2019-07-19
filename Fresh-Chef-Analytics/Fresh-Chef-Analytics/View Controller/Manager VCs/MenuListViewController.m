@@ -28,15 +28,14 @@
     self.menuList.dataSource = self;
     self.menuList.delegate = self;
     self.dishes = [[MenuManager shared] dishes];
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.dishes.count;
+    self.categoriesOfDishes = [[MenuManager shared] categoriesOfDishes];
+    self.categories = [self.categoriesOfDishes allKeys];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSInteger section = indexPath.section;
     MenuListTableViewCell *cell = [self.menuList dequeueReusableCellWithIdentifier: @"Dish"];
-    Dish *dish =  self.dishes[indexPath.row];
+    Dish *dish = self.categoriesOfDishes[self.categories[section]][indexPath.row];
     cell.name.text = dish.name;
     cell.rating.text = [dish.rating stringValue];
     cell.orderFrequency.text = [dish.orderFrequency stringValue];
@@ -53,6 +52,19 @@
         cell.image.image = [UIImage imageNamed:@"image_placeholder"];
     }
     return cell;
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    return self.categoriesOfDishes.count;
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
+    return self.categories[section];
+}
+
+- (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    NSLog(@"%lu", (unsigned long)[self.categoriesOfDishes[self.categories[section]] count]);
+    return [self.categoriesOfDishes[self.categories[section]] count];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
