@@ -25,8 +25,8 @@
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     self.dishes = [[MenuManager shared] dishes];
-    self.categoriesOfDishes = [[MenuManager shared] categoriesOfDishes];
-    self.categories = [self.categoriesOfDishes allKeys];
+    
+    [self updateLocalFromData];
 
     // Do any additional setup after loading the view.
 }
@@ -73,14 +73,31 @@
 {
     NSArray *dishesOfType;
     [[MenuManager shared] addDishToDict:dish toArray:dishesOfType];
+    self.categories = [self.categories arrayByAddingObject:dish.type];
     [self.tableView reloadData];
+}
+- (void)editMenuCell:(EditMenuCell *)editMenuCell didTap:(Dish *)dish
+{
+    [[MenuManager shared] removeDishFromTable:dish withCompletion:^(NSDictionary * _Nonnull categoriesOfDishes, NSError * _Nonnull error) {
+        if (error!=nil)
+        {
+            [self updateLocalFromData];
+            [self.tableView reloadData];
+        }
+        else
+        {
+            NSLog(@"%@", error.localizedDescription);
+        }
+    }];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSInteger section = indexPath.section;
     EditMenuCell *cell = [tableView dequeueReusableCellWithIdentifier:@"EditMenuCell" forIndexPath:indexPath];
-    Dish *dish = self.categoriesOfDishes[ self.categories[section]][indexPath.row];
+    cell.delegate = self;
+    Dish *dish = self.categoriesOfDishes[self.categories[section]][indexPath.row];
+    cell.dish = dish;
     cell.dishName.text = dish.name;
     cell.dishType.text = dish.type;
     // set image if the dish has one
@@ -113,8 +130,11 @@
     NSLog(@"%lu", (unsigned long)[self.categoriesOfDishes[self.categories[section]] count]);
     return [self.categoriesOfDishes[self.categories[section]] count];
 }
-
-
+- (void) updateLocalFromData
+{
+    self.categoriesOfDishes = [[MenuManager shared] categoriesOfDishes];
+    self.categories = [self.categoriesOfDishes allKeys];
+}
 // Table View Protocol Methods
 
 /*

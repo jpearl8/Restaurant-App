@@ -42,14 +42,20 @@
 - (void) didAddWaiter: (Waiter *) waiter
 {
     [[WaiterManager shared] addWaiter:waiter];
+    self.roster = [[WaiterManager shared] roster];
     [self.tableView reloadData];
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     EditWaiterCell *cell = [tableView dequeueReusableCellWithIdentifier:@"EditWaiterCell" forIndexPath:indexPath];
     Waiter *waiter = self.roster[indexPath.row];
+    cell.waiter = waiter;
     cell.waiterName.text = waiter.name;
     cell.waiterYearsAt.text = [NSString stringWithFormat:@"%@", waiter.yearsWorked];
+    cell.waiterRating.text = [NSString stringWithFormat:@"%@", waiter.rating];
+    cell.waiterTableTops.text = [NSString stringWithFormat:@"%@", waiter.tableTops];
+    cell.waiterNumCustomers.text = [NSString stringWithFormat:@"%@", waiter.numOfCustomers];
+    cell.waiterTips.text = [NSString stringWithFormat:@"%@", waiter.tipsMade];
     return cell;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section

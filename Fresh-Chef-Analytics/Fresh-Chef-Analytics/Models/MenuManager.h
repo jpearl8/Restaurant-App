@@ -18,6 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 + (instancetype) shared;
 - (void) fetchMenuItems : (PFUser *) restaurant;
 - (void) addDishToDict : (Dish *) dish toArray: (NSArray *) dishesOfType;
+- (void) removeDishFromTable : (Dish *) delDish withCompletion:(void(^)(NSDictionary *categoriesOfDishes, NSError *error))completion;
 @end
 
 NS_ASSUME_NONNULL_END

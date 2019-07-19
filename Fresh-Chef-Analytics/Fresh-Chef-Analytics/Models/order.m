@@ -16,6 +16,9 @@
     myOrder.amount = amount;
     myOrder.customerRating = -1.0;
     myOrder.customerComments = @"";
+    myOrder.waiter = nil;
+    myOrder.waiterRating = -1.0;
+    myOrder.waiterReview = @"";
     return myOrder;
 }
 @end

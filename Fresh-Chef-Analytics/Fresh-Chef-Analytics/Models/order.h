@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "Dish.h"
+#import "Waiter.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -16,6 +17,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign) float amount;
 @property (nonatomic, assign) float customerRating;
 @property (nonatomic, strong) NSString *customerComments;
+@property (nonatomic, strong) Waiter *waiter;
+@property (nonatomic, assign) float waiterRating;
+@property (nonatomic, strong) NSString *waiterReview;
 
 +(order *)makeOrderItem: (Dish*)dish withAmount: (float)amount;
 @end

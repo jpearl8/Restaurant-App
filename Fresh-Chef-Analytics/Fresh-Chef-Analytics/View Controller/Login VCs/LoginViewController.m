@@ -11,6 +11,7 @@
 #import "Waiter.h"
 #import "Dish.h"
 #import "MenuManager.h"
+#import "WaiterManager.h"
 
 @interface LoginViewController ()
 
@@ -34,7 +35,7 @@
             // display view controller that needs to shown after successful login
             user[@"types"] = [[NSArray alloc] init];
             [[MenuManager shared] fetchMenuItems:user];
-
+            [[WaiterManager shared] fetchWaiters:user];
             // Testing to make sure dishes can be created //
             //
 //                [Dish postNewDish:@"testing" withType:@"american" withDescription:@"This is a test not a dish." withPrice:@(0) withCompletion:^(BOOL success, NSError *error)

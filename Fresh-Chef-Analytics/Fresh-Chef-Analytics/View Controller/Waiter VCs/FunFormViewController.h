@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "order.h"
 #import "FunTableViewCell.h"
+#import "WaiterManager.h"
+#import "UITextView+Placeholder.h"
 
 
 NS_ASSUME_NONNULL_BEGIN
@@ -16,9 +18,8 @@ NS_ASSUME_NONNULL_BEGIN
 @interface FunFormViewController : UIViewController
 
 - (IBAction)didSubmit:(UIButton *)sender;
--(void) updateDishesWithOrder: ( NSMutableArray <order*> *)orderList;
+-(void) updateWithOrder: ( NSMutableArray <order*> *)orderList;
 @property (strong, nonatomic) NSMutableArray <order *>*customerOrder;
-@property (strong, nonatomic) NSString *waiterName;
 @property (strong, nonatomic) NSString *customerNumber;
 @end
 

@@ -26,8 +26,6 @@
 }
 + (Dish *) postNewDish: ( NSString * _Nullable )name withType: ( NSString * _Nullable )type withDescription: ( NSString * _Nullable )description withPrice: ( NSNumber * _Nullable )price withCompletion: (PFBooleanResultBlock  _Nullable)completion {
     Dish *newDish = [Dish new];
-    
-    // Uncomment when sign up/log in works //
     newDish.restaurant = [PFUser currentUser];
     newDish.restaurantID = newDish.restaurant.objectId;
     
@@ -44,8 +42,6 @@
 + (Dish *
    ) postNewDish: ( NSString * _Nullable )name withType: ( NSString * _Nullable )type withDescription: ( NSString * _Nullable )description withPrice: ( NSNumber * _Nullable )price withImage: ( UIImage * _Nullable )image withCompletion: (PFBooleanResultBlock  _Nullable)completion {
     Dish *newDish = [Dish new];
-    
-    // Uncomment when sign up/log in works //
     newDish.restaurant = [PFUser currentUser];
     newDish.restaurantID = newDish.restaurant.objectId;
     newDish.image = [self getPFFileFromImage:image];
