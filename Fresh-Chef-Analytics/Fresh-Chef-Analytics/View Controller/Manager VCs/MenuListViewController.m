@@ -10,11 +10,14 @@
 #import "MenuListTableViewCell.h"
 #import "Parse/Parse.h"
 #import "DishDetailsViewController.h"
+#import "MenuManager.h"
 
-@interface MenuListViewController () <UITableViewDelegate, UITableViewDataSource>
+@interface MenuListViewController () 
 @property (weak, nonatomic) IBOutlet UITableView *menuList;
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
 @property (strong, nonatomic) NSArray<Dish *> *dishes;
+@property (strong, nonatomic) NSMutableDictionary *categoriesOfDishes;
+@property (strong, nonatomic) NSArray *categories;
 
 @end
 
@@ -24,12 +27,13 @@
     [super viewDidLoad];
     self.menuList.dataSource = self;
     self.menuList.delegate = self;
-    // Do any additional setup after loading the view.
+    self.dishes = [[MenuManager shared] dishes];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.dishes.count;
 }
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     MenuListTableViewCell *cell = [self.menuList dequeueReusableCellWithIdentifier: @"Dish"];
     Dish *dish =  self.dishes[indexPath.row];
@@ -46,8 +50,6 @@
     }];
     return cell;
 }
-
-
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([sender isKindOfClass:MenuListTableViewCell.class]){

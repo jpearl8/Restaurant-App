@@ -1263,11 +1263,11 @@
             </objects>
             <point key="canvasLocation" x="3116" y="548"/>
         </scene>
-        <!--Rest Profile-->
+        <!--Profile-->
         <scene sceneID="3Ak-IO-zVV">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="D37-R5-UqF" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Rest Profile" id="6Hj-OU-MzJ"/>
+                <navigationController title="Profile" automaticallyAdjustsScrollViewInsets="NO" id="D37-R5-UqF" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Profile" id="6Hj-OU-MzJ"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="1ig-5M-Bqq">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
