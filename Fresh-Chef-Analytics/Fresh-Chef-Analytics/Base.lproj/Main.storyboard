@@ -1060,7 +1060,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Uyq-fz-sf6" customClass="BEMCheckBox">
+                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Uyq-fz-sf6" customClass="BEMCheckBox">
                                 <rect key="frame" x="123" y="780" width="25" height="20"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
@@ -2327,7 +2327,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="# Tables" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RKC-tI-z16">
-                                                    <rect key="frame" x="298" y="35" width="81" height="22"/>
+                                                    <rect key="frame" x="298" y="48" width="81" height="22"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -2347,10 +2347,16 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UZ8-6V-beK">
+                                                    <rect key="frame" x="294" y="19" width="89" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <state key="normal" title="Remove Item"/>
+                                                </button>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="profileImage" destination="guM-vu-Txm" id="8ut-gj-Ecq"/>
+                                            <outlet property="removeButton" destination="UZ8-6V-beK" id="Ag8-9Q-JpF"/>
                                             <outlet property="waiterName" destination="4ya-J2-6yB" id="9hE-FY-JPc"/>
                                             <outlet property="waiterNumCustomers" destination="5xK-fY-zDM" id="wv9-hU-B5b"/>
                                             <outlet property="waiterRating" destination="OOQ-rC-j4R" id="edS-6G-408"/>

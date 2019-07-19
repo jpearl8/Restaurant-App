@@ -35,13 +35,17 @@
             // display view controller that needs to shown after successful login
             user[@"types"] = [[NSArray alloc] init];
             [[MenuManager shared] fetchMenuItems:user withCompletion:^(NSMutableDictionary * _Nonnull categoriesOfDishes, NSError * _Nullable error) {
-                if (error!=nil)
+                if (!error)
                 {
-                    NSLog(@"fetched restaurant's data");
+                    NSLog(@"fetched restaurant's menu");
                 }
             }];
-            
-            [[WaiterManager shared] fetchWaiters:user];
+            [[WaiterManager shared] fetchWaiters:user withCompletion:^(NSError * _Nullable error) {
+                if(!error)
+                {
+                    NSLog(@"fetched restaurant's waiters");
+                }
+            }];
             // Testing to make sure dishes can be created //
             //
 //                [Dish postNewDish:@"testing" withType:@"american" withDescription:@"This is a test not a dish." withPrice:@(0) withCompletion:^(BOOL success, NSError *error)

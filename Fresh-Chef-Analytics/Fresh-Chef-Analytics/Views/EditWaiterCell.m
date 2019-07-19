@@ -13,8 +13,14 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
+    UITapGestureRecognizer *buttonTapGesture = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(didTapRemove:)];
+    [self.removeButton addGestureRecognizer:buttonTapGesture];
+    [self.removeButton setUserInteractionEnabled:YES];
 }
-
+- (void) didTapRemove:(UITapGestureRecognizer *)sender
+{
+    [self.delegate editWaiterCell:self didTap:self.waiter];
+}
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
     //make profile pictures round
