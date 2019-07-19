@@ -13,6 +13,8 @@
 @interface ProfileViewController ()
 
 @property (nonatomic, assign) BOOL isEditable;
+@property (weak, nonatomic) NSString *categoryPlaceholder;
+@property (weak, nonatomic) NSString *pricePlaceholder;
 
 @end
 
@@ -20,22 +22,15 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    // Set class variables
+    self.categoryPlaceholder = @"Set Restaurant Category";
+    self.pricePlaceholder = @"Set Restaurant Price";
+    
     // Set restaurant name, category and price labels
     self.user = [PFUser currentUser];
-    self.restaurantNameLabel.text = self.user[@"username"];
-    NSString *category = self.user[@"category"];
     self.isEditable = NO; // the profile is not editable initially
-    if(category != nil){
-        self.restaurantCategoryLabel.text = self.user[@"category"];
-    } else {
-        self.restaurantCategoryLabel.text = @"Set Restaurant Category";
-    }
-    NSString *price = self.user[@"price"];
-    if (price != nil) {
-        self.restaurantPriceLabel.text = price;
-    } else {
-        self.restaurantPriceLabel.text = @"Set Restaurant Price Range";
-    }
+    self.restaurantNameLabel.text = self.user[@"username"];
+    [self setProfileLabels];
     // show label and hide text field initially
     [self showLabels:YES];
     if(self.user[@"image"] != nil){
@@ -64,10 +59,17 @@
         self.editButton.title = @"Save";
         // show text fields and cancel and hide labels
         [self showLabels:NO];
-        //set text fields
-        self.restaurantNameField.text = self.restaurantNameLabel.text;
-        self.restaurantCategoryField.text = self.restaurantCategoryLabel.text;
-        self.restaurantPriceField.text = self.restaurantPriceLabel.text;
+        //set text fields if their labels have been set
+        self.restaurantNameField.text = self.restaurantNameLabel.text; // restaurant name will already be set
+        self.restaurantEmailField.text = self.restaurantEmailLabel.text; // email will already be set
+        // if user has a category then set field text to category
+        if(![self.restaurantCategoryLabel.text isEqualToString: self.categoryPlaceholder]){
+            self.restaurantCategoryField.text = self.restaurantCategoryLabel.text;
+        }
+        // if user has a price then set field text to price
+        if(![self.restaurantPriceLabel.text isEqualToString: self.pricePlaceholder]){
+            self.restaurantPriceField.text = self.restaurantPriceLabel.text;
+        }
     } else {
         //User pressed 'save' button
         self.isEditable = NO;
@@ -77,19 +79,42 @@
         //save values to PFUser
         self.user[@"username"] = self.restaurantNameField.text;
         self.user[@"category"] = self.restaurantCategoryField.text;
+        self.user[@"email"] = self.restaurantEmailField.text;
         self.user[@"image"] = [self getPFFileFromImage:self.restaurantProfileImage.image];
 //        self.user[@"price"] = self.restaurantPriceField;
         [self.user saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
             if(succeeded){
                 NSLog(@"successfully saved updates");
-                // set labels to correspond to inputs
-                self.restaurantNameLabel.text = self.restaurantNameField.text;
-                self.restaurantCategoryLabel.text = self.restaurantCategoryField.text;
-                self.restaurantPriceLabel.text = self.restaurantPriceField.text;
+                [self setProfileLabels];
             } else {
                 NSLog(@"Error saving updates: %@", error.localizedDescription);
             }
         }];
+    }
+}
+
+- (void)setProfileLabels {
+    self.restaurantNameLabel.text = self.user[@"username"];
+    NSString *category = self.user[@"category"];
+    NSString *price = self.user[@"price"];
+    NSString *email = self.user[@"email"];
+    if(category != nil && ![category isEqualToString: @""]){
+        self.restaurantCategoryLabel.text = category;
+    } else {
+        self.restaurantCategoryLabel.text = self.categoryPlaceholder;
+        self.restaurantCategoryField.placeholder = self.categoryPlaceholder;
+    }
+    if (price != nil && ![price isEqualToString:@""]) {
+        self.restaurantPriceLabel.text = price;
+    } else {
+        self.restaurantPriceLabel.text = self.pricePlaceholder;
+        self.restaurantPriceField.placeholder = self.pricePlaceholder;
+    }
+    if(email != nil && ![email isEqualToString:@""]){
+        self.restaurantEmailLabel.text = email;
+    } else {
+        self.restaurantEmailLabel.text = @"Set Restaurant Email";
+        self.restaurantEmailField.placeholder = @"Set Restaurant Email";
     }
 }
 
@@ -115,16 +140,17 @@
     self.restaurantPriceLabel.hidden = !trueFalse;
     self.restaurantPriceField.enabled = !trueFalse;
     self.restaurantPriceField.hidden = trueFalse;
+    //email
+    self.restaurantEmailLabel.hidden = !trueFalse;
+    self.restaurantEmailField.enabled = !trueFalse;
+    self.restaurantEmailField.hidden = trueFalse;
+    
     self.tapToEditLabel.hidden = trueFalse;
-//    self.logoutButton.accessibilityElementsHidden = !trueFalse;
     self.cancelButton.enabled = !trueFalse;
-//    self.logoutButton.enabled = trueFalse;
     if(trueFalse == YES){
         self.cancelButton.tintColor = UIColor.clearColor;
-//        self.logoutButton.tintColor = UIColor.;
     } else {
         self.cancelButton.tintColor = self.view.tintColor;
-//        self.logoutButton.tintColor = UIColor.clearColor;
     }
     
 }
