@@ -1719,6 +1719,18 @@
                                                     <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MPu-mH-HWR">
+                                                    <rect key="frame" x="346" y="74" width="11" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sold" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7k8-nV-riC">
+                                                    <rect key="frame" x="312" y="41" width="35" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="SDz-pg-xom" firstAttribute="leading" secondItem="RnN-TB-LYJ" secondAttribute="leading" constant="8" id="88d-2p-P3K"/>
@@ -1728,9 +1740,13 @@
                                                 <constraint firstItem="12V-RK-3Zt" firstAttribute="top" secondItem="SDz-pg-xom" secondAttribute="top" id="Yzh-G6-ktU"/>
                                                 <constraint firstItem="aZu-ss-ZqX" firstAttribute="top" secondItem="SDz-pg-xom" secondAttribute="top" id="bZZ-NY-V8t"/>
                                                 <constraint firstItem="fea-T8-88L" firstAttribute="top" secondItem="12V-RK-3Zt" secondAttribute="bottom" constant="12" id="ch0-zx-efp"/>
+                                                <constraint firstItem="fea-T8-88L" firstAttribute="bottom" secondItem="7k8-nV-riC" secondAttribute="bottom" id="dNO-bO-UyR"/>
+                                                <constraint firstItem="fea-T8-88L" firstAttribute="leading" secondItem="7k8-nV-riC" secondAttribute="trailing" constant="5" id="eCg-f1-glw"/>
                                                 <constraint firstAttribute="bottom" secondItem="SDz-pg-xom" secondAttribute="bottom" constant="8" id="fQl-de-SVC"/>
+                                                <constraint firstItem="nwu-kI-uec" firstAttribute="leading" secondItem="MPu-mH-HWR" secondAttribute="trailing" constant="5" id="idb-r4-c4J"/>
                                                 <constraint firstAttribute="trailing" secondItem="12V-RK-3Zt" secondAttribute="trailing" constant="20" id="jOn-84-7ZP"/>
                                                 <constraint firstItem="w8J-Cu-SYS" firstAttribute="top" secondItem="SDz-pg-xom" secondAttribute="top" id="kRI-gm-Rxe"/>
+                                                <constraint firstItem="nwu-kI-uec" firstAttribute="bottom" secondItem="MPu-mH-HWR" secondAttribute="bottom" id="lWz-G6-LVR"/>
                                                 <constraint firstItem="aZu-ss-ZqX" firstAttribute="leading" secondItem="SDz-pg-xom" secondAttribute="trailing" constant="8" id="lv8-cJ-vKj"/>
                                                 <constraint firstItem="12V-RK-3Zt" firstAttribute="trailing" secondItem="fea-T8-88L" secondAttribute="trailing" id="t17-LG-hbq"/>
                                                 <constraint firstItem="SDz-pg-xom" firstAttribute="top" secondItem="RnN-TB-LYJ" secondAttribute="top" constant="8" id="wGT-IT-hd4"/>
@@ -1742,7 +1758,6 @@
                                             <outlet property="orderFrequency" destination="fea-T8-88L" id="Zil-Xg-TOQ"/>
                                             <outlet property="price" destination="nwu-kI-uec" id="46n-sT-qeI"/>
                                             <outlet property="rating" destination="w8J-Cu-SYS" id="bZ7-dd-4qE"/>
-                                            <outlet property="type" destination="fbe-c9-RtM" id="1QH-9b-jZZ"/>
                                             <segue destination="gl1-Ag-ae1" kind="show" identifier="dishDetails" id="2ao-at-IwH"/>
                                         </connections>
                                     </tableViewCell>
@@ -2941,6 +2956,7 @@
         <image name="profile_tab" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="2ao-at-IwH"/>
         <segue reference="eop-xl-c0C"/>
     </inferredMetricsTieBreakers>
 </document>

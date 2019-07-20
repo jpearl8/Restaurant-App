@@ -39,9 +39,18 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     NSInteger section = indexPath.section;
     MenuListTableViewCell *cell = [self.menuList dequeueReusableCellWithIdentifier: @"Dish"];
+    Dish *dish;
     //check which sort button is clicked
-//    if(self.sortByControl){
-    Dish *dish = self.categoriesOfDishes[self.categories[section]][indexPath.row];
+    NSInteger selectedIndex = self.sortByControl.selectedSegmentIndex;
+    if(selectedIndex == 0){
+        dish = [[MenuManager shared] dishesByFreq][self.categories[section]][indexPath.row];
+    } else if (selectedIndex == 1) {
+        dish = [[MenuManager shared] dishesByRating][self.categories[section]][indexPath.row];
+    } else if (selectedIndex == 2) {
+        dish = [[MenuManager shared] dishesByPrice][self.categories[section]][indexPath.row];
+    } else {
+        dish = self.categoriesOfDishes[self.categories[section]][indexPath.row];
+    }
 //    } else if (self.sortByControl)
     cell.name.text = dish.name;
     cell.rating.text = [dish.rating stringValue];
@@ -73,12 +82,8 @@
     return [self.categoriesOfDishes[self.categories[section]] count];
 }
 - (IBAction)onEditSortBy:(id)sender {
-//    NSString *sortBy = self.sortByArray[self.sortByControl.selectedSegmentIndex];
-//
-//
-//
-//
-//
+    //refresh table view
+    [self.menuList reloadData];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
