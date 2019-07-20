@@ -1,8 +1,8 @@
 //
-//  WaitDetailsViewController.h
+//  WaiterListTableViewCell.h
 //  Fresh-Chef-Analytics
 //
-//  Created by jpearl on 7/16/19.
+//  Created by selinons on 7/19/19.
 //  Copyright © 2019 julia@ipearl.net. All rights reserved.
 //
 
@@ -11,16 +11,15 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface WaitDetailsViewController : UIViewController
+@interface WaiterListTableViewCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UIImageView *waiterProfileImage;
-@property (strong, nonatomic) Waiter *waiter;
 @property (weak, nonatomic) IBOutlet UILabel *waiterName;
 @property (weak, nonatomic) IBOutlet UILabel *waiterTime;
 @property (weak, nonatomic) IBOutlet UILabel *waiterRating;
+@property (weak, nonatomic) IBOutlet UILabel *waiterTips;
 @property (weak, nonatomic) IBOutlet UILabel *waiterTabletops;
 @property (weak, nonatomic) IBOutlet UILabel *waiterNumCustomers;
-@property (weak, nonatomic) IBOutlet UILabel *waiterTips;
-
+@property (strong, nonatomic) Waiter *waiter;
 @end
 
 NS_ASSUME_NONNULL_END
