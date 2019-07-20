@@ -13,7 +13,6 @@ NS_ASSUME_NONNULL_BEGIN
 @interface WaiterViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UIButton *button;
 @property (weak, nonatomic) IBOutlet UITableView *waiterTable;
-- (UIColor *)colorFromHexString:(NSString *)hexString;
 - (IBAction)selectedWaiter:(UIButton *)sender;
 
 @end

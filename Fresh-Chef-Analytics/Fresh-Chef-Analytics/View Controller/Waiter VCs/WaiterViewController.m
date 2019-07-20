@@ -20,7 +20,7 @@ pass final array on submit button of data table
 #import "ElegantFormViewController.h"
 #import "ComfortableFormViewController.h"
 #import "MenuManager.h"
-
+#import "Helpful_funs.h"
 #import "Waiter.h"
 #import "AppDelegate.h"
 #import "LoginViewController.h"
@@ -50,20 +50,10 @@ pass final array on submit button of data table
     self.menuItems.delegate = self;
     self.menuItems.dataSource = self;
     [self runWaiterQuery];
-    //self.waiters = [[WaiterManager shared] roster];
     self.waiterTable.delegate = self;
     self.waiterTable.dataSource = self;
     self.searchBar.delegate = self;
     self.customerOrder = [[NSMutableArray alloc] init];
-    
-    
-   // MKDropdownMenu *dropdownMenu = [[MKDropdownMenu alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
-    // Do any additional setup after loading the view.
-//    self.dropDown = [[MKDropdownMenu alloc] initWithFrame:CGRectMake(0, 0, 200, 44)];
-//    self.dropDown.dataSource = self;
-//    self.dropDown.delegate = self;
-//    self.dropDown.rowSeparatorColor = [UIColor colorWithWhite:1.0 alpha:0.2];
-//    self.dropDown.rowTextAlignment = NSTextAlignmentCenter;
     [self runDishQuery];
     UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
     [refreshControl addTarget:self action:@selector(runDishQuery) forControlEvents:UIControlEventValueChanged];
@@ -112,7 +102,7 @@ pass final array on submit button of data table
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:simpleTableIdentifier];
         }
         cell.textLabel.text = self.waiters[indexPath.row].name;
-        cell.backgroundColor =  [self colorFromHexString:@"#ADD8E6"];
+        cell.backgroundColor =  [[Helpful_funs shared] colorFromHexString:@"#ADD8E6"];
         return cell;
     }
 }
@@ -120,60 +110,25 @@ pass final array on submit button of data table
 
 
 -(void)runDishQuery{
-//    NSArray <Dish *>*dishes = [[MenuManager shared] dishes];
-//    if (dishes.count != 0){
-//        self.dishes = dishes;
-//        self.filteredDishes = dishes;
-//        [self.menuItems reloadData];
-//        [self.refreshControl endRefreshing];
-//    }
-//    else {
-//        [self.refreshControl endRefreshing];
-//    }
-    PFQuery *dishQuery = [Dish query];
-    //[dishQuery includeKey:@"restaurantID"];
-    NSString* test = [PFUser currentUser].objectId;
-    //NSString *test = @"XuLMO3Jh3r";
-    [dishQuery whereKey:@"restaurantID" containsString:test];
-    // fetch data asynchronously
-    [dishQuery findObjectsInBackgroundWithBlock:^(NSArray<Dish *> * _Nullable dishes, NSError * _Nullable error) {
-        if (error){
-            NSLog(@"%@", error);
-        }
-        if (dishes.count != 0) {
-            // do something with the data fetched
-            self.dishes = dishes;
-            self.filteredDishes = dishes;
-            [self.menuItems reloadData];
-            [self.refreshControl endRefreshing];
-        }
-        else {
-            [self.refreshControl endRefreshing];
-        }
-    }];
+    NSArray <Dish *>*dishes = [[MenuManager shared] dishes];
+    if (dishes.count != 0){
+        self.dishes = dishes;
+        self.filteredDishes = dishes;
+        [self.menuItems reloadData];
+        [self.refreshControl endRefreshing];
+    }
+    else {
+        [self.refreshControl endRefreshing];
+    }
 }
 
 
 -(void)runWaiterQuery{
-    PFQuery *waiterQuery = [Waiter query];
-    //[dishQuery includeKey:@"restaurantID"];
-    NSString* test = [PFUser currentUser].objectId;
-    //NSString *test = @"XuLMO3Jh3r";
-    [waiterQuery whereKey:@"restaurantID" containsString:test];
-    // fetch data asynchronously
-    [waiterQuery findObjectsInBackgroundWithBlock:^(NSArray<Waiter *> * _Nullable waiters, NSError * _Nullable error) {
-        if (error){
-            NSLog(@"%@", error);
-        }
-        if (waiters.count != 0) {
-            // do something with the data fetched
-            
-            self.waiters = waiters;
-             [self.waiterTable reloadData];
-
-        }
-
-    }];
+    NSArray <Waiter *>*waiters = [[WaiterManager shared] roster];;
+    if (waiters.count != 0) {
+        self.waiters = waiters;
+        [self.waiterTable reloadData];
+    }
 }
 
 
@@ -199,7 +154,8 @@ pass final array on submit button of data table
             NSLog(@"%@", order.dish.name);
             NSLog(@"%.f", order.amount);
         }
-        [self performSegueWithIdentifier:@"toForm" sender:self];
+        NSString *category = [PFUser currentUser][@"theme"];
+        [self performSegueWithIdentifier:category sender:self];
     }
 }
 
@@ -246,8 +202,8 @@ pass final array on submit button of data table
 
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // id test = [PFUser currentUser].theme;
-    NSString *category = @"Fun";
+     NSString *category = [PFUser currentUser][@"theme"];
+
     
     if ([category isEqualToString:@"Fun"]){
         FunFormViewController *funVC = [segue destinationViewController];
@@ -281,14 +237,7 @@ pass final array on submit button of data table
     self.waiterTable.hidden = !(self.waiterTable.hidden);
 }
 
-// Assumes input like "#00FF00" (#RRGGBB).
-- (UIColor *)colorFromHexString:(NSString *)hexString {
-    unsigned rgbValue = 0;
-    NSScanner *scanner = [NSScanner scannerWithString:hexString];
-    [scanner setScanLocation:1]; // bypass '#' character
-    [scanner scanHexInt:&rgbValue];
-    return [UIColor colorWithRed:((rgbValue & 0xFF0000) >> 16)/255.0 green:((rgbValue & 0xFF00) >> 8)/255.0 blue:(rgbValue & 0xFF)/255.0 alpha:1.0];
-}
+
 
 
 @end

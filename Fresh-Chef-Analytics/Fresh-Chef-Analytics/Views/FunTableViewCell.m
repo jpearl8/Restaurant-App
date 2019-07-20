@@ -7,6 +7,7 @@
 //
 
 #import "FunTableViewCell.h"
+#import "Helpful_funs.h"
 
 @implementation FunTableViewCell
 
@@ -24,10 +25,7 @@
     // Configure the view for the selected state
 }
 -(void)textViewDidChange:(UITextView *)textView{
-    NSLog(@"%@", self.customerComment.text);
     self.order.customerComments = self.customerComment.text;
-    self.order.customerRating = 2;
-    NSLog(@"%@", self.order.customerComments);
     //handle text editing finished
 }
 
@@ -41,8 +39,31 @@
 - (void) prepareForReuse{
     //self.amount.text = @"0";
     self.customerComment.text = @"0";
-    
+    NSArray <UIButton *>* buttons = @[self.b0, self.b2, self.b4, self.b6, self.b8, self.b10];
+    for (int i = 0; i < buttons.count; i++){
+        [[Helpful_funs shared] defineSelect:buttons[i] withSelect:NO];
+    }
     [super prepareForReuse];
 }
+
+- (IBAction)buttonTouch:(UIButton *)sender {
+
+    NSArray <UIButton *>* buttons = @[self.b0, self.b2, self.b4, self.b6, self.b8, self.b10];
+    for (int i = 0; i < buttons.count; i++){
+        if ([buttons[i].restorationIdentifier isEqualToString:sender.restorationIdentifier]){
+            [[Helpful_funs shared] defineSelect:buttons[i] withSelect:YES];
+            
+        } else {
+            [[Helpful_funs shared] defineSelect:buttons[i] withSelect:NO];
+        }
+    }
+    self.order.customerRating = [sender.restorationIdentifier floatValue];
+    
+}
+
+
+
+
+
 
 @end

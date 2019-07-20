@@ -8,6 +8,7 @@
 
 #import "FunFormViewController.h"
 #import "ReceiptViewController.h"
+#import "Helpful_funs.h"
 
 @interface FunFormViewController () <UITableViewDelegate, UITableViewDataSource, UITextViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *menuRatings;
@@ -16,6 +17,12 @@
 @property (weak, nonatomic) IBOutlet UILabel *charsRemaining;
 
 @property (weak, nonatomic) IBOutlet UIImageView *waiterPic;
+@property (weak, nonatomic) IBOutlet UIButton *b010;
+@property (weak, nonatomic) IBOutlet UIButton *b08;
+@property (weak, nonatomic) IBOutlet UIButton *b06;
+@property (weak, nonatomic) IBOutlet UIButton *b04;
+@property (weak, nonatomic) IBOutlet UIButton *b02;
+@property (weak, nonatomic) IBOutlet UIButton *b00;
 
 @end
 
@@ -53,40 +60,13 @@
     return cell;
 }
 - (IBAction)didSubmit:(UIButton *)sender {
-    [self updateWithOrder:self.customerOrder];
+    [[Helpful_funs shared] updateWithOrder:self.customerOrder withNumberString:self.customerNumber];
      [self performSegueWithIdentifier:@"toReceipt" sender:self];
 }
-- (void) updateWithOrder: ( NSMutableArray <order*> *)orderList{
-    for (int i = 0; i < orderList.count; i++){
-        if (orderList[i].customerRating != -1){
-            float totalRating = [orderList[i].dish.rating floatValue];
-            orderList[i].dish.rating = [NSNumber numberWithFloat: (orderList[i].customerRating + totalRating)];
-        }
-        if (!([orderList[i].customerComments isEqualToString:@""])){
-            orderList[i].dish.comments=[orderList[i].dish.comments arrayByAddingObject:orderList[i].customerComments];
-        }
-        float totalFrequency = [orderList[i].dish.orderFrequency floatValue];
-        orderList[i].dish.orderFrequency = [NSNumber numberWithFloat: (orderList[i].amount + totalFrequency)];
-        [orderList[i].dish saveInBackground];
-    }
-    if (orderList[0].waiterRating != -1){
-        float totalRating = [orderList[0].waiter.rating floatValue];
-        orderList[0].waiter.rating = [NSNumber numberWithFloat: (orderList[0].waiterRating + totalRating)];
-    }
-    if (!([orderList[0].waiterReview isEqualToString:@""])){
-        orderList[0].waiter.comments=[orderList[0].waiter.comments arrayByAddingObject:orderList[0].waiterReview];
-    }
-    float numOfCustomers = [orderList[0].waiter.numOfCustomers floatValue];
-    orderList[0].waiter.numOfCustomers = [NSNumber numberWithFloat: ([self.customerNumber floatValue] + numOfCustomers)];
-    orderList[0].waiter.tableTops = [NSNumber numberWithFloat: ([orderList[0].waiter.tableTops floatValue] + 1)];
-    [orderList[0].waiter saveInBackground];
-}
+
 
 -(void)textViewDidChange:(UITextView *)textView{
-    NSLog(@"%@", self.waiterComments.text);
     self.customerOrder[0].waiterReview = self.waiterComments.text;
-    self.customerOrder[0].waiterRating = 2;
-    NSLog(@"%@", self.customerOrder[0].waiterReview);
     //handle text editing finished
 }
 
@@ -102,6 +82,27 @@
     recVC.customerOrder = self.customerOrder;
 
 }
+
+- (IBAction)buttonTouch:(UIButton *)sender {
+    
+    NSArray <UIButton *>* buttons = @[self.b00, self.b02, self.b04, self.b06, self.b08, self.b010];
+    for (int i = 0; i < buttons.count; i++){
+        if ([buttons[i].restorationIdentifier isEqualToString:sender.restorationIdentifier]){
+            [[Helpful_funs shared] defineSelect:buttons[i] withSelect:YES];
+            
+        } else {
+            [[Helpful_funs shared] defineSelect:buttons[i] withSelect:NO];
+        }
+    }
+    if ([sender.restorationIdentifier floatValue]< 0){
+        self.customerOrder[0].waiterRating = 0;
+    } else{
+    self.customerOrder[0].waiterRating = [sender.restorationIdentifier floatValue] / 10.0;
+    }
+}
+
+
+
 
 
 

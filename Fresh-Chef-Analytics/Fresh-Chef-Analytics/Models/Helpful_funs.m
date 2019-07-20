@@ -1,0 +1,66 @@
+//
+//  Helpful_funs.m
+//  Fresh-Chef-Analytics
+//
+//  Created by jpearl on 7/19/19.
+//  Copyright © 2019 julia@ipearl.net. All rights reserved.
+//
+
+#import "Helpful_funs.h"
+
+
+@implementation Helpful_funs
+
++ (instancetype)shared {
+    static Helpful_funs *helpful_funs = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        helpful_funs = [[self alloc] init];
+    });
+    return helpful_funs;
+}
+// Assumes input like "#00FF00" (#RRGGBB).
+- (UIColor *)colorFromHexString:(NSString *)hexString {
+    unsigned rgbValue = 0;
+    NSScanner *scanner = [NSScanner scannerWithString:hexString];
+    [scanner setScanLocation:1]; // bypass '#' character
+    [scanner scanHexInt:&rgbValue];
+    return [UIColor colorWithRed:((rgbValue & 0xFF0000) >> 16)/255.0 green:((rgbValue & 0xFF00) >> 8)/255.0 blue:(rgbValue & 0xFF)/255.0 alpha:1.0];
+}
+
+- (void) updateWithOrder: ( NSMutableArray <order*> *)orderList withNumberString:(NSString *)customerNumber{
+    for (int i = 0; i < orderList.count; i++){
+        if (orderList[i].customerRating != -1.0){
+            float totalRating = [orderList[i].dish.rating floatValue];
+            orderList[i].dish.rating = [NSNumber numberWithFloat: (orderList[i].customerRating + totalRating)];
+        }
+        if (!([orderList[i].customerComments isEqualToString:@""])){
+            orderList[i].dish.comments=[orderList[i].dish.comments arrayByAddingObject:orderList[i].customerComments];
+        }
+        float totalFrequency = [orderList[i].dish.orderFrequency floatValue];
+        orderList[i].dish.orderFrequency = [NSNumber numberWithFloat: (orderList[i].amount + totalFrequency)];
+        [orderList[i].dish saveInBackground];
+    }
+    if (orderList[0].waiterRating != -1){
+        float totalRating = [orderList[0].waiter.rating floatValue];
+        orderList[0].waiter.rating = [NSNumber numberWithFloat: (orderList[0].waiterRating + totalRating)];
+    }
+    if (!([orderList[0].waiterReview isEqualToString:@""])){
+        orderList[0].waiter.comments=[orderList[0].waiter.comments arrayByAddingObject:orderList[0].waiterReview];
+    }
+    float numOfCustomers = [orderList[0].waiter.numOfCustomers floatValue];
+    orderList[0].waiter.numOfCustomers = [NSNumber numberWithFloat: ([customerNumber floatValue] + numOfCustomers)];
+    orderList[0].waiter.tableTops = [NSNumber numberWithFloat: ([orderList[0].waiter.tableTops floatValue] + 1)];
+    [orderList[0].waiter saveInBackground];
+}
+
+-(void)defineSelect:(UIButton *)button withSelect:(BOOL)select {
+    if (select){
+        button.selected = "YES";
+        button.backgroundColor = [self colorFromHexString:@"#4EF84E"];
+    } else {
+        button.selected = "NO";
+        button.backgroundColor = [UIColor clearColor];
+    }
+}
+@end
