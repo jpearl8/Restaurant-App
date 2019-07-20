@@ -7,7 +7,6 @@
 //
 
 #import "EditWaitViewController.h"
-#import "Waiter.h"
 #import "WaiterManager.h"
 #import "EditWaiterCell.h"
 
@@ -26,7 +25,6 @@
     //make profile pictures round
     self.profileImage.layer.cornerRadius = 0.5 * self.profileImage.bounds.size.height;
     self.profileImage.layer.masksToBounds = YES;
-    // Do any additional setup after loading the view.
 }
 - (IBAction)saveWaiter:(id)sender {
     Waiter *newWaiter = [Waiter addNewWaiter:self.nameField.text withYears:[NSNumber numberWithFloat:[self.yearsField.text floatValue]] withImage:self.profileImage.image withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
@@ -72,17 +70,28 @@
     self.roster = [[WaiterManager shared] roster];
     [self.tableView reloadData];
 }
+- (void)editWaiterCell:(EditWaiterCell *)editWaiterCell didTap:(Waiter *)waiter
+{
+    [[WaiterManager shared] removeWaiterFromTable:waiter withCompletion:^(NSError * _Nullable error) {
+        if (error == nil)
+        {
+            self.roster = [[WaiterManager shared] roster];
+            [self.tableView reloadData];
+        }
+    }];
+}
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     EditWaiterCell *cell = [tableView dequeueReusableCellWithIdentifier:@"EditWaiterCell" forIndexPath:indexPath];
     Waiter *waiter = self.roster[indexPath.row];
     cell.waiter = waiter;
+    cell.delegate = self;
     cell.waiterName.text = waiter.name;
-    cell.waiterYearsAt.text = [NSString stringWithFormat:@"%@", waiter.yearsWorked];
-    cell.waiterRating.text = [NSString stringWithFormat:@"%@", waiter.rating];
-    cell.waiterTableTops.text = [NSString stringWithFormat:@"%@", waiter.tableTops];
-    cell.waiterNumCustomers.text = [NSString stringWithFormat:@"%@", waiter.numOfCustomers];
-    cell.waiterTips.text = [NSString stringWithFormat:@"%@", waiter.tipsMade];
+    cell.waiterYearsAt.text = [[NSString stringWithFormat:@"%@", waiter.yearsWorked] stringByAppendingString:@" years"];
+    cell.waiterRating.text = [[NSString stringWithFormat:@"%@", waiter.rating] stringByAppendingString:@" stars"];
+    cell.waiterTableTops.text = [[NSString stringWithFormat:@"%@", waiter.tableTops] stringByAppendingString:@" tables"];
+    cell.waiterNumCustomers.text = [[NSString stringWithFormat:@"%@", waiter.numOfCustomers] stringByAppendingString:@" customers served"];
+    cell.waiterTips.text = [[NSString stringWithFormat:@"%@", waiter.tipsMade] stringByAppendingString:@" tips made"];
     if(waiter.image!=nil){
         [waiter.image getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
             if(!error){

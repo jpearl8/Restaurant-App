@@ -10,11 +10,14 @@
 #import "MenuListTableViewCell.h"
 #import "Parse/Parse.h"
 #import "DishDetailsViewController.h"
+#import "MenuManager.h"
 
-@interface MenuListViewController () <UITableViewDelegate, UITableViewDataSource>
+@interface MenuListViewController () 
 @property (weak, nonatomic) IBOutlet UITableView *menuList;
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
 @property (strong, nonatomic) NSArray<Dish *> *dishes;
+@property (strong, nonatomic) NSMutableDictionary *categoriesOfDishes;
+@property (strong, nonatomic) NSArray *categories;
 
 @end
 
@@ -24,30 +27,45 @@
     [super viewDidLoad];
     self.menuList.dataSource = self;
     self.menuList.delegate = self;
-    // Do any additional setup after loading the view.
+    self.dishes = [[MenuManager shared] dishes];
+    self.categoriesOfDishes = [[MenuManager shared] categoriesOfDishes];
+    self.categories = [self.categoriesOfDishes allKeys];
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.dishes.count;
-}
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSInteger section = indexPath.section;
     MenuListTableViewCell *cell = [self.menuList dequeueReusableCellWithIdentifier: @"Dish"];
-    Dish *dish =  self.dishes[indexPath.row];
+    Dish *dish = self.categoriesOfDishes[self.categories[section]][indexPath.row];
     cell.name.text = dish.name;
     cell.rating.text = [dish.rating stringValue];
     cell.orderFrequency.text = [dish.orderFrequency stringValue];
     cell.type.text = dish.type;
     cell.price.text = [dish.price stringValue];
-    PFFileObject *dishImageFile = (PFFileObject *)dish.image;
-    [dishImageFile getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
-        if(!error){
-            cell.image.image = [UIImage imageWithData:imageData];
-        }
-    }];
+    if(dish.image != nil){
+        PFFileObject *dishImageFile = (PFFileObject *)dish.image;
+        [dishImageFile getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
+            if(!error){
+                cell.image.image = [UIImage imageWithData:imageData];
+            }
+        }];
+    } else {
+        cell.image.image = [UIImage imageNamed:@"image_placeholder"];
+    }
     return cell;
 }
 
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    return self.categoriesOfDishes.count;
+}
 
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
+    return self.categories[section];
+}
+
+- (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    NSLog(@"%lu", (unsigned long)[self.categoriesOfDishes[self.categories[section]] count]);
+    return [self.categoriesOfDishes[self.categories[section]] count];
+}
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([sender isKindOfClass:MenuListTableViewCell.class]){

@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface MenuListViewController : UIViewController
+@interface MenuListViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 
 @end
 

@@ -18,7 +18,7 @@
     });
     return sharedManager;
 }
-- (void)fetchWaiters:(PFUser *)restaurant
+- (void)fetchWaiters:(PFUser *)restaurant withCompletion:(void (^)(NSError * _Nullable))fetchedWaiters
 {
     // construct PFQuery
     PFQuery *waiterQuery;
@@ -29,10 +29,41 @@
     // fetch data asynchronously
     [waiterQuery findObjectsInBackgroundWithBlock:^(NSArray<Waiter *> * _Nullable roster, NSError * _Nullable error) {
         self.roster = roster;
+        fetchedWaiters(error);
     }];
+    
 }
 - (void) addWaiter:(Waiter *)waiter
 {
     self.roster = [self.roster arrayByAddingObject:waiter];
+}
+- (void)removeWaiterFromTable:(Waiter *)delWaiter withCompletion:(void (^)(NSError * _Nullable))removedWaiter
+
+{
+    // construct PFQuery
+    PFQuery *waiterQuery;
+    waiterQuery = [Waiter query];
+    [waiterQuery whereKey:@"objectId" equalTo:delWaiter.objectId];
+    [waiterQuery findObjectsInBackgroundWithBlock:^(NSArray * _Nullable waiters, NSError * _Nullable error) {
+        for (Waiter *waiter in waiters)
+        {
+            [waiter deleteInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+                if (succeeded)
+                {
+                    NSLog(@"Object removed");
+                    [self fetchWaiters:PFUser.currentUser withCompletion:^(NSError * _Nullable error) {
+                        if (error==nil)
+                        {
+                            removedWaiter(nil);
+                        }
+                        else
+                        {
+                            removedWaiter(error);
+                        }
+                    }];
+                }
+            }];
+        }
+    }];
 }
 @end

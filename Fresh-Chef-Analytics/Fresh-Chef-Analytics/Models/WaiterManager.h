@@ -15,8 +15,10 @@ NS_ASSUME_NONNULL_BEGIN
 @interface WaiterManager : NSObject
 @property (strong, nonatomic) NSArray *roster;
 + (instancetype) shared;
-- (void) fetchWaiters : (PFUser *) restaurant;
+- (void) fetchWaiters : (PFUser *) restaurant withCompletion:(void (^)(NSError * _Nullable error))fetchedWaiters;
 - (void) addWaiter : (Waiter *) waiter;
+- (void) removeWaiterFromTable : (Waiter *) delWaiter withCompletion:(void (^)(NSError * _Nullable error))removeWaiter;
+
 @end
 
 NS_ASSUME_NONNULL_END
