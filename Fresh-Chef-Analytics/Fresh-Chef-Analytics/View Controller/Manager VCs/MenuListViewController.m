@@ -18,6 +18,8 @@
 @property (strong, nonatomic) NSArray<Dish *> *dishes;
 @property (strong, nonatomic) NSMutableDictionary *categoriesOfDishes;
 @property (strong, nonatomic) NSArray *categories;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *sortByControl;
+//@property (strong, nonatomic) NSArray *sortByArray;
 
 @end
 
@@ -25,21 +27,25 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+//    self.sortByArray = @[@"Frequency", @"Rating", @"Price"];
     self.menuList.dataSource = self;
     self.menuList.delegate = self;
     self.dishes = [[MenuManager shared] dishes];
     self.categoriesOfDishes = [[MenuManager shared] categoriesOfDishes];
     self.categories = [self.categoriesOfDishes allKeys];
+    
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     NSInteger section = indexPath.section;
     MenuListTableViewCell *cell = [self.menuList dequeueReusableCellWithIdentifier: @"Dish"];
+    //check which sort button is clicked
+//    if(self.sortByControl){
     Dish *dish = self.categoriesOfDishes[self.categories[section]][indexPath.row];
+//    } else if (self.sortByControl)
     cell.name.text = dish.name;
     cell.rating.text = [dish.rating stringValue];
     cell.orderFrequency.text = [dish.orderFrequency stringValue];
-    cell.type.text = dish.type;
     cell.price.text = [dish.price stringValue];
     if(dish.image != nil){
         PFFileObject *dishImageFile = (PFFileObject *)dish.image;
@@ -65,6 +71,14 @@
 - (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     NSLog(@"%lu", (unsigned long)[self.categoriesOfDishes[self.categories[section]] count]);
     return [self.categoriesOfDishes[self.categories[section]] count];
+}
+- (IBAction)onEditSortBy:(id)sender {
+//    NSString *sortBy = self.sortByArray[self.sortByControl.selectedSegmentIndex];
+//
+//
+//
+//
+//
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
