@@ -9,12 +9,15 @@
 #import <UIKit/UIKit.h>
 #import "order.h"
 #import "Waiter.h"
+#import "FunTableViewCell.h"
+#import "WaiterManager.h"
+#import "UITextView+Placeholder.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface ElegantFormViewController : UIViewController
+- (IBAction)didSubmit:(UIButton *)sender;
 @property (strong, nonatomic) NSMutableArray <order *>*customerOrder;
-@property (strong, nonatomic) Waiter *waiter;
 @property (strong, nonatomic) NSString *customerNumber;
 @end
 

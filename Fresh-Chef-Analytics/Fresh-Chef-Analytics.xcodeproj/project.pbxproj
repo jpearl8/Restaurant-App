@@ -39,6 +39,7 @@
 		FF03BF5C22DEA16600719E8C /* CompetitorListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF03BF5B22DEA16600719E8C /* CompetitorListViewController.m */; };
 		FF03BF5F22DEA19100719E8C /* MenuDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF03BF5E22DEA19100719E8C /* MenuDataViewController.m */; };
 		FF03BF6222DF763300719E8C /* MenuListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FF03BF6122DF763300719E8C /* MenuListTableViewCell.m */; };
+		FF1EDA9322E2951A00B1B897 /* Helpful_funs.m in Sources */ = {isa = PBXBuildFile; fileRef = FF1EDA9222E2951A00B1B897 /* Helpful_funs.m */; };
 		FF46E19222DE436400E15A0E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FF46E19122DE436400E15A0E /* AppDelegate.m */; };
 		FF46E19822DE436400E15A0E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF46E19622DE436400E15A0E /* Main.storyboard */; };
 		FF46E19A22DE436400E15A0E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF46E19922DE436400E15A0E /* Assets.xcassets */; };
@@ -49,6 +50,8 @@
 		FF5924FF22E2155D00F66EC6 /* ReceiptTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FF5924FE22E2155D00F66EC6 /* ReceiptTableViewCell.m */; };
 		FF6EE1A322E01D85000AD729 /* order.m in Sources */ = {isa = PBXBuildFile; fileRef = FF6EE1A222E01D85000AD729 /* order.m */; };
 		FFB3224722DF9DF700BF966F /* WaitTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FFB3224622DF9DF700BF966F /* WaitTableViewCell.m */; };
+		FFEA6BC622E28DD0008665BD /* ElegantTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FFEA6BC522E28DD0008665BD /* ElegantTableViewCell.m */; };
+		FFEA6BCA22E28E03008665BD /* ComfortableTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FFEA6BC922E28E03008665BD /* ComfortableTableViewCell.m */; };
 		FFF1C48D22E02A8200C2AC03 /* specialStepper.m in Sources */ = {isa = PBXBuildFile; fileRef = FFF1C48C22E02A8200C2AC03 /* specialStepper.m */; };
 		FFF1C49022E03B5300C2AC03 /* FunTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FFF1C48F22E03B5300C2AC03 /* FunTableViewCell.m */; };
 /* End PBXBuildFile section */
@@ -136,6 +139,8 @@
 		FF03BF5E22DEA19100719E8C /* MenuDataViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MenuDataViewController.m; sourceTree = "<group>"; };
 		FF03BF6022DF763300719E8C /* MenuListTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MenuListTableViewCell.h; path = "Fresh-Chef-Analytics/View Controller/Manager VCs/MenuListTableViewCell.h"; sourceTree = SOURCE_ROOT; };
 		FF03BF6122DF763300719E8C /* MenuListTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = MenuListTableViewCell.m; path = "Fresh-Chef-Analytics/View Controller/Manager VCs/MenuListTableViewCell.m"; sourceTree = SOURCE_ROOT; };
+		FF1EDA9122E2951A00B1B897 /* Helpful_funs.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Helpful_funs.h; sourceTree = "<group>"; };
+		FF1EDA9222E2951A00B1B897 /* Helpful_funs.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Helpful_funs.m; sourceTree = "<group>"; };
 		FF46E18D22DE436400E15A0E /* Fresh-Chef-Analytics.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Fresh-Chef-Analytics.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF46E19022DE436400E15A0E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		FF46E19122DE436400E15A0E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -156,6 +161,10 @@
 		FF6EE1A222E01D85000AD729 /* order.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = order.m; sourceTree = "<group>"; };
 		FFB3224522DF9DF700BF966F /* WaitTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = WaitTableViewCell.h; path = "Fresh-Chef-Analytics/View Controller/Waiter VCs/WaitTableViewCell.h"; sourceTree = SOURCE_ROOT; };
 		FFB3224622DF9DF700BF966F /* WaitTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = WaitTableViewCell.m; path = "Fresh-Chef-Analytics/View Controller/Waiter VCs/WaitTableViewCell.m"; sourceTree = SOURCE_ROOT; };
+		FFEA6BC422E28DD0008665BD /* ElegantTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ElegantTableViewCell.h; sourceTree = "<group>"; };
+		FFEA6BC522E28DD0008665BD /* ElegantTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ElegantTableViewCell.m; sourceTree = "<group>"; };
+		FFEA6BC822E28E03008665BD /* ComfortableTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ComfortableTableViewCell.h; sourceTree = "<group>"; };
+		FFEA6BC922E28E03008665BD /* ComfortableTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ComfortableTableViewCell.m; sourceTree = "<group>"; };
 		FFF1C48B22E02A8200C2AC03 /* specialStepper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = specialStepper.h; sourceTree = "<group>"; };
 		FFF1C48C22E02A8200C2AC03 /* specialStepper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = specialStepper.m; sourceTree = "<group>"; };
 		FFF1C48E22E03B5300C2AC03 /* FunTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FunTableViewCell.h; sourceTree = "<group>"; };
@@ -208,6 +217,8 @@
 				A535D7BD22DE9FBF002B79CA /* Waiter.h */,
 				A535D7BE22DE9FBF002B79CA /* Waiter.m */,
 				A535D7C322DFD4B5002B79CA /* MenuManager.h */,
+				FF1EDA9122E2951A00B1B897 /* Helpful_funs.h */,
+				FF1EDA9222E2951A00B1B897 /* Helpful_funs.m */,
 				A535D7C422DFD4B5002B79CA /* MenuManager.m */,
 				FF6EE1A122E01D85000AD729 /* order.h */,
 				FF6EE1A222E01D85000AD729 /* order.m */,
@@ -223,9 +234,13 @@
 			isa = PBXGroup;
 			children = (
 				FF5924FD22E2155D00F66EC6 /* ReceiptTableViewCell.h */,
-				FF5924FE22E2155D00F66EC6 /* ReceiptTableViewCell.m */,
+				FFEA6BC422E28DD0008665BD /* ElegantTableViewCell.h */,
+				FFEA6BC522E28DD0008665BD /* ElegantTableViewCell.m */,
 				FFF1C48E22E03B5300C2AC03 /* FunTableViewCell.h */,
 				FFF1C48F22E03B5300C2AC03 /* FunTableViewCell.m */,
+				FFEA6BC822E28E03008665BD /* ComfortableTableViewCell.h */,
+				FFEA6BC922E28E03008665BD /* ComfortableTableViewCell.m */,
+				FF5924FE22E2155D00F66EC6 /* ReceiptTableViewCell.m */,
 				FFB3224522DF9DF700BF966F /* WaitTableViewCell.h */,
 				FFB3224622DF9DF700BF966F /* WaitTableViewCell.m */,
 				FF03BF6022DF763300719E8C /* MenuListTableViewCell.h */,
@@ -615,6 +630,8 @@
 				A535D7BC22DE8FB2002B79CA /* (null) in Sources */,
 				FF03BF3D22DE97AD00719E8C /* ThankYouViewController.m in Sources */,
 				FF03BF4C22DE9FFD00719E8C /* MenuListViewController.m in Sources */,
+				FFEA6BCA22E28E03008665BD /* ComfortableTableViewCell.m in Sources */,
+				FFEA6BC622E28DD0008665BD /* ElegantTableViewCell.m in Sources */,
 				A535D7B922DE6CE9002B79CA /* Dish.m in Sources */,
 				FF03BF6222DF763300719E8C /* MenuListTableViewCell.m in Sources */,
 				FF03BF3A22DE975B00719E8C /* ReceiptViewController.m in Sources */,
@@ -624,6 +641,7 @@
 				FFF1C49022E03B5300C2AC03 /* FunTableViewCell.m in Sources */,
 				A535D7B922DE6CE9002B79CA /* Dish.m in Sources */,
 				FF46E1A022DE436400E15A0E /* main.m in Sources */,
+				FF1EDA9322E2951A00B1B897 /* Helpful_funs.m in Sources */,
 				FF03BF4622DE9FC700719E8C /* EditMenuViewController.m in Sources */,
 				FFB3224722DF9DF700BF966F /* WaitTableViewCell.m in Sources */,
 				FF03BF3722DE973B00719E8C /* ElegantFormViewController.m in Sources */,
@@ -818,7 +836,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = HSX3BRP6J4;
 				INFOPLIST_FILE = "Fresh-Chef-Analytics/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -836,7 +854,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = HSX3BRP6J4;
 				INFOPLIST_FILE = "Fresh-Chef-Analytics/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

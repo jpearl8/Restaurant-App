@@ -18,7 +18,6 @@ NS_ASSUME_NONNULL_BEGIN
 @interface FunFormViewController : UIViewController
 
 - (IBAction)didSubmit:(UIButton *)sender;
--(void) updateWithOrder: ( NSMutableArray <order*> *)orderList;
 @property (strong, nonatomic) NSMutableArray <order *>*customerOrder;
 @property (strong, nonatomic) NSString *customerNumber;
 @end

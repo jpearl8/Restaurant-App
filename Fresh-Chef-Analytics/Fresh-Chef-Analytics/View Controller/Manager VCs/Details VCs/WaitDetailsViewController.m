@@ -16,7 +16,23 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    self.waiterName.text = self.waiter.name;
+    self.waiterTime.text = [[NSString stringWithFormat:@"%@", self.waiter.yearsWorked] stringByAppendingString:@" years"];
+    self.waiterRating.text = [[NSString stringWithFormat:@"%@", self.waiter.rating] stringByAppendingString:@" stars"];
+    self.waiterTabletops.text  = [[NSString stringWithFormat:@"%@", self.waiter.tableTops] stringByAppendingString:@" tables"];
+    self.waiterNumCustomers.text = [[NSString stringWithFormat:@"%@", self.waiter.numOfCustomers] stringByAppendingString:@" customers served"];
+    self.waiterTips.text = [[NSString stringWithFormat:@"%@", self.waiter.tipsMade] stringByAppendingString:@" tips made"];
+    if(self.waiter.image!=nil){
+        [self.waiter.image getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
+            if(!error){
+                self.waiterProfileImage.image = [UIImage imageWithData:imageData];
+            } else {
+                NSLog(@"Error setting waiter image with error: %@", error.localizedDescription);
+            }
+        }];
+    } else {
+        self.waiterProfileImage.image = nil;
+    }
 }
 
 /*
