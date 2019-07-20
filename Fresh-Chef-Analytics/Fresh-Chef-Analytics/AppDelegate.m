@@ -34,11 +34,15 @@
     
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
         [[MenuManager shared] fetchMenuItems:PFUser.currentUser withCompletion:^(NSMutableDictionary * _Nonnull categoriesOfDishes, NSError * _Nullable error) {
-            if (error!=nil)
+            if (!error)
             {
                 NSLog(@"fetched restaurant's menu");
+                [[MenuManager shared] setOrderedDicts];
+
             }
         }];
+        //set sorted dictionaries
+        
         [[WaiterManager shared] fetchWaiters:PFUser.currentUser withCompletion:^(NSError * _Nullable error) {
             if (!error)
             {

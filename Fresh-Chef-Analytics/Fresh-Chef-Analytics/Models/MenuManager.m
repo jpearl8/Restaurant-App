@@ -18,6 +18,26 @@
     });
     return sharedManager;
 }
+//- (void)fetchMenuItems:(PFUser *)restaurant withCompletion:(void (^)(NSMutableDictionary * _Nonnull, NSError * _Nullable))fetchedDishes
+//{
+//    // construct PFQuery
+//    PFQuery *dishQuery;
+//    dishQuery = [Dish query];
+//    [dishQuery whereKey:@"restaurantID" equalTo:restaurant.objectId];
+//    dishQuery.limit = 20;
+//
+//    // fetch data asynchronously
+//    [dishQuery findObjectsInBackgroundWithBlock:^(NSArray<Dish *> * _Nullable dishes, NSError * _Nullable error) {
+//        self.dishes = dishes;
+//        [self categorizeDishes];
+//        NSLog(@"Step 3");
+//
+//        fetchedDishes(self.categoriesOfDishes, nil);
+//    }];
+//
+//
+//}
+
 - (void)fetchMenuItems:(PFUser *)restaurant withCompletion:(void (^)(NSMutableDictionary * _Nonnull, NSError * _Nullable))fetchedDishes
 {
     // construct PFQuery
@@ -34,9 +54,62 @@
         
         fetchedDishes(self.categoriesOfDishes, nil);
     }];
-
-
 }
+
+- (void)setOrderedDicts {
+    // set ordered dictionaries
+    self.sortByArray = @[@"orderFrequency", @"rating", @"price"];
+    self.dishesByFreq = [self orderDictionary:self.categoriesOfDishes byType:@"orderFrequency"];
+    self.dishesByRating =[self orderDictionary:self.categoriesOfDishes byType:@"rating"];
+    self.dishesByPrice = [self orderDictionary:self.categoriesOfDishes byType:@"price"];
+    
+//    NSLog(@"Ordered dishes by frequency:");
+//    for(id key in self.dishesByFreq){
+//        NSLog(@"TYPE: %@", key);
+//        for(Dish *dish in self.dishesByFreq[key]){
+//            NSLog(@"Dish frequency: %@", dish[@"orderFrequency"]);
+//        }
+//    }
+//    //set dictionary ordered by rating
+//    NSLog(@"Ordered dishes by rating:");
+//    for(id key in self.dishesByRating){
+//        NSLog(@"TYPE: %@", key);
+//        for(Dish *dish in self.dishesByRating[key]){
+//            NSLog(@"Dish rating: %@", dish[@"rating"]);
+//        }
+//    }
+//    //set dictionary ordered by price
+//    NSLog(@"Ordered dishes by price:");
+//    for(id key in self.dishesByPrice){
+//        NSLog(@"TYPE: %@", key);
+//        for(Dish *dish in self.dishesByPrice[key]){
+//            NSLog(@"Dish price: %@", dish[@"price"]);
+//        }
+//    }
+}
+
+- (NSMutableDictionary *)orderDictionary:(NSMutableDictionary *)dict byType:(NSString *)orderType {
+    NSMutableDictionary *orderedDict = [[NSMutableDictionary alloc] init]; // check if creates memory leak
+    for(NSString *key in dict){
+        //order array at dict[key]
+        NSArray *sortedArray;
+        sortedArray = [dict[key] sortedArrayUsingComparator:^NSComparisonResult(id a, id b) {
+            NSNumber *first = a[orderType];
+            NSNumber *second = b[orderType];
+            // check for nil values
+            if(first != nil && second != nil){
+                return [second compare:first]; // rank largest to smallest
+            } else if (first == nil) {
+                return 1;
+            } else {
+                return -1; // if second is nil or if both are nil assume second is smaller
+            }
+        }];
+        orderedDict[key] = sortedArray; //set the dictionary category to its corresponding sorted array
+    }
+    return orderedDict;
+}
+
 - (void)removeDishFromTable:(Dish *)delDish withCompletion:(void (^)(NSMutableDictionary * _Nonnull, NSError * _Nullable))removedDish
 {
     PFQuery *dishQuery;
