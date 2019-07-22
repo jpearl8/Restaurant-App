@@ -1581,6 +1581,7 @@
                     <navigationItem key="navigationItem" id="4an-xR-03C"/>
                     <connections>
                         <outlet property="menuList" destination="eFu-XR-8oP" id="v0F-WP-Q0D"/>
+                        <outlet property="searchBar" destination="uiU-A4-iVJ" id="cpy-xV-0hs"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lBY-Yr-Z70" userLabel="First Responder" sceneMemberID="firstResponder"/>
