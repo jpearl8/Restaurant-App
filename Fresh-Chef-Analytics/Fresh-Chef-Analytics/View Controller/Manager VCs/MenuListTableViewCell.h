@@ -17,7 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UILabel *orderFrequency;
 @property (weak, nonatomic) IBOutlet UIImageView *image;
 @property (weak, nonatomic) IBOutlet UILabel *price;
-
+@property (assign, nonatomic) NSInteger selectedIndex;
 @end
 
 NS_ASSUME_NONNULL_END

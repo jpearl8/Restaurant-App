@@ -18,12 +18,10 @@
 @property (strong, nonatomic) NSArray *dishes;
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *sortByControl;
-// Dictionaries
 @property (strong, nonatomic) NSMutableDictionary *orderedDishesDict;
 @property (strong, nonatomic) NSMutableDictionary *filteredCategoriesOfDishes;
 @property (strong, nonatomic) NSArray *categories;
-//@property (strong, nonatomic) NSArray *sortByArray;
-
+@property (assign, nonatomic) NSInteger selectedIndex;
 @end
 
 @implementation MenuListViewController
@@ -45,6 +43,7 @@
     NSInteger section = indexPath.section;
     MenuListTableViewCell *cell = [self.menuList dequeueReusableCellWithIdentifier: @"Dish"];
     Dish *dish = self.filteredCategoriesOfDishes[self.categories[section]][indexPath.row];
+    cell.selectedIndex = self.selectedIndex;
     cell.name.text = dish.name;
     cell.rating.text = [dish.rating stringValue];
     cell.orderFrequency.text = [dish.orderFrequency stringValue];
@@ -76,12 +75,12 @@
 - (IBAction)onEditSortBy:(id)sender {
     //refresh table view
     //check which sort button is clicked
-    NSInteger selectedIndex = self.sortByControl.selectedSegmentIndex;
-    if(selectedIndex == 0){
+    self.selectedIndex = self.sortByControl.selectedSegmentIndex;
+    if(self.selectedIndex == 0){
         self.orderedDishesDict = [[MenuManager shared] dishesByFreq];
-    } else if (selectedIndex == 1) {
+    } else if (self.selectedIndex == 1) {
         self.orderedDishesDict = [[MenuManager shared] dishesByRating];
-    } else if (selectedIndex == 2) {
+    } else if (self.selectedIndex == 2) {
         self.orderedDishesDict = [[MenuManager shared] dishesByPrice];
     } else {
         NSLog(@"no buttons pressed");
