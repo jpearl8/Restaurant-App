@@ -31,15 +31,18 @@
     self.roster = [[WaiterManager shared] roster];
     self.filteredWaiters = self.roster;
 }
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return self.filteredWaiters.count;
 }
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     WaiterListTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"WaiterListCell" forIndexPath:indexPath];
     Waiter *waiter = self.filteredWaiters[indexPath.row];
     cell.waiter = waiter;
+    cell.selectedIndex = self.selectedIndex;
     cell.waiterName.text = waiter.name;
     cell.waiterTime.text = [[NSString stringWithFormat:@"%@", waiter.yearsWorked] stringByAppendingString:@" years"];
     cell.waiterRating.text = [[NSString stringWithFormat:@"%@", waiter.rating] stringByAppendingString:@" stars"];
@@ -59,6 +62,7 @@
     }
     return cell;
 }
+
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
     if (searchText.length != 0) {
         NSPredicate *predicate = [NSPredicate predicateWithBlock:^BOOL(NSDictionary *evaluatedObject, NSDictionary *bindings) {
@@ -75,16 +79,17 @@
 
 - (IBAction)onEditSortBy:(id)sender {
     // reload data
-    NSInteger selectedIndex = self.sortByControl.selectedSegmentIndex;
-    if (selectedIndex == 0) {
+    self.selectedIndex = self.sortByControl.selectedSegmentIndex;
+//    NSInteger selectedIndex = self.sortByControl.selectedSegmentIndex;
+    if (self.selectedIndex == 0) {
         self.sortedRoster = [[WaiterManager shared] rosterByRating];
-    } else if (selectedIndex == 1) {
+    } else if (self.selectedIndex == 1) {
         self.sortedRoster = [[WaiterManager shared] rosterByTables];
-    } else if (selectedIndex == 2) {
+    } else if (self.selectedIndex == 2) {
         self.sortedRoster = [[WaiterManager shared] rosterByCustomers];
-    } else if (selectedIndex == 3) {
+    } else if (self.selectedIndex == 3) {
         self.sortedRoster = [[WaiterManager shared] rosterByTips];
-    } else if (selectedIndex == 4) {
+    } else if (self.selectedIndex == 4) {
         self.sortedRoster = [[WaiterManager shared] rosterByYears];
     } else {
         self.sortedRoster = self.roster;
