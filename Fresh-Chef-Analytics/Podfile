@@ -11,7 +11,7 @@ target 'Fresh-Chef-Analytics' do
   pod 'MKDropdownMenu'
   pod 'UITextView+Placeholder'
   pod 'DateTools'
-
+  pod 'PNChart'
 
 
   target 'Fresh-Chef-AnalyticsTests' do
