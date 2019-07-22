@@ -13,7 +13,8 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
-    
+    self.waiterProfileImage.layer.cornerRadius = 0.8 * self.waiterProfileImage.bounds.size.height;
+    self.waiterProfileImage.layer.masksToBounds = YES;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
