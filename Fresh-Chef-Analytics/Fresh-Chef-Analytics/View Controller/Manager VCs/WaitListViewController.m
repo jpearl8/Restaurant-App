@@ -17,6 +17,7 @@
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (strong, nonatomic) NSArray *filteredWaiters;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *sortByControl;
+@property (strong, nonatomic) NSArray *sortedRoster;
 
 @end
 
@@ -28,31 +29,20 @@
     self.tableView.delegate = self;
     self.searchBar.delegate = self;
     self.roster = [[WaiterManager shared] roster];
+    self.filteredWaiters = self.roster;
 }
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.roster.count;
+    return self.filteredWaiters.count;
 }
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     WaiterListTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"WaiterListCell" forIndexPath:indexPath];
-    Waiter *waiter;
-    // check which sort button is clicked
-    NSInteger selectedIndex = self.sortByControl.selectedSegmentIndex;
-    if (selectedIndex == 0) {
-        waiter = [[WaiterManager shared] rosterByRating][indexPath.row];
-    } else if (selectedIndex == 1) {
-        waiter = [[WaiterManager shared] rosterByTables][indexPath.row];
-    } else if (selectedIndex == 2) {
-        waiter = [[WaiterManager shared] rosterByCustomers][indexPath.row];
-    } else if (selectedIndex == 3) {
-        waiter = [[WaiterManager shared] rosterByTips][indexPath.row];
-    } else if (selectedIndex == 4) {
-        waiter = [[WaiterManager shared] rosterByYears][indexPath.row];
-    } else {
-        waiter = self.roster[indexPath.row];
-    }
+    Waiter *waiter = self.filteredWaiters[indexPath.row];
     cell.waiter = waiter;
+    cell.selectedIndex = self.selectedIndex;
     cell.waiterName.text = waiter.name;
     cell.waiterTime.text = [[NSString stringWithFormat:@"%@", waiter.yearsWorked] stringByAppendingString:@" years"];
     cell.waiterRating.text = [[NSString stringWithFormat:@"%@", waiter.rating] stringByAppendingString:@" stars"];
@@ -72,12 +62,14 @@
     }
     return cell;
 }
+
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
     if (searchText.length != 0) {
         NSPredicate *predicate = [NSPredicate predicateWithBlock:^BOOL(NSDictionary *evaluatedObject, NSDictionary *bindings) {
-            return [evaluatedObject[@"name"] containsString:searchText];
+            return [evaluatedObject[@"name"] containsString:[searchText lowercaseString]];
         }];
         self.filteredWaiters = [self.roster filteredArrayUsingPredicate:predicate];
+        NSLog(@"%@", self.filteredWaiters);
     }
     else {
         self.filteredWaiters = self.roster;
@@ -87,6 +79,22 @@
 
 - (IBAction)onEditSortBy:(id)sender {
     // reload data
+    self.selectedIndex = self.sortByControl.selectedSegmentIndex;
+//    NSInteger selectedIndex = self.sortByControl.selectedSegmentIndex;
+    if (self.selectedIndex == 0) {
+        self.sortedRoster = [[WaiterManager shared] rosterByRating];
+    } else if (self.selectedIndex == 1) {
+        self.sortedRoster = [[WaiterManager shared] rosterByTables];
+    } else if (self.selectedIndex == 2) {
+        self.sortedRoster = [[WaiterManager shared] rosterByCustomers];
+    } else if (self.selectedIndex == 3) {
+        self.sortedRoster = [[WaiterManager shared] rosterByTips];
+    } else if (self.selectedIndex == 4) {
+        self.sortedRoster = [[WaiterManager shared] rosterByYears];
+    } else {
+        self.sortedRoster = self.roster;
+    }
+    self.filteredWaiters = self.sortedRoster;
     [self.tableView reloadData];
 }
 
