@@ -2026,6 +2026,9 @@
                                     <segment title="Avg. Tip per Customer"/>
                                     <segment title="Years at Restuarant"/>
                                 </segments>
+                                <connections>
+                                    <action selector="onEditSortBy:" destination="ZBc-8o-kHs" eventType="valueChanged" id="s5P-7F-Dbn"/>
+                                </connections>
                             </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -2034,6 +2037,7 @@
                     <navigationItem key="navigationItem" id="Syc-br-INy"/>
                     <connections>
                         <outlet property="searchBar" destination="jWN-cr-Ykq" id="paB-16-5y6"/>
+                        <outlet property="sortByControl" destination="edx-hD-oPD" id="oOX-gF-A7f"/>
                         <outlet property="tableView" destination="xh9-4R-Uw7" id="32w-49-oVu"/>
                     </connections>
                 </viewController>

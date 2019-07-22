@@ -36,9 +36,8 @@
         [[MenuManager shared] fetchMenuItems:PFUser.currentUser withCompletion:^(NSMutableDictionary * _Nonnull categoriesOfDishes, NSError * _Nullable error) {
             if (!error)
             {
-                NSLog(@"fetched restaurant's menu");
                 [[MenuManager shared] setOrderedDicts];
-
+                NSLog(@"fetched restaurant's menu");
             }
         }];
         //set sorted dictionaries
@@ -46,6 +45,7 @@
         [[WaiterManager shared] fetchWaiters:PFUser.currentUser withCompletion:^(NSError * _Nullable error) {
             if (!error)
             {
+                [[WaiterManager shared] setOrderedWaiterArrays];
                 NSLog(@"fetched restaurant's waiters");
             }
         }];

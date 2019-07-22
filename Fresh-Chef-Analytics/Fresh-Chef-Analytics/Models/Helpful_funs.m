@@ -63,4 +63,22 @@
         button.backgroundColor = [UIColor clearColor];
     }
 }
+
+- (NSArray *)orderArray:(NSArray *)array byType:(NSString *)orderType
+{
+    NSArray *sortedArray;
+    sortedArray = [array sortedArrayUsingComparator:^NSComparisonResult(id a, id b) {
+        NSNumber *first = a[orderType];
+        NSNumber *second = b[orderType];
+        //check for nil values
+        if(first != nil && second != nil){
+            return [second compare:first];
+        } else if(first == nil){
+            return 1;
+        } else{
+            return -1; // if second is nil or if both are nil assume second is smaller
+        }
+    }];
+    return sortedArray;
+}
 @end

@@ -16,6 +16,8 @@
 @property (strong, nonatomic) NSArray *roster;
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (strong, nonatomic) NSArray *filteredWaiters;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *sortByControl;
+@property (strong, nonatomic) NSArray *sortedRoster;
 
 @end
 
@@ -68,6 +70,26 @@
     else {
         self.filteredWaiters = self.roster;
     }
+    [self.tableView reloadData];
+}
+
+- (IBAction)onEditSortBy:(id)sender {
+    // reload data
+    NSInteger selectedIndex = self.sortByControl.selectedSegmentIndex;
+    if (selectedIndex == 0) {
+        self.sortedRoster = [[WaiterManager shared] rosterByRating];
+    } else if (selectedIndex == 1) {
+        self.sortedRoster = [[WaiterManager shared] rosterByTables];
+    } else if (selectedIndex == 2) {
+        self.sortedRoster = [[WaiterManager shared] rosterByCustomers];
+    } else if (selectedIndex == 3) {
+        self.sortedRoster = [[WaiterManager shared] rosterByTips];
+    } else if (selectedIndex == 4) {
+        self.sortedRoster = [[WaiterManager shared] rosterByYears];
+    } else {
+        self.sortedRoster = self.roster;
+    }
+    self.filteredWaiters = self.sortedRoster;
     [self.tableView reloadData];
 }
 

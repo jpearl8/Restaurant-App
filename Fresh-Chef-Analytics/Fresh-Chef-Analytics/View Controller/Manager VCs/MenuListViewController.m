@@ -71,7 +71,6 @@
 }
 
 - (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    //NSLog(@"%lu", (unsigned long)[self.filteredCategoriesOfDishes[self.categories[section]] count]);
     return [self.filteredCategoriesOfDishes[self.categories[section]] count];
 }
 - (IBAction)onEditSortBy:(id)sender {
