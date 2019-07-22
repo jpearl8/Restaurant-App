@@ -15,7 +15,6 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UILabel *name;
 @property (weak, nonatomic) IBOutlet UILabel *rating;
 @property (weak, nonatomic) IBOutlet UILabel *orderFrequency;
-@property (weak, nonatomic) IBOutlet UILabel *type;
 @property (weak, nonatomic) IBOutlet UIImageView *image;
 @property (weak, nonatomic) IBOutlet UILabel *price;
 

@@ -16,11 +16,13 @@
 @property (weak, nonatomic) IBOutlet UITableView *menuList;
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
 @property (strong, nonatomic) NSArray *dishes;
-@property (strong, nonatomic) NSMutableDictionary *categoriesOfDishes;
-@property (strong, nonatomic) NSMutableDictionary *filteredCategoriesOfDishes;
-@property (strong, nonatomic) NSMutableDictionary *shownCategoriesOfDishes;
-@property (strong, nonatomic) NSArray *categories;
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *sortByControl;
+// Dictionaries
+@property (strong, nonatomic) NSMutableDictionary *orderedDishesDict;
+@property (strong, nonatomic) NSMutableDictionary *filteredCategoriesOfDishes;
+@property (strong, nonatomic) NSArray *categories;
+//@property (strong, nonatomic) NSArray *sortByArray;
 
 @end
 
@@ -32,23 +34,20 @@
     self.menuList.delegate = self;
     self.searchBar.delegate = self;
     self.dishes = [[MenuManager shared] dishes];
-    self.categoriesOfDishes = [NSMutableDictionary alloc];
-    self.categoriesOfDishes = [self.categoriesOfDishes initWithDictionary:[[MenuManager shared] categoriesOfDishes]];
-    self.categories = [self.categoriesOfDishes allKeys];
+    //setting dictionary elements
+    self.categories = [[[MenuManager shared] categoriesOfDishes] allKeys];
+    self.orderedDishesDict = [[NSMutableDictionary alloc] initWithDictionary:[[MenuManager shared] categoriesOfDishes]];
     self.filteredCategoriesOfDishes = [NSMutableDictionary alloc];
-    self.filteredCategoriesOfDishes = [self.filteredCategoriesOfDishes initWithDictionary:self.categoriesOfDishes];
-    self.shownCategoriesOfDishes = [NSMutableDictionary alloc];
-    self.shownCategoriesOfDishes = [self.shownCategoriesOfDishes initWithDictionary:self.categoriesOfDishes];
+    self.filteredCategoriesOfDishes = [self.filteredCategoriesOfDishes initWithDictionary:self.orderedDishesDict];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     NSInteger section = indexPath.section;
     MenuListTableViewCell *cell = [self.menuList dequeueReusableCellWithIdentifier: @"Dish"];
-    Dish *dish = self.shownCategoriesOfDishes[self.categories[section]][indexPath.row];
+    Dish *dish = self.filteredCategoriesOfDishes[self.categories[section]][indexPath.row];
     cell.name.text = dish.name;
     cell.rating.text = [dish.rating stringValue];
     cell.orderFrequency.text = [dish.orderFrequency stringValue];
-    cell.type.text = dish.type;
     cell.price.text = [dish.price stringValue];
     if(dish.image != nil){
         PFFileObject *dishImageFile = (PFFileObject *)dish.image;
@@ -64,7 +63,7 @@
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return self.shownCategoriesOfDishes.count;
+    return self.filteredCategoriesOfDishes.count;
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
@@ -73,7 +72,23 @@
 
 - (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     //NSLog(@"%lu", (unsigned long)[self.filteredCategoriesOfDishes[self.categories[section]] count]);
-    return [self.shownCategoriesOfDishes[self.categories[section]] count];
+    return [self.filteredCategoriesOfDishes[self.categories[section]] count];
+}
+- (IBAction)onEditSortBy:(id)sender {
+    //refresh table view
+    //check which sort button is clicked
+    NSInteger selectedIndex = self.sortByControl.selectedSegmentIndex;
+    if(selectedIndex == 0){
+        self.orderedDishesDict = [[MenuManager shared] dishesByFreq];
+    } else if (selectedIndex == 1) {
+        self.orderedDishesDict = [[MenuManager shared] dishesByRating];
+    } else if (selectedIndex == 2) {
+        self.orderedDishesDict = [[MenuManager shared] dishesByPrice];
+    } else {
+        NSLog(@"no buttons pressed");
+    }
+    self.filteredCategoriesOfDishes = [NSMutableDictionary dictionaryWithDictionary:self.orderedDishesDict];
+    [self.menuList reloadData];
 }
 
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
@@ -83,17 +98,15 @@
         }];
         for (NSString *category in self.categories)
         {
-            NSArray *filteredCategory = [[NSArray alloc] init];
-            filteredCategory = [NSArray arrayWithArray:self.categoriesOfDishes[category]];
+            NSArray *filteredCategory = [[NSArray alloc] initWithArray:self.orderedDishesDict[category]];
             filteredCategory = [filteredCategory filteredArrayUsingPredicate:predicate];
             [self.filteredCategoriesOfDishes setValue:filteredCategory forKey:category];
-            self.shownCategoriesOfDishes = self.filteredCategoriesOfDishes;
         }
         [self.menuList reloadData];
 
     }
     else {
-        self.shownCategoriesOfDishes = self.categoriesOfDishes;
+        self.filteredCategoriesOfDishes = [NSMutableDictionary dictionaryWithDictionary:self.orderedDishesDict];
         [self.menuList reloadData];
 
     }
