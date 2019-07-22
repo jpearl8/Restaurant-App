@@ -51,7 +51,6 @@
     } else {
         dish = self.categoriesOfDishes[self.categories[section]][indexPath.row];
     }
-//    } else if (self.sortByControl)
     cell.name.text = dish.name;
     cell.rating.text = [dish.rating stringValue];
     cell.orderFrequency.text = [dish.orderFrequency stringValue];

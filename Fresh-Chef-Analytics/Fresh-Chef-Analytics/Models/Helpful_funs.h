@@ -19,6 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (UIColor *)colorFromHexString:(NSString *)hexString;
 - (void) updateWithOrder: ( NSMutableArray <order*> *)orderList withNumberString:(NSString *)customerNumber;
 -(void)defineSelect:(UIButton *)button withSelect:(BOOL)select;
+- (NSArray *)orderArray:(NSArray *)array byType:(NSString *)orderType;
 @end
 
 NS_ASSUME_NONNULL_END

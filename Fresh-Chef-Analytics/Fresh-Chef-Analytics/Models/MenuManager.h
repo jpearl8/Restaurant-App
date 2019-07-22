@@ -13,10 +13,6 @@
 NS_ASSUME_NONNULL_BEGIN
 @interface MenuManager : NSObject
 @property (strong, nonatomic) NSArray * dishes;
-//dishes array for sorting menu
-//@property (strong, nonatomic) NSArray * dishesByFrequency;
-//@property (strong, nonatomic) NSArray * dishesByRating;
-//@property (strong, nonatomic) NSArray * dishesByPrice;
 @property (strong, nonatomic) NSMutableDictionary *categoriesOfDishes;
 @property (strong, nonatomic) NSMutableDictionary *dishesByFreq;
 @property (strong, nonatomic) NSMutableDictionary *dishesByRating;

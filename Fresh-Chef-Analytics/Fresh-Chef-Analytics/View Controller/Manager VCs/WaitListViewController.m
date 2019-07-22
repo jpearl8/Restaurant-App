@@ -16,6 +16,7 @@
 @property (strong, nonatomic) NSArray *roster;
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (strong, nonatomic) NSArray *filteredWaiters;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *sortByControl;
 
 @end
 
@@ -35,7 +36,22 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     WaiterListTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"WaiterListCell" forIndexPath:indexPath];
-    Waiter *waiter = self.roster[indexPath.row];
+    Waiter *waiter;
+    // check which sort button is clicked
+    NSInteger selectedIndex = self.sortByControl.selectedSegmentIndex;
+    if (selectedIndex == 0) {
+        waiter = [[WaiterManager shared] rosterByRating][indexPath.row];
+    } else if (selectedIndex == 1) {
+        waiter = [[WaiterManager shared] rosterByTables][indexPath.row];
+    } else if (selectedIndex == 2) {
+        waiter = [[WaiterManager shared] rosterByCustomers][indexPath.row];
+    } else if (selectedIndex == 3) {
+        waiter = [[WaiterManager shared] rosterByTips][indexPath.row];
+    } else if (selectedIndex == 4) {
+        waiter = [[WaiterManager shared] rosterByYears][indexPath.row];
+    } else {
+        waiter = self.roster[indexPath.row];
+    }
     cell.waiter = waiter;
     cell.waiterName.text = waiter.name;
     cell.waiterTime.text = [[NSString stringWithFormat:@"%@", waiter.yearsWorked] stringByAppendingString:@" years"];
@@ -66,6 +82,11 @@
     else {
         self.filteredWaiters = self.roster;
     }
+    [self.tableView reloadData];
+}
+
+- (IBAction)onEditSortBy:(id)sender {
+    // reload data
     [self.tableView reloadData];
 }
 

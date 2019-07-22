@@ -7,6 +7,7 @@
 //
 
 #import "WaiterManager.h"
+#import "Helpful_funs.h"
 
 @implementation WaiterManager
 // singleton generates a single instance and initiates itself
@@ -33,6 +34,15 @@
     }];
     
 }
+
+- (void)setOrderedWaiterArrays {
+    self.rosterByRating = [[Helpful_funs shared] orderArray:self.roster byType:@"rating"];
+    self.rosterByTables = [[Helpful_funs shared] orderArray:self.roster byType:@"tableTops"];
+    self.rosterByCustomers = [[Helpful_funs shared] orderArray:self.roster byType:@"numOfCustomers"];
+    self.rosterByTips = [[Helpful_funs shared] orderArray:self.roster byType:@"tipsMade"];
+    self.rosterByYears = [[Helpful_funs shared] orderArray:self.roster byType:@"yearsWorked"];
+}
+
 - (void) addWaiter:(Waiter *)waiter
 {
     self.roster = [self.roster arrayByAddingObject:waiter];

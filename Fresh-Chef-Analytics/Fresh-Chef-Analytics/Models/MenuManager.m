@@ -7,6 +7,7 @@
 //
 
 #import "MenuManager.h"
+#import "Helpful_funs.h"
 
 @implementation MenuManager
 // singleton generates a single instance and initiates itself
@@ -58,7 +59,7 @@
 
 - (void)setOrderedDicts {
     // set ordered dictionaries
-    self.sortByArray = @[@"orderFrequency", @"rating", @"price"];
+//    self.sortByArray = @[@"orderFrequency", @"rating", @"price"];
     self.dishesByFreq = [self orderDictionary:self.categoriesOfDishes byType:@"orderFrequency"];
     self.dishesByRating =[self orderDictionary:self.categoriesOfDishes byType:@"rating"];
     self.dishesByPrice = [self orderDictionary:self.categoriesOfDishes byType:@"price"];
@@ -88,24 +89,11 @@
 //    }
 }
 
-- (NSMutableDictionary *)orderDictionary:(NSMutableDictionary *)dict byType:(NSString *)orderType {
-    NSMutableDictionary *orderedDict = [[NSMutableDictionary alloc] init]; // check if creates memory leak
+- (NSMutableDictionary *)orderDictionary:(NSMutableDictionary *)dict byType:(NSString *)orderType
+{
+    NSMutableDictionary *orderedDict = [[NSMutableDictionary alloc] init];
     for(NSString *key in dict){
-        //order array at dict[key]
-        NSArray *sortedArray;
-        sortedArray = [dict[key] sortedArrayUsingComparator:^NSComparisonResult(id a, id b) {
-            NSNumber *first = a[orderType];
-            NSNumber *second = b[orderType];
-            // check for nil values
-            if(first != nil && second != nil){
-                return [second compare:first]; // rank largest to smallest
-            } else if (first == nil) {
-                return 1;
-            } else {
-                return -1; // if second is nil or if both are nil assume second is smaller
-            }
-        }];
-        orderedDict[key] = sortedArray; //set the dictionary category to its corresponding sorted array
+        orderedDict[key] = [[Helpful_funs shared] orderArray:dict[key] byType:orderType];
     }
     return orderedDict;
 }
