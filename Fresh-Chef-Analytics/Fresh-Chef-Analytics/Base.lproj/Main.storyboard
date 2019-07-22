@@ -267,21 +267,68 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Menu Data" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jsc-VF-xHg">
-                                <rect key="frame" x="67" y="238" width="280" height="70"/>
+                                <rect key="frame" x="43" y="88" width="280" height="70"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="35"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aiH-T3-qYL" userLabel="Scatter">
+                                <rect key="frame" x="0.0" y="309" width="414" height="384"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <connections>
+                                    <segue destination="jCr-gT-Fbc" kind="embed" id="DNT-mv-uy8"/>
+                                </connections>
+                            </containerView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="GRAPH" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rnv-mh-5eJ">
+                                <rect key="frame" x="67" y="265" width="280" height="36"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Uws-hc-LDb">
+                                <rect key="frame" x="67" y="161" width="280" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <segments>
+                                    <segment title="" image="scatter"/>
+                                    <segment title="" image="histogram"/>
+                                    <segment title="" image="topbot"/>
+                                </segments>
+                                <connections>
+                                    <action selector="showContainer:" destination="QqY-bN-qJR" eventType="valueChanged" id="mzO-X2-uD2"/>
+                                </connections>
+                            </segmentedControl>
+                            <containerView opaque="NO" alpha="0.0" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZWt-9M-SJ5" userLabel="Histogram">
+                                <rect key="frame" x="0.0" y="309" width="414" height="384"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <connections>
+                                    <segue destination="uXO-8S-jO0" kind="embed" id="Q8n-op-yds"/>
+                                </connections>
+                            </containerView>
+                            <containerView opaque="NO" alpha="0.0" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ugr-Qu-ZTk" userLabel="Top 3 Bottom 3">
+                                <rect key="frame" x="0.0" y="309" width="414" height="384"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <connections>
+                                    <segue destination="R9x-8j-sGD" kind="embed" id="KWp-y4-XAh"/>
+                                </connections>
+                            </containerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="mdD-2D-Z2h"/>
                     </view>
                     <navigationItem key="navigationItem" id="MaQ-vs-fEN"/>
+                    <connections>
+                        <outlet property="histogramContainer" destination="ZWt-9M-SJ5" id="UYV-bi-Y04"/>
+                        <outlet property="scatterContainer" destination="aiH-T3-qYL" id="uSP-dn-sbH"/>
+                        <outlet property="segcontrol" destination="Uws-hc-LDb" id="Haw-s4-7Sk"/>
+                        <outlet property="titleLabel" destination="rnv-mh-5eJ" id="EwD-R4-G3K"/>
+                        <outlet property="top3Bot3Container" destination="Ugr-Qu-ZTk" id="2uM-E9-kGC"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GGW-zg-QcF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1122" y="3074"/>
+            <point key="canvasLocation" x="1121.7391304347827" y="3073.6607142857142"/>
         </scene>
         <!--Profile-->
         <scene sceneID="L7M-nB-u8G">
@@ -626,7 +673,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="2930.434782608696" y="1998.8839285714284"/>
+            <point key="canvasLocation" x="2728" y="1810"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="hxY-K7-5n5">
@@ -2949,7 +2996,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="2928.985507246377" y="2737.5"/>
+            <point key="canvasLocation" x="2728" y="2483"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="y7a-Kh-vAk">
@@ -2987,10 +3034,65 @@
             </objects>
             <point key="canvasLocation" x="-2439.130434782609" y="1759.8214285714284"/>
         </scene>
+        <!--Scatter View Controller-->
+        <scene sceneID="v0z-Yd-oo7">
+            <objects>
+                <viewController id="jCr-gT-Fbc" customClass="ScatterViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="avG-y4-fH4">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="384"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="536-17-6P9">
+                                <rect key="frame" x="67" y="123" width="280" height="245"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.9416441941624365" green="0.7016172427092664" blue="0.79210686313860923" alpha="0.45269691780821919" colorSpace="custom" customColorSpace="displayP3"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.73994592479999999" green="0.87727101009999997" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    </view>
+                    <connections>
+                        <outlet property="dataView" destination="536-17-6P9" id="Wqx-th-e5x"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kfh-hs-9BT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3517" y="3414"/>
+        </scene>
+        <!--Histogram View Controller-->
+        <scene sceneID="b0u-In-eZ3">
+            <objects>
+                <viewController id="uXO-8S-jO0" customClass="HistogramViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ShW-oy-GNT">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="384"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.8943329632" green="0.39257926789999997" blue="0.37661585400000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jxI-JB-Z2J" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3516" y="3074"/>
+        </scene>
+        <!--Top3 Bot3 View Controller-->
+        <scene sceneID="rIo-yk-fdq">
+            <objects>
+                <viewController id="R9x-8j-sGD" customClass="Top3Bot3ViewController" sceneMemberID="viewController">
+                    <view key="view" alpha="0.90000000000000002" contentMode="scaleToFill" id="sku-Dk-eDA">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="384"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.45989707590000001" green="0.10801240080000001" blue="0.53912198600000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cs4-DE-fGz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3516" y="2718"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="histogram" width="700" height="700"/>
         <image name="image_placeholder" width="375" height="375"/>
         <image name="profile_tab" width="25" height="25"/>
+        <image name="scatter" width="700" height="700"/>
+        <image name="topbot" width="700" height="700"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="2ao-at-IwH"/>

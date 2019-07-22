@@ -19,26 +19,6 @@
     });
     return sharedManager;
 }
-//- (void)fetchMenuItems:(PFUser *)restaurant withCompletion:(void (^)(NSMutableDictionary * _Nonnull, NSError * _Nullable))fetchedDishes
-//{
-//    // construct PFQuery
-//    PFQuery *dishQuery;
-//    dishQuery = [Dish query];
-//    [dishQuery whereKey:@"restaurantID" equalTo:restaurant.objectId];
-//    dishQuery.limit = 20;
-//
-//    // fetch data asynchronously
-//    [dishQuery findObjectsInBackgroundWithBlock:^(NSArray<Dish *> * _Nullable dishes, NSError * _Nullable error) {
-//        self.dishes = dishes;
-//        [self categorizeDishes];
-//        NSLog(@"Step 3");
-//
-//        fetchedDishes(self.categoriesOfDishes, nil);
-//    }];
-//
-//
-//}
-
 - (void)fetchMenuItems:(PFUser *)restaurant withCompletion:(void (^)(NSMutableDictionary * _Nonnull, NSError * _Nullable))fetchedDishes
 {
     // construct PFQuery
