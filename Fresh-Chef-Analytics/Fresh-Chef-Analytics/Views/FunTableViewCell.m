@@ -52,7 +52,6 @@
     for (int i = 0; i < buttons.count; i++){
         if ([buttons[i].restorationIdentifier isEqualToString:sender.restorationIdentifier]){
             [[Helpful_funs shared] defineSelect:buttons[i] withSelect:YES];
-            
         } else {
             [[Helpful_funs shared] defineSelect:buttons[i] withSelect:NO];
         }

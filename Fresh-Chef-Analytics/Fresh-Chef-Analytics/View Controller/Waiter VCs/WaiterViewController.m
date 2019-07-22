@@ -155,6 +155,7 @@ pass final array on submit button of data table
             NSLog(@"%.f", order.amount);
         }
         NSString *category = [PFUser currentUser][@"theme"];
+        
         [self performSegueWithIdentifier:category sender:self];
     }
 }

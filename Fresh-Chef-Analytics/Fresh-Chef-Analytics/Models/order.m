@@ -14,10 +14,10 @@
     order *myOrder = [[order alloc] init];
     myOrder.dish = dish;
     myOrder.amount = amount;
-    myOrder.customerRating = -1.0;
+    myOrder.customerRating = 5.0;
     myOrder.customerComments = @"";
     myOrder.waiter = nil;
-    myOrder.waiterRating = -1.0;
+    myOrder.waiterRating = 5.0;
     myOrder.waiterReview = @"";
     return myOrder;
 }
