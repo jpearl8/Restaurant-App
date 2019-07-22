@@ -12,6 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface WaitListViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 
+@property (assign, nonatomic) NSInteger selectedIndex;
+
 @end
 
 NS_ASSUME_NONNULL_END
