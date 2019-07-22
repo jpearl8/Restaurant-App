@@ -16,10 +16,9 @@
 @property (weak, nonatomic) IBOutlet UITableView *menuList;
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
 @property (strong, nonatomic) NSArray<Dish *> *dishes;
-@property (strong, nonatomic) NSMutableDictionary *categoriesOfDishes;
 @property (strong, nonatomic) NSArray *categories;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *sortByControl;
-//@property (strong, nonatomic) NSArray *sortByArray;
+@property (strong, nonatomic) NSMutableDictionary *orderedDishesDict;
 
 @end
 
@@ -31,26 +30,17 @@
     self.menuList.dataSource = self;
     self.menuList.delegate = self;
     self.dishes = [[MenuManager shared] dishes];
-    self.categoriesOfDishes = [[MenuManager shared] categoriesOfDishes];
-    self.categories = [self.categoriesOfDishes allKeys];
-    
+    self.orderedDishesDict = [[MenuManager shared] categoriesOfDishes];
+    self.categories = [self.orderedDishesDict allKeys];
+//    self.orderedDishesDict = [[NSMutableDictionary alloc] initWithDictionary:self.categoriesOfDishes];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     NSInteger section = indexPath.section;
     MenuListTableViewCell *cell = [self.menuList dequeueReusableCellWithIdentifier: @"Dish"];
-    Dish *dish;
+    Dish *dish = self.orderedDishesDict[self.categories[section]][indexPath.row];
     //check which sort button is clicked
-    NSInteger selectedIndex = self.sortByControl.selectedSegmentIndex;
-    if(selectedIndex == 0){
-        dish = [[MenuManager shared] dishesByFreq][self.categories[section]][indexPath.row];
-    } else if (selectedIndex == 1) {
-        dish = [[MenuManager shared] dishesByRating][self.categories[section]][indexPath.row];
-    } else if (selectedIndex == 2) {
-        dish = [[MenuManager shared] dishesByPrice][self.categories[section]][indexPath.row];
-    } else {
-        dish = self.categoriesOfDishes[self.categories[section]][indexPath.row];
-    }
+
     cell.name.text = dish.name;
     cell.rating.text = [dish.rating stringValue];
     cell.orderFrequency.text = [dish.orderFrequency stringValue];
@@ -69,7 +59,7 @@
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return self.categoriesOfDishes.count;
+    return self.orderedDishesDict.count;
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
@@ -77,11 +67,20 @@
 }
 
 - (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    NSLog(@"%lu", (unsigned long)[self.categoriesOfDishes[self.categories[section]] count]);
-    return [self.categoriesOfDishes[self.categories[section]] count];
+    return [self.orderedDishesDict[self.categories[section]] count];
 }
 - (IBAction)onEditSortBy:(id)sender {
     //refresh table view
+    NSInteger selectedIndex = self.sortByControl.selectedSegmentIndex;
+    if(selectedIndex == 0){
+        self.orderedDishesDict = [[MenuManager shared] dishesByFreq];
+    } else if (selectedIndex == 1) {
+        self.orderedDishesDict = [[MenuManager shared] dishesByRating];
+    } else if (selectedIndex == 2) {
+        self.orderedDishesDict = [[MenuManager shared] dishesByPrice];
+    } else {
+        NSLog(@"No button selected??");
+    }
     [self.menuList reloadData];
 }
 
