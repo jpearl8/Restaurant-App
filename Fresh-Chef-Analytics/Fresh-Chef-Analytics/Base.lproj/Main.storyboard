@@ -1788,6 +1788,7 @@
                     <navigationItem key="navigationItem" id="4an-xR-03C"/>
                     <connections>
                         <outlet property="menuList" destination="eFu-XR-8oP" id="v0F-WP-Q0D"/>
+                        <outlet property="searchBar" destination="uiU-A4-iVJ" id="cpy-xV-0hs"/>
                         <outlet property="sortByControl" destination="EBH-ph-Drb" id="Hg9-oM-Ccu"/>
                         <segue destination="gl1-Ag-ae1" kind="show" id="r3R-H8-hdI"/>
                     </connections>

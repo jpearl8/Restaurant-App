@@ -29,19 +29,18 @@
     self.tableView.delegate = self;
     self.searchBar.delegate = self;
     self.roster = [[WaiterManager shared] roster];
-    self.sortedRoster = [[NSArray alloc] initWithArray:self.roster];
+    self.filteredWaiters = self.roster;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.sortedRoster.count;
+    return self.filteredWaiters.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     WaiterListTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"WaiterListCell" forIndexPath:indexPath];
-    Waiter *waiter;
-    waiter = self.sortedRoster[indexPath.row];
+    Waiter *waiter = self.filteredWaiters[indexPath.row];
     cell.waiter = waiter;
     cell.selectedIndex = self.selectedIndex;
     cell.waiterName.text = waiter.name;
@@ -67,9 +66,10 @@
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
     if (searchText.length != 0) {
         NSPredicate *predicate = [NSPredicate predicateWithBlock:^BOOL(NSDictionary *evaluatedObject, NSDictionary *bindings) {
-            return [evaluatedObject[@"name"] containsString:searchText];
+            return [evaluatedObject[@"name"] containsString:[searchText lowercaseString]];
         }];
         self.filteredWaiters = [self.roster filteredArrayUsingPredicate:predicate];
+        NSLog(@"%@", self.filteredWaiters);
     }
     else {
         self.filteredWaiters = self.roster;
@@ -94,6 +94,7 @@
     } else {
         self.sortedRoster = self.roster;
     }
+    self.filteredWaiters = self.sortedRoster;
     [self.tableView reloadData];
 }
 
