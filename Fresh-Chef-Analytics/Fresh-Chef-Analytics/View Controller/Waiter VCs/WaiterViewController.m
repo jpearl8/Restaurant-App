@@ -11,6 +11,7 @@ get dish items from restaurant table
 hookup search bar
 pass final array on submit button of data table
  */
+#import "YelpAPIManager.h"
 #import "WaiterViewController.h"
 #import "Dish.h"
 #import "WaitTableViewCell.h"
@@ -46,6 +47,7 @@ pass final array on submit button of data table
 @implementation WaiterViewController
 
 - (void)viewDidLoad {
+    [[YelpAPIManager shared] locationTopRatings];
     [super viewDidLoad];
     self.menuItems.delegate = self;
     self.menuItems.dataSource = self;
