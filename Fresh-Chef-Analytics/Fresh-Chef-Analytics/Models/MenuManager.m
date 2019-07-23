@@ -50,23 +50,6 @@
 //        for(Dish *dish in self.dishesByFreq[key]){
 //            NSLog(@"Dish frequency: %@", dish[@"orderFrequency"]);
 //        }
-//    }
-//    //set dictionary ordered by rating
-//    NSLog(@"Ordered dishes by rating:");
-//    for(id key in self.dishesByRating){
-//        NSLog(@"TYPE: %@", key);
-//        for(Dish *dish in self.dishesByRating[key]){
-//            NSLog(@"Dish rating: %@", dish[@"rating"]);
-//        }
-//    }
-//    //set dictionary ordered by price
-//    NSLog(@"Ordered dishes by price:");
-//    for(id key in self.dishesByPrice){
-//        NSLog(@"TYPE: %@", key);
-//        for(Dish *dish in self.dishesByPrice[key]){
-//            NSLog(@"Dish price: %@", dish[@"price"]);
-//        }
-//    }
 }
 
 - (NSMutableDictionary *)orderDictionary:(NSMutableDictionary *)dict byType:(NSString *)orderType
@@ -139,5 +122,22 @@
         dishesOfType = [NSArray arrayWithObject:dish];
     }
     [self.categoriesOfDishes setObject:dishesOfType forKey:dish.type];
+}
+
+- (void)setTop3Bottom3Dict
+{
+    // make sorted array of every menu item
+    NSLog(@"dishes %@", self.dishes);
+    NSArray *dishesByFreqArray = [[Helpful_funs shared] orderArray:self.dishes byType:@"orderFrequency"];
+    NSArray *dishesByRatingArray = [[Helpful_funs shared] orderArray:self.dishes byType:@"rating"];
+    // take top 3 and bottom 3 based on reviews/frequency
+    NSRange first3Range = NSMakeRange(0, 3);
+    NSRange last3Range = NSMakeRange(([dishesByFreqArray count] - 3), 3);
+    NSArray *top3Freq = [dishesByFreqArray subarrayWithRange:first3Range];
+    NSArray *bottom3Freq = [dishesByFreqArray subarrayWithRange:last3Range];
+    NSArray *top3Rating = [dishesByRatingArray subarrayWithRange:first3Range];
+    NSArray *bottom3Rating = [dishesByRatingArray subarrayWithRange:last3Range];
+    self.top3Bottom3Freq = [[NSMutableDictionary alloc] initWithObjects:@[top3Freq, bottom3Freq] forKeys:@[@"top3", @"bottom3"]];
+    self.top3Bottom3Rating = [[NSMutableDictionary alloc] initWithObjects:@[top3Rating, bottom3Rating] forKeys:@[@"top3", @"bottom3"]];
 }
 @end

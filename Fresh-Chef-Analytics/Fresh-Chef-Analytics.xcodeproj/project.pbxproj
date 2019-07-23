@@ -21,6 +21,7 @@
 		A5C06F6522E67E7300F634E3 /* ScatterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C06F6422E67E7300F634E3 /* ScatterViewController.m */; };
 		A5C06F6822E67E7F00F634E3 /* Top3Bot3ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C06F6722E67E7F00F634E3 /* Top3Bot3ViewController.m */; };
 		A5C06F6B22E67E8700F634E3 /* HistogramViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C06F6A22E67E8700F634E3 /* HistogramViewController.m */; };
+		B6BC874D22E6867000264995 /* Top3Bottom3TableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B6BC874C22E6867000264995 /* Top3Bottom3TableViewCell.m */; };
 		B6D7B35322DE6D27002093CB /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6D7B35222DE6D27002093CB /* LoginViewController.m */; };
 		B6D7B35622DE6D40002093CB /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6D7B35522DE6D40002093CB /* SignUpViewController.m */; };
 		B6D7B35C22DF95BA002093CB /* ManagerLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6D7B35B22DF95BA002093CB /* ManagerLoginViewController.m */; };
@@ -101,6 +102,8 @@
 		A5C06F6722E67E7F00F634E3 /* Top3Bot3ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Top3Bot3ViewController.m; sourceTree = "<group>"; };
 		A5C06F6922E67E8700F634E3 /* HistogramViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HistogramViewController.h; sourceTree = "<group>"; };
 		A5C06F6A22E67E8700F634E3 /* HistogramViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HistogramViewController.m; sourceTree = "<group>"; };
+		B6BC874B22E6867000264995 /* Top3Bottom3TableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Top3Bottom3TableViewCell.h; sourceTree = "<group>"; };
+		B6BC874C22E6867000264995 /* Top3Bottom3TableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Top3Bottom3TableViewCell.m; sourceTree = "<group>"; };
 		B6D7B35122DE6D27002093CB /* LoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		B6D7B35222DE6D27002093CB /* LoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		B6D7B35422DE6D3F002093CB /* SignUpViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SignUpViewController.h; sourceTree = "<group>"; };
@@ -260,6 +263,8 @@
 				A5C06F5822E11D3500F634E3 /* EditWaiterCell.m */,
 				A5C06F5A22E2613100F634E3 /* WaiterListTableViewCell.h */,
 				A5C06F5B22E2613100F634E3 /* WaiterListTableViewCell.m */,
+				B6BC874B22E6867000264995 /* Top3Bottom3TableViewCell.h */,
+				B6BC874C22E6867000264995 /* Top3Bottom3TableViewCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -681,6 +686,7 @@
 				FF03BF5322DEA07700719E8C /* WaitListViewController.m in Sources */,
 				FF46E19222DE436400E15A0E /* AppDelegate.m in Sources */,
 				FF03BF3122DE96EC00719E8C /* FunFormViewController.m in Sources */,
+				B6BC874D22E6867000264995 /* Top3Bottom3TableViewCell.m in Sources */,
 				FF03BF4922DE9FE000719E8C /* EditWaitViewController.m in Sources */,
 				FF03BF4022DE97C900719E8C /* AnotherTableViewController.m in Sources */,
 				A5C06F6B22E67E8700F634E3 /* HistogramViewController.m in Sources */,
