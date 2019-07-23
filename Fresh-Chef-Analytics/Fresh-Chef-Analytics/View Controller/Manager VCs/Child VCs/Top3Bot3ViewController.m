@@ -16,6 +16,8 @@
 @property (strong, nonatomic) NSMutableDictionary *top3Bottom3Rating;
 @property (strong, nonatomic) NSMutableDictionary *top3Bottom3Selected;
 @property (strong, nonatomic) NSArray *categories;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *rankByControl;
+
 @end
 
 @implementation Top3Bot3ViewController {
@@ -56,10 +58,15 @@
 //    cell.selectedIndex = self.selectedIndex; //for toggling between frequency and rating
     cell.dish = dish;
     cell.name.text = dish.name;
-    cell.rating.text = dish.name;
-    cell.rating.text = [dish.orderFrequency stringValue];
+    cell.descriptionLabel.text = dish.dishDescription;
+    if(dish.rating != nil){
+        cell.rating.text = [dish.rating stringValue];
+    } else {
+        cell.rating.text = @"No Rating";
+    }
+    cell.frequency.text = [dish.orderFrequency stringValue];
     cell.price.text = [dish.price stringValue];
-    
+    cell.selectedIndex = self.rankByControl.selectedSegmentIndex;
     if(dish.image != nil){
         PFFileObject *dishImageFile = (PFFileObject *)dish.image;
         [dishImageFile getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
@@ -104,15 +111,6 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     Top3Bottom3TableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
-    //get height values for cell
-
-//    if(cell != nil){
-//        regularHeight = cell.dishInfoView.frame.size.height;
-//        expandedHeight = cell.dishSuggestionsView.frame.size.height + regularHeight;
-//    } else {
-//        regularHeight = 100;
-//        expandedHeight = 300;
-//    }
     if([indexPath compare:selectedIndexPath] == NSOrderedSame){
         if(cell.isExpanded){
             return expandedHeight;
@@ -123,6 +121,15 @@
         cell.isExpanded = NO; //when another cell is clicked unexpand opened cell
         return regularHeight;
     }
+}
+
+- (IBAction)onEditRankBy:(id)sender {
+    if(self.rankByControl.selectedSegmentIndex == 0){
+        self.top3Bottom3Selected = self.top3Bottom3Freq;
+    } else {
+        self.top3Bottom3Selected = self.top3Bottom3Rating;
+    }
+    [self.tableView reloadData];
 }
 
 @end
