@@ -17,8 +17,6 @@
 @property (weak, nonatomic) IBOutlet UIView *histogramContainer;
 @property (weak, nonatomic) IBOutlet UIView *top3Bot3Container;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
-
-
 @end
 
 @implementation MenuDataViewController

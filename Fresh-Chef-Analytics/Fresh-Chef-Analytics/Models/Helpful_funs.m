@@ -30,10 +30,11 @@
 
 - (void) updateWithOrder: ( NSMutableArray <order*> *)orderList withNumberString:(NSString *)customerNumber{
     for (int i = 0; i < orderList.count; i++){
-        if (orderList[i].customerRating != -1.0){
-            float totalRating = [orderList[i].dish.rating floatValue];
-            orderList[i].dish.rating = [NSNumber numberWithFloat: (orderList[i].customerRating + totalRating)];
+        float totalRating = [orderList[i].dish.rating floatValue];
+        if (!totalRating){
+            totalRating = 0;
         }
+        orderList[i].dish.rating = [NSNumber numberWithFloat: ((orderList[i].customerRating * orderList[i].amount)  + totalRating)];
         if (!([orderList[i].customerComments isEqualToString:@""])){
             orderList[i].dish.comments=[orderList[i].dish.comments arrayByAddingObject:orderList[i].customerComments];
         }
@@ -41,10 +42,12 @@
         orderList[i].dish.orderFrequency = [NSNumber numberWithFloat: (orderList[i].amount + totalFrequency)];
         [orderList[i].dish saveInBackground];
     }
-    if (orderList[0].waiterRating != -1){
-        float totalRating = [orderList[0].waiter.rating floatValue];
-        orderList[0].waiter.rating = [NSNumber numberWithFloat: (orderList[0].waiterRating + totalRating)];
+    float totalRating = [orderList[0].waiter.rating floatValue];
+    if (!totalRating){
+        totalRating = 0;
     }
+    orderList[0].waiter.rating = [NSNumber numberWithFloat: (orderList[0].waiterRating + totalRating)];
+
     if (!([orderList[0].waiterReview isEqualToString:@""])){
         orderList[0].waiter.comments=[orderList[0].waiter.comments arrayByAddingObject:orderList[0].waiterReview];
     }

@@ -12,8 +12,9 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface ScatterViewController : UIViewController<PNChartDelegate>
-
+@interface ScatterViewController : UIViewController<PNChartDelegate, UITableViewDelegate, UITableViewDataSource>
+@property (weak, nonatomic) IBOutlet UIButton *chooseDishButton;
+@property (weak, nonatomic) IBOutlet UITableView *dishesTableView;
 @end
 
 NS_ASSUME_NONNULL_END

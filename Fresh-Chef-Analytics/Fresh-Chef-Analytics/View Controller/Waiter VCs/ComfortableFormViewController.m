@@ -5,13 +5,15 @@
 //  Created by jpearl on 7/16/19.
 //  Copyright © 2019 julia@ipearl.net. All rights reserved.
 //
-
+#import "HCSStarRatingView.h"
 #import "ComfortableFormViewController.h"
 #import "ReceiptViewController.h"
 #import "Helpful_funs.h"
 #import "ComfortableTableViewCell.h"
 
 @interface ComfortableFormViewController () <UITableViewDelegate, UITableViewDataSource, UITextViewDelegate>
+@property (weak, nonatomic) IBOutlet HCSStarRatingView *waiterRating;
+
 @property (weak, nonatomic) IBOutlet UITableView *menuRatings;
 @property (weak, nonatomic) IBOutlet UILabel *waiterNameLabel;
 @property (weak, nonatomic) IBOutlet UITextView *waiterComments;
@@ -52,6 +54,7 @@
             cell.image.image = [UIImage imageWithData:imageData];
         }
     }];
+    cell.customerRating.value = (order.customerRating / 2);
     return cell;
 }
 
@@ -77,6 +80,11 @@
 - (IBAction)didSubmit:(UIButton *)sender {
     [[Helpful_funs shared] updateWithOrder:self.customerOrder withNumberString:self.customerNumber];
     [self performSegueWithIdentifier:@"toReceipt" sender:self];
+}
+
+- (IBAction)changeWaiterRating:(HCSStarRatingView *)sender {
+    NSLog(@"%f", sender.value);
+    self.customerOrder[0].waiterRating = 2*sender.value;
 }
 
 @end

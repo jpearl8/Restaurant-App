@@ -57,8 +57,18 @@
             cell.image.image = [UIImage imageWithData:imageData];
         }
     }];
+    NSArray <UIButton *>* buttons = @[cell.b0, cell.b2, cell.b4, cell.b6, cell.b8, cell.b10];
+        for (int i = 0; i < buttons.count; i++){
+            if (cell.order.customerRating == i*2){
+                [[Helpful_funs shared] defineSelect:buttons[i] withSelect:YES];
+                
+            } else {
+                [[Helpful_funs shared] defineSelect:buttons[i] withSelect:NO];
+            }
+        }
     return cell;
 }
+
 - (IBAction)didSubmit:(UIButton *)sender {
     [[Helpful_funs shared] updateWithOrder:self.customerOrder withNumberString:self.customerNumber];
      [self performSegueWithIdentifier:@"toReceipt" sender:self];

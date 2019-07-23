@@ -1,7 +1,25 @@
 PODS:
+  - AFNetworking (3.0.4):
+    - AFNetworking/NSURLSession (= 3.0.4)
+    - AFNetworking/Reachability (= 3.0.4)
+    - AFNetworking/Security (= 3.0.4)
+    - AFNetworking/Serialization (= 3.0.4)
+    - AFNetworking/UIKit (= 3.0.4)
+  - AFNetworking/NSURLSession (3.0.4):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/Reachability (3.0.4)
+  - AFNetworking/Security (3.0.4)
+  - AFNetworking/Serialization (3.0.4)
+  - AFNetworking/UIKit (3.0.4):
+    - AFNetworking/NSURLSession
+  - BDBOAuth1Manager (2.0.0):
+    - AFNetworking/NSURLSession (~> 3.0.0)
   - BEMCheckBox (1.4.1)
   - Bolts/Tasks (1.9.0)
   - DateTools (2.0.0)
+  - HCSStarRatingView (1.5)
   - MKDropdownMenu (1.4)
   - Parse (1.17.2):
     - Parse/Core (= 1.17.2)
@@ -13,8 +31,11 @@ PODS:
   - "UITextView+Placeholder (1.2.1)"
 
 DEPENDENCIES:
+  - AFNetworking
+  - BDBOAuth1Manager
   - BEMCheckBox (~> 1.4)
   - DateTools
+  - HCSStarRatingView (~> 1.5)
   - MKDropdownMenu
   - Parse
   - PNChart
@@ -22,9 +43,12 @@ DEPENDENCIES:
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
+    - AFNetworking
+    - BDBOAuth1Manager
     - BEMCheckBox
     - Bolts
     - DateTools
+    - HCSStarRatingView
     - MKDropdownMenu
     - Parse
     - PNChart
@@ -32,15 +56,18 @@ SPEC REPOS:
     - "UITextView+Placeholder"
 
 SPEC CHECKSUMS:
+  AFNetworking: a0075feb321559dc78d9d85b55d11caa19eabb93
+  BDBOAuth1Manager: 92d17d06f8a648602962304cd2f35ae7394fa001
   BEMCheckBox: 5ba6e37ade3d3657b36caecc35c8b75c6c2b1a4e
   Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
   DateTools: 933ac9c490f21f92127cf690ccd8c397e0126caf
+  HCSStarRatingView: 1d18f79654735514cd6f00e6d90e38cb6320dc31
   MKDropdownMenu: 269df4a41d21a1db684ce8bc709befe419fc5bae
   Parse: 3b31a3dd1777b07ee7f0caee32fafbff544483a5
   PNChart: 84774d225c2126ded6c93d4dbe6ae98c3a73c2d2
   UICountingLabel: 1db4e7d023e1762171eb226d6dff47a7a84f27aa
   "UITextView+Placeholder": 0c3efd97f37ea64bde7f34cc6e90fe02e87b3909
 
-PODFILE CHECKSUM: 790b08c5c7654887608db7c089820fcba780c11e
+PODFILE CHECKSUM: 285e25fb2d01bd1b4356acf834e6ab2f5fa0d68c
 
-COCOAPODS: 1.7.2
+COCOAPODS: 1.7.5

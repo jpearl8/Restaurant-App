@@ -43,6 +43,7 @@
     cell.order = order;
     cell.dishName.text = order.dish.name;
     cell.dishType.text = order.dish.type;
+    cell.customerRating.value = 5;
     cell.dishDescription.text = order.dish.dishDescription;
     cell.amount.text = [NSString stringWithFormat:@"%.0f", order.amount];
     PFFileObject *dishImageFile = (PFFileObject *)order.dish.image;
@@ -51,6 +52,7 @@
             cell.image.image = [UIImage imageWithData:imageData];
         }
     }];
+    cell.customerRating.value = order.customerRating;
     return cell;
 }
 
@@ -67,6 +69,10 @@
     ReceiptViewController *recVC = [segue destinationViewController];
     recVC.customerOrder = self.customerOrder;
     
+}
+- (IBAction)changeWaiterReview:(UISlider *)sender {
+    NSLog(@"%f", sender.value);
+    self.customerOrder[0].waiterRating = sender.value;
 }
 
 - (IBAction)didSubmit:(UIButton *)sender {
