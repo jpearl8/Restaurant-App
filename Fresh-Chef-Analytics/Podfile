@@ -11,10 +11,10 @@ target 'Fresh-Chef-Analytics' do
   pod 'MKDropdownMenu'
   pod 'UITextView+Placeholder'
   pod 'DateTools'
-  pod 'Cosmos', '~> 19.0'
   pod 'HCSStarRatingView', '~> 1.5'
   pod 'BDBOAuth1Manager'
   pod 'AFNetworking'
+  pod 'PNChart'
 
 
   target 'Fresh-Chef-AnalyticsTests' do

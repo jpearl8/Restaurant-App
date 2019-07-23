@@ -18,7 +18,6 @@ PODS:
     - AFNetworking/NSURLSession (~> 3.0.0)
   - BEMCheckBox (1.4.1)
   - Bolts/Tasks (1.9.0)
-  - Cosmos (19.0.3)
   - DateTools (2.0.0)
   - HCSStarRatingView (1.5)
   - MKDropdownMenu (1.4)
@@ -26,17 +25,20 @@ PODS:
     - Parse/Core (= 1.17.2)
   - Parse/Core (1.17.2):
     - Bolts/Tasks (~> 1.9)
+  - PNChart (0.8.9):
+    - UICountingLabel (~> 1.2.0)
+  - UICountingLabel (1.2.0)
   - "UITextView+Placeholder (1.2.1)"
 
 DEPENDENCIES:
   - AFNetworking
   - BDBOAuth1Manager
   - BEMCheckBox (~> 1.4)
-  - Cosmos (~> 19.0)
   - DateTools
   - HCSStarRatingView (~> 1.5)
   - MKDropdownMenu
   - Parse
+  - PNChart
   - "UITextView+Placeholder"
 
 SPEC REPOS:
@@ -45,11 +47,12 @@ SPEC REPOS:
     - BDBOAuth1Manager
     - BEMCheckBox
     - Bolts
-    - Cosmos
     - DateTools
     - HCSStarRatingView
     - MKDropdownMenu
     - Parse
+    - PNChart
+    - UICountingLabel
     - "UITextView+Placeholder"
 
 SPEC CHECKSUMS:
@@ -57,13 +60,14 @@ SPEC CHECKSUMS:
   BDBOAuth1Manager: 92d17d06f8a648602962304cd2f35ae7394fa001
   BEMCheckBox: 5ba6e37ade3d3657b36caecc35c8b75c6c2b1a4e
   Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
-  Cosmos: a6fb17284281fa12cf4c85c2efecd440a215ec44
   DateTools: 933ac9c490f21f92127cf690ccd8c397e0126caf
   HCSStarRatingView: 1d18f79654735514cd6f00e6d90e38cb6320dc31
   MKDropdownMenu: 269df4a41d21a1db684ce8bc709befe419fc5bae
   Parse: 3b31a3dd1777b07ee7f0caee32fafbff544483a5
+  PNChart: 84774d225c2126ded6c93d4dbe6ae98c3a73c2d2
+  UICountingLabel: 1db4e7d023e1762171eb226d6dff47a7a84f27aa
   "UITextView+Placeholder": 0c3efd97f37ea64bde7f34cc6e90fe02e87b3909
 
-PODFILE CHECKSUM: d9db46afa0f48f8673e0a9b154923f6dea3cafb5
+PODFILE CHECKSUM: a04b941f43d7207e54a4433c80aa78debfa37a03
 
 COCOAPODS: 1.7.5

@@ -12,7 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface YelpAPIManager : NSObject
 + (instancetype) shared;
--(void)locationTopRatings;
+-(void)locationTopRatings:(NSString*)location withCategory:(nullable NSString *)category withPrice:(nullable NSString *)price;
 
 @end
 
