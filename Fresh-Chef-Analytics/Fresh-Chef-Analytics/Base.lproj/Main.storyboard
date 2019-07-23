@@ -3065,16 +3065,31 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="536-17-6P9">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="384"/>
+                                <rect key="frame" x="0.0" y="76" width="414" height="308"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ShM-2H-rUK">
+                                <rect key="frame" x="274" y="26" width="120" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Choose Dish">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="7lJ-Xk-Lzy">
+                                <rect key="frame" x="274" y="56" width="120" height="108"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" red="0.73994592479999999" green="0.87727101009999997" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <viewLayoutGuide key="safeArea" id="1tU-kY-bFV"/>
                     </view>
                     <connections>
+                        <outlet property="chooseDishButton" destination="ShM-2H-rUK" id="CRZ-Vt-9jg"/>
                         <outlet property="dataView" destination="536-17-6P9" id="Wqx-th-e5x"/>
+                        <outlet property="dishesTableView" destination="7lJ-Xk-Lzy" id="hwH-Pb-TyI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kfh-hs-9BT" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -3120,6 +3135,7 @@
         <image name="topbot" width="700" height="700"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="9La-gW-lka"/>
         <segue reference="2ao-at-IwH"/>
         <segue reference="eop-xl-c0C"/>
     </inferredMetricsTieBreakers>

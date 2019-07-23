@@ -19,6 +19,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.dishesTableView.delegate = self;
+    self.dishesTableView.dataSource = self;
     self.categoriesOfDishes = [[MenuManager shared] categoriesOfDishes];
     self.legend = [[[MenuManager shared] categoriesOfDishes] allKeys];
     NSArray * dataArray = [self populateDataByRatingAndFreq];
@@ -56,7 +58,29 @@
     [self.dataView addSubview:self.scatterChart];
     
 }
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return self.categoriesOfDishes.count;
+}
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    return self.legend[section];
+}
+- (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return [self.categoriesOfDishes[self.legend[section]] count];
+}
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSInteger section = indexPath.section;
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SimpleTableItem"];
+    Dish *dish = self.categoriesOfDishes[self.legend[section]][indexPath.row];
+    if (cell == nil){
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"SimpleTableItem"];
+    }
+    cell.textLabel.text = dish.name;
+    return cell;
 
+}
 - (NSArray *)populateDataByRatingAndFreq
 {
     NSMutableArray *theData = [NSMutableArray array];

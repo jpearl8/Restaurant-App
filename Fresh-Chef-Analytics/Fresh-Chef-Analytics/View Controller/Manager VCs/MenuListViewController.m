@@ -43,7 +43,6 @@
     NSInteger section = indexPath.section;
     MenuListTableViewCell *cell = [self.menuList dequeueReusableCellWithIdentifier: @"Dish"];
     Dish *dish = self.filteredCategoriesOfDishes[self.categories[section]][indexPath.row];
-    cell.selectedIndex = self.selectedIndex;
     cell.name.text = dish.name;
     cell.rating.text = [dish.rating stringValue];
     cell.orderFrequency.text = [dish.orderFrequency stringValue];
