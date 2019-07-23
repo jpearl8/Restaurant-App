@@ -6,7 +6,7 @@ target 'Fresh-Chef-Analytics' do
   use_frameworks!
 
   # Pods for Fresh-Chef-Analytics
-  pod 'Parse'
+pod 'Parse'
   pod 'BEMCheckBox', '~> 1.4'
   pod 'MKDropdownMenu'
   pod 'UITextView+Placeholder'
@@ -15,7 +15,6 @@ target 'Fresh-Chef-Analytics' do
   pod 'BDBOAuth1Manager'
   pod 'AFNetworking'
   pod 'PNChart'
-
 
   target 'Fresh-Chef-AnalyticsTests' do
     inherit! :search_paths

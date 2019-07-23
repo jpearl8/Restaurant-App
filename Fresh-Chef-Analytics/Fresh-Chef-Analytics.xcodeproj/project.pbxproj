@@ -11,7 +11,7 @@
 		3E28F5D2BA1F9BD1703EEE6F /* Pods_Fresh_Chef_Analytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FDB55402FC2976479D728C9F /* Pods_Fresh_Chef_Analytics.framework */; };
 		610645E0378F7831106AAEF4 /* Pods_Fresh_Chef_AnalyticsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F807EA952E6B093FACEDA469 /* Pods_Fresh_Chef_AnalyticsTests.framework */; };
 		A535D7B922DE6CE9002B79CA /* Dish.m in Sources */ = {isa = PBXBuildFile; fileRef = A535D7B822DE6CE9002B79CA /* Dish.m */; };
-		A535D7BC22DE8FB2002B79CA /* (null) in Sources */ = {isa = PBXBuildFile; };
+		A535D7BC22DE8FB2002B79CA /* BuildFile in Sources */ = {isa = PBXBuildFile; };
 		A535D7BF22DE9FBF002B79CA /* Waiter.m in Sources */ = {isa = PBXBuildFile; fileRef = A535D7BE22DE9FBF002B79CA /* Waiter.m */; };
 		A535D7C522DFD4B5002B79CA /* MenuManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A535D7C422DFD4B5002B79CA /* MenuManager.m */; };
 		A535D7C822DFD6DB002B79CA /* EditMenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A535D7C722DFD6DB002B79CA /* EditMenuCell.m */; };
@@ -445,7 +445,7 @@
 				FF46E18922DE436400E15A0E /* Sources */,
 				FF46E18A22DE436400E15A0E /* Frameworks */,
 				FF46E18B22DE436400E15A0E /* Resources */,
-				53D8944CC6AA674F8362C6B8 /* [CP] Embed Pods Frameworks */,
+				80BF0F962AB6B85828EB3CAB /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -565,23 +565,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		53D8944CC6AA674F8362C6B8 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Fresh-Chef-Analytics/Pods-Fresh-Chef-Analytics-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Fresh-Chef-Analytics/Pods-Fresh-Chef-Analytics-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Fresh-Chef-Analytics/Pods-Fresh-Chef-Analytics-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		5677C1720220E3D0F100ED00 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -602,6 +585,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		80BF0F962AB6B85828EB3CAB /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Fresh-Chef-Analytics/Pods-Fresh-Chef-Analytics-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Fresh-Chef-Analytics/Pods-Fresh-Chef-Analytics-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Fresh-Chef-Analytics/Pods-Fresh-Chef-Analytics-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		C33F6EB6EFF05193AA4E8911 /* [CP] Check Pods Manifest.lock */ = {
@@ -658,7 +658,7 @@
 				FF5924FF22E2155D00F66EC6 /* ReceiptTableViewCell.m in Sources */,
 				B6D7B35C22DF95BA002093CB /* ManagerLoginViewController.m in Sources */,
 				FF03BF5F22DEA19100719E8C /* MenuDataViewController.m in Sources */,
-				A535D7BC22DE8FB2002B79CA /* (null) in Sources */,
+				A535D7BC22DE8FB2002B79CA /* BuildFile in Sources */,
 				FF03BF3D22DE97AD00719E8C /* ThankYouViewController.m in Sources */,
 				FF03BF4C22DE9FFD00719E8C /* MenuListViewController.m in Sources */,
 				FFECCE4D22E682F20000FDFF /* YelpAPIManager.m in Sources */,
