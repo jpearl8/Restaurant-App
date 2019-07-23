@@ -58,7 +58,7 @@
             }
         }];
     } else {
-        cell.waiterProfileImage.image = nil;
+        cell.waiterProfileImage.image = [UIImage imageNamed:@"profile_tab"];
     }
     return cell;
 }
