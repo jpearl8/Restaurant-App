@@ -29,7 +29,7 @@
 - (NSUInteger) searchOrderforDish:(OpenOrder *)openOrder withDish:(Dish *)dish{
     NSArray *orders = openOrder.orders;
     for (NSUInteger i = 0; i < orders.count; i++){
-        if ([dish.name isEqualToString:((Dish *)orders[i][0]).name]){
+        if ([dish.name isEqualToString:((Dish *)orders[i]).name]){
             return i;
         }
     }

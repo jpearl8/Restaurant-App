@@ -284,12 +284,6 @@
 				FF85DF4F22E7BF180056726A /* CompetitorsCell.h */,
 				FF85DF5022E7BF180056726A /* CompetitorsCell.m */,
 				FF5924FD22E2155D00F66EC6 /* ReceiptTableViewCell.h */,
-				FFEA6BC422E28DD0008665BD /* ElegantTableViewCell.h */,
-				FFEA6BC522E28DD0008665BD /* ElegantTableViewCell.m */,
-				FFF1C48E22E03B5300C2AC03 /* FunTableViewCell.h */,
-				FFF1C48F22E03B5300C2AC03 /* FunTableViewCell.m */,
-				FFEA6BC822E28E03008665BD /* ComfortableTableViewCell.h */,
-				FFEA6BC922E28E03008665BD /* ComfortableTableViewCell.m */,
 				FF5924FE22E2155D00F66EC6 /* ReceiptTableViewCell.m */,
 				FFB3224522DF9DF700BF966F /* WaitTableViewCell.h */,
 				FFB3224622DF9DF700BF966F /* WaitTableViewCell.m */,
@@ -346,6 +340,7 @@
 		FF03BF2922DE95C900719E8C /* Waiter VCs */ = {
 			isa = PBXGroup;
 			children = (
+				FFDB60FD22E91BCE00902FE3 /* Form Views */,
 				FF03BF3E22DE97C900719E8C /* AnotherTableViewController.h */,
 				FF03BF3F22DE97C900719E8C /* AnotherTableViewController.m */,
 				FF03BF3B22DE97AD00719E8C /* ThankYouViewController.h */,
@@ -483,6 +478,19 @@
 				FF6EE1A222E01D85000AD729 /* order.m */,
 			);
 			name = "Recovered References";
+			sourceTree = "<group>";
+		};
+		FFDB60FD22E91BCE00902FE3 /* Form Views */ = {
+			isa = PBXGroup;
+			children = (
+				FFEA6BC822E28E03008665BD /* ComfortableTableViewCell.h */,
+				FFEA6BC922E28E03008665BD /* ComfortableTableViewCell.m */,
+				FFEA6BC422E28DD0008665BD /* ElegantTableViewCell.h */,
+				FFEA6BC522E28DD0008665BD /* ElegantTableViewCell.m */,
+				FFF1C48E22E03B5300C2AC03 /* FunTableViewCell.h */,
+				FFF1C48F22E03B5300C2AC03 /* FunTableViewCell.m */,
+			);
+			path = "Form Views";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -707,7 +715,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				FF9AF93522E914F900A0D1FE /* order.h in Sources */,
-				A5C06F7122E7CDD200F634E3 /* order.m in Sources */,
 				B6C4BFF922E9107400FE5EAC /* OrdersManagerViewController.m in Sources */,
 				B6C4BFF022E8FE8500FE5EAC /* DataViewTableViewController.m in Sources */,
 				FF5924FF22E2155D00F66EC6 /* ReceiptTableViewCell.m in Sources */,
