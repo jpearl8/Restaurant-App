@@ -166,16 +166,6 @@
 - (IBAction)chooseDish:(id)sender {
     self.dishesTableView.hidden = !(self.dishesTableView.hidden);
 }
-- (void) drawingPointsForChartData : (PNScatterChartData *) chartData AndWithX : (CGFloat) X AndWithY : (CGFloat) Y
-{
-    float side = chartData.size;
-    // Make a circular shape
-    self.square.path = [UIBezierPath bezierPathWithRect:CGRectMake(X - (side/2) , Y - (side/2), side, side)].CGPath;
-    // Configure the apperence of the circle
-    self.square.fillColor = [chartData.fillColor CGColor];
-    self.square.strokeColor = [chartData.strokeColor CGColor];
-    self.square.lineWidth = 1;
-}
 /*
 #pragma mark - Navigation
 

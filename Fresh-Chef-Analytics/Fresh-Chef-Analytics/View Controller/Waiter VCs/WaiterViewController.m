@@ -47,7 +47,8 @@ pass final array on submit button of data table
 @implementation WaiterViewController
 
 - (void)viewDidLoad {
-    [[YelpAPIManager shared] locationTopRatings:@"NYC" withCategory:@"chinese" withPrice:nil];
+    //NSDictionary *dataDict =[[YelpAPIManager shared] locationTopRatings:@"NYC" withCategory:@"chinese" withPrice:nil];
+   // NSLog(@"mu mu mum mu %@", dataDict[@"businesses"][0][@"alias"]);
     [super viewDidLoad];
     self.menuItems.delegate = self;
     self.menuItems.dataSource = self;

@@ -39,17 +39,9 @@
 
 - (void)setOrderedDicts {
     // set ordered dictionaries
-//    self.sortByArray = @[@"orderFrequency", @"rating", @"price"];
     self.dishesByFreq = [self orderDictionary:self.categoriesOfDishes byType:@"orderFrequency"];
     self.dishesByRating =[self orderDictionary:self.categoriesOfDishes byType:@"rating"];
     self.dishesByPrice = [self orderDictionary:self.categoriesOfDishes byType:@"price"];
-    
-//    NSLog(@"Ordered dishes by frequency:");
-//    for(id key in self.dishesByFreq){
-//        NSLog(@"TYPE: %@", key);
-//        for(Dish *dish in self.dishesByFreq[key]){
-//            NSLog(@"Dish frequency: %@", dish[@"orderFrequency"]);
-//        }
 }
 
 - (NSMutableDictionary *)orderDictionary:(NSMutableDictionary *)dict byType:(NSString *)orderType

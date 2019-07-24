@@ -304,7 +304,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <segments>
                                     <segment title="" image="scatter"/>
-                                    <segment title="" image="histogram"/>
+                                    <segment title="" image="radar"/>
                                     <segment title="" image="topbot"/>
                                 </segments>
                                 <connections>
@@ -2268,13 +2268,87 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="81" id="IN7-hn-etq">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="81"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Competitors" rowHeight="227" id="IN7-hn-etq" customClass="CompetitorsCell">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="227"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="IN7-hn-etq" id="Vps-gh-umk">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="80.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="226.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="32w-Fn-aJb">
+                                                    <rect key="frame" x="20" y="10" width="99" height="99"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="99" id="Kle-Dm-r6I"/>
+                                                        <constraint firstAttribute="width" constant="99" id="WCa-vb-b1M"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Competitor Name" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rad-E4-vmb">
+                                                    <rect key="frame" x="143" y="15" width="252" height="43"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="43" id="8jZ-2T-o7v"/>
+                                                        <constraint firstAttribute="width" constant="252" id="RkQ-5I-Cna"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Address" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dUF-iR-uoP">
+                                                    <rect key="frame" x="20" y="117" width="374" height="20.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rating" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HK9-NJ-3fl">
+                                                    <rect key="frame" x="143" y="88" width="49" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="21" id="8b2-2b-UHc"/>
+                                                        <constraint firstAttribute="width" constant="49" id="i52-VS-916"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Yelp Link" textAlignment="natural" lineBreakMode="characterWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lDb-Vf-Qpl" customClass="TTTAttributedLabel">
+                                                    <rect key="frame" x="20" y="145.5" width="374" height="20.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ION-F2-i5n">
+                                                    <rect key="frame" x="143" y="59" width="49" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="21" id="AJu-YN-xtc"/>
+                                                        <constraint firstAttribute="width" constant="49" id="a7J-Ho-LNl"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="HK9-NJ-3fl" firstAttribute="leading" secondItem="32w-Fn-aJb" secondAttribute="trailing" constant="24" id="6QD-k5-BwA"/>
+                                                <constraint firstItem="HK9-NJ-3fl" firstAttribute="top" secondItem="rad-E4-vmb" secondAttribute="bottom" constant="30" id="B1g-05-onP"/>
+                                                <constraint firstItem="lDb-Vf-Qpl" firstAttribute="trailing" secondItem="Vps-gh-umk" secondAttribute="trailingMargin" id="Ho0-ZY-toC"/>
+                                                <constraint firstItem="rad-E4-vmb" firstAttribute="leading" secondItem="32w-Fn-aJb" secondAttribute="trailing" constant="24" id="N6Z-dh-3XW"/>
+                                                <constraint firstItem="lDb-Vf-Qpl" firstAttribute="leading" secondItem="Vps-gh-umk" secondAttribute="leadingMargin" id="Nq0-im-dIj"/>
+                                                <constraint firstItem="32w-Fn-aJb" firstAttribute="leading" secondItem="Vps-gh-umk" secondAttribute="leading" constant="20" id="YwY-hk-Xlx"/>
+                                                <constraint firstItem="ION-F2-i5n" firstAttribute="leading" secondItem="32w-Fn-aJb" secondAttribute="trailing" constant="24" id="Zoi-Vb-OPt"/>
+                                                <constraint firstItem="ION-F2-i5n" firstAttribute="top" secondItem="rad-E4-vmb" secondAttribute="bottom" constant="1" id="dEB-9r-p4r"/>
+                                                <constraint firstAttribute="trailing" secondItem="dUF-iR-uoP" secondAttribute="trailing" constant="20" id="iou-tU-jQH"/>
+                                                <constraint firstItem="32w-Fn-aJb" firstAttribute="top" secondItem="Vps-gh-umk" secondAttribute="top" constant="10" id="mAT-gT-OEM"/>
+                                                <constraint firstItem="dUF-iR-uoP" firstAttribute="top" secondItem="32w-Fn-aJb" secondAttribute="bottom" constant="8" id="n1Z-Q4-Ung"/>
+                                                <constraint firstItem="rad-E4-vmb" firstAttribute="top" secondItem="Vps-gh-umk" secondAttribute="topMargin" constant="4" id="toE-p1-bng"/>
+                                                <constraint firstItem="lDb-Vf-Qpl" firstAttribute="top" secondItem="dUF-iR-uoP" secondAttribute="bottom" constant="8" id="xLg-6A-kt2"/>
+                                                <constraint firstItem="dUF-iR-uoP" firstAttribute="leading" secondItem="Vps-gh-umk" secondAttribute="leading" constant="20" id="z8G-DQ-PA6"/>
+                                                <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="lDb-Vf-Qpl" secondAttribute="bottom" constant="8" id="zki-eX-g3h"/>
+                                            </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="address" destination="dUF-iR-uoP" id="BI3-j8-0vp"/>
+                                            <outlet property="competitorImage" destination="32w-Fn-aJb" id="TeP-Cd-Zg9"/>
+                                            <outlet property="competitorName" destination="rad-E4-vmb" id="TJp-83-NCf"/>
+                                            <outlet property="price" destination="ION-F2-i5n" id="0nz-6J-K7v"/>
+                                            <outlet property="rating" destination="HK9-NJ-3fl" id="YLC-oc-RxB"/>
+                                            <outlet property="yelpLink" destination="lDb-Vf-Qpl" id="Bfn-iG-nm8"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -2286,6 +2360,9 @@
                                     <segment title="Category"/>
                                     <segment title="Price"/>
                                 </segments>
+                                <connections>
+                                    <action selector="segmentChange:" destination="u8h-Qe-cB9" eventType="valueChanged" id="QTz-bD-7Yy"/>
+                                </connections>
                             </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -2293,6 +2370,8 @@
                     </view>
                     <navigationItem key="navigationItem" id="1ot-eD-206"/>
                     <connections>
+                        <outlet property="competitorList" destination="HgO-cH-06V" id="ioD-s1-kcP"/>
+                        <outlet property="segmentControl" destination="0UP-7g-d6X" id="PvM-Nc-Ndo"/>
                         <segue destination="gLV-c6-iJN" kind="show" id="zjt-VY-ffs"/>
                     </connections>
                 </viewController>
@@ -3594,9 +3673,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="histogram" width="700" height="700"/>
         <image name="image_placeholder" width="375" height="375"/>
         <image name="profile_tab" width="25" height="25"/>
+        <image name="radar" width="700" height="700"/>
         <image name="scatter" width="700" height="700"/>
         <image name="topbot" width="700" height="700"/>
     </resources>
