@@ -9,23 +9,21 @@
 #import "OpenOrder.h"
 
 @implementation OpenOrder
-@dynamic orders;
+@dynamic dishes;
+@dynamic amounts;
 @dynamic waiter;
 @dynamic restaurant;
 + (nonnull NSString *)parseClassName {
     return @"OpenOrder";
 }
-+ (void) postNewOrder: (NSArray *) order withRestaurant : (PFUser *) restaurant withWaiter : (Waiter *) waiter withCompletion : (PFBooleanResultBlock  _Nullable)completion
++ (void)postNewOrder:(id)order withCompletion:(PFBooleanResultBlock)completion
 {
-    OpenOrder *newOrder = [OpenOrder new];
-    newOrder.restaurant = restaurant;
-    newOrder.orders = order;
-    newOrder.waiter = waiter;
-    [newOrder saveInBackgroundWithBlock:completion];
+    [order saveInBackgroundWithBlock:completion];
 }
 
 // function takes in an openOrder and dish, queries for dish amount, returns index in order
 // if there is no dish, returns index -1
+<<<<<<< HEAD
 - (NSUInteger) searchOrderforDish:(OpenOrder *)openOrder withDish:(Dish *)dish{
     NSArray *orders = openOrder.orders;
     for (NSUInteger i = 0; i < orders.count; i++){
@@ -35,5 +33,16 @@
     }
     return -1;
 }
+=======
+//- (NSUInteger) searchOrderforDish:(OpenOrder *)openOrder withDish:(Dish *)dish{
+//    NSArray *orders = openOrder.orders;
+//    for (NSUInteger i = 0; i < orders.count; i++){
+//        if ([dish.name isEqualToString:((Dish *)orders[i][0]).name]){
+//            return i;
+//        }
+//    }
+//    return -1;
+//}
+>>>>>>> 21b49196f2c7fd4ab947dfc1797a2964f8df1c89
 
 @end
