@@ -7,10 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PNChart.h"
+#import "MenuManager.h"
+#import "Helpful_funs.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface HistogramViewController : UIViewController
+@interface HistogramViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
+@property (weak, nonatomic) IBOutlet UITableView *categoriesTableView;
+@property (weak, nonatomic) IBOutlet UIButton *chooseCategoryButton;
 
 @end
 

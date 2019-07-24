@@ -22,8 +22,8 @@
 
 
 @implementation PNRadarChart
-
-- (id)initWithFrame:(CGRect)frame items:(NSArray *)items valueDivider:(CGFloat)unitValue {
+- (id)initWithFrameAndColor:(CGRect)frame items:(NSArray *)items valueDivider:(CGFloat)unitValue withColor:(UIColor *)plotColor
+{
     self=[super initWithFrame:frame];
     if (self) {
         self.backgroundColor = [UIColor clearColor];
@@ -45,7 +45,6 @@
         _valueDivider = unitValue;
         _maxValue = 1;
         _webColor = [UIColor grayColor];
-        _plotColor = [UIColor colorWithRed:.4 green:.8 blue:.4 alpha:.7];
         _fontColor = [UIColor blackColor];
         _graduationColor = [UIColor orangeColor];
         _fontSize = 15;
@@ -61,7 +60,7 @@
         _lengthUnit = 0;
         _chartPlot = [CAShapeLayer layer];
         _chartPlot.lineCap = kCALineCapButt;
-        _chartPlot.fillColor = _plotColor.CGColor;
+        _chartPlot.fillColor = plotColor.CGColor;
         _chartPlot.lineWidth = 1.0;
         [self.layer addSublayer:_chartPlot];
         
@@ -141,6 +140,75 @@
     [self drawLabelWithMaxLength:maxLength labelArray:descriptions angleArray:angles];
     
  }
+- (void) addPlotWithData : (NSArray *)chartData withColor:(UIColor *)plotColor
+{
+    CAShapeLayer *newPlot = [CAShapeLayer layer];
+    newPlot.lineCap = kCALineCapButt;
+    newPlot.fillColor = plotColor.CGColor;
+    newPlot.lineWidth = 1.0;
+    [self.layer addSublayer:newPlot];
+    [self strokeChartWithData:chartData withPlot:newPlot];
+}
+- (void)calculateChartPointsWithData : (NSArray *) chartData {
+    [_pointsToPlotArray removeAllObjects];
+    [_pointsToWebArrayArray removeAllObjects];
+    
+    //init Descriptions , Values and Angles.
+    NSMutableArray *descriptions = [NSMutableArray array];
+    NSMutableArray *values = [NSMutableArray array];
+    NSMutableArray *angles = [NSMutableArray array];
+    for (int i=0;i<_chartData.count;i++) {
+        PNRadarChartDataItem *item = (PNRadarChartDataItem *)[chartData objectAtIndex:i];
+        [descriptions addObject:item.textDescription];
+        [values addObject:[NSNumber numberWithFloat:item.value]];
+        CGFloat angleValue = (float)i/(float)[chartData count]*2*M_PI;
+        [angles addObject:[NSNumber numberWithFloat:angleValue]];
+    }
+    
+    //calculate all the lengths
+    _maxValue = [self getMaxValueFromArray:values];
+    CGFloat margin = 0;
+    if (_labelStyle==PNRadarChartLabelStyleCircle) {
+        margin = MIN(_centerX , _centerY)*3/10;
+    }else if (_labelStyle==PNRadarChartLabelStyleHorizontal) {
+        margin = [self getMaxWidthLabelFromArray:descriptions withFontSize:_fontSize];
+    }
+    CGFloat maxLength = ceil(MIN(_centerX, _centerY) - margin);
+    int plotCircles = (_maxValue/_valueDivider);
+    if (plotCircles > MAXCIRCLE) {
+        NSLog(@"Circle number is higher than max");
+        plotCircles = MAXCIRCLE;
+        _valueDivider = _maxValue/plotCircles;
+    }
+    _lengthUnit = maxLength/plotCircles;
+    NSArray *lengthArray = [self getLengthArrayWithCircleNum:(int)plotCircles];
+    
+    //get all the points and plot
+    for (NSNumber *lengthNumber in lengthArray) {
+        CGFloat length = [lengthNumber floatValue];
+        [_pointsToWebArrayArray addObject:[self getWebPointWithLength:length angleArray:angles]];
+    }
+    int section = 0;
+    for (id value in values) {
+        CGFloat valueFloat = [value floatValue];
+        if (valueFloat>_maxValue) {
+            NSString *reason = [NSString stringWithFormat:@"Value number is higher than max -value: %f - maxValue: %f",valueFloat,_maxValue];
+            @throw [NSException exceptionWithName:NSInvalidArgumentException reason:reason userInfo:nil];
+            return;
+        }
+        
+        CGFloat length = valueFloat/_maxValue*maxLength;
+        CGFloat angle = [[angles objectAtIndex:section] floatValue];
+        CGFloat x = _centerX +length*cos(angle);
+        CGFloat y = _centerY +length*sin(angle);
+        NSValue* point = [NSValue valueWithCGPoint:CGPointMake(x, y)];
+        [_pointsToPlotArray addObject:point];
+        section++;
+    }
+    //set the labels
+    [self drawLabelWithMaxLength:maxLength labelArray:descriptions angleArray:angles];
+    
+}
 #pragma mark - Draw
 
 - (void)drawRect:(CGRect)rect {
@@ -204,6 +272,30 @@
     _chartPlot.path = plotline.CGPath;
 
     [self addAnimationIfNeeded];
+    [self showGraduation];
+}
+- (void)strokeChartWithData:(NSArray *)chartData withPlot : (CAShapeLayer *) newPlot
+{
+    [self calculateChartPointsWithData:chartData];
+    [self setNeedsDisplay];
+    [_detailLabel setHidden:YES];
+    
+    //Draw plot
+    [newPlot removeAllAnimations];
+    UIBezierPath *plotline = [UIBezierPath bezierPath];
+    CGPoint beginPoint = [[_pointsToPlotArray objectAtIndex:0] CGPointValue];
+    [plotline moveToPoint:CGPointMake(beginPoint.x, beginPoint.y)];
+    for(NSValue *pointValue in _pointsToPlotArray){
+        CGPoint point = [pointValue CGPointValue];
+        [plotline addLineToPoint:CGPointMake(point.x ,point.y)];
+        
+    }
+    [plotline setLineWidth:1];
+    [plotline setLineCapStyle:kCGLineCapButt];
+    
+    newPlot.path = plotline.CGPath;
+    
+    [self addAnimationIfNeededWithPlot:newPlot];
     [self showGraduation];
 }
 
@@ -368,5 +460,29 @@
         [_chartPlot addAnimation:aniGroup forKey:nil];
     }
 }
+- (void)addAnimationIfNeededWithPlot : (CAShapeLayer*) chartPlot
+{
+    if (self.displayAnimated) {
+        CABasicAnimation *animateScale = [CABasicAnimation animationWithKeyPath:@"transform.scale"];
+        animateScale.fromValue = [NSNumber numberWithFloat:0.f];
+        animateScale.toValue = [NSNumber numberWithFloat:1.0f];
+        
+        CABasicAnimation *animateMove = [CABasicAnimation animationWithKeyPath:@"position"];
+        animateMove.fromValue = [NSValue valueWithCGPoint:CGPointMake(_centerX, _centerY)];
+        animateMove.toValue = [NSValue valueWithCGPoint:CGPointMake(0, 0)];
+        
+        CABasicAnimation *animateAlpha = [CABasicAnimation animationWithKeyPath:@"opacity"];
+        animateAlpha.fromValue = [NSNumber numberWithFloat:0.f];
+        
+        CAAnimationGroup *aniGroup = [CAAnimationGroup animation];
+        aniGroup.duration = 1.f;
+        aniGroup.repeatCount = 1;
+        aniGroup.animations = [NSArray arrayWithObjects:animateScale,animateMove,animateAlpha, nil];
+        aniGroup.removedOnCompletion = YES;
+        
+        [chartPlot addAnimation:aniGroup forKey:nil];
+    }
+}
+
 
 @end
