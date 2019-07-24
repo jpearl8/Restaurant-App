@@ -17,7 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign) float amount;
 @property (nonatomic, assign) float customerRating;
 @property (nonatomic, strong) NSString *customerComments;
-@property (nonatomic, strong) Waiter *waiter;
+@property (nonatomic, strong, nullable) Waiter *waiter;
 @property (nonatomic, assign) float waiterRating;
 @property (nonatomic, strong) NSString *waiterReview;
 

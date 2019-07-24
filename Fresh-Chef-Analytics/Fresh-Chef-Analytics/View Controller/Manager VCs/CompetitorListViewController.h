@@ -11,7 +11,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface CompetitorListViewController : UIViewController
-
+-(void)refetchCompetitors;
 @end
 
 NS_ASSUME_NONNULL_END
