@@ -23,4 +23,17 @@
     newOrder.waiter = waiter;
     [newOrder saveInBackgroundWithBlock:completion];
 }
+
+// function takes in an openOrder and dish, queries for dish amount, returns index in order
+// if there is no dish, returns index -1
+- (NSUInteger) searchOrderforDish:(OpenOrder *)openOrder withDish:(Dish *)dish{
+    NSArray *orders = openOrder.orders;
+    for (NSUInteger i = 0; i < orders.count; i++){
+        if ([dish.name isEqualToString:((Dish *)orders[i][0]).name]){
+            return i;
+        }
+    }
+    return -1;
+}
+
 @end

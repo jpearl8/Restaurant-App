@@ -150,13 +150,6 @@ pass final array on submit button of data table
 
 - (IBAction)onSubmit:(id)sender{
     if (self.customerOrder.count != 0){
-        NSLog(@"SUBMIT");
-        NSLog(@"%.f", self.customerOrder.count);
-        for (order *order in self.customerOrder)
-        {
-            NSLog(@"%@", order.dish.name);
-            NSLog(@"%.f", order.amount);
-        }
         NSString *category = [PFUser currentUser][@"theme"];
         
         [self performSegueWithIdentifier:category sender:self];
