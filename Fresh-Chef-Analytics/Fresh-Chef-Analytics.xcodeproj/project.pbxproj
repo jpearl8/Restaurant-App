@@ -11,7 +11,7 @@
 		3E28F5D2BA1F9BD1703EEE6F /* Pods_Fresh_Chef_Analytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FDB55402FC2976479D728C9F /* Pods_Fresh_Chef_Analytics.framework */; };
 		610645E0378F7831106AAEF4 /* Pods_Fresh_Chef_AnalyticsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F807EA952E6B093FACEDA469 /* Pods_Fresh_Chef_AnalyticsTests.framework */; };
 		A535D7B922DE6CE9002B79CA /* Dish.m in Sources */ = {isa = PBXBuildFile; fileRef = A535D7B822DE6CE9002B79CA /* Dish.m */; };
-		A535D7BC22DE8FB2002B79CA /* BuildFile in Sources */ = {isa = PBXBuildFile; };
+		A535D7BC22DE8FB2002B79CA /* (null) in Sources */ = {isa = PBXBuildFile; };
 		A535D7BF22DE9FBF002B79CA /* Waiter.m in Sources */ = {isa = PBXBuildFile; fileRef = A535D7BE22DE9FBF002B79CA /* Waiter.m */; };
 		A535D7C522DFD4B5002B79CA /* MenuManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A535D7C422DFD4B5002B79CA /* MenuManager.m */; };
 		A535D7C822DFD6DB002B79CA /* EditMenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A535D7C722DFD6DB002B79CA /* EditMenuCell.m */; };
@@ -22,6 +22,7 @@
 		A5C06F6822E67E7F00F634E3 /* Top3Bot3ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C06F6722E67E7F00F634E3 /* Top3Bot3ViewController.m */; };
 		A5C06F6B22E67E8700F634E3 /* HistogramViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C06F6A22E67E8700F634E3 /* HistogramViewController.m */; };
 		B6BC874D22E6867000264995 /* Top3Bottom3TableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B6BC874C22E6867000264995 /* Top3Bottom3TableViewCell.m */; };
+		B6C4BFED22E8CF4300FE5EAC /* OrdersListedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6C4BFEC22E8CF4300FE5EAC /* OrdersListedViewController.m */; };
 		B6D7B35322DE6D27002093CB /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6D7B35222DE6D27002093CB /* LoginViewController.m */; };
 		B6D7B35622DE6D40002093CB /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6D7B35522DE6D40002093CB /* SignUpViewController.m */; };
 		B6D7B35C22DF95BA002093CB /* ManagerLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6D7B35B22DF95BA002093CB /* ManagerLoginViewController.m */; };
@@ -105,6 +106,8 @@
 		A5C06F6A22E67E8700F634E3 /* HistogramViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HistogramViewController.m; sourceTree = "<group>"; };
 		B6BC874B22E6867000264995 /* Top3Bottom3TableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Top3Bottom3TableViewCell.h; sourceTree = "<group>"; };
 		B6BC874C22E6867000264995 /* Top3Bottom3TableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Top3Bottom3TableViewCell.m; sourceTree = "<group>"; };
+		B6C4BFEB22E8CF4300FE5EAC /* OrdersListedViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OrdersListedViewController.h; sourceTree = "<group>"; };
+		B6C4BFEC22E8CF4300FE5EAC /* OrdersListedViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OrdersListedViewController.m; sourceTree = "<group>"; };
 		B6D7B35122DE6D27002093CB /* LoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		B6D7B35222DE6D27002093CB /* LoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		B6D7B35422DE6D3F002093CB /* SignUpViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SignUpViewController.h; sourceTree = "<group>"; };
@@ -329,6 +332,8 @@
 				FF03BF2D22DE963B00719E8C /* WaiterViewController.m */,
 				FF03BF2F22DE96EC00719E8C /* FunFormViewController.h */,
 				FF03BF3022DE96EC00719E8C /* FunFormViewController.m */,
+				B6C4BFEB22E8CF4300FE5EAC /* OrdersListedViewController.h */,
+				B6C4BFEC22E8CF4300FE5EAC /* OrdersListedViewController.m */,
 			);
 			path = "Waiter VCs";
 			sourceTree = "<group>";
@@ -663,7 +668,7 @@
 				FF5924FF22E2155D00F66EC6 /* ReceiptTableViewCell.m in Sources */,
 				B6D7B35C22DF95BA002093CB /* ManagerLoginViewController.m in Sources */,
 				FF03BF5F22DEA19100719E8C /* MenuDataViewController.m in Sources */,
-				A535D7BC22DE8FB2002B79CA /* BuildFile in Sources */,
+				A535D7BC22DE8FB2002B79CA /* (null) in Sources */,
 				FF03BF3D22DE97AD00719E8C /* ThankYouViewController.m in Sources */,
 				FF03BF4C22DE9FFD00719E8C /* MenuListViewController.m in Sources */,
 				FFECCE4D22E682F20000FDFF /* YelpAPIManager.m in Sources */,
@@ -684,6 +689,7 @@
 				FF03BF3722DE973B00719E8C /* ElegantFormViewController.m in Sources */,
 				FF03BF2E22DE963B00719E8C /* WaiterViewController.m in Sources */,
 				FF03BF5622DEA0A000719E8C /* WaitDetailsViewController.m in Sources */,
+				B6C4BFED22E8CF4300FE5EAC /* OrdersListedViewController.m in Sources */,
 				A535D7C522DFD4B5002B79CA /* MenuManager.m in Sources */,
 				FF03BF5022DEA04900719E8C /* DishDetailsViewController.m in Sources */,
 				FF03BF5922DEA0C700719E8C /* CompetitorDetailsViewController.m in Sources */,
@@ -878,13 +884,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = HSX3BRP6J4;
+				DEVELOPMENT_TEAM = X7H39TKG3W;
 				INFOPLIST_FILE = "Fresh-Chef-Analytics/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.jpearl.Fresh-Chef-Analytics";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.jpearl.Fresh-Chef-Analytics1";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Fresh-Chef-Analytics/Models/Fresh-Chef-Analytics-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -900,13 +906,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = HSX3BRP6J4;
+				DEVELOPMENT_TEAM = X7H39TKG3W;
 				INFOPLIST_FILE = "Fresh-Chef-Analytics/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.jpearl.Fresh-Chef-Analytics";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.jpearl.Fresh-Chef-Analytics1";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Fresh-Chef-Analytics/Models/Fresh-Chef-Analytics-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
