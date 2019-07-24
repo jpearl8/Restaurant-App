@@ -26,6 +26,8 @@
 		A5C06F7E22E9028000F634E3 /* OrderManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C06F7D22E9028000F634E3 /* OrderManager.m */; };
 		B6BC874D22E6867000264995 /* Top3Bottom3TableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B6BC874C22E6867000264995 /* Top3Bottom3TableViewCell.m */; };
 		B6C4BFED22E8CF4300FE5EAC /* OrdersListedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6C4BFEC22E8CF4300FE5EAC /* OrdersListedViewController.m */; };
+		B6C4BFF022E8FE8500FE5EAC /* DataViewTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6C4BFEF22E8FE8500FE5EAC /* DataViewTableViewController.m */; };
+		B6C4BFF922E9107400FE5EAC /* OrdersManagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6C4BFF822E9107400FE5EAC /* OrdersManagerViewController.m */; };
 		B6D7B35322DE6D27002093CB /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6D7B35222DE6D27002093CB /* LoginViewController.m */; };
 		B6D7B35622DE6D40002093CB /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6D7B35522DE6D40002093CB /* SignUpViewController.m */; };
 		B6D7B35C22DF95BA002093CB /* ManagerLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6D7B35B22DF95BA002093CB /* ManagerLoginViewController.m */; };
@@ -119,6 +121,10 @@
 		B6BC874C22E6867000264995 /* Top3Bottom3TableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Top3Bottom3TableViewCell.m; sourceTree = "<group>"; };
 		B6C4BFEB22E8CF4300FE5EAC /* OrdersListedViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OrdersListedViewController.h; sourceTree = "<group>"; };
 		B6C4BFEC22E8CF4300FE5EAC /* OrdersListedViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OrdersListedViewController.m; sourceTree = "<group>"; };
+		B6C4BFEE22E8FE8500FE5EAC /* DataViewTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DataViewTableViewController.h; sourceTree = "<group>"; };
+		B6C4BFEF22E8FE8500FE5EAC /* DataViewTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DataViewTableViewController.m; sourceTree = "<group>"; };
+		B6C4BFF722E9107400FE5EAC /* OrdersManagerViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OrdersManagerViewController.h; sourceTree = "<group>"; };
+		B6C4BFF822E9107400FE5EAC /* OrdersManagerViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OrdersManagerViewController.m; sourceTree = "<group>"; };
 		B6D7B35122DE6D27002093CB /* LoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		B6D7B35222DE6D27002093CB /* LoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		B6D7B35422DE6D3F002093CB /* SignUpViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SignUpViewController.h; sourceTree = "<group>"; };
@@ -363,6 +369,7 @@
 		FF03BF2A22DE95DA00719E8C /* Manager VCs */ = {
 			isa = PBXGroup;
 			children = (
+				FF03BF4D22DEA03700719E8C /* Details VCs */,
 				A5C06F6222E67E3A00F634E3 /* Child VCs */,
 				FF03BF5D22DEA19100719E8C /* MenuDataViewController.h */,
 				FF03BF5E22DEA19100719E8C /* MenuDataViewController.m */,
@@ -378,7 +385,10 @@
 				FF03BF4522DE9FC700719E8C /* EditMenuViewController.m */,
 				FF03BF4122DE9FA700719E8C /* ProfileViewController.h */,
 				FF03BF4222DE9FA700719E8C /* ProfileViewController.m */,
-				FF03BF4D22DEA03700719E8C /* Details VCs */,
+				B6C4BFEE22E8FE8500FE5EAC /* DataViewTableViewController.h */,
+				B6C4BFEF22E8FE8500FE5EAC /* DataViewTableViewController.m */,
+				B6C4BFF722E9107400FE5EAC /* OrdersManagerViewController.h */,
+				B6C4BFF822E9107400FE5EAC /* OrdersManagerViewController.m */,
 			);
 			path = "Manager VCs";
 			sourceTree = "<group>";
@@ -697,6 +707,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				FF9AF93522E914F900A0D1FE /* order.h in Sources */,
+				A5C06F7122E7CDD200F634E3 /* order.m in Sources */,
+				B6C4BFF922E9107400FE5EAC /* OrdersManagerViewController.m in Sources */,
+				B6C4BFF022E8FE8500FE5EAC /* DataViewTableViewController.m in Sources */,
 				FF5924FF22E2155D00F66EC6 /* ReceiptTableViewCell.m in Sources */,
 				B6D7B35C22DF95BA002093CB /* ManagerLoginViewController.m in Sources */,
 				FF03BF5F22DEA19100719E8C /* MenuDataViewController.m in Sources */,

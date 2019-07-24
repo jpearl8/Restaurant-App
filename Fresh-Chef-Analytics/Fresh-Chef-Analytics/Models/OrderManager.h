@@ -16,10 +16,12 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface OrderManager : NSObject
+@property (strong, nonatomic) NSArray *openOrders;
+@property (strong, nonatomic) NSArray *closedOrders;
 
 + (instancetype)shared;
 - (void) addToOrderArray: (OpenOrder *) order withDish: (Dish *) dish andAmount: (NSNumber*) amount;
-- (void) moveOpenOrderToClosed : (OpenOrder *) order  withCompletion:(void (^)(OpenOrder * order, NSError * error))removedOrder;
+- (void) moveOpenOrderToClosed : (OpenOrder *) order  withCompletion:(void (^)(NSError * error))removedOrder;
 @end
 
 NS_ASSUME_NONNULL_END

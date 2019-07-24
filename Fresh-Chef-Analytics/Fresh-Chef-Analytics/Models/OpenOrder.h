@@ -16,7 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface OpenOrder : PFObject<PFSubclassing>
 @property NSArray *orders;
 @property Waiter *waiter;
-+ (void) postNewOrder: (NSArray *) order withWaiter : (Waiter *) waiter withCompletion : (PFBooleanResultBlock  _Nullable)completion;
-//- (NSUInteger) searchOrderforDish:(OpenOrder *)openOrder withDish:(Dish *)dish;
+@property PFUser *restaurant;
++ (void) postNewOrder: (NSArray *) order withRestaurant: (PFUser *) restaurant withWaiter : (Waiter *) waiter withCompletion : (PFBooleanResultBlock  _Nullable)completion;
 @end
 NS_ASSUME_NONNULL_END
