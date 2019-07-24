@@ -11,13 +11,14 @@
 @implementation OpenOrder
 @dynamic orders;
 @dynamic waiter;
-
+@dynamic restaurant;
 + (nonnull NSString *)parseClassName {
     return @"OpenOrder";
 }
-+ (void) postNewOrder: (NSArray *) order withWaiter : (Waiter *) waiter withCompletion : (PFBooleanResultBlock  _Nullable)completion
++ (void) postNewOrder: (NSArray *) order withRestaurant : (PFUser *) restaurant withWaiter : (Waiter *) waiter withCompletion : (PFBooleanResultBlock  _Nullable)completion
 {
     OpenOrder *newOrder = [OpenOrder new];
+    newOrder.restaurant = restaurant;
     newOrder.orders = order;
     newOrder.waiter = waiter;
     [newOrder saveInBackgroundWithBlock:completion];
