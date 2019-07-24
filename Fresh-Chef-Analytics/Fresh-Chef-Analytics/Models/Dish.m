@@ -7,7 +7,6 @@
 //
 
 #import "Dish.h"
-#import "Parse/Parse.h"
 
 @implementation Dish
 @dynamic restaurantID;

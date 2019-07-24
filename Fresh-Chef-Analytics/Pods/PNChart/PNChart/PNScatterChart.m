@@ -400,6 +400,20 @@
     }
     return nil ;
 }
+- (void) changePointInGraph : (PNScatterChartData *) chartData forShape : (CAShapeLayer *) square
+{
+    float side = chartData.size;
+    CGFloat xValue = chartData.getData(0).x;
+    CGFloat yValue = chartData.getData(0).y;
+    CGFloat xFinilizeValue = [self mappingIsForAxisX:true WithValue:xValue];
+    CGFloat yFinilizeValue = [self mappingIsForAxisX:false WithValue:yValue];
+    // Make a circular shape
+    square.path = [UIBezierPath bezierPathWithRect:CGRectMake(xFinilizeValue - (side/2) , yFinilizeValue - (side/2), side, side)].CGPath;
+    // Configure the apperence of the circle
+    square.fillColor = [chartData.fillColor CGColor];
+    square.strokeColor = [chartData.strokeColor CGColor];
+    square.lineWidth = 1;
+}
 
 - (void) drawLineFromPoint : (CGPoint) startPoint ToPoint : (CGPoint) endPoint WithLineWith : (CGFloat) lineWidth AndWithColor : (UIColor*) color{
     
