@@ -37,10 +37,10 @@
             if (!error)
             {
                 [[MenuManager shared] setOrderedDicts];
+                [[MenuManager shared] setTop3Bottom3Dict];
                 NSLog(@"fetched restaurant's menu");
             }
         }];
-        //set sorted dictionaries
         
         [[WaiterManager shared] fetchWaiters:PFUser.currentUser withCompletion:^(NSError * _Nullable error) {
             if (!error)

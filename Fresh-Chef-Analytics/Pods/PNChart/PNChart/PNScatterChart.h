@@ -65,5 +65,6 @@
  */
 
 - (void)updateChartData:(NSArray *)data;
+- (void) changePointInGraph : (PNScatterChartData *) chartData forShape : (CAShapeLayer *) square;
 
 @end

@@ -23,5 +23,5 @@ NS_ASSUME_NONNULL_BEGIN
 
 +(order *)makeOrderItem: (Dish*)dish withAmount: (float)amount;
 @end
- 
+
 NS_ASSUME_NONNULL_END

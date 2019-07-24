@@ -20,11 +20,15 @@ typedef NS_ENUM(NSUInteger, PNRadarChartLabelStyle) {
 
 @interface PNRadarChart : PNGenericChart
 
--(id)initWithFrame:(CGRect)frame  items:(NSArray *)items valueDivider:(CGFloat)unitValue;
-/** 
+- (id)initWithFrameAndColor:(CGRect)frame items:(NSArray *)items valueDivider:(CGFloat)unitValue withColor:(UIColor*)plotColor;
+/**
  *Draws the chart in an animated fashion.
  */
 -(void)strokeChart;
+
+-(void)strokeChartWithData:(NSArray *) chartData withPlot : (CAShapeLayer *) newPlot;
+
+- (void) addPlotWithData : (NSArray *)chartData withColor : (UIColor *) plotColor;
 
 /** Array of `RadarChartDataItem` objects, one for each corner. */
 @property (nonatomic) NSArray *chartData;
