@@ -47,6 +47,7 @@
     cell.rating.text = [dish.rating stringValue];
     cell.orderFrequency.text = [dish.orderFrequency stringValue];
     cell.price.text = [dish.price stringValue];
+    cell.selectedIndex = self.selectedIndex;
     if(dish.image != nil){
         PFFileObject *dishImageFile = (PFFileObject *)dish.image;
         [dishImageFile getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
@@ -71,6 +72,7 @@
 - (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return [self.filteredCategoriesOfDishes[self.categories[section]] count];
 }
+
 - (IBAction)onEditSortBy:(id)sender {
     //refresh table view
     //check which sort button is clicked

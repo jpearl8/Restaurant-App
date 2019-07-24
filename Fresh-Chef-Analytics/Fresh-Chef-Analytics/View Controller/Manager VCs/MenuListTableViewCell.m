@@ -18,18 +18,16 @@
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
-
     // Configure the view for the selected state
     [self.orderFrequency setFont:[UIFont systemFontOfSize:18]];
     [self.rating setFont:[UIFont systemFontOfSize:18]];
     [self.price setFont:[UIFont systemFontOfSize:18]];
-    
     if (self.selectedIndex == 0) {
-        [self.orderFrequency setFont:[UIFont boldSystemFontOfSize:25]];
+        [self.orderFrequency setFont:[UIFont boldSystemFontOfSize:20]];
     } else if (self.selectedIndex == 1) {
-        [self.rating setFont:[UIFont boldSystemFontOfSize:25]];
+        [self.rating setFont:[UIFont boldSystemFontOfSize:20]];
     } else if (self.selectedIndex == 2) {
-        [self.price setFont:[UIFont boldSystemFontOfSize:25]];
+        [self.price setFont:[UIFont boldSystemFontOfSize:20]];
     } else {
         NSLog(@"Nothing selected?????");
     }
