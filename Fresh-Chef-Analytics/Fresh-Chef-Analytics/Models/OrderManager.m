@@ -20,8 +20,8 @@
 }
 - (void) addToOrderArray: (OpenOrder *) order withDish: (Dish *) dish andAmount: (NSNumber*) amount
 {
-    NSArray *orderObject = @[dish, amount];
-    [order addObject:orderObject forKey:@"orders"];
+    [order addObject:dish forKey:@"dishes"];
+    [order addObject:amount forKey:@"amounts"];
 }
 - (void) fetchOpenOrderItems:(PFUser *) restaurant  withCompletion:(void (^)(NSArray * openOrders, NSError * error))fetchedOpenOrders
 {
@@ -55,7 +55,7 @@
         if (succeeded)
         {
             NSLog(@"Order removed");
-            [ClosedOrder postNewOrder:order.orders withRestaurant :order.restaurant withWaiter:order.waiter withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
+            [ClosedOrder postOldOrder:order.dishes withAmount:order.amounts withRestaurant:order.restaurant withWaiter:order.waiter withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
                 if (succeeded)
                 {
                     [self fetchOpenOrderItems:PFUser.currentUser withCompletion:^(NSArray *openOrders, NSError *error) {
