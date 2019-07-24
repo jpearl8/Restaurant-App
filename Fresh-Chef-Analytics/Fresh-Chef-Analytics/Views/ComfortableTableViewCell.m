@@ -26,7 +26,13 @@
 
 - (void) prepareForReuse{
     self.customerComment.text = @"0";
+     self.customerRating.value = 2.5;
     [super prepareForReuse];
+}
+
+- (IBAction)changeCustomerRating:(HCSStarRatingView *)sender {
+    NSLog(@"%f", sender.value);
+    self.order.customerRating = 2 * sender.value;
 }
 
 

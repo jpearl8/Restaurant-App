@@ -10,8 +10,8 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface Top3Bot3ViewController : UIViewController
-
+@interface Top3Bot3ViewController : UIViewController<UITableViewDelegate, UITableViewDataSource>
+//@property (strong, nonatomic) NSMutableDictionary *top3Bottom3Dict;
 @end
 
 NS_ASSUME_NONNULL_END

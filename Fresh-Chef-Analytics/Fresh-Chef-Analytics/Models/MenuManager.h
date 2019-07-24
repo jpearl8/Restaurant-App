@@ -17,12 +17,16 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong, nonatomic) NSMutableDictionary *dishesByFreq;
 @property (strong, nonatomic) NSMutableDictionary *dishesByRating;
 @property (strong, nonatomic) NSMutableDictionary *dishesByPrice;
+@property (strong, nonatomic) NSMutableDictionary *top3Bottom3Freq;
+@property (strong, nonatomic) NSMutableDictionary *top3Bottom3Rating;
 @property (strong, nonatomic) NSArray *sortByArray;
 + (instancetype) shared;
 - (void) fetchMenuItems : (PFUser *) restaurant withCompletion:(void (^)(NSMutableDictionary *categoriesOfDishes, NSError * _Nullable error))fetchedDishes;
 - (void) addDishToDict : (Dish *) dish toArray: (NSArray *) dishesOfType;
 - (void) removeDishFromTable : (Dish *) delDish withCompletion:(void (^)(NSMutableDictionary *categoriesOfDishes, NSError * _Nullable error))removedDish;
 - (void)setOrderedDicts;
+- (void)setTop3Bottom3Dict;
+
 @end
 
 NS_ASSUME_NONNULL_END
