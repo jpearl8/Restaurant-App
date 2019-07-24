@@ -9,6 +9,7 @@
 #import "ProfileViewController.h"
 #import "AppDelegate.h"
 #import "LoginViewController.h"
+#import "YelpAPIManager.h"
 
 @interface ProfileViewController ()
 
@@ -23,6 +24,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Set class variables
+    //[[YelpAPIManager shared] fetchCompetitors];
     self.categoryPlaceholder = @"Set Restaurant Category";
     self.pricePlaceholder = @"Set Restaurant Price";
     
