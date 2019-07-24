@@ -20,6 +20,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void) updateWithOrder: ( NSMutableArray <order*> *)orderList withNumberString:(NSString *)customerNumber;
 -(void)defineSelect:(UIButton *)button withSelect:(BOOL)select;
 - (NSArray *)orderArray:(NSArray *)array byType:(NSString *)orderType;
+- (void)scaleArrayByMax:(NSMutableArray *)array;
 @end
 
 NS_ASSUME_NONNULL_END

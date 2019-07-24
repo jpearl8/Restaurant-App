@@ -179,13 +179,18 @@
 }
 - (void)makeItemsWithData : (NSArray *) dataArray
 {
-    self.ratingItems = [self populateDataItemsWithArray:dataArray[1] forDescriptions:dataArray[0]];
+    [[Helpful_funs shared] scaleArrayByMax:dataArray[1]];
+        self.ratingItems = [self populateDataItemsWithArray:dataArray[1] forDescriptions:dataArray[0]];
+    [[Helpful_funs shared] scaleArrayByMax:dataArray[2]];
+
     self.frequencyItems = [self populateDataItemsWithArray:dataArray[2] forDescriptions:dataArray[0]];
+    [[Helpful_funs shared] scaleArrayByMax:dataArray[3]];
+
     self.profitItems = [self populateDataItemsWithArray:dataArray[3] forDescriptions:dataArray[0]];
 }
 - (void)setUpChartWithData
 {
-    self.radarChart = [[PNRadarChart alloc] initWithFrameAndColor:CGRectMake(0, 0, self.dataView.bounds.size.width, self.dataView.bounds.size.height) items:self.ratingItems valueDivider:1 withColor:[[[Helpful_funs shared] colorFromHexString:self.chartColors[0]] colorWithAlphaComponent:0.4]];
+    self.radarChart = [[PNRadarChart alloc] initWithFrameAndColor:CGRectMake(0, 0, self.dataView.bounds.size.width, self.dataView.bounds.size.height) items:self.ratingItems valueDivider:0.25 withColor:[[[Helpful_funs shared] colorFromHexString:self.chartColors[0]] colorWithAlphaComponent:0.4]];
     [self.radarChart addPlotWithData:self.frequencyItems withColor:[[[Helpful_funs shared] colorFromHexString:self.chartColors[1]] colorWithAlphaComponent:0.4]];
     [self.radarChart addPlotWithData:self.profitItems withColor:[[[Helpful_funs shared] colorFromHexString:self.chartColors[2]] colorWithAlphaComponent:0.4]];
     

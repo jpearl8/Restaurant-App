@@ -84,4 +84,12 @@
     }];
     return sortedArray;
 }
+- (void) scaleArrayByMax:(NSMutableArray *)array
+{
+   NSNumber * max = [array valueForKeyPath:@"@max.floatValue"];
+    for (int i = 0; i < array.count; i++)
+    {
+        array[i] = [NSNumber numberWithFloat:[array[i] floatValue] / [max floatValue]];
+    }
+}
 @end
