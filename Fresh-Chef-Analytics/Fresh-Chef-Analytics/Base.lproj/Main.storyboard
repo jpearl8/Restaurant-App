@@ -292,7 +292,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <segments>
                                     <segment title="" image="scatter"/>
-                                    <segment title="" image="histogram"/>
+                                    <segment title="" image="radar"/>
                                     <segment title="" image="topbot"/>
                                 </segments>
                                 <connections>
@@ -3421,9 +3421,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="histogram" width="700" height="700"/>
         <image name="image_placeholder" width="375" height="375"/>
         <image name="profile_tab" width="25" height="25"/>
+        <image name="radar" width="700" height="700"/>
         <image name="scatter" width="700" height="700"/>
         <image name="topbot" width="700" height="700"/>
     </resources>

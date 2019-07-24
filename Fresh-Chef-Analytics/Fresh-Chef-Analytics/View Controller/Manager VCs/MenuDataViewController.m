@@ -43,7 +43,7 @@
     }
     else if (selectedIndex == 1)
     {
-        self.titleLabel.text = @"HISTOGRAM CHART";
+        self.titleLabel.text = @"RADAR CHART";
         [UIView animateWithDuration:0.5 animations:^{
             self.scatterContainer.alpha = 0;
             self.histogramContainer.alpha = 1;

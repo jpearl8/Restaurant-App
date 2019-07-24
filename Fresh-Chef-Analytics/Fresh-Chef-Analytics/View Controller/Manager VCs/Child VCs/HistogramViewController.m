@@ -39,8 +39,11 @@
     self.colorsFromUI = @[@"#FF0000", @"#00FF00", @"#00FFFF", @"#FF00FF", @"#FCAF0B", @"#800BFC", @"#0B30FC", @"0B30FC"];
     self.chartColors = @[@"#FE0EBC", @"#0E62FE", @"#FEDD0E"];
     self.ratingLabel.textColor = [[Helpful_funs shared] colorFromHexString:self.chartColors[0]];
+    self.ratingLabel.backgroundColor = [UIColor whiteColor];
     self.popularityLabel.textColor = [[Helpful_funs shared] colorFromHexString:self.chartColors[1]];
+    self.popularityLabel.backgroundColor = [UIColor whiteColor];
     self.profitLabel.textColor = [[Helpful_funs shared] colorFromHexString:self.chartColors[2]];
+    self.profitLabel.backgroundColor = [UIColor whiteColor];
 
     self.categoriesOfDishes = [[MenuManager shared] categoriesOfDishes];
     self.legend = [NSMutableArray arrayWithArray:[[[MenuManager shared] categoriesOfDishes] allKeys]];
@@ -75,6 +78,7 @@
     }
     UITableViewCell *cell = [self.categoriesTableView cellForRowAtIndexPath:indexPath];
     NSArray *dataArray;
+    [self.chooseCategoryButton setTitle:cell.textLabel.text forState:UIControlStateNormal];
     if ([cell.textLabel.text  isEqual: @"All categories"])
     {
         dataArray = [self populateDataForAllCategories];
@@ -83,6 +87,7 @@
     {
         dataArray = [self populateDataForCategory:cell.textLabel.text];
     }
+    self.categoriesTableView.hidden = YES;
     [self makeItemsWithData:dataArray];
     [self setUpChartWithData];
     

@@ -11,7 +11,7 @@
 		3E28F5D2BA1F9BD1703EEE6F /* Pods_Fresh_Chef_Analytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FDB55402FC2976479D728C9F /* Pods_Fresh_Chef_Analytics.framework */; };
 		610645E0378F7831106AAEF4 /* Pods_Fresh_Chef_AnalyticsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F807EA952E6B093FACEDA469 /* Pods_Fresh_Chef_AnalyticsTests.framework */; };
 		A535D7B922DE6CE9002B79CA /* Dish.m in Sources */ = {isa = PBXBuildFile; fileRef = A535D7B822DE6CE9002B79CA /* Dish.m */; };
-		A535D7BC22DE8FB2002B79CA /* BuildFile in Sources */ = {isa = PBXBuildFile; };
+		A535D7BC22DE8FB2002B79CA /* (null) in Sources */ = {isa = PBXBuildFile; };
 		A535D7BF22DE9FBF002B79CA /* Waiter.m in Sources */ = {isa = PBXBuildFile; fileRef = A535D7BE22DE9FBF002B79CA /* Waiter.m */; };
 		A535D7C522DFD4B5002B79CA /* MenuManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A535D7C422DFD4B5002B79CA /* MenuManager.m */; };
 		A535D7C822DFD6DB002B79CA /* EditMenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A535D7C722DFD6DB002B79CA /* EditMenuCell.m */; };
@@ -22,6 +22,9 @@
 		A5C06F6822E67E7F00F634E3 /* Top3Bot3ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C06F6722E67E7F00F634E3 /* Top3Bot3ViewController.m */; };
 		A5C06F6B22E67E8700F634E3 /* HistogramViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C06F6A22E67E8700F634E3 /* HistogramViewController.m */; };
 		A5C06F7122E7CDD200F634E3 /* order.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C06F7022E7CDD200F634E3 /* order.m */; };
+		A5C06F7822E8FECF00F634E3 /* OpenOrder.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C06F7722E8FECF00F634E3 /* OpenOrder.m */; };
+		A5C06F7B22E8FEEB00F634E3 /* ClosedOrder.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C06F7A22E8FEEB00F634E3 /* ClosedOrder.m */; };
+		A5C06F7E22E9028000F634E3 /* OrderManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C06F7D22E9028000F634E3 /* OrderManager.m */; };
 		B6BC874D22E6867000264995 /* Top3Bottom3TableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B6BC874C22E6867000264995 /* Top3Bottom3TableViewCell.m */; };
 		B6D7B35322DE6D27002093CB /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6D7B35222DE6D27002093CB /* LoginViewController.m */; };
 		B6D7B35622DE6D40002093CB /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6D7B35522DE6D40002093CB /* SignUpViewController.m */; };
@@ -105,6 +108,12 @@
 		A5C06F6A22E67E8700F634E3 /* HistogramViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HistogramViewController.m; sourceTree = "<group>"; };
 		A5C06F6F22E7CDD200F634E3 /* order.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = order.h; sourceTree = "<group>"; };
 		A5C06F7022E7CDD200F634E3 /* order.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = order.m; sourceTree = "<group>"; };
+		A5C06F7622E8FECF00F634E3 /* OpenOrder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OpenOrder.h; sourceTree = "<group>"; };
+		A5C06F7722E8FECF00F634E3 /* OpenOrder.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OpenOrder.m; sourceTree = "<group>"; };
+		A5C06F7922E8FEEB00F634E3 /* ClosedOrder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ClosedOrder.h; sourceTree = "<group>"; };
+		A5C06F7A22E8FEEB00F634E3 /* ClosedOrder.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ClosedOrder.m; sourceTree = "<group>"; };
+		A5C06F7C22E9028000F634E3 /* OrderManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OrderManager.h; sourceTree = "<group>"; };
+		A5C06F7D22E9028000F634E3 /* OrderManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OrderManager.m; sourceTree = "<group>"; };
 		B6BC874B22E6867000264995 /* Top3Bottom3TableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Top3Bottom3TableViewCell.h; sourceTree = "<group>"; };
 		B6BC874C22E6867000264995 /* Top3Bottom3TableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Top3Bottom3TableViewCell.m; sourceTree = "<group>"; };
 		B6D7B35122DE6D27002093CB /* LoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
@@ -245,6 +254,12 @@
 				A5C06F6F22E7CDD200F634E3 /* order.h */,
 				A5C06F7022E7CDD200F634E3 /* order.m */,
 				FFECCE4522E668F40000FDFF /* Fresh-Chef-Analytics-Bridging-Header.h */,
+				A5C06F7622E8FECF00F634E3 /* OpenOrder.h */,
+				A5C06F7722E8FECF00F634E3 /* OpenOrder.m */,
+				A5C06F7922E8FEEB00F634E3 /* ClosedOrder.h */,
+				A5C06F7A22E8FEEB00F634E3 /* ClosedOrder.m */,
+				A5C06F7C22E9028000F634E3 /* OrderManager.h */,
+				A5C06F7D22E9028000F634E3 /* OrderManager.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -664,7 +679,7 @@
 				FF5924FF22E2155D00F66EC6 /* ReceiptTableViewCell.m in Sources */,
 				B6D7B35C22DF95BA002093CB /* ManagerLoginViewController.m in Sources */,
 				FF03BF5F22DEA19100719E8C /* MenuDataViewController.m in Sources */,
-				A535D7BC22DE8FB2002B79CA /* BuildFile in Sources */,
+				A535D7BC22DE8FB2002B79CA /* (null) in Sources */,
 				FF03BF3D22DE97AD00719E8C /* ThankYouViewController.m in Sources */,
 				FF03BF4C22DE9FFD00719E8C /* MenuListViewController.m in Sources */,
 				FFECCE4D22E682F20000FDFF /* YelpAPIManager.m in Sources */,
@@ -676,9 +691,11 @@
 				FF03BF3422DE971600719E8C /* ComfortableFormViewController.m in Sources */,
 				B6D7B35322DE6D27002093CB /* LoginViewController.m in Sources */,
 				B6D7B35622DE6D40002093CB /* SignUpViewController.m in Sources */,
+				A5C06F7E22E9028000F634E3 /* OrderManager.m in Sources */,
 				FFF1C49022E03B5300C2AC03 /* FunTableViewCell.m in Sources */,
 				A535D7B922DE6CE9002B79CA /* Dish.m in Sources */,
 				FF46E1A022DE436400E15A0E /* main.m in Sources */,
+				A5C06F7B22E8FEEB00F634E3 /* ClosedOrder.m in Sources */,
 				FF1EDA9322E2951A00B1B897 /* Helpful_funs.m in Sources */,
 				FF03BF4622DE9FC700719E8C /* EditMenuViewController.m in Sources */,
 				FFB3224722DF9DF700BF966F /* WaitTableViewCell.m in Sources */,
@@ -702,6 +719,7 @@
 				A5C06F6B22E67E8700F634E3 /* HistogramViewController.m in Sources */,
 				FFF1C48D22E02A8200C2AC03 /* specialStepper.m in Sources */,
 				A5C06F6522E67E7300F634E3 /* ScatterViewController.m in Sources */,
+				A5C06F7822E8FECF00F634E3 /* OpenOrder.m in Sources */,
 				A535D7BF22DE9FBF002B79CA /* Waiter.m in Sources */,
 				A5C06F6822E67E7F00F634E3 /* Top3Bot3ViewController.m in Sources */,
 				A5C06F5922E11D3500F634E3 /* EditWaiterCell.m in Sources */,
