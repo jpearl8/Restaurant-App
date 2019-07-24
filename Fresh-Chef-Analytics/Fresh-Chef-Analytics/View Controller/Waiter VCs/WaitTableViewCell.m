@@ -23,12 +23,10 @@
 }
 
 
-
 - (void) prepareForReuse{
     self.amount.text = @"0";
     [super prepareForReuse];
 }
-
 
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
