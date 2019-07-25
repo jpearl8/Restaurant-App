@@ -20,7 +20,7 @@
         self.competitorArray = [[NSMutableArray alloc] initWithObjects:placeholder, placeholder, placeholder, nil];
         PFUser *currentUser = [PFUser currentUser];
         self.userParameters = [[NSMutableArray alloc] initWithObjects:currentUser[@"address"], currentUser[@"category"], currentUser[@"Price"], nil];
-       [self locationTopRatings:@"NYC" withCategory:@"pizza" withPrice:@"3" withIndex:0];
+       [self locationTopRatings:self.userParameters[0] withCategory:self.userParameters[1] withPrice:self.userParameters[2] withIndex:0];
 
         NSLog(@"hello!");
     }
@@ -43,11 +43,11 @@
             NSString* locationQuery = [NSString stringWithFormat:@"&location=%@", locationRes];
             baseString = [baseString stringByAppendingString:locationQuery];
         }
-        if (index == 1){
+        if (index == 1 && categoryRes){
             NSString* categoryQuery = [NSString stringWithFormat:@"&categories=%@", categoryRes];
             baseString = [baseString stringByAppendingString:categoryQuery];
         }
-        if (index == 2){
+        if (index == 2 && priceRes){
             NSString* priceQuery = [NSString stringWithFormat:@"&price=%@", priceRes];
             baseString = [baseString stringByAppendingString:priceQuery];
         }
