@@ -26,6 +26,7 @@ pass final array on submit button of data table
 #import "AppDelegate.h"
 #import "LoginViewController.h"
 #import "WaiterManager.h"
+#import "OpenOrder.h"
 
 
 @interface WaiterViewController () <UITableViewDelegate, UITableViewDataSource>
@@ -38,8 +39,9 @@ pass final array on submit button of data table
 @property (strong, nonatomic) NSMutableArray <order *>*customerOrder;
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
 @property (weak, nonatomic) IBOutlet UITextField *customerNumber;
+@property (strong, nonatomic) OpenOrder *openOrder;
 
-@property (strong, nonatomic) Waiter* waiter;
+
 
 
 @end
@@ -57,17 +59,17 @@ pass final array on submit button of data table
     self.waiterTable.dataSource = self;
     self.searchBar.delegate = self;
     self.customerOrder = [[NSMutableArray alloc] init];
+    self.openOrder = [OpenOrder new];
     [self runDishQuery];
     UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
     [refreshControl addTarget:self action:@selector(runDishQuery) forControlEvents:UIControlEventValueChanged];
     [self.menuItems insertSubview:refreshControl atIndex:0];
     self.menuItems.rowHeight = UITableViewAutomaticDimension;
-    // construct query
-   
-    
-    
 }
 
+- (IBAction)selectedWaiter:(UIButton *)sender {
+    self.waiterTable.hidden = !(self.waiterTable.hidden);
+}
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -87,7 +89,8 @@ pass final array on submit button of data table
         cell.name.text = dish.name;
         cell.type.text = dish.type;
         cell.stepper.dish = dish;
-        cell.stepper.value = [self searchForAmount:self.customerOrder withDish:dish];
+        cell.stepper.value = [[OpenOrder searchOrderforDish:self.openOrder withDish:dish giveIndex:NO] doubleValue];
+        //cell.stepper.value = [self searchForAmount:self.customerOrder withDish:dish];
         cell.dishDescription.text = dish.dishDescription;
         PFFileObject *dishImageFile = (PFFileObject *)dish.image;
         [dishImageFile getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
@@ -148,13 +151,7 @@ pass final array on submit button of data table
     [self.menuItems reloadData];
 }
 
-- (IBAction)onSubmit:(id)sender{
-    if (self.customerOrder.count != 0){
-        NSString *category = [PFUser currentUser][@"theme"];
-        
-        [self performSegueWithIdentifier:category sender:self];
-    }
-}
+
 
 - (IBAction)didTapLogout:(id)sender {
     AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
@@ -166,75 +163,62 @@ pass final array on submit button of data table
     }];
 }
 
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(nonnull NSIndexPath *)indexPath{
+    if (!([tableView.restorationIdentifier isEqualToString:@"menu"])){
+        UITableViewCell *cell = [self.waiterTable cellForRowAtIndexPath:indexPath];
+        [self.button setTitle:cell.textLabel.text forState:UIControlStateNormal];
+        self.openOrder = [OpenOrder new];
+        self.openOrder.waiter = self.waiters[indexPath.row];
+        self.waiterTable.hidden = YES;
+    }
+}
 
 - (IBAction)stepperChange:(specialStepper *)sender {
-    double orderAmount = [self searchForAmount:self.customerOrder withDish:sender.dish];
-    order *newOrder = [order makeOrderItem:sender.dish withAmount:sender.value];
-    if (orderAmount == 0.0){
-        [self.customerOrder addObject:newOrder];
+
+    NSNumber *index = [OpenOrder searchOrderforDish:self.openOrder withDish:sender.dish giveIndex:YES];
+    if (index == [NSNumber numberWithInt:-1]){
+        [self.openOrder addObject:sender.dish forKey:@"dishes"];
+        [self.openOrder addObject:@(1) forKey:@"amount"];
     } else {
-        for (int i = 0; i < self.customerOrder.count; i++){
-            if ([self.customerOrder[i].dish.name isEqualToString:sender.dish.name]){
-                self.customerOrder[i] = newOrder;
-                break;
-            }
-        }
+        self.openOrder[@"orders"][index] = [NSNumber numberWithInt:([self.openOrder[@"orders"][index] intValue] + 1)];
     }
 }
 
-
-
-
-
--(double )searchForAmount:(NSArray<order *> *)orderList withDish:(Dish *)dish{
-    for (order *item in orderList){
-        if ([item.dish.name isEqualToString:dish.name]){
-            return item.amount;
-        }
+- (IBAction)onSubmit:(id)sender{
+    if (self.openOrder.amounts.count != 0){
+        NSString *category = [PFUser currentUser][@"theme"];
+        [self performSegueWithIdentifier:category sender:self];
     }
-    return 0;
 }
-
-
-
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
      NSString *category = [PFUser currentUser][@"theme"];
-
-    
+    [OpenOrder postNewOrder:self.openOrder withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
+        if (!error){
+            NSLog(@"open order uploaded");
+        } else {
+            NSLog(@"%@", error.localizedDescription);
+        }
+    }];
     if ([category isEqualToString:@"Fun"]){
         FunFormViewController *funVC = [segue destinationViewController];
         funVC.customerOrder = self.customerOrder;
-        funVC.customerOrder[0].waiter = self.waiter;
+        funVC.openOrder = self.openOrder;
         funVC.customerNumber = self.customerNumber.text;
     }
     if ([category isEqualToString:@"Comfortable"]){
         ComfortableFormViewController *comfVC = [segue destinationViewController];
         comfVC.customerOrder = self.customerOrder;
-        comfVC.customerOrder[0].waiter = self.waiter;
+        comfVC.openOrder = self.openOrder;
         comfVC.customerNumber = self.customerNumber.text;
     }
     if ([category isEqualToString:@"Elegant"]){
         ElegantFormViewController *elegantVC = [segue destinationViewController];
         elegantVC.customerOrder = self.customerOrder;
-        elegantVC.customerOrder[0].waiter = self.waiter;
+        elegantVC.openOrder = self.openOrder;
         elegantVC.customerNumber = self.customerNumber.text;
     }
 }
-
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(nonnull NSIndexPath *)indexPath{
-    if (!([tableView.restorationIdentifier isEqualToString:@"menu"])){
-        UITableViewCell *cell = [self.waiterTable cellForRowAtIndexPath:indexPath];
-        [self.button setTitle:cell.textLabel.text forState:UIControlStateNormal];
-        self.waiter = self.waiters[indexPath.row];
-        self.waiterTable.hidden = YES;
-    }
-}
-- (IBAction)selectedWaiter:(UIButton *)sender {
-    self.waiterTable.hidden = !(self.waiterTable.hidden);
-}
-
-
 
 
 @end

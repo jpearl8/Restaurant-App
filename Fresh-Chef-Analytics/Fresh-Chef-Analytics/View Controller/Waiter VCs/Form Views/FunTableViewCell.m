@@ -26,6 +26,7 @@
 }
 -(void)textViewDidChange:(UITextView *)textView{
     self.order.customerComments = self.customerComment.text;
+    self.customerComments[self.index] = self.customerComment.text;
     //handle text editing finished
 }
 
@@ -57,7 +58,7 @@
         }
     }
     self.order.customerRating = [sender.restorationIdentifier floatValue];
-    
+    self.customerRatings[self.index] = [NSNumber numberWithFloat:[sender.restorationIdentifier floatValue]];
 }
 
 

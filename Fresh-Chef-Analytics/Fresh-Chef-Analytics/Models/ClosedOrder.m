@@ -21,6 +21,17 @@
 + (nonnull NSString *)parseClassName {
     return @"ClosedOrder";
 }
++ (void) postOldOrderWithOpenOrder:(OpenOrder *)openOrder withCompletion:(PFBooleanResultBlock)completion{
+    ClosedOrder *oldOrder = [ClosedOrder new];
+    oldOrder.restaurant = openOrder.restaurant;
+    oldOrder.dishes = openOrder.dishes;
+    oldOrder.amounts = openOrder.amounts;
+    oldOrder.waiter = openOrder.waiter;
+    [oldOrder.waiter saveInBackground];
+    [oldOrder saveInBackgroundWithBlock:completion];
+    [openOrder deleteInBackground];
+    
+}
 
 + (void)postOldOrder:(ClosedOrder *) order withCompletion:(PFBooleanResultBlock)completion
 {
