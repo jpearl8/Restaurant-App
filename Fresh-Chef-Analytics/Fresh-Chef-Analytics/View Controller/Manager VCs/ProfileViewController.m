@@ -24,7 +24,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Set class variables
-    //[[YelpAPIManager shared] fetchCompetitors];
+    [[YelpAPIManager shared] fetchCompetitors];
     self.categoryPlaceholder = @"Set Restaurant Category";
     self.pricePlaceholder = @"Set Restaurant Price";
     

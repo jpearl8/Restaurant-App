@@ -32,7 +32,7 @@
 
 - (IBAction)changeCustomerRating:(HCSStarRatingView *)sender {
     NSLog(@"%f", sender.value);
-    self.customerRatings[self.index] = 2 * sender.value;
+    self.customerRatings[self.index] = [NSNumber numberWithDouble:(2 * sender.value)];
 }
 
 
