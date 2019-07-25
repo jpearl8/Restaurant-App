@@ -27,8 +27,7 @@
 
 }
 
--(void)locationTopRatings:(NSString*)locationRes withCategory:(nullable NSString *)categoryRes withPrice:(nullable NSString *)priceRes{
-    for (NSUInteger __block index = 0; index < 3; index++){
+-(void)locationTopRatings:(NSString*)locationRes withCategory:(nullable NSString *)categoryRes withPrice:(nullable NSString *)priceRes withIndex:(NSUInteger)index{
         NSDictionary *headers = @{
                                   @"Authorization": @"Bearer Z505A_B9SNUBRJYRkioQ9NX8ZD9AnREWx3MqrxHSny1dop_ox6v0Ptx2-qbqX6fktt79CfqzXYdCcc6j3iE6BMTK6QHsDThNMbPYSf1mWXec1p7zsC6MupJVmkU2XXYx",
                                   @"User-Agent": @"PostmanRuntime/7.15.0",
@@ -77,16 +76,14 @@
 
                     [self.competitorArray replaceObjectAtIndex:index withObject:dataDictionary[@"businesses"]];
 
-                    NSLog(@"HELLO %f", index);
+                    NSLog(@"HELLO %lu", (unsigned long)index);
                     NSLog(@"%@", self.competitorArray[index]);
-                    index = index + 1;
-//                    break;
                 }
-                [dataTask resume];
+                
             }];
     
+    [dataTask resume];
     
-    }
 }
 
 @end

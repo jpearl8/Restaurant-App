@@ -20,6 +20,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong, nonatomic) NSArray *closedOrders;
 
 + (instancetype)shared;
+- (void) fetchOpenOrderItems:(PFUser *) restaurant  withCompletion:(void (^)(NSArray * openOrders, NSError * error))fetchedOpenOrders;
+- (void) fetchClosedOrderItems:(PFUser *) restaurant  withCompletion:(void (^)(NSArray * closedOrders, NSError * error))fetchedClosedOrders;
 - (void) addToOrderArray: (OpenOrder *) order withDish: (Dish *) dish andAmount: (NSNumber*) amount;
 - (void) moveOpenOrderToClosed : (OpenOrder *) order  withCompletion:(void (^)(NSError * error))removedOrder;
 @end

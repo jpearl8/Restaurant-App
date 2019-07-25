@@ -26,6 +26,7 @@ pass final array on submit button of data table
 #import "AppDelegate.h"
 #import "LoginViewController.h"
 #import "WaiterManager.h"
+#import "OpenOrder.h"
 
 
 @interface WaiterViewController () <UITableViewDelegate, UITableViewDataSource>
@@ -38,8 +39,9 @@ pass final array on submit button of data table
 @property (strong, nonatomic) NSMutableArray <order *>*customerOrder;
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
 @property (weak, nonatomic) IBOutlet UITextField *customerNumber;
+@property (strong, nonatomic) OpenOrder *openOrder;
 
-@property (strong, nonatomic) Waiter* waiter;
+
 
 
 @end
@@ -57,6 +59,7 @@ pass final array on submit button of data table
     self.waiterTable.dataSource = self;
     self.searchBar.delegate = self;
     self.customerOrder = [[NSMutableArray alloc] init];
+    self.openOrder = [OpenOrder new];
     [self runDishQuery];
     UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
     [refreshControl addTarget:self action:@selector(runDishQuery) forControlEvents:UIControlEventValueChanged];
@@ -150,13 +153,6 @@ pass final array on submit button of data table
 
 - (IBAction)onSubmit:(id)sender{
     if (self.customerOrder.count != 0){
-        NSLog(@"SUBMIT");
-        NSLog(@"%.f", self.customerOrder.count);
-        for (order *order in self.customerOrder)
-        {
-            NSLog(@"%@", order.dish.name);
-            NSLog(@"%.f", order.amount);
-        }
         NSString *category = [PFUser currentUser][@"theme"];
         
         [self performSegueWithIdentifier:category sender:self];
@@ -175,18 +171,16 @@ pass final array on submit button of data table
 
 
 - (IBAction)stepperChange:(specialStepper *)sender {
-    double orderAmount = [self searchForAmount:self.customerOrder withDish:sender.dish];
-    order *newOrder = [order makeOrderItem:sender.dish withAmount:sender.value];
-    if (orderAmount == 0.0){
-        [self.customerOrder addObject:newOrder];
-    } else {
-        for (int i = 0; i < self.customerOrder.count; i++){
-            if ([self.customerOrder[i].dish.name isEqualToString:sender.dish.name]){
-                self.customerOrder[i] = newOrder;
-                break;
-            }
-        }
-    }
+//    searchOrderforDish
+//    NSUInteger amount = [OpenOrder searchOrderforDish: ];
+//    NSUInteger amount = [OpenOrder searchOrderforDish:self.openOrder withDish:sender.dish];
+//    
+//    if (amount == -1){
+//        NSArray* newItem = [NSArray arrayWithObjects:sender.dish, 1, nil];
+//        [self.openOrder.orders addObject:newItem];
+//    } else {
+//        [self.openOrder[@"orders"] replaceObjectAtIndex:amount withObject:newItem];
+//    }
 }
 
 
@@ -212,19 +206,19 @@ pass final array on submit button of data table
     if ([category isEqualToString:@"Fun"]){
         FunFormViewController *funVC = [segue destinationViewController];
         funVC.customerOrder = self.customerOrder;
-        funVC.customerOrder[0].waiter = self.waiter;
+        funVC.customerOrder[0].waiter = self.openOrder.waiter;
         funVC.customerNumber = self.customerNumber.text;
     }
     if ([category isEqualToString:@"Comfortable"]){
         ComfortableFormViewController *comfVC = [segue destinationViewController];
         comfVC.customerOrder = self.customerOrder;
-        comfVC.customerOrder[0].waiter = self.waiter;
+        comfVC.customerOrder[0].waiter = self.openOrder.waiter;
         comfVC.customerNumber = self.customerNumber.text;
     }
     if ([category isEqualToString:@"Elegant"]){
         ElegantFormViewController *elegantVC = [segue destinationViewController];
         elegantVC.customerOrder = self.customerOrder;
-        elegantVC.customerOrder[0].waiter = self.waiter;
+        elegantVC.customerOrder[0].waiter = self.openOrder.waiter;
         elegantVC.customerNumber = self.customerNumber.text;
     }
 }
@@ -233,7 +227,8 @@ pass final array on submit button of data table
     if (!([tableView.restorationIdentifier isEqualToString:@"menu"])){
         UITableViewCell *cell = [self.waiterTable cellForRowAtIndexPath:indexPath];
         [self.button setTitle:cell.textLabel.text forState:UIControlStateNormal];
-        self.waiter = self.waiters[indexPath.row];
+        self.openOrder = [OpenOrder new];
+        self.openOrder.waiter = self.waiters[indexPath.row];
         self.waiterTable.hidden = YES;
     }
 }

@@ -21,7 +21,6 @@
 		A5C06F6522E67E7300F634E3 /* ScatterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C06F6422E67E7300F634E3 /* ScatterViewController.m */; };
 		A5C06F6822E67E7F00F634E3 /* Top3Bot3ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C06F6722E67E7F00F634E3 /* Top3Bot3ViewController.m */; };
 		A5C06F6B22E67E8700F634E3 /* HistogramViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C06F6A22E67E8700F634E3 /* HistogramViewController.m */; };
-		A5C06F7122E7CDD200F634E3 /* order.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C06F7022E7CDD200F634E3 /* order.m */; };
 		A5C06F7822E8FECF00F634E3 /* OpenOrder.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C06F7722E8FECF00F634E3 /* OpenOrder.m */; };
 		A5C06F7B22E8FEEB00F634E3 /* ClosedOrder.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C06F7A22E8FEEB00F634E3 /* ClosedOrder.m */; };
 		A5C06F7E22E9028000F634E3 /* OrderManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C06F7D22E9028000F634E3 /* OrderManager.m */; };
@@ -62,6 +61,8 @@
 		FF46E1B522DE436400E15A0E /* Fresh_Chef_AnalyticsUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = FF46E1B422DE436400E15A0E /* Fresh_Chef_AnalyticsUITests.m */; };
 		FF5924FF22E2155D00F66EC6 /* ReceiptTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FF5924FE22E2155D00F66EC6 /* ReceiptTableViewCell.m */; };
 		FF85DF5122E7BF180056726A /* CompetitorsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FF85DF5022E7BF180056726A /* CompetitorsCell.m */; };
+		FF9AF93322E90B3F00A0D1FE /* order.m in Sources */ = {isa = PBXBuildFile; fileRef = FF9AF93222E90B3F00A0D1FE /* order.m */; };
+		FF9AF93522E914F900A0D1FE /* order.h in Sources */ = {isa = PBXBuildFile; fileRef = FF9AF93122E90B3F00A0D1FE /* order.h */; };
 		FFB3224722DF9DF700BF966F /* WaitTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FFB3224622DF9DF700BF966F /* WaitTableViewCell.m */; };
 		FFEA6BC622E28DD0008665BD /* ElegantTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FFEA6BC522E28DD0008665BD /* ElegantTableViewCell.m */; };
 		FFEA6BCA22E28E03008665BD /* ComfortableTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FFEA6BC922E28E03008665BD /* ComfortableTableViewCell.m */; };
@@ -112,8 +113,6 @@
 		A5C06F6722E67E7F00F634E3 /* Top3Bot3ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Top3Bot3ViewController.m; sourceTree = "<group>"; };
 		A5C06F6922E67E8700F634E3 /* HistogramViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HistogramViewController.h; sourceTree = "<group>"; };
 		A5C06F6A22E67E8700F634E3 /* HistogramViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HistogramViewController.m; sourceTree = "<group>"; };
-		A5C06F6F22E7CDD200F634E3 /* order.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = order.h; sourceTree = "<group>"; };
-		A5C06F7022E7CDD200F634E3 /* order.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = order.m; sourceTree = "<group>"; };
 		A5C06F7622E8FECF00F634E3 /* OpenOrder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OpenOrder.h; sourceTree = "<group>"; };
 		A5C06F7722E8FECF00F634E3 /* OpenOrder.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OpenOrder.m; sourceTree = "<group>"; };
 		A5C06F7922E8FEEB00F634E3 /* ClosedOrder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ClosedOrder.h; sourceTree = "<group>"; };
@@ -200,6 +199,8 @@
 		FF6EE1A222E01D85000AD729 /* order.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = order.m; sourceTree = "<group>"; };
 		FF85DF4F22E7BF180056726A /* CompetitorsCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CompetitorsCell.h; sourceTree = "<group>"; };
 		FF85DF5022E7BF180056726A /* CompetitorsCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CompetitorsCell.m; sourceTree = "<group>"; };
+		FF9AF93122E90B3F00A0D1FE /* order.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = order.h; sourceTree = "<group>"; };
+		FF9AF93222E90B3F00A0D1FE /* order.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = order.m; sourceTree = "<group>"; };
 		FFB3224522DF9DF700BF966F /* WaitTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = WaitTableViewCell.h; path = "Fresh-Chef-Analytics/View Controller/Waiter VCs/WaitTableViewCell.h"; sourceTree = SOURCE_ROOT; };
 		FFB3224622DF9DF700BF966F /* WaitTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = WaitTableViewCell.m; path = "Fresh-Chef-Analytics/View Controller/Waiter VCs/WaitTableViewCell.m"; sourceTree = SOURCE_ROOT; };
 		FFEA6BC422E28DD0008665BD /* ElegantTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ElegantTableViewCell.h; sourceTree = "<group>"; };
@@ -270,8 +271,6 @@
 				FFF1C48C22E02A8200C2AC03 /* specialStepper.m */,
 				A5C06F5422E114E500F634E3 /* WaiterManager.h */,
 				A5C06F5522E114E500F634E3 /* WaiterManager.m */,
-				A5C06F6F22E7CDD200F634E3 /* order.h */,
-				A5C06F7022E7CDD200F634E3 /* order.m */,
 				FFECCE4522E668F40000FDFF /* Fresh-Chef-Analytics-Bridging-Header.h */,
 				A5C06F7622E8FECF00F634E3 /* OpenOrder.h */,
 				A5C06F7722E8FECF00F634E3 /* OpenOrder.m */,
@@ -279,6 +278,8 @@
 				A5C06F7A22E8FEEB00F634E3 /* ClosedOrder.m */,
 				A5C06F7C22E9028000F634E3 /* OrderManager.h */,
 				A5C06F7D22E9028000F634E3 /* OrderManager.m */,
+				FF9AF93122E90B3F00A0D1FE /* order.h */,
+				FF9AF93222E90B3F00A0D1FE /* order.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -289,12 +290,6 @@
 				FF85DF4F22E7BF180056726A /* CompetitorsCell.h */,
 				FF85DF5022E7BF180056726A /* CompetitorsCell.m */,
 				FF5924FD22E2155D00F66EC6 /* ReceiptTableViewCell.h */,
-				FFEA6BC422E28DD0008665BD /* ElegantTableViewCell.h */,
-				FFEA6BC522E28DD0008665BD /* ElegantTableViewCell.m */,
-				FFF1C48E22E03B5300C2AC03 /* FunTableViewCell.h */,
-				FFF1C48F22E03B5300C2AC03 /* FunTableViewCell.m */,
-				FFEA6BC822E28E03008665BD /* ComfortableTableViewCell.h */,
-				FFEA6BC922E28E03008665BD /* ComfortableTableViewCell.m */,
 				FF5924FE22E2155D00F66EC6 /* ReceiptTableViewCell.m */,
 				FFB3224522DF9DF700BF966F /* WaitTableViewCell.h */,
 				FFB3224622DF9DF700BF966F /* WaitTableViewCell.m */,
@@ -337,6 +332,14 @@
 			path = "Child VCs";
 			sourceTree = "<group>";
 		};
+		A5C06F8022E9116400F634E3 /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				FF6EE1A222E01D85000AD729 /* order.m */,
+			);
+			name = "Recovered References";
+			sourceTree = "<group>";
+		};
 		B2353C68BCB0DF7918364525 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -361,6 +364,7 @@
 		FF03BF2922DE95C900719E8C /* Waiter VCs */ = {
 			isa = PBXGroup;
 			children = (
+				FFDB60FD22E91BCE00902FE3 /* Form Views */,
 				FF03BF3E22DE97C900719E8C /* AnotherTableViewController.h */,
 				FF03BF3F22DE97C900719E8C /* AnotherTableViewController.m */,
 				FF03BF3B22DE97AD00719E8C /* ThankYouViewController.h */,
@@ -446,6 +450,8 @@
 				B2353C68BCB0DF7918364525 /* Pods */,
 				08231CD541BC145944FD159E /* Frameworks */,
 				B6C4BFFA22E910F900FE5EAC /* Recovered References */,
+				A5C06F8022E9116400F634E3 /* Recovered References */,
+				FF9AF93022E90ACC00A0D1FE /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -492,6 +498,27 @@
 				FF46E1B622DE436400E15A0E /* Info.plist */,
 			);
 			path = "Fresh-Chef-AnalyticsUITests";
+			sourceTree = "<group>";
+		};
+		FF9AF93022E90ACC00A0D1FE /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				FF6EE1A222E01D85000AD729 /* order.m */,
+			);
+			name = "Recovered References";
+			sourceTree = "<group>";
+		};
+		FFDB60FD22E91BCE00902FE3 /* Form Views */ = {
+			isa = PBXGroup;
+			children = (
+				FFEA6BC822E28E03008665BD /* ComfortableTableViewCell.h */,
+				FFEA6BC922E28E03008665BD /* ComfortableTableViewCell.m */,
+				FFEA6BC422E28DD0008665BD /* ElegantTableViewCell.h */,
+				FFEA6BC522E28DD0008665BD /* ElegantTableViewCell.m */,
+				FFF1C48E22E03B5300C2AC03 /* FunTableViewCell.h */,
+				FFF1C48F22E03B5300C2AC03 /* FunTableViewCell.m */,
+			);
+			path = "Form Views";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -715,7 +742,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A5C06F7122E7CDD200F634E3 /* order.m in Sources */,
+				FF9AF93522E914F900A0D1FE /* order.h in Sources */,
 				B6C4BFF922E9107400FE5EAC /* OrdersManagerViewController.m in Sources */,
 				B6C4BFF022E8FE8500FE5EAC /* DataViewTableViewController.m in Sources */,
 				FF5924FF22E2155D00F66EC6 /* ReceiptTableViewCell.m in Sources */,
@@ -749,6 +776,7 @@
 				A535D7C522DFD4B5002B79CA /* MenuManager.m in Sources */,
 				FF03BF5022DEA04900719E8C /* DishDetailsViewController.m in Sources */,
 				FF03BF5922DEA0C700719E8C /* CompetitorDetailsViewController.m in Sources */,
+				FF9AF93322E90B3F00A0D1FE /* order.m in Sources */,
 				FF03BF5C22DEA16600719E8C /* CompetitorListViewController.m in Sources */,
 				A5C06F5622E114E500F634E3 /* WaiterManager.m in Sources */,
 				A535D7C822DFD6DB002B79CA /* EditMenuCell.m in Sources */,

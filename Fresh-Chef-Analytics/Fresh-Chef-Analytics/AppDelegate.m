@@ -12,6 +12,7 @@
 #import "Waiter.h"
 #import "MenuManager.h"
 #import "WaiterManager.h"
+#import "OrderManager.h"
 
 @interface AppDelegate ()
 
@@ -47,6 +48,18 @@
             {
                 [[WaiterManager shared] setOrderedWaiterArrays];
                 NSLog(@"fetched restaurant's waiters");
+            }
+        }];
+        [[OrderManager shared] fetchOpenOrderItems:PFUser.currentUser withCompletion:^(NSArray * _Nonnull openOrders, NSError * _Nonnull error) {
+            if (!error)
+            {
+                NSLog(@"fetched restaurant's open orders");
+            }
+        }];
+        [[OrderManager shared] fetchClosedOrderItems:PFUser.currentUser withCompletion:^(NSArray * _Nonnull closedOrders, NSError * _Nonnull error) {
+            if (!error)
+            {
+                NSLog(@"fetched restaurant's closed orders");
             }
         }];
         self.window.rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"ManagerPasswordVCNavigationController"];
