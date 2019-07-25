@@ -11,6 +11,7 @@
 #import "YelpAPIManager.h"
 #import "TTTAttributedLabel.h"
 #import "Parse/Parse.h"
+#import "YelpLinkViewController.h"
 
 
 @interface CompetitorListViewController () <UITableViewDelegate, UITableViewDataSource>
@@ -64,15 +65,8 @@
     cell.price.text = business[@"price"];
    // NSMutableAttributedString * link = [[NSMutableAttributedString alloc] initWithString:@"Yelp Link"];
    // [link addAttribute: NSLinkAttributeName value:business[@"url"] range: NSMakeRange(0, link.length)];
-   cell.yelpLink.enabledTextCheckingTypes = NSTextCheckingTypeLink; // Automatically detect links when the label text is subsequently changed
-   cell.yelpLink.delegate = self; // Delegate methods are called when the user taps on a link (see `TTTAttributedLabelDelegate` protocol)
-//
-   //NSString *link = [NSString stringWithFormat:@"YelpLink! (%@)", business[@"url"]];
-    NSRange link = [cell.yelpLink.text rangeOfString:@"Yelp Link"];
-    [cell.yelpLink addLinkToURL:[NSURL URLWithString:business[@"url"]] withRange:link];
-   //cell.yelpLink.text = link;
-  
-    //cell.yelpLink.text = business[@"url"];
+
+   cell.yelpLink.link = business[@"url"];
     NSString *imageUrl = business[@"image_url"];
     [NSURLConnection sendAsynchronousRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:imageUrl]] queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
         cell.competitorImage.image = [UIImage imageWithData:data];
@@ -81,15 +75,18 @@
 
 }
 
+- (IBAction)clickLink:(Link *)sender {
+    
+    
+}
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
+    if ([sender isKindOfClass:Link.class]){
+        YelpLinkViewController *yelpTab = [segue destinationViewController];
+        yelpTab.yelpLink = ((Link *)sender).link;
+    }// Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
 }
-*/
+
 
 @end

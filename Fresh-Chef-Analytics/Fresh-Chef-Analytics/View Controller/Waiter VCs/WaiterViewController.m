@@ -196,6 +196,8 @@ pass final array on submit button of data table
     [OpenOrder postNewOrder:self.openOrder withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
         if (!error){
             NSLog(@"open order uploaded");
+        } else {
+            NSLog(@"%@", error.localizedDescription);
         }
     }];
     if ([category isEqualToString:@"Fun"]){

@@ -64,6 +64,8 @@
 		FF9AF93322E90B3F00A0D1FE /* order.m in Sources */ = {isa = PBXBuildFile; fileRef = FF9AF93222E90B3F00A0D1FE /* order.m */; };
 		FF9AF93522E914F900A0D1FE /* order.h in Sources */ = {isa = PBXBuildFile; fileRef = FF9AF93122E90B3F00A0D1FE /* order.h */; };
 		FFB3224722DF9DF700BF966F /* WaitTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FFB3224622DF9DF700BF966F /* WaitTableViewCell.m */; };
+		FFC87ACD22EA2650009DE74C /* YelpLinkViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FFC87ACC22EA2650009DE74C /* YelpLinkViewController.m */; };
+		FFC87AD322EA2A91009DE74C /* Link.m in Sources */ = {isa = PBXBuildFile; fileRef = FFC87AD222EA2A91009DE74C /* Link.m */; };
 		FFEA6BC622E28DD0008665BD /* ElegantTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FFEA6BC522E28DD0008665BD /* ElegantTableViewCell.m */; };
 		FFEA6BCA22E28E03008665BD /* ComfortableTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FFEA6BC922E28E03008665BD /* ComfortableTableViewCell.m */; };
 		FFECCE4D22E682F20000FDFF /* YelpAPIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FFECCE4C22E682F20000FDFF /* YelpAPIManager.m */; };
@@ -203,6 +205,10 @@
 		FF9AF93222E90B3F00A0D1FE /* order.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = order.m; sourceTree = "<group>"; };
 		FFB3224522DF9DF700BF966F /* WaitTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = WaitTableViewCell.h; path = "Fresh-Chef-Analytics/View Controller/Waiter VCs/WaitTableViewCell.h"; sourceTree = SOURCE_ROOT; };
 		FFB3224622DF9DF700BF966F /* WaitTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = WaitTableViewCell.m; path = "Fresh-Chef-Analytics/View Controller/Waiter VCs/WaitTableViewCell.m"; sourceTree = SOURCE_ROOT; };
+		FFC87ACB22EA2650009DE74C /* YelpLinkViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YelpLinkViewController.h; sourceTree = "<group>"; };
+		FFC87ACC22EA2650009DE74C /* YelpLinkViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YelpLinkViewController.m; sourceTree = "<group>"; };
+		FFC87AD122EA2A91009DE74C /* Link.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Link.h; sourceTree = "<group>"; };
+		FFC87AD222EA2A91009DE74C /* Link.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Link.m; sourceTree = "<group>"; };
 		FFEA6BC422E28DD0008665BD /* ElegantTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ElegantTableViewCell.h; sourceTree = "<group>"; };
 		FFEA6BC522E28DD0008665BD /* ElegantTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ElegantTableViewCell.m; sourceTree = "<group>"; };
 		FFEA6BC822E28E03008665BD /* ComfortableTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ComfortableTableViewCell.h; sourceTree = "<group>"; };
@@ -280,6 +286,8 @@
 				A5C06F7D22E9028000F634E3 /* OrderManager.m */,
 				FF9AF93122E90B3F00A0D1FE /* order.h */,
 				FF9AF93222E90B3F00A0D1FE /* order.m */,
+				FFC87AD122EA2A91009DE74C /* Link.h */,
+				FFC87AD222EA2A91009DE74C /* Link.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -335,7 +343,6 @@
 		A5C06F8022E9116400F634E3 /* Recovered References */ = {
 			isa = PBXGroup;
 			children = (
-				FF6EE1A222E01D85000AD729 /* order.m */,
 			);
 			name = "Recovered References";
 			sourceTree = "<group>";
@@ -356,7 +363,6 @@
 		B6C4BFFA22E910F900FE5EAC /* Recovered References */ = {
 			isa = PBXGroup;
 			children = (
-				FF6EE1A222E01D85000AD729 /* order.m */,
 			);
 			name = "Recovered References";
 			sourceTree = "<group>";
@@ -390,6 +396,8 @@
 		FF03BF2A22DE95DA00719E8C /* Manager VCs */ = {
 			isa = PBXGroup;
 			children = (
+				FFC87ACB22EA2650009DE74C /* YelpLinkViewController.h */,
+				FFC87ACC22EA2650009DE74C /* YelpLinkViewController.m */,
 				FF03BF4D22DEA03700719E8C /* Details VCs */,
 				A5C06F6222E67E3A00F634E3 /* Child VCs */,
 				FF03BF5D22DEA19100719E8C /* MenuDataViewController.h */,
@@ -760,6 +768,7 @@
 				FF03BF3422DE971600719E8C /* ComfortableFormViewController.m in Sources */,
 				B6D7B35322DE6D27002093CB /* LoginViewController.m in Sources */,
 				B6D7B35622DE6D40002093CB /* SignUpViewController.m in Sources */,
+				FFC87ACD22EA2650009DE74C /* YelpLinkViewController.m in Sources */,
 				A5C06F7E22E9028000F634E3 /* OrderManager.m in Sources */,
 				FFF1C49022E03B5300C2AC03 /* FunTableViewCell.m in Sources */,
 				A535D7B922DE6CE9002B79CA /* Dish.m in Sources */,
@@ -796,6 +805,7 @@
 				A535D7BF22DE9FBF002B79CA /* Waiter.m in Sources */,
 				A5C06F6822E67E7F00F634E3 /* Top3Bot3ViewController.m in Sources */,
 				B6C4C00022E91EAD00FE5EAC /* EditOrderViewController.m in Sources */,
+				FFC87AD322EA2A91009DE74C /* Link.m in Sources */,
 				A5C06F5922E11D3500F634E3 /* EditWaiterCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

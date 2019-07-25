@@ -11,7 +11,6 @@
 @implementation CompetitorsCell
 
 - (void)awakeFromNib {
-    self.yelpLink.delegate = self;
     [super awakeFromNib];
     // Initialization code
 }
