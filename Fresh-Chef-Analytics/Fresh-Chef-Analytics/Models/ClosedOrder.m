@@ -14,18 +14,18 @@
 @dynamic amounts;
 @dynamic waiter;
 @dynamic restaurant;
+@dynamic table;
+@dynamic numCustomers;
+@dynamic restaurantId;
 
 + (nonnull NSString *)parseClassName {
     return @"ClosedOrder";
 }
 
-+ (void) postNewOrderWithDishes:(NSArray *)dishes withAmount:(NSArray *)amounts withRestaurant:(PFUser *)restaurant withWaiter:(Waiter *)waiter withCompletion:(PFBooleanResultBlock)completion
++ (void)postOldOrder:(ClosedOrder *) order withCompletion:(PFBooleanResultBlock)completion
 {
-    ClosedOrder *newOrder = [ClosedOrder new];
-    newOrder.restaurant = restaurant;
-    newOrder.dishes = dishes;
-    newOrder.amounts = amounts;
-    newOrder.waiter = waiter;
-    [newOrder saveInBackgroundWithBlock:completion];
+    [order saveInBackgroundWithBlock:completion];
+    
 }
+
 @end

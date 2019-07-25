@@ -50,16 +50,67 @@
                 NSLog(@"fetched restaurant's waiters");
             }
         }];
-        [[OrderManager shared] fetchOpenOrderItems:PFUser.currentUser withCompletion:^(NSArray * _Nonnull openOrders, NSError * _Nonnull error) {
-            if (!error)
+//        [[OrderManager shared] fetchOpenOrderItems:PFUser.currentUser withCompletion:^(NSArray * _Nonnull openOrders, NSError * _Nonnull error) {
+//            if (!error)
+//            {
+//                NSLog(@"fetched restaurant's open orders");
+//            }
+//        }];
+//        [[OrderManager shared] fetchClosedOrderItems:PFUser.currentUser withCompletion:^(NSArray * _Nonnull closedOrders, NSError * _Nonnull error) {
+//            if (!error)
+//            {
+//                NSLog(@"fetched restaurant's closed orders");
+//            }
+//        }];
+        //Testing open order
+        Dish *newDish = [Dish new];
+        newDish.restaurant = [PFUser currentUser];
+        newDish.restaurantID = newDish.restaurant.objectId;
+        
+        newDish.name = @"test";
+        newDish.type = @"drink";
+        newDish.dishDescription = @"tasty";
+        newDish.price = @(4);
+        newDish.rating = @(5);
+        newDish.orderFrequency = @(0);
+        
+        Waiter *newWaiter = [Waiter new];
+        newWaiter.restaurant = [PFUser currentUser];
+        newWaiter.restaurantID = newWaiter.restaurant.objectId;
+        
+        newWaiter.name = @"jim";
+        newWaiter.yearsWorked = @(3);
+        newWaiter.rating = @(3);
+        newWaiter.tableTops = @(0);
+        newWaiter.numOfCustomers = @(0);
+        newWaiter.tipsMade = @(0);
+        
+        
+        OpenOrder *newOrder = [OpenOrder new];
+        newOrder.dish = newDish;
+        newOrder.amount = @(3);
+        newOrder.waiter = newWaiter;
+        newOrder.table = @(3);
+        newOrder.restaurant = PFUser.currentUser;
+        newOrder.restaurantId = PFUser.currentUser.objectId;
+        [OpenOrder postNewOrder:newOrder withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
+            if(!error)
             {
-                NSLog(@"fetched restaurant's open orders");
+                NSLog(@"Order posted");
+            }
+            else
+            {
+                NSLog(@"Error: %@", error.localizedDescription);
             }
         }];
-        [[OrderManager shared] fetchClosedOrderItems:PFUser.currentUser withCompletion:^(NSArray * _Nonnull closedOrders, NSError * _Nonnull error) {
-            if (!error)
+        [[OrderManager shared] makingClosedOrder:PFUser.currentUser withTable:@(3) forWaiter:newWaiter withCustomerNum:@(5) withCompletion:^(NSError * _Nonnull error) {
+            if(!error)
             {
-                NSLog(@"fetched restaurant's closed orders");
+                NSLog(@"Order moved to closed");
+            }
+            else
+            {
+                NSLog(@"Error: %@", error.localizedDescription);
             }
         }];
         self.window.rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"ManagerPasswordVCNavigationController"];

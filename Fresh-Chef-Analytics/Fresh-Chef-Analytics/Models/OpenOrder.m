@@ -9,10 +9,12 @@
 #import "OpenOrder.h"
 
 @implementation OpenOrder
-@dynamic dishes;
-@dynamic amounts;
+@dynamic dish;
+@dynamic amount;
+@dynamic table;
 @dynamic waiter;
 @dynamic restaurant;
+@dynamic restaurantId;
 + (nonnull NSString *)parseClassName {
     return @"OpenOrder";
 }

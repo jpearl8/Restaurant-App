@@ -10,15 +10,19 @@
 #import "Parse/Parse.h"
 #import "Waiter.h"
 #import "Dish.h"
+#import "OpenOrder.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface ClosedOrder : PFObject<PFSubclassing>
-@property NSArray *dishes;
-@property NSArray *amounts;
-@property Waiter *waiter;
-@property PFUser *restaurant;
+@property (nonatomic, strong) NSArray *dishes;
+@property (nonatomic, strong) NSArray *amounts;
+@property (nonatomic, strong) Waiter *waiter;
+@property (nonatomic, strong) PFUser *restaurant;
+@property (nonatomic, strong) NSString *restaurantId;
+@property (nonatomic, strong) NSNumber *table;
+@property (nonatomic, strong) NSNumber *numCustomers;
 
-+ (void) postOldOrder: (NSArray *) dishes withAmount : (NSArray *) amounts withRestaurant: (PFUser *) restaurant withWaiter : (Waiter *) waiter withCompletion : (PFBooleanResultBlock  _Nullable)completion;
++ (void) postOldOrder: (ClosedOrder *) order withCompletion : (PFBooleanResultBlock  _Nullable)completion;
 @end
 NS_ASSUME_NONNULL_END
