@@ -1,4 +1,4 @@
-//
+
 //  OrderManager.m
 //  Fresh-Chef-Analytics
 //
@@ -58,7 +58,7 @@
     PFQuery *orderQuery;
     orderQuery = [OpenOrder query];
     [orderQuery whereKey:@"restaurantId" equalTo:restaurant.objectId];
-//    [orderQuery whereKey:@"table" equalTo:table];
+    //    [orderQuery whereKey:@"table" equalTo:table];
     [orderQuery findObjectsInBackgroundWithBlock:^(NSArray * _Nullable orders, NSError * _Nullable error) {
         if (orders)
         {
