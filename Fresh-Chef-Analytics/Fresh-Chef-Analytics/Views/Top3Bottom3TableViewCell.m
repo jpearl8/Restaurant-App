@@ -23,6 +23,7 @@
     [self.frequency setFont:[UIFont systemFontOfSize:18]];
     [self.rating setFont:[UIFont systemFontOfSize:18]];
     [self.price setFont:[UIFont systemFontOfSize:18]];
+//    [self.profit setFont:[UIFont systemFontOfSize:18]];
     
     if (self.selectedIndex == 0) {
         [self.frequency setFont:[UIFont boldSystemFontOfSize:20]];

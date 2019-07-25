@@ -19,6 +19,10 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong, nonatomic) NSMutableDictionary *dishesByPrice;
 @property (strong, nonatomic) NSMutableDictionary *top3Bottom3Freq;
 @property (strong, nonatomic) NSMutableDictionary *top3Bottom3Rating;
+// threshold arrays contain two percentiles (from 0-1) indicating whats considered low, medium, high
+//@property (strong, nonatomic) NSArray *thresholdsRating;
+//@property (strong, nonatomic) NSArray *thresholdsFrequency;
+//@property (strong, nonatomic) NSArray *thresholdsProfit;
 @property (strong, nonatomic) NSArray *sortByArray;
 + (instancetype) shared;
 - (void) fetchMenuItems : (PFUser *) restaurant withCompletion:(void (^)(NSMutableDictionary *categoriesOfDishes, NSError * _Nullable error))fetchedDishes;

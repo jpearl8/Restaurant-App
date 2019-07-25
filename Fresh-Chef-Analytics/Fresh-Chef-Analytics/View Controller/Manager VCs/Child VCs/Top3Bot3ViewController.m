@@ -96,16 +96,17 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     Top3Bottom3TableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
-    
     selectedIndexPath = indexPath;
     if(cell.isExpanded){
         cell.isExpanded = NO;
     } else {
         cell.isExpanded = YES;
     }
+    
     //update cell to reflect new state
     [self.tableView beginUpdates];
     [self.tableView endUpdates];
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
