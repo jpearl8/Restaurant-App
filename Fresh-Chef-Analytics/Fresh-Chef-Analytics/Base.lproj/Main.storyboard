@@ -3068,6 +3068,7 @@
                         <outlet property="waiterComments" destination="1v6-I9-MQC" id="Fop-S6-Z1r"/>
                         <outlet property="waiterNameLabel" destination="IPC-G1-MXX" id="7zX-ht-2PG"/>
                         <outlet property="waiterPic" destination="dUe-pB-7Ke" id="cKc-YT-u1v"/>
+                        <outlet property="waiterRating" destination="SmJ-2C-R6Y" id="VgC-I4-n7i"/>
                         <segue destination="hrl-29-LdY" kind="show" identifier="toReceipt" id="eop-xl-c0C"/>
                     </connections>
                 </viewController>
@@ -3681,6 +3682,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="r3R-H8-hdI"/>
-        <segue reference="VpL-yV-74Y"/>
+        <segue reference="eop-xl-c0C"/>
     </inferredMetricsTieBreakers>
 </document>

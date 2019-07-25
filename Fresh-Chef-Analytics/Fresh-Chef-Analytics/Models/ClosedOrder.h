@@ -10,6 +10,7 @@
 #import "Parse/Parse.h"
 #import "Waiter.h"
 #import "Dish.h"
+#import "OpenOrder.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -18,7 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property NSArray *amounts;
 @property Waiter *waiter;
 @property PFUser *restaurant;
-
++ (void) postOldOrderWithOpenOrder:(OpenOrder *)openOrder withCompletion:(PFBooleanResultBlock)completion;
 + (void) postOldOrder: (NSArray *) dishes withAmount : (NSArray *) amounts withRestaurant: (PFUser *) restaurant withWaiter : (Waiter *) waiter withCompletion : (PFBooleanResultBlock  _Nullable)completion;
 @end
 NS_ASSUME_NONNULL_END

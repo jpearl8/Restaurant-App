@@ -21,7 +21,7 @@
     // Configure the view for the selected state
 }
 -(void)textViewDidChange:(UITextView *)textView{
-    self.order.customerComments = self.customerComment.text;
+    self.customerComments[self.index] = self.customerComment.text;
 }
 
 - (void) prepareForReuse{
@@ -32,7 +32,7 @@
 
 - (IBAction)changeCustomerRating:(HCSStarRatingView *)sender {
     NSLog(@"%f", sender.value);
-    self.order.customerRating = 2 * sender.value;
+    self.customerRatings[self.index] = 2 * sender.value;
 }
 
 

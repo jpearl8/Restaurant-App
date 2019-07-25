@@ -29,8 +29,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UIButton *b6;
 @property (weak, nonatomic) IBOutlet UIButton *b8;
 @property (weak, nonatomic) IBOutlet UIButton *b10;
-
-
+@property (strong, nonatomic) NSMutableArray *customerRatings;
+@property (strong, nonatomic) NSMutableArray *customerComments;
+@property (assign, nonatomic) int index;
 
 
 @end

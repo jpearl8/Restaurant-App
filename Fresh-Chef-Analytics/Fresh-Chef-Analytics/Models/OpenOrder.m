@@ -23,17 +23,20 @@
 
 // function takes in an openOrder and dish, queries for dish amount, returns index in order
 // if there is no dish, returns index -1
-
-
-//- (NSUInteger) searchOrderforDish:(OpenOrder *)openOrder withDish:(Dish *)dish{
-//    NSArray *orders = openOrder.orders;
-//    for (NSUInteger i = 0; i < orders.count; i++){
-//        if ([dish.name isEqualToString:((Dish *)orders[i][0]).name]){
-//            return i;
-//        }
-//    }
-//    return -1;
-//}
++ (NSNumber *)searchOrderforDish:(OpenOrder *)openOrder withDish:(Dish *)dish giveIndex:(BOOL)index{
+    NSArray *dishes = openOrder.dishes;
+    for (int i = 0; i < dishes.count; i++){
+        if ([dish.name isEqualToString:((Dish *)dishes[i]).name]){
+            if (index){
+                return [NSNumber numberWithInt:i];
+            }
+            else {
+                return openOrder.amounts[i];
+            }
+        }
+    }
+    return [NSNumber numberWithInt:-1];
+}
 
 
 @end

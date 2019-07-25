@@ -19,8 +19,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property Waiter *waiter;
 @property PFUser *restaurant;
 
+
 + (void) postNewOrder : (OpenOrder *) order withCompletion : (PFBooleanResultBlock  _Nullable)completion;
 
-- (NSUInteger) searchOrderforDish:(OpenOrder *)openOrder withDish:(Dish *)dish;
++ (NSNumber *)searchOrderforDish:(OpenOrder *)openOrder withDish:(Dish *)dish giveIndex:(BOOL)index;
 @end
 NS_ASSUME_NONNULL_END

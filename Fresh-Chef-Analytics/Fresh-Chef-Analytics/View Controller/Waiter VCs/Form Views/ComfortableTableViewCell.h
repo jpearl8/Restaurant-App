@@ -23,6 +23,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UILabel *amount;
 @property (weak, nonatomic) IBOutlet HCSStarRatingView *customerRating;
 @property (strong, nonatomic) IBOutlet  UITextView *customerComment;
+@property (strong, nonatomic) NSMutableArray *customerRatings;
+@property (strong, nonatomic) NSMutableArray *customerComments;
+@property (assign, nonatomic) int index;
 @end
 
 NS_ASSUME_NONNULL_END
