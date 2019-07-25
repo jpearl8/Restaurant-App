@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "TTTAttributedLabel.h"
+#import "Link.h"
 NS_ASSUME_NONNULL_BEGIN
 
 @interface CompetitorsCell : UITableViewCell <TTTAttributedLabelDelegate>
@@ -15,7 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UILabel *address;
 @property (weak, nonatomic) IBOutlet UILabel *competitorName;
 @property (weak, nonatomic) IBOutlet UILabel *price;
-@property (weak, nonatomic) IBOutlet TTTAttributedLabel *yelpLink;
+@property (weak, nonatomic) IBOutlet Link *yelpLink;
 
 @property (weak, nonatomic) IBOutlet UIImageView *competitorImage;
 

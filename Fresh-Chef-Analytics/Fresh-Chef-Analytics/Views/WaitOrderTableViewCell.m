@@ -1,14 +1,14 @@
 //
-//  CompetitorsCell.m
+//  WaitOrderTableViewCell.m
 //  Fresh-Chef-Analytics
 //
-//  Created by jpearl on 7/23/19.
+//  Created by rgallardo on 7/24/19.
 //  Copyright © 2019 julia@ipearl.net. All rights reserved.
 //
 
-#import "CompetitorsCell.h"
+#import "WaitOrderTableViewCell.h"
 
-@implementation CompetitorsCell
+@implementation WaitOrderTableViewCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];

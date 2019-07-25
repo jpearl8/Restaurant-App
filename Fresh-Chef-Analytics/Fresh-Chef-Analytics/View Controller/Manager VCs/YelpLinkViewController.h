@@ -1,8 +1,8 @@
 //
-//  CompetitorListViewController.h
+//  YelpLinkViewController.h
 //  Fresh-Chef-Analytics
 //
-//  Created by jpearl on 7/16/19.
+//  Created by jpearl on 7/25/19.
 //  Copyright © 2019 julia@ipearl.net. All rights reserved.
 //
 
@@ -10,7 +10,8 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface CompetitorListViewController : UIViewController
+@interface YelpLinkViewController : UIViewController
+@property (strong, nonatomic) NSString* yelpLink;
 @end
 
 NS_ASSUME_NONNULL_END

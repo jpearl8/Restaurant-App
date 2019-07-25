@@ -12,6 +12,7 @@
 #import "Dish.h"
 #import "MenuManager.h"
 #import "WaiterManager.h"
+#import "OrderManager.h"
 
 @interface LoginViewController ()
 
@@ -46,6 +47,18 @@
                     NSLog(@"fetched restaurant's waiters");
                 }
             }];
+            [[OrderManager shared] fetchOpenOrderItems:user withCompletion:^(NSArray * _Nonnull openOrders, NSError * _Nonnull error) {
+                if (!error)
+                {
+                    NSLog(@"fetched restaurant's open orders");
+                }
+            }];
+            [[OrderManager shared] fetchClosedOrderItems:user withCompletion:^(NSArray * _Nonnull closedOrders, NSError * _Nonnull error) {
+                if (!error)
+                {
+                    NSLog(@"fetched restaurant's closed orders");
+                }
+            }];
             // Testing to make sure dishes can be created //
             //
 //                [Dish postNewDish:@"testing" withType:@"american" withDescription:@"This is a test not a dish." withPrice:@(0) withCompletion:^(BOOL success, NSError *error)
@@ -69,6 +82,8 @@
 //                        NSLog(@"Error: %@", error.description);
 //                    }
 //                }];
+
+
             [self performSegueWithIdentifier:@"loginSegue" sender:nil];
         }
     }];

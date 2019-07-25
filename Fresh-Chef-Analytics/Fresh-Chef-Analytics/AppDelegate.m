@@ -12,6 +12,7 @@
 #import "Waiter.h"
 #import "MenuManager.h"
 #import "WaiterManager.h"
+#import "OrderManager.h"
 
 @interface AppDelegate ()
 
@@ -49,8 +50,18 @@
                 NSLog(@"fetched restaurant's waiters");
             }
         }];
-        
-        
+//        [[OrderManager shared] fetchOpenOrderItems:PFUser.currentUser withCompletion:^(NSArray * _Nonnull openOrders, NSError * _Nonnull error) {
+//            if (!error)
+//            {
+//                NSLog(@"fetched restaurant's open orders");
+//            }
+//        }];
+//        [[OrderManager shared] fetchClosedOrderItems:PFUser.currentUser withCompletion:^(NSArray * _Nonnull closedOrders, NSError * _Nonnull error) {
+//            if (!error)
+//            {
+//                NSLog(@"fetched restaurant's closed orders");
+//            }
+//        }];
         //Testing open order
         Dish *newDish = [Dish new];
         newDish.restaurant = [PFUser currentUser];

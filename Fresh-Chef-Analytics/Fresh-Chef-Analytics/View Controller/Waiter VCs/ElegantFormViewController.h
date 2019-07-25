@@ -12,6 +12,7 @@
 #import "FunTableViewCell.h"
 #import "WaiterManager.h"
 #import "UITextView+Placeholder.h"
+#import "OpenOrder.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -19,6 +20,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (IBAction)didSubmit:(UIButton *)sender;
 @property (strong, nonatomic) NSMutableArray <order *>*customerOrder;
 @property (strong, nonatomic) NSString *customerNumber;
+@property (strong, nonatomic) OpenOrder *openOrder;
 @end
 
 NS_ASSUME_NONNULL_END
