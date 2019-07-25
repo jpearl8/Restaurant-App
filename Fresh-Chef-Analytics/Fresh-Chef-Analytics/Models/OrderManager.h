@@ -1,4 +1,3 @@
-//
 //  OrderManager.h
 //  Fresh-Chef-Analytics
 //
@@ -20,8 +19,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong, nonatomic) NSArray *closedOrders;
 
 + (instancetype)shared;
-- (void) addToOrderArray: (OpenOrder *) order withDish: (Dish *) dish andAmount: (NSNumber*) amount;
-- (void) moveOpenOrderToClosed : (OpenOrder *) order  withCompletion:(void (^)(NSError * error))removedOrder;
+- (void) fetchOpenOrderItems:(PFUser *) restaurant  withCompletion:(void (^)(NSArray * openOrders, NSError * error))fetchedOpenOrders;
+- (void) fetchClosedOrderItems:(PFUser *) restaurant  withCompletion:(void (^)(NSArray * closedOrders, NSError * error))fetchedClosedOrders;
+- (void) makingClosedOrder : (PFUser * ) restaurant withTable : (NSNumber *) table forWaiter : (Waiter *) waiter withCustomerNum : (NSNumber *) customerNum withCompletion : (void (^)(NSError * error))completion;
 @end
 
 NS_ASSUME_NONNULL_END

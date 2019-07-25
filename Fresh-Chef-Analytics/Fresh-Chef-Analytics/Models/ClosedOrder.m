@@ -1,28 +1,22 @@
-//
-//  ClosedOrder.m
-//  Fresh-Chef-Analytics
-//
-//  Created by selinons on 7/24/19.
-//  Copyright © 2019 julia@ipearl.net. All rights reserved.
-//
-
 #import "ClosedOrder.h"
 
 @implementation ClosedOrder
 
-@dynamic orders;
+@dynamic dishes;
+@dynamic amounts;
 @dynamic waiter;
 @dynamic restaurant;
+@dynamic table;
+@dynamic numCustomers;
+@dynamic restaurantId;
 
 + (nonnull NSString *)parseClassName {
     return @"ClosedOrder";
 }
-+ (void) postNewOrder: (NSArray *) order withRestaurant : (PFUser *) restaurant withWaiter : (Waiter *) waiter withCompletion : (PFBooleanResultBlock  _Nullable)completion
++ (void)postOldOrder:(ClosedOrder *) order withCompletion:(PFBooleanResultBlock)completion
 {
-    ClosedOrder *newOrder = [ClosedOrder new];
-    newOrder.restaurant = restaurant;
-    newOrder.orders = order;
-    newOrder.waiter = waiter;
-    [newOrder saveInBackgroundWithBlock:completion];
+    [order saveInBackgroundWithBlock:completion];
+    
 }
+
 @end
