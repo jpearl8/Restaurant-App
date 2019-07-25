@@ -29,6 +29,8 @@
 		B6C4BFED22E8CF4300FE5EAC /* OrdersListedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6C4BFEC22E8CF4300FE5EAC /* OrdersListedViewController.m */; };
 		B6C4BFF022E8FE8500FE5EAC /* DataViewTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6C4BFEF22E8FE8500FE5EAC /* DataViewTableViewController.m */; };
 		B6C4BFF922E9107400FE5EAC /* OrdersManagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6C4BFF822E9107400FE5EAC /* OrdersManagerViewController.m */; };
+		B6C4C00022E91EAD00FE5EAC /* EditOrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6C4BFFF22E91EAD00FE5EAC /* EditOrderViewController.m */; };
+		B6C4C00322E921EA00FE5EAC /* WaitOrderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B6C4C00222E921EA00FE5EAC /* WaitOrderTableViewCell.m */; };
 		B6D7B35322DE6D27002093CB /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6D7B35222DE6D27002093CB /* LoginViewController.m */; };
 		B6D7B35622DE6D40002093CB /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6D7B35522DE6D40002093CB /* SignUpViewController.m */; };
 		B6D7B35C22DF95BA002093CB /* ManagerLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6D7B35B22DF95BA002093CB /* ManagerLoginViewController.m */; };
@@ -126,6 +128,10 @@
 		B6C4BFEF22E8FE8500FE5EAC /* DataViewTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DataViewTableViewController.m; sourceTree = "<group>"; };
 		B6C4BFF722E9107400FE5EAC /* OrdersManagerViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OrdersManagerViewController.h; sourceTree = "<group>"; };
 		B6C4BFF822E9107400FE5EAC /* OrdersManagerViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OrdersManagerViewController.m; sourceTree = "<group>"; };
+		B6C4BFFE22E91EAD00FE5EAC /* EditOrderViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EditOrderViewController.h; sourceTree = "<group>"; };
+		B6C4BFFF22E91EAD00FE5EAC /* EditOrderViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EditOrderViewController.m; sourceTree = "<group>"; };
+		B6C4C00122E921EA00FE5EAC /* WaitOrderTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WaitOrderTableViewCell.h; sourceTree = "<group>"; };
+		B6C4C00222E921EA00FE5EAC /* WaitOrderTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WaitOrderTableViewCell.m; sourceTree = "<group>"; };
 		B6D7B35122DE6D27002093CB /* LoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		B6D7B35222DE6D27002093CB /* LoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		B6D7B35422DE6D3F002093CB /* SignUpViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SignUpViewController.h; sourceTree = "<group>"; };
@@ -302,6 +308,8 @@
 				A5C06F5B22E2613100F634E3 /* WaiterListTableViewCell.m */,
 				B6BC874B22E6867000264995 /* Top3Bottom3TableViewCell.h */,
 				B6BC874C22E6867000264995 /* Top3Bottom3TableViewCell.m */,
+				B6C4C00122E921EA00FE5EAC /* WaitOrderTableViewCell.h */,
+				B6C4C00222E921EA00FE5EAC /* WaitOrderTableViewCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -369,6 +377,8 @@
 				FF03BF3022DE96EC00719E8C /* FunFormViewController.m */,
 				B6C4BFEB22E8CF4300FE5EAC /* OrdersListedViewController.h */,
 				B6C4BFEC22E8CF4300FE5EAC /* OrdersListedViewController.m */,
+				B6C4BFFE22E91EAD00FE5EAC /* EditOrderViewController.h */,
+				B6C4BFFF22E91EAD00FE5EAC /* EditOrderViewController.m */,
 			);
 			path = "Waiter VCs";
 			sourceTree = "<group>";
@@ -732,6 +742,7 @@
 				FF03BF4622DE9FC700719E8C /* EditMenuViewController.m in Sources */,
 				FFB3224722DF9DF700BF966F /* WaitTableViewCell.m in Sources */,
 				FF03BF3722DE973B00719E8C /* ElegantFormViewController.m in Sources */,
+				B6C4C00322E921EA00FE5EAC /* WaitOrderTableViewCell.m in Sources */,
 				FF03BF2E22DE963B00719E8C /* WaiterViewController.m in Sources */,
 				FF03BF5622DEA0A000719E8C /* WaitDetailsViewController.m in Sources */,
 				B6C4BFED22E8CF4300FE5EAC /* OrdersListedViewController.m in Sources */,
@@ -756,6 +767,7 @@
 				FF85DF5122E7BF180056726A /* CompetitorsCell.m in Sources */,
 				A535D7BF22DE9FBF002B79CA /* Waiter.m in Sources */,
 				A5C06F6822E67E7F00F634E3 /* Top3Bot3ViewController.m in Sources */,
+				B6C4C00022E91EAD00FE5EAC /* EditOrderViewController.m in Sources */,
 				A5C06F5922E11D3500F634E3 /* EditWaiterCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
