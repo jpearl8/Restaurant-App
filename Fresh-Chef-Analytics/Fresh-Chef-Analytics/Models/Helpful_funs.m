@@ -92,4 +92,24 @@
         array[i] = [NSNumber numberWithFloat:[array[i] floatValue] / [max floatValue]];
     }
 }
+
+-(int) findAmountIndexwithDishArray:(NSArray <Dish *>*)dishes withDish:(Dish *)dish{
+    for (int i = 0; i < dishes.count; i++){
+        if ([dishes[i].name isEqualToString:dish.name]){
+            return i;
+        }
+    }
+    return -1;
+}
+-(BOOL)arrayOfZeros:(NSArray<NSNumber *>*)array{
+    for (int i = 0; i < array.count){
+        if (array[i] == [NSNumber numberWithInt:0]){
+            i++;
+        } else {
+            return NO;
+        }
+    }
+    return YES;
+}
+
 @end

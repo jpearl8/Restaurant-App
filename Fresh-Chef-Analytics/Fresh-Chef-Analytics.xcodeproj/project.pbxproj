@@ -52,6 +52,7 @@
 		FF03BF5F22DEA19100719E8C /* MenuDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF03BF5E22DEA19100719E8C /* MenuDataViewController.m */; };
 		FF03BF6222DF763300719E8C /* MenuListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FF03BF6122DF763300719E8C /* MenuListTableViewCell.m */; };
 		FF1EDA9322E2951A00B1B897 /* Helpful_funs.m in Sources */ = {isa = PBXBuildFile; fileRef = FF1EDA9222E2951A00B1B897 /* Helpful_funs.m */; };
+		FF318E8322EA7969003AF015 /* SingleOpenOrder.m in Sources */ = {isa = PBXBuildFile; fileRef = FF318E8222EA7969003AF015 /* SingleOpenOrder.m */; };
 		FF46E19222DE436400E15A0E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FF46E19122DE436400E15A0E /* AppDelegate.m */; };
 		FF46E19822DE436400E15A0E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF46E19622DE436400E15A0E /* Main.storyboard */; };
 		FF46E19A22DE436400E15A0E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF46E19922DE436400E15A0E /* Assets.xcassets */; };
@@ -182,6 +183,8 @@
 		FF03BF6122DF763300719E8C /* MenuListTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = MenuListTableViewCell.m; path = "Fresh-Chef-Analytics/View Controller/Manager VCs/MenuListTableViewCell.m"; sourceTree = SOURCE_ROOT; };
 		FF1EDA9122E2951A00B1B897 /* Helpful_funs.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Helpful_funs.h; sourceTree = "<group>"; };
 		FF1EDA9222E2951A00B1B897 /* Helpful_funs.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Helpful_funs.m; sourceTree = "<group>"; };
+		FF318E8122EA7969003AF015 /* SingleOpenOrder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SingleOpenOrder.h; path = "Fresh-Chef-Analytics/View Controller/Waiter VCs/SingleOpenOrder.h"; sourceTree = SOURCE_ROOT; };
+		FF318E8222EA7969003AF015 /* SingleOpenOrder.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = SingleOpenOrder.m; path = "Fresh-Chef-Analytics/View Controller/Waiter VCs/SingleOpenOrder.m"; sourceTree = SOURCE_ROOT; };
 		FF46E18D22DE436400E15A0E /* Fresh-Chef-Analytics.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Fresh-Chef-Analytics.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF46E19022DE436400E15A0E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		FF46E19122DE436400E15A0E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -313,6 +316,8 @@
 				B6BC874C22E6867000264995 /* Top3Bottom3TableViewCell.m */,
 				B6C4C00122E921EA00FE5EAC /* WaitOrderTableViewCell.h */,
 				B6C4C00222E921EA00FE5EAC /* WaitOrderTableViewCell.m */,
+				FF318E8122EA7969003AF015 /* SingleOpenOrder.h */,
+				FF318E8222EA7969003AF015 /* SingleOpenOrder.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -766,6 +771,7 @@
 				FF03BF6222DF763300719E8C /* MenuListTableViewCell.m in Sources */,
 				FF03BF3A22DE975B00719E8C /* ReceiptViewController.m in Sources */,
 				FF03BF3422DE971600719E8C /* ComfortableFormViewController.m in Sources */,
+				FF318E8322EA7969003AF015 /* SingleOpenOrder.m in Sources */,
 				B6D7B35322DE6D27002093CB /* LoginViewController.m in Sources */,
 				B6D7B35622DE6D40002093CB /* SignUpViewController.m in Sources */,
 				FFC87ACD22EA2650009DE74C /* YelpLinkViewController.m in Sources */,

@@ -21,6 +21,8 @@ NS_ASSUME_NONNULL_BEGIN
 -(void)defineSelect:(UIButton *)button withSelect:(BOOL)select;
 - (NSArray *)orderArray:(NSArray *)array byType:(NSString *)orderType;
 - (void)scaleArrayByMax:(NSMutableArray *)array;
+-(int) findAmountIndexwithDishArray:(NSArray <Dish *>*)dishes withDish:(Dish *)dish;
+-(BOOL)arrayOfZeros:(NSArray<NSNumber *>*)array;
 @end
 
 NS_ASSUME_NONNULL_END

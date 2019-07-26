@@ -7,9 +7,12 @@
 //
 
 #import "OrdersListedViewController.h"
+#import "WaitOrderTableViewCell.h"
+#import "OpenOrder.h"
 
-@interface OrdersListedViewController ()
-
+@interface OrdersListedViewController () <UITableViewDelegate, UITableViewDataSource>
+@property (weak, nonatomic) IBOutlet UITableView *openOrdersTable;
+@property (strong, nonatomic) NSArray<NSArray<OpenOrder *>*>* totalOpenTables;
 @end
 
 @implementation OrdersListedViewController

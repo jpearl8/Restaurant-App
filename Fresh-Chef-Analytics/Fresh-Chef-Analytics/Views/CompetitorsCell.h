@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "TTTAttributedLabel.h"
 #import "Link.h"
 NS_ASSUME_NONNULL_BEGIN
 

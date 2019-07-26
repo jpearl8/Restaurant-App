@@ -32,20 +32,20 @@
     PFUser *currentUser = [PFUser currentUser];
     self.restaurantName.text = currentUser.username;
     self.restaurantAddress.text = currentUser[@"address"];
-    self.date.text = self.openOrder.waiter[@"updatedAt"];
+    self.date.text = self.openOrders[0].waiter[@"updatedAt"];
     
     //NSString *test = @"XuLMO3Jh3r";
     // Do any additional setup after loading the view.
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.openOrder.amounts.count;
+    return self.openOrders.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     ReceiptTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier: @"receiptCell"];
-    Dish *dish = self.openOrder.dishes[indexPath.row];
-    NSNumber *amount = self.openOrder.amounts[indexPath.row];
+    Dish *dish = self.openOrders[indexPath.row].dish;
+    NSNumber *amount = self.openOrders[indexPath.row].amount;
     order *order = self.customerOrder[indexPath.row];
     cell.order = order;
     cell.dishName.text = dish.name;
@@ -68,12 +68,12 @@
 }
 */
 - (IBAction)didSubmit:(id)sender {
-    float pastTotalTips = [self.openOrder.waiter.tipsMade floatValue];
-    self.openOrder.waiter.tipsMade = [NSNumber numberWithFloat: ([self.tip.text floatValue] + pastTotalTips)];
-    [ClosedOrder postOldOrderWithOpenOrder:self.openOrder withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
-        if (!error){
-            NSLog(@"posted closed order");
-        }}];
+    float pastTotalTips = [self.openOrders[0].waiter.tipsMade floatValue];
+    self.openOrders[0].waiter.tipsMade = [NSNumber numberWithFloat: ([self.tip.text floatValue] + pastTotalTips)];
+//    [ClosedOrder postOldOrderWithOpenOrder:self.openOrder withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
+//        if (!error){
+//            NSLog(@"posted closed order");
+//        }}];
     [self performSegueWithIdentifier:@"toThankYou" sender:self];
 
 }

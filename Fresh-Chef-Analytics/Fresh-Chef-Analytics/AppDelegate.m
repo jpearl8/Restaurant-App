@@ -61,33 +61,33 @@
 //            {
 //                NSLog(@"fetched restaurant's closed orders");
 //            }
-//        }];
-        //Testing open order
-        Dish *newDish = [Dish new];
-        newDish.restaurant = [PFUser currentUser];
-        newDish.restaurantID = newDish.restaurant.objectId;
+////        }];
+//        //Testing open order
+//        Dish *newDish = [Dish new];
+//        newDish.restaurant = [PFUser currentUser];
+//        newDish.restaurantID = newDish.restaurant.objectId;
+//
+//        newDish.name = @"test";
+//        newDish.type = @"Drinks";
+//        newDish.dishDescription = @"tasty";
+//        newDish.price = @(4);
+//        newDish.rating = nil;
+//        newDish.orderFrequency = @(0);
+//
+//        Waiter *newWaiter = [Waiter new];
+//        newWaiter.restaurant = [PFUser currentUser];
+//        newWaiter.restaurantID = newWaiter.restaurant.objectId;
+//
+//        newWaiter.name = @"jim";
+//        newWaiter.yearsWorked = @(3);
+//        newWaiter.rating = @(3);
+//        newWaiter.tableTops = @(0);
+//        newWaiter.numOfCustomers = @(0);
+//        newWaiter.tipsMade = @(0);
 
-        newDish.name = @"test";
-        newDish.type = @"Drinks";
-        newDish.dishDescription = @"tasty";
-        newDish.price = @(4);
-        newDish.rating = nil;
-        newDish.orderFrequency = @(0);
-
-        Waiter *newWaiter = [Waiter new];
-        newWaiter.restaurant = [PFUser currentUser];
-        newWaiter.restaurantID = newWaiter.restaurant.objectId;
-
-        newWaiter.name = @"jim";
-        newWaiter.yearsWorked = @(3);
-        newWaiter.rating = @(3);
-        newWaiter.tableTops = @(0);
-        newWaiter.numOfCustomers = @(0);
-        newWaiter.tipsMade = @(0);
-
-        NSArray *testingArray = [NSArray array];
-        [testingArray arrayByAddingObject:newDish];
-        [testingArray arrayByAddingObject:@(5)];
+//        NSArray *testingArray = [NSArray array];
+//        [testingArray arrayByAddingObject:newDish];
+//        [testingArray arrayByAddingObject:@(5)];
         self.window.rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"ManagerPasswordVCNavigationController"];
     }
     
