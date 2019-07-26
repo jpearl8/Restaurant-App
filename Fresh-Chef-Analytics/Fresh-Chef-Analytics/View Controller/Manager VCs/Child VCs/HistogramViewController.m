@@ -46,15 +46,18 @@
     self.profitLabel.backgroundColor = [UIColor whiteColor];
 
     self.categoriesOfDishes = [[MenuManager shared] categoriesOfDishes];
-    self.legend = [NSMutableArray arrayWithArray:[[[MenuManager shared] categoriesOfDishes] allKeys]];
-    
-    [self.legend insertObject:@"All categories" atIndex:0];
-    [self.legend arrayByAddingObjectsFromArray:[[[MenuManager shared] categoriesOfDishes] allKeys]];
-    
-    // contents are name, rating, frequency, profit //
-    NSArray *dataArray = [self populateDataForAllCategories];
-    [self makeItemsWithData:dataArray];
-    [self setUpChartWithData];
+    if (self.categoriesOfDishes.count != nil)
+    {
+        self.legend = [NSMutableArray arrayWithArray:[[[MenuManager shared] categoriesOfDishes] allKeys]];
+        
+        [self.legend insertObject:@"All categories" atIndex:0];
+        [self.legend arrayByAddingObjectsFromArray:[[[MenuManager shared] categoriesOfDishes] allKeys]];
+        
+        // contents are name, rating, frequency, profit //
+        NSArray *dataArray = [self populateDataForAllCategories];
+        [self makeItemsWithData:dataArray];
+        [self setUpChartWithData];
+    }
 
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section

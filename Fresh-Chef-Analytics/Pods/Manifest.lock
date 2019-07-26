@@ -27,7 +27,6 @@ PODS:
     - Bolts/Tasks (~> 1.9)
   - PNChart (0.8.9):
     - UICountingLabel (~> 1.2.0)
-  - TTTAttributedLabel (2.0.0)
   - UICountingLabel (1.2.0)
   - "UITextView+Placeholder (1.2.1)"
 
@@ -40,7 +39,6 @@ DEPENDENCIES:
   - MKDropdownMenu
   - Parse
   - PNChart
-  - TTTAttributedLabel
   - "UITextView+Placeholder"
 
 SPEC REPOS:
@@ -54,7 +52,6 @@ SPEC REPOS:
     - MKDropdownMenu
     - Parse
     - PNChart
-    - TTTAttributedLabel
     - UICountingLabel
     - "UITextView+Placeholder"
 
@@ -68,10 +65,9 @@ SPEC CHECKSUMS:
   MKDropdownMenu: 269df4a41d21a1db684ce8bc709befe419fc5bae
   Parse: 3b31a3dd1777b07ee7f0caee32fafbff544483a5
   PNChart: 84774d225c2126ded6c93d4dbe6ae98c3a73c2d2
-  TTTAttributedLabel: 8cffe8e127e4e82ff3af1e5386d4cd0ad000b656
   UICountingLabel: 1db4e7d023e1762171eb226d6dff47a7a84f27aa
   "UITextView+Placeholder": 0c3efd97f37ea64bde7f34cc6e90fe02e87b3909
 
-PODFILE CHECKSUM: 7ba48311b7b9e59a5462c9d73ba99412c72b087b
+PODFILE CHECKSUM: 4b22f37276e76d23adca045cc176c5a4206e0303
 
-COCOAPODS: 1.7.2
+COCOAPODS: 1.7.4

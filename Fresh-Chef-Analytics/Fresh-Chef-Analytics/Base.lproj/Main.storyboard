@@ -2423,12 +2423,6 @@
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Yelp Link" textAlignment="natural" lineBreakMode="characterWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lDb-Vf-Qpl" customClass="TTTAttributedLabel">
-                                                    <rect key="frame" x="20" y="145.5" width="374" height="20.5"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ION-F2-i5n">
                                                     <rect key="frame" x="143" y="59" width="49" height="21"/>
                                                     <constraints>
@@ -2438,23 +2432,40 @@
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Tmo-Hf-I7T" customClass="Link">
+                                                    <rect key="frame" x="20" y="145.5" width="71" height="32.5"/>
+                                                    <state key="normal">
+                                                        <attributedString key="attributedTitle">
+                                                            <fragment content="Yelp Link">
+                                                                <attributes>
+                                                                    <font key="NSFont" metaFont="system" size="17"/>
+                                                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                                </attributes>
+                                                            </fragment>
+                                                        </attributedString>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="clickLink:" destination="u8h-Qe-cB9" eventType="touchUpInside" id="g5E-Tx-zeH"/>
+                                                        <segue destination="T86-7i-b2q" kind="show" id="ACF-OQ-zwx"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="Tmo-Hf-I7T" firstAttribute="top" secondItem="dUF-iR-uoP" secondAttribute="bottom" constant="8" id="0QK-qy-cER"/>
                                                 <constraint firstItem="HK9-NJ-3fl" firstAttribute="leading" secondItem="32w-Fn-aJb" secondAttribute="trailing" constant="24" id="6QD-k5-BwA"/>
                                                 <constraint firstItem="HK9-NJ-3fl" firstAttribute="top" secondItem="rad-E4-vmb" secondAttribute="bottom" constant="30" id="B1g-05-onP"/>
-                                                <constraint firstItem="lDb-Vf-Qpl" firstAttribute="trailing" secondItem="Vps-gh-umk" secondAttribute="trailingMargin" id="Ho0-ZY-toC"/>
                                                 <constraint firstItem="rad-E4-vmb" firstAttribute="leading" secondItem="32w-Fn-aJb" secondAttribute="trailing" constant="24" id="N6Z-dh-3XW"/>
-                                                <constraint firstItem="lDb-Vf-Qpl" firstAttribute="leading" secondItem="Vps-gh-umk" secondAttribute="leadingMargin" id="Nq0-im-dIj"/>
+                                                <constraint firstItem="Tmo-Hf-I7T" firstAttribute="leading" secondItem="Vps-gh-umk" secondAttribute="leadingMargin" id="O8i-Zg-ZAd"/>
+                                                <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="Tmo-Hf-I7T" secondAttribute="bottom" constant="8" id="PMj-I2-KW5"/>
                                                 <constraint firstItem="32w-Fn-aJb" firstAttribute="leading" secondItem="Vps-gh-umk" secondAttribute="leading" constant="20" id="YwY-hk-Xlx"/>
                                                 <constraint firstItem="ION-F2-i5n" firstAttribute="leading" secondItem="32w-Fn-aJb" secondAttribute="trailing" constant="24" id="Zoi-Vb-OPt"/>
                                                 <constraint firstItem="ION-F2-i5n" firstAttribute="top" secondItem="rad-E4-vmb" secondAttribute="bottom" constant="1" id="dEB-9r-p4r"/>
                                                 <constraint firstAttribute="trailing" secondItem="dUF-iR-uoP" secondAttribute="trailing" constant="20" id="iou-tU-jQH"/>
                                                 <constraint firstItem="32w-Fn-aJb" firstAttribute="top" secondItem="Vps-gh-umk" secondAttribute="top" constant="10" id="mAT-gT-OEM"/>
                                                 <constraint firstItem="dUF-iR-uoP" firstAttribute="top" secondItem="32w-Fn-aJb" secondAttribute="bottom" constant="8" id="n1Z-Q4-Ung"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="Tmo-Hf-I7T" secondAttribute="trailing" constant="303" id="nwS-X1-v2q"/>
                                                 <constraint firstItem="rad-E4-vmb" firstAttribute="top" secondItem="Vps-gh-umk" secondAttribute="topMargin" constant="4" id="toE-p1-bng"/>
-                                                <constraint firstItem="lDb-Vf-Qpl" firstAttribute="top" secondItem="dUF-iR-uoP" secondAttribute="bottom" constant="8" id="xLg-6A-kt2"/>
                                                 <constraint firstItem="dUF-iR-uoP" firstAttribute="leading" secondItem="Vps-gh-umk" secondAttribute="leading" constant="20" id="z8G-DQ-PA6"/>
-                                                <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="lDb-Vf-Qpl" secondAttribute="bottom" constant="8" id="zki-eX-g3h"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -2463,7 +2474,7 @@
                                             <outlet property="competitorName" destination="rad-E4-vmb" id="TJp-83-NCf"/>
                                             <outlet property="price" destination="ION-F2-i5n" id="0nz-6J-K7v"/>
                                             <outlet property="rating" destination="HK9-NJ-3fl" id="YLC-oc-RxB"/>
-                                            <outlet property="yelpLink" destination="lDb-Vf-Qpl" id="Bfn-iG-nm8"/>
+                                            <outlet property="yelpLink" destination="Tmo-Hf-I7T" id="C9W-s5-yng"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -2493,7 +2504,36 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7S4-ry-Nm8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3338" y="4659"/>
+            <point key="canvasLocation" x="3337.68115942029" y="4658.7053571428569"/>
+        </scene>
+        <!--Yelp Link View Controller-->
+        <scene sceneID="pTf-ob-moi">
+            <objects>
+                <viewController id="T86-7i-b2q" customClass="YelpLinkViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="oJd-BL-wai">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <wkWebView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XKM-Gc-chV">
+                                <rect key="frame" x="0.0" y="17" width="414" height="879"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="02D-Qi-Ov4"/>
+                    </view>
+                    <connections>
+                        <outlet property="webView" destination="XKM-Gc-chV" id="HUs-dS-f9W"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Yr9-UX-KdR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4126" y="4659"/>
         </scene>
         <!--Competitor View-->
         <scene sceneID="o0a-FR-Jto">
@@ -3184,6 +3224,7 @@
                         <outlet property="waiterComments" destination="1v6-I9-MQC" id="Fop-S6-Z1r"/>
                         <outlet property="waiterNameLabel" destination="IPC-G1-MXX" id="7zX-ht-2PG"/>
                         <outlet property="waiterPic" destination="dUe-pB-7Ke" id="cKc-YT-u1v"/>
+                        <outlet property="waiterRating" destination="SmJ-2C-R6Y" id="VgC-I4-n7i"/>
                         <segue destination="hrl-29-LdY" kind="show" identifier="toReceipt" id="eop-xl-c0C"/>
                     </connections>
                 </viewController>
@@ -3865,6 +3906,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="r3R-H8-hdI"/>
-        <segue reference="VpL-yV-74Y"/>
+        <segue reference="eop-xl-c0C"/>
     </inferredMetricsTieBreakers>
 </document>

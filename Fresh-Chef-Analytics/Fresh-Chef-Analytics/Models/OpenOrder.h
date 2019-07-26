@@ -14,13 +14,16 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface OpenOrder : PFObject<PFSubclassing>
-@property NSArray *dishes;
-@property NSArray *amounts;
-@property Waiter *waiter;
-@property PFUser *restaurant;
+@property (nonatomic, strong) Dish *dish;
+@property (nonatomic, strong) NSNumber *amount;
+@property (nonatomic, strong) Waiter *waiter;
+@property (nonatomic, strong) PFUser *restaurant;
+@property (nonatomic, strong) NSNumber *table;
+@property (nonatomic, strong) NSString *restaurantId;
 
 + (void) postNewOrder : (OpenOrder *) order withCompletion : (PFBooleanResultBlock  _Nullable)completion;
 
-- (NSUInteger) searchOrderforDish:(OpenOrder *)openOrder withDish:(Dish *)dish;
++ (NSNumber *)searchOrderforDish:(OpenOrder *)openOrder withDish:(Dish *)dish giveIndex:(BOOL)index;
 @end
 NS_ASSUME_NONNULL_END
+
