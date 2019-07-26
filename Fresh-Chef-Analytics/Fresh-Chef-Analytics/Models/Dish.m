@@ -18,6 +18,10 @@
 @dynamic rating;
 @dynamic orderFrequency;
 @dynamic price;
+@dynamic profit;
+@dynamic freqCategory;
+@dynamic ratingCategory;
+@dynamic profitCategory;
 @dynamic comments;
 
 + (nonnull NSString *)parseClassName {
@@ -34,6 +38,7 @@
     newDish.price = price;
     newDish.rating = nil;
     newDish.orderFrequency = @(0);
+//    newDish.profit =
     newDish.comments = [[NSArray alloc] init];
     [newDish saveInBackgroundWithBlock:completion];
     return newDish;

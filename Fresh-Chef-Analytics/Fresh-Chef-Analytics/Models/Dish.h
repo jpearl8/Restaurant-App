@@ -21,6 +21,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, weak) NSNumber *rating;
 @property (nonatomic, strong) NSNumber *orderFrequency;
 @property (nonatomic, strong) NSNumber *price;
+@property (nonatomic, strong) NSNumber *profit;
 @property (nonatomic, strong) NSString *ratingCategory;
 @property (nonatomic, strong) NSString *freqCategory;
 @property (nonatomic, strong) NSString *profitCategory;

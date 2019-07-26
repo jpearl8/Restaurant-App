@@ -30,6 +30,7 @@
     // fetch data asynchronously
     [dishQuery findObjectsInBackgroundWithBlock:^(NSArray<Dish *> * _Nullable dishes, NSError * _Nullable error) {
         self.dishes = dishes;
+        [self setProfitForDishes]; // set profit for each dish locally
         [self categorizeDishes];
         NSLog(@"Step 3");
         
@@ -99,6 +100,16 @@
         [self addDishToDict:dish toArray:dishesOfType];
     }
     NSLog(@"Step 2");
+}
+
+- (void)setProfitForDishes
+{
+    for (Dish *dish in self.dishes) {
+        dish.profit = [NSNumber numberWithInt: ([dish.orderFrequency intValue] * [dish.price intValue])];
+        NSLog(@"Dish profit: %@", dish.profit);
+    }
+    
+    
 }
 
 - (void) addDishToDict : (Dish *) dish toArray: (NSArray *) dishesOfType
@@ -177,17 +188,16 @@
     float upperThreshProfit = 0.66f;
     // get length of menu and find indices closest to lower and upper threshold percentile
     NSUInteger menuLength = [self.dishes count];
-    //RATING
     NSUInteger lowerIndexRating = lroundf(bottomThreshRating * menuLength);
     NSUInteger upperIndexRating = lroundf(upperThreshRating * menuLength);
     NSUInteger lowerIndexFreq = lroundf(bottomThreshFreq * menuLength);
     NSUInteger upperIndexFreq = lroundf(upperThreshFreq * menuLength);
-//    NSUInteger lowerIndexProfit = lroundf(bottomThreshProfit * menuLength);
-//    NSUInteger upperIndexProfit = lroundf(upperThreshProfit * menuLength);
-    //rank all dishes into an array
+    NSUInteger lowerIndexProfit = lroundf(bottomThreshProfit * menuLength);
+    NSUInteger upperIndexProfit = lroundf(upperThreshProfit * menuLength);
+    // rank all dishes into an array
     NSArray *rankedDishesByRating = [[Helpful_funs shared] orderArray:self.dishes byType:@"rating"];
     NSArray *rankedDishesByFreq = [[Helpful_funs shared] orderArray:self.dishes byType:@"orderFrequency"];
-//    NSArray *rankedDishesByProfit = [[Helpful_funs shared] orderArray:self.dishes byType:@"profit"];
+    NSArray *rankedDishesByProfit = [[Helpful_funs shared] orderArray:self.dishes byType:@"profit"];
     for (int i = 0; i < menuLength; i++) {
         Dish *dish = rankedDishesByRating[i];
         // Check Rating
@@ -211,16 +221,16 @@
         }
     }
     // Check Profit
-//    for (int i = 0; i < [rankedDishesByProfit count]; i++) {
-//        Dish *dish = rankedDishesByRating[i];
-//        if (i <= lowerIndexProfit) {
-//            dish.profitCategory = @"high"; // if dish is early in array then it has high profit
-//        } else if (i > lowerIndexProfit && i < upperIndexProfit) {
-//            dish.profitCategory = @"medium";
-//        } else {
-//            dish.profitCategory = @"low"; // if dish is later in array then it has a low profit
-//        }
-//    }
+    for (int i = 0; i < [rankedDishesByProfit count]; i++) {
+        Dish *dish = rankedDishesByRating[i];
+        if (i <= lowerIndexProfit) {
+            dish.profitCategory = @"high"; // if dish is early in array then it has high profit
+        } else if (i > lowerIndexProfit && i < upperIndexProfit) {
+            dish.profitCategory = @"medium";
+        } else {
+            dish.profitCategory = @"low"; // if dish is later in array then it has a low profit
+        }
+    }
 
 }
 @end
