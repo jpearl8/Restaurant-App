@@ -31,6 +31,14 @@
     } else {
         NSLog(@"Nothing selected?????");
     }
+
+    if ([self.ratingCategory isEqualToString: @"high"]) {
+        [self.rating setTextColor:UIColor.greenColor];
+    } else if ([self.ratingCategory isEqualToString: @"medium"]) {
+        [self.rating setTextColor:UIColor.grayColor];
+    } else {
+        [self.rating setTextColor:UIColor.redColor];
+    }
 }
 
 @end

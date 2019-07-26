@@ -15,6 +15,7 @@
     // Initialization code
     self.image.layer.cornerRadius = 0.8 * self.image.bounds.size.height;
     self.image.layer.masksToBounds = YES;
+
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -29,6 +30,14 @@
         [self.frequency setFont:[UIFont boldSystemFontOfSize:20]];
     } else {
         [self.rating setFont:[UIFont boldSystemFontOfSize:20]];
+    }
+    // set rating color
+    if ([self.ratingCategory isEqualToString: @"high"]) {
+        [self.rating setTextColor:UIColor.greenColor];
+    } else if ([self.ratingCategory isEqualToString: @"medium"]) {
+        [self.rating setTextColor:UIColor.grayColor];
+    } else {
+        [self.rating setTextColor:UIColor.redColor];
     }
 }
 

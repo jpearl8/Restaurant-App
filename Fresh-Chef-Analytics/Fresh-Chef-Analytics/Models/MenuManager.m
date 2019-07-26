@@ -135,5 +135,57 @@
     }
 }
 
+// get overal ranked arrays of data and set threshold indices
+- (void)setThresholdIndices
+{
+//    self.thresholdsRating = @[@0.33f, @0.66f]; // will use later if user can change values
+    float bottomThresh = 0.33f;
+    float upperThresh = 0.66f;
+    
+    //RATING
+    // get length of menu and find indices closest to bottom threshold percentile and upper
+    NSUInteger menuLength = [self.dishes count];
+    NSUInteger lowerIndex = lroundf(bottomThresh * menuLength);
+    NSUInteger upperIndex = lroundf(upperThresh * menuLength);
+    //rank all dishes into an array
+    NSArray *rankedDishesByRating = [[Helpful_funs shared] orderArray:self.dishes byType:@"rating"];
+    for (int i = 0; i < [rankedDishesByRating count]; i++) {
+        Dish *dish = rankedDishesByRating[i];
+        if (i <= lowerIndex) {
+            dish.ratingCategory = @"low";
+        } else if (i > lowerIndex && i < upperIndex) {
+            dish.ratingCategory = @"medium";
+        } else {
+            dish.ratingCategory = @"high";
+        }
+    }
+    NSLog(@"dishes ranked by rating: %@", rankedDishesByRating);
+}
 
+- (void)setDishRankings
+{
+    //rank all dishes into an array
+    float bottomThresh = 0.33f;
+    float upperThresh = 0.66f;
+    
+    //RATING
+    // get length of menu and find indices closest to bottom threshold percentile and upper
+    NSUInteger menuLength = [self.dishes count];
+    NSUInteger lowerIndex = lroundf(bottomThresh * menuLength);
+    NSUInteger upperIndex = lroundf(upperThresh * menuLength);
+    //rank all dishes into an array
+    NSArray *rankedDishesByRating = [[Helpful_funs shared] orderArray:self.dishes byType:@"rating"];
+    for (int i = 0; i < [rankedDishesByRating count]; i++) {
+        Dish *dish = rankedDishesByRating[i];
+        if (i <= lowerIndex) {
+            dish.ratingCategory = @"high"; // if dish is early in array then it has high rating
+        } else if (i > lowerIndex && i < upperIndex) {
+            dish.ratingCategory = @"medium";
+        } else {
+            dish.ratingCategory = @"low"; // if dish is later in array then it has a low rating
+        }
+        NSLog(@"Dish rating is: %@", dish.ratingCategory);
+    }
+//    NSLog(@"dishes ranked by rating: %@", rankedDishesByRating);
+}
 @end
