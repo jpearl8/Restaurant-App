@@ -76,7 +76,7 @@
         }
     }];
 }
-- (void) findWaiter : (NSString *) objectId withCompletion:(void (^)(NSArray * waiter, NSError * _Nullable)) completion
+- (void) findWaiter : (NSString *) objectId withCompletion:(void (^)(NSArray * waiter, NSError * _Nullable error)) completion
 {
     PFQuery *waiterQuery;
     waiterQuery = [Waiter query];
