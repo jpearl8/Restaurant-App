@@ -212,7 +212,7 @@ pass final array on submit button of data table
                 [OpenOrder postNewOrder:openOrder withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
                     if (!error){
                         NSLog(@"open order posted");
-                        [self performSegueWithIdentifier:@"toOpenOrdersList" sender:self];
+                        
                     }
                 }];
             }
@@ -220,6 +220,7 @@ pass final array on submit button of data table
         
         
     }
+    [self performSegueWithIdentifier:@"toOpenOrdersList" sender:self];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
