@@ -60,12 +60,15 @@
     cell.name.text = dish.name;
     cell.descriptionLabel.text = dish.dishDescription;
     if(dish.rating != nil){
-        cell.rating.text = [dish.rating stringValue];
+        cell.rating.text = [[dish.rating stringValue] stringByAppendingString:@"/10"];
     } else {
         cell.rating.text = @"No Rating";
     }
-    cell.frequency.text = [dish.orderFrequency stringValue];
-    cell.price.text = [dish.price stringValue];
+    cell.frequency.text = [[NSString stringWithFormat:@"%@", dish.orderFrequency] stringByAppendingString:@" orders"];
+    cell.price.text = [@"$" stringByAppendingString: [NSString stringWithFormat:@"%@", dish.price]];
+    cell.ratingCategory = dish.ratingCategory;
+    cell.freqCategory = dish.freqCategory;
+    cell.profitCategory = dish.profitCategory;
     cell.selectedIndex = self.rankByControl.selectedSegmentIndex;
     if(dish.image != nil){
         PFFileObject *dishImageFile = (PFFileObject *)dish.image;
@@ -96,16 +99,17 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     Top3Bottom3TableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
-    
     selectedIndexPath = indexPath;
     if(cell.isExpanded){
         cell.isExpanded = NO;
     } else {
         cell.isExpanded = YES;
     }
+    
     //update cell to reflect new state
     [self.tableView beginUpdates];
     [self.tableView endUpdates];
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath

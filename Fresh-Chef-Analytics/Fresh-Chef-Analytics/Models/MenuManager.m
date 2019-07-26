@@ -120,20 +120,107 @@
 {
     if (self.dishes.count != nil)
     {
-        // make sorted array of every menu item
-        NSLog(@"dishes %@", self.dishes);
-        NSArray *dishesByFreqArray = [[Helpful_funs shared] orderArray:self.dishes byType:@"orderFrequency"];
-        NSArray *dishesByRatingArray = [[Helpful_funs shared] orderArray:self.dishes byType:@"rating"];
-        // take top 3 and bottom 3 based on reviews/frequency
-        NSRange first3Range = NSMakeRange(0, 3);
-        NSRange last3Range = NSMakeRange(([dishesByFreqArray count] - 3), 3);
-        NSArray *top3Freq = [dishesByFreqArray subarrayWithRange:first3Range];
-        NSArray *bottom3Freq = [dishesByFreqArray subarrayWithRange:last3Range];
-        NSArray *top3Rating = [dishesByRatingArray subarrayWithRange:first3Range];
-        NSArray *bottom3Rating = [dishesByRatingArray subarrayWithRange:last3Range];
-        self.top3Bottom3Freq = [[NSMutableDictionary alloc] initWithObjects:@[top3Freq, bottom3Freq] forKeys:@[@"top3", @"bottom3"]];
-        self.top3Bottom3Rating = [[NSMutableDictionary alloc] initWithObjects:@[top3Rating, bottom3Rating] forKeys:@[@"top3", @"bottom3"]];
+        Dish *checkDish = [self.dishes objectAtIndex:0];
+        if (![checkDish.name isEqualToString:@"test"]){
+            // make sorted array of every menu item
+            NSLog(@"dishes %@", self.dishes);
+            NSArray *dishesByFreqArray = [[Helpful_funs shared] orderArray:self.dishes byType:@"orderFrequency"];
+            NSArray *dishesByRatingArray = [[Helpful_funs shared] orderArray:self.dishes byType:@"rating"];
+            // take top 3 and bottom 3 based on reviews/frequency
+            NSRange first3Range = NSMakeRange(0, 3);
+            NSRange last3Range = NSMakeRange(([dishesByFreqArray count] - 3), 3);
+            NSArray *top3Freq = [dishesByFreqArray subarrayWithRange:first3Range];
+            NSArray *bottom3Freq = [dishesByFreqArray subarrayWithRange:last3Range];
+            NSArray *top3Rating = [dishesByRatingArray subarrayWithRange:first3Range];
+            NSArray *bottom3Rating = [dishesByRatingArray subarrayWithRange:last3Range];
+            self.top3Bottom3Freq = [[NSMutableDictionary alloc] initWithObjects:@[top3Freq, bottom3Freq] forKeys:@[@"top3", @"bottom3"]];
+            self.top3Bottom3Rating = [[NSMutableDictionary alloc] initWithObjects:@[top3Rating, bottom3Rating] forKeys:@[@"top3", @"bottom3"]];
+        }
     }
-    
+}
+
+// get overal ranked arrays of data and set threshold indices
+//- (void)setThresholdIndices
+//{
+////    self.thresholdsRating = @[@0.33f, @0.66f]; // will use later if user can change values
+//    float bottomThreshRating = 0.33f;
+//    float upperThresh = 0.66f;
+//
+//    //RATING
+//    // get length of menu and find indices closest to bottom threshold percentile and upper
+//    NSUInteger menuLength = [self.dishes count];
+//    NSUInteger lowerIndex = lroundf(bottomThresh * menuLength);
+//    NSUInteger upperIndex = lroundf(upperThresh * menuLength);
+//    //rank all dishes into an array
+//    NSArray *rankedDishesByRating = [[Helpful_funs shared] orderArray:self.dishes byType:@"rating"];
+//    for (int i = 0; i < [rankedDishesByRating count]; i++) {
+//        Dish *dish = rankedDishesByRating[i];
+//        if (i <= lowerIndex) {
+//            dish.ratingCategory = @"low";
+//        } else if (i > lowerIndex && i < upperIndex) {
+//            dish.ratingCategory = @"medium";
+//        } else {
+//            dish.ratingCategory = @"high";
+//        }
+//    }
+//    NSLog(@"dishes ranked by rating: %@", rankedDishesByRating);
+//}
+
+- (void)setDishRankings
+{
+    //rank all dishes into an array
+    float bottomThreshRating = 0.33f;
+    float upperThreshRating = 0.66f;
+    float bottomThreshFreq = 0.33f;
+    float upperThreshFreq = 0.66f;
+    float bottomThreshProfit = 0.33f;
+    float upperThreshProfit = 0.66f;
+    // get length of menu and find indices closest to lower and upper threshold percentile
+    NSUInteger menuLength = [self.dishes count];
+    //RATING
+    NSUInteger lowerIndexRating = lroundf(bottomThreshRating * menuLength);
+    NSUInteger upperIndexRating = lroundf(upperThreshRating * menuLength);
+    NSUInteger lowerIndexFreq = lroundf(bottomThreshFreq * menuLength);
+    NSUInteger upperIndexFreq = lroundf(upperThreshFreq * menuLength);
+//    NSUInteger lowerIndexProfit = lroundf(bottomThreshProfit * menuLength);
+//    NSUInteger upperIndexProfit = lroundf(upperThreshProfit * menuLength);
+    //rank all dishes into an array
+    NSArray *rankedDishesByRating = [[Helpful_funs shared] orderArray:self.dishes byType:@"rating"];
+    NSArray *rankedDishesByFreq = [[Helpful_funs shared] orderArray:self.dishes byType:@"orderFrequency"];
+//    NSArray *rankedDishesByProfit = [[Helpful_funs shared] orderArray:self.dishes byType:@"profit"];
+    for (int i = 0; i < menuLength; i++) {
+        Dish *dish = rankedDishesByRating[i];
+        // Check Rating
+        if (i <= lowerIndexRating) {
+            dish.ratingCategory = @"high"; // if dish is early in array then it has high rating
+        } else if (i > lowerIndexRating && i < upperIndexRating) {
+            dish.ratingCategory = @"medium";
+        } else {
+            dish.ratingCategory = @"low"; // if dish is later in array then it has a low rating
+        }
+    }
+    // Check Frequency
+    for (int i = 0; i < menuLength; i++) {
+        Dish *dish = rankedDishesByFreq[i];
+        if (i <= lowerIndexFreq) {
+            dish.freqCategory = @"high"; // if dish is early in array then it has high freq
+        } else if (i > lowerIndexFreq && i < upperIndexFreq) {
+            dish.freqCategory = @"medium";
+        } else {
+            dish.freqCategory = @"low"; // if dish is later in array then it has a low freq
+        }
+    }
+    // Check Profit
+//    for (int i = 0; i < [rankedDishesByProfit count]; i++) {
+//        Dish *dish = rankedDishesByRating[i];
+//        if (i <= lowerIndexProfit) {
+//            dish.profitCategory = @"high"; // if dish is early in array then it has high profit
+//        } else if (i > lowerIndexProfit && i < upperIndexProfit) {
+//            dish.profitCategory = @"medium";
+//        } else {
+//            dish.profitCategory = @"low"; // if dish is later in array then it has a low profit
+//        }
+//    }
+
 }
 @end

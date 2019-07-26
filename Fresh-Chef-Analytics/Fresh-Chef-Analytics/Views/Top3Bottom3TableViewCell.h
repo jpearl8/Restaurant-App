@@ -17,12 +17,16 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UILabel *rating;
 @property (weak, nonatomic) IBOutlet UILabel *frequency;
 @property (weak, nonatomic) IBOutlet UILabel *price;
+@property (weak, nonatomic) IBOutlet UILabel *profit;
 @property (weak, nonatomic) IBOutlet UIImageView *image;
 @property (weak, nonatomic) IBOutlet UILabel *descriptionLabel;
 @property (assign, nonatomic) NSInteger selectedIndex;
 @property (weak, nonatomic) IBOutlet UIView *dishInfoView;
 @property (weak, nonatomic) IBOutlet UIView *dishSuggestionsView;
 @property (assign, nonatomic) BOOL isExpanded;
+@property (weak, nonatomic) NSString *ratingCategory;
+@property (weak, nonatomic) NSString *freqCategory;
+@property (weak, nonatomic) NSString *profitCategory;
 @end
 
 NS_ASSUME_NONNULL_END
