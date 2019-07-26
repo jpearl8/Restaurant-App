@@ -99,7 +99,7 @@
     _AxisX_Margin = 30 ;
     _AxisY_Margin = 30 ;
     
-//    self.frame = CGRectMake((SCREEN_WIDTH - self.frame.size.width) / 2, 200, self.frame.size.width, self.frame.size.height) ;
+    //    self.frame = CGRectMake((SCREEN_WIDTH - self.frame.size.width) / 2, 200, self.frame.size.width, self.frame.size.height) ;
     self.backgroundColor = [UIColor clearColor];
     
     _startPoint.y = self.frame.size.height - self.AxisY_Margin ;
@@ -171,7 +171,7 @@
             min = [number floatValue];
     }
     NSArray *result = @[[NSNumber numberWithFloat:min], [NSNumber numberWithFloat:max]];
-   
+    
     
     return result;
 }
@@ -233,7 +233,7 @@
 {
     __block CGFloat yFinilizeValue , xFinilizeValue;
     __block CGFloat yValue , xValue;
-
+    
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         if (self.displayAnimated) {
             [NSThread sleepForTimeInterval:1];
@@ -295,7 +295,7 @@
 - (void)updateChartData:(NSArray *)data
 {
     _chartData = data;
-
+    
     // will be work in future.
 }
 
@@ -306,26 +306,26 @@
     [super drawRect:rect];
     
     CGContextRef context = UIGraphicsGetCurrentContext();
-        if (_showCoordinateAxis) {
-            CGContextSetStrokeColorWithColor(context, [_axisColor CGColor]);
-            CGContextSetLineWidth(context, _axisWidth);
-            //drawing x vector
-            CGContextMoveToPoint(context, _startPoint.x, _startPoint.y);
-            CGContextAddLineToPoint(context, _endPointVecotrX.x, _endPointVecotrX.y);
-            //drawing y vector
-            CGContextMoveToPoint(context, _startPoint.x, _startPoint.y);
-            CGContextAddLineToPoint(context, _endPointVecotrY.x, _endPointVecotrY.y);
-            //drawing x arrow vector
-            CGContextMoveToPoint(context, _endPointVecotrX.x, _endPointVecotrX.y);
-            CGContextAddLineToPoint(context, _endPointVecotrX.x - 5, _endPointVecotrX.y + 3);
-            CGContextMoveToPoint(context, _endPointVecotrX.x, _endPointVecotrX.y);
-            CGContextAddLineToPoint(context, _endPointVecotrX.x - 5, _endPointVecotrX.y - 3);
-            //drawing y arrow vector
-            CGContextMoveToPoint(context, _endPointVecotrY.x, _endPointVecotrY.y);
-            CGContextAddLineToPoint(context, _endPointVecotrY.x - 3, _endPointVecotrY.y + 5);
-            CGContextMoveToPoint(context, _endPointVecotrY.x, _endPointVecotrY.y);
-            CGContextAddLineToPoint(context, _endPointVecotrY.x + 3, _endPointVecotrY.y + 5);
-        }
+    if (_showCoordinateAxis) {
+        CGContextSetStrokeColorWithColor(context, [_axisColor CGColor]);
+        CGContextSetLineWidth(context, _axisWidth);
+        //drawing x vector
+        CGContextMoveToPoint(context, _startPoint.x, _startPoint.y);
+        CGContextAddLineToPoint(context, _endPointVecotrX.x, _endPointVecotrX.y);
+        //drawing y vector
+        CGContextMoveToPoint(context, _startPoint.x, _startPoint.y);
+        CGContextAddLineToPoint(context, _endPointVecotrY.x, _endPointVecotrY.y);
+        //drawing x arrow vector
+        CGContextMoveToPoint(context, _endPointVecotrX.x, _endPointVecotrX.y);
+        CGContextAddLineToPoint(context, _endPointVecotrX.x - 5, _endPointVecotrX.y + 3);
+        CGContextMoveToPoint(context, _endPointVecotrX.x, _endPointVecotrX.y);
+        CGContextAddLineToPoint(context, _endPointVecotrX.x - 5, _endPointVecotrX.y - 3);
+        //drawing y arrow vector
+        CGContextMoveToPoint(context, _endPointVecotrY.x, _endPointVecotrY.y);
+        CGContextAddLineToPoint(context, _endPointVecotrY.x - 3, _endPointVecotrY.y + 5);
+        CGContextMoveToPoint(context, _endPointVecotrY.x, _endPointVecotrY.y);
+        CGContextAddLineToPoint(context, _endPointVecotrY.x + 3, _endPointVecotrY.y + 5);
+    }
     
     if (_showLabel) {
         //drawing x steps vector and putting axis x labels

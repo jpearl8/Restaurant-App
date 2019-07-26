@@ -28,7 +28,7 @@
     if (self) {
         self.backgroundColor = [UIColor clearColor];
         self.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
-
+        
         //Public iVar
         if ([items count]< 3)//At least three corners of A polygon ,If the count of items is less than 3 will add 3 default values
         {
@@ -37,7 +37,7 @@
                                       [PNRadarChartDataItem dataItemWithValue:0 description:@"Default"],
                                       [PNRadarChartDataItem dataItemWithValue:0 description:@"Default"],
                                       ];
-           defaultArray = [defaultArray arrayByAddingObjectsFromArray:items];
+            defaultArray = [defaultArray arrayByAddingObjectsFromArray:items];
             _chartData = [NSArray arrayWithArray:defaultArray];
         }else{
             _chartData = [NSArray arrayWithArray:items];
@@ -65,7 +65,7 @@
         [self.layer addSublayer:_chartPlot];
         
         [super setupDefaultValues];
-         //init detailLabel
+        //init detailLabel
         _detailLabel = [[UILabel alloc] init];
         _detailLabel.backgroundColor = [UIColor colorWithRed:.9 green:.9 blue:.1 alpha:.9];
         _detailLabel.textAlignment = NSTextAlignmentCenter;
@@ -113,7 +113,7 @@
     }
     _lengthUnit = maxLength/plotCircles;
     NSArray *lengthArray = [self getLengthArrayWithCircleNum:(int)plotCircles];
-
+    
     //get all the points and plot
     for (NSNumber *lengthNumber in lengthArray) {
         CGFloat length = [lengthNumber floatValue];
@@ -139,7 +139,7 @@
     //set the labels
     [self drawLabelWithMaxLength:maxLength labelArray:descriptions angleArray:angles];
     
- }
+}
 - (void) addPlotWithData : (NSArray *)chartData withColor:(UIColor *)plotColor
 {
     CAShapeLayer *newPlot = [CAShapeLayer layer];
@@ -270,7 +270,7 @@
     [plotline setLineCapStyle:kCGLineCapButt];
     
     _chartPlot.path = plotline.CGPath;
-
+    
     [self addAnimationIfNeeded];
     [self showGraduation];
 }
@@ -394,7 +394,7 @@
         }else{
             [graduationLabel setHidden:YES];}
     }
-
+    
 }
 
 - (NSArray *)getWebPointWithLength:(CGFloat)length angleArray:(NSArray *)angleArray {

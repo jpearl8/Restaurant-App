@@ -39,6 +39,7 @@
             {
                 [[MenuManager shared] setOrderedDicts];
                 [[MenuManager shared] setTop3Bottom3Dict];
+                [[MenuManager shared] setDishRankings];
                 NSLog(@"fetched restaurant's menu");
             }
         }];

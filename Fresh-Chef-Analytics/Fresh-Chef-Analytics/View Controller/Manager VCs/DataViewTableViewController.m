@@ -39,7 +39,26 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    selectedIndexPath = indexPath;
+}
+
+- (IBAction)didTapT3B3:(id)sender {
+    [self didSelectCellAtIndex:1 inSection:0];
+}
+- (IBAction)didTapSPHeader:(id)sender {
+    [self didSelectCellAtIndex:2 inSection:0];
+}
+- (IBAction)didTapRCHeader:(id)sender {
+    [self didSelectCellAtIndex:3 inSection:0];
+}
+- (IBAction)didTapHistHeader:(id)sender {
+    [self didSelectCellAtIndex:4 inSection:0];
+}
+- (IBAction)didTapPTHeader:(id)sender {
+    [self didSelectCellAtIndex:5 inSection:0];
+}
+
+- (void)didSelectCellAtIndex:(NSInteger)index inSection:(NSInteger)section {
+    selectedIndexPath = [NSIndexPath indexPathForRow:index inSection:section];
     if(isCellExpanded){
         isCellExpanded = NO;
     } else {
@@ -47,10 +66,15 @@
     }
     [self.tableView beginUpdates];
     [self.tableView endUpdates];
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:section];
+    [self.tableView scrollToRowAtIndexPath:indexPath
+                          atScrollPosition:UITableViewScrollPositionTop
+                                  animated:YES];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if([indexPath compare:selectedIndexPath] == NSOrderedSame) {
+//    if([indexPath compare:selectedIndexPath] == NSOrderedSame) {
+    if(indexPath.row == selectedIndexPath.row) {
         if(isCellExpanded == YES){
             return self.view.frame.size.height * 0.75;
         } else {
