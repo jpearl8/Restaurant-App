@@ -13,10 +13,12 @@
 #import "ComfortableFormViewController.h"
 #import "ElegantFormViewController.h"
 #import "OpenOrderButton.h"
+#import "OrderManager.h"
 
 @interface OrdersListedViewController () <UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *openOrdersTable;
-@property (strong, nonatomic) NSArray<NSArray<OpenOrder *>*>* totalOpenTables;
+@property (strong, nonatomic) NSMutableDictionary<NSString *, NSArray<OpenOrder *>*>* totalOpenTables;
+@property (strong, nonatomic) NSArray<NSString *>* keys;
 - (IBAction)completeOrder:(OpenOrderButton *)sender;
 - (IBAction)editOrder:(OpenOrderButton *)sender;
 
@@ -29,25 +31,35 @@
     [super viewDidLoad];
     self.openOrdersTable.delegate = self;
     self.openOrdersTable.dataSource = self;
-    // Do any additional setup after loading the view.
-    //fill totalOpenTables
+    self.totalOpenTables = [[OrderManager shared] openOrdersByTable];
+    self.keys = [self.totalOpenTables allKeys];
+    
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.totalOpenTables.count;
+    return self.keys.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     WaitOrderTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier: @"OpenOrders"];
-    NSArray <OpenOrder *>* openOrders = self.totalOpenTables[indexPath.row];
+    cell.tableNumber.text = self.keys[indexPath.row];
+    NSArray <OpenOrder *>* openOrders = self.totalOpenTables[cell.tableNumber.text];
     cell.openOrders = openOrders;
-    cell.tableNumber.text = [NSString stringWithFormat:@"%@", openOrders[0].table];
     //cell.customerNumber.text = openOrders[0].customerNumber;
     cell.waiterName.text = openOrders[0].waiter.name;
     return cell;
     
 }
-
+/*     NSArray *tableNumbers = [[[OrderManager shared] openOrdersByTable] allKeys];
+ for (int i = 0; i < tableNumbers.count; i++){
+ 
+ }
+ 
+ /* for (NSArray table in openOrdersByTable)
+ NSArray *tables = [openOrdersByTable allKeys];
+ NSArray * <OpenOrders *> table_i = openOrdersByTable[tables[i]]; */
+// Do any additional setup after loading the view.
+//fill totalOpenTables
 
 
 

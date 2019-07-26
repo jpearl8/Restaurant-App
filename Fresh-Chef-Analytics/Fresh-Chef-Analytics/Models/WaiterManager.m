@@ -76,4 +76,23 @@
         }
     }];
 }
+- (void) findWaiter : (NSString *) objectId withCompletion:(void (^)(NSArray * waiter, NSError * _Nullable)) completion
+{
+    PFQuery *waiterQuery;
+    waiterQuery = [Waiter query];
+    [waiterQuery whereKey:@"objectId" equalTo:objectId];
+    [waiterQuery findObjectsInBackgroundWithBlock:^(NSArray * _Nullable waiters, NSError * _Nullable error) {
+        if (!error)
+        {
+            completion(waiters, nil);
+        }
+        else
+        {
+            NSLog(@"Error: %@", error.localizedDescription);
+            completion(nil, error);
+        }
+    }];
+    completion(nil, nil);
+
+}
 @end
