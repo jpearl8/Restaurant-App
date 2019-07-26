@@ -24,7 +24,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Set class variables
-    [[YelpAPIManager shared] fetchCompetitors];
+    if ([[PFUser currentUser].objectId isEqualToString:@"XuLMO3Jh3r"])
+    {
+        [[YelpAPIManager shared] fetchCompetitors];
+    }
     self.categoryPlaceholder = @"Set Restaurant Category";
     self.pricePlaceholder = @"Set Restaurant Price";
     
