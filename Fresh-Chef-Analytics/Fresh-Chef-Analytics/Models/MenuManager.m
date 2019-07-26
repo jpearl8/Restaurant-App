@@ -30,6 +30,7 @@
     // fetch data asynchronously
     [dishQuery findObjectsInBackgroundWithBlock:^(NSArray<Dish *> * _Nullable dishes, NSError * _Nullable error) {
         self.dishes = dishes;
+        
         [self setProfitForDishes]; // set profit for each dish locally
         [self categorizeDishes];
         NSLog(@"Step 3");
@@ -146,6 +147,19 @@
             NSArray *bottom3Rating = [dishesByRatingArray subarrayWithRange:last3Range];
             self.top3Bottom3Freq = [[NSMutableDictionary alloc] initWithObjects:@[top3Freq, bottom3Freq] forKeys:@[@"top3", @"bottom3"]];
             self.top3Bottom3Rating = [[NSMutableDictionary alloc] initWithObjects:@[top3Rating, bottom3Rating] forKeys:@[@"top3", @"bottom3"]];
+            [self setDishRankings];
+            for (Dish *dish in top3Freq) {
+                [self setBasicSuggestions:dish];
+            }
+            for (Dish *dish in bottom3Freq) {
+                [self setBasicSuggestions:dish];
+            }
+            for (Dish *dish in top3Rating) {
+                [self setBasicSuggestions:dish];
+            }
+            for (Dish *dish in bottom3Rating) {
+                [self setBasicSuggestions:dish];
+            }
         }
     }
 }
@@ -222,7 +236,7 @@
     }
     // Check Profit
     for (int i = 0; i < menuLength; i++) {
-        Dish *dish = rankedDishesByRating[i];
+        Dish *dish = rankedDishesByProfit[i];
         if (i <= lowerIndexProfit) {
             dish.profitCategory = @"high"; // if dish is early in array then it has high profit
         } else if (i > lowerIndexProfit && i < upperIndexProfit) {
@@ -230,6 +244,33 @@
         } else {
             dish.profitCategory = @"low"; // if dish is later in array then it has a low profit
         }
+    }
+}
+
+- (void)setBasicSuggestions:(Dish *)dish
+{
+    
+    if ([dish.ratingCategory isEqualToString:@"high"]) {
+        //compare freq and profit and make suggestion on that
+        // only give suggestion if freq or profit is low
+        dish.suggestions = @"This dish has a good rating.";
+    } else if ([dish.ratingCategory isEqualToString:@"medium"]) {
+        // compare freq and profit
+        dish.suggestions = @"This dish has a medium rating.";
+    } //else if ([dish.ratingCategory isEqualToString:@"low"]) {
+    else {
+        dish.suggestions = @"This dish has a low rating: consider improving the way it's prepared.";
+
+    }
+    //Sugestions for low freq
+    if ([dish.freqCategory isEqualToString:@"high"]) {
+        //consider moving position on menu
+        //consider improving description
+        dish.suggestions = [dish.suggestions stringByAppendingString:@" This dish has a high frequency."];
+    } else if ([dish.freqCategory isEqualToString:@"medium"]) {
+        dish.suggestions = [dish.suggestions stringByAppendingString:@"This dish has a medium frequency."];
+    } else {
+        dish.suggestions = [dish.suggestions stringByAppendingString:@" This dish has a low frequency: Consider changing its position on the menu and/or improving its description."];
     }
 }
 

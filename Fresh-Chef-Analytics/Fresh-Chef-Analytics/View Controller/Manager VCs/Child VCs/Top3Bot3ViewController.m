@@ -70,6 +70,7 @@
     cell.ratingCategory = dish.ratingCategory;
     cell.freqCategory = dish.freqCategory;
     cell.profitCategory = dish.profitCategory;
+    cell.suggestionsLabel.text = dish.suggestions;
     cell.selectedIndex = self.rankByControl.selectedSegmentIndex;
     if(dish.image != nil){
         PFFileObject *dishImageFile = (PFFileObject *)dish.image;

@@ -27,6 +27,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) NSString *ratingCategory;
 @property (weak, nonatomic) NSString *freqCategory;
 @property (weak, nonatomic) NSString *profitCategory;
+@property (weak, nonatomic) IBOutlet UILabel *suggestionsLabel;
 @end
 
 NS_ASSUME_NONNULL_END
