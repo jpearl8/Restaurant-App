@@ -31,9 +31,8 @@
     [super viewDidLoad];
     self.openOrdersTable.delegate = self;
     self.openOrdersTable.dataSource = self;
-    self.totalOpenTables = [[OrderManager shared] openOrdersByTable];
-    self.keys = [self.totalOpenTables allKeys];
-    
+    [self fetchOpdenOrders];
+
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -46,7 +45,17 @@
     NSArray <OpenOrder *>* openOrders = self.totalOpenTables[cell.tableNumber.text];
     cell.openOrders = openOrders;
     //cell.customerNumber.text = openOrders[0].customerNumber;
-    cell.waiterName.text = openOrders[0].waiter.name;
+    Waiter *waiter = (Waiter*)((OpenOrder*)openOrders[0]).waiter;
+    [[WaiterManager shared]findWaiter:waiter.objectId withCompletion:^(NSArray * _Nonnull waiter, NSError * _Nullable error) {
+        if (waiter[0]){
+            cell.waiter = waiter[0];
+            cell.waiterName.text = cell.waiter.name;
+        }
+        if (error){
+            NSLog(@"%@", error.localizedDescription);
+        }
+    }];
+        cell.waiterName.text = waiter.name;
     return cell;
     
 }
@@ -55,13 +64,25 @@
  
  }
  
+ 
+ 
  /* for (NSArray table in openOrdersByTable)
  NSArray *tables = [openOrdersByTable allKeys];
  NSArray * <OpenOrders *> table_i = openOrdersByTable[tables[i]]; */
 // Do any additional setup after loading the view.
 //fill totalOpenTables
 
-
+-(void) fetchOpdenOrders{
+    [[OrderManager shared] fetchOpenOrderItems:[PFUser currentUser] withCompletion:^(NSArray * _Nonnull openOrders, NSError * _Nonnull error) {
+        if (openOrders){
+            self.totalOpenTables = [[OrderManager shared] openOrdersByTable];
+            self.keys = [self.totalOpenTables allKeys];
+            [self.openOrdersTable reloadData];
+        } else {
+            NSLog(@"%@", error.localizedDescription);
+        }
+    }];
+}
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([[NSString stringWithFormat:@"%@", ((OpenOrderButton *)sender).restorationIdentifier] isEqualToString:@"completeOrder"]){

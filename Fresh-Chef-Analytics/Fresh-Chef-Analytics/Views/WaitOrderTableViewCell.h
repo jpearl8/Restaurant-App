@@ -17,6 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UILabel *customerNumber;
 @property (weak, nonatomic) IBOutlet UILabel *waiterName;
 @property (weak, nonatomic) IBOutlet UITableView *ordersTable;
+@property (strong, nonatomic) Waiter* waiter;
 
 @end
 

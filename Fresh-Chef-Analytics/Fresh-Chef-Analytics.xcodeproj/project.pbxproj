@@ -24,6 +24,7 @@
 		A5C06F7822E8FECF00F634E3 /* OpenOrder.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C06F7722E8FECF00F634E3 /* OpenOrder.m */; };
 		A5C06F7B22E8FEEB00F634E3 /* ClosedOrder.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C06F7A22E8FEEB00F634E3 /* ClosedOrder.m */; };
 		A5C06F7E22E9028000F634E3 /* OrderManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C06F7D22E9028000F634E3 /* OrderManager.m */; };
+		B6795EA122EB7C6400CCC0F8 /* ManagerOrderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B6795EA022EB7C6400CCC0F8 /* ManagerOrderTableViewCell.m */; };
 		B6BC874D22E6867000264995 /* Top3Bottom3TableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B6BC874C22E6867000264995 /* Top3Bottom3TableViewCell.m */; };
 		B6C4BFED22E8CF4300FE5EAC /* OrdersListedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6C4BFEC22E8CF4300FE5EAC /* OrdersListedViewController.m */; };
 		B6C4BFF022E8FE8500FE5EAC /* DataViewTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6C4BFEF22E8FE8500FE5EAC /* DataViewTableViewController.m */; };
@@ -123,6 +124,8 @@
 		A5C06F7A22E8FEEB00F634E3 /* ClosedOrder.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ClosedOrder.m; sourceTree = "<group>"; };
 		A5C06F7C22E9028000F634E3 /* OrderManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OrderManager.h; sourceTree = "<group>"; };
 		A5C06F7D22E9028000F634E3 /* OrderManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OrderManager.m; sourceTree = "<group>"; };
+		B6795E9F22EB7C6400CCC0F8 /* ManagerOrderTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ManagerOrderTableViewCell.h; sourceTree = "<group>"; };
+		B6795EA022EB7C6400CCC0F8 /* ManagerOrderTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ManagerOrderTableViewCell.m; sourceTree = "<group>"; };
 		B6BC874B22E6867000264995 /* Top3Bottom3TableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Top3Bottom3TableViewCell.h; sourceTree = "<group>"; };
 		B6BC874C22E6867000264995 /* Top3Bottom3TableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Top3Bottom3TableViewCell.m; sourceTree = "<group>"; };
 		B6C4BFEB22E8CF4300FE5EAC /* OrdersListedViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OrdersListedViewController.h; sourceTree = "<group>"; };
@@ -323,6 +326,8 @@
 				B6C4C00222E921EA00FE5EAC /* WaitOrderTableViewCell.m */,
 				FF318E8122EA7969003AF015 /* SingleOpenOrder.h */,
 				FF318E8222EA7969003AF015 /* SingleOpenOrder.m */,
+				B6795E9F22EB7C6400CCC0F8 /* ManagerOrderTableViewCell.h */,
+				B6795EA022EB7C6400CCC0F8 /* ManagerOrderTableViewCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -760,6 +765,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B6795EA122EB7C6400CCC0F8 /* ManagerOrderTableViewCell.m in Sources */,
 				FF9AF93522E914F900A0D1FE /* order.h in Sources */,
 				B6C4BFF922E9107400FE5EAC /* OrdersManagerViewController.m in Sources */,
 				B6C4BFF022E8FE8500FE5EAC /* DataViewTableViewController.m in Sources */,

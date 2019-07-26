@@ -208,16 +208,17 @@ pass final array on submit button of data table
                 NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
                 formatter.numberStyle = NSNumberFormatterDecimalStyle;
                 openOrder.table = [formatter numberFromString:self.tableNumber.text];
-                openOrder.restaurantId = [PFUser currentUser][@"objectId"];
+                openOrder.restaurantId = [PFUser currentUser].objectId;
                 [OpenOrder postNewOrder:openOrder withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
                     if (!error){
                         NSLog(@"open order posted");
+                        [self performSegueWithIdentifier:@"toOpenOrdersList" sender:self];
                     }
                 }];
             }
         }
         
-        [self performSegueWithIdentifier:@"toOpenOrdersList" sender:self];
+        
     }
 }
 

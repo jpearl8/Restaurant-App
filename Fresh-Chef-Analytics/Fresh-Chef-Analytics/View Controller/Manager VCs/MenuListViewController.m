@@ -50,6 +50,7 @@
 //    cell.orderFrequency.text = [dish.orderFrequency stringValue];
     cell.orderFrequency.text = [[dish.orderFrequency stringValue] stringByAppendingString:@" sold"];
     cell.price.text = [@"$" stringByAppendingString: [dish.price stringValue]];
+    cell.descriptionLabel.text = dish.dishDescription;
     cell.selectedIndex = self.selectedIndex;
     cell.ratingCategory = dish.ratingCategory;
     cell.freqCategory = dish.freqCategory;

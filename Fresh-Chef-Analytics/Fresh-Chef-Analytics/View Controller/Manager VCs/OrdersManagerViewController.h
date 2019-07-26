@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface OrdersManagerViewController : UIViewController
+@interface OrdersManagerViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 
 @end
 

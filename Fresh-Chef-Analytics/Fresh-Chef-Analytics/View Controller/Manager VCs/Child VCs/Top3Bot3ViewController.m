@@ -65,7 +65,8 @@
         cell.rating.text = @"No Rating";
     }
     cell.frequency.text = [[NSString stringWithFormat:@"%@", dish.orderFrequency] stringByAppendingString:@" orders"];
-    cell.price.text = [@"$" stringByAppendingString: [NSString stringWithFormat:@"%@", dish.price]];
+    cell.price.text = [@"Price: $" stringByAppendingString: [NSString stringWithFormat:@"%@", dish.price]];
+    cell.profit.text = [@"Profit: $" stringByAppendingString:[dish.profit stringValue]];
     cell.ratingCategory = dish.ratingCategory;
     cell.freqCategory = dish.freqCategory;
     cell.profitCategory = dish.profitCategory;

@@ -17,6 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UILabel *orderFrequency;
 @property (weak, nonatomic) IBOutlet UIImageView *image;
 @property (weak, nonatomic) IBOutlet UILabel *price;
+@property (weak, nonatomic) IBOutlet UILabel *descriptionLabel;
 @property (assign, nonatomic) NSInteger selectedIndex;
 @property (weak, nonatomic) NSString *ratingCategory;
 @property (weak, nonatomic) NSString *freqCategory;
