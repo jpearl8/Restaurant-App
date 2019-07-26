@@ -7,10 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "OpenOrder.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface WaitOrderTableViewCell : UITableViewCell
+@interface WaitOrderTableViewCell : UITableViewCell <UITableViewDelegate, UITableViewDataSource>
+@property (strong, nonatomic) NSArray<OpenOrder *>* openOrders;
 @property (weak, nonatomic) IBOutlet UILabel *tableNumber;
 @property (weak, nonatomic) IBOutlet UILabel *customerNumber;
 @property (weak, nonatomic) IBOutlet UILabel *waiterName;

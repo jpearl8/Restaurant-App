@@ -53,6 +53,7 @@
 		FF03BF6222DF763300719E8C /* MenuListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FF03BF6122DF763300719E8C /* MenuListTableViewCell.m */; };
 		FF1EDA9322E2951A00B1B897 /* Helpful_funs.m in Sources */ = {isa = PBXBuildFile; fileRef = FF1EDA9222E2951A00B1B897 /* Helpful_funs.m */; };
 		FF318E8322EA7969003AF015 /* SingleOpenOrder.m in Sources */ = {isa = PBXBuildFile; fileRef = FF318E8222EA7969003AF015 /* SingleOpenOrder.m */; };
+		FF318E8922EAC57C003AF015 /* OpenOrderButton.m in Sources */ = {isa = PBXBuildFile; fileRef = FF318E8822EAC57C003AF015 /* OpenOrderButton.m */; };
 		FF46E19222DE436400E15A0E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FF46E19122DE436400E15A0E /* AppDelegate.m */; };
 		FF46E19822DE436400E15A0E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF46E19622DE436400E15A0E /* Main.storyboard */; };
 		FF46E19A22DE436400E15A0E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF46E19922DE436400E15A0E /* Assets.xcassets */; };
@@ -185,6 +186,8 @@
 		FF1EDA9222E2951A00B1B897 /* Helpful_funs.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Helpful_funs.m; sourceTree = "<group>"; };
 		FF318E8122EA7969003AF015 /* SingleOpenOrder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SingleOpenOrder.h; path = "Fresh-Chef-Analytics/View Controller/Waiter VCs/SingleOpenOrder.h"; sourceTree = SOURCE_ROOT; };
 		FF318E8222EA7969003AF015 /* SingleOpenOrder.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = SingleOpenOrder.m; path = "Fresh-Chef-Analytics/View Controller/Waiter VCs/SingleOpenOrder.m"; sourceTree = SOURCE_ROOT; };
+		FF318E8722EAC57C003AF015 /* OpenOrderButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OpenOrderButton.h; sourceTree = "<group>"; };
+		FF318E8822EAC57C003AF015 /* OpenOrderButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OpenOrderButton.m; sourceTree = "<group>"; };
 		FF46E18D22DE436400E15A0E /* Fresh-Chef-Analytics.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Fresh-Chef-Analytics.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF46E19022DE436400E15A0E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		FF46E19122DE436400E15A0E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -266,6 +269,8 @@
 		A535D7B422DE6B8C002B79CA /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				FF318E8722EAC57C003AF015 /* OpenOrderButton.h */,
+				FF318E8822EAC57C003AF015 /* OpenOrderButton.m */,
 				FFECCE4B22E682F20000FDFF /* YelpAPIManager.h */,
 				FFECCE4C22E682F20000FDFF /* YelpAPIManager.m */,
 				A535D7B722DE6CE9002B79CA /* Dish.h */,
@@ -758,6 +763,7 @@
 				FF9AF93522E914F900A0D1FE /* order.h in Sources */,
 				B6C4BFF922E9107400FE5EAC /* OrdersManagerViewController.m in Sources */,
 				B6C4BFF022E8FE8500FE5EAC /* DataViewTableViewController.m in Sources */,
+				FF318E8922EAC57C003AF015 /* OpenOrderButton.m in Sources */,
 				FF5924FF22E2155D00F66EC6 /* ReceiptTableViewCell.m in Sources */,
 				B6D7B35C22DF95BA002093CB /* ManagerLoginViewController.m in Sources */,
 				FF03BF5F22DEA19100719E8C /* MenuDataViewController.m in Sources */,

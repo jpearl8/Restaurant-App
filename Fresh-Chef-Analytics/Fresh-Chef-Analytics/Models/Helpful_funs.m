@@ -102,7 +102,8 @@
     return -1;
 }
 -(BOOL)arrayOfZeros:(NSArray<NSNumber *>*)array{
-    for (int i = 0; i < array.count){
+    int i = 0;
+    while (i < array.count){
         if (array[i] == [NSNumber numberWithInt:0]){
             i++;
         } else {
