@@ -194,16 +194,20 @@ pass final array on submit button of data table
     };
 }
 
+
 - (IBAction)onSubmit:(id)sender{
     if (self.amounts.count != 0 && (!([[Helpful_funs shared]arrayOfZeros:self.amounts]))){
         for (int i = 0; i < self.amounts.count; i++){
             if (self.amounts[i] != [NSNumber numberWithInt:0]){
                 OpenOrder *openOrder = [OpenOrder new];
-                openOrder.dish = self.dishes[i];
+                openOrder.dish = self.orderedDishes[i];
+                NSLog(@"%@, %@", self.orderedDishes[i].name, self.amounts[i]);
                 openOrder.amount = self.amounts[i];
                 openOrder.waiter = self.selectedWaiter;
                 openOrder.restaurant = [PFUser currentUser];
-                openOrder.table = (NSNumber *)self.tableNumber.text;
+                NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
+                formatter.numberStyle = NSNumberFormatterDecimalStyle;
+                openOrder.table = [formatter numberFromString:self.tableNumber.text];
                 openOrder.restaurantId = [PFUser currentUser][@"objectId"];
                 [OpenOrder postNewOrder:openOrder withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
                     if (!error){
@@ -212,8 +216,8 @@ pass final array on submit button of data table
                 }];
             }
         }
-//        NSString *category = [PFUser currentUser][@"theme"];
-//        [self performSegueWithIdentifier:category sender:self];
+        
+        [self performSegueWithIdentifier:@"toOpenOrdersList" sender:self];
     }
 }
 

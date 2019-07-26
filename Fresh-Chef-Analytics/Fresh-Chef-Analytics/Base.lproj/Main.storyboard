@@ -467,11 +467,12 @@
                         <outlet property="searchBar" destination="2eP-lw-QsO" id="7MQ-cg-7Mi"/>
                         <outlet property="tableNumber" destination="LrV-42-BYQ" id="ukn-mG-F1e"/>
                         <outlet property="waiterTable" destination="7SL-HM-i6E" id="Bmb-Tx-89k"/>
+                        <segue destination="AtZ-ND-jWT" kind="show" identifier="toOpenOrdersList" id="Hk0-Q5-5Z5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iW6-5g-hzU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-586.95652173913049" y="1320.5357142857142"/>
+            <point key="canvasLocation" x="-588" y="1319"/>
         </scene>
         <!--Menu Data View Controller-->
         <scene sceneID="agn-q8-f4L">
@@ -4004,6 +4005,7 @@
         <image name="topbot" width="700" height="700"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="Hk0-Q5-5Z5"/>
         <segue reference="r3R-H8-hdI"/>
         <segue reference="eop-xl-c0C"/>
     </inferredMetricsTieBreakers>
