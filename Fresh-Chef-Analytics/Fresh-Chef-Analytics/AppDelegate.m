@@ -54,7 +54,7 @@
         [[OrderManager shared] fetchOpenOrderItems:PFUser.currentUser withCompletion:^(NSArray * _Nonnull openOrders, NSError * _Nonnull error) {
             if (!error)
             {
-                NSLog(@"fetched restaurant's open orders");
+//                NSLog(@"fetched restaurant's open orders");
 //                Dish *newDish = [Dish new];
 //                newDish.restaurant = [PFUser currentUser];
 //                newDish.restaurantID = newDish.restaurant.objectId;

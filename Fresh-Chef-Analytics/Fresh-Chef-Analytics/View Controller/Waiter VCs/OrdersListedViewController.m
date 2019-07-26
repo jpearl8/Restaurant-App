@@ -75,14 +75,19 @@
         if (openOrders){
             self.totalOpenTables = [[OrderManager shared] openOrdersByTable];
             self.keys = [self.totalOpenTables allKeys];
-            for (int i = 0; i < openOrders.count; i++){
-                NSString *table = [((OpenOrder*)openOrders[i]).table stringValue];
-                Waiter *waiter = (Waiter*)((OpenOrder*)openOrders[i]).waiter;
-                [[WaiterManager shared]findWaiter:waiter.objectId withCompletion:^(NSArray * _Nonnull waiter, NSError * _Nullable error) {
-                    if (waiter[0]){
-                        [self.tableWaiterDictionary setObject:waiter[0] forKey:table];
-                        [self.openOrdersTable reloadData];
-                        completion(nil);
+            __block int doneWithArray = 0;
+            for (NSString *key in self.keys){
+                Waiter *waiter = (Waiter*)((OpenOrder *)self.totalOpenTables[key][0]).waiter;
+                [[WaiterManager shared]findWaiter:waiter.objectId withCompletion:^(NSArray * _Nonnull waiters, NSError * _Nullable error) {
+                    NSLog(@"Waiters array: %@", waiters);
+                    if (waiters[0]){
+                        [self.tableWaiterDictionary setObject:waiters[0] forKey:key];
+                        doneWithArray = doneWithArray + 1;
+                        if (doneWithArray >= self.keys.count){
+                            [self.openOrdersTable reloadData];
+                            NSLog(@"check 1");
+                            completion(nil);
+                        }
                     }
                     if (error){
                         NSLog(@"Waiter query: %@", error.localizedDescription);
@@ -90,13 +95,19 @@
                     }
                 }];
             }
+            if (doneWithArray >= self.keys.count){
+                [self.openOrdersTable reloadData];
+                completion(nil);
+                NSLog(@"check 2");
+            }
             
         } else {
             NSLog(@"Open order query: %@", error.localizedDescription);
             completion(error);
         }
     }];
-    completion(nil);
+    
+    
     
 }
 

@@ -82,8 +82,10 @@
     waiterQuery = [Waiter query];
     [waiterQuery whereKey:@"objectId" equalTo:objectId];
     [waiterQuery findObjectsInBackgroundWithBlock:^(NSArray * _Nullable waiters, NSError * _Nullable error) {
+        NSLog(@"finished querying for waiters");
         if (!error)
         {
+            NSLog(@"found waiters %@", waiters);
             completion(waiters, nil);
         }
         else
@@ -92,7 +94,6 @@
             completion(nil, error);
         }
     }];
-    completion(nil, nil);
 
 }
 @end
