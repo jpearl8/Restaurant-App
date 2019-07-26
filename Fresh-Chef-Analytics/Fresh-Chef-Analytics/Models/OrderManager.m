@@ -119,6 +119,7 @@
     newAddition.restaurant = PFUser.currentUser;
     newAddition.table = table;
     newAddition.numCustomers = customerNum;
+    newAddition.waiter = waiter;
 
     __block int doneWithArray = 0;
     __block NSString *dishName;

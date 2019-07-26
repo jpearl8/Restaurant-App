@@ -55,60 +55,60 @@
             if (!error)
             {
                 NSLog(@"fetched restaurant's open orders");
-//                Dish *newDish = [Dish new];
-//                newDish.restaurant = [PFUser currentUser];
-//                newDish.restaurantID = newDish.restaurant.objectId;
-//
-//                newDish.name = @"test";
-//                newDish.type = @"Drinks";
-//                newDish.dishDescription = @"tasty";
-//                newDish.price = @(4);
-//                newDish.rating = nil;
-//                newDish.orderFrequency = @(0);
-//
-//                Waiter *newWaiter = [Waiter new];
-//                newWaiter.restaurant = [PFUser currentUser];
-//                newWaiter.restaurantID = newWaiter.restaurant.objectId;
-//
-//                newWaiter.name = @"jim";
-//                newWaiter.yearsWorked = @(3);
-//                newWaiter.rating = @(3);
-//                newWaiter.tableTops = @(0);
-//                newWaiter.numOfCustomers = @(0);
-//                newWaiter.tipsMade = @(0);
-//
-//                NSArray *testingArray = [NSArray array];
-//                [testingArray arrayByAddingObject:newDish];
-//                [testingArray arrayByAddingObject:@(5)];
-//                OpenOrder *newOrder = [OpenOrder new];
-//                newOrder.restaurant = PFUser.currentUser;
-//                newOrder.restaurantId = newOrder.restaurant.objectId;
-//                newOrder.waiter = newWaiter;
-//                newOrder.dish = newDish;
-//                newOrder.amount = @(2);
-//                newOrder.table = @(2);
-//                newOrder.customerNum = @(3);
-//                [OpenOrder postNewOrder:newOrder withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
-//                    if (succeeded)
-//                    {
-//                        NSLog(@"New Order Completed");
-//
-//                    }
-//                    else
-//                    {
-//                        NSLog(@"Error: %@", error.localizedDescription);
-//                    }
-//                }];
-//                [[OrderManager shared] deletingOrderswithTable:newOrder.table forWaiter:newWaiter withCustomerNum:newOrder.customerNum withCompletion:^(NSError * _Nonnull error) {
-//                    if (!error)
-//                    {
-//                        NSLog(@"Successfully moved order to closed");
-//                    }
-//                    else
-//                    {
-//                        NSLog(@"Error: %@", error.localizedDescription);
-//                    }
-//                }];
+                Dish *newDish = [Dish new];
+                newDish.restaurant = [PFUser currentUser];
+                newDish.restaurantID = newDish.restaurant.objectId;
+
+                newDish.name = @"test";
+                newDish.type = @"Drinks";
+                newDish.dishDescription = @"tasty";
+                newDish.price = @(4);
+                newDish.rating = nil;
+                newDish.orderFrequency = @(0);
+
+                Waiter *newWaiter = [Waiter new];
+                newWaiter.restaurant = [PFUser currentUser];
+                newWaiter.restaurantID = newWaiter.restaurant.objectId;
+
+                newWaiter.name = @"jim";
+                newWaiter.yearsWorked = @(3);
+                newWaiter.rating = @(3);
+                newWaiter.tableTops = @(0);
+                newWaiter.numOfCustomers = @(0);
+                newWaiter.tipsMade = @(0);
+
+                NSArray *testingArray = [NSArray array];
+                [testingArray arrayByAddingObject:newDish];
+                [testingArray arrayByAddingObject:@(5)];
+                OpenOrder *newOrder = [OpenOrder new];
+                newOrder.restaurant = PFUser.currentUser;
+                newOrder.restaurantId = newOrder.restaurant.objectId;
+                newOrder.waiter = newWaiter;
+                newOrder.dish = newDish;
+                newOrder.amount = @(2);
+                newOrder.table = @(2);
+                newOrder.customerNum = @(3);
+                [OpenOrder postNewOrder:newOrder withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
+                    if (succeeded)
+                    {
+                        NSLog(@"New Order Completed");
+
+                    }
+                    else
+                    {
+                        NSLog(@"Error: %@", error.localizedDescription);
+                    }
+                }];
+                [[OrderManager shared] deletingOrderswithTable:newOrder.table forWaiter:newWaiter withCustomerNum:newOrder.customerNum withCompletion:^(NSError * _Nonnull error) {
+                    if (!error)
+                    {
+                        NSLog(@"Successfully moved order to closed");
+                    }
+                    else
+                    {
+                        NSLog(@"Error: %@", error.localizedDescription);
+                    }
+                }];
             }
         }];
         [[OrderManager shared] fetchClosedOrderItems:PFUser.currentUser withCompletion:^(NSArray * _Nonnull closedOrders, NSError * _Nonnull error) {
