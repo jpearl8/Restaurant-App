@@ -221,7 +221,7 @@
         }
     }
     // Check Profit
-    for (int i = 0; i < [rankedDishesByProfit count]; i++) {
+    for (int i = 0; i < menuLength; i++) {
         Dish *dish = rankedDishesByRating[i];
         if (i <= lowerIndexProfit) {
             dish.profitCategory = @"high"; // if dish is early in array then it has high profit
@@ -231,6 +231,64 @@
             dish.profitCategory = @"low"; // if dish is later in array then it has a low profit
         }
     }
-
 }
+
+
+
+//- (NSString *)setSuggestionForDish:(Dish *)dish
+//{
+//    NSString *suggestion;
+//    //If HIGH rating
+//    if ([dish.ratingCategory isEqualToString:@"high"]) {
+//        //compare freq and profit and make suggestion on that
+//        // only give suggestion if freq or profit is low
+//        if([dish.freqCategory isEqualToString:@"low"]) {
+//            if([dish.profitCategory isEqualToString:@"low"]) {
+//                // should improve description or place differently in menu
+//            } else {
+//                //dish isn't ordered often but its making enough money
+//            }
+//        } else if ([dish.freqCategory isEqualToString:@"high"]) {
+//            if([dish.profitCategory isEqualToString:@"low"]) {
+//                //could consider raising price
+//            } else {
+//                //dish is doing very good
+//            }
+//        } else { // medium frequency
+//            if ([dish.profitCategory isEqualToString:@"low"]) {
+//                // could consider raising price
+//            } else {
+//                // dish is doing pretty well
+//            }
+//        }
+//    } else if ([dish.ratingCategory isEqualToString:@"medium"]) {
+//        // compare freq and profit
+//        if([dish.freqCategory isEqualToString:@"low"]) {
+//            if([dish.profitCategory isEqualToString:@"low"]) {
+//                // should improve description or place differently in menu
+//            } else {
+//                //dish isn't ordered often but its making enough money
+//            }
+//        } else if ([dish.freqCategory isEqualToString:@"high"]) {
+//            if([dish.profitCategory isEqualToString:@"low"]) {
+//                //could consider raising price
+//            } else {
+//                //dish is doing very good
+//            }
+//        } else { // medium frequency
+//            if ([dish.profitCategory isEqualToString:@"low"]) {
+//                // could consider raising price
+//            } else {
+//                // dish is doing pretty well
+//            }
+//        }
+//    } else if ([dish.ratingCategory isEqualToString:@"low"]) {
+//        if([dish.freqCategory isEqualToString:@"low"]){
+//
+//        }
+//
+//    }
+//    return suggestion;
+//}
+
 @end

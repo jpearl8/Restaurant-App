@@ -27,6 +27,7 @@ pass final array on submit button of data table
 #import "LoginViewController.h"
 #import "WaiterManager.h"
 #import "OpenOrder.h"
+#import "OrderManager.h"
 
 
 @interface WaiterViewController () <UITableViewDelegate, UITableViewDataSource>
@@ -196,6 +197,7 @@ pass final array on submit button of data table
 
 
 - (IBAction)onSubmit:(id)sender{
+    NSMutableArray<OpenOrder *>*openOrders = [[NSMutableArray alloc] init];
     if (self.amounts.count != 0 && (!([[Helpful_funs shared]arrayOfZeros:self.amounts]))){
         for (int i = 0; i < self.amounts.count; i++){
             if (self.amounts[i] != [NSNumber numberWithInt:0]){
@@ -209,16 +211,17 @@ pass final array on submit button of data table
                 formatter.numberStyle = NSNumberFormatterDecimalStyle;
                 openOrder.table = [formatter numberFromString:self.tableNumber.text];
                 openOrder.restaurantId = [PFUser currentUser].objectId;
-                [OpenOrder postNewOrder:openOrder withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
-                    if (!error){
-                        NSLog(@"open order posted");
-                        [self performSegueWithIdentifier:@"toOpenOrdersList" sender:self];
-                    }
-                }];
+                openOrder.customerNum = [formatter numberFromString:self.customerNumber.text];
+                [openOrders addObject:openOrder];
             }
         }
-        
-        
+        [[OrderManager shared] postAllOpenOrders:openOrders withCompletion:^(NSError * _Nonnull error) {
+            if (!error){
+                [self performSegueWithIdentifier:@"toOpenOrdersList" sender:self];
+            } else{
+                NSLog(@"%@", error.localizedDescription);
+            }
+        }];
     }
 }
 

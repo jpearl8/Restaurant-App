@@ -115,13 +115,17 @@
 }
 - (void) postAllOpenOrders : (NSArray *) openOrders withCompletion : (void (^)(NSError * error))completion
 {
+    __block int doneWithArray = 0;
     for (OpenOrder *order in openOrders)
     {
         [OpenOrder postNewOrder:order withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
             if (!error)
             {
                 NSLog(@"Individual order posted");
-                completion(nil);
+                doneWithArray = doneWithArray + 1;
+                if (doneWithArray >= openOrders.count){
+                    completion(nil);
+                }
             }
             else
             {
@@ -131,7 +135,9 @@
             
         }];
     }
-    completion(nil);
+    if (doneWithArray >= openOrders.count){
+        completion(nil);
+    }
 }
 - (void) deletingOrderswithTable : (NSNumber *) table forWaiter : (Waiter *) waiter withCustomerNum : (NSNumber *) customerNum withCompletion : (void (^)(NSError * error))completion
 {
