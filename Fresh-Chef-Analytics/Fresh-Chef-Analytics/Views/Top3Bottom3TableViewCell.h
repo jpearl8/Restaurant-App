@@ -25,6 +25,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UIView *dishSuggestionsView;
 @property (assign, nonatomic) BOOL isExpanded;
 @property (weak, nonatomic) NSString *ratingCategory;
+@property (weak, nonatomic) NSString *freqCategory;
+@property (weak, nonatomic) NSString *profitCategory;
 @end
 
 NS_ASSUME_NONNULL_END

@@ -39,6 +39,20 @@
     } else {
         [self.rating setTextColor:UIColor.redColor];
     }
+    if ([self.freqCategory isEqualToString: @"high"]) {
+        [self.orderFrequency setTextColor:UIColor.greenColor];
+    } else if ([self.freqCategory isEqualToString: @"medium"]) {
+        [self.orderFrequency setTextColor:UIColor.grayColor];
+    } else {
+        [self.orderFrequency setTextColor:UIColor.redColor];
+    }
+//    if ([self.profitCategory isEqualToString: @"high"]) {
+////        [self. setTextColor:UIColor.greenColor];
+//    } else if ([self.profitCategory isEqualToString: @"medium"]) {
+////        [self. setTextColor:UIColor.grayColor];
+//    } else {
+////        [self. setTextColor:UIColor.redColor];
+//    }
 }
 
 @end

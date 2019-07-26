@@ -7,11 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "TTTAttributedLabel.h"
+//#import "TTTAttributedLabel.h"
 #import "Link.h"
 NS_ASSUME_NONNULL_BEGIN
 
-@interface CompetitorsCell : UITableViewCell <TTTAttributedLabelDelegate>
+@interface CompetitorsCell : UITableViewCell //<TTTAttributedLabelDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *rating;
 @property (weak, nonatomic) IBOutlet UILabel *address;
 @property (weak, nonatomic) IBOutlet UILabel *competitorName;

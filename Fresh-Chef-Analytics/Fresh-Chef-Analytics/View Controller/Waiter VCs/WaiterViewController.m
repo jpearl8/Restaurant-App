@@ -185,10 +185,10 @@ pass final array on submit button of data table
 }
 
 - (IBAction)onSubmit:(id)sender{
-    if (self.openOrder.amounts.count != 0){
-        NSString *category = [PFUser currentUser][@"theme"];
-        [self performSegueWithIdentifier:category sender:self];
-    }
+//    if (self.openOrder.amounts.count != 0){
+//        NSString *category = [PFUser currentUser][@"theme"];
+//        [self performSegueWithIdentifier:category sender:self];
+//    }
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {

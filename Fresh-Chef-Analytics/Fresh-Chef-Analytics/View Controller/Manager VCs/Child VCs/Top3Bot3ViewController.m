@@ -67,6 +67,8 @@
     cell.frequency.text = [[NSString stringWithFormat:@"%@", dish.orderFrequency] stringByAppendingString:@" orders"];
     cell.price.text = [@"$" stringByAppendingString: [NSString stringWithFormat:@"%@", dish.price]];
     cell.ratingCategory = dish.ratingCategory;
+    cell.freqCategory = dish.freqCategory;
+    cell.profitCategory = dish.profitCategory;
     cell.selectedIndex = self.rankByControl.selectedSegmentIndex;
     if(dish.image != nil){
         PFFileObject *dishImageFile = (PFFileObject *)dish.image;

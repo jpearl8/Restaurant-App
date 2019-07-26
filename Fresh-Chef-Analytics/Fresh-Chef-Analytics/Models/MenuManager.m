@@ -139,9 +139,9 @@
 //- (void)setThresholdIndices
 //{
 ////    self.thresholdsRating = @[@0.33f, @0.66f]; // will use later if user can change values
-//    float bottomThresh = 0.33f;
+//    float bottomThreshRating = 0.33f;
 //    float upperThresh = 0.66f;
-//    
+//
 //    //RATING
 //    // get length of menu and find indices closest to bottom threshold percentile and upper
 //    NSUInteger menuLength = [self.dishes count];
@@ -165,27 +165,58 @@
 - (void)setDishRankings
 {
     //rank all dishes into an array
-    float bottomThresh = 0.33f;
-    float upperThresh = 0.66f;
-    
-    //RATING
-    // get length of menu and find indices closest to bottom threshold percentile and upper
+    float bottomThreshRating = 0.33f;
+    float upperThreshRating = 0.66f;
+    float bottomThreshFreq = 0.33f;
+    float upperThreshFreq = 0.66f;
+    float bottomThreshProfit = 0.33f;
+    float upperThreshProfit = 0.66f;
+    // get length of menu and find indices closest to lower and upper threshold percentile
     NSUInteger menuLength = [self.dishes count];
-    NSUInteger lowerIndex = lroundf(bottomThresh * menuLength);
-    NSUInteger upperIndex = lroundf(upperThresh * menuLength);
+    //RATING
+    NSUInteger lowerIndexRating = lroundf(bottomThreshRating * menuLength);
+    NSUInteger upperIndexRating = lroundf(upperThreshRating * menuLength);
+    NSUInteger lowerIndexFreq = lroundf(bottomThreshFreq * menuLength);
+    NSUInteger upperIndexFreq = lroundf(upperThreshFreq * menuLength);
+//    NSUInteger lowerIndexProfit = lroundf(bottomThreshProfit * menuLength);
+//    NSUInteger upperIndexProfit = lroundf(upperThreshProfit * menuLength);
     //rank all dishes into an array
     NSArray *rankedDishesByRating = [[Helpful_funs shared] orderArray:self.dishes byType:@"rating"];
-    for (int i = 0; i < [rankedDishesByRating count]; i++) {
+    NSArray *rankedDishesByFreq = [[Helpful_funs shared] orderArray:self.dishes byType:@"orderFrequency"];
+//    NSArray *rankedDishesByProfit = [[Helpful_funs shared] orderArray:self.dishes byType:@"profit"];
+    for (int i = 0; i < menuLength; i++) {
         Dish *dish = rankedDishesByRating[i];
-        if (i <= lowerIndex) {
+        // Check Rating
+        if (i <= lowerIndexRating) {
             dish.ratingCategory = @"high"; // if dish is early in array then it has high rating
-        } else if (i > lowerIndex && i < upperIndex) {
+        } else if (i > lowerIndexRating && i < upperIndexRating) {
             dish.ratingCategory = @"medium";
         } else {
             dish.ratingCategory = @"low"; // if dish is later in array then it has a low rating
         }
-        NSLog(@"Dish rating is: %@", dish.ratingCategory);
     }
-//    NSLog(@"dishes ranked by rating: %@", rankedDishesByRating);
+    // Check Frequency
+    for (int i = 0; i < menuLength; i++) {
+        Dish *dish = rankedDishesByFreq[i];
+        if (i <= lowerIndexFreq) {
+            dish.freqCategory = @"high"; // if dish is early in array then it has high freq
+        } else if (i > lowerIndexFreq && i < upperIndexFreq) {
+            dish.freqCategory = @"medium";
+        } else {
+            dish.freqCategory = @"low"; // if dish is later in array then it has a low freq
+        }
+    }
+    // Check Profit
+//    for (int i = 0; i < [rankedDishesByProfit count]; i++) {
+//        Dish *dish = rankedDishesByRating[i];
+//        if (i <= lowerIndexProfit) {
+//            dish.profitCategory = @"high"; // if dish is early in array then it has high profit
+//        } else if (i > lowerIndexProfit && i < upperIndexProfit) {
+//            dish.profitCategory = @"medium";
+//        } else {
+//            dish.profitCategory = @"low"; // if dish is later in array then it has a low profit
+//        }
+//    }
+
 }
 @end

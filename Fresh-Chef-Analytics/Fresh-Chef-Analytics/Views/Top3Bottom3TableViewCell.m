@@ -39,6 +39,20 @@
     } else {
         [self.rating setTextColor:UIColor.redColor];
     }
+    if ([self.freqCategory isEqualToString: @"high"]) {
+        [self.frequency setTextColor:UIColor.greenColor];
+    } else if ([self.freqCategory isEqualToString: @"medium"]) {
+        [self.frequency setTextColor:UIColor.grayColor];
+    } else {
+        [self.frequency setTextColor:UIColor.redColor];
+    }
+    if ([self.profitCategory isEqualToString: @"high"]) {
+        [self.profit setTextColor:UIColor.greenColor];
+    } else if ([self.profitCategory isEqualToString: @"medium"]) {
+        [self.profit setTextColor:UIColor.grayColor];
+    } else {
+        [self.profit setTextColor:UIColor.redColor];
+    }
 }
 
 @end

@@ -47,11 +47,13 @@
     cell.name.text = dish.name;
 //    cell.rating.text = [dish.rating stringValue];
     cell.rating.text = [[NSString stringWithFormat:@"%@", dish.rating] stringByAppendingString:@"/10"];
-    cell.orderFrequency.text = [dish.orderFrequency stringValue];
-    cell.price.text = [dish.price stringValue];
+//    cell.orderFrequency.text = [dish.orderFrequency stringValue];
+    cell.orderFrequency.text = [[dish.orderFrequency stringValue] stringByAppendingString:@" sold"];
+    cell.price.text = [@"$" stringByAppendingString: [dish.price stringValue]];
     cell.selectedIndex = self.selectedIndex;
-    
     cell.ratingCategory = dish.ratingCategory;
+    cell.freqCategory = dish.freqCategory;
+    cell.profitCategory = dish.profitCategory;
     if(dish.image != nil){
         PFFileObject *dishImageFile = (PFFileObject *)dish.image;
         [dishImageFile getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
