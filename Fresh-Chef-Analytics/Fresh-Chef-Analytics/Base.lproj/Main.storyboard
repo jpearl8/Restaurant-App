@@ -4197,7 +4197,6 @@
         <image name="topbot" width="700" height="700"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="atd-9H-yoN"/>
         <segue reference="r3R-H8-hdI"/>
         <segue reference="VpL-yV-74Y"/>
     </inferredMetricsTieBreakers>
