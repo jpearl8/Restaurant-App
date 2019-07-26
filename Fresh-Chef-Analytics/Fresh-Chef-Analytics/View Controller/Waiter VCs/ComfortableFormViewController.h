@@ -21,6 +21,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong, nonatomic) NSMutableArray <order *>*customerOrder;
 @property (strong, nonatomic) OpenOrder *openOrder;
 @property (strong, nonatomic) NSString *customerNumber;
+@property (strong, nonatomic) NSArray<OpenOrder *>*openOrders;
+
 
 @end
 

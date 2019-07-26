@@ -9,7 +9,6 @@
 #import "CompetitorListViewController.h"
 #import "CompetitorsCell.h"
 #import "YelpAPIManager.h"
-#import "TTTAttributedLabel.h"
 #import "Parse/Parse.h"
 #import "YelpLinkViewController.h"
 

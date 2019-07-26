@@ -14,6 +14,7 @@
 #import "OpenOrder.h"
 
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 @interface FunFormViewController : UIViewController
@@ -21,8 +22,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (IBAction)didSubmit:(UIButton *)sender;
 @property (strong, nonatomic) NSMutableArray <order *>*customerOrder;
 @property (strong, nonatomic) NSString *customerNumber;
-@property (strong, nonatomic) OpenOrder *openOrder;
-
+@property (strong, nonatomic) NSArray<OpenOrder *>*openOrders;
 @end
 
 NS_ASSUME_NONNULL_END

@@ -39,7 +39,12 @@ pass final array on submit button of data table
 @property (strong, nonatomic) NSMutableArray <order *>*customerOrder;
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
 @property (weak, nonatomic) IBOutlet UITextField *customerNumber;
-@property (strong, nonatomic) OpenOrder *openOrder;
+@property (weak, nonatomic) IBOutlet UITextField *tableNumber;
+@property (strong, nonatomic) NSMutableArray <Dish *>*orderedDishes;
+@property (strong, nonatomic) NSMutableArray <NSNumber *>*amounts;
+@property (strong, nonatomic) Waiter *selectedWaiter;
+
+
 
 
 
@@ -59,7 +64,8 @@ pass final array on submit button of data table
     self.waiterTable.dataSource = self;
     self.searchBar.delegate = self;
     self.customerOrder = [[NSMutableArray alloc] init];
-    self.openOrder = [OpenOrder new];
+    self.orderedDishes = [[NSMutableArray alloc] init];
+    self.amounts = [[NSMutableArray alloc] init];
     [self runDishQuery];
     UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
     [refreshControl addTarget:self action:@selector(runDishQuery) forControlEvents:UIControlEventValueChanged];
@@ -89,7 +95,12 @@ pass final array on submit button of data table
         cell.name.text = dish.name;
         cell.type.text = dish.type;
         cell.stepper.dish = dish;
-        cell.stepper.value = [[OpenOrder searchOrderforDish:self.openOrder withDish:dish giveIndex:NO] doubleValue];
+        int index = [[Helpful_funs shared] findAmountIndexwithDishArray:self.orderedDishes withDish:dish];
+        if (index == -1){
+            cell.stepper.value = 0;
+        } else {
+            cell.stepper.value = [self.amounts[index] doubleValue];
+        }
         //cell.stepper.value = [self searchForAmount:self.customerOrder withDish:dish];
         cell.dishDescription.text = dish.dishDescription;
         PFFileObject *dishImageFile = (PFFileObject *)dish.image;
@@ -138,6 +149,7 @@ pass final array on submit button of data table
 }
 
 
+
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
     if (searchText.length != 0) {
         NSPredicate *predicate = [NSPredicate predicateWithBlock:^BOOL(NSDictionary *evaluatedObject, NSDictionary *bindings) {
@@ -167,57 +179,69 @@ pass final array on submit button of data table
     if (!([tableView.restorationIdentifier isEqualToString:@"menu"])){
         UITableViewCell *cell = [self.waiterTable cellForRowAtIndexPath:indexPath];
         [self.button setTitle:cell.textLabel.text forState:UIControlStateNormal];
-        self.openOrder = [OpenOrder new];
-        self.openOrder.waiter = self.waiters[indexPath.row];
+        self.selectedWaiter = self.waiters[indexPath.row];
         self.waiterTable.hidden = YES;
     }
 }
 
 - (IBAction)stepperChange:(specialStepper *)sender {
-
-    NSNumber *index = [OpenOrder searchOrderforDish:self.openOrder withDish:sender.dish giveIndex:YES];
-    if (index == [NSNumber numberWithInt:-1]){
-        [self.openOrder addObject:sender.dish forKey:@"dishes"];
-        [self.openOrder addObject:@(1) forKey:@"amount"];
+    int index = [[Helpful_funs shared] findAmountIndexwithDishArray:self.orderedDishes withDish:sender.dish];
+    if (index == -1){
+        [self.orderedDishes addObject:sender.dish];
+        [self.amounts addObject:[NSNumber numberWithInt:1]];
     } else {
-        self.openOrder[@"orders"][index] = [NSNumber numberWithInt:([self.openOrder[@"orders"][index] intValue] + 1)];
-    }
+        self.amounts[index] = [NSNumber numberWithDouble:sender.value];
+    };
 }
 
+
 - (IBAction)onSubmit:(id)sender{
-//    if (self.openOrder.amounts.count != 0){
-//        NSString *category = [PFUser currentUser][@"theme"];
-//        [self performSegueWithIdentifier:category sender:self];
-//    }
+    if (self.amounts.count != 0 && (!([[Helpful_funs shared]arrayOfZeros:self.amounts]))){
+        for (int i = 0; i < self.amounts.count; i++){
+            if (self.amounts[i] != [NSNumber numberWithInt:0]){
+                OpenOrder *openOrder = [OpenOrder new];
+                openOrder.dish = self.orderedDishes[i];
+                NSLog(@"%@, %@", self.orderedDishes[i].name, self.amounts[i]);
+                openOrder.amount = self.amounts[i];
+                openOrder.waiter = self.selectedWaiter;
+                openOrder.restaurant = [PFUser currentUser];
+                NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
+                formatter.numberStyle = NSNumberFormatterDecimalStyle;
+                openOrder.table = [formatter numberFromString:self.tableNumber.text];
+                openOrder.restaurantId = [PFUser currentUser][@"objectId"];
+                [OpenOrder postNewOrder:openOrder withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
+                    if (!error){
+                        NSLog(@"open order posted");
+                    }
+                }];
+            }
+        }
+        
+        [self performSegueWithIdentifier:@"toOpenOrdersList" sender:self];
+    }
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-     NSString *category = [PFUser currentUser][@"theme"];
-    [OpenOrder postNewOrder:self.openOrder withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
-        if (!error){
-            NSLog(@"open order uploaded");
-        } else {
-            NSLog(@"%@", error.localizedDescription);
-        }
-    }];
-    if ([category isEqualToString:@"Fun"]){
-        FunFormViewController *funVC = [segue destinationViewController];
-        funVC.customerOrder = self.customerOrder;
-        funVC.openOrder = self.openOrder;
-        funVC.customerNumber = self.customerNumber.text;
-    }
-    if ([category isEqualToString:@"Comfortable"]){
-        ComfortableFormViewController *comfVC = [segue destinationViewController];
-        comfVC.customerOrder = self.customerOrder;
-        comfVC.openOrder = self.openOrder;
-        comfVC.customerNumber = self.customerNumber.text;
-    }
-    if ([category isEqualToString:@"Elegant"]){
-        ElegantFormViewController *elegantVC = [segue destinationViewController];
-        elegantVC.customerOrder = self.customerOrder;
-        elegantVC.openOrder = self.openOrder;
-        elegantVC.customerNumber = self.customerNumber.text;
-    }
+//     NSString *category = [PFUser currentUser][@"theme"];
+   
+//    if ([category isEqualToString:@"Fun"]){
+//        FunFormViewController *funVC = [segue destinationViewController];
+//        funVC.customerOrder = self.customerOrder;
+//        funVC.openOrder = self.openOrder;
+//        funVC.customerNumber = self.customerNumber.text;
+//    }
+//    if ([category isEqualToString:@"Comfortable"]){
+//        ComfortableFormViewController *comfVC = [segue destinationViewController];
+//        comfVC.customerOrder = self.customerOrder;
+//        comfVC.openOrder = self.openOrder;
+//        comfVC.customerNumber = self.customerNumber.text;
+//    }
+//    if ([category isEqualToString:@"Elegant"]){
+//        ElegantFormViewController *elegantVC = [segue destinationViewController];
+//        elegantVC.customerOrder = self.customerOrder;
+//        elegantVC.openOrder = self.openOrder;
+//        elegantVC.customerNumber = self.customerNumber.text;
+//    }
 }
 
 

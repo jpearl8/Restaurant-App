@@ -23,7 +23,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (void) postNewOrder : (OpenOrder *) order withCompletion : (PFBooleanResultBlock  _Nullable)completion;
 
-+ (NSNumber *)searchOrderforDish:(OpenOrder *)openOrder withDish:(Dish *)dish giveIndex:(BOOL)index;
+
 @end
 NS_ASSUME_NONNULL_END
 
