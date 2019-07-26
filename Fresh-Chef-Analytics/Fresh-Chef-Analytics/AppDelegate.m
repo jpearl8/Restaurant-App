@@ -88,6 +88,41 @@
         NSArray *testingArray = [NSArray array];
         [testingArray arrayByAddingObject:newDish];
         [testingArray arrayByAddingObject:@(5)];
+        OpenOrder *newOrder = [OpenOrder new];
+        newOrder.restaurant = PFUser.currentUser;
+        newOrder.restaurantId = newOrder.restaurant.objectId;
+        newOrder.waiter = newWaiter;
+        newOrder.dish = newDish;
+        newOrder.amount = @(2);
+        newOrder.table = @(4);
+        [OpenOrder postNewOrder:newOrder withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
+            if (succeeded)
+            {
+                NSLog(@"New Order Completed");
+                
+            }
+            else
+            {
+                NSLog(@"Error: %@", error.localizedDescription);
+            }
+        }];
+        [[OrderManager shared] fetchOrdersToClose:PFUser.currentUser withTable:@(4) forWaiter:newWaiter withCompletion:^(NSArray * _Nonnull orders, NSError * _Nonnull error) {
+            if (orders)
+            {
+                [[OrderManager shared] deletingOrders:orders withRestaurant:PFUser.currentUser withTable:@(4) forWaiter:newWaiter withCustomerNum:@(4) withCompletion:^(NSError * _Nonnull error) {
+                    if (!error)
+                    {
+                        NSLog(@"Successfully moved order to closed");
+                    }
+                    else
+                    {
+                        NSLog(@"Error: %@", error.localizedDescription);
+                    }
+                }];
+            }
+        }];
+        
+        
         self.window.rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"ManagerPasswordVCNavigationController"];
     }
     

@@ -17,11 +17,14 @@ NS_ASSUME_NONNULL_BEGIN
 @interface OrderManager : NSObject
 @property (strong, nonatomic) NSArray *openOrders;
 @property (strong, nonatomic) NSArray *closedOrders;
-
+@property (strong, nonatomic) NSArray *ordersToDelete;
+@property (strong, nonatomic) Dish * tempDish;
 + (instancetype)shared;
 - (void) fetchOpenOrderItems:(PFUser *) restaurant  withCompletion:(void (^)(NSArray * openOrders, NSError * error))fetchedOpenOrders;
 - (void) fetchClosedOrderItems:(PFUser *) restaurant  withCompletion:(void (^)(NSArray * closedOrders, NSError * error))fetchedClosedOrders;
-- (void) makingClosedOrder : (PFUser * ) restaurant withTable : (NSNumber *) table forWaiter : (Waiter *) waiter withCustomerNum : (NSNumber *) customerNum withCompletion : (void (^)(NSError * error))completion;
+- (void) fetchOrdersToClose : (PFUser * ) restaurant withTable : (NSNumber *) table forWaiter : (Waiter *) waiter withCompletion : (void (^)(NSArray *orders, NSError * error))completion;
+- (void) deletingOrders : (NSArray *) orders withRestaurant : (PFUser * ) restaurant withTable : (NSNumber *) table forWaiter : (Waiter *) waiter withCustomerNum : (NSNumber *) customerNum withCompletion : (void (^)(NSError * error))completion;
+
 @end
 
 NS_ASSUME_NONNULL_END

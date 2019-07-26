@@ -41,29 +41,29 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.openOrder.amounts.count;
+    return 6 ;//self.openOrder.amounts.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     ComfortableTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier: @"Comfortable"];
-    order *order = self.customerOrder[indexPath.row];
-    Dish *dish = self.openOrder.dishes[indexPath.row];
-    NSNumber *amount = self.openOrder.amounts[indexPath.row];
-    cell.order = order;
-    cell.dishName.text = dish.name;
-    cell.dishType.text = dish.type;
-    cell.dishDescription.text = dish.dishDescription;
-    cell.index = (int)indexPath.row;
-    cell.customerRatings = self.customerRatings;
-    cell.customerComments = self.customerComments;
-    cell.amount.text = [NSString stringWithFormat:@"%@", amount];
-    PFFileObject *dishImageFile = (PFFileObject *)dish.image;
-    [dishImageFile getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
-        if(!error){
-            cell.image.image = [UIImage imageWithData:imageData];
-        }
-    }];
-    cell.customerRating.value = ([self.customerRatings[indexPath.row] floatValue] / 2);
+//    order *order = self.customerOrder[indexPath.row];
+//    Dish *dish = self.openOrder.dishes[indexPath.row];
+//    NSNumber *amount = self.openOrder.amounts[indexPath.row];
+//    cell.order = order;
+//    cell.dishName.text = dish.name;
+//    cell.dishType.text = dish.type;
+//    cell.dishDescription.text = dish.dishDescription;
+//    cell.index = (int)indexPath.row;
+//    cell.customerRatings = self.customerRatings;
+//    cell.customerComments = self.customerComments;
+//    cell.amount.text = [NSString stringWithFormat:@"%@", amount];
+//    PFFileObject *dishImageFile = (PFFileObject *)dish.image;
+//    [dishImageFile getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
+//        if(!error){
+//            cell.image.image = [UIImage imageWithData:imageData];
+//        }
+//    }];
+//    cell.customerRating.value = ([self.customerRatings[indexPath.row] floatValue] / 2);
     return cell;
 }
 
@@ -86,34 +86,34 @@
 
 
 - (IBAction)didSubmit:(UIButton *)sender {
-    NSArray *dishes = self.openOrder.dishes;
-    NSArray *amounts = self.openOrder.amounts;
-    for (int i = 0; i < self.openOrder.amounts.count; i++){
-        float totalRating = [((Dish *)dishes[i]).rating floatValue];
-        if (!totalRating){
-            totalRating = 0;
-        }
-        ((Dish *)dishes[i]).rating = [NSNumber numberWithFloat: (([self.customerRatings[i] floatValue] * [amounts[i] floatValue])  + totalRating)];
-        if (!([self.customerComments[i] isEqualToString:@""])){
-            ((Dish *)dishes[i]).comments=[((Dish *)dishes[i]).comments arrayByAddingObject:self.customerComments[i]];
-        }
-        float totalFrequency = [((Dish *)dishes[i]).orderFrequency floatValue];
-        ((Dish *)dishes[i]).orderFrequency = [NSNumber numberWithFloat: (((int)amounts[i]) + totalFrequency)];
-        [(Dish*)dishes[i] saveInBackground];
-    }
-    float totalRating = [self.openOrder.waiter.rating floatValue];
-    if (!totalRating){
-        totalRating = 0;
-    }
-    self.openOrder.waiter.rating = [NSNumber numberWithFloat: ([self.waiterRatingNum floatValue] + totalRating)];
-    
-    if (!([self.waiterComments.text isEqualToString:@""])){
-        self.openOrder.waiter.comments =[self.openOrder.waiter.comments arrayByAddingObject:self.waiterComments.text];
-    }
-    float numOfCustomers = [self.openOrder.waiter.numOfCustomers floatValue];
-    self.openOrder.waiter.numOfCustomers = [NSNumber numberWithFloat: ([self.customerNumber floatValue] + numOfCustomers)];
-    self.openOrder.waiter.tableTops = [NSNumber numberWithFloat: ([self.openOrder.waiter.tableTops floatValue] + 1)];
-    [self.openOrder.waiter saveInBackground];
+//    NSArray *dishes = self.openOrder.dishes;
+//    NSArray *amounts = self.openOrder.amounts;
+//    for (int i = 0; i < self.openOrder.amounts.count; i++){
+//        float totalRating = [((Dish *)dishes[i]).rating floatValue];
+//        if (!totalRating){
+//            totalRating = 0;
+//        }
+//        ((Dish *)dishes[i]).rating = [NSNumber numberWithFloat: (([self.customerRatings[i] floatValue] * [amounts[i] floatValue])  + totalRating)];
+//        if (!([self.customerComments[i] isEqualToString:@""])){
+//            ((Dish *)dishes[i]).comments=[((Dish *)dishes[i]).comments arrayByAddingObject:self.customerComments[i]];
+//        }
+//        float totalFrequency = [((Dish *)dishes[i]).orderFrequency floatValue];
+//        ((Dish *)dishes[i]).orderFrequency = [NSNumber numberWithFloat: (((int)amounts[i]) + totalFrequency)];
+//        [(Dish*)dishes[i] saveInBackground];
+//    }
+//    float totalRating = [self.openOrder.waiter.rating floatValue];
+//    if (!totalRating){
+//        totalRating = 0;
+//    }
+//    self.openOrder.waiter.rating = [NSNumber numberWithFloat: ([self.waiterRatingNum floatValue] + totalRating)];
+//    
+//    if (!([self.waiterComments.text isEqualToString:@""])){
+//        self.openOrder.waiter.comments =[self.openOrder.waiter.comments arrayByAddingObject:self.waiterComments.text];
+//    }
+//    float numOfCustomers = [self.openOrder.waiter.numOfCustomers floatValue];
+//    self.openOrder.waiter.numOfCustomers = [NSNumber numberWithFloat: ([self.customerNumber floatValue] + numOfCustomers)];
+//    self.openOrder.waiter.tableTops = [NSNumber numberWithFloat: ([self.openOrder.waiter.tableTops floatValue] + 1)];
+//    [self.openOrder.waiter saveInBackground];
     
     [self performSegueWithIdentifier:@"toReceipt" sender:self];
 }
