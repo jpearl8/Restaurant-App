@@ -113,6 +113,26 @@
     completion(nil, nil);
 
 }
+- (void) postAllOpenOrders : (NSArray *) openOrders withCompletion : (void (^)(NSError * error))completion
+{
+    for (OpenOrder *order in openOrders)
+    {
+        [OpenOrder postNewOrder:order withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
+            if (!error)
+            {
+                NSLog(@"Individual order posted");
+                completion(nil);
+            }
+            else
+            {
+                NSLog(@"Error: %@", error.localizedDescription);
+                completion(error);
+            }
+            
+        }];
+    }
+    completion(nil);
+}
 - (void) deletingOrderswithTable : (NSNumber *) table forWaiter : (Waiter *) waiter withCustomerNum : (NSNumber *) customerNum withCompletion : (void (^)(NSError * error))completion
 {
     ClosedOrder *newAddition = [ClosedOrder new];
