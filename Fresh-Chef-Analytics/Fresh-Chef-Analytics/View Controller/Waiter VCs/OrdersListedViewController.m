@@ -18,6 +18,7 @@
 @interface OrdersListedViewController () <UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *openOrdersTable;
 @property (strong, nonatomic) NSMutableDictionary<NSString *, NSArray<OpenOrder *>*>* totalOpenTables;
+@property (strong, nonatomic) NSMutableDictionary<NSString *, Waiter *>*tableWaiterDictionary;
 @property (strong, nonatomic) NSArray<NSString *>* keys;
 - (IBAction)completeOrder:(OpenOrderButton *)sender;
 - (IBAction)editOrder:(OpenOrderButton *)sender;
@@ -29,9 +30,14 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.openOrdersTable.delegate = self;
-    self.openOrdersTable.dataSource = self;
-    [self fetchOpdenOrders];
+    self.tableWaiterDictionary = [[NSMutableDictionary alloc] init];
+    [self fetchOpenOrders:^(NSError * _Nullable error) {
+        self.openOrdersTable.delegate = self;
+        self.openOrdersTable.dataSource = self;
+    }];
+   
+    
+    
 
 }
 
@@ -44,20 +50,12 @@
     cell.tableNumber.text = self.keys[indexPath.row];
     NSArray <OpenOrder *>* openOrders = self.totalOpenTables[cell.tableNumber.text];
     cell.openOrders = openOrders;
+    cell.waiter = self.tableWaiterDictionary[cell.tableNumber.text];
+    cell.waiterName.text = cell.waiter.name;
     //cell.customerNumber.text = openOrders[0].customerNumber;
-    Waiter *waiter = (Waiter*)((OpenOrder*)openOrders[0]).waiter;
-    [[WaiterManager shared]findWaiter:waiter.objectId withCompletion:^(NSArray * _Nonnull waiter, NSError * _Nullable error) {
-        if (waiter[0]){
-            cell.waiter = waiter[0];
-            cell.waiterName.text = cell.waiter.name;
-        }
-        if (error){
-            NSLog(@"%@", error.localizedDescription);
-        }
-    }];
-        cell.waiterName.text = waiter.name;
-    return cell;
+
     
+    return cell;
 }
 /*     NSArray *tableNumbers = [[[OrderManager shared] openOrdersByTable] allKeys];
  for (int i = 0; i < tableNumbers.count; i++){
@@ -72,16 +70,34 @@
 // Do any additional setup after loading the view.
 //fill totalOpenTables
 
--(void) fetchOpdenOrders{
+-(void) fetchOpenOrders:(void (^)(NSError * _Nullable error)) completion{
     [[OrderManager shared] fetchOpenOrderItems:[PFUser currentUser] withCompletion:^(NSArray * _Nonnull openOrders, NSError * _Nonnull error) {
         if (openOrders){
             self.totalOpenTables = [[OrderManager shared] openOrdersByTable];
             self.keys = [self.totalOpenTables allKeys];
-            [self.openOrdersTable reloadData];
+            for (int i = 0; i < openOrders.count; i++){
+                NSString *table = [((OpenOrder*)openOrders[i]).table stringValue];
+                Waiter *waiter = (Waiter*)((OpenOrder*)openOrders[i]).waiter;
+                [[WaiterManager shared]findWaiter:waiter.objectId withCompletion:^(NSArray * _Nonnull waiter, NSError * _Nullable error) {
+                    if (waiter[0]){
+                        [self.tableWaiterDictionary setObject:waiter[0] forKey:table];
+                        [self.openOrdersTable reloadData];
+                        completion(nil);
+                    }
+                    if (error){
+                        NSLog(@"Waiter query: %@", error.localizedDescription);
+                        completion(error);
+                    }
+                }];
+            }
+            
         } else {
-            NSLog(@"%@", error.localizedDescription);
+            NSLog(@"Open order query: %@", error.localizedDescription);
+            completion(error);
         }
     }];
+    completion(nil);
+    
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
