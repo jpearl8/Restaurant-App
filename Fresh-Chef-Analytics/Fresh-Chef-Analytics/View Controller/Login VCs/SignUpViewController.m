@@ -19,6 +19,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
 }
 
 - (void)registerUser {
@@ -29,20 +30,37 @@
     newUser.password = self.passwordField.text;
     newUser[@"email"] = self.emailField.text;
     newUser[@"managerPassword"] = self.managerPasswordField.text;
-    // call sign up function on the object
-    [newUser signUpInBackgroundWithBlock:^(BOOL succeeded, NSError * error) {
-        if (error != nil) {
-            NSLog(@"Error: %@", error.localizedDescription);
-        } else {
-            NSLog(@"User registered successfully");
-            // manually segue to profile view for new user to set their preferences
-//            [self performSegueWithIdentifier:@"signUpSegue" sender:nil];
-            AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-            UINavigationController *navigationController = [storyboard instantiateViewControllerWithIdentifier:@"mainTabs"];
-            appDelegate.window.rootViewController = navigationController;
-        }
-    }];
+    // if all fields are filled, call sign up function on the object
+    if(![newUser.username  isEqual: @""] && ![newUser.password  isEqual: @""] && ![newUser[@"email"]  isEqual: @""] && ![newUser[@"managerPassword"]  isEqual: @""]) {
+        [newUser signUpInBackgroundWithBlock:^(BOOL succeeded, NSError * error) {
+            if (error != nil) {
+                NSLog(@"Error: %@", error.localizedDescription);
+            } else {
+                NSLog(@"User registered successfully");
+                AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+                UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+                UINavigationController *navigationController = [storyboard instantiateViewControllerWithIdentifier:@"mainTabs"];
+                appDelegate.window.rootViewController = navigationController;
+            }
+        }];
+    } else {
+        // alert user that they need to fill out all fields
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Incomplete Fields"
+                                                                       message:@"Please fill out every field to sign up"
+                                                                preferredStyle:(UIAlertControllerStyleAlert)];
+        
+        // create an OK action
+        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK"
+                                                           style:UIAlertActionStyleDefault
+                                                         handler:^(UIAlertAction * _Nonnull action) {
+                                                             // handle response here.
+                                                         }];
+        // add the OK action to the alert controller
+        [alert addAction:okAction];
+        [self presentViewController:alert animated:YES completion:^{
+            // optional code for what happens after the alert controller has finished presenting
+        }];
+    }
 }
 
 - (IBAction)didTapSignUp:(id)sender {

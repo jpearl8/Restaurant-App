@@ -26,6 +26,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSString *freqCategory;
 @property (nonatomic, strong) NSString *profitCategory;
 @property (nonatomic, strong) NSArray *comments;
+@property (nonatomic, strong) NSString *suggestions;
 
 + (Dish *) postNewDish: ( NSString * _Nullable )name withType: ( NSString * _Nullable )type withDescription: ( NSString * _Nullable )description withPrice: ( NSNumber * _Nullable )price  withCompletion: (PFBooleanResultBlock  _Nullable)completion;
 + (Dish *) postNewDish: ( NSString * _Nullable )name withType: ( NSString * _Nullable )type withDescription: ( NSString * _Nullable )description withPrice: ( NSNumber * _Nullable )price withImage: ( UIImage * _Nullable )image withCompletion: (PFBooleanResultBlock  _Nullable)completion;

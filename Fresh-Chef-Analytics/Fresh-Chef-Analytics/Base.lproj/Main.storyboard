@@ -2964,7 +2964,7 @@
                                                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7Oh-fZ-rVa" customClass="HCSStarRatingView">
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Oh-fZ-rVa" customClass="HCSStarRatingView">
                                                                 <rect key="frame" x="108" y="157" width="146" height="30"/>
                                                                 <color key="backgroundColor" red="0.99999064207077026" green="0.99999362230300903" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                 <constraints>
@@ -3805,10 +3805,10 @@
                                                     <rect key="frame" x="0.0" y="99.5" width="414" height="200"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Suggestions" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p8m-nb-RnU">
-                                                            <rect key="frame" x="8" y="8" width="95" height="21"/>
-                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Suggestions" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p8m-nb-RnU">
+                                                            <rect key="frame" x="8" y="8" width="398" height="184"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                                            <fontDescription key="fontDescription" type="system" weight="thin" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
@@ -3878,6 +3878,7 @@
                                             <outlet property="price" destination="nco-P4-XaV" id="mDb-i5-b5p"/>
                                             <outlet property="profit" destination="3Kk-hj-NbK" id="wed-tU-Dw8"/>
                                             <outlet property="rating" destination="udl-3y-211" id="i6u-Sw-bmr"/>
+                                            <outlet property="suggestionsLabel" destination="p8m-nb-RnU" id="kDA-63-HI6"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
