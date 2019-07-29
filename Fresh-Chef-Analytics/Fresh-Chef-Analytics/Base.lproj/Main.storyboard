@@ -1974,6 +1974,31 @@
             </objects>
             <point key="canvasLocation" x="-2880" y="3959"/>
         </scene>
+        <!--Profit Trends View Controller-->
+        <scene sceneID="Wku-Pk-SkB">
+            <objects>
+                <viewController id="4pO-Ap-iSk" customClass="ProfitTrendsViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Zi5-JF-zSf">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="426"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eIE-tn-fTh" userLabel="Data View">
+                                <rect key="frame" x="20" y="69" width="374" height="295"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.87518163196189092" green="1" blue="0.78762314931886579" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <viewLayoutGuide key="safeArea" id="s2L-ne-N78"/>
+                    </view>
+                    <connections>
+                        <outlet property="dataView" destination="eIE-tn-fTh" id="Ruh-yo-KNr"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gl8-qF-h6K" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-3517.3913043478265" y="5889.5089285714284"/>
+        </scene>
         <!--Menu List View Controller-->
         <scene sceneID="7wd-iE-Teu">
             <objects>
@@ -2117,7 +2142,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lBY-Yr-Z70" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2684.057971014493" y="5787.7232142857138"/>
+            <point key="canvasLocation" x="-2671" y="5890"/>
         </scene>
         <!--Dish Details View Controller-->
         <scene sceneID="VsX-Ny-3Cn">
@@ -2217,7 +2242,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ney-L4-Be8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1949" y="5788"/>
+            <point key="canvasLocation" x="-2671" y="6620"/>
         </scene>
         <!--Orders-->
         <scene sceneID="rw2-k4-jpl">
@@ -3834,7 +3859,7 @@
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Suggestions" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p8m-nb-RnU">
-                                                            <rect key="frame" x="8" y="8" width="398" height="184"/>
+                                                            <rect key="frame" x="8" y="8" width="398" height="183"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                             <fontDescription key="fontDescription" type="system" weight="thin" pointSize="17"/>
                                                             <nil key="textColor"/>
@@ -4115,6 +4140,9 @@
                                                 <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4oC-Rg-Ghl">
                                                     <rect key="frame" x="0.0" y="115" width="414" height="426"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                                    <connections>
+                                                        <segue destination="4pO-Ap-iSk" kind="embed" id="W2D-aH-4t3"/>
+                                                    </connections>
                                                 </containerView>
                                                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dA6-kL-Kzw">
                                                     <rect key="frame" x="0.0" y="0.0" width="414" height="107"/>

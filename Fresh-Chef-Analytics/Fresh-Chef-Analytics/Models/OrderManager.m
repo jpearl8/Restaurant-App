@@ -70,6 +70,16 @@
     }];
 }
 
+- (void)sortOrdersByDate
+{
+    self.closedOrdersByDate = [[NSMutableDictionary alloc] init];
+    NSArray *ordersByDate;
+    for (ClosedOrder *order in self.closedOrders)
+    {
+//        [self addOrderToDict:order toArray:ordersByTable];
+    }
+}
+
 //- (void) fetchOrdersToClose : (PFUser * ) restaurant withTable : (NSNumber *) table forWaiter : (Waiter *) waiter withCompletion : (void (^)(NSArray *orders, NSError * error))completion
 //{
 //

@@ -17,6 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface OrderManager : NSObject
 @property (strong, nonatomic) NSArray *allOpenOrders;
 @property (strong, nonatomic) NSMutableDictionary *openOrdersByTable;
+@property (strong, nonatomic) NSMutableDictionary *closedOrdersByDate;
 @property (strong, nonatomic) NSArray *closedOrders;
 @property (strong, nonatomic) NSArray *ordersToDelete;
 @property (strong, nonatomic) Dish * tempDish;
