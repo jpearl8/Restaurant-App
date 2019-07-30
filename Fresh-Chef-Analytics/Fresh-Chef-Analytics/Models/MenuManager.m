@@ -86,8 +86,6 @@
             }];
         }
     }];
-
-
 }
 
 - (void) categorizeDishes
@@ -108,8 +106,6 @@
         dish.profit = [NSNumber numberWithInt: ([dish.orderFrequency intValue] * [dish.price intValue])];
         NSLog(@"Dish profit: %@", dish.profit);
     }
-    
-    
 }
 
 - (void) addDishToDict : (Dish *) dish toArray: (NSArray *) dishesOfType
