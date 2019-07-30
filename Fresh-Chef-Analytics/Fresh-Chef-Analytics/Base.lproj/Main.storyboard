@@ -4233,10 +4233,10 @@
                                                     <rect key="frame" x="0.0" y="99.5" width="414" height="200"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Suggestions" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p8m-nb-RnU">
-                                                            <rect key="frame" x="8" y="8" width="95" height="21"/>
-                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Suggestions" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p8m-nb-RnU">
+                                                            <rect key="frame" x="8" y="8" width="398" height="184"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                                            <fontDescription key="fontDescription" type="system" weight="thin" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
@@ -4306,6 +4306,7 @@
                                             <outlet property="price" destination="nco-P4-XaV" id="mDb-i5-b5p"/>
                                             <outlet property="profit" destination="3Kk-hj-NbK" id="wed-tU-Dw8"/>
                                             <outlet property="rating" destination="udl-3y-211" id="i6u-Sw-bmr"/>
+                                            <outlet property="suggestionsLabel" destination="p8m-nb-RnU" id="kDA-63-HI6"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

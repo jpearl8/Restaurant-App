@@ -51,7 +51,7 @@
     [self.legend insertObject:@"All categories" atIndex:0];
     [self.legend arrayByAddingObjectsFromArray:[[[MenuManager shared] categoriesOfDishes] allKeys]];
     
-    if (self.categoriesOfDishes != nil)
+    if (self.categoriesOfDishes != nil && self.categoriesOfDishes.count != 0)
     {
         
         NSArray *checkDishFromArray = self.categoriesOfDishes[self.legend[1]];
