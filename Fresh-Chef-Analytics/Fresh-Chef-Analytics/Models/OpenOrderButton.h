@@ -13,6 +13,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface OpenOrderButton : UIButton
 @property (strong, nonatomic) NSArray <OpenOrder *>* openOrders;
+@property (strong, nonatomic) NSArray <Dish *>*dishArray;
+@property (strong, nonatomic) Waiter *waiter;
+
 @end
 
 NS_ASSUME_NONNULL_END

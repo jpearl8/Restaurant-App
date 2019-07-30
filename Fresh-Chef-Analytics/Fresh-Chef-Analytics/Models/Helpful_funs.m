@@ -7,7 +7,7 @@
 //
 
 #import "Helpful_funs.h"
-
+#import "MenuManager.h"
 
 @implementation Helpful_funs
 
@@ -112,5 +112,8 @@
     }
     return YES;
 }
+
+
+
 
 @end

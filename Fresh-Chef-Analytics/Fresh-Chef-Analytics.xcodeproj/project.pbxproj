@@ -26,11 +26,9 @@
 		A5C06F7E22E9028000F634E3 /* OrderManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C06F7D22E9028000F634E3 /* OrderManager.m */; };
 		B6795EA122EB7C6400CCC0F8 /* ManagerOrderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B6795EA022EB7C6400CCC0F8 /* ManagerOrderTableViewCell.m */; };
 		B6BC874D22E6867000264995 /* Top3Bottom3TableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B6BC874C22E6867000264995 /* Top3Bottom3TableViewCell.m */; };
-		B6C4BFED22E8CF4300FE5EAC /* OrdersListedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6C4BFEC22E8CF4300FE5EAC /* OrdersListedViewController.m */; };
 		B6C4BFF022E8FE8500FE5EAC /* DataViewTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6C4BFEF22E8FE8500FE5EAC /* DataViewTableViewController.m */; };
 		B6C4BFF922E9107400FE5EAC /* OrdersManagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6C4BFF822E9107400FE5EAC /* OrdersManagerViewController.m */; };
 		B6C4C00022E91EAD00FE5EAC /* EditOrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6C4BFFF22E91EAD00FE5EAC /* EditOrderViewController.m */; };
-		B6C4C00322E921EA00FE5EAC /* WaitOrderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B6C4C00222E921EA00FE5EAC /* WaitOrderTableViewCell.m */; };
 		B6D7B35322DE6D27002093CB /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6D7B35222DE6D27002093CB /* LoginViewController.m */; };
 		B6D7B35622DE6D40002093CB /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6D7B35522DE6D40002093CB /* SignUpViewController.m */; };
 		B6D7B35C22DF95BA002093CB /* ManagerLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6D7B35B22DF95BA002093CB /* ManagerLoginViewController.m */; };
@@ -53,7 +51,6 @@
 		FF03BF5F22DEA19100719E8C /* MenuDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF03BF5E22DEA19100719E8C /* MenuDataViewController.m */; };
 		FF03BF6222DF763300719E8C /* MenuListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FF03BF6122DF763300719E8C /* MenuListTableViewCell.m */; };
 		FF1EDA9322E2951A00B1B897 /* Helpful_funs.m in Sources */ = {isa = PBXBuildFile; fileRef = FF1EDA9222E2951A00B1B897 /* Helpful_funs.m */; };
-		FF318E8322EA7969003AF015 /* SingleOpenOrder.m in Sources */ = {isa = PBXBuildFile; fileRef = FF318E8222EA7969003AF015 /* SingleOpenOrder.m */; };
 		FF318E8922EAC57C003AF015 /* OpenOrderButton.m in Sources */ = {isa = PBXBuildFile; fileRef = FF318E8822EAC57C003AF015 /* OpenOrderButton.m */; };
 		FF46E19222DE436400E15A0E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FF46E19122DE436400E15A0E /* AppDelegate.m */; };
 		FF46E19822DE436400E15A0E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF46E19622DE436400E15A0E /* Main.storyboard */; };
@@ -74,6 +71,8 @@
 		FFECCE4D22E682F20000FDFF /* YelpAPIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FFECCE4C22E682F20000FDFF /* YelpAPIManager.m */; };
 		FFF1C48D22E02A8200C2AC03 /* specialStepper.m in Sources */ = {isa = PBXBuildFile; fileRef = FFF1C48C22E02A8200C2AC03 /* specialStepper.m */; };
 		FFF1C49022E03B5300C2AC03 /* FunTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FFF1C48F22E03B5300C2AC03 /* FunTableViewCell.m */; };
+		FFFC45E122EE097B003E8FF6 /* OrderViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FFFC45E022EE097B003E8FF6 /* OrderViewCell.m */; };
+		FFFC45E422EE9162003E8FF6 /* OrdersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FFFC45E322EE9162003E8FF6 /* OrdersViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -128,16 +127,12 @@
 		B6795EA022EB7C6400CCC0F8 /* ManagerOrderTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ManagerOrderTableViewCell.m; sourceTree = "<group>"; };
 		B6BC874B22E6867000264995 /* Top3Bottom3TableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Top3Bottom3TableViewCell.h; sourceTree = "<group>"; };
 		B6BC874C22E6867000264995 /* Top3Bottom3TableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Top3Bottom3TableViewCell.m; sourceTree = "<group>"; };
-		B6C4BFEB22E8CF4300FE5EAC /* OrdersListedViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OrdersListedViewController.h; sourceTree = "<group>"; };
-		B6C4BFEC22E8CF4300FE5EAC /* OrdersListedViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OrdersListedViewController.m; sourceTree = "<group>"; };
 		B6C4BFEE22E8FE8500FE5EAC /* DataViewTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DataViewTableViewController.h; sourceTree = "<group>"; };
 		B6C4BFEF22E8FE8500FE5EAC /* DataViewTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DataViewTableViewController.m; sourceTree = "<group>"; };
 		B6C4BFF722E9107400FE5EAC /* OrdersManagerViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OrdersManagerViewController.h; sourceTree = "<group>"; };
 		B6C4BFF822E9107400FE5EAC /* OrdersManagerViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OrdersManagerViewController.m; sourceTree = "<group>"; };
 		B6C4BFFE22E91EAD00FE5EAC /* EditOrderViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EditOrderViewController.h; sourceTree = "<group>"; };
 		B6C4BFFF22E91EAD00FE5EAC /* EditOrderViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EditOrderViewController.m; sourceTree = "<group>"; };
-		B6C4C00122E921EA00FE5EAC /* WaitOrderTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WaitOrderTableViewCell.h; sourceTree = "<group>"; };
-		B6C4C00222E921EA00FE5EAC /* WaitOrderTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WaitOrderTableViewCell.m; sourceTree = "<group>"; };
 		B6D7B35122DE6D27002093CB /* LoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		B6D7B35222DE6D27002093CB /* LoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		B6D7B35422DE6D3F002093CB /* SignUpViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SignUpViewController.h; sourceTree = "<group>"; };
@@ -187,8 +182,6 @@
 		FF03BF6122DF763300719E8C /* MenuListTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = MenuListTableViewCell.m; path = "Fresh-Chef-Analytics/View Controller/Manager VCs/MenuListTableViewCell.m"; sourceTree = SOURCE_ROOT; };
 		FF1EDA9122E2951A00B1B897 /* Helpful_funs.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Helpful_funs.h; sourceTree = "<group>"; };
 		FF1EDA9222E2951A00B1B897 /* Helpful_funs.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Helpful_funs.m; sourceTree = "<group>"; };
-		FF318E8122EA7969003AF015 /* SingleOpenOrder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SingleOpenOrder.h; path = "Fresh-Chef-Analytics/View Controller/Waiter VCs/SingleOpenOrder.h"; sourceTree = SOURCE_ROOT; };
-		FF318E8222EA7969003AF015 /* SingleOpenOrder.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = SingleOpenOrder.m; path = "Fresh-Chef-Analytics/View Controller/Waiter VCs/SingleOpenOrder.m"; sourceTree = SOURCE_ROOT; };
 		FF318E8722EAC57C003AF015 /* OpenOrderButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OpenOrderButton.h; sourceTree = "<group>"; };
 		FF318E8822EAC57C003AF015 /* OpenOrderButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OpenOrderButton.m; sourceTree = "<group>"; };
 		FF46E18D22DE436400E15A0E /* Fresh-Chef-Analytics.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Fresh-Chef-Analytics.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -229,6 +222,10 @@
 		FFF1C48C22E02A8200C2AC03 /* specialStepper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = specialStepper.m; sourceTree = "<group>"; };
 		FFF1C48E22E03B5300C2AC03 /* FunTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FunTableViewCell.h; sourceTree = "<group>"; };
 		FFF1C48F22E03B5300C2AC03 /* FunTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FunTableViewCell.m; sourceTree = "<group>"; };
+		FFFC45DF22EE097B003E8FF6 /* OrderViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OrderViewCell.h; sourceTree = "<group>"; };
+		FFFC45E022EE097B003E8FF6 /* OrderViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OrderViewCell.m; sourceTree = "<group>"; };
+		FFFC45E222EE9162003E8FF6 /* OrdersViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OrdersViewController.h; sourceTree = "<group>"; };
+		FFFC45E322EE9162003E8FF6 /* OrdersViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OrdersViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -306,6 +303,8 @@
 		A535D7B522DE6B92002B79CA /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				FFFC45DF22EE097B003E8FF6 /* OrderViewCell.h */,
+				FFFC45E022EE097B003E8FF6 /* OrderViewCell.m */,
 				FF85DF4F22E7BF180056726A /* CompetitorsCell.h */,
 				FF85DF5022E7BF180056726A /* CompetitorsCell.m */,
 				FF5924FD22E2155D00F66EC6 /* ReceiptTableViewCell.h */,
@@ -322,10 +321,6 @@
 				A5C06F5B22E2613100F634E3 /* WaiterListTableViewCell.m */,
 				B6BC874B22E6867000264995 /* Top3Bottom3TableViewCell.h */,
 				B6BC874C22E6867000264995 /* Top3Bottom3TableViewCell.m */,
-				B6C4C00122E921EA00FE5EAC /* WaitOrderTableViewCell.h */,
-				B6C4C00222E921EA00FE5EAC /* WaitOrderTableViewCell.m */,
-				FF318E8122EA7969003AF015 /* SingleOpenOrder.h */,
-				FF318E8222EA7969003AF015 /* SingleOpenOrder.m */,
 				B6795E9F22EB7C6400CCC0F8 /* ManagerOrderTableViewCell.h */,
 				B6795EA022EB7C6400CCC0F8 /* ManagerOrderTableViewCell.m */,
 			);
@@ -400,8 +395,8 @@
 				FF03BF2D22DE963B00719E8C /* WaiterViewController.m */,
 				FF03BF2F22DE96EC00719E8C /* FunFormViewController.h */,
 				FF03BF3022DE96EC00719E8C /* FunFormViewController.m */,
-				B6C4BFEB22E8CF4300FE5EAC /* OrdersListedViewController.h */,
-				B6C4BFEC22E8CF4300FE5EAC /* OrdersListedViewController.m */,
+				FFFC45E222EE9162003E8FF6 /* OrdersViewController.h */,
+				FFFC45E322EE9162003E8FF6 /* OrdersViewController.m */,
 				B6C4BFFE22E91EAD00FE5EAC /* EditOrderViewController.h */,
 				B6C4BFFF22E91EAD00FE5EAC /* EditOrderViewController.m */,
 			);
@@ -783,7 +778,7 @@
 				FF03BF6222DF763300719E8C /* MenuListTableViewCell.m in Sources */,
 				FF03BF3A22DE975B00719E8C /* ReceiptViewController.m in Sources */,
 				FF03BF3422DE971600719E8C /* ComfortableFormViewController.m in Sources */,
-				FF318E8322EA7969003AF015 /* SingleOpenOrder.m in Sources */,
+				FFFC45E122EE097B003E8FF6 /* OrderViewCell.m in Sources */,
 				B6D7B35322DE6D27002093CB /* LoginViewController.m in Sources */,
 				B6D7B35622DE6D40002093CB /* SignUpViewController.m in Sources */,
 				FFC87ACD22EA2650009DE74C /* YelpLinkViewController.m in Sources */,
@@ -796,10 +791,8 @@
 				FF03BF4622DE9FC700719E8C /* EditMenuViewController.m in Sources */,
 				FFB3224722DF9DF700BF966F /* WaitTableViewCell.m in Sources */,
 				FF03BF3722DE973B00719E8C /* ElegantFormViewController.m in Sources */,
-				B6C4C00322E921EA00FE5EAC /* WaitOrderTableViewCell.m in Sources */,
 				FF03BF2E22DE963B00719E8C /* WaiterViewController.m in Sources */,
 				FF03BF5622DEA0A000719E8C /* WaitDetailsViewController.m in Sources */,
-				B6C4BFED22E8CF4300FE5EAC /* OrdersListedViewController.m in Sources */,
 				A535D7C522DFD4B5002B79CA /* MenuManager.m in Sources */,
 				FF03BF5022DEA04900719E8C /* DishDetailsViewController.m in Sources */,
 				FF03BF5922DEA0C700719E8C /* CompetitorDetailsViewController.m in Sources */,
@@ -821,6 +814,7 @@
 				A5C06F7822E8FECF00F634E3 /* OpenOrder.m in Sources */,
 				FF85DF5122E7BF180056726A /* CompetitorsCell.m in Sources */,
 				A535D7BF22DE9FBF002B79CA /* Waiter.m in Sources */,
+				FFFC45E422EE9162003E8FF6 /* OrdersViewController.m in Sources */,
 				A5C06F6822E67E7F00F634E3 /* Top3Bot3ViewController.m in Sources */,
 				B6C4C00022E91EAD00FE5EAC /* EditOrderViewController.m in Sources */,
 				FFC87AD322EA2A91009DE74C /* Link.m in Sources */,

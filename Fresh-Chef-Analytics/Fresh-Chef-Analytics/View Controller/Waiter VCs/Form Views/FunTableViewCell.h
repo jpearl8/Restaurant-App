@@ -14,9 +14,15 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@protocol FunCellDelegate <NSObject>
+- (void)customerCommentForIndex:(int)index withComment:(NSString *)comment;
+- (void)customerRatingForIndex:(int)index withRating:(NSNumber *)rating;
+
+@end
+
 @interface FunTableViewCell : UITableViewCell <UITextViewDelegate> 
 @property (weak, nonatomic) IBOutlet UILabel *charsRemaining;
-@property (strong, nonatomic) order *order;
+@property (nonatomic, weak) id <FunCellDelegate> delegate;
 @property (weak, nonatomic) IBOutlet UILabel *dishName;
 @property (weak, nonatomic) IBOutlet UILabel *dishType;
 @property (weak, nonatomic) IBOutlet UILabel *dishDescription;
@@ -32,6 +38,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong, nonatomic) NSMutableArray *customerRatings;
 @property (strong, nonatomic) NSMutableArray *customerComments;
 @property (assign, nonatomic) int index;
+
 
 
 @end
