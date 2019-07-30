@@ -42,6 +42,7 @@
         [self addOrderToDict:order toArray:ordersByTable];
     }
 }
+
 - (void) addOrderToDict : (OpenOrder *) order toArray : (NSArray *) ordersOfTable
 {
     NSString *table = [order.table stringValue];
@@ -56,28 +57,50 @@
     }
     [self.openOrdersByTable setObject:ordersOfTable forKey:table];
 }
+
 - (void) fetchClosedOrderItems:(PFUser *) restaurant  withCompletion:(void (^)(NSArray * closedOrders, NSError * error))fetchedClosedOrders
 {
     PFQuery *closedOrderQuery;
     closedOrderQuery = [ClosedOrder query];
-    [closedOrderQuery whereKey:@"restaurantId" equalTo:restaurant.objectId];
+    [closedOrderQuery whereKey:@"restaurant" equalTo:restaurant];
     [closedOrderQuery findObjectsInBackgroundWithBlock:^(NSArray * closedOrders, NSError * error) {
         if (!error)
         {
             self.closedOrders = closedOrders;
             fetchedClosedOrders(self.closedOrders, nil);
+            [self setProfitByDate];
         }
     }];
 }
 
-- (void)sortOrdersByDate
+- (void)setClosedOrderByDate
 {
-    self.closedOrdersByDate = [[NSMutableDictionary alloc] init];
-    NSArray *ordersByDate;
-    for (ClosedOrder *order in self.closedOrders)
-    {
-//        [self addOrderToDict:order toArray:ordersByTable];
-    }
+    //        [self addOrderToDict:order toArray:ordersByTable];
+}
+
+- (void)setProfitByDate
+{
+//    self.profitByDate = [[NSMutableDictionary alloc] init];
+//    
+//    for (ClosedOrder *anOrder in self.closedOrders)
+//    {
+//        // loop through closed orders and add amount*dish.price to value for each date
+//        // find  order total
+//        float orderTotal = 0;
+//        NSLog(@"Order: %@", anOrder);
+//        for(int i = 0; i < anOrder.amounts.count; i++){
+//            float dishPrice = [((Dish *)anOrder.dishes[i]).price floatValue];
+//            float cost = dishPrice * [((NSNumber *)anOrder.amounts[i]) floatValue];
+//            orderTotal += cost;
+//        }
+//        // check if order date is already in dictionary:
+//        float dateTotal = 0.0f;
+//        if(self.closedOrdersByDate[anOrder.createdAt] != nil) {
+//            dateTotal = [[self.closedOrdersByDate objectForKey:anOrder.createdAt] floatValue];
+//        }
+//        [self.closedOrdersByDate[anOrder.createdAt] setObject:@(dateTotal + orderTotal) forKey:anOrder.createdAt];
+//    }
+//    NSLog(@"Profit by date: %@", self.profitByDate);
 }
 
 //- (void) fetchOrdersToClose : (PFUser * ) restaurant withTable : (NSNumber *) table forWaiter : (Waiter *) waiter withCompletion : (void (^)(NSArray *orders, NSError * error))completion

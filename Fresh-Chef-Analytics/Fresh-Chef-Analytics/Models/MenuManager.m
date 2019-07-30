@@ -24,7 +24,7 @@
     // construct PFQuery
     PFQuery *dishQuery;
     dishQuery = [Dish query];
-    [dishQuery whereKey:@"restaurantID" equalTo:restaurant.objectId];
+    [dishQuery whereKey:@"restaurant" equalTo:restaurant.objectId];
     dishQuery.limit = 20;
     
     // fetch data asynchronously
@@ -135,7 +135,7 @@
         Dish *checkDish = [self.dishes objectAtIndex:0];
         if (![checkDish.name isEqualToString:@"test"]){
             // make sorted array of every menu item
-            NSLog(@"dishes %@", self.dishes);
+//            NSLog(@"dishes %@", self.dishes);
             NSArray *dishesByFreqArray = [[Helpful_funs shared] orderArray:self.dishes byType:@"orderFrequency"];
             NSArray *dishesByRatingArray = [[Helpful_funs shared] orderArray:self.dishes byType:@"rating"];
             // take top 3 and bottom 3 based on reviews/frequency

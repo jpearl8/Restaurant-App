@@ -113,6 +113,7 @@
         [[OrderManager shared] fetchClosedOrderItems:PFUser.currentUser withCompletion:^(NSArray * _Nonnull closedOrders, NSError * _Nonnull error) {
             if (!error)
             {
+                [[OrderManager shared] setProfitByDate];
                 NSLog(@"fetched restaurant's closed orders");
             }
         }];
