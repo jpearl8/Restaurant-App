@@ -130,7 +130,7 @@
 
 - (void)setTop3Bottom3Dict
 {
-    if (self.dishes.count != nil)
+    if (self.dishes.count >= 3)
     {
         Dish *checkDish = [self.dishes objectAtIndex:0];
         if (![checkDish.name isEqualToString:@"test"]){

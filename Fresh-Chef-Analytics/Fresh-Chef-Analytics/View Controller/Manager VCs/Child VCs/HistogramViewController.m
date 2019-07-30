@@ -10,6 +10,7 @@
 
 @interface HistogramViewController ()
 @property (weak, nonatomic) IBOutlet UIView *dataView;
+@property (strong, nonatomic) NSArray *dishes;
 @property (strong, nonatomic) NSMutableDictionary *categoriesOfDishes;
 @property (strong, nonatomic) PNRadarChart *radarChart;
 @property (strong, nonatomic) NSMutableArray *legend;
@@ -21,12 +22,11 @@
 @property (strong, nonatomic) CAShapeLayer *ratingPlot;
 @property (strong, nonatomic) CAShapeLayer *frequencyPlot;
 @property (strong, nonatomic) CAShapeLayer *profitPlot;
-@property (weak, nonatomic) IBOutlet UILabel *ratingLabel;
-@property (weak, nonatomic) IBOutlet UILabel *profitLabel;
-@property (weak, nonatomic) IBOutlet UILabel *popularityLabel;
 @property (strong, nonatomic) NSArray *ratingItems;
 @property (strong, nonatomic) NSArray *frequencyItems;
 @property (strong, nonatomic) NSArray *profitItems;
+@property (weak, nonatomic) IBOutlet UIPickerView *categoryPicker;
+
 
 @end
 
@@ -34,16 +34,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.categoriesTableView.delegate = self;
-    self.categoriesTableView.dataSource = self;
+    self.categoryPicker.delegate = self;
+    self.categoryPicker.dataSource = self;
+    self.dishes = [[MenuManager shared] dishes];
+    //self.categoriesTableView.delegate = self;
+    //self.categoriesTableView.dataSource = self;
     self.colorsFromUI = @[@"#FF0000", @"#00FF00", @"#00FFFF", @"#FF00FF", @"#FCAF0B", @"#800BFC", @"#0B30FC", @"0B30FC"];
     self.chartColors = @[@"#FE0EBC", @"#0E62FE", @"#FEDD0E"];
-    self.ratingLabel.textColor = [[Helpful_funs shared] colorFromHexString:self.chartColors[0]];
-    self.ratingLabel.backgroundColor = [UIColor whiteColor];
-    self.popularityLabel.textColor = [[Helpful_funs shared] colorFromHexString:self.chartColors[1]];
-    self.popularityLabel.backgroundColor = [UIColor whiteColor];
-    self.profitLabel.textColor = [[Helpful_funs shared] colorFromHexString:self.chartColors[2]];
-    self.profitLabel.backgroundColor = [UIColor whiteColor];
 
     self.categoriesOfDishes = [[MenuManager shared] categoriesOfDishes];
     self.legend = [NSMutableArray arrayWithArray:[[[MenuManager shared] categoriesOfDishes] allKeys]];
@@ -51,7 +48,8 @@
     [self.legend insertObject:@"All categories" atIndex:0];
     [self.legend arrayByAddingObjectsFromArray:[[[MenuManager shared] categoriesOfDishes] allKeys]];
     
-    if (self.categoriesOfDishes != nil && self.categoriesOfDishes.count != 0)
+    
+    if (self.categoriesOfDishes != nil && [[[MenuManager shared] dishes] count] >= 3)
     {
         
         NSArray *checkDishFromArray = self.categoriesOfDishes[self.legend[1]];
@@ -64,42 +62,58 @@
             [self setUpChartWithData];
         }
     }
-
 }
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
 {
-    return self.legend.count;
+    return 1;
 }
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SimpleTableItem"];
-    if (cell == nil){
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"SimpleTableItem"];
-    }
-    cell.textLabel.text = self.legend[indexPath.row];
-    return cell;
+    return [self.legend count];
 }
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
+{
+    return self.legend[row];
+}
+- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
 {
     NSArray *viewsToRemove = [self.dataView subviews];
     for (UIView *v in viewsToRemove) {
         [v removeFromSuperview];
     }
-    UITableViewCell *cell = [self.categoriesTableView cellForRowAtIndexPath:indexPath];
+    __block BOOL continueFlow = NO;
     NSArray *dataArray;
-    [self.chooseCategoryButton setTitle:cell.textLabel.text forState:UIControlStateNormal];
-    if ([cell.textLabel.text  isEqual: @"All categories"])
+    
+    if ([self.legend[row]  isEqual: @"All categories"] && [[[MenuManager shared] dishes] count] >= 3)
     {
         dataArray = [self populateDataForAllCategories];
+        continueFlow = YES;
+    }
+    else if ([self.categoriesOfDishes[self.legend[row]] count] >= 3)
+    {
+        dataArray = [self populateDataForCategory:self.legend[row]];
+        continueFlow = YES;
     }
     else
     {
-        dataArray = [self populateDataForCategory:cell.textLabel.text];
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Cannot render chart" message:@"Add more dishes to render chart."
+                                                                preferredStyle:(UIAlertControllerStyleAlert)];
+        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK"
+                                                           style:UIAlertActionStyleDefault
+                                                         handler:^(UIAlertAction * _Nonnull action) {
+                                                             // handle response here.
+                                                         }];
+        // add the OK action to the alert controller
+        [alert addAction:okAction];
+        [self presentViewController:alert animated:YES completion:^{
+        }];
     }
-    self.categoriesTableView.hidden = YES;
-    [self makeItemsWithData:dataArray];
-    [self setUpChartWithData];
-    
+    if (continueFlow)
+    {
+        self.categoriesTableView.hidden = YES;
+        [self makeItemsWithData:dataArray];
+        [self setUpChartWithData];
+    }
 }
 - (NSArray *) populateDataForCategory : (NSString *) category
 {
@@ -110,30 +124,65 @@
     NSMutableArray *dishNames = [NSMutableArray array];
     CGFloat dishRating;
     CGFloat dishProfit;
-    for (Dish *dish in self.categoriesOfDishes[category])
+    if ([self.categoriesOfDishes[category] count] >= 1)
     {
-        [dishNames addObject:dish.name];
-        dishProfit = [dish.price floatValue] * [dish.orderFrequency floatValue];
-        if (dish.rating == nil)
+        for (Dish *dish in self.categoriesOfDishes[category])
         {
-            dishRating = 0;
-            
+            [dishNames addObject:dish.name];
+            dishProfit = [dish.price floatValue] * [dish.orderFrequency floatValue];
+            if (dish.rating == nil)
+            {
+                dishRating = 0;
+                
+            }
+            else {
+                dishRating = [dish.rating floatValue] / [dish.orderFrequency floatValue];
+            }
+            [ratingData addObject:[NSNumber numberWithFloat:dishRating]];
+            [frequencyData addObject:dish.orderFrequency];
+            [profitData addObject:[NSNumber numberWithFloat:dishProfit]];
         }
-        else {
-            dishRating = [dish.rating floatValue] / [dish.orderFrequency floatValue];
-        }
-        [ratingData addObject:[NSNumber numberWithFloat:dishRating]];
-        [frequencyData addObject:dish.orderFrequency];
-        [profitData addObject:[NSNumber numberWithFloat:dishProfit]];
+        [dataForRadar addObject:dishNames];
+        [dataForRadar addObject:ratingData];
+        [dataForRadar addObject:frequencyData];
+        [dataForRadar addObject:profitData];
+        return dataForRadar;
     }
-    [dataForRadar addObject:dishNames];
-    [dataForRadar addObject:ratingData];
-    [dataForRadar addObject:frequencyData];
-    [dataForRadar addObject:profitData];
-    return dataForRadar;
+    return nil;
+    
 }
 - (NSArray *) populateDataForAllCategories
 {
+//    NSMutableArray *dataForRadar = [NSMutableArray array];
+//    NSMutableArray *ratingData = [NSMutableArray array];
+//    NSMutableArray *frequencyData = [NSMutableArray array];
+//    NSMutableArray *profitData = [NSMutableArray array];
+//    NSArray *categoryNames = @[@"Profit", @"Rating", @"Popularity"];
+//
+//    NSString *category;
+//    CGFloat categoryRating;
+//    CGFloat categoryFrequency;
+//    CGFloat categoryProfit;
+//    CGFloat dishProfit;
+//    CGFloat dishRating;
+    
+//    if ([self.dishes count] >= 1)
+//    {
+//        CGFloat profit = 0;
+//        CGFloat frequency = 0;
+//        CGFloat rating = 0;
+//        for (Dish *dish in self.dishes)
+//        {
+//            profit += [dish.price floatValue] * [dish.orderFrequency floatValue];
+//            if (dish.rating != nil)
+//            {
+//                rating += [dish.rating floatValue] / [dish.orderFrequency floatValue];
+//            }
+//            frequency += [dish.orderFrequency floatValue];
+//        }
+//
+//    }
+//
     NSMutableArray *dataForRadar = [NSMutableArray array];
     NSMutableArray *ratingData = [NSMutableArray array];
     NSMutableArray *frequencyData = [NSMutableArray array];

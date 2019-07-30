@@ -9,6 +9,22 @@
 #import "DataViewTableViewController.h"
 
 @interface DataViewTableViewController ()
+@property (weak, nonatomic) IBOutlet UIButton *t3b3Button;
+@property (weak, nonatomic) IBOutlet UIButton *scatterButton;
+@property (weak, nonatomic) IBOutlet UIButton *radarButton;
+@property (weak, nonatomic) IBOutlet UIButton *histogramButton;
+@property (weak, nonatomic) IBOutlet UIButton *trendButton;
+@property (assign, nonatomic) __block double t3b3Mult;
+@property (assign, nonatomic) __block double scatterMult;
+@property (assign, nonatomic) __block double radarMult;
+@property (assign, nonatomic) __block double histogramMult;
+@property (assign, nonatomic) __block double trendMult;
+@property (weak, nonatomic) IBOutlet UIView *t3b3View;
+@property (weak, nonatomic) IBOutlet UIView *scatterView;
+@property (weak, nonatomic) IBOutlet UIView *radarView;
+@property (weak, nonatomic) IBOutlet UIView *histogramView;
+@property (weak, nonatomic) IBOutlet UIView *trendView;
+@property (strong, nonatomic) IBOutlet UIView *selectedView;
 
 @end
 
@@ -20,6 +36,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     isCellExpanded = NO;
+    self.t3b3Mult = 1;
+    self.scatterMult = 1;
+    self.radarMult = 1;
+    self.histogramMult = 1;
+    self.trendMult = 1;
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
@@ -40,20 +61,35 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
-
 - (IBAction)didTapT3B3:(id)sender {
+    [self.t3b3Button setTransform: CGAffineTransformRotate([self.t3b3Button transform], (self.t3b3Mult * M_PI/2))];
+    self.t3b3Mult *= -1;
+    self.selectedView = self.t3b3View;
+    //self.t3b3Button.transform = CGAffineTransformMakeRotation(M_PI / 2);
     [self didSelectCellAtIndex:1 inSection:0];
 }
 - (IBAction)didTapSPHeader:(id)sender {
+    [self.scatterButton setTransform: CGAffineTransformRotate([self.scatterButton transform], (self.scatterMult * M_PI/2))];
+    self.scatterMult *= -1;
+    self.selectedView = self.scatterView;
     [self didSelectCellAtIndex:2 inSection:0];
 }
 - (IBAction)didTapRCHeader:(id)sender {
+    [self.radarButton setTransform: CGAffineTransformRotate([self.radarButton transform], (self.radarMult * M_PI/2))];
+    self.radarMult *= -1;
+    self.selectedView = self.radarView;
     [self didSelectCellAtIndex:3 inSection:0];
 }
 - (IBAction)didTapHistHeader:(id)sender {
+    [self.histogramButton setTransform: CGAffineTransformRotate([self.histogramButton transform], (self.histogramMult * M_PI/2))];
+    self.histogramMult *= -1;
+    self.selectedView = self.histogramView;
     [self didSelectCellAtIndex:4 inSection:0];
 }
 - (IBAction)didTapPTHeader:(id)sender {
+    [self.trendButton setTransform: CGAffineTransformRotate([self.trendButton transform], (self.trendMult * M_PI/2))];
+    self.trendMult *= -1;
+    self.selectedView = self.trendView;
     [self didSelectCellAtIndex:5 inSection:0];
 }
 
@@ -62,6 +98,7 @@
     if(isCellExpanded){
         isCellExpanded = NO;
     } else {
+
         isCellExpanded = YES;
     }
     [self.tableView beginUpdates];
@@ -76,72 +113,15 @@
 //    if([indexPath compare:selectedIndexPath] == NSOrderedSame) {
     if(indexPath.row == selectedIndexPath.row) {
         if(isCellExpanded == YES){
-            return self.view.frame.size.height * 0.75;
+            //return self.selectedView.frame.size.height + 100;
+            return self.view.frame.size.height - 100;
         } else {
             return 75;
         }
     } else {
         return 75;
     }
-//    if(indexPath.row == 0){
-//        //return normal height because not expandable
-//    } else if (indexPath.row == 1){
-//        //if not selected make it size of screen
-//
-//    } else {
-//        if(isCellExpanded == YES){
-//            return 75;
-//        } else {
-//            return 500;
-//        }
-//    }
-//    return 75;
 }
-
-/*
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
-    
-    // Configure the cell...
-    
-    return cell;
-}
-*/
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
 /*
 #pragma mark - Navigation
 

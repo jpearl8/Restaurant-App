@@ -7,20 +7,50 @@
 //
 
 #import "OrdersManagerViewController.h"
+#import "ManagerOrderTableViewCell.h"
+#import "OrderManager.h"
 
 @interface OrdersManagerViewController ()
-@property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segmentedControl;
-
+@property (strong, nonatomic) NSMutableDictionary *openOrdersByTable;
+@property (strong, nonatomic) NSArray *closedOrders;
+@property (strong, nonatomic) NSArray *tables;
+@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+@property (weak, nonatomic) IBOutlet UIView *openContainer;
+@property (weak, nonatomic) IBOutlet UIView *closedContainer;
+@property (strong, nonatomic) NSString *whichOrders;
 @end
 
 @implementation OrdersManagerViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    self.openOrdersByTable = [[OrderManager shared] openOrdersByTable];
+    self.closedOrders = [[OrderManager shared] closedOrders];
+    self.tables = [self.openOrdersByTable allKeys];
+    self.whichOrders = @"Open";
 }
-- (IBAction)onEditClosedOpenControl:(id)sender {
+
+
+- (IBAction)showContainer:(id)sender {
+    NSInteger selectedIndex = self.segmentedControl.selectedSegmentIndex;
+
+    if (selectedIndex == 0)
+    {
+        self.titleLabel.text = @"Open Orders";
+        [UIView animateWithDuration:0.5 animations:^{
+            self.openContainer.alpha = 1;
+            self.closedContainer.alpha = 0;
+        }];
+    }
+    else if (selectedIndex == 1)
+    {
+        self.titleLabel.text = @"Closed Orders";
+        [UIView animateWithDuration:0.5 animations:^{
+            self.openContainer.alpha = 0;
+            self.closedContainer.alpha = 1;
+        }];
+    }
 }
 
 /*

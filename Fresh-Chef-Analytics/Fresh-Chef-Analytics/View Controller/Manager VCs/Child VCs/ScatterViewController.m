@@ -17,7 +17,14 @@
 @property (strong, nonatomic) NSArray *colorsFromUI;
 @property (strong, nonatomic) NSArray *dataArray;
 @property (strong, nonatomic) PNScatterChartData *shownDish;
+@property (weak, nonatomic) IBOutlet UIButton *arrowButton1;
 @property (strong, nonatomic) CAShapeLayer *square;
+@property (weak, nonatomic) IBOutlet UIButton *arrowButton2;
+@property (assign, nonatomic) __block double arrowMult;
+@property (weak, nonatomic) IBOutlet UILabel *freqLabel;
+@property (weak, nonatomic) IBOutlet UILabel *dishFreqLabel;
+@property (weak, nonatomic) IBOutlet UILabel *dishRatingLabel;
+
 @end
 
 @implementation ScatterViewController
@@ -31,11 +38,22 @@
     self.categoriesOfDishes = [[MenuManager shared] categoriesOfDishes];
     self.legend = [[[MenuManager shared] categoriesOfDishes] allKeys];
     self.dataArray = [self populateDataByRatingAndFreq];
-    self.colorsFromUI = @[@"#FF0000", @"#00FF00", @"#00FFFF", @"#FF00FF", @"#FCAF0B", @"#800BFC", @"#0B30FC", @"0B30FC"];
+    self.colorsFromUI = @[@"#6b48ff", @"#ff6337", @"#b31e6f", @"#00bdaa", @"#58b368", @"#ff487e", @"#226b80", @"52437b"];
+    self.arrowButton1.imageView.layer.cornerRadius = 0.5 * self.arrowButton1.imageView.bounds.size.height;
+    self.arrowButton2.imageView.layer.cornerRadius = 0.5 * self.arrowButton2.imageView.bounds.size.height;
+
+    [self.arrowButton2 setTransform: CGAffineTransformRotate([self.arrowButton2 transform], M_PI/2)];
+    [self.arrowButton1 setTransform: CGAffineTransformRotate([self.arrowButton1 transform], M_PI/2)];
+    self.arrowMult = -1;
+    //[self.freqLabel.layer setAnchorPoint:CGPointMake(1.0, 1.0)];
+    [self.freqLabel setTransform:CGAffineTransformMakeTranslation(-30, 30)];
+
+    [self.freqLabel setTransform:CGAffineTransformRotate([self.freqLabel transform], -M_PI/2)];
     //For Scatter Chart
     self.scatterChart = [[PNScatterChart alloc] initWithFrame:CGRectMake(0, 0, self.dataView.bounds.size.width, self.dataView.bounds.size.height)];
-    [self.scatterChart setAxisXWithMinimumValue:0 andMaxValue:10 toTicks:20];
-    [self.scatterChart setAxisYWithMinimumValue:0 andMaxValue:50 toTicks:12];
+    [self.scatterChart setAxisXWithMinimumValue:0 andMaxValue:10 toTicks:11];
+    
+    [self.scatterChart setAxisYWithMinimumValue:0 andMaxValue:50 toTicks:11];
     NSMutableArray <PNScatterChartData*> *categoryScatter = [[NSMutableArray alloc] init];
     
     //initialize data point
@@ -91,9 +109,8 @@
 //}
 - (void)tableView:(UITableView *)tableView willDisplayHeaderView:(UIView *)view forSection:(NSInteger)section
 {
-    view.tintColor = [[Helpful_funs shared] colorFromHexString:self.colorsFromUI[section]];
     UITableViewHeaderFooterView *header = (UITableViewHeaderFooterView *)view;
-    [header.textLabel setTextColor:[UIColor whiteColor]];
+    [header.textLabel setTextColor: [[Helpful_funs shared] colorFromHexString:self.colorsFromUI[section]]];
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -112,9 +129,15 @@
     NSInteger section = indexPath.section;
     UITableViewCell *cell = [self.dishesTableView cellForRowAtIndexPath:indexPath];
     self.shownDish.fillColor = [UIColor colorWithWhite:0.0 alpha:0.0];
+    UIColor *colorForDish = [[Helpful_funs shared] colorFromHexString:self.colorsFromUI[section]];
     [self.chooseDishButton setTitle:cell.textLabel.text forState:UIControlStateNormal];
-    [self.chooseDishButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [self.chooseDishButton setBackgroundColor:[[Helpful_funs shared] colorFromHexString:self.colorsFromUI[section]]];
+   Dish *dish = self.categoriesOfDishes[self.legend[indexPath.section]][indexPath.row];
+    self.dishFreqLabel.text = [[NSString stringWithFormat:@"%@", dish.orderFrequency] stringByAppendingString:@" orders"];
+    [self.dishFreqLabel setTextColor:colorForDish];
+    [self.dishRatingLabel setTextColor:colorForDish];
+    self.dishRatingLabel.text = [[NSString stringWithFormat:@"%f", [dish.rating floatValue] / [dish.orderFrequency floatValue]] stringByAppendingString:@" Stars"];
+    [self.chooseDishButton setTitleColor:colorForDish
+                                forState:UIControlStateNormal];
     self.selectedDish = self.categoriesOfDishes[self.legend[section]][indexPath.row];
     NSUInteger positionOfDish = [self.dataArray[section][0] indexOfObject:self.selectedDish.name];
     self.shownDish.getData = ^(NSUInteger index) {
@@ -127,6 +150,9 @@
     [self.scatterChart changePointInGraph:self.shownDish forShape:self.square];
     [self.scatterChart.layer addSublayer:self.square];
 //    self.scatterChart.layer.opacity = 1;
+    [self.arrowButton1 setTransform:CGAffineTransformRotate([self.arrowButton1 transform], (self.arrowMult * M_PI))];
+    [self.arrowButton2 setTransform:CGAffineTransformRotate([self.arrowButton2 transform], (self.arrowMult * M_PI))];
+    self.arrowMult *= -1;
     self.dishesTableView.hidden = YES;
     
 }
@@ -164,6 +190,9 @@
     return theData;
 }
 - (IBAction)chooseDish:(id)sender {
+    [self.arrowButton1 setTransform:CGAffineTransformRotate([self.arrowButton1 transform], (self.arrowMult * M_PI))];
+    [self.arrowButton2 setTransform:CGAffineTransformRotate([self.arrowButton2 transform], (self.arrowMult * M_PI))];
+    self.arrowMult *= -1;
     self.dishesTableView.hidden = !(self.dishesTableView.hidden);
 }
 /*
