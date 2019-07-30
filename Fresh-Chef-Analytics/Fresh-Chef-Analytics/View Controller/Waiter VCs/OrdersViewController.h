@@ -1,8 +1,8 @@
 //
-//  OrdersListedViewController.h
+//  OrdersViewController.h
 //  Fresh-Chef-Analytics
 //
-//  Created by rgallardo on 7/24/19.
+//  Created by jpearl on 7/28/19.
 //  Copyright © 2019 julia@ipearl.net. All rights reserved.
 //
 
@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface OrdersListedViewController : UIViewController
+@interface OrdersViewController : UIViewController
 
 @end
 

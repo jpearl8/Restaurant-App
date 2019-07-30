@@ -11,6 +11,7 @@
 #import "order.h"
 #import "Parse/Parse.h"
 #import "Dish.h"
+#import "OpenOrder.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -23,6 +24,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)scaleArrayByMax:(NSMutableArray *)array;
 -(int) findAmountIndexwithDishArray:(NSArray <Dish *>*)dishes withDish:(Dish *)dish;
 -(BOOL)arrayOfZeros:(NSArray<NSNumber *>*)array;
+-(NSMutableArray<NSString *>*)fillCellArrays:(NSArray<OpenOrder *>*)openOrders;
 @end
 
 NS_ASSUME_NONNULL_END

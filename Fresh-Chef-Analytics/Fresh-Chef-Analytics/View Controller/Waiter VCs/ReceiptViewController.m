@@ -32,7 +32,7 @@
     PFUser *currentUser = [PFUser currentUser];
     self.restaurantName.text = currentUser.username;
     self.restaurantAddress.text = currentUser[@"address"];
-    self.date.text = self.openOrders[0].waiter[@"updatedAt"];
+    self.date.text = self.waiter[@"updatedAt"];
     
     //NSString *test = @"XuLMO3Jh3r";
     // Do any additional setup after loading the view.
@@ -44,10 +44,8 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     ReceiptTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier: @"receiptCell"];
-    Dish *dish = self.openOrders[indexPath.row].dish;
+    Dish *dish = self.dishArray[indexPath.row];
     NSNumber *amount = self.openOrders[indexPath.row].amount;
-    order *order = self.customerOrder[indexPath.row];
-    cell.order = order;
     cell.dishName.text = dish.name;
     cell.dishAmount.text = [NSString stringWithFormat:@"%.0@", amount];
     cell.calculatedPrice.text = [NSString stringWithFormat:@"%.2f", ([dish.price floatValue] * [amount floatValue])];

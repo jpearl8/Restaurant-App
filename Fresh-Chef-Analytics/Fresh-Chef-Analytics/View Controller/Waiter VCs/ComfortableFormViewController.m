@@ -120,7 +120,7 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     ReceiptViewController *recVC = [segue destinationViewController];
-    recVC.customerOrder = self.customerOrder;
+
     recVC.openOrders = self.openOrders;
     
 }

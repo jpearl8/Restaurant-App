@@ -31,6 +31,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)setOrderedDicts;
 - (void)setTop3Bottom3Dict;
 - (void)setDishRankings;
+- (void) findDish : (NSString *) objectId withCompletion:(void (^)(NSArray * dishes, NSError * _Nullable error)) completion;
 
 @end
 
