@@ -44,7 +44,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     ReceiptTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier: @"receiptCell"];
-    Dish *dish = self.dishArray[indexPath.row];
+    Dish *dish = self.dishesArray[indexPath.row];
     NSNumber *amount = self.openOrders[indexPath.row].amount;
     cell.dishName.text = dish.name;
     cell.dishAmount.text = [NSString stringWithFormat:@"%.0@", amount];
@@ -66,8 +66,8 @@
 }
 */
 - (IBAction)didSubmit:(id)sender {
-    float pastTotalTips = [self.openOrders[0].waiter.tipsMade floatValue];
-    self.openOrders[0].waiter.tipsMade = [NSNumber numberWithFloat: ([self.tip.text floatValue] + pastTotalTips)];
+    float pastTotalTips = [self.waiter.tipsMade floatValue];
+    self.waiter.tipsMade = [NSNumber numberWithFloat: ([self.tip.text floatValue] + pastTotalTips)];
 //    [ClosedOrder postOldOrderWithOpenOrder:self.openOrder withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
 //        if (!error){
 //            NSLog(@"posted closed order");

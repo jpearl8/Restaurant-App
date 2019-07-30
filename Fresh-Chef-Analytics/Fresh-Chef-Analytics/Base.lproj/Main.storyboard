@@ -2275,6 +2275,31 @@
             </objects>
             <point key="canvasLocation" x="-2880" y="3959"/>
         </scene>
+        <!--Profit Trends View Controller-->
+        <scene sceneID="Wku-Pk-SkB">
+            <objects>
+                <viewController id="4pO-Ap-iSk" customClass="ProfitTrendsViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Zi5-JF-zSf">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="426"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eIE-tn-fTh" userLabel="Data View">
+                                <rect key="frame" x="20" y="69" width="374" height="295"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.87518163196189092" green="1" blue="0.78762314931886579" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <viewLayoutGuide key="safeArea" id="s2L-ne-N78"/>
+                    </view>
+                    <connections>
+                        <outlet property="dataView" destination="eIE-tn-fTh" id="Ruh-yo-KNr"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gl8-qF-h6K" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-3517.3913043478265" y="5889.5089285714284"/>
+        </scene>
         <!--Menu List View Controller-->
         <scene sceneID="7wd-iE-Teu">
             <objects>
@@ -4515,6 +4540,13 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="857.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
+                                                <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4oC-Rg-Ghl">
+                                                    <rect key="frame" x="0.0" y="115" width="414" height="426"/>
+                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                                    <connections>
+                                                        <segue destination="4pO-Ap-iSk" kind="embed" id="W2D-aH-4t3"/>
+                                                    </connections>
+                                                </containerView>
                                                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dA6-kL-Kzw">
                                                     <rect key="frame" x="0.0" y="0.0" width="414" height="107"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -4541,10 +4573,10 @@
                                                         <outletCollection property="gestureRecognizers" destination="asv-0c-0hh" appends="YES" id="UYF-QI-u11"/>
                                                     </connections>
                                                 </view>
-                                                <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4oC-Rg-Ghl">
+                                                <!-- <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4oC-Rg-Ghl">
                                                     <rect key="frame" x="0.0" y="107" width="414" height="765"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                                </containerView>
+                                                </containerView> -->
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>

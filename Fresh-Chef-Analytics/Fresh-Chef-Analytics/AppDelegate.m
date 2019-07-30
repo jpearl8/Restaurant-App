@@ -39,7 +39,6 @@
             {
                 [[MenuManager shared] setOrderedDicts];
                 [[MenuManager shared] setTop3Bottom3Dict];
-//                [[MenuManager shared] setDishRankings];
                 NSLog(@"fetched restaurant's menu");
             }
         }];
@@ -114,6 +113,7 @@
         [[OrderManager shared] fetchClosedOrderItems:PFUser.currentUser withCompletion:^(NSArray * _Nonnull closedOrders, NSError * _Nonnull error) {
             if (!error)
             {
+                [[OrderManager shared] setProfitByDate];
                 NSLog(@"fetched restaurant's closed orders");
             }
         }];

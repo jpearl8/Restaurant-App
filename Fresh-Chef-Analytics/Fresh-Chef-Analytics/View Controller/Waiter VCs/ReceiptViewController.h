@@ -15,7 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface ReceiptViewController : UIViewController
 @property (strong, nonatomic) NSArray<OpenOrder *>*openOrders;
 @property (strong, nonatomic) Waiter *waiter;
-@property (strong, nonatomic) NSMutableArray <Dish *>*dishArray;
+@property (strong, nonatomic) NSMutableArray <Dish *>*dishesArray;
 @end
 
 NS_ASSUME_NONNULL_END

@@ -235,7 +235,7 @@
         funVC.waiter = self.tableWaiterDictionary[self.keys[[self.index integerValue]]];
         funVC.openOrders =  self.totalOpenTables[self.keys[[self.index integerValue]]];;
         funVC.customerNumber =  [self.totalOpenTables[self.keys[[self.index integerValue]]][0].customerNum stringValue];
-        funVC.dishArray = self.dishesArray;
+        funVC.dishesArray = self.dishesArray;
         
      }
 //     if ([segue.identifier isEqualToString:@"Comfortable"]){
