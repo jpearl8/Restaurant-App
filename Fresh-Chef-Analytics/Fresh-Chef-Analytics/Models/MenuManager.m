@@ -247,7 +247,6 @@
     }
 }
 
-<<<<<<< HEAD
 - (void) findDish : (NSString *) objectId withCompletion:(void (^)(NSArray * dishes, NSError * _Nullable error)) completion
 {
     PFQuery *dishQuery;
@@ -268,7 +267,6 @@
     }];
     
 }
-=======
 - (void)setBasicSuggestions:(Dish *)dish
 {
     
@@ -297,7 +295,6 @@
 }
 
 
->>>>>>> 384429216382a50278e27f6a14bcad35b32ba7b1
 
 //- (NSString *)setSuggestionForDish:(Dish *)dish
 //{
