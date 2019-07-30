@@ -15,6 +15,7 @@
     self.customerComment.delegate = self;
     self.customerComment.placeholder = @"Comments for the chef";
     self.customerComment.placeholderColor = [UIColor lightGrayColor];
+
     [super awakeFromNib];
     // Initialization code
 }
@@ -25,8 +26,10 @@
     // Configure the view for the selected state
 }
 -(void)textViewDidChange:(UITextView *)textView{
-    self.order.customerComments = self.customerComment.text;
-    self.customerComments[self.index] = self.customerComment.text;
+    if (self.customerComment.text){
+        [self.delegate customerCommentForIndex:self.index withComment:self.customerComment.text];
+//        self.customerComments[self.index] = self.customerComment.text;
+    }
     //handle text editing finished
 }
 
@@ -57,8 +60,8 @@
             [[Helpful_funs shared] defineSelect:buttons[i] withSelect:NO];
         }
     }
-    self.order.customerRating = [sender.restorationIdentifier floatValue];
-    self.customerRatings[self.index] = [NSNumber numberWithFloat:[sender.restorationIdentifier floatValue]];
+    [self.delegate customerRatingForIndex:self.index withRating:[NSNumber numberWithFloat:[sender.restorationIdentifier floatValue]]];
+   // self.customerRatings[self.index] = [NSNumber numberWithFloat:[sender.restorationIdentifier floatValue]];
 }
 
 

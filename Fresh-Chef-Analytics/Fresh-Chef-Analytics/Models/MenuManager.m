@@ -337,6 +337,26 @@
     return nil;
 }
 
+- (void) findDish : (NSString *) objectId withCompletion:(void (^)(NSArray * dishes, NSError * _Nullable error)) completion
+{
+    PFQuery *dishQuery;
+    dishQuery = [Dish query];
+    [dishQuery whereKey:@"objectId" equalTo:objectId];
+    [dishQuery findObjectsInBackgroundWithBlock:^(NSArray * _Nullable dishes, NSError * _Nullable error) {
+        NSLog(@"finished querying for waiters");
+        if (!error)
+        {
+            NSLog(@"found waiters %@", dishes);
+            completion(dishes, nil);
+        }
+        else
+        {
+            NSLog(@"Error: %@", error.localizedDescription);
+            completion(nil, error);
+        }
+    }];
+    
+}
 - (void)setBasicSuggestions:(Dish *)dish
 {
     if ([[self getRankOfType:@"rating" ForDish:dish] isEqualToString:@"high"]) {

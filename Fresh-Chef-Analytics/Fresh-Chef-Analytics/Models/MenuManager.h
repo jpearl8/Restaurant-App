@@ -38,8 +38,9 @@ NS_ASSUME_NONNULL_BEGIN
 - (void) removeDishFromTable : (Dish *) delDish withCompletion:(void (^)(NSMutableDictionary *categoriesOfDishes, NSError * _Nullable error))removedDish;
 - (void)setOrderedDicts;
 - (void)setTop3Bottom3Dict;
-//- (void)setDishRankings;
+- (void)setDishRankings;
 - (NSString *)getRankOfType:(NSString *)rankType ForDish:(Dish *)dish;
+- (void) findDish : (NSString *) objectId withCompletion:(void (^)(NSArray * dishes, NSError * _Nullable error)) completion;
 
 @end
 

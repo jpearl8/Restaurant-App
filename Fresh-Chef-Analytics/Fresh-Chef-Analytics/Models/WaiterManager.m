@@ -25,6 +25,7 @@
     PFQuery *waiterQuery;
     waiterQuery = [Waiter query];
     [waiterQuery whereKey:@"restaurantID" equalTo:restaurant.objectId];
+    [waiterQuery includeKey:@"updatedAt"];
     waiterQuery.limit = 20;
     
     // fetch data asynchronously
