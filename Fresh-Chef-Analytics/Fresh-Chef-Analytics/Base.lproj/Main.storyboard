@@ -2575,16 +2575,10 @@
                             <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Mkc-Jy-3J6">
                                 <rect key="frame" x="0.0" y="195" width="414" height="725"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                <connections>
-                                    <segue destination="4wf-8K-hrp" kind="embed" id="BWd-s1-TGf"/>
-                                </connections>
                             </containerView>
                             <containerView opaque="NO" alpha="0.0" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7XN-TI-xhU">
                                 <rect key="frame" x="0.0" y="195" width="414" height="725"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                <connections>
-                                    <segue destination="mhd-05-eYt" kind="embed" id="Thp-it-NMt"/>
-                                </connections>
                             </containerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -3293,7 +3287,7 @@
                                                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7Oh-fZ-rVa" customClass="HCSStarRatingView">
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Oh-fZ-rVa" customClass="HCSStarRatingView">
                                                                 <rect key="frame" x="108" y="157" width="146" height="30"/>
                                                                 <color key="backgroundColor" red="0.99999064207077026" green="0.99999362230300903" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                 <constraints>
@@ -4110,16 +4104,31 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hi1-QV-kTX">
-                                <rect key="frame" x="0.0" y="494" width="414" height="211"/>
+                                <rect key="frame" x="0.0" y="575" width="414" height="130"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             </pickerView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Pick Menu Category" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lKK-0w-e7N">
-                                <rect key="frame" x="76" y="417" width="287" height="42"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t9x-gb-Qp2">
+                                <rect key="frame" x="20" y="434" width="50" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="info"/>
+                                <connections>
+                                    <action selector="toggleInfo:" destination="uXO-8S-jO0" eventType="touchUpInside" id="Wab-j2-apB"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Menu and Statistic Type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lKK-0w-e7N">
+                                <rect key="frame" x="38" y="501" width="339" height="42"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" weight="thin" pointSize="35"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Info on Radar Charts and the Plot that is shown." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="8Bf-5P-wmd">
+                                <rect key="frame" x="87" y="390" width="290" height="121"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="ds6-2T-tab"/>
@@ -4127,11 +4136,38 @@
                     <connections>
                         <outlet property="categoryPicker" destination="hi1-QV-kTX" id="gea-P6-WI5"/>
                         <outlet property="dataView" destination="3Sq-IB-clP" id="kfD-4M-4jJ"/>
+                        <outlet property="infoView" destination="8Bf-5P-wmd" id="UjS-fs-Thy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jxI-JB-Z2J" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-2226.0869565217395" y="5591.8526785714284"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="oAC-Uk-Nfo">
+            <objects>
+                <viewController id="0F3-l6-0Jg" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Abq-Xr-uX4">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="765"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bRc-PS-JVt">
+                                <rect key="frame" x="0.0" y="37" width="414" height="389"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="61C-Se-hAV">
+                                <rect key="frame" x="0.0" y="490" width="414" height="211"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            </pickerView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="uDy-CV-Bir"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eJk-30-aI8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1619" y="5591"/>
         </scene>
         <!--Top3 Bot3 View Controller-->
         <scene sceneID="rIo-yk-fdq">
@@ -4439,6 +4475,9 @@
                                                 <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0QH-Zr-UGb">
                                                     <rect key="frame" x="0.0" y="107" width="414" height="765"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                                    <connections>
+                                                        <segue destination="0F3-l6-0Jg" kind="embed" id="HV1-9B-bi9"/>
+                                                    </connections>
                                                 </containerView>
                                                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7Oa-bi-Dbl">
                                                     <rect key="frame" x="0.0" y="0.0" width="414" height="107"/>
@@ -4564,6 +4603,7 @@
     <resources>
         <image name="arrow" width="700" height="700"/>
         <image name="image_placeholder" width="375" height="375"/>
+        <image name="info" width="700" height="700"/>
         <image name="profile_tab" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
