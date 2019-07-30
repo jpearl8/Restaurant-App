@@ -20,12 +20,12 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong, nonatomic) NSMutableDictionary *top3Bottom3Freq;
 @property (strong, nonatomic) NSMutableDictionary *top3Bottom3Rating;
 
-@property (assign, nonatomic) int bottomThreshRating;
-@property (assign, nonatomic) CGFloat upperThreshRating;
-@property (assign, nonatomic) CGFloat bottomThreshFreq;
-@property (assign, nonatomic) CGFloat upperThreshFreq;
-@property (assign, nonatomic) CGFloat bottomThreshProfit;
-@property (assign, nonatomic) CGFloat upperThreshProfit;
+@property (assign, nonatomic) float bottomThreshRating;
+@property (assign, nonatomic) float upperThreshRating;
+@property (assign, nonatomic) float bottomThreshFreq;
+@property (assign, nonatomic) float upperThreshFreq;
+@property (assign, nonatomic) float bottomThreshProfit;
+@property (assign, nonatomic) float upperThreshProfit;
 
 @property (strong, nonatomic) NSArray *rankedDishesByRating;
 @property (strong, nonatomic) NSArray *rankedDishesByFreq;
@@ -38,7 +38,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void) removeDishFromTable : (Dish *) delDish withCompletion:(void (^)(NSMutableDictionary *categoriesOfDishes, NSError * _Nullable error))removedDish;
 - (void)setOrderedDicts;
 - (void)setTop3Bottom3Dict;
-- (void)setDishRankings;
+//- (void)setDishRankings;
 - (NSString *)getRankOfType:(NSString *)rankType ForDish:(Dish *)dish;
 - (void) findDish : (NSString *) objectId withCompletion:(void (^)(NSArray * dishes, NSError * _Nullable error)) completion;
 

@@ -73,15 +73,22 @@
     sortedArray = [array sortedArrayUsingComparator:^NSComparisonResult(id a, id b) {
         NSNumber *first = a[orderType];
         NSNumber *second = b[orderType];
+        
         //check for nil values
         if(first != nil && second != nil){
             return [second compare:first];
         } else if(first == nil){
             return 1;
-        } else{
+        } else {
             return -1; // if second is nil or if both are nil assume second is smaller
         }
     }];
+    if ([orderType isEqualToString:@"rating"]) {
+        NSLog(@"Order type: %@", orderType);
+        for (Dish *dish in sortedArray){
+            NSLog(@"Dish w/ rating: %@", dish.rating);
+        }
+    }
     return sortedArray;
 }
 - (void) scaleArrayByMax:(NSMutableArray *)array

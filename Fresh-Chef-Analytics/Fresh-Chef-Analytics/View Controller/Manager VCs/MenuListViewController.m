@@ -34,9 +34,10 @@
     self.dishes = [[MenuManager shared] dishes];
     //setting dictionary elements
     self.categories = [[[MenuManager shared] categoriesOfDishes] allKeys];
-    self.orderedDishesDict = [[NSMutableDictionary alloc] initWithDictionary:[[MenuManager shared] categoriesOfDishes]];
+    self.orderedDishesDict = [[NSMutableDictionary alloc] initWithDictionary:[[MenuManager shared] dishesByFreq]];
     self.filteredCategoriesOfDishes = [NSMutableDictionary alloc];
     self.filteredCategoriesOfDishes = [self.filteredCategoriesOfDishes initWithDictionary:self.orderedDishesDict];
+//    NSLog(@"orderedDishes")
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {

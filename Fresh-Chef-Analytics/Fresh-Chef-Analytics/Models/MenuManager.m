@@ -24,7 +24,7 @@
     // construct PFQuery
     PFQuery *dishQuery;
     dishQuery = [Dish query];
-    [dishQuery whereKey:@"restaurant" equalTo:restaurant.objectId];
+    [dishQuery whereKey:@"restaurantID" equalTo:restaurant.objectId];
     dishQuery.limit = 20;
     
     // fetch data asynchronously
@@ -33,6 +33,7 @@
         
         [self setProfitForDishes]; // set profit for each dish locally
         [self categorizeDishes];
+        [self setThresholdValues];
         NSLog(@"Step 3");
         
         fetchedDishes(self.categoriesOfDishes, nil);
@@ -42,7 +43,7 @@
 - (void)setOrderedDicts {
     // set ordered dictionaries
     self.dishesByFreq = [self orderDictionary:self.categoriesOfDishes byType:@"orderFrequency"];
-    self.dishesByRating =[self orderDictionary:self.categoriesOfDishes byType:@"rating"];
+    self.dishesByRating = [self orderDictionary:self.categoriesOfDishes byType:@"rating"];
     self.dishesByPrice = [self orderDictionary:self.categoriesOfDishes byType:@"price"];
 }
 
@@ -75,14 +76,12 @@
                             NSLog(@"Step 4");
 
                             removedDish(self.categoriesOfDishes, nil);
-
                         }
                     }];
                 }
                 else
                 {
                     NSLog(@"%@", error.localizedDescription);
-                    
                 }
             }];
         }
@@ -201,12 +200,12 @@
     self.upperThreshProfit = 0.66f;
     
     NSUInteger menuLength = [self.dishes count];
-    NSUInteger lowerIndexRating = lroundf(self.bottomThreshRating * menuLength);
-    NSUInteger upperIndexRating = lroundf(self.upperThreshRating * menuLength);
-    NSUInteger lowerIndexFreq = lroundf(self.bottomThreshFreq * menuLength);
-    NSUInteger upperIndexFreq = lroundf(self.upperThreshFreq * menuLength);
-    NSUInteger lowerIndexProfit = lroundf(self.bottomThreshProfit * menuLength);
-    NSUInteger upperIndexProfit = lroundf(self.upperThreshProfit * menuLength);
+//    NSUInteger lowerIndexRating = lroundf(self.bottomThreshRating * menuLength);
+//    NSUInteger upperIndexRating = lroundf(self.upperThreshRating * menuLength);
+//    NSUInteger lowerIndexFreq = lroundf(self.bottomThreshFreq * menuLength);
+//    NSUInteger upperIndexFreq = lroundf(self.upperThreshFreq * menuLength);
+//    NSUInteger lowerIndexProfit = lroundf(self.bottomThreshProfit * menuLength);
+//    NSUInteger upperIndexProfit = lroundf(self.upperThreshProfit * menuLength);
     // rank all dishes into an array
     self.rankedDishesByRating = [[Helpful_funs shared] orderArray:self.dishes byType:@"rating"];
     self.rankedDishesByFreq = [[Helpful_funs shared] orderArray:self.dishes byType:@"orderFrequency"];
@@ -282,12 +281,12 @@
         i = [self.rankedDishesByRating indexOfObject:dish];
     } else if ([rankType isEqualToString:@"freq"]) {
         // freq
-        lowerIndex = lroundf(self.upperThreshFreq * menuLength);
+        lowerIndex = lroundf(self.bottomThreshFreq * menuLength);
         upperIndex = lroundf(self.upperThreshFreq * menuLength);
         i = [self.rankedDishesByFreq indexOfObject:dish];
     } else if ([rankType isEqualToString:@"profit"]) {
         // profit
-        lowerIndex = lroundf(self.upperThreshProfit * menuLength);
+        lowerIndex = lroundf(self.bottomThreshProfit * menuLength);
         upperIndex = lroundf(self.upperThreshProfit * menuLength);
         i = [self.rankedDishesByProfit indexOfObject:dish];
     } else {
