@@ -36,7 +36,7 @@
     newDish.type = type;
     newDish.dishDescription = description;
     newDish.price = price;
-    newDish.rating = nil;
+    newDish.rating = @(0);
     newDish.orderFrequency = @(0);
 //    newDish.profit =
     newDish.comments = [[NSArray alloc] init];
@@ -53,7 +53,7 @@
     newDish.type = type;
     newDish.dishDescription = description;
     newDish.price = price;
-    newDish.rating = nil;
+    newDish.rating = @(0);
     newDish.orderFrequency = @(0);
     newDish.comments = [[NSArray alloc] init];
     [newDish saveInBackgroundWithBlock:completion];

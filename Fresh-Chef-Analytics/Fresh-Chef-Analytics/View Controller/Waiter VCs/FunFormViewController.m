@@ -65,7 +65,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     FunTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier: @"Fun" forIndexPath:indexPath];
-    Dish *dish = self.dishArray[indexPath.row];
+    Dish *dish = self.dishesArray[indexPath.row];
     NSNumber *amount = self.openOrders[indexPath.row].amount;
 
     cell.dishName.text = dish.name;
@@ -128,7 +128,7 @@
 
 - (IBAction)didSubmit:(UIButton *)sender {
     for (int i = 0; i < self.openOrders.count; i++){
-        float totalRating = [((Dish *)self.dishArray[i]).rating floatValue];
+        float totalRating = [((Dish *)self.dishesArray[i]).rating floatValue];
         if (!totalRating){
             totalRating = 0;
         }
@@ -136,14 +136,14 @@
         if (!([self.customerRatingsArray[i] isEqual:[NSNull null]])){
             placeHolder = [self.customerRatingsArray[i] floatValue];
         }
-        ((Dish *)self.dishArray[i]).rating = [NSNumber numberWithFloat: ((placeHolder * [((NSNumber *)self.openOrders[i].amount) floatValue])  + totalRating)];
+        ((Dish *)self.dishesArray[i]).rating = [NSNumber numberWithFloat: ((placeHolder * [((NSNumber *)self.openOrders[i].amount) floatValue])  + totalRating)];
         if (!([self.customerComments[i] isEqualToString:@""])){
-            ((Dish *)self.dishArray[i]).comments =[((Dish *)self.dishArray[i]).comments arrayByAddingObject:self.customerComments[i]];
+            ((Dish *)self.dishesArray[i]).comments =[((Dish *)self.dishesArray[i]).comments arrayByAddingObject:self.customerComments[i]];
         }
-        float totalFrequency = [((Dish *)self.dishArray[i]).orderFrequency floatValue];
-        ((Dish *)self.dishArray[i]).orderFrequency = [NSNumber numberWithFloat: ( [self.openOrders[i][@"amount"] floatValue] + totalFrequency)];
-        NSLog(@"%@", ((Dish *)self.dishArray[i]));
-        [((Dish *)self.dishArray[i]) saveInBackground];
+        float totalFrequency = [((Dish *)self.dishesArray[i]).orderFrequency floatValue];
+        ((Dish *)self.dishesArray[i]).orderFrequency = [NSNumber numberWithFloat: ( [self.openOrders[i][@"amount"] floatValue] + totalFrequency)];
+        NSLog(@"%@", ((Dish *)self.dishesArray[i]));
+        [((Dish *)self.dishesArray[i]) saveInBackground];
         
     }
     float totalRating = [self.waiter.rating floatValue];
@@ -182,7 +182,7 @@
    ReceiptViewController *recVC = [segue destinationViewController];
     recVC.openOrders = self.openOrders;
     recVC.waiter = self.waiter;
-    recVC.dishArray = self.dishArray;
+    recVC.dishesArray = self.dishesArray;
 
     
     

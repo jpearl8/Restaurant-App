@@ -15,6 +15,7 @@
 		A535D7BF22DE9FBF002B79CA /* Waiter.m in Sources */ = {isa = PBXBuildFile; fileRef = A535D7BE22DE9FBF002B79CA /* Waiter.m */; };
 		A535D7C522DFD4B5002B79CA /* MenuManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A535D7C422DFD4B5002B79CA /* MenuManager.m */; };
 		A535D7C822DFD6DB002B79CA /* EditMenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A535D7C722DFD6DB002B79CA /* EditMenuCell.m */; };
+		A590E1AC22EFB71300D85B20 /* BarChartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A590E1AB22EFB71300D85B20 /* BarChartViewController.m */; };
 		A5C06F5622E114E500F634E3 /* WaiterManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C06F5522E114E500F634E3 /* WaiterManager.m */; };
 		A5C06F5922E11D3500F634E3 /* EditWaiterCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C06F5822E11D3500F634E3 /* EditWaiterCell.m */; };
 		A5C06F5C22E2613100F634E3 /* WaiterListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C06F5B22E2613100F634E3 /* WaiterListTableViewCell.m */; };
@@ -49,7 +50,6 @@
 		FF03BF5622DEA0A000719E8C /* WaitDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF03BF5522DEA0A000719E8C /* WaitDetailsViewController.m */; };
 		FF03BF5922DEA0C700719E8C /* CompetitorDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF03BF5822DEA0C700719E8C /* CompetitorDetailsViewController.m */; };
 		FF03BF5C22DEA16600719E8C /* CompetitorListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF03BF5B22DEA16600719E8C /* CompetitorListViewController.m */; };
-		FF03BF5F22DEA19100719E8C /* MenuDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF03BF5E22DEA19100719E8C /* MenuDataViewController.m */; };
 		FF03BF6222DF763300719E8C /* MenuListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FF03BF6122DF763300719E8C /* MenuListTableViewCell.m */; };
 		FF1EDA9322E2951A00B1B897 /* Helpful_funs.m in Sources */ = {isa = PBXBuildFile; fileRef = FF1EDA9222E2951A00B1B897 /* Helpful_funs.m */; };
 		FF318E8922EAC57C003AF015 /* OpenOrderButton.m in Sources */ = {isa = PBXBuildFile; fileRef = FF318E8822EAC57C003AF015 /* OpenOrderButton.m */; };
@@ -106,6 +106,8 @@
 		A535D7C422DFD4B5002B79CA /* MenuManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MenuManager.m; sourceTree = "<group>"; };
 		A535D7C622DFD6DB002B79CA /* EditMenuCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EditMenuCell.h; sourceTree = "<group>"; };
 		A535D7C722DFD6DB002B79CA /* EditMenuCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EditMenuCell.m; sourceTree = "<group>"; };
+		A590E1AA22EFB71300D85B20 /* BarChartViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BarChartViewController.h; sourceTree = "<group>"; };
+		A590E1AB22EFB71300D85B20 /* BarChartViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BarChartViewController.m; sourceTree = "<group>"; };
 		A5C06F5422E114E500F634E3 /* WaiterManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WaiterManager.h; sourceTree = "<group>"; };
 		A5C06F5522E114E500F634E3 /* WaiterManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WaiterManager.m; sourceTree = "<group>"; };
 		A5C06F5722E11D3500F634E3 /* EditWaiterCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EditWaiterCell.h; sourceTree = "<group>"; };
@@ -179,8 +181,6 @@
 		FF03BF5822DEA0C700719E8C /* CompetitorDetailsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CompetitorDetailsViewController.m; sourceTree = "<group>"; };
 		FF03BF5A22DEA16600719E8C /* CompetitorListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CompetitorListViewController.h; sourceTree = "<group>"; };
 		FF03BF5B22DEA16600719E8C /* CompetitorListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CompetitorListViewController.m; sourceTree = "<group>"; };
-		FF03BF5D22DEA19100719E8C /* MenuDataViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MenuDataViewController.h; sourceTree = "<group>"; };
-		FF03BF5E22DEA19100719E8C /* MenuDataViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MenuDataViewController.m; sourceTree = "<group>"; };
 		FF03BF6022DF763300719E8C /* MenuListTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MenuListTableViewCell.h; path = "Fresh-Chef-Analytics/View Controller/Manager VCs/MenuListTableViewCell.h"; sourceTree = SOURCE_ROOT; };
 		FF03BF6122DF763300719E8C /* MenuListTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = MenuListTableViewCell.m; path = "Fresh-Chef-Analytics/View Controller/Manager VCs/MenuListTableViewCell.m"; sourceTree = SOURCE_ROOT; };
 		FF1EDA9122E2951A00B1B897 /* Helpful_funs.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Helpful_funs.h; sourceTree = "<group>"; };
@@ -351,6 +351,8 @@
 				A5C06F6A22E67E8700F634E3 /* HistogramViewController.m */,
 				B6795EA222EBB62700CCC0F8 /* ProfitTrendsViewController.h */,
 				B6795EA322EBB62700CCC0F8 /* ProfitTrendsViewController.m */,
+				A590E1AA22EFB71300D85B20 /* BarChartViewController.h */,
+				A590E1AB22EFB71300D85B20 /* BarChartViewController.m */,
 			);
 			path = "Child VCs";
 			sourceTree = "<group>";
@@ -415,8 +417,6 @@
 				FFC87ACC22EA2650009DE74C /* YelpLinkViewController.m */,
 				FF03BF4D22DEA03700719E8C /* Details VCs */,
 				A5C06F6222E67E3A00F634E3 /* Child VCs */,
-				FF03BF5D22DEA19100719E8C /* MenuDataViewController.h */,
-				FF03BF5E22DEA19100719E8C /* MenuDataViewController.m */,
 				FF03BF5A22DEA16600719E8C /* CompetitorListViewController.h */,
 				FF03BF5B22DEA16600719E8C /* CompetitorListViewController.m */,
 				FF03BF5122DEA07700719E8C /* WaitListViewController.h */,
@@ -772,7 +772,6 @@
 				FF318E8922EAC57C003AF015 /* OpenOrderButton.m in Sources */,
 				FF5924FF22E2155D00F66EC6 /* ReceiptTableViewCell.m in Sources */,
 				B6D7B35C22DF95BA002093CB /* ManagerLoginViewController.m in Sources */,
-				FF03BF5F22DEA19100719E8C /* MenuDataViewController.m in Sources */,
 				A535D7BC22DE8FB2002B79CA /* (null) in Sources */,
 				FF03BF3D22DE97AD00719E8C /* ThankYouViewController.m in Sources */,
 				FF03BF4C22DE9FFD00719E8C /* MenuListViewController.m in Sources */,
@@ -809,6 +808,7 @@
 				FF03BF4322DE9FA700719E8C /* ProfileViewController.m in Sources */,
 				FF03BF5322DEA07700719E8C /* WaitListViewController.m in Sources */,
 				FF46E19222DE436400E15A0E /* AppDelegate.m in Sources */,
+				A590E1AC22EFB71300D85B20 /* BarChartViewController.m in Sources */,
 				FF03BF3122DE96EC00719E8C /* FunFormViewController.m in Sources */,
 				B6BC874D22E6867000264995 /* Top3Bottom3TableViewCell.m in Sources */,
 				FF03BF4922DE9FE000719E8C /* EditWaitViewController.m in Sources */,

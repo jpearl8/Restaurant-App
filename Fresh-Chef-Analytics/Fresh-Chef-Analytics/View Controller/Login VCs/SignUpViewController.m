@@ -9,6 +9,7 @@
 #import "SignUpViewController.h"
 #import "Parse/Parse.h"
 #import "AppDelegate.h"
+#import "MenuManager.h"
 
 @interface SignUpViewController ()
 
@@ -36,6 +37,7 @@
             if (error != nil) {
                 NSLog(@"Error: %@", error.localizedDescription);
             } else {
+                
                 NSLog(@"User registered successfully");
                 AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
                 UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];

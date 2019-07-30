@@ -75,6 +75,7 @@
 
 - (void) setup
 {
+
     [self vectorXSetup];
     [self vectorYSetup];
 }
@@ -202,7 +203,7 @@
 {
     _AxisX_partNumber += 1;
     _vectorX_Size = self.frame.size.width - (_AxisX_Margin) - 15 ;
-    _vectorX_Steps = (_vectorX_Size) / (_AxisX_partNumber) ;
+    _vectorX_Steps = ((_vectorX_Size) + 150 )/ (_AxisX_partNumber ) ;
     _endPointVecotrX = CGPointMake(_startPoint.x + _vectorX_Size, _startPoint.y) ;
     _startPointVectorX = _startPoint ;
 }
@@ -211,7 +212,7 @@
 {
     _AxisY_partNumber += 1;
     _vectorY_Size = self.frame.size.height - (_AxisY_Margin) - 15;
-    _vectorY_Steps = (_vectorY_Size) / (_AxisY_partNumber);
+    _vectorY_Steps = ((_vectorY_Size) + 80)/ (_AxisY_partNumber);
     _endPointVecotrY = CGPointMake(_startPoint.x, _startPoint.y - _vectorY_Size) ;
     _startPointVectorY = _startPoint ;
 }
@@ -330,10 +331,11 @@
     if (_showLabel) {
         //drawing x steps vector and putting axis x labels
         float temp = _startPointVectorX.x + (_vectorX_Steps / 2) ;
+        
         for (int i = 0; i < _axisX_labels.count; i++) {
             UIBezierPath *path = [UIBezierPath bezierPath];
-            [path moveToPoint:CGPointMake(temp, _startPointVectorX.y - 2)];
-            [path addLineToPoint:CGPointMake(temp, _startPointVectorX.y + 3)];
+            [path moveToPoint:CGPointMake(temp , _startPointVectorX.y - 2)];
+            [path addLineToPoint:CGPointMake(temp , _startPointVectorX.y + 3)];
             CAShapeLayer *shapeLayer = [CAShapeLayer layer];
             shapeLayer.path = [path CGPath];
             shapeLayer.strokeColor = [_axisColor CGColor];
@@ -342,7 +344,7 @@
             [self.horizentalLinepathLayer addObject:shapeLayer];
             [self.layer addSublayer:shapeLayer];
             UILabel *lb = [_axisX_labels objectAtIndex:i] ;
-            [self showXLabel:lb InPosition:CGPointMake(temp - 15, _startPointVectorX.y + 10 )];
+            [self showXLabel:lb InPosition:CGPointMake(temp - 15 , _startPointVectorX.y + 10 )];
             temp = temp + _vectorX_Steps ;
         }
         //drawing y steps vector and putting axis x labels
