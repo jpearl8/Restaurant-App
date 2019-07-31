@@ -62,20 +62,15 @@
     if(dish.rating != nil){
         CGFloat rating = [dish.rating floatValue] / [dish.orderFrequency floatValue];
         NSString *ratingRounded = [NSString stringWithFormat:@"%.01f", (floorf(rating * 100) / 100)];
-        //    cell.rating.text = [dish.rating stringValue];
         cell.rating.text = [[NSString stringWithFormat:@"%@", ratingRounded] stringByAppendingString:@"/10"];
-//        cell.rating.text = [[dish.rating stringValue] stringByAppendingString:@"/10"];
     } else {
         cell.rating.text = @"No Rating";
     }
     cell.frequency.text = [[NSString stringWithFormat:@"%@", dish.orderFrequency] stringByAppendingString:@" orders"];
     cell.price.text = [@"Price: $" stringByAppendingString: [NSString stringWithFormat:@"%@", dish.price]];
     cell.profit.text = [@"Profit: $" stringByAppendingString:[dish.profit stringValue]];
-//    cell.ratingCategory = dish.ratingCategory;
     cell.ratingCategory = [[MenuManager shared] getRankOfType:@"rating" ForDish:dish];
-//    cell.freqCategory = dish.freqCategory;
     cell.freqCategory = [[MenuManager shared] getRankOfType:@"freq" ForDish:dish];;
-//    cell.profitCategory = dish.profitCategory;
     cell.profitCategory = [[MenuManager shared] getRankOfType:@"profit" ForDish:dish];
     cell.suggestionsLabel.text = dish.suggestions;
     cell.selectedIndex = self.rankByControl.selectedSegmentIndex;
