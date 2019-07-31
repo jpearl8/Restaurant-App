@@ -9,6 +9,8 @@
 #import "ReceiptViewController.h"
 #import "ReceiptTableViewCell.h"
 #import "Parse/Parse.h"
+#import "MenuManager.h"
+#import "OrderManager.h"
 
 @interface ReceiptViewController () <UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *receiptTable;
@@ -19,6 +21,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *date;
 @property (weak, nonatomic) IBOutlet UILabel *restaurantAddress;
 @property (weak, nonatomic) IBOutlet UILabel *restaurantName;
+@property (strong, nonatomic) NSMutableArray<NSString *>* mutableDishes;
+@property (strong, nonatomic) NSMutableArray* mutableAmounts;
+
 
 
 @end
@@ -27,6 +32,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.mutableAmounts = [[NSMutableArray alloc] init];
+    self.mutableDishes = [[NSMutableArray alloc] init];
     self.receiptTable.dataSource = self;
     self.receiptTable.delegate = self;
     PFUser *currentUser = [PFUser currentUser];
@@ -68,12 +75,36 @@
 - (IBAction)didSubmit:(id)sender {
     float pastTotalTips = [self.waiter.tipsMade floatValue];
     self.waiter.tipsMade = [NSNumber numberWithFloat: ([self.tip.text floatValue] + pastTotalTips)];
-//    [ClosedOrder postOldOrderWithOpenOrder:self.openOrder withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
-//        if (!error){
-//            NSLog(@"posted closed order");
-//        }}];
-    [self performSegueWithIdentifier:@"toThankYou" sender:self];
+    [self fillCellArrays:self.openOrders];
+    NSArray *dishNameStrings = [self.mutableDishes copy];
+    NSArray *amounts = [self.mutableAmounts copy];
+    [[OrderManager shared] closeOpenOrdersArray:self.openOrders withDishArray:dishNameStrings withAmounts:amounts withCompletion:^(NSError * _Nonnull error) {
+        if (error){
+            NSLog(@"%@", error.localizedDescription);
+        }
+        else {
+            [self performSegueWithIdentifier:@"toThankYou" sender:self];
+        }
+            
+    }];
+    
+}
 
+-(void)fillCellArrays:(NSArray<OpenOrder *>*)openOrders {
+    NSArray<Dish*>*dishArray = [[NSArray alloc] init];
+    dishArray = [[MenuManager shared] dishes];
+    NSLog(@"%@", dishArray);
+    for (int i = 0; i < openOrders.count; i++){
+        for (int j = 0; j < dishArray.count; j++)
+        {
+            NSLog(@"%@", openOrders[i]);
+            NSLog(@"%@", ((Dish*)openOrders[i].dish).objectId);
+            if ([((Dish *)dishArray[j]).objectId isEqualToString:((Dish*)openOrders[i].dish).objectId]){
+                 [self.mutableDishes addObject:((Dish *)dishArray[j]).name];
+                 [self.mutableAmounts addObject:openOrders[i].amount];
+            }
+        }
+    }
 }
 
 @end

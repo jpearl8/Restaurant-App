@@ -44,7 +44,12 @@ pass final array on submit button of data table
 @property (strong, nonatomic) NSMutableArray <Dish *>*orderedDishes;
 @property (strong, nonatomic) NSMutableArray <NSNumber *>*amounts;
 @property (strong, nonatomic) Waiter *selectedWaiter;
+- (IBAction)cancelAction:(UIBarButtonItem *)sender;
 
+
+@property (strong, nonatomic) IBOutlet UINavigationBar *navBar;
+
+@property (strong, nonatomic) IBOutlet UIImageView *topImage;
 
 
 
@@ -58,6 +63,13 @@ pass final array on submit button of data table
     //NSDictionary *dataDict =[[YelpAPIManager shared] locationTopRatings:@"NYC" withCategory:@"chinese" withPrice:nil];
    // NSLog(@"mu mu mum mu %@", dataDict[@"businesses"][0][@"alias"]);
     [super viewDidLoad];
+    self.customerNumber.text = @"";
+    self.tableNumber.text = @"";
+    //self.selectedWaiter = @"select waiter";
+    NSString *category = [PFUser currentUser][@"theme"];
+    [self.topImage setImage:[UIImage imageNamed:category]];
+    self.navBar.shadowImage = [UIImage imageNamed:category];
+    self.waiterTable.hidden = YES;
     self.menuItems.delegate = self;
     self.menuItems.dataSource = self;
     [self runWaiterQuery];
@@ -246,6 +258,12 @@ pass final array on submit button of data table
 //        elegantVC.openOrder = self.openOrder;
 //        elegantVC.customerNumber = self.customerNumber.text;
 //    }
+}
+
+
+- (IBAction)cancelAction:(UIBarButtonItem *)sender {
+    [self performSegueWithIdentifier:@"toOpenOrdersList" sender:self];
+    
 }
 
 

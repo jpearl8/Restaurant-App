@@ -27,6 +27,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self.waiterRating setThumbImage:[UIImage imageNamed:@"thumb_image"] forState:UIControlStateNormal];
     self.menuRatings.delegate = self;
     self.menuRatings.dataSource = self;
     self.waiterNameLabel.text = self.openOrders[0].waiter.name;
