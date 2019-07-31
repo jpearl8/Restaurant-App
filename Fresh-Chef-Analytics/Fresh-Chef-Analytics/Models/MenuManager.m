@@ -350,6 +350,8 @@
     }];
     
 }
+
+
 - (void)setBasicSuggestions:(Dish *)dish
 {
     if ([[self getRankOfType:@"rating" ForDish:dish] isEqualToString:@"high"]) {

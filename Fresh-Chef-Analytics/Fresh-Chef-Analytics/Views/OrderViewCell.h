@@ -13,6 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 @protocol OrderViewCellDelegate <NSObject>
 - (void)editForIndex:(NSNumber *)index;
 - (void)completeForIndex:(NSNumber *)index;
+
 @property (strong, nonatomic) NSArray<Dish *>*dishArray;
 @property (strong, nonatomic) Waiter* waiter;
 @property (strong, nonatomic) NSArray<OpenOrder *>* openOrders;
@@ -36,6 +37,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong, nonatomic) IBOutlet UILabel *dishes;
 @property (strong, nonatomic) IBOutlet UILabel *amounts;
 @property (strong, nonatomic) NSArray<Dish *>*dishArray;
+@property (assign, nonatomic) BOOL expanded;
 @end
 
 NS_ASSUME_NONNULL_END

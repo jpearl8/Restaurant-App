@@ -250,6 +250,40 @@
         completion(nil);
     }
 }
+
+-(void)closeOpenOrdersArray:(NSArray <OpenOrder *>*)ordersToClose withDishArray:(NSArray <NSString *>*)dishNames withAmounts:(NSArray*)amounts withCompletion : (void (^)(NSError * error))completion{
+    if (ordersToClose.count > 0){
+        ClosedOrder *newAddition = [ClosedOrder new];
+        newAddition.restaurantId = ordersToClose[0].restaurantId;;
+        newAddition.table = ordersToClose[0].table;
+        newAddition.numCustomers = ordersToClose[0].customerNum;
+        newAddition.waiter = ordersToClose[0].waiter;
+        newAddition.dishes = [[NSArray alloc] init];
+        newAddition.amounts = [[NSArray alloc] init];
+        newAddition.dishes = dishNames;
+        newAddition.amounts = amounts;
+        newAddition.restaurant = PFUser.currentUser;
+        [newAddition saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+            if (error){
+                NSLog(@"%@", error.localizedDescription);
+                completion(error);
+            }
+        }];
+        for (int i = 0; i < ordersToClose.count; i++){
+            [ordersToClose[i] deleteInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+                if (error){
+                    NSLog(@"%@", error.localizedDescription);
+                    completion(error);
+                }
+            }];
+        }
+        NSLog(@"Updated closed orders");
+        completion(nil);
+    }
+    
+    completion(nil);
+}
+
 - (void) deletingOrderswithTable : (NSNumber *) table forWaiter : (Waiter *) waiter withCustomerNum : (NSNumber *) customerNum withCompletion : (void (^)(NSError * error))completion
 {
     ClosedOrder *newAddition = [ClosedOrder new];

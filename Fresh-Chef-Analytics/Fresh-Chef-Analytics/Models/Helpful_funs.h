@@ -16,12 +16,13 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface Helpful_funs : NSObject
+
 + (instancetype) shared;
 - (UIColor *)colorFromHexString:(NSString *)hexString;
 - (void) updateWithOrder: ( NSMutableArray <order*> *)orderList withNumberString:(NSString *)customerNumber;
 -(void)defineSelect:(UIButton *)button withSelect:(BOOL)select;
 - (NSArray *)orderArray:(NSArray *)array byType:(NSString *)orderType;
-- (void)scaleArrayByMax:(NSMutableArray *)array;
+- (bool)scaleArrayByMax:(NSMutableArray *)array;
 -(int) findAmountIndexwithDishArray:(NSArray <Dish *>*)dishes withDish:(Dish *)dish;
 -(BOOL)arrayOfZeros:(NSArray<NSNumber *>*)array;
 -(NSMutableArray<NSString *>*)fillCellArrays:(NSArray<OpenOrder *>*)openOrders;

@@ -15,6 +15,7 @@
 #import "Helpful_funs.h"
 #import "OrderManager.h"
 #import "MenuManager.h"
+#import "AppDelegate.h"
 
 
 
@@ -33,12 +34,15 @@
 @property (strong, nonatomic) NSMutableDictionary<NSString *, Waiter *>*tableWaiterDictionary;
 @property (assign, nonatomic) NSNumber *index;
 //@property (strong, nonatomic) NSMutableArray *objects;
+@property (strong, nonatomic) IBOutlet UIImageView *image;
+@property (strong, nonatomic) IBOutlet UINavigationBar *navBar;
 @end
 
 @implementation OrdersViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+
     self.openOrdersTable.dataSource = self;
     self.openOrdersTable.delegate = self;
     self.tableWaiterDictionary = [[NSMutableDictionary alloc] init];
@@ -52,6 +56,9 @@
             NSLog(@"%@", error.localizedDescription);
         }
     }];
+    NSString *category = [PFUser currentUser][@"theme"];
+    [self.image setImage:[UIImage imageNamed:category]];
+    self.navBar.shadowImage = [UIImage imageNamed:category];
 }
 - (IBAction)refreshOrders:(UIBarButtonItem *)sender {
     [self fetchOpenOrders:^(NSError * _Nullable error) {
@@ -59,6 +66,7 @@
             NSLog(@"%@", error.localizedDescription);
         }
     }];
+    [self.openOrdersTable reloadData];
 }
 
 
@@ -91,12 +99,14 @@
 
     cell.waiter = self.tableWaiterDictionary[cell.tableNumber.text];
     cell.waiterName.text = cell.waiter.name;
-    cell.customerNumber.text = [openOrders[0].customerNum stringValue];
+    cell.customerNumber.text = [NSString stringWithFormat:@"%@", orderInCell[0].customerNum];
 
 
     
     return cell;
 }
+
+
 
 
 
@@ -136,6 +146,7 @@
     [self performSegueWithIdentifier:category sender:self];
     
 }
+
 
 
 /*
@@ -224,6 +235,7 @@
 }
 
 
+
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     NSLog(@"%@", sender);
     NSLog(@"%@", segue.identifier);
@@ -251,6 +263,16 @@
 //         // elegantVC.customerNumber = self.customerNumber.text;
 //     }
 //     }
+}
+- (IBAction)newOrderAction:(UIBarButtonItem *)sender {
+    [self dismissViewControllerAnimated:YES completion:^{
+        //Stuff after dismissing
+    }];
+     //[self.navigationController popViewControllerAnimated:YES];
+//    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+//    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+//    UINavigationController *navigationController = [storyboard instantiateViewControllerWithIdentifier:@"waiterView"];
+//    appDelegate.window.rootViewController = navigationController;
 }
 
 

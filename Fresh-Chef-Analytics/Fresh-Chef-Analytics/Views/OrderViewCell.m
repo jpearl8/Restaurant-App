@@ -9,6 +9,7 @@
 #import "OrderViewCell.h"
 
 @interface OrderViewCell() <UIGestureRecognizerDelegate>
+
 @property (nonatomic, strong) UIPanGestureRecognizer *panRecognizer;
 @property (nonatomic, assign) CGPoint panStartPoint;
 @property (nonatomic, assign) CGFloat startingRightLayoutConstraintConstant;
@@ -36,13 +37,13 @@ static CGFloat const kBounceValue = 20.0f;
 - (void)awakeFromNib {
     [super awakeFromNib];
     
-    
+    self.expanded = NO;
     self.panRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panThisCell:)];
     self.panRecognizer.delegate = self;
-    self.amountsConstraint.active = NO;
-    self.dishesConstraint.active = NO;
-    self.viewconstraints.active = NO;
-    self.ordersConstraint.active = YES;
+//    self.amountsConstraint.active = NO;
+//    self.dishesConstraint.active = NO;
+//    self.viewconstraints.active = NO;
+//    self.ordersConstraint.active = YES;
   
     [self.myContentView addGestureRecognizer:self.panRecognizer];
     
@@ -58,10 +59,10 @@ static CGFloat const kBounceValue = 20.0f;
 - (void)prepareForReuse {
     [super prepareForReuse];
     self.panRecognizer.delegate = self;
-    self.amountsConstraint.active = NO;
-    self.dishesConstraint.active = NO;
-    self.viewconstraints.active = NO;
-    self.ordersConstraint.active = YES;
+//    self.amountsConstraint.active = NO;
+//    self.dishesConstraint.active = NO;
+//    self.viewconstraints.active = NO;
+//    self.ordersConstraint.active = YES;
     [self resetConstraintContstantsToZero:NO notifyDelegateDidClose:NO];
 }
 - (void)openCell {
@@ -86,6 +87,7 @@ static CGFloat const kBounceValue = 20.0f;
         [self.delegate completeForIndex:self.index];
     } else if (sender == self.ordersButton) {
         NSLog(@"Clicked orders!");
+        self.expanded = (!(self.expanded));
         self.amountsConstraint.active = YES;
         self.dishesConstraint.active = YES;
         self.viewconstraints.active = YES;

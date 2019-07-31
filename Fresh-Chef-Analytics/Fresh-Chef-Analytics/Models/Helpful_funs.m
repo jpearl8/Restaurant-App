@@ -12,15 +12,18 @@
 @implementation Helpful_funs
 
 + (instancetype)shared {
+
     static Helpful_funs *helpful_funs = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         helpful_funs = [[self alloc] init];
     });
+
     return helpful_funs;
 }
 // Assumes input like "#00FF00" (#RRGGBB).
 - (UIColor *)colorFromHexString:(NSString *)hexString {
+
     unsigned rgbValue = 0;
     NSScanner *scanner = [NSScanner scannerWithString:hexString];
     [scanner setScanLocation:1]; // bypass '#' character
@@ -92,12 +95,20 @@
     }];
     return sortedArray;
 }
-- (void) scaleArrayByMax:(NSMutableArray *)array
+- (bool) scaleArrayByMax:(NSMutableArray *)array
 {
    NSNumber * max = [array valueForKeyPath:@"@max.floatValue"];
     for (int i = 0; i < array.count; i++)
     {
         array[i] = [NSNumber numberWithFloat:[array[i] floatValue] / [max floatValue]];
+    }
+    if ([max floatValue] < 1)
+    {
+        return true;
+    }
+    else
+    {
+        return false;
     }
 }
 
