@@ -28,7 +28,7 @@ typedef NSString *(^PNYLabelFormatter)(CGFloat yLabelValue);
 @property (nonatomic) NSArray *xLabels;
 @property (nonatomic) NSArray *yLabels;
 @property (nonatomic) NSArray *yValues;
-@property (nonatomic) NSArray *ratings;
+@property (nonatomic) NSArray *prices;
 
 @property (nonatomic) NSMutableArray * bars;
 

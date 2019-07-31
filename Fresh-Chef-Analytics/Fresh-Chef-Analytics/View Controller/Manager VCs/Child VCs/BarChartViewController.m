@@ -82,11 +82,9 @@
     self.barChart.showChartBorder = YES;
     NSMutableArray *xValues = [[NSMutableArray alloc] init];
     NSMutableArray *yValues = [[NSMutableArray alloc] init];
-    NSMutableArray *barRatings = [[NSMutableArray alloc] init];
+    NSMutableArray *barPrices = [[NSMutableArray alloc] init];
     if ([[[MenuManager shared] dishes] count] > 0)
     {
-        CGFloat dishRating = 0;
-
         if ([category isEqualToString:@"All Categories"])
         {
             NSString *categoryIterating;
@@ -95,30 +93,14 @@
             {
                 categoryIterating = self.legend[i];
                 CGFloat categoryFreq = 0;
-                CGFloat categoryRating = 0;
+                CGFloat categoryPrice = 0;
                 for (Dish *dish in self.categoriesOfDishes[categoryIterating])
                 {
-                    if (dish.rating != nil)
-                    {
-                        dishRating = [dish.rating floatValue];
-                    }
-                    else
-                    {
-                        dishRating = 0;
-                    }
-            
-                    categoryRating += dishRating;
+                    
+                    categoryPrice += [dish.price floatValue];
                     categoryFreq += [dish.orderFrequency floatValue];
                 }
-                if (categoryFreq != 0)
-                {
-                    categoryRating /= categoryFreq;
-                }
-                else
-                {
-                    categoryRating = 0;
-                }
-                [barRatings addObject:[NSNumber numberWithFloat:categoryRating]];
+                [barPrices addObject:[NSNumber numberWithFloat:categoryPrice]];
                 [xValues addObject:categoryIterating];
                 [yValues addObject:[NSNumber numberWithFloat:categoryFreq]];
                 [colorValues addObject:[[Helpful_funs shared] colorFromHexString:self.colorsFromUI[i]]];
@@ -129,25 +111,18 @@
         {
             for (Dish *dish in self.categoriesOfDishes[category])
             {
-                if (dish.rating != nil && dish.orderFrequency > 0)
-                {
-                    dishRating = [dish.rating floatValue] / [dish.orderFrequency floatValue];
-                    
-                }
-                else
-                {
-                    dishRating = 0;
-                }
-                [barRatings addObject:[NSNumber numberWithFloat:dishRating]];
+                [barPrices addObject:dish.price];
                 [xValues addObject:dish.name];
                 [yValues addObject:dish.orderFrequency];
             }
             NSUInteger indexOfCat = [self.legend indexOfObject:category];
             [self.barChart setStrokeColor:[[Helpful_funs shared] colorFromHexString:self.colorsFromUI[indexOfCat]]];
         }
-        [self.barChart setXLabels:xValues];
-        [self.barChart setYValues:yValues];
-        [self.barChart setRatingValues:barRatings];
+        NSMutableArray *indexOrder = [self setOrderForDescendingArray:barPrices];
+        
+        [self.barChart setXLabels:[self reorderUsingGivenIndexOrder:indexOrder forArr:xValues]];
+        [self.barChart setYValues:[self reorderUsingGivenIndexOrder:indexOrder forArr:yValues]];
+        [self.barChart setPrices:[self reorderUsingGivenIndexOrder:indexOrder forArr:barPrices]];
         self.barChart.isGradientShow = NO;
         self.barChart.isShowNumbers = YES;
         
@@ -172,12 +147,30 @@
         }];
     }
 
-    //[self.barChart setXLabels:@[@"2", @"3", @"4", @"5", @"2", @"3", @"4", @"5"]];
-    //       self.barChart.yLabels = @[@-10,@0,@10];
-    //        [self.barChart setYValues:@[@10000.0,@30000.0,@10000.0,@100000.0,@500000.0,@1000000.0,@1150000.0,@2150000.0]];
     
 }
-
+- (NSMutableArray *) setOrderForDescendingArray : (NSMutableArray *) arr
+{
+    NSMutableArray *indexArr = [[NSMutableArray alloc] init];
+    NSMutableArray *copyOfArr = [[NSMutableArray alloc] initWithArray:arr];
+    for (int i = 0; i < [arr count]; i++)
+    {
+    
+        NSUInteger maxIndex = [copyOfArr indexOfObject:[copyOfArr valueForKeyPath:@"@max.self"]];
+        [copyOfArr replaceObjectAtIndex:maxIndex withObject:@(0)];
+        [indexArr addObject:[NSNumber numberWithInteger:maxIndex]];
+    }
+    return indexArr;
+}
+- (NSMutableArray *) reorderUsingGivenIndexOrder : (NSMutableArray *) indexArr forArr : (NSMutableArray *) arrToOrder
+{
+    NSMutableArray *newVersionOfArray = [[NSMutableArray alloc] init];
+    for (int i = 0; i < [indexArr count]; i++)
+    {
+        [newVersionOfArray addObject:[arrToOrder objectAtIndex:[indexArr[i] integerValue]]];
+    }
+    return newVersionOfArray;
+}
 /*
 #pragma mark - Navigation
 
