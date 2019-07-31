@@ -34,9 +34,10 @@
     self.dishes = [[MenuManager shared] dishes];
     //setting dictionary elements
     self.categories = [[[MenuManager shared] categoriesOfDishes] allKeys];
-    self.orderedDishesDict = [[NSMutableDictionary alloc] initWithDictionary:[[MenuManager shared] categoriesOfDishes]];
+    self.orderedDishesDict = [[NSMutableDictionary alloc] initWithDictionary:[[MenuManager shared] dishesByFreq]];
     self.filteredCategoriesOfDishes = [NSMutableDictionary alloc];
     self.filteredCategoriesOfDishes = [self.filteredCategoriesOfDishes initWithDictionary:self.orderedDishesDict];
+//    NSLog(@"orderedDishes")
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -45,16 +46,21 @@
     Dish *dish = self.filteredCategoriesOfDishes[self.categories[section]][indexPath.row];
     cell.dish = dish;
     cell.name.text = dish.name;
+    CGFloat rating = [dish.rating floatValue] / [dish.orderFrequency floatValue];
+    NSString *ratingRounded = [NSString stringWithFormat:@"%.01f", (floorf(rating * 100) / 100)];
 //    cell.rating.text = [dish.rating stringValue];
-    cell.rating.text = [[NSString stringWithFormat:@"%@", dish.rating] stringByAppendingString:@"/10"];
+    cell.rating.text = [[NSString stringWithFormat:@"%@", ratingRounded] stringByAppendingString:@"/10"];
 //    cell.orderFrequency.text = [dish.orderFrequency stringValue];
     cell.orderFrequency.text = [[dish.orderFrequency stringValue] stringByAppendingString:@" sold"];
     cell.price.text = [@"$" stringByAppendingString: [dish.price stringValue]];
     cell.descriptionLabel.text = dish.dishDescription;
     cell.selectedIndex = self.selectedIndex;
-    cell.ratingCategory = dish.ratingCategory;
-    cell.freqCategory = dish.freqCategory;
-    cell.profitCategory = dish.profitCategory;
+//    cell.ratingCategory = dish.ratingCategory;
+    cell.ratingCategory = [[MenuManager shared] getRankOfType:@"rating" ForDish:dish];
+    //    cell.freqCategory = dish.freqCategory;
+    cell.freqCategory = [[MenuManager shared] getRankOfType:@"freq" ForDish:dish];;
+    //    cell.profitCategory = dish.profitCategory;
+    cell.profitCategory = [[MenuManager shared] getRankOfType:@"profit" ForDish:dish];
     if(dish.image != nil){
         PFFileObject *dishImageFile = (PFFileObject *)dish.image;
         [dishImageFile getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
