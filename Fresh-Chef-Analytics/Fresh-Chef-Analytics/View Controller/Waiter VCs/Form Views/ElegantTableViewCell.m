@@ -24,18 +24,27 @@
     // Configure the view for the selected state
 }
 -(void)textViewDidChange:(UITextView *)textView{
-    self.customerComments[self.index] = self.customerComment.text;
+    [self.delegate customerCommentForIndex:self.index withComment:self.customerComment.text];
+    //self.customerComments[self.index] = self.customerComment.text;
+}
+
+- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text{
+    int characterLimit = 140;
+    NSString *newText = [self.customerComment.text stringByReplacingCharactersInRange:range withString:text];
+    self.charsRemaining.text = [NSString stringWithFormat: @"%d", (int)(characterLimit - newText.length)];
+    return newText.length < characterLimit;
 }
 
 - (void) prepareForReuse{
-    self.customerComment.text = @"0";
+    self.customerComment.text = @"";
     self.customerRating.value = 5;
     [super prepareForReuse];
 }
 
 - (IBAction)changeCustomerRating:(UISlider *)sender {
     NSLog(@"%f", sender.value);
-    self.customerRatings[self.index] = [NSNumber numberWithFloat:sender.value];
+//    self.customerRatings[self.index] = [NSNumber numberWithFloat:sender.value];
+    [self.delegate customerRatingForIndex:self.index withRating:[NSNumber numberWithFloat:[sender.restorationIdentifier floatValue]]];
 }
 
 @end

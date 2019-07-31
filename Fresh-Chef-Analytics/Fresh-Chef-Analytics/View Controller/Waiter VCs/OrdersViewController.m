@@ -20,12 +20,12 @@
 
 
 @interface OrdersViewController () <OrderViewCellDelegate, UITableViewDelegate, UITableViewDataSource> {
-    NSMutableArray *_objects;
-    //    NSLog(@"In the delegate, Clicked button one for %@", itemText);
-    NSString *customerNumber;
-    NSArray<OpenOrder *>*openOrders;
-    Waiter *waiter;
-    NSMutableArray <Dish *>*dishArray;
+//    NSMutableArray *_objects;
+//    //    NSLog(@"In the delegate, Clicked button one for %@", itemText);
+//    NSString *customerNumber;
+//    NSArray<OpenOrder *>*openOrders;
+//    Waiter *waiter;
+//    NSMutableArray <Dish *>*dishArray;
 }
 @property (strong, nonatomic) IBOutlet UITableView *openOrdersTable;
 @property (strong, nonatomic) NSMutableDictionary<NSString *, NSArray<OpenOrder *>*>* totalOpenTables;
@@ -47,6 +47,9 @@
     self.openOrdersTable.delegate = self;
     self.tableWaiterDictionary = [[NSMutableDictionary alloc] init];
     self.dishesArray = [[NSMutableArray alloc] init];
+     NSString *category = [PFUser currentUser][@"theme"];
+     [self.image setImage:[UIImage imageNamed:category]];
+     self.navBar.shadowImage = [UIImage imageNamed:category];
     [self fetchOpenOrders:^(NSError * _Nullable error) {
         if (!error){
             self.openOrdersTable.delegate = self;
@@ -56,9 +59,7 @@
             NSLog(@"%@", error.localizedDescription);
         }
     }];
-    NSString *category = [PFUser currentUser][@"theme"];
-    [self.image setImage:[UIImage imageNamed:category]];
-    self.navBar.shadowImage = [UIImage imageNamed:category];
+
 }
 - (IBAction)refreshOrders:(UIBarButtonItem *)sender {
     [self fetchOpenOrders:^(NSError * _Nullable error) {
@@ -115,15 +116,15 @@
     return NO;
 }
 
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        NSLog(@"Cell recursive description:\n\n%@\n\n", [[self.openOrdersTable cellForRowAtIndexPath:indexPath] performSelector:@selector(recursiveDescription)]);
-        [_objects removeObjectAtIndex:indexPath.row];
-        [self.openOrdersTable deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else {
-        NSLog(@"Unhandled editing style! %d", editingStyle);
-    }
-}
+//- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+//    if (editingStyle == UITableViewCellEditingStyleDelete) {
+//        NSLog(@"Cell recursive description:\n\n%@\n\n", [[self.openOrdersTable cellForRowAtIndexPath:indexPath] performSelector:@selector(recursiveDescription)]);
+//        [_objects removeObjectAtIndex:indexPath.row];
+//        [self.openOrdersTable deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+//    } else {
+//        NSLog(@"Unhandled editing style! %d", editingStyle);
+//    }
+//}
 #pragma mark - SwipeableCellDelegate
 - (void)editForIndex:(NSNumber *)index {
     self.index = index;
@@ -250,19 +251,21 @@
         funVC.dishesArray = self.dishesArray;
         
      }
-//     if ([segue.identifier isEqualToString:@"Comfortable"]){
-//         ComfortableFormViewController *comfVC = [segue destinationViewController];
-//         //comfVC.customerOrder = self.customerOrder;
-//         comfVC.openOrders = ((OpenOrderButton *)sender).openOrders;
-//         //comfVC.customerNumber = self.customerNumber.text;
-//     }
-//     if ([segue.identifier isEqualToString:@"Elegant"]){
-//         ElegantFormViewController *elegantVC = [segue destinationViewController];
-//         //elegantVC.customerOrder = self.customerOrder;
-//         elegantVC.openOrders = ((OpenOrderButton *)sender).openOrders;
-//         // elegantVC.customerNumber = self.customerNumber.text;
-//     }
-//     }
+     if ([segue.identifier isEqualToString:@"Comfortable"]){
+         ComfortableFormViewController *comfVC = [segue destinationViewController];
+         comfVC.waiter = self.tableWaiterDictionary[self.keys[[self.index integerValue]]];
+         comfVC.openOrders =  self.totalOpenTables[self.keys[[self.index integerValue]]];
+         comfVC.customerNumber =  [self.totalOpenTables[self.keys[[self.index integerValue]]][0].customerNum stringValue];
+         comfVC.dishesArray = self.dishesArray;
+     }
+     if ([segue.identifier isEqualToString:@"Elegant"]){
+         ElegantFormViewController *elegantVC = [segue destinationViewController];
+         elegantVC.waiter = self.tableWaiterDictionary[self.keys[[self.index integerValue]]];
+         elegantVC.openOrders =  self.totalOpenTables[self.keys[[self.index integerValue]]];;
+         elegantVC.customerNumber =  [self.totalOpenTables[self.keys[[self.index integerValue]]][0].customerNum stringValue];
+         elegantVC.dishesArray = self.dishesArray;
+     
+     }
 }
 - (IBAction)newOrderAction:(UIBarButtonItem *)sender {
     [self dismissViewControllerAnimated:YES completion:^{

@@ -55,7 +55,7 @@
         [self.customerRatingsArray addObject:[NSNull null]];
         [self.customerComments addObject:[NSNull null]];
     }
-    self.customerComments = [[NSMutableArray alloc] init];
+    
     // Do any additional setup after loading the view.
 }
 
@@ -153,7 +153,7 @@
     self.waiter.rating = [NSNumber numberWithFloat: ([self.waiterRating floatValue] + totalRating)];
     
     if (!([self.waiterComments.text isEqualToString:@""])){
-        self.waiter.comments =[self.waiter.comments arrayByAddingObject:self.waiterComments.text];
+        self.waiter.comments = [self.waiter.comments arrayByAddingObject:self.waiterComments.text];
     }
     float numOfCustomers = [self.waiter.numOfCustomers floatValue];
     self.waiter.numOfCustomers = [NSNumber numberWithFloat: ([self.customerNumber floatValue] + numOfCustomers)];

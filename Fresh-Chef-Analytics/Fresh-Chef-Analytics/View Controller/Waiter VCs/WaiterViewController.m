@@ -45,6 +45,7 @@ pass final array on submit button of data table
 @property (strong, nonatomic) NSMutableArray <NSNumber *>*amounts;
 @property (strong, nonatomic) Waiter *selectedWaiter;
 - (IBAction)cancelAction:(UIBarButtonItem *)sender;
+@property (strong, nonatomic) IBOutlet UIButton *submitButton;
 
 
 @property (strong, nonatomic) IBOutlet UINavigationBar *navBar;
@@ -209,35 +210,39 @@ pass final array on submit button of data table
 
 
 - (IBAction)onSubmit:(id)sender{
-    NSMutableArray<OpenOrder *>*openOrders = [[NSMutableArray alloc] init];
+    NSMutableArray<OpenOrder *>*openOrdersArray = [[NSMutableArray alloc] init];
     if (self.amounts.count != 0 && (!([[Helpful_funs shared]arrayOfZeros:self.amounts]))){
         for (int i = 0; i < self.amounts.count; i++){
             if (self.amounts[i] != [NSNumber numberWithInt:0]){
-                OpenOrder *openOrder = [OpenOrder new];
-                openOrder.dish = self.orderedDishes[i];
+                OpenOrder *openOrderNew = [OpenOrder new];
+                openOrderNew.dish = self.orderedDishes[i];
                 NSLog(@"%@, %@", self.orderedDishes[i].name, self.amounts[i]);
-                openOrder.amount = self.amounts[i];
-                openOrder.waiter = self.selectedWaiter;
-                openOrder.restaurant = [PFUser currentUser];
+                openOrderNew.amount = self.amounts[i];
+                openOrderNew.waiter = self.selectedWaiter;
+                openOrderNew.restaurant = [PFUser currentUser];
                 NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
                 formatter.numberStyle = NSNumberFormatterDecimalStyle;
-                openOrder.table = [formatter numberFromString:self.tableNumber.text];
-                openOrder.restaurantId = [PFUser currentUser].objectId;
-                openOrder.customerNum = [formatter numberFromString:self.customerNumber.text];
-                [openOrders addObject:openOrder];
+                openOrderNew.table = [formatter numberFromString:self.tableNumber.text];
+                openOrderNew.restaurantId = [PFUser currentUser].objectId;
+                openOrderNew.customerNum = [formatter numberFromString:self.customerNumber.text];
+                [openOrdersArray addObject:openOrderNew];
             }
         }
-        [[OrderManager shared] postAllOpenOrders:openOrders withCompletion:^(NSError * _Nonnull error) {
+        [[OrderManager shared] postAllOpenOrders:openOrdersArray withCompletion:^(NSError * _Nonnull error) {
             if (!error){
-                [self performSegueWithIdentifier:@"toOpenOrdersList" sender:self];
+                [self performSegueWithIdentifier:@"toOpen" sender:self];
             } else{
                 NSLog(@"%@", error.localizedDescription);
             }
         }];
     }
 }
+- (IBAction)barButtonSubmit:(UIBarButtonItem *)sender {
+    //[self onSubmit:self.submitButton];
+}
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+
 //     NSString *category = [PFUser currentUser][@"theme"];
    
 //    if ([category isEqualToString:@"Fun"]){
@@ -262,7 +267,7 @@ pass final array on submit button of data table
 
 
 - (IBAction)cancelAction:(UIBarButtonItem *)sender {
-    [self performSegueWithIdentifier:@"toOpenOrdersList" sender:self];
+    [self performSegueWithIdentifier:@"toOpen" sender:self];
     
 }
 
