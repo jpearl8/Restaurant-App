@@ -87,7 +87,10 @@
     [self processYMaxValue];
   }
 }
-
+- (void)setRatingValues:(NSArray *) ratings
+{
+    _ratings = ratings;
+}
 - (void)processYMaxValue {
     NSArray *yAxisValues = _yLabels ? _yLabels : _yValues;
     _yLabelSum = _yLabels ? _yLabels.count - 1 :_yLabelSum;
@@ -210,8 +213,8 @@
     CGFloat chartCavanHeight = self.frame.size.height - _chartMarginTop - _chartMarginBottom - kXLabelHeight;
     NSInteger index = 0;
 
-    for (NSNumber *valueString in _yValues) {
-
+    for (int i = 0; i < [_yValues count]; i++) {
+        NSNumber *valueString = _yValues[i];
         PNBar *bar;
 
         if (_bars.count == _yValues.count) {
@@ -243,6 +246,9 @@
             //Change Bar Radius
             bar.barRadius = _barRadius;
             
+            //Change Bar Rating
+            NSNumber *ratingForBar = _ratings[i];
+            bar.rating = [ratingForBar floatValue];
             //Set Bar Animation
             bar.displayAnimated = self.displayAnimated;
 

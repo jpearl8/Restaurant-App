@@ -14,14 +14,8 @@
 @property (strong, nonatomic) NSMutableDictionary *categoriesOfDishes;
 @property (strong, nonatomic) PNRadarChart *radarChart;
 @property (strong, nonatomic) NSMutableArray *legend;
-@property (strong, nonatomic) NSArray *ratingsForDishes;
-@property (strong, nonatomic) NSArray *frequencyForDishes;
-@property (strong, nonatomic) NSArray *profitForDishes;
 @property (strong, nonatomic) NSArray *colorsFromUI;
 @property (strong, nonatomic) NSArray *chartColors;
-@property (strong, nonatomic) CAShapeLayer *ratingPlot;
-@property (strong, nonatomic) CAShapeLayer *frequencyPlot;
-@property (strong, nonatomic) CAShapeLayer *profitPlot;
 @property (strong, nonatomic) NSArray *ratingItems;
 @property (strong, nonatomic) NSArray *frequencyItems;
 @property (strong, nonatomic) NSArray *profitItems;
@@ -43,7 +37,7 @@
     self.dishes = [[MenuManager shared] dishes];
     self.menCatSelected = @"All categories";
     self.statCatSelected = @"All Statistics";
-    self.colorsFromUI = @[@"#FF0000", @"#00FF00", @"#00FFFF", @"#FF00FF", @"#FCAF0B", @"#800BFC", @"#0B30FC", @"0B30FC"];
+    self.colorsFromUI = @[@"#6b48ff", @"#ff6337", @"#b31e6f", @"#00bdaa", @"#58b368", @"#ff487e", @"#226b80", @"52437b"];
     self.chartColors = @[@"#FE0EBC", @"#0E62FE", @"#FEDD0E"];
     self.statCats = @[@"All Statistics", @"Profit", @"Rating", @"Popularity"];
     self.categoriesOfDishes = [[MenuManager shared] categoriesOfDishes];

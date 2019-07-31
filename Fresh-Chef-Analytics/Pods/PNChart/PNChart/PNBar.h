@@ -25,7 +25,7 @@
 
 @property (nonatomic) CAShapeLayer *gradeLayer;
 @property (nonatomic) CATextLayer* textLayer;
-
+@property (nonatomic) float rating;
 /** Text color for all bars in the chart. */
 @property (nonatomic) UIColor * labelTextColor;
 

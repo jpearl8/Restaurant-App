@@ -12,15 +12,18 @@
 @implementation Helpful_funs
 
 + (instancetype)shared {
+
     static Helpful_funs *helpful_funs = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         helpful_funs = [[self alloc] init];
     });
+
     return helpful_funs;
 }
 // Assumes input like "#00FF00" (#RRGGBB).
 - (UIColor *)colorFromHexString:(NSString *)hexString {
+
     unsigned rgbValue = 0;
     NSScanner *scanner = [NSScanner scannerWithString:hexString];
     [scanner setScanLocation:1]; // bypass '#' character
