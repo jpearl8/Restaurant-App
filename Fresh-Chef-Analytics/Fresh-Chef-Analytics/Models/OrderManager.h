@@ -27,11 +27,8 @@ NS_ASSUME_NONNULL_BEGIN
 - (void) fetchClosedOrderItems:(PFUser *) restaurant  withCompletion:(void (^)(NSArray * closedOrders, NSError * error))fetchedClosedOrders;
 - (void) deletingOrderswithTable : (NSNumber *) table forWaiter : (Waiter *) waiter withCustomerNum : (NSNumber *) customerNum withCompletion : (void (^)(NSError * error))completion;
 - (void) postAllOpenOrders : (NSArray *) openOrders withCompletion : (void (^)(NSError * error))completion;
-<<<<<<< HEAD
 -(void)closeOpenOrdersArray:(NSArray <OpenOrder *>*)ordersToClose withDishArray:(NSArray <NSString *>*)dishNames withAmounts:(NSArray*)amounts withCompletion : (void (^)(NSError * error))completion;
-=======
 - (void)setProfitByDate;
->>>>>>> 2864d62130f871b4a603c8fd9d5358cf8139d580
 @end
 
 NS_ASSUME_NONNULL_END

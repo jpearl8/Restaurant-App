@@ -4576,13 +4576,9 @@
         <image name="Screen Shot 2019-07-30 at 4.10.34 PM" width="268" height="362"/>
         <image name="arrow" width="700" height="700"/>
         <image name="image_placeholder" width="375" height="375"/>
-<<<<<<< HEAD
         <image name="minus" width="21.333333969116211" height="21.333333969116211"/>
         <image name="nav-plus_outline_24" width="24" height="24"/>
         <image name="plus" width="21.333333969116211" height="21.333333969116211"/>
-=======
-        <image name="info" width="700" height="700"/>
->>>>>>> 2864d62130f871b4a603c8fd9d5358cf8139d580
         <image name="profile_tab" width="25" height="25"/>
         <image name="refresh-right_outline_24" width="24" height="24"/>
     </resources>
