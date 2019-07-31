@@ -47,6 +47,7 @@ pass final array on submit button of data table
 - (IBAction)cancelAction:(UIBarButtonItem *)sender;
 @property (strong, nonatomic) IBOutlet UIButton *submitButton;
 
+@property (strong, nonatomic) IBOutlet UIImageView *backgroundImage;
 
 @property (strong, nonatomic) IBOutlet UINavigationBar *navBar;
 
@@ -60,16 +61,18 @@ pass final array on submit button of data table
 
 @implementation WaiterViewController
 
+
 - (void)viewDidLoad {
-    //NSDictionary *dataDict =[[YelpAPIManager shared] locationTopRatings:@"NYC" withCategory:@"chinese" withPrice:nil];
-   // NSLog(@"mu mu mum mu %@", dataDict[@"businesses"][0][@"alias"]);
+
     [super viewDidLoad];
     self.customerNumber.text = @"";
     self.tableNumber.text = @"";
-    //self.selectedWaiter = @"select waiter";
+
     NSString *category = [PFUser currentUser][@"theme"];
-    [self.topImage setImage:[UIImage imageNamed:category]];
-    self.navBar.shadowImage = [UIImage imageNamed:category];
+    NSString *category_top = [NSString stringWithFormat:@"%@_top", category];
+    [self.backgroundImage setImage:[UIImage imageNamed:category]];
+    [self.topImage setImage:[UIImage imageNamed:category_top]];
+    
     self.waiterTable.hidden = YES;
     self.menuItems.delegate = self;
     self.menuItems.dataSource = self;
