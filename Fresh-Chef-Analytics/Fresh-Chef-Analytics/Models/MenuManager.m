@@ -86,8 +86,6 @@
             }];
         }
     }];
-
-
 }
 
 - (void) categorizeDishes
@@ -102,29 +100,25 @@
     NSLog(@"Step 2");
 }
 
-- (void)setProfitForDishes
-{
-    for (Dish *dish in self.dishes) {
-        dish.profit = [NSNumber numberWithInt: ([dish.orderFrequency intValue] * [dish.price intValue])];
-        NSLog(@"Dish profit: %@", dish.profit);
-    }
-    
-    
-}
-
 - (void) addDishToDict : (Dish *) dish toArray: (NSArray *) dishesOfType
 {
     if (self.categoriesOfDishes[dish.type]!=nil)
     {
         dishesOfType = self.categoriesOfDishes[dish.type];
         dishesOfType = [dishesOfType arrayByAddingObject:dish];
-        
     }
     else
     {
         dishesOfType = [NSArray arrayWithObject:dish];
     }
     [self.categoriesOfDishes setObject:dishesOfType forKey:dish.type];
+}
+
+- (void)setProfitForDishes
+{
+    for (Dish *dish in self.dishes) {
+        dish.profit = [NSNumber numberWithInt: ([dish.orderFrequency intValue] * [dish.price intValue])];
+    }
 }
 
 - (void)setTop3Bottom3Dict

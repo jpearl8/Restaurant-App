@@ -19,6 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong, nonatomic) NSMutableDictionary *openOrdersByTable;
 @property (strong, nonatomic) NSMutableDictionary *closedOrdersByDate;
 @property (strong, nonatomic) NSMutableDictionary *profitByDate;
+@property (strong, nonatomic) NSMutableDictionary *busynessByDate;
 @property (strong, nonatomic) NSArray *closedOrders;
 @property (strong, nonatomic) NSArray *ordersToDelete;
 @property (strong, nonatomic) Dish * tempDish;
@@ -29,6 +30,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void) postAllOpenOrders : (NSArray *) openOrders withCompletion : (void (^)(NSError * error))completion;
 -(void)closeOpenOrdersArray:(NSArray <OpenOrder *>*)ordersToClose withDishArray:(NSArray <NSString *>*)dishNames withAmounts:(NSArray*)amounts withCompletion : (void (^)(NSError * error))completion;
 - (void)setProfitByDate;
+
 @end
 
 NS_ASSUME_NONNULL_END

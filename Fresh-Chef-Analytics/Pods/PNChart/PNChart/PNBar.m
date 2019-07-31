@@ -176,6 +176,7 @@
     _labelTextColor = labelTextColor;
     [_textLayer setForegroundColor:[_labelTextColor CGColor]];
 }
+// -(void)setGradeFrame:(CGFloat)grade startPosY:(CGFloat)startPosY withNumLabel : (NSNumber *) rating
 
 -(void)setGradeFrame:(CGFloat)grade startPosY:(CGFloat)startPosY
 {
@@ -185,10 +186,10 @@
     CGFloat textWidth = self.bounds.size.width;
   
     [_chartLine addSublayer:self.textLayer];
-    [self.textLayer setFontSize:18.0];
+    [self.textLayer setFontSize:14.0];
   
-    [self.textLayer setString:[[NSString alloc]initWithFormat:@"%0.f",grade*self.maxDivisor]];
-  
+//    [self.textLayer setString:[[NSString alloc]initWithFormat:@"%0.f",grade*self.maxDivisor]];
+    [self.textLayer setString:[[NSString alloc]initWithFormat:@"$%0.f", self.price]];
     CGSize size = CGSizeMake(320,2000); //设置一个行高上限
     NSDictionary *attributes = @{NSFontAttributeName:[UIFont systemFontOfSize:18.0]};
     size = [self.textLayer.string boundingRectWithSize:size options:NSStringDrawingUsesLineFragmentOrigin attributes:attributes context:nil].size;
@@ -205,6 +206,7 @@
     self.textLayer.contentsScale = [UIScreen mainScreen].scale;
 
 }
+//- (void)setIsShowNumber:(BOOL)isShowNumber withRating : (NSNumber *) rating {
 
 - (void)setIsShowNumber:(BOOL)isShowNumber{
   if (isShowNumber) {

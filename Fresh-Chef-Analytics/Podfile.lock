@@ -68,6 +68,10 @@ SPEC CHECKSUMS:
   UICountingLabel: 1db4e7d023e1762171eb226d6dff47a7a84f27aa
   "UITextView+Placeholder": 0c3efd97f37ea64bde7f34cc6e90fe02e87b3909
 
+<<<<<<< HEAD
 PODFILE CHECKSUM: 24b60b0cb8dbc00ed31bc22d03b611054e6711c8
+=======
+PODFILE CHECKSUM: 285e25fb2d01bd1b4356acf834e6ab2f5fa0d68c
+>>>>>>> 5dd4e955ff2ecee01ed1adbae06a8994922b217a
 
 COCOAPODS: 1.7.4

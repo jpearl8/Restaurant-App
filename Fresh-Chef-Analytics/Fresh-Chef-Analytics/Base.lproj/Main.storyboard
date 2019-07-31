@@ -4119,31 +4119,35 @@
             </objects>
             <point key="canvasLocation" x="-2226.0869565217395" y="5591.8526785714284"/>
         </scene>
-        <!--View Controller-->
+        <!--Bar Chart View Controller-->
         <scene sceneID="oAC-Uk-Nfo">
             <objects>
-                <viewController id="0F3-l6-0Jg" sceneMemberID="viewController">
+                <viewController id="0F3-l6-0Jg" customClass="BarChartViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Abq-Xr-uX4">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="765"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="757"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bRc-PS-JVt">
-                                <rect key="frame" x="0.0" y="37" width="414" height="389"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </view>
                             <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="61C-Se-hAV">
                                 <rect key="frame" x="0.0" y="490" width="414" height="211"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             </pickerView>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bRc-PS-JVt">
+                                <rect key="frame" x="0.0" y="142" width="414" height="382"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="uDy-CV-Bir"/>
                     </view>
+                    <connections>
+                        <outlet property="categoryPicker" destination="61C-Se-hAV" id="pQ2-qs-qeY"/>
+                        <outlet property="dataView" destination="bRc-PS-JVt" id="JAr-pq-sbh"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eJk-30-aI8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1619" y="5591"/>
+            <point key="canvasLocation" x="-1620.289855072464" y="5590.5133928571422"/>
         </scene>
         <!--Top3 Bot3 View Controller-->
         <scene sceneID="rIo-yk-fdq">
@@ -4449,7 +4453,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0QH-Zr-UGb">
-                                                    <rect key="frame" x="0.0" y="107" width="414" height="765"/>
+                                                    <rect key="frame" x="0.0" y="115" width="414" height="757"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                     <connections>
                                                         <segue destination="0F3-l6-0Jg" kind="embed" id="HV1-9B-bi9"/>

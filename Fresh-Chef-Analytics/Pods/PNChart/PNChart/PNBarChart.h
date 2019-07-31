@@ -28,6 +28,7 @@ typedef NSString *(^PNYLabelFormatter)(CGFloat yLabelValue);
 @property (nonatomic) NSArray *xLabels;
 @property (nonatomic) NSArray *yLabels;
 @property (nonatomic) NSArray *yValues;
+@property (nonatomic) NSArray *prices;
 
 @property (nonatomic) NSMutableArray * bars;
 
@@ -36,6 +37,8 @@ typedef NSString *(^PNYLabelFormatter)(CGFloat yLabelValue);
 @property (nonatomic) UIColor *strokeColor;
 @property (nonatomic) NSArray *strokeColors;
 
+/** Update Ratings. */
+- (void)setRatingValues:(NSArray *) ratings;
 
 /** Update Values. */
 - (void)updateChartData:(NSArray *)data;

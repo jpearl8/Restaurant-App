@@ -16,6 +16,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface Helpful_funs : NSObject
+
 + (instancetype) shared;
 - (UIColor *)colorFromHexString:(NSString *)hexString;
 - (void) updateWithOrder: ( NSMutableArray <order*> *)orderList withNumberString:(NSString *)customerNumber;

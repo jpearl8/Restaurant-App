@@ -12,15 +12,18 @@
 @implementation Helpful_funs
 
 + (instancetype)shared {
+
     static Helpful_funs *helpful_funs = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         helpful_funs = [[self alloc] init];
     });
+
     return helpful_funs;
 }
 // Assumes input like "#00FF00" (#RRGGBB).
 - (UIColor *)colorFromHexString:(NSString *)hexString {
+
     unsigned rgbValue = 0;
     NSScanner *scanner = [NSScanner scannerWithString:hexString];
     [scanner setScanLocation:1]; // bypass '#' character
@@ -74,6 +77,13 @@
         NSNumber *first = a[orderType];
         NSNumber *second = b[orderType];
         
+        if ([orderType isEqualToString:@"rating"]) {
+            // calculate actual rating based on frequency
+            float x = [a[@"rating"] floatValue] / [a[@"orderFrequency"] floatValue];
+            float y = [b[@"rating"] floatValue] / [b[@"orderFrequency"] floatValue];
+            first = [NSNumber numberWithFloat:x];
+            second = [NSNumber numberWithFloat:y];
+        }
         //check for nil values
         if(first != nil && second != nil){
             return [second compare:first];
@@ -83,12 +93,6 @@
             return -1; // if second is nil or if both are nil assume second is smaller
         }
     }];
-    if ([orderType isEqualToString:@"rating"]) {
-        NSLog(@"Order type: %@", orderType);
-        for (Dish *dish in sortedArray){
-            NSLog(@"Dish w/ rating: %@", dish.rating);
-        }
-    }
     return sortedArray;
 }
 - (bool) scaleArrayByMax:(NSMutableArray *)array

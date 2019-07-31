@@ -27,6 +27,8 @@
 		A5C06F7E22E9028000F634E3 /* OrderManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C06F7D22E9028000F634E3 /* OrderManager.m */; };
 		B6795EA122EB7C6400CCC0F8 /* ManagerOrderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B6795EA022EB7C6400CCC0F8 /* ManagerOrderTableViewCell.m */; };
 		B6795EA422EBB62700CCC0F8 /* ProfitTrendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6795EA322EBB62700CCC0F8 /* ProfitTrendsViewController.m */; };
+		B6848BFF22F105CF0069CC94 /* NSDate+DayMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = B6848BFE22F105CF0069CC94 /* NSDate+DayMethods.m */; };
+		B6848C0222F108930069CC94 /* FCADate.m in Sources */ = {isa = PBXBuildFile; fileRef = B6848C0122F108930069CC94 /* FCADate.m */; };
 		B6BC874D22E6867000264995 /* Top3Bottom3TableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B6BC874C22E6867000264995 /* Top3Bottom3TableViewCell.m */; };
 		B6C4BFF022E8FE8500FE5EAC /* DataViewTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6C4BFEF22E8FE8500FE5EAC /* DataViewTableViewController.m */; };
 		B6C4BFF922E9107400FE5EAC /* OrdersManagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6C4BFF822E9107400FE5EAC /* OrdersManagerViewController.m */; };
@@ -130,6 +132,10 @@
 		B6795EA022EB7C6400CCC0F8 /* ManagerOrderTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ManagerOrderTableViewCell.m; sourceTree = "<group>"; };
 		B6795EA222EBB62700CCC0F8 /* ProfitTrendsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProfitTrendsViewController.h; sourceTree = "<group>"; };
 		B6795EA322EBB62700CCC0F8 /* ProfitTrendsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProfitTrendsViewController.m; sourceTree = "<group>"; };
+		B6848BFD22F105CF0069CC94 /* NSDate+DayMethods.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSDate+DayMethods.h"; sourceTree = "<group>"; };
+		B6848BFE22F105CF0069CC94 /* NSDate+DayMethods.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSDate+DayMethods.m"; sourceTree = "<group>"; };
+		B6848C0022F108930069CC94 /* FCADate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FCADate.h; sourceTree = "<group>"; };
+		B6848C0122F108930069CC94 /* FCADate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FCADate.m; sourceTree = "<group>"; };
 		B6BC874B22E6867000264995 /* Top3Bottom3TableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Top3Bottom3TableViewCell.h; sourceTree = "<group>"; };
 		B6BC874C22E6867000264995 /* Top3Bottom3TableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Top3Bottom3TableViewCell.m; sourceTree = "<group>"; };
 		B6C4BFEE22E8FE8500FE5EAC /* DataViewTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DataViewTableViewController.h; sourceTree = "<group>"; };
@@ -299,6 +305,10 @@
 				FF9AF93222E90B3F00A0D1FE /* order.m */,
 				FFC87AD122EA2A91009DE74C /* Link.h */,
 				FFC87AD222EA2A91009DE74C /* Link.m */,
+				B6848BFD22F105CF0069CC94 /* NSDate+DayMethods.h */,
+				B6848BFE22F105CF0069CC94 /* NSDate+DayMethods.m */,
+				B6848C0022F108930069CC94 /* FCADate.h */,
+				B6848C0122F108930069CC94 /* FCADate.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -776,6 +786,7 @@
 				FF03BF3D22DE97AD00719E8C /* ThankYouViewController.m in Sources */,
 				FF03BF4C22DE9FFD00719E8C /* MenuListViewController.m in Sources */,
 				FFECCE4D22E682F20000FDFF /* YelpAPIManager.m in Sources */,
+				B6848BFF22F105CF0069CC94 /* NSDate+DayMethods.m in Sources */,
 				FFEA6BCA22E28E03008665BD /* ComfortableTableViewCell.m in Sources */,
 				FFEA6BC622E28DD0008665BD /* ElegantTableViewCell.m in Sources */,
 				A535D7B922DE6CE9002B79CA /* Dish.m in Sources */,
@@ -824,6 +835,7 @@
 				A5C06F6822E67E7F00F634E3 /* Top3Bot3ViewController.m in Sources */,
 				B6C4C00022E91EAD00FE5EAC /* EditOrderViewController.m in Sources */,
 				FFC87AD322EA2A91009DE74C /* Link.m in Sources */,
+				B6848C0222F108930069CC94 /* FCADate.m in Sources */,
 				A5C06F5922E11D3500F634E3 /* EditWaiterCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

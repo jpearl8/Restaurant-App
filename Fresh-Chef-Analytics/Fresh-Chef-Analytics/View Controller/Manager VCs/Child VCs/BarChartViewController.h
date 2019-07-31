@@ -7,10 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "PNChart.h"
+#import "MenuManager.h"
+#import "Helpful_funs.h"
 NS_ASSUME_NONNULL_BEGIN
 
-@interface BarChartViewController : UIViewController
+@interface BarChartViewController : UIViewController <PNChartDelegate, UIPickerViewDelegate, UIPickerViewDataSource>
 
 @end
 
