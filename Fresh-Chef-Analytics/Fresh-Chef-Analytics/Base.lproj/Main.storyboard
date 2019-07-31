@@ -4587,7 +4587,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Comfortable" width="225" height="225"/>
+        <image name="Comfortable" width="450" height="894"/>
         <image name="Comfortable_top" width="548" height="388"/>
         <image name="Elegant" width="674" height="980"/>
         <image name="Elegant_top" width="562" height="190"/>
@@ -4605,7 +4605,6 @@
         <image name="refresh-right_outline_24" width="24" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Byu-Vf-ZfJ"/>
         <segue reference="r3R-H8-hdI"/>
         <segue reference="yOU-L2-H8u"/>
     </inferredMetricsTieBreakers>
