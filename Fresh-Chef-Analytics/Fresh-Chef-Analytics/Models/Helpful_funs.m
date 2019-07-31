@@ -77,6 +77,13 @@
         NSNumber *first = a[orderType];
         NSNumber *second = b[orderType];
         
+        if ([orderType isEqualToString:@"rating"]) {
+            // calculate actual rating based on frequency
+            float x = [a[@"rating"] floatValue] / [a[@"orderFrequency"] floatValue];
+            float y = [b[@"rating"] floatValue] / [b[@"orderFrequency"] floatValue];
+            first = [NSNumber numberWithFloat:x];
+            second = [NSNumber numberWithFloat:y];
+        }
         //check for nil values
         if(first != nil && second != nil){
             return [second compare:first];
@@ -86,12 +93,6 @@
             return -1; // if second is nil or if both are nil assume second is smaller
         }
     }];
-    if ([orderType isEqualToString:@"rating"]) {
-        NSLog(@"Order type: %@", orderType);
-        for (Dish *dish in sortedArray){
-            NSLog(@"Dish w/ rating: %@", dish.rating);
-        }
-    }
     return sortedArray;
 }
 - (bool) scaleArrayByMax:(NSMutableArray *)array

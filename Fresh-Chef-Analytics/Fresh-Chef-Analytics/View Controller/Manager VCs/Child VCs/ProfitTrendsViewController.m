@@ -11,7 +11,8 @@
 @interface ProfitTrendsViewController ()
 @property (weak, nonatomic) IBOutlet UIView *dataView;
 @property (strong, nonatomic) NSMutableDictionary *profitByDay;
-
+@property (strong, nonatomic) NSArray *currentXLabels;
+@property (strong, nonatomic) NSArray *currentYLabels;
 @end
 
 @implementation ProfitTrendsViewController
@@ -21,6 +22,7 @@
     PNLineChart * lineChart = [[PNLineChart alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH * 0.9, 250.0)];
     [lineChart setXLabels:@[@"SEP 1",@"SEP 2",@"SEP 3",@"SEP 4",@"SEP 5"]];
     NSArray * data01Array = @[@60.1, @160.1, @126.4, @262.2, @186.2];
+//    [lineChart setXLabels:self.dates];
     PNLineChartData *data01 = [PNLineChartData new];
     data01.color = PNFreshGreen;
     data01.itemCount = lineChart.xLabels.count;

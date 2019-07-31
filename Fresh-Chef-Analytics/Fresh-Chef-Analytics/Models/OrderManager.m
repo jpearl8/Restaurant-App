@@ -7,6 +7,9 @@
 //
 
 #import "OrderManager.h"
+#import "MenuManager.h"
+#import "FCADate.h"
+#import "NSDate+DayMethods.h"
 
 @implementation OrderManager
 // singleton generates a single instance and initiates itself
@@ -68,40 +71,115 @@
         {
             self.closedOrders = closedOrders;
             fetchedClosedOrders(self.closedOrders, nil);
+            [self setClosedOrdersByDate];
             [self setProfitByDate];
+            [self setBusynessByDate];
         }
     }];
 }
 
-- (void)setClosedOrderByDate
+- (void)setClosedOrdersByDate
 {
-    //        [self addOrderToDict:order toArray:ordersByTable];
+    self.closedOrdersByDate = [[NSMutableDictionary alloc] init];
+    NSArray *ordersForDate;
+    for (ClosedOrder *anOrder in self.closedOrders) {
+        [self addClosedOrder:anOrder toArray:ordersForDate];
+    }
+    NSLog(@"Closed Orders Dict: %@", self.closedOrdersByDate);
 }
+    
+- (void) addClosedOrder:(ClosedOrder *)anOrder toArray:(NSArray *)arrayForDate
+{
+    NSString *dayString = [anOrder.createdAt dayFromDate];
+    if (self.closedOrdersByDate[dayString]) {
+        arrayForDate = self.closedOrdersByDate[dayString];
+        arrayForDate = [arrayForDate arrayByAddingObject:anOrder];
+    } else {
+        arrayForDate = [NSArray arrayWithObject:anOrder];
+    }
+    [self.closedOrdersByDate setObject:arrayForDate forKey:dayString];
+}
+
+//- (BOOL)isSameDay:(NSDate*)date1 otherDay:(NSDate*)date2 {
+//    NSCalendar* calendar = [NSCalendar currentCalendar];
+//
+//    unsigned unitFlags = NSCalendarUnitYear | NSCalendarUnitMonth |  NSCalendarUnitDay;
+//    NSDateComponents* comp1 = [calendar components:unitFlags fromDate:date1];
+//    NSDateComponents* comp2 = [calendar components:unitFlags fromDate:date2];
+//
+//    return [comp1 day]   == [comp2 day] &&
+//    [comp1 month] == [comp2 month] &&
+//    [comp1 year]  == [comp2 year];
+//}
+
+
 
 - (void)setProfitByDate
 {
-//    self.profitByDate = [[NSMutableDictionary alloc] init];
-//    
-//    for (ClosedOrder *anOrder in self.closedOrders)
-//    {
-//        // loop through closed orders and add amount*dish.price to value for each date
-//        // find  order total
-//        float orderTotal = 0;
-//        NSLog(@"Order: %@", anOrder);
-//        for(int i = 0; i < anOrder.amounts.count; i++){
-//            float dishPrice = [((Dish *)anOrder.dishes[i]).price floatValue];
-//            float cost = dishPrice * [((NSNumber *)anOrder.amounts[i]) floatValue];
-//            orderTotal += cost;
-//        }
-//        // check if order date is already in dictionary:
-//        float dateTotal = 0.0f;
-//        if(self.closedOrdersByDate[anOrder.createdAt] != nil) {
-//            dateTotal = [[self.closedOrdersByDate objectForKey:anOrder.createdAt] floatValue];
-//        }
-//        [self.closedOrdersByDate[anOrder.createdAt] setObject:@(dateTotal + orderTotal) forKey:anOrder.createdAt];
-//    }
-//    NSLog(@"Profit by date: %@", self.profitByDate);
+    self.profitByDate = [[NSMutableDictionary alloc] init];
+    
+    for (id date in self.closedOrdersByDate)
+    {
+        // loop through closed orders by day add amount*dish.price to value for each date
+        float daysRevenue = 0;
+        for (ClosedOrder *anOrder in self.closedOrdersByDate[date])
+        {
+            // find  order total
+            float orderTotal = 0;
+            NSLog(@"Order: %@", anOrder);
+            for(int i = 0; i < anOrder.amounts.count; i++){
+                // get the dish object from the dish name then get its price
+                Dish *dish = [self getDishWithName:anOrder.dishes[i]];
+                float dishPrice = [dish.price floatValue];
+                float cost = dishPrice * [((NSNumber *)anOrder.amounts[i]) floatValue];
+                orderTotal += cost;
+            }
+            daysRevenue += orderTotal;
+        }
+        [self.profitByDate setValue:@(daysRevenue) forKey:date];
+    }
+    NSLog(@"Profit by date: %@", self.profitByDate);
 }
+
+- (void)setBusynessByDate
+{
+    self.busynessByDate = [[NSMutableDictionary alloc] init];
+    for (id date in self.closedOrdersByDate)
+    {
+        // loop through closed orders by day add number of customers to value for each date
+        int numCustomers = 0;
+        for (ClosedOrder *anOrder in self.closedOrdersByDate[date])
+        {
+            // find  order total
+            int orderTotal = 0;
+            NSLog(@"Order: %@", anOrder);
+            for(int i = 0; i < anOrder.amounts.count; i++){
+                orderTotal += [anOrder.numCustomers intValue];
+            }
+            numCustomers += orderTotal;
+        }
+        [self.busynessByDate setValue:@(numCustomers) forKey:date];
+    }
+    NSLog(@"Busyness by date:%@", self.busynessByDate);
+}
+
+- (Dish *)getDishWithName:(NSString *)name
+{
+    NSArray<Dish*>*dishArray = [[NSArray alloc] init];
+    
+    dishArray = [[MenuManager shared] dishes];
+//    for (int i = 0; i < self.closedOrders.count; i++){
+    for (int j = 0; j < dishArray.count; j++)
+    {
+        Dish *dish = (Dish *)dishArray[j];
+        if ([dish.name isEqualToString:name]){
+            return dish;
+        }
+    }
+    NSLog(@"No dish was found with name: %@", name);
+    return nil;
+}
+
 
 //- (void) fetchOrdersToClose : (PFUser * ) restaurant withTable : (NSNumber *) table forWaiter : (Waiter *) waiter withCompletion : (void (^)(NSArray *orders, NSError * error))completion
 //{
