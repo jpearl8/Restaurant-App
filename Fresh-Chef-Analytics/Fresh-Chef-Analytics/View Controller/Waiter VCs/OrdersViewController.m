@@ -16,6 +16,7 @@
 #import "OrderManager.h"
 #import "MenuManager.h"
 #import "AppDelegate.h"
+#import "EditOrderViewController.h"
 
 
 
@@ -93,9 +94,7 @@
     cell.delegate = self;
     cell.dishes.text = items[0];
     cell.amounts.text = items[1];
-    cell.dishArray = self.dishesArray;
     cell.openOrders = [[NSArray alloc] init];
-    
     cell.openOrders = [NSArray arrayWithArray:orderInCell];
 
     cell.waiter = self.tableWaiterDictionary[cell.tableNumber.text];
@@ -266,6 +265,15 @@
          elegantVC.dishesArray = self.dishesArray;
      
      }
+    if ([segue.identifier isEqualToString:@"Edit"]){
+        EditOrderViewController *editVC = [segue destinationViewController];
+        editVC.waiter = self.tableWaiterDictionary[self.keys[[self.index integerValue]]];
+        editVC.openOrders =  self.totalOpenTables[self.keys[[self.index integerValue]]];;
+        //editVC.dishesArray = self.dishesArray;
+        
+    }
+    
+
 }
 - (IBAction)newOrderAction:(UIBarButtonItem *)sender {
     [self dismissViewControllerAnimated:YES completion:^{

@@ -26,6 +26,7 @@ NS_ASSUME_NONNULL_BEGIN
 -(int) findAmountIndexwithDishArray:(NSArray <Dish *>*)dishes withDish:(Dish *)dish;
 -(BOOL)arrayOfZeros:(NSArray<NSNumber *>*)array;
 -(NSMutableArray<NSString *>*)fillCellArrays:(NSArray<OpenOrder *>*)openOrders;
+-(int)findDishItem:(int)index withDishArray:(NSMutableArray <Dish *>*)dishesArray withOpenOrders:(NSArray<OpenOrder *>*)openOrders;
 @end
 
 NS_ASSUME_NONNULL_END

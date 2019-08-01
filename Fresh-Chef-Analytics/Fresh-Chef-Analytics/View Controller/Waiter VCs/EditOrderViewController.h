@@ -7,10 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "OpenOrder.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface EditOrderViewController : UIViewController//<UITableViewDataSource, UITableViewDelegate>
+@interface EditOrderViewController : UIViewController
+@property (strong, nonatomic) NSArray <OpenOrder *>* openOrders;
+@property (strong, nonatomic) Waiter *waiter;
 
 @end
 

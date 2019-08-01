@@ -50,23 +50,29 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     ElegantTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier: @"Elegant"];
-    Dish *dish = self.dishesArray[indexPath.row];
     NSNumber *amount = self.openOrders[indexPath.row][@"amount"];
-    cell.dishName.text = dish.name;
-    cell.dishType.text = dish.type;
-    cell.dishDescription.text = dish.dishDescription;
+    int index = [[Helpful_funs shared] findDishItem:(int)indexPath.row withDishArray:self.dishesArray withOpenOrders:self.openOrders];
+    if (index != -1){
+        Dish *dish = self.dishesArray[index];
+        
+        
+        cell.dishName.text = dish.name;
+        cell.dishType.text = dish.type;
+        cell.dishDescription.text = dish.dishDescription;
+        PFFileObject *dishImageFile = (PFFileObject *)dish.image;
+        [dishImageFile getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
+            if(!error){
+                cell.image.image = [UIImage imageWithData:imageData];
+            }
+        }];
+    }
+
     cell.index = (int)indexPath.row;
     cell.customerRatings = self.customerRatings;
     cell.customerComments = self.customerComments;
     cell.delegate = self;
     cell.amount.text = [NSString stringWithFormat:@"%@", amount];
-    PFFileObject *dishImageFile = (PFFileObject *)dish.image;
     cell.customerRating.value = 5;
-    [dishImageFile getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
-        if(!error){
-            cell.image.image = [UIImage imageWithData:imageData];
-        }
-    }];
     cell.customerRating.value = [self.customerRatings[indexPath.row] floatValue];
     return cell;
 }

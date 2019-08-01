@@ -51,23 +51,28 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     ComfortableTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier: @"Comf" forIndexPath:indexPath];
-    Dish *dish = self.dishesArray[indexPath.row];
-    NSNumber *amount = self.openOrders[indexPath.row].amount;
+    NSNumber *amount = self.openOrders[indexPath.row][@"amount"];
+    int index = [[Helpful_funs shared] findDishItem:(int)indexPath.row withDishArray:self.dishesArray withOpenOrders:self.openOrders];
+    if (index != -1){
+        Dish *dish = self.dishesArray[index];
+        
     
-    cell.dishName.text = dish.name;
-    cell.dishType.text = dish.type;
-    cell.dishDescription.text = dish.dishDescription;
+        cell.dishName.text = dish.name;
+        cell.dishType.text = dish.type;
+        cell.dishDescription.text = dish.dishDescription;
+        PFFileObject *dishImageFile = (PFFileObject *)dish.image;
+        [dishImageFile getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
+            if(!error){
+                cell.image.image = [UIImage imageWithData:imageData];
+            }
+        }];
+    }
     cell.index = (int)indexPath.row;
     cell.customerComments = self.customerComments;
     
     cell.delegate = self;
     cell.amount.text = [NSString stringWithFormat:@"%@", amount];
-    PFFileObject *dishImageFile = (PFFileObject *)dish.image;
-    [dishImageFile getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
-        if(!error){
-            cell.image.image = [UIImage imageWithData:imageData];
-        }
-    }];
+    
     cell.customerRating.value = ([self.customerRatings[indexPath.row] floatValue]/ 2);
     return cell;
 }
@@ -145,6 +150,9 @@
     recVC.dishesArray = self.dishesArray;
     
 }
+
+
+
 
 
 @end

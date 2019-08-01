@@ -15,7 +15,6 @@ pass final array on submit button of data table
 #import "WaiterViewController.h"
 #import "Dish.h"
 #import "WaitTableViewCell.h"
-#import "order.h"
 #import "Parse/Parse.h"
 #import "FunFormViewController.h"
 #import "ElegantFormViewController.h"
@@ -37,7 +36,6 @@ pass final array on submit button of data table
 @property (strong, nonatomic) NSArray <Dish *>*dishes;
 @property (strong, nonatomic) NSArray <Waiter *>*waiters;
 @property (strong, nonatomic) NSArray <Dish *>*filteredDishes;
-@property (strong, nonatomic) NSMutableArray <order *>*customerOrder;
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
 @property (weak, nonatomic) IBOutlet UITextField *customerNumber;
 @property (weak, nonatomic) IBOutlet UITextField *tableNumber;
@@ -67,7 +65,7 @@ pass final array on submit button of data table
     [super viewDidLoad];
     self.customerNumber.text = @"";
     self.tableNumber.text = @"";
-
+    
     NSString *category = [PFUser currentUser][@"theme"];
     NSString *category_top = [NSString stringWithFormat:@"%@_top", category];
     [self.backgroundImage setImage:[UIImage imageNamed:category]];
@@ -80,7 +78,6 @@ pass final array on submit button of data table
     self.waiterTable.delegate = self;
     self.waiterTable.dataSource = self;
     self.searchBar.delegate = self;
-    self.customerOrder = [[NSMutableArray alloc] init];
     self.orderedDishes = [[NSMutableArray alloc] init];
     self.amounts = [[NSMutableArray alloc] init];
     [self runDishQuery];
@@ -241,37 +238,15 @@ pass final array on submit button of data table
     }
 }
 - (IBAction)barButtonSubmit:(UIBarButtonItem *)sender {
-    //[self onSubmit:self.submitButton];
+    [self onSubmit:self.submitButton];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-
-//     NSString *category = [PFUser currentUser][@"theme"];
-   
-//    if ([category isEqualToString:@"Fun"]){
-//        FunFormViewController *funVC = [segue destinationViewController];
-//        funVC.customerOrder = self.customerOrder;
-//        funVC.openOrder = self.openOrder;
-//        funVC.customerNumber = self.customerNumber.text;
-//    }
-//    if ([category isEqualToString:@"Comfortable"]){
-//        ComfortableFormViewController *comfVC = [segue destinationViewController];
-//        comfVC.customerOrder = self.customerOrder;
-//        comfVC.openOrder = self.openOrder;
-//        comfVC.customerNumber = self.customerNumber.text;
-//    }
-//    if ([category isEqualToString:@"Elegant"]){
-//        ElegantFormViewController *elegantVC = [segue destinationViewController];
-//        elegantVC.customerOrder = self.customerOrder;
-//        elegantVC.openOrder = self.openOrder;
-//        elegantVC.customerNumber = self.customerNumber.text;
-//    }
 }
 
 
 - (IBAction)cancelAction:(UIBarButtonItem *)sender {
     [self performSegueWithIdentifier:@"toOpen" sender:self];
-    
 }
 
 
