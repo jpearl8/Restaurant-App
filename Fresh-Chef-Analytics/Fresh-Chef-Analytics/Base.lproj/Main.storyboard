@@ -2121,11 +2121,15 @@
             <objects>
                 <viewController id="4pO-Ap-iSk" customClass="ProfitTrendsViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Zi5-JF-zSf">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="426"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="757"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="B2f-HM-etY">
+                                <rect key="frame" x="0.0" y="507" width="414" height="216"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            </pickerView>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eIE-tn-fTh" userLabel="Data View">
-                                <rect key="frame" x="20" y="69" width="374" height="295"/>
+                                <rect key="frame" x="0.0" y="147" width="414" height="352"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
                             </view>
@@ -2134,12 +2138,13 @@
                         <viewLayoutGuide key="safeArea" id="s2L-ne-N78"/>
                     </view>
                     <connections>
+                        <outlet property="categoryPicker" destination="B2f-HM-etY" id="OTH-jz-6ms"/>
                         <outlet property="dataView" destination="eIE-tn-fTh" id="Ruh-yo-KNr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gl8-qF-h6K" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3517.3913043478265" y="5889.5089285714284"/>
+            <point key="canvasLocation" x="-1191.304347826087" y="5591.8526785714284"/>
         </scene>
         <!--Menu List View Controller-->
         <scene sceneID="7wd-iE-Teu">
@@ -3922,7 +3927,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="-4349" y="5452"/>
+            <point key="canvasLocation" x="-4800" y="5452"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="y7a-Kh-vAk">
@@ -4047,7 +4052,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kfh-hs-9BT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2830.434782608696" y="5591.8526785714284"/>
+            <point key="canvasLocation" x="-3219" y="5595"/>
         </scene>
         <!--Histogram View Controller-->
         <scene sceneID="b0u-In-eZ3">
@@ -4100,7 +4105,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jxI-JB-Z2J" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2226.0869565217395" y="5591.8526785714284"/>
+            <point key="canvasLocation" x="-2510" y="5595"/>
         </scene>
         <!--Bar Chart View Controller-->
         <scene sceneID="oAC-Uk-Nfo">
@@ -4130,7 +4135,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eJk-30-aI8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1620.289855072464" y="5590.5133928571422"/>
+            <point key="canvasLocation" x="-1855" y="5592"/>
         </scene>
         <!--Top3 Bot3 View Controller-->
         <scene sceneID="rIo-yk-fdq">
@@ -4256,7 +4261,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cs4-DE-fGz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3633.3333333333335" y="5592.5223214285716"/>
+            <point key="canvasLocation" x="-3909" y="5595"/>
         </scene>
         <!--Data View Table View Controller-->
         <scene sceneID="8qk-8x-BHH">
@@ -4479,7 +4484,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4oC-Rg-Ghl">
-                                                    <rect key="frame" x="0.0" y="115" width="414" height="426"/>
+                                                    <rect key="frame" x="0.0" y="115" width="414" height="757"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                     <connections>
                                                         <segue destination="4pO-Ap-iSk" kind="embed" id="W2D-aH-4t3"/>
@@ -4576,6 +4581,7 @@
         <image name="Screen Shot 2019-07-30 at 4.10.34 PM" width="268" height="362"/>
         <image name="arrow" width="700" height="700"/>
         <image name="image_placeholder" width="375" height="375"/>
+        <image name="info" width="700" height="700"/>
         <image name="minus" width="21.333333969116211" height="21.333333969116211"/>
         <image name="nav-plus_outline_24" width="24" height="24"/>
         <image name="plus" width="21.333333969116211" height="21.333333969116211"/>
