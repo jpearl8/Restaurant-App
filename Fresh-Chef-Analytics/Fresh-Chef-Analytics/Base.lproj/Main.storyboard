@@ -825,7 +825,7 @@
                                 <color key="backgroundColor" red="0.73994592479999999" green="0.87727101009999997" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" red="0.86601585465263198" green="0.87178102310029892" blue="1" alpha="0.5" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="backgroundColor" red="0.86601585465263198" green="0.87178102310029892" blue="1" alpha="0.3009952910958904" colorSpace="custom" customColorSpace="displayP3"/>
                         <viewLayoutGuide key="safeArea" id="4gg-aK-Wdy"/>
                     </view>
                     <connections>
@@ -872,7 +872,7 @@
                                         <fontDescription key="fontDescription" type="system" weight="thin" pointSize="27"/>
                                         <state key="normal" title="Add an Item"/>
                                         <connections>
-                                            <segue destination="KWt-3O-9wh" kind="presentation" modalPresentationStyle="overCurrentContext" modalTransitionStyle="crossDissolve" id="PS8-yc-77b"/>
+                                            <segue destination="KWt-3O-9wh" kind="presentation" modalPresentationStyle="currentContext" modalTransitionStyle="crossDissolve" id="MZv-KF-8Pc"/>
                                         </connections>
                                     </button>
                                 </subviews>

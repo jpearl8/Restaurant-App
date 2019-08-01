@@ -71,7 +71,7 @@
         cell.dishView.image = [UIImage imageNamed:@"image_placeholder"];
     }
     cell.dishPrice.text = [NSString stringWithFormat:@"%@", dish.price];
-    cell.dishRating.text = [NSString stringWithFormat:@"%@", dish.rating];
+    cell.dishRating.text = [NSString stringWithFormat:@"%@", [[MenuManager shared] averageRating:dish]];
     cell.dishFrequency.text = [NSString stringWithFormat:@"%@", dish.orderFrequency];
     cell.dishDescription.text = dish.dishDescription;
     return cell;

@@ -8,6 +8,7 @@
 
 #import "DishDetailsViewController.h"
 #import "Parse/Parse.h"
+#import "MenuManager.h"
 
 @interface DishDetailsViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *dishName;
@@ -25,8 +26,9 @@
     [super viewDidLoad];
     self.dishName.text = self.dish.name;
     self.dishDescription.text = self.dish.description;
-    double rating = ([self.dish.rating doubleValue] / [self.dish.orderFrequency doubleValue]) * 10.00;
-    self.dishRating.text = [NSString stringWithFormat:@"%.20lf", rating];
+    
+    NSNumber *rating = [[MenuManager shared] averageRating:self.dish];
+    self.dishRating.text = [NSString stringWithFormat:@"%@", rating];
     self.dishPrice.text = [self.dish.price stringValue];
     PFFileObject *dishImageFile = (PFFileObject *)self.dish.image;
     [dishImageFile getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {

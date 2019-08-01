@@ -142,7 +142,6 @@
     NSMutableArray *frequencyData = [NSMutableArray array];
     NSMutableArray *profitData = [NSMutableArray array];
     NSMutableArray *dishNames = [NSMutableArray array];
-    CGFloat dishRating;
     CGFloat dishProfit;
     if ([self.categoriesOfDishes[category] count] >= 1)
     {
@@ -150,16 +149,7 @@
         {
             [dishNames addObject:dish.name];
             dishProfit = [dish.price floatValue] * [dish.orderFrequency floatValue];
-            if (dish.rating == nil)
-            {
-                dishRating = 0;
-                
-            }
-            else
-            {
-                dishRating = [dish.rating floatValue] / [dish.orderFrequency floatValue];
-            }
-            [ratingData addObject:[NSNumber numberWithFloat:dishRating]];
+            [ratingData addObject:[[MenuManager shared] averageRating:dish]];
             [frequencyData addObject:dish.orderFrequency];
             [profitData addObject:[NSNumber numberWithFloat:dishProfit]];
         }
@@ -204,7 +194,6 @@
     CGFloat categoryFrequency;
     CGFloat categoryProfit;
     CGFloat dishProfit;
-    CGFloat dishRating;
     for (int i = 1; i < self.legend.count; i++)
     {
         category = self.legend[i];
@@ -215,15 +204,8 @@
         for (Dish *dish in self.categoriesOfDishes[category])
         {
             dishProfit = [dish.price floatValue] * [dish.orderFrequency floatValue];
-            if (dish.rating == nil)
-            {
-                dishRating = 0;
-
-            }
-            else {
-                dishRating = [dish.rating floatValue] / [dish.orderFrequency floatValue];
-            }
-            categoryRating += dishRating;
+            
+            categoryRating += [[[MenuManager shared] averageRating:dish] floatValue];
             categoryFrequency += [dish.orderFrequency floatValue];
             categoryProfit += dishProfit;
         }

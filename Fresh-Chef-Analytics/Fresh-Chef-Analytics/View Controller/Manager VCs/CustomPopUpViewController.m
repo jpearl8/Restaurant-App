@@ -34,6 +34,7 @@
 }
 
 - (IBAction)didTapDishImage:(id)sender {
+    
     NSLog(@"tapped camera image");
     UIImagePickerController *imagePickerVC = [UIImagePickerController new];
     imagePickerVC.delegate = self;
@@ -50,13 +51,15 @@
 }
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
+
     // Get the image captured by the UIImagePickerController
     UIImage *editedImage = info[UIImagePickerControllerEditedImage];
-    self.dishView.image = editedImage;
-    // Dismiss UIImagePickerController to go back to original view controller
-    [self dismissViewControllerAnimated:YES completion:nil];
+    if (editedImage != nil)
+    {
+        self.dishView.image = editedImage;
+    }
+    [picker dismissViewControllerAnimated:YES completion:nil];
 }
-
 - (void) didAddItem: (Dish *) dish
 {
     NSArray *dishesOfType;
