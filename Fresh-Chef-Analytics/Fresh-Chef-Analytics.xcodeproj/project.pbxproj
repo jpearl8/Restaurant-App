@@ -63,6 +63,8 @@
 		FF46E1AA22DE436400E15A0E /* Fresh_Chef_AnalyticsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FF46E1A922DE436400E15A0E /* Fresh_Chef_AnalyticsTests.m */; };
 		FF46E1B522DE436400E15A0E /* Fresh_Chef_AnalyticsUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = FF46E1B422DE436400E15A0E /* Fresh_Chef_AnalyticsUITests.m */; };
 		FF5924FF22E2155D00F66EC6 /* ReceiptTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FF5924FE22E2155D00F66EC6 /* ReceiptTableViewCell.m */; };
+		FF7374CB22F257C400632056 /* AddItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF7374CA22F257C400632056 /* AddItemViewController.m */; };
+		FF7374CE22F265B900632056 /* EditOrderViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FF7374CD22F265B800632056 /* EditOrderViewCell.m */; };
 		FF85DF5122E7BF180056726A /* CompetitorsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FF85DF5022E7BF180056726A /* CompetitorsCell.m */; };
 		FF9AF93322E90B3F00A0D1FE /* order.m in Sources */ = {isa = PBXBuildFile; fileRef = FF9AF93222E90B3F00A0D1FE /* order.m */; };
 		FF9AF93522E914F900A0D1FE /* order.h in Sources */ = {isa = PBXBuildFile; fileRef = FF9AF93122E90B3F00A0D1FE /* order.h */; };
@@ -210,6 +212,10 @@
 		FF5924FD22E2155D00F66EC6 /* ReceiptTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReceiptTableViewCell.h; sourceTree = "<group>"; };
 		FF5924FE22E2155D00F66EC6 /* ReceiptTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReceiptTableViewCell.m; sourceTree = "<group>"; };
 		FF6EE1A222E01D85000AD729 /* order.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = order.m; sourceTree = "<group>"; };
+		FF7374C922F257C400632056 /* AddItemViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddItemViewController.h; sourceTree = "<group>"; };
+		FF7374CA22F257C400632056 /* AddItemViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddItemViewController.m; sourceTree = "<group>"; };
+		FF7374CC22F265B800632056 /* EditOrderViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EditOrderViewCell.h; sourceTree = "<group>"; };
+		FF7374CD22F265B800632056 /* EditOrderViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EditOrderViewCell.m; sourceTree = "<group>"; };
 		FF85DF4F22E7BF180056726A /* CompetitorsCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CompetitorsCell.h; sourceTree = "<group>"; };
 		FF85DF5022E7BF180056726A /* CompetitorsCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CompetitorsCell.m; sourceTree = "<group>"; };
 		FF9AF93122E90B3F00A0D1FE /* order.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = order.h; sourceTree = "<group>"; };
@@ -316,6 +322,8 @@
 		A535D7B522DE6B92002B79CA /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				FF7374CC22F265B800632056 /* EditOrderViewCell.h */,
+				FF7374CD22F265B800632056 /* EditOrderViewCell.m */,
 				FFFC45DF22EE097B003E8FF6 /* OrderViewCell.h */,
 				FFFC45E022EE097B003E8FF6 /* OrderViewCell.m */,
 				FF85DF4F22E7BF180056726A /* CompetitorsCell.h */,
@@ -397,6 +405,8 @@
 		FF03BF2922DE95C900719E8C /* Waiter VCs */ = {
 			isa = PBXGroup;
 			children = (
+				FF7374C922F257C400632056 /* AddItemViewController.h */,
+				FF7374CA22F257C400632056 /* AddItemViewController.m */,
 				FFDB60FD22E91BCE00902FE3 /* Form Views */,
 				FF03BF3E22DE97C900719E8C /* AnotherTableViewController.h */,
 				FF03BF3F22DE97C900719E8C /* AnotherTableViewController.m */,
@@ -786,6 +796,7 @@
 				FF03BF3D22DE97AD00719E8C /* ThankYouViewController.m in Sources */,
 				FF03BF4C22DE9FFD00719E8C /* MenuListViewController.m in Sources */,
 				FFECCE4D22E682F20000FDFF /* YelpAPIManager.m in Sources */,
+				FF7374CE22F265B900632056 /* EditOrderViewCell.m in Sources */,
 				B6848BFF22F105CF0069CC94 /* NSDate+DayMethods.m in Sources */,
 				FFEA6BCA22E28E03008665BD /* ComfortableTableViewCell.m in Sources */,
 				FFEA6BC622E28DD0008665BD /* ElegantTableViewCell.m in Sources */,
@@ -833,6 +844,7 @@
 				B6795EA422EBB62700CCC0F8 /* ProfitTrendsViewController.m in Sources */,
 				FFFC45E422EE9162003E8FF6 /* OrdersViewController.m in Sources */,
 				A5C06F6822E67E7F00F634E3 /* Top3Bot3ViewController.m in Sources */,
+				FF7374CB22F257C400632056 /* AddItemViewController.m in Sources */,
 				B6C4C00022E91EAD00FE5EAC /* EditOrderViewController.m in Sources */,
 				FFC87AD322EA2A91009DE74C /* Link.m in Sources */,
 				B6848C0222F108930069CC94 /* FCADate.m in Sources */,

@@ -49,7 +49,7 @@
     self.clipsToBounds   = YES;
     _showLabel           = YES;
     _barBackgroundColor  = PNLightGrey;
-    _labelTextColor      = [UIColor grayColor];
+    _labelTextColor      = [UIColor blackColor];
     _labelFont           = [UIFont systemFontOfSize:11.0f];
     _xChartLabels        = [NSMutableArray array];
     _yChartLabels        = [NSMutableArray array];
@@ -87,9 +87,9 @@
     [self processYMaxValue];
   }
 }
-- (void)setRatingValues:(NSArray *) ratings
+- (void)setPriceValues:(NSArray *) prices
 {
-    _ratings = ratings;
+    _prices = prices;
 }
 - (void)processYMaxValue {
     NSArray *yAxisValues = _yLabels ? _yLabels : _yValues;
@@ -247,8 +247,8 @@
             bar.barRadius = _barRadius;
             
             //Change Bar Rating
-            NSNumber *ratingForBar = _ratings[i];
-            bar.rating = [ratingForBar floatValue];
+            NSNumber *priceForBar= _prices[i];
+            bar.price = [priceForBar floatValue];
             //Set Bar Animation
             bar.displayAnimated = self.displayAnimated;
 

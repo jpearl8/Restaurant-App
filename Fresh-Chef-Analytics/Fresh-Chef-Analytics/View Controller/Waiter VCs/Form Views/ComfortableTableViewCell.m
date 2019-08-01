@@ -12,6 +12,9 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
+    self.customerComment.delegate = self;
+    self.customerComment.placeholder = @"Comments for the chef";
+    self.customerComment.placeholderColor = [UIColor lightGrayColor];
     // Initialization code
 }
 
@@ -21,7 +24,15 @@
     // Configure the view for the selected state
 }
 -(void)textViewDidChange:(UITextView *)textView{
-    self.customerComments[self.index] = self.customerComment.text;
+    [self.delegate customerCommentForIndex:self.index withComment:self.customerComment.text];
+   // self.customerComments[self.index] = self.customerComment.text;
+}
+
+- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text{
+    int characterLimit = 140;
+    NSString *newText = [self.customerComment.text stringByReplacingCharactersInRange:range withString:text];
+    self.charsRemaining.text = [NSString stringWithFormat: @"%d", (int)(characterLimit - newText.length)];
+    return newText.length < characterLimit;
 }
 
 - (void) prepareForReuse{
@@ -32,7 +43,8 @@
 
 - (IBAction)changeCustomerRating:(HCSStarRatingView *)sender {
     NSLog(@"%f", sender.value);
-    self.customerRatings[self.index] = [NSNumber numberWithDouble:(2 * sender.value)];
+    //self.customerRatings[self.index] = [NSNumber numberWithDouble:(2 * sender.value)];
+    [self.delegate customerRatingForIndex:self.index withRating:[NSNumber numberWithDouble:(2 * sender.value)]];
 }
 
 

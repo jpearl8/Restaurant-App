@@ -55,7 +55,7 @@
         [self.customerRatingsArray addObject:[NSNull null]];
         [self.customerComments addObject:[NSNull null]];
     }
-    self.customerComments = [[NSMutableArray alloc] init];
+    
     // Do any additional setup after loading the view.
 }
 
@@ -65,24 +65,27 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     FunTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier: @"Fun" forIndexPath:indexPath];
-    Dish *dish = self.dishesArray[indexPath.row];
-    NSNumber *amount = self.openOrders[indexPath.row].amount;
-
-    cell.dishName.text = dish.name;
-    cell.dishType.text = dish.type;
-    cell.dishDescription.text = dish.dishDescription;
+    NSNumber *amount = self.openOrders[indexPath.row][@"amount"];
+    int index = [[Helpful_funs shared] findDishItem:(int)indexPath.row withDishArray:self.dishesArray withOpenOrders:self.openOrders];
+    if (index != -1){
+        Dish *dish = self.dishesArray[index];
+        
+        
+        cell.dishName.text = dish.name;
+        cell.dishType.text = dish.type;
+        cell.dishDescription.text = dish.dishDescription;
+        PFFileObject *dishImageFile = (PFFileObject *)dish.image;
+        [dishImageFile getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
+            if(!error){
+                cell.image.image = [UIImage imageWithData:imageData];
+            }
+        }];
+    }
     cell.index = (int)indexPath.row;
     cell.customerRatings = self.customerRatingsArray;
     cell.customerComments = self.customerComments;
-
     cell.delegate = self;
     cell.amount.text = [NSString stringWithFormat:@"%@", amount];
-    PFFileObject *dishImageFile = (PFFileObject *)dish.image;
-    [dishImageFile getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
-        if(!error){
-            cell.image.image = [UIImage imageWithData:imageData];
-        }
-    }];
     NSArray <UIButton *>* buttons = @[cell.b0, cell.b2, cell.b4, cell.b6, cell.b8, cell.b10];
         for (int i = 0; i < buttons.count; i++){
             if (self.customerRatingsArray.count > 0 && self.customerRatingsArray[indexPath.row] == i*2){
@@ -153,7 +156,7 @@
     self.waiter.rating = [NSNumber numberWithFloat: ([self.waiterRating floatValue] + totalRating)];
     
     if (!([self.waiterComments.text isEqualToString:@""])){
-        self.waiter.comments =[self.waiter.comments arrayByAddingObject:self.waiterComments.text];
+        self.waiter.comments = [self.waiter.comments arrayByAddingObject:self.waiterComments.text];
     }
     float numOfCustomers = [self.waiter.numOfCustomers floatValue];
     self.waiter.numOfCustomers = [NSNumber numberWithFloat: ([self.customerNumber floatValue] + numOfCustomers)];
@@ -187,6 +190,7 @@
     
     
 }
+
 
 
 @end
