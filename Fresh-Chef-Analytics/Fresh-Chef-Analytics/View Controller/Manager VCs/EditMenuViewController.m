@@ -7,15 +7,13 @@
 //
 
 #import "EditMenuViewController.h"
-#import "Dish.h"
-#import "MenuManager.h"
-#import "EditMenuCell.h"
 
 @interface EditMenuViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NSArray *dishes;
 @property (strong, nonatomic) NSMutableDictionary *categoriesOfDishes;
 @property (strong, nonatomic) NSArray *categories;
+
 @end
 
 @implementation EditMenuViewController
@@ -24,58 +22,12 @@
     [super viewDidLoad];
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
-    self.dishes = [[MenuManager shared] dishes];
     
     [self updateLocalFromData];
 
     // Do any additional setup after loading the view.
 }
-- (IBAction)saveItem:(id)sender {
-    Dish * newDish = [Dish postNewDish:self.nameField.text withType:self.typeField.text withDescription:self.descriptionView.text withPrice:[NSNumber numberWithFloat:[self.priceField.text floatValue]] withImage:self.dishView.image withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
-        if (succeeded)
-        {
-            // Here we should add the table view reload so new value pops up
-            NSLog(@"yay");
-        }
-        else{
-            NSLog(@"%@", error.localizedDescription);
-        }
-    }];
-    [self didAddItem:newDish];
 
-}
-
-- (IBAction)didTapDishImage:(id)sender {
-    NSLog(@"tapped camera image");
-    UIImagePickerController *imagePickerVC = [UIImagePickerController new];
-    imagePickerVC.delegate = self;
-    imagePickerVC.allowsEditing = YES;
-    // if camera is available, use it, else, use camera roll
-    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
-        imagePickerVC.sourceType = UIImagePickerControllerSourceTypeCamera;
-    }
-    else {
-        NSLog(@"Camera 🚫 available so we will use photo library instead");
-        imagePickerVC.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-    }
-    [self presentViewController:imagePickerVC animated:YES completion:nil];
-}
-
-- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
-    // Get the image captured by the UIImagePickerController
-    UIImage *editedImage = info[UIImagePickerControllerEditedImage];
-    self.dishView.image = editedImage;
-    // Dismiss UIImagePickerController to go back to original view controller
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
-
-- (void) didAddItem: (Dish *) dish
-{
-    NSArray *dishesOfType;
-    [[MenuManager shared] addDishToDict:dish toArray:dishesOfType];
-    self.categories = [self.categories arrayByAddingObject:dish.type];
-    [self.tableView reloadData];
-}
 - (void)editMenuCell:(EditMenuCell *)editMenuCell didTap:(Dish *)dish
 {
     [[MenuManager shared] removeDishFromTable:dish withCompletion:^(NSMutableDictionary * _Nonnull categoriesOfDishes, NSError * _Nonnull error) {

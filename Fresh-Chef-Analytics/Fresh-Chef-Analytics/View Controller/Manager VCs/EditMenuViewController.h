@@ -7,18 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Dish.h"
+#import "MenuManager.h"
 #import "EditMenuCell.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface EditMenuViewController : UIViewController <EditMenuCellDelegate, UITableViewDelegate, UITableViewDataSource, UINavigationControllerDelegate, UIImagePickerControllerDelegate>
+@interface EditMenuViewController : UIViewController <EditMenuCellDelegate, UITableViewDelegate, UITableViewDataSource, UINavigationControllerDelegate>
 
-@property (weak, nonatomic) IBOutlet UITextField *typeField;
-@property (weak, nonatomic) IBOutlet UITextField *nameField;
-@property (weak, nonatomic) IBOutlet UITextField *priceField;
-@property (weak, nonatomic) IBOutlet UITextView *descriptionView;
-@property (weak, nonatomic) IBOutlet UIButton *addButton;
-@property (weak, nonatomic) IBOutlet UIImageView *dishView;
+
 
 @end
 
