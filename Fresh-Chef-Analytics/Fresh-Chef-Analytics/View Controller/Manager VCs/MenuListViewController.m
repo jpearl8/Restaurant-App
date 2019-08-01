@@ -127,8 +127,9 @@
     if ([sender isKindOfClass:MenuListTableViewCell.class]){
         MenuListTableViewCell *tappedCell = sender;
         NSIndexPath *indexPath = [self.menuList indexPathForCell:tappedCell];
+        NSInteger section = indexPath.section;
         if (indexPath.row >= 0){
-            Dish *dish = self.dishes[indexPath.row];
+            Dish *dish = self.filteredCategoriesOfDishes[self.categories[section]][indexPath.row];
             DishDetailsViewController *dishDetailsVC = [segue destinationViewController];
             dishDetailsVC.dish = dish;
         }

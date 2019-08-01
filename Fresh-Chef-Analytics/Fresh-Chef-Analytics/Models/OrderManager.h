@@ -18,11 +18,14 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong, nonatomic) NSArray *allOpenOrders;
 @property (strong, nonatomic) NSMutableDictionary *openOrdersByTable;
 @property (strong, nonatomic) NSMutableDictionary *closedOrdersByDate;
+@property (strong, nonatomic) NSMutableDictionary *profitByDateTest; // Fake closed orders to test profit chart
 @property (strong, nonatomic) NSMutableDictionary *profitByDate;
 @property (strong, nonatomic) NSMutableDictionary *busynessByDate;
 @property (strong, nonatomic) NSArray *closedOrders;
 @property (strong, nonatomic) NSArray *ordersToDelete;
 @property (strong, nonatomic) Dish * tempDish;
+@property (strong, nonatomic) NSArray *xLabels;
+@property (strong, nonatomic) NSArray *currentData;
 + (instancetype)shared;
 - (void) fetchOpenOrderItems:(PFUser *) restaurant  withCompletion:(void (^)(NSArray * openOrders, NSError * error))fetchedOpenOrders;
 - (void) fetchClosedOrderItems:(PFUser *) restaurant  withCompletion:(void (^)(NSArray * closedOrders, NSError * error))fetchedClosedOrders;
@@ -30,6 +33,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void) postAllOpenOrders : (NSArray *) openOrders withCompletion : (void (^)(NSError * error))completion;
 -(void)closeOpenOrdersArray:(NSArray <OpenOrder *>*)ordersToClose withDishArray:(NSArray <NSString *>*)dishNames withAmounts:(NSArray*)amounts withCompletion : (void (^)(NSError * error))completion;
 - (void)setProfitByDate;
+- (void)dict:(NSMutableDictionary *)dict ToSortedArraysArr1:(NSArray *)arr1 andArr2:(NSArray *)arr2;
 
 @end
 

@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import "Dish.h"
-#import "order.h"
 #import "UITextView+Placeholder.h"
 #import <QuartzCore/QuartzCore.h>
 

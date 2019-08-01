@@ -20,7 +20,6 @@ NS_ASSUME_NONNULL_BEGIN
 @interface FunFormViewController : UIViewController
 
 - (IBAction)didSubmit:(UIButton *)sender;
-@property (strong, nonatomic) NSMutableArray <order *>*customerOrder;
 @property (strong, nonatomic) NSString *customerNumber;
 @property (strong, nonatomic) NSArray<OpenOrder *>*openOrders;
 @property (strong, nonatomic) Waiter *waiter;

@@ -31,34 +31,7 @@
     return [UIColor colorWithRed:((rgbValue & 0xFF0000) >> 16)/255.0 green:((rgbValue & 0xFF00) >> 8)/255.0 blue:(rgbValue & 0xFF)/255.0 alpha:1.0];
 }
 
-- (void) updateWithOrder: ( NSMutableArray <order*> *)orderList withNumberString:(NSString *)customerNumber{
-    for (int i = 0; i < orderList.count; i++){
-        float totalRating = [orderList[i].dish.rating floatValue];
-        if (!totalRating){
-            totalRating = 0;
-        }
-        orderList[i].dish.rating = [NSNumber numberWithFloat: ((orderList[i].customerRating * orderList[i].amount)  + totalRating)];
-        if (!([orderList[i].customerComments isEqualToString:@""])){
-            orderList[i].dish.comments=[orderList[i].dish.comments arrayByAddingObject:orderList[i].customerComments];
-        }
-        float totalFrequency = [orderList[i].dish.orderFrequency floatValue];
-        orderList[i].dish.orderFrequency = [NSNumber numberWithFloat: (orderList[i].amount + totalFrequency)];
-        [orderList[i].dish saveInBackground];
-    }
-    float totalRating = [orderList[0].waiter.rating floatValue];
-    if (!totalRating){
-        totalRating = 0;
-    }
-    orderList[0].waiter.rating = [NSNumber numberWithFloat: (orderList[0].waiterRating + totalRating)];
 
-    if (!([orderList[0].waiterReview isEqualToString:@""])){
-        orderList[0].waiter.comments=[orderList[0].waiter.comments arrayByAddingObject:orderList[0].waiterReview];
-    }
-    float numOfCustomers = [orderList[0].waiter.numOfCustomers floatValue];
-    orderList[0].waiter.numOfCustomers = [NSNumber numberWithFloat: ([customerNumber floatValue] + numOfCustomers)];
-    orderList[0].waiter.tableTops = [NSNumber numberWithFloat: ([orderList[0].waiter.tableTops floatValue] + 1)];
-    [orderList[0].waiter saveInBackground];
-}
 
 -(void)defineSelect:(UIButton *)button withSelect:(BOOL)select {
     if (select){
@@ -132,6 +105,16 @@
     return YES;
 }
 
+-(int)findDishItem:(int)index withDishArray:(NSMutableArray <Dish *>*)dishesArray withOpenOrders:(NSArray<OpenOrder *>*)openOrders{
+    for (int i = 0; i < dishesArray.count; i++){
+        if (openOrders[index]){
+            if ([((Dish *)dishesArray[i]).objectId isEqualToString:((Dish*)openOrders[index].dish).objectId]){
+                return i;
+            }
+        }
+    }
+    return -1;
+}
 
 
 

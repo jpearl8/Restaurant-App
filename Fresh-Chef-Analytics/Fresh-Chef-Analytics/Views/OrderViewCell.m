@@ -16,10 +16,10 @@
 @property (nonatomic, weak) IBOutlet NSLayoutConstraint *contentViewRightConstraint;
 @property (nonatomic, weak) IBOutlet NSLayoutConstraint *contentViewLeftConstraint;
 @property (strong, nonatomic) IBOutlet UIButton *ordersButton;
-@property (nonatomic, weak) IBOutlet NSLayoutConstraint *amountsConstraint;
-@property (nonatomic, weak) IBOutlet NSLayoutConstraint *dishesConstraint;
-@property (nonatomic, weak) IBOutlet NSLayoutConstraint *viewconstraints;
-@property (strong, nonatomic) IBOutlet NSLayoutConstraint *ordersConstraint;
+//@property (nonatomic, weak) IBOutlet NSLayoutConstraint *amountsConstraint;
+//@property (nonatomic, weak) IBOutlet NSLayoutConstraint *dishesConstraint;
+//@property (nonatomic, weak) IBOutlet NSLayoutConstraint *viewconstraints;
+//@property (strong, nonatomic) IBOutlet NSLayoutConstraint *ordersConstraint;
 
 @end
 
@@ -88,17 +88,18 @@ static CGFloat const kBounceValue = 20.0f;
     } else if (sender == self.ordersButton) {
         NSLog(@"Clicked orders!");
         self.expanded = (!(self.expanded));
-        self.amountsConstraint.active = YES;
-        self.dishesConstraint.active = YES;
-        self.viewconstraints.active = YES;
-        self.ordersConstraint.active = NO;
+//        self.amountsConstraint.active = YES;
+//        self.dishesConstraint.active = YES;
+//        self.viewconstraints.active = YES;
+//        self.ordersConstraint.active = NO;
     } else {
         NSLog(@"Clicked unknown button!");
     }
 }
 
 - (CGFloat)buttonTotalWidth {
-    return CGRectGetWidth(self.frame) - CGRectGetMinX(self.edit.frame);
+    return (67 + 94);
+    //return CGRectGetWidth(self.frame) - CGRectGetMinX(self.edit.frame);
 }
 
 

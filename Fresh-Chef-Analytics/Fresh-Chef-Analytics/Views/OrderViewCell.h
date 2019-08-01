@@ -36,7 +36,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong, nonatomic) Waiter* waiter;
 @property (strong, nonatomic) IBOutlet UILabel *dishes;
 @property (strong, nonatomic) IBOutlet UILabel *amounts;
-@property (strong, nonatomic) NSArray<Dish *>*dishArray;
+
 @property (assign, nonatomic) BOOL expanded;
 @end
 
