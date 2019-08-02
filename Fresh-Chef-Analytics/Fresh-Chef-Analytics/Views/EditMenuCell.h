@@ -22,6 +22,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UILabel *dishFrequency;
 @property (weak, nonatomic) IBOutlet UILabel *dishDescription;
 @property (weak, nonatomic) IBOutlet UIButton *removeButton;
+@property (weak, nonatomic) IBOutlet UIView *cellView;
+
 @property (strong, nonatomic) Dish *dish;
 @end
 

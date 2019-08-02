@@ -51,6 +51,8 @@
     NSInteger section = indexPath.section;
     EditMenuCell *cell = [tableView dequeueReusableCellWithIdentifier:@"EditMenuCell" forIndexPath:indexPath];
     cell.delegate = self;
+    cell.cellView.layer.cornerRadius = cell.cellView.frame.size.width/6;
+    
     Dish *dish = self.categoriesOfDishes[self.categories[section]][indexPath.row];
     cell.dish = dish;
     cell.dishName.text = dish.name;
@@ -67,9 +69,11 @@
     } else {
         cell.dishView.image = [UIImage imageNamed:@"image_placeholder"];
     }
-    cell.dishPrice.text = [NSString stringWithFormat:@"%@", dish.price];
-    cell.dishRating.text = [NSString stringWithFormat:@"%@", [[MenuManager shared] averageRating:dish]];
-    cell.dishFrequency.text = [NSString stringWithFormat:@"%@", dish.orderFrequency];
+    cell.dishView.layer.cornerRadius = cell.dishView.frame.size.width/2;
+
+    cell.dishPrice.text = [@"$" stringByAppendingString:[NSString stringWithFormat:@"%@", dish.price]];
+    cell.dishRating.text = [[NSString stringWithFormat:@"%@", [[MenuManager shared] averageRating:dish]] stringByAppendingString:@"/10 ✮"];
+    cell.dishFrequency.text = [[NSString stringWithFormat:@"%@", dish.orderFrequency] stringByAppendingString:@" Orders"];
     cell.dishDescription.text = dish.dishDescription;
     return cell;
 }
