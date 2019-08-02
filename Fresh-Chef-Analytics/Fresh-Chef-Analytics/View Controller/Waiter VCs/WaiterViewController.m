@@ -68,7 +68,8 @@ pass final array on submit button of data table
     
     NSString *category = [PFUser currentUser][@"theme"];
     NSString *category_top = [NSString stringWithFormat:@"%@_top", category];
-    [self.backgroundImage setImage:[UIImage imageNamed:category]];
+    NSString *category_waiter = [NSString stringWithFormat:@"%@_waiter", category];
+    [self.backgroundImage setImage:[UIImage imageNamed:category_waiter]];
     [self.topImage setImage:[UIImage imageNamed:category_top]];
     
     self.waiterTable.hidden = YES;

@@ -30,7 +30,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void) postAllOpenOrders : (NSArray *) openOrders withCompletion : (void (^)(NSError * error))completion;
 -(void)closeOpenOrdersArray:(NSArray <OpenOrder *>*)ordersToClose withDishArray:(NSArray <NSString *>*)dishNames withAmounts:(NSArray*)amounts withCompletion : (void (^)(NSError * error))completion;
 - (void)setProfitByDate;
-
+-(void)changeOpenOrders:(NSArray <OpenOrder *>*)oldArray withEditedArray:(nullable NSMutableArray <OpenOrder *>*)editedArray withCompletion : (void (^)(NSError * error))completion;
 @end
 
 NS_ASSUME_NONNULL_END

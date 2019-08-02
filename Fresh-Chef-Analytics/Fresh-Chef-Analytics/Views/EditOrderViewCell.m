@@ -12,6 +12,8 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
+    self.amount.delegate = self;
+
     // Initialization code
 }
 
@@ -20,6 +22,17 @@
 
     // Configure the view for the selected state
 }
+
+
+-(void)textViewDidChange:(UITextView *)textView{
+    NSLog(@"%@", self.amount.text);
+    NSNumberFormatter *f = [[NSNumberFormatter alloc] init];
+    f.numberStyle = NSNumberFormatterDecimalStyle;
+    [self.delegate changeAmount:[f numberFromString:self.amount.text] atIndex:self.index];
+    // self.customerComments[self.index] = self.customerComment.text;
+}
+
+
 - (IBAction)didDelete:(UIButton *)sender {
     [self.delegate deleteRowAtIndex:self.index];
 }

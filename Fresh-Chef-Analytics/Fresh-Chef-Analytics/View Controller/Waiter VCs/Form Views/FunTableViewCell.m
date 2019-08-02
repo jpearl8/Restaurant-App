@@ -42,7 +42,7 @@
 
 - (void) prepareForReuse{
     //self.amount.text = @"0";
-    self.customerComment.text = @"0";
+    self.customerComment.text = @"";
     NSArray <UIButton *>* buttons = @[self.b0, self.b2, self.b4, self.b6, self.b8, self.b10];
     for (int i = 0; i < buttons.count; i++){
         [[Helpful_funs shared] defineSelect:buttons[i] withSelect:NO];
