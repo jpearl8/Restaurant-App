@@ -9,10 +9,7 @@
 #import "EditMenuViewController.h"
 
 @interface EditMenuViewController ()
-@property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (strong, nonatomic) NSArray *dishes;
-@property (strong, nonatomic) NSMutableDictionary *categoriesOfDishes;
-@property (strong, nonatomic) NSArray *categories;
+
 
 @end
 

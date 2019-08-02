@@ -7,19 +7,22 @@
 //
 
 #import "CustomPopUpViewController.h"
+#import "EditMenuViewController.h"
 
 @interface CustomPopUpViewController ()
-
+@property (strong, nonatomic) IBOutlet UIView *viewClear;
+@property (strong, nonatomic) Dish *theNewDish;
 @end
 
 @implementation CustomPopUpViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.viewClear.backgroundColor = [UIColor colorWithWhite:0.4 alpha:0.3];
     // Do any additional setup after loading the view.
 }
 - (IBAction)saveItem:(id)sender {
-    Dish * newDish = [Dish postNewDish:self.nameField.text withType:self.typeField.text withDescription:self.descriptionView.text withPrice:[NSNumber numberWithFloat:[self.priceField.text floatValue]] withImage:self.dishView.image withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
+    self.theNewDish = [Dish postNewDish:self.nameField.text withType:self.typeField.text withDescription:self.descriptionView.text withPrice:[NSNumber numberWithFloat:[self.priceField.text floatValue]] withImage:self.dishView.image withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
         if (succeeded)
         {
             // Here we should add the table view reload so new value pops up
@@ -29,7 +32,7 @@
             NSLog(@"%@", error.localizedDescription);
         }
     }];
-    [self didAddItem:newDish];
+    [self didAddItem:self.theNewDish];
     
 }
 
@@ -64,23 +67,28 @@
 {
     NSArray *dishesOfType;
     [[MenuManager shared] addDishToDict:dish toArray:dishesOfType];
+    if ([self.presentingViewController isKindOfClass:[EditMenuViewController class]])
+    {
+        EditMenuViewController *editMVC = (EditMenuViewController*)self.presentingViewController;
+        editMVC.categories = [editMVC.categories arrayByAddingObject:self.theNewDish.type];
+        [editMVC.tableView reloadData];
+    }
     [self dismissViewControllerAnimated:YES completion:nil];
 
-//    self.categories = [self.categories arrayByAddingObject:dish.type];
-//    [self.tableView reloadData];
 }
 - (IBAction)didTapCancel:(id)sender
 {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+//- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+//    EditMenuViewController *editMVC = [segue destinationViewController];
+//    editMVC.categories = [editMVC.categories arrayByAddingObject:self.theNewDish.type];
+//    [editMVC.tableView reloadData];
+//}
+
 
 @end

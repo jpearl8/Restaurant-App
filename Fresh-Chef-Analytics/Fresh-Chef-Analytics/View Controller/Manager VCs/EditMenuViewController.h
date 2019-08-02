@@ -14,7 +14,10 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface EditMenuViewController : UIViewController <EditMenuCellDelegate, UITableViewDelegate, UITableViewDataSource, UINavigationControllerDelegate>
-
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (strong, nonatomic) NSArray *dishes;
+@property (strong, nonatomic) NSMutableDictionary *categoriesOfDishes;
+@property (strong, nonatomic) NSArray *categories;
 
 
 @end
