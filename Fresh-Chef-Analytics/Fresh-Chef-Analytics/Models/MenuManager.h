@@ -41,7 +41,7 @@ NS_ASSUME_NONNULL_BEGIN
 //- (void)setDishRankings;
 - (NSString *)getRankOfType:(NSString *)rankType ForDish:(Dish *)dish;
 - (void) findDish : (NSString *) objectId withCompletion:(void (^)(NSArray * dishes, NSError * _Nullable error)) completion;
-
+- (NSNumber *) averageRating : (Dish *) dish;
 @end
 
 NS_ASSUME_NONNULL_END

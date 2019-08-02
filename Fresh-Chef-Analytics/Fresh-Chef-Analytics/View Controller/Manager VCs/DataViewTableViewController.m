@@ -14,17 +14,34 @@
 @property (weak, nonatomic) IBOutlet UIButton *radarButton;
 @property (weak, nonatomic) IBOutlet UIButton *histogramButton;
 @property (weak, nonatomic) IBOutlet UIButton *trendButton;
+
+
 @property (assign, nonatomic) __block double t3b3Mult;
 @property (assign, nonatomic) __block double scatterMult;
 @property (assign, nonatomic) __block double radarMult;
 @property (assign, nonatomic) __block double histogramMult;
 @property (assign, nonatomic) __block double trendMult;
-@property (weak, nonatomic) IBOutlet UIView *t3b3View;
-@property (weak, nonatomic) IBOutlet UIView *scatterView;
-@property (weak, nonatomic) IBOutlet UIView *radarView;
-@property (weak, nonatomic) IBOutlet UIView *histogramView;
-@property (weak, nonatomic) IBOutlet UIView *trendView;
+
+
 @property (strong, nonatomic) IBOutlet UIView *selectedView;
+
+
+@property (weak, nonatomic) IBOutlet UIView *t3b3View;
+@property (weak, nonatomic) IBOutlet UIView *coverT3B3;
+
+@property (weak, nonatomic) IBOutlet UIView *scatterView;
+@property (weak, nonatomic) IBOutlet UIView *coverScatter;
+
+@property (weak, nonatomic) IBOutlet UIView *radarView;
+@property (weak, nonatomic) IBOutlet UIView *coverRadar;
+
+@property (weak, nonatomic) IBOutlet UIView *histogramView;
+@property (weak, nonatomic) IBOutlet UIView *coverHistogram;
+
+@property (weak, nonatomic) IBOutlet UIView *trendView;
+@property (weak, nonatomic) IBOutlet UIView *coverTrend;
+
+
 
 @end
 
@@ -41,6 +58,13 @@
     self.radarMult = 1;
     self.histogramMult = 1;
     self.trendMult = 1;
+    
+    isCellExpanded = NO;
+    self.coverT3B3.hidden = NO;
+    self.coverScatter.hidden = NO;
+    self.coverRadar.hidden = NO;
+    self.coverHistogram.hidden = NO;
+    self.coverTrend.hidden = NO;
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
@@ -61,35 +85,38 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
+- (IBAction)didTapMenu:(id)sender {
+    [self performSegueWithIdentifier:@"menu" sender:nil];
+}
+
 - (IBAction)didTapT3B3:(id)sender {
-    [self.t3b3Button setTransform: CGAffineTransformRotate([self.t3b3Button transform], (self.t3b3Mult * M_PI/2))];
     self.t3b3Mult *= -1;
     self.selectedView = self.t3b3View;
-    //self.t3b3Button.transform = CGAffineTransformMakeRotation(M_PI / 2);
+    self.coverT3B3.hidden = !(self.coverT3B3.hidden);
     [self didSelectCellAtIndex:1 inSection:0];
 }
 - (IBAction)didTapSPHeader:(id)sender {
-    [self.scatterButton setTransform: CGAffineTransformRotate([self.scatterButton transform], (self.scatterMult * M_PI/2))];
     self.scatterMult *= -1;
     self.selectedView = self.scatterView;
+    self.coverScatter.hidden = !(self.coverScatter.hidden);
     [self didSelectCellAtIndex:2 inSection:0];
 }
 - (IBAction)didTapRCHeader:(id)sender {
-    [self.radarButton setTransform: CGAffineTransformRotate([self.radarButton transform], (self.radarMult * M_PI/2))];
     self.radarMult *= -1;
     self.selectedView = self.radarView;
+    self.coverRadar.hidden = !(self.coverRadar.hidden);
     [self didSelectCellAtIndex:3 inSection:0];
 }
 - (IBAction)didTapHistHeader:(id)sender {
-    [self.histogramButton setTransform: CGAffineTransformRotate([self.histogramButton transform], (self.histogramMult * M_PI/2))];
     self.histogramMult *= -1;
     self.selectedView = self.histogramView;
+    self.coverHistogram.hidden = !(self.coverHistogram.hidden);
     [self didSelectCellAtIndex:4 inSection:0];
 }
 - (IBAction)didTapPTHeader:(id)sender {
-    [self.trendButton setTransform: CGAffineTransformRotate([self.trendButton transform], (self.trendMult * M_PI/2))];
     self.trendMult *= -1;
     self.selectedView = self.trendView;
+    self.coverTrend.hidden = !(self.coverTrend.hidden);
     [self didSelectCellAtIndex:5 inSection:0];
 }
 
@@ -113,13 +140,15 @@
 //    if([indexPath compare:selectedIndexPath] == NSOrderedSame) {
     if(indexPath.row == selectedIndexPath.row) {
         if(isCellExpanded == YES){
-            //return self.selectedView.frame.size.height + 100;
-            return self.view.frame.size.height - 100;
+            return self.selectedView.frame.size.height + 100;
+//            return self.view.frame.size.height - ([UIScreen mainScreen].bounds.size.height /
+//                                                  6);
         } else {
-            return 75;
+            return ([UIScreen mainScreen].bounds.size.height /
+            6)-20;
         }
     } else {
-        return 75;
+        return ([UIScreen mainScreen].bounds.size.height / 6)-20;
     }
 }
 /*

@@ -11,7 +11,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface ProfitTrendsViewController : UIViewController
+@interface ProfitTrendsViewController : UIViewController <UIPickerViewDelegate, UIPickerViewDataSource>
 
 @end
 

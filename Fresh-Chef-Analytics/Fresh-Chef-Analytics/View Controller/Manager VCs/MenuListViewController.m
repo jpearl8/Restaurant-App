@@ -40,16 +40,15 @@
 //    NSLog(@"orderedDishes")
 }
 
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     NSInteger section = indexPath.section;
     MenuListTableViewCell *cell = [self.menuList dequeueReusableCellWithIdentifier: @"Dish"];
     Dish *dish = self.filteredCategoriesOfDishes[self.categories[section]][indexPath.row];
     cell.dish = dish;
     cell.name.text = dish.name;
-    CGFloat rating = [dish.rating floatValue] / [dish.orderFrequency floatValue];
-    NSString *ratingRounded = [NSString stringWithFormat:@"%.01f", (floorf(rating * 100) / 100)];
 //    cell.rating.text = [dish.rating stringValue];
-    cell.rating.text = [[NSString stringWithFormat:@"%@", ratingRounded] stringByAppendingString:@"/10"];
+    cell.rating.text = [[NSString stringWithFormat:@"%@",[[MenuManager shared] averageRating:dish]] stringByAppendingString:@"/10"];
 //    cell.orderFrequency.text = [dish.orderFrequency stringValue];
     cell.orderFrequency.text = [[dish.orderFrequency stringValue] stringByAppendingString:@" sold"];
     cell.price.text = [@"$" stringByAppendingString: [dish.price stringValue]];
@@ -127,8 +126,9 @@
     if ([sender isKindOfClass:MenuListTableViewCell.class]){
         MenuListTableViewCell *tappedCell = sender;
         NSIndexPath *indexPath = [self.menuList indexPathForCell:tappedCell];
+        NSInteger section = indexPath.section;
         if (indexPath.row >= 0){
-            Dish *dish = self.dishes[indexPath.row];
+            Dish *dish = self.filteredCategoriesOfDishes[self.categories[section]][indexPath.row];
             DishDetailsViewController *dishDetailsVC = [segue destinationViewController];
             dishDetailsVC.dish = dish;
         }

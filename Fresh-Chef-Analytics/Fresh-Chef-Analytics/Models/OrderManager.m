@@ -86,11 +86,14 @@
         [self addClosedOrder:anOrder toArray:ordersForDate];
     }
     NSLog(@"Closed Orders Dict: %@", self.closedOrdersByDate);
+    
+
+    
 }
     
 - (void) addClosedOrder:(ClosedOrder *)anOrder toArray:(NSArray *)arrayForDate
 {
-    NSString *dayString = [anOrder.createdAt dayFromDate];
+    NSString *dayString = [anOrder.createdAt dateFromNSDate];
     if (self.closedOrdersByDate[dayString]) {
         arrayForDate = self.closedOrdersByDate[dayString];
         arrayForDate = [arrayForDate arrayByAddingObject:anOrder];
@@ -139,6 +142,41 @@
         [self.profitByDate setValue:@(daysRevenue) forKey:date];
     }
     NSLog(@"Profit by date: %@", self.profitByDate);
+    
+    //--********* TEST FOR PROFIT TRENDS **************//
+    self.profitByDateTest = [[NSMutableDictionary alloc] init];
+    NSString *dateString = @"";
+    int year = 2019;
+    int month = 1;
+    int day = 1;
+    float daysProfit = 0;
+    for (int i = 0; i < 384; i++) {
+        if (day >= 31) {
+            if (month >= 12) {
+                year++;
+                month = 1;
+            } else {
+                month++;
+            }
+            day = 1;
+        } else {
+            day++;
+        }
+        NSString *monthString = [NSString stringWithFormat:@"%d", month];
+        if ([monthString length] == 1) {
+            monthString = [@"0" stringByAppendingString:monthString];
+        }
+        NSString *dayString = [NSString stringWithFormat:@"%d", day];
+        if ([dayString length] == 1) {
+            dayString = [@"0" stringByAppendingString:dayString];
+        }
+        dateString = [NSString stringWithFormat:@"%d/%@/%@", year, monthString, dayString];
+        daysProfit = 400 / day;
+        [self.profitByDateTest setObject:@(daysProfit) forKey:dateString];
+        
+    }
+    NSLog(@"Test profit dict: %@", self.profitByDateTest);
+    
 }
 
 - (void)setBusynessByDate
@@ -180,6 +218,32 @@
     return nil;
 }
 
+- (void)dict:(NSMutableDictionary *)dict toSortedArraysArr1:(NSMutableArray *)arr1 andArr2:(NSMutableArray *)arr2
+{
+    // *******Method Causes Crash currently *********//
+    
+    
+//    arr1 = [[NSArray alloc] init];
+//    arr2 = [[NSArray alloc] init];
+    NSArray *unsortedArr1 = [dict allKeys];
+    arr1 = [[unsortedArr1 sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)] mutableCopy];
+    for(NSString *key in arr1){
+        [arr2 addObject:dict[key]];
+//        NSLog(@"%@, %@", key, dict[key]);
+    }
+    NSLog(@"Array of Keys: %@", arr1);
+    NSLog(@"Array of Values: %@", arr2);
+}
+
+//- (void)setArraysWithDict:(NSMutableDictionary *)dict
+//{
+//    NSArray *unsortedArr1 = [dict allKeys];
+//    self. = [unsortedArr1 sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
+//    for(NSString *key in arr1){
+//        [arr2 arrayByAddingObject:dict[key]];
+//        NSLog(@"%@, %@", key, dict[key]);
+//    }
+//}
 
 //- (void) fetchOrdersToClose : (PFUser * ) restaurant withTable : (NSNumber *) table forWaiter : (Waiter *) waiter withCompletion : (void (^)(NSArray *orders, NSError * error))completion
 //{
