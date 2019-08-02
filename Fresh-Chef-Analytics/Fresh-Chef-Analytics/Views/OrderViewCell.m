@@ -15,7 +15,7 @@
 @property (nonatomic, assign) CGFloat startingRightLayoutConstraintConstant;
 @property (nonatomic, weak) IBOutlet NSLayoutConstraint *contentViewRightConstraint;
 @property (nonatomic, weak) IBOutlet NSLayoutConstraint *contentViewLeftConstraint;
-@property (strong, nonatomic) IBOutlet UIButton *ordersButton;
+
 @property (strong, nonatomic) IBOutletCollection(NSLayoutConstraint) NSArray *expandedConstraints;
 
 
@@ -29,6 +29,7 @@ static CGFloat const kBounceValue = 20.0f;
 - (void)awakeFromNib {
     [super awakeFromNib];
     self.isExpanded = NO;
+    [self.ordersButton.imageView setImage:[UIImage imageNamed:@"order"]];
     self.panRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panThisCell:)];
     self.panRecognizer.delegate = self;
 
@@ -47,6 +48,7 @@ static CGFloat const kBounceValue = 20.0f;
 - (void)prepareForReuse {
     [super prepareForReuse];
     self.panRecognizer.delegate = self;
+    [self.ordersButton setImage:[UIImage imageNamed:@"order"] forState:UIControlStateNormal];
     [self resetConstraintContstantsToZero:NO notifyDelegateDidClose:NO];
 }
 - (void)openCell {

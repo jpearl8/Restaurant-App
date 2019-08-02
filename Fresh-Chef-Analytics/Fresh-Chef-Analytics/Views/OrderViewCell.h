@@ -22,6 +22,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface OrderViewCell : UITableViewCell
 @property (assign, nonatomic) NSNumber *index;
+@property (strong, nonatomic) IBOutlet UIButton *ordersButton;
 @property (strong, nonatomic) NSIndexPath *indexPath;
 @property (nonatomic, weak) id <OrderViewCellDelegate> delegate;
 @property (nonatomic, weak) IBOutlet UIButton *edit;
