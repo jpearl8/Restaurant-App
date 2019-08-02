@@ -36,7 +36,7 @@
 }
 
 - (void) prepareForReuse{
-    self.customerComment.text = @"0";
+    self.customerComment.text = @"";
      self.customerRating.value = 2.5;
     [super prepareForReuse];
 }

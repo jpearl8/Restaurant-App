@@ -7,14 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "order.h"
+
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface ReceiptTableViewCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *calculatedPrice;
 @property (weak, nonatomic) IBOutlet UILabel *dishAmount;
-@property (strong, nonatomic) order *order;
 @property (weak, nonatomic) IBOutlet UILabel *dishName;
 @end
 

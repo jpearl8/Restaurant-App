@@ -68,8 +68,6 @@
 		FF7374CB22F257C400632056 /* AddItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF7374CA22F257C400632056 /* AddItemViewController.m */; };
 		FF7374CE22F265B900632056 /* EditOrderViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FF7374CD22F265B800632056 /* EditOrderViewCell.m */; };
 		FF85DF5122E7BF180056726A /* CompetitorsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FF85DF5022E7BF180056726A /* CompetitorsCell.m */; };
-		FF9AF93322E90B3F00A0D1FE /* order.m in Sources */ = {isa = PBXBuildFile; fileRef = FF9AF93222E90B3F00A0D1FE /* order.m */; };
-		FF9AF93522E914F900A0D1FE /* order.h in Sources */ = {isa = PBXBuildFile; fileRef = FF9AF93122E90B3F00A0D1FE /* order.h */; };
 		FFB3224722DF9DF700BF966F /* WaitTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FFB3224622DF9DF700BF966F /* WaitTableViewCell.m */; };
 		FFC87ACD22EA2650009DE74C /* YelpLinkViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FFC87ACC22EA2650009DE74C /* YelpLinkViewController.m */; };
 		FFC87AD322EA2A91009DE74C /* Link.m in Sources */ = {isa = PBXBuildFile; fileRef = FFC87AD222EA2A91009DE74C /* Link.m */; };
@@ -224,8 +222,6 @@
 		FF7374CD22F265B800632056 /* EditOrderViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EditOrderViewCell.m; sourceTree = "<group>"; };
 		FF85DF4F22E7BF180056726A /* CompetitorsCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CompetitorsCell.h; sourceTree = "<group>"; };
 		FF85DF5022E7BF180056726A /* CompetitorsCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CompetitorsCell.m; sourceTree = "<group>"; };
-		FF9AF93122E90B3F00A0D1FE /* order.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = order.h; sourceTree = "<group>"; };
-		FF9AF93222E90B3F00A0D1FE /* order.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = order.m; sourceTree = "<group>"; };
 		FFB3224522DF9DF700BF966F /* WaitTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = WaitTableViewCell.h; path = "Fresh-Chef-Analytics/View Controller/Waiter VCs/WaitTableViewCell.h"; sourceTree = SOURCE_ROOT; };
 		FFB3224622DF9DF700BF966F /* WaitTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = WaitTableViewCell.m; path = "Fresh-Chef-Analytics/View Controller/Waiter VCs/WaitTableViewCell.m"; sourceTree = SOURCE_ROOT; };
 		FFC87ACB22EA2650009DE74C /* YelpLinkViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YelpLinkViewController.h; sourceTree = "<group>"; };
@@ -313,8 +309,6 @@
 				A5C06F7A22E8FEEB00F634E3 /* ClosedOrder.m */,
 				A5C06F7C22E9028000F634E3 /* OrderManager.h */,
 				A5C06F7D22E9028000F634E3 /* OrderManager.m */,
-				FF9AF93122E90B3F00A0D1FE /* order.h */,
-				FF9AF93222E90B3F00A0D1FE /* order.m */,
 				FFC87AD122EA2A91009DE74C /* Link.h */,
 				FFC87AD222EA2A91009DE74C /* Link.m */,
 				B6848BFD22F105CF0069CC94 /* NSDate+DayMethods.h */,
@@ -796,7 +790,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				B6795EA122EB7C6400CCC0F8 /* ManagerOrderTableViewCell.m in Sources */,
-				FF9AF93522E914F900A0D1FE /* order.h in Sources */,
 				B6C4BFF922E9107400FE5EAC /* OrdersManagerViewController.m in Sources */,
 				B6C4BFF022E8FE8500FE5EAC /* DataViewTableViewController.m in Sources */,
 				FF318E8922EAC57C003AF015 /* OpenOrderButton.m in Sources */,

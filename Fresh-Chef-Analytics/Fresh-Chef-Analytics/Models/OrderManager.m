@@ -427,4 +427,46 @@
     completion(nil);
 }
 
+-(void)changeOpenOrders:(NSArray <OpenOrder *>*)oldArray withEditedArray:(nullable NSMutableArray <OpenOrder *>*)editedArray withCompletion : (void (^)(NSError * error))completion{
+    __block int doneWithLoops = 0;
+    __block int tally = oldArray.count;
+    if (editedArray){
+        tally += (int)editedArray.count;
+        for (int i = 0; i < editedArray.count; i++){
+            [editedArray[i] saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+                if (error){
+                    NSLog(@"%@", error.localizedDescription);
+                    completion(error);
+                }
+                else {
+                    doneWithLoops = doneWithLoops + 1;
+                    if (doneWithLoops >= tally){
+                        completion(nil);
+                    }
+                }
+            }];
+        }
+    }
+    for (int i = 0; i < oldArray.count; i++){
+        if (!([editedArray containsObject:oldArray[i]])){
+            [oldArray[i] deleteInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+                if (error){
+                    NSLog(@"Error deleting old order");
+                    completion(error);
+                } else {
+                    doneWithLoops = doneWithLoops + 1;
+                    if (doneWithLoops >= tally){
+                        completion(nil);
+                    }
+                }
+            }];
+        } else {
+            doneWithLoops = doneWithLoops + 1;
+        }
+    }
+    
+    if (doneWithLoops >= tally){
+        completion(nil);
+    }
+}
 @end

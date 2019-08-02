@@ -31,10 +31,14 @@
 
 @property (strong, nonatomic) NSArray <Waiter *>*waiters;
 
+@property (assign, nonatomic) BOOL editChange;
+
 - (IBAction)hitSave:(UIBarButtonItem *)sender;
 - (IBAction)hitCancel:(UIBarButtonItem *)sender;
 - (IBAction)hitDelete:(UIButton *)sender;
+- (IBAction)customerNumEdited:(UITextField *)sender;
 
+- (IBAction)tableEdited:(UITextField *)sender;
 @end
 
 @implementation EditOrderViewController
@@ -42,30 +46,30 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.dishNames = [[NSMutableArray alloc] init];
-    [self fillCellArrays:self.openOrders];
+    [self fillCellArrays:self.editableOpenOrders];
+    self.editChange = NO;
     if (self.openOrders.count > 0){
         self.tableNumber.text = [NSString stringWithFormat:@"%@", self.openOrders[0][@"table"]];
         self.customerNumber.text = [NSString stringWithFormat:@"%@", self.openOrders[0][@"customerNum"]];
         [self.waiterSelected setTitle:self.waiter.name forState:UIControlStateNormal];
     }
     self.waiterTable.hidden = YES;
-    ;
     [self runWaiterQuery];
     self.waiterTable.delegate = self;
     self.waiterTable.dataSource = self;
     self.ordersTable.delegate = self;
     self.ordersTable.dataSource = self;
+
+    
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if ([tableView.restorationIdentifier isEqualToString:@"Orders"]){
-        return self.openOrders.count;
+        return self.editableOpenOrders.count;
     } else {
         return self.waiters.count;
     }
 }
-
-
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -73,7 +77,11 @@
         EditOrderViewCell *cell = [tableView dequeueReusableCellWithIdentifier: @"EditOrder"];
         cell.dishName.text = self.dishNames[indexPath.row];
         cell.delegate = self;
-        cell.amount.text = [NSString stringWithFormat:@"%@", self.openOrders[indexPath.row][@"amount"]];
+        //cell.amount.placeholder =
+     //  [NSString stringWithFormat:@"%@", self.editableOpenOrders[indexPath.row][@"amount"]]];
+        cell.amount.text = [NSString stringWithFormat:@"%@", self.editableOpenOrders[indexPath.row][@"amount"]];
+     //   cell.amount.attributedPlaceholder = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@", self.editableOpenOrders[indexPath.row][@"amount"]] attributes:@{NSForegroundColorAttributeName: [UIColor blackColor]}];
+       // cell.amount.attributedPlaceholder color [NSForegroundColorAttributeName: yellowColor])
         cell.index = (int)indexPath.row;
         return cell;
     } else {
@@ -88,19 +96,6 @@
     }
 }
 
-//-(void)runDishQuery{
-//    NSArray <Dish *>*dishes = [[MenuManager shared] dishes];
-//    if (dishes.count != 0){
-//        self.allDishes = dishes;
-//        self.filteredDishes = dishes;
-//        [self.ordersTableView reloadData];
-//        [self.refreshControl endRefreshing];
-//    }
-//    else {
-//        [self.refreshControl endRefreshing];
-//    }
-//}
-
 
 -(void)runWaiterQuery{
     NSArray <Waiter *>*waiters = [[WaiterManager shared] roster];;
@@ -109,18 +104,7 @@
         [self.waiterTable reloadData];
     }
 }
-//- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
-//    if (searchText.length != 0) {
-//        NSPredicate *predicate = [NSPredicate predicateWithBlock:^BOOL(NSDictionary *evaluatedObject, NSDictionary *bindings) {
-//            return [evaluatedObject[@"name"] containsString:searchText];
-//        }];
-//        self.filteredDishes = [self.allDishes filteredArrayUsingPredicate:predicate];
-//    }
-//    else {
-//        self.filteredDishes = self.allDishes;
-//    }
-//    [self.ordersTableView reloadData];
-//}
+
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(nonnull NSIndexPath *)indexPath{
     if (!([tableView.restorationIdentifier isEqualToString:@"menu"])){
@@ -131,16 +115,16 @@
     }
 }
 
--(void)fillCellArrays:(NSArray<OpenOrder *>*)openOrders {
+-(void)fillCellArrays:(NSMutableArray<OpenOrder *>*)ordersArray {
     NSArray<Dish*>*dishArray = [[NSArray alloc] init];
     dishArray = [[MenuManager shared] dishes];
     NSLog(@"%@", dishArray);
-    for (int i = 0; i < openOrders.count; i++){
+    for (int i = 0; i < ordersArray.count; i++){
         for (int j = 0; j < dishArray.count; j++)
         {
-            NSLog(@"%@", openOrders[i]);
-            NSLog(@"%@", ((Dish*)openOrders[i].dish).objectId);
-            if ([((Dish *)dishArray[j]).objectId isEqualToString:((Dish*)openOrders[i].dish).objectId]){
+            NSLog(@"%@", ordersArray[i]);
+            NSLog(@"%@", ((Dish*)ordersArray[i].dish).objectId);
+            if ([((Dish *)dishArray[j]).objectId isEqualToString:((Dish*)ordersArray[i].dish).objectId]){
                 [self.dishNames addObject:((Dish *)dishArray[j]).name];
             }
         }
@@ -151,55 +135,110 @@
 
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    AddItemViewController *addVC = [segue destinationViewController];
-    addVC.delegate = self;
-    addVC.delegate.waiter = self.waiter;
-    if (self.openOrders.count > 0){
-        addVC.delegate.table = self.openOrders[0][@"table"];
-        addVC.delegate.customerNum = self.openOrders[0][@"customerNum"];
+    if ([segue.identifier isEqualToString:@"toAdd"]){
+        if (self.editChange){
+            for (int i = 0; i < self.editableOpenOrders.count; i++){
+                NSNumberFormatter *f = [[NSNumberFormatter alloc] init];
+                f.numberStyle = NSNumberFormatterDecimalStyle;
+                
+                self.editableOpenOrders[i][@"waiter"] = self.waiter;
+                self.editableOpenOrders[i][@"table"] = [f numberFromString:self.tableNumber.text];
+                self.editableOpenOrders[i][@"customerNum"] = [f numberFromString:self.customerNumber.text];
+            }
+        }
+        AddItemViewController *addVC = [segue destinationViewController];
+        addVC.delegate = self;
+        addVC.index = self.index;
     }
 }
 
-
-//- (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
-//    <#code#>
-//}
-//
-//- (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-//    <#code#>
-//}
-
--(void)addOpenOrders:(NSMutableArray<OpenOrder *> *)additionalOrders{
-    NSMutableArray *openOrdersMutable = [self.openOrders mutableCopy];
-    [openOrdersMutable addObjectsFromArray: additionalOrders];
-    self.openOrders = [openOrdersMutable copy];
+-(Waiter *)getWaiter{
+    return self.waiter;
+}
+-(NSNumber *)getTable{
+    if (self.openOrders.count > 0){
+         return self.openOrders[0][@"table"];
+    }
+    return [NSNumber numberWithInt:-1];
+}
+-(NSNumber *)getCustomerNum{
+    if (self.openOrders.count > 0){
+        return self.openOrders[0][@"customerNum"];
+    }
+    return [NSNumber numberWithInt:-1];
+}
+-(NSMutableArray <OpenOrder *>*)getEditableOpenOrders{
+    return self.editableOpenOrders;
+}
+-(NSArray <OpenOrder *>*)getOldOpenOrders{
+    return self.openOrders;
 }
 
+
 - (IBAction)hitSave:(UIBarButtonItem *)sender {
+    if (self.editChange){
+        for (int i = 0; i < self.editableOpenOrders.count; i++){
+            NSNumberFormatter *f = [[NSNumberFormatter alloc] init];
+            f.numberStyle = NSNumberFormatterDecimalStyle;
+            
+            self.editableOpenOrders[i][@"waiter"] = self.waiter;
+            self.editableOpenOrders[i][@"table"] = [f numberFromString:self.tableNumber.text];
+            self.editableOpenOrders[i][@"customerNum"] = [f numberFromString:self.customerNumber.text];
+        }
+    }
+    [[OrderManager shared] changeOpenOrders:self.openOrders withEditedArray:self.editableOpenOrders withCompletion:^(NSError * _Nonnull error) {
+        if (!error){
+            [self performSegueWithIdentifier:@"toOrders" sender:self];
+        } else {
+            NSLog(@"%@", error.localizedDescription);
+        }
+    }];
 }
 
 - (IBAction)hitCancel:(UIBarButtonItem *)sender {
+    [self performSegueWithIdentifier:@"toOrders" sender:self];
 }
 
 - (IBAction)hitDelete:(UIButton *)sender {
+    [[OrderManager shared] changeOpenOrders:self.openOrders withEditedArray:NULL withCompletion:^(NSError * _Nonnull error) {
+        if (!error){
+            [self performSegueWithIdentifier:@"toOrders" sender:self];
+        } else {
+            NSLog(@"%@", error.localizedDescription);
+        }
+    }];
+}
+
+- (IBAction)customerNumEdited:(UITextField *)sender {
+    self.editChange = YES;
+}
+
+- (IBAction)tableEdited:(UITextField *)sender {
+    self.editChange = YES;
+}
+
+-(void)changeAmount:(NSNumber *)amount atIndex:(int)index{
+    self.editableOpenOrders[index][@"amount"] = amount;
+    
 }
 - (IBAction)selectedWaiter:(UIButton *)sender {
+    self.editChange = YES;
     self.waiterTable.hidden = !(self.waiterTable.hidden);
 }
 
+
 - (IBAction)addNewItem:(UIButton *)sender {
+    [self performSegueWithIdentifier:@"toAdd" sender:self];
 }
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
     return YES;
 }
+
 -(void)deleteRowAtIndex:(int)index{
-    NSMutableArray *openOrdersCopy = [self.openOrders mutableCopy];
-    [openOrdersCopy removeObjectAtIndex:index];
+    [self.editableOpenOrders removeObjectAtIndex:index];
     [self.dishNames removeObjectAtIndex:index];
-    self.openOrders = [openOrdersCopy copy];
-    
-   // [self.ordersTable removeObjectAtIndex:index];
-    [self.ordersTable reloadData]; // tell table to refresh now
+    [self.ordersTable reloadData];
 }
+
 @end

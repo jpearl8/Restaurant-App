@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "order.h"
 #import "FunTableViewCell.h"
 #import "WaiterManager.h"
 #import "UITextView+Placeholder.h"

@@ -16,6 +16,7 @@
 #import "OrderManager.h"
 #import "MenuManager.h"
 #import "AppDelegate.h"
+#import "SVProgressHUD/SVProgressHUD.h"
 #import "EditOrderViewController.h"
 
 
@@ -48,8 +49,9 @@
     self.openOrdersTable.delegate = self;
     self.tableWaiterDictionary = [[NSMutableDictionary alloc] init];
     self.dishesArray = [[NSMutableArray alloc] init];
-     NSString *category = [PFUser currentUser][@"theme"];
-     [self.image setImage:[UIImage imageNamed:category]];
+    NSString *category = [PFUser currentUser][@"theme"];
+    NSString *category_waiter = [NSString stringWithFormat:@"%@_waiter", category];
+     [self.image setImage:[UIImage imageNamed:category_waiter]];
      self.navBar.shadowImage = [UIImage imageNamed:category];
     [self fetchOpenOrders:^(NSError * _Nullable error) {
         if (!error){
@@ -63,12 +65,17 @@
 
 }
 - (IBAction)refreshOrders:(UIBarButtonItem *)sender {
+    [SVProgressHUD show];
     [self fetchOpenOrders:^(NSError * _Nullable error) {
         if (error){
             NSLog(@"%@", error.localizedDescription);
         }
+        else {
+            [self.openOrdersTable reloadData];
+            [SVProgressHUD dismiss];
+        }
     }];
-    [self.openOrdersTable reloadData];
+    
 }
 
 
@@ -268,23 +275,26 @@
     if ([segue.identifier isEqualToString:@"Edit"]){
         EditOrderViewController *editVC = [segue destinationViewController];
         editVC.waiter = self.tableWaiterDictionary[self.keys[[self.index integerValue]]];
-        editVC.openOrders =  self.totalOpenTables[self.keys[[self.index integerValue]]];;
+        editVC.openOrders =  self.totalOpenTables[self.keys[[self.index integerValue]]];
+        editVC.index = self.index;
+        editVC.editableOpenOrders = [editVC.openOrders mutableCopy];
+
         //editVC.dishesArray = self.dishesArray;
         
     }
     
 
 }
-- (IBAction)newOrderAction:(UIBarButtonItem *)sender {
-    [self dismissViewControllerAnimated:YES completion:^{
-        //Stuff after dismissing
-    }];
-     //[self.navigationController popViewControllerAnimated:YES];
-//    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-//    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-//    UINavigationController *navigationController = [storyboard instantiateViewControllerWithIdentifier:@"waiterView"];
-//    appDelegate.window.rootViewController = navigationController;
-}
+//- (IBAction)newOrderAction:(UIBarButtonItem *)sender {
+//    [self dismissViewControllerAnimated:YES completion:^{
+//        //Stuff after dismissing
+//    }];
+//     //[self.navigationController popViewControllerAnimated:YES];
+////    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+////    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+////    UINavigationController *navigationController = [storyboard instantiateViewControllerWithIdentifier:@"waiterView"];
+////    appDelegate.window.rootViewController = navigationController;
+//}
 
 
 @end
