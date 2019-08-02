@@ -16,19 +16,11 @@
 @property (nonatomic, weak) IBOutlet NSLayoutConstraint *contentViewRightConstraint;
 @property (nonatomic, weak) IBOutlet NSLayoutConstraint *contentViewLeftConstraint;
 @property (strong, nonatomic) IBOutlet UIButton *ordersButton;
-//@property (nonatomic, weak) IBOutlet NSLayoutConstraint *amountsConstraint;
-//@property (nonatomic, weak) IBOutlet NSLayoutConstraint *dishesConstraint;
-//@property (nonatomic, weak) IBOutlet NSLayoutConstraint *viewconstraints;
-//@property (strong, nonatomic) IBOutlet NSLayoutConstraint *ordersConstraint;
+@property (strong, nonatomic) IBOutletCollection(NSLayoutConstraint) NSArray *expandedConstraints;
+
 
 @end
 
-/*
- NSLayoutConstraint(item: detail, attribute: .Top, relatedBy: .Equal, toItem: self, attribute: .Top, multiplier: 1, constant: 20)
- addConstraint(detailTopConstraint)
- 
- // Later when you want to change the margin for example :
- detailTopConstraint.constant = 100 */
 
 @implementation OrderViewCell
 
@@ -36,14 +28,10 @@ static CGFloat const kBounceValue = 20.0f;
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    
-    self.expanded = NO;
+    self.isExpanded = NO;
     self.panRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panThisCell:)];
     self.panRecognizer.delegate = self;
-//    self.amountsConstraint.active = NO;
-//    self.dishesConstraint.active = NO;
-//    self.viewconstraints.active = NO;
-//    self.ordersConstraint.active = YES;
+
   
     [self.myContentView addGestureRecognizer:self.panRecognizer];
     
@@ -59,23 +47,12 @@ static CGFloat const kBounceValue = 20.0f;
 - (void)prepareForReuse {
     [super prepareForReuse];
     self.panRecognizer.delegate = self;
-//    self.amountsConstraint.active = NO;
-//    self.dishesConstraint.active = NO;
-//    self.viewconstraints.active = NO;
-//    self.ordersConstraint.active = YES;
     [self resetConstraintContstantsToZero:NO notifyDelegateDidClose:NO];
 }
 - (void)openCell {
     [self setConstraintsToShowAllButtons:NO notifyDelegateDidOpen:NO];
 }
 
-- (void)setItemText:(NSString *)itemText {
-    //Update the instance variable
-    _itemText = itemText;
-    
-    //Set the text to the custom label.
-    self.myTextLabel.text = _itemText;
-}
 
 //button functions
 - (IBAction)buttonClicked:(id)sender {
@@ -87,11 +64,15 @@ static CGFloat const kBounceValue = 20.0f;
         [self.delegate completeForIndex:self.index];
     } else if (sender == self.ordersButton) {
         NSLog(@"Clicked orders!");
-        self.expanded = (!(self.expanded));
-//        self.amountsConstraint.active = YES;
-//        self.dishesConstraint.active = YES;
-//        self.viewconstraints.active = YES;
-//        self.ordersConstraint.active = NO;
+        for (NSLayoutConstraint *aConstraint in self.expandedConstraints){
+            if (self.isExpanded){
+                [self removeConstraint: aConstraint];
+            } else {
+                aConstraint.active = self.isExpanded;
+            }
+        }
+        [self.delegate orderForIndex:self.indexPath];
+
     } else {
         NSLog(@"Clicked unknown button!");
     }
