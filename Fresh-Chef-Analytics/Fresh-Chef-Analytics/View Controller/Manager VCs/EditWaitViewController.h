@@ -11,13 +11,9 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface EditWaitViewController : UIViewController<EditWaiterCellDelegate, UITableViewDelegate, UITableViewDataSource, UINavigationControllerDelegate, UIImagePickerControllerDelegate>
-
-@property (weak, nonatomic) IBOutlet UITextField *nameField;
-@property (weak, nonatomic) IBOutlet UIImageView *profileImage;
-@property (weak, nonatomic) IBOutlet UITextField *yearsField;
-@property (weak, nonatomic) IBOutlet UIButton *addButton;
-
+@interface EditWaitViewController : UIViewController<EditWaiterCellDelegate, UITableViewDelegate, UITableViewDataSource>
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (strong, nonatomic) NSArray *roster;
 
 @end
 

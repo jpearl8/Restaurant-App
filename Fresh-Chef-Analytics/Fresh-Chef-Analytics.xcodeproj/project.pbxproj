@@ -26,6 +26,7 @@
 		A5C06F7B22E8FEEB00F634E3 /* ClosedOrder.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C06F7A22E8FEEB00F634E3 /* ClosedOrder.m */; };
 		A5C06F7E22E9028000F634E3 /* OrderManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C06F7D22E9028000F634E3 /* OrderManager.m */; };
 		A5ED3F3D22F3680300C0C031 /* CustomPopUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5ED3F3C22F3680300C0C031 /* CustomPopUpViewController.m */; };
+		A5ED3F4022F3D69900C0C031 /* CustomPopUpWaiterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5ED3F3F22F3D69900C0C031 /* CustomPopUpWaiterViewController.m */; };
 		B6795EA122EB7C6400CCC0F8 /* ManagerOrderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B6795EA022EB7C6400CCC0F8 /* ManagerOrderTableViewCell.m */; };
 		B6795EA422EBB62700CCC0F8 /* ProfitTrendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6795EA322EBB62700CCC0F8 /* ProfitTrendsViewController.m */; };
 		B6848BFF22F105CF0069CC94 /* NSDate+DayMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = B6848BFE22F105CF0069CC94 /* NSDate+DayMethods.m */; };
@@ -133,6 +134,8 @@
 		A5C06F7D22E9028000F634E3 /* OrderManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OrderManager.m; sourceTree = "<group>"; };
 		A5ED3F3B22F3680300C0C031 /* CustomPopUpViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomPopUpViewController.h; sourceTree = "<group>"; };
 		A5ED3F3C22F3680300C0C031 /* CustomPopUpViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomPopUpViewController.m; sourceTree = "<group>"; };
+		A5ED3F3E22F3D69900C0C031 /* CustomPopUpWaiterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomPopUpWaiterViewController.h; sourceTree = "<group>"; };
+		A5ED3F3F22F3D69900C0C031 /* CustomPopUpWaiterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomPopUpWaiterViewController.m; sourceTree = "<group>"; };
 		B6795E9F22EB7C6400CCC0F8 /* ManagerOrderTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ManagerOrderTableViewCell.h; sourceTree = "<group>"; };
 		B6795EA022EB7C6400CCC0F8 /* ManagerOrderTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ManagerOrderTableViewCell.m; sourceTree = "<group>"; };
 		B6795EA222EBB62700CCC0F8 /* ProfitTrendsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProfitTrendsViewController.h; sourceTree = "<group>"; };
@@ -458,6 +461,8 @@
 				B6C4BFF822E9107400FE5EAC /* OrdersManagerViewController.m */,
 				A5ED3F3B22F3680300C0C031 /* CustomPopUpViewController.h */,
 				A5ED3F3C22F3680300C0C031 /* CustomPopUpViewController.m */,
+				A5ED3F3E22F3D69900C0C031 /* CustomPopUpWaiterViewController.h */,
+				A5ED3F3F22F3D69900C0C031 /* CustomPopUpWaiterViewController.m */,
 			);
 			path = "Manager VCs";
 			sourceTree = "<group>";
@@ -846,6 +851,7 @@
 				A5C06F6522E67E7300F634E3 /* ScatterViewController.m in Sources */,
 				A5C06F7822E8FECF00F634E3 /* OpenOrder.m in Sources */,
 				FF85DF5122E7BF180056726A /* CompetitorsCell.m in Sources */,
+				A5ED3F4022F3D69900C0C031 /* CustomPopUpWaiterViewController.m in Sources */,
 				A535D7BF22DE9FBF002B79CA /* Waiter.m in Sources */,
 				B6795EA422EBB62700CCC0F8 /* ProfitTrendsViewController.m in Sources */,
 				FFFC45E422EE9162003E8FF6 /* OrdersViewController.m in Sources */,

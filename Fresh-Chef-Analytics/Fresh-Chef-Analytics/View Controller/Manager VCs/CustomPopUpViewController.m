@@ -8,6 +8,7 @@
 
 #import "CustomPopUpViewController.h"
 #import "EditMenuViewController.h"
+#import "UITextView+Placeholder.h"
 
 @interface CustomPopUpViewController ()
 @property (strong, nonatomic) IBOutlet UIView *viewClear;
@@ -19,6 +20,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.viewClear.backgroundColor = [UIColor colorWithWhite:0.4 alpha:0.3];
+    self.descriptionView.placeholder = @"Dish description";
+    self.descriptionView.placeholderColor = [UIColor lightGrayColor];
     // Do any additional setup after loading the view.
 }
 - (IBAction)saveItem:(id)sender {
