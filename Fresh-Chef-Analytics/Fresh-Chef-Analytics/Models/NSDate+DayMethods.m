@@ -25,7 +25,7 @@
         dayString = [@"0" stringByAppendingString:dayString];
     }
     
-    NSString *dateString = [NSString stringWithFormat:@"%ld/%@/%@", (long)[comp1 year], monthString, dayString];
+    NSString *dateString = [NSString stringWithFormat:@"%ld-%@-%@", (long)[comp1 year], monthString, dayString];
     return dateString;
 }
 

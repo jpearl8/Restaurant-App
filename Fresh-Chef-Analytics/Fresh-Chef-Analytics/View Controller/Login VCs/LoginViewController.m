@@ -38,21 +38,35 @@
             [[MenuManager shared] fetchMenuItems:user withCompletion:^(NSMutableDictionary * _Nonnull categoriesOfDishes, NSError * _Nullable error) {
                 if (!error)
                 {
+//                    [[OrderManager shared] fetchClosedOrderItems:user withCompletion:^(NSArray * _Nonnull closedOrders, NSError * _Nonnull error) {
+//                        if (!error)
+//                        {
+//                            NSLog(@"fetched restaurant's closed orders");
+//                        }
+//                    }];
+                    [[MenuManager shared] setOrderedDicts];
+                    [[MenuManager shared] setTop3Bottom3Dict];
                     NSLog(@"fetched restaurant's menu");
                 }
             }];
             [[WaiterManager shared] fetchWaiters:user withCompletion:^(NSError * _Nullable error) {
                 if(!error)
                 {
+                    [[WaiterManager shared] setOrderedWaiterArrays];
                     NSLog(@"fetched restaurant's waiters");
                 }
             }];
-            [[OrderManager shared] fetchOpenOrderItems:user withCompletion:^(NSArray * _Nonnull openOrders, NSError * _Nonnull error) {
-                if (!error)
-                {
-                    NSLog(@"fetched restaurant's open orders");
-                }
-            }];
+//            [[OrderManager shared] fetchOpenOrderItems:user withCompletion:^(NSArray * _Nonnull openOrders, NSError * _Nonnull error) {
+//                if (!error)
+//                {
+//                    NSLog(@"fetched restaurant's open orders");
+//                }
+//            }];
+            /* ********** Moved fetchClosedOrderItems to inside fetchMenu completion
+                            block because getDish method for calculating profit needs dishes
+             ***************/ // Switched back because wasn't working still
+            
+            
             [[OrderManager shared] fetchClosedOrderItems:user withCompletion:^(NSArray * _Nonnull closedOrders, NSError * _Nonnull error) {
                 if (!error)
                 {
