@@ -143,7 +143,7 @@
     }
     NSLog(@"Profit by date: %@", self.profitByDate);
     
-//    [NSCalendar enumerateDatesStartingAfterDate:]
+
     NSMutableArray *dateList = [NSMutableArray array];
     NSCalendar *currentCalendar = [NSCalendar currentCalendar];
     NSDateComponents *comps = [[NSDateComponents alloc] init];
@@ -164,7 +164,7 @@
 //    formatter.dateFormat = @"YYYY-MM-DD";
 //    NSDate *startDate = [formatter dateFromString:@"2018-07-01"];
 //    NSDate *endDate = [formatter dateFromString:@"2019-08-01"];
-    
+
     [dateList addObject:startDate];
     NSDate *currentDate = startDate;
     currentDate = [currentCalendar dateByAddingComponents:comps toDate:currentDate options:0];
@@ -172,56 +172,58 @@
         [dateList addObject:currentDate];
         currentDate = [currentCalendar dateByAddingComponents:comps toDate:currentDate options:0];
     }
-    
     // For dates that are not in self.profitByDate, add a key with that date and a value of nil
     NSString *dayString;
+    // keep track of last index before a value exists and add -1 each time
+    // then after a date exists add ....
+    BOOL preceedsData = YES;
     for (NSDate *date in dateList) {
         //make sure key and date are
         dayString = [date dateFromNSDate];
-        if ([self.profitByDate objectForKey:dayString] == nil) {
-            [self.profitByDate setValue:@(-1) forKey:dayString];
+        if ([self.profitByDate objectForKey:dayString] == nil && preceedsData) {
+            [self.profitByDate setValue:@(-1) forKey:dayString]; // points before any data will have value -1
+        } else if ([self.profitByDate objectForKey:dayString] == nil && !preceedsData){
+            [self.profitByDate setValue:@(-2) forKey:dayString]; // points with no data after points with data will have value -2
+        } else {
+            preceedsData = NO;
         }
 //        NSLog(@"Day: %@, with profit: %@", dayString, self.profitByDate[dayString]);
     }
     
-    
-    
-    
-    
 //    NSLog(@"Date list: %@", dateList);
     
     //--********* TEST FOR PROFIT TRENDS **************//
-    self.profitByDateTest = [[NSMutableDictionary alloc] init];
-    NSString *dateString = @"";
-    int year = 2019;
-    int month = 1;
-    int day = 1;
-    float daysProfit = 0;
-    for (int i = 0; i < 384; i++) {
-        if (day >= 31) {
-            if (month >= 12) {
-                year++;
-                month = 1;
-            } else {
-                month++;
-            }
-            day = 1;
-        } else {
-            day++;
-        }
-        NSString *monthString = [NSString stringWithFormat:@"%d", month];
-        if ([monthString length] == 1) {
-            monthString = [@"0" stringByAppendingString:monthString];
-        }
-        NSString *dayString = [NSString stringWithFormat:@"%d", day];
-        if ([dayString length] == 1) {
-            dayString = [@"0" stringByAppendingString:dayString];
-        }
-        dateString = [NSString stringWithFormat:@"%d-%@-%@", year, monthString, dayString];
-        daysProfit = 400 / day;
-        [self.profitByDateTest setObject:@(daysProfit) forKey:dateString];
-        
-    }
+//    self.profitByDateTest = [[NSMutableDictionary alloc] init];
+//    NSString *dateString = @"";
+//    int year = 2019;
+//    int month = 1;
+//    int day = 1;
+//    float daysProfit = 0;
+//    for (int i = 0; i < 384; i++) {
+//        if (day >= 31) {
+//            if (month >= 12) {
+//                year++;
+//                month = 1;
+//            } else {
+//                month++;
+//            }
+//            day = 1;
+//        } else {
+//            day++;
+//        }
+//        NSString *monthString = [NSString stringWithFormat:@"%d", month];
+//        if ([monthString length] == 1) {
+//            monthString = [@"0" stringByAppendingString:monthString];
+//        }
+//        NSString *dayString = [NSString stringWithFormat:@"%d", day];
+//        if ([dayString length] == 1) {
+//            dayString = [@"0" stringByAppendingString:dayString];
+//        }
+//        dateString = [NSString stringWithFormat:@"%d-%@-%@", year, monthString, dayString];
+//        daysProfit = 400 / day;
+//        [self.profitByDateTest setObject:@(daysProfit) forKey:dateString];
+//
+//    }
 //    NSLog(@"Test profit dict: %@", self.profitByDateTest);
     
 }
@@ -246,7 +248,53 @@
         [self.busynessByDate setValue:@(numCustomers) forKey:date];
     }
     NSLog(@"Busyness by date:%@", self.busynessByDate);
+    
+    NSMutableArray *dateList = [NSMutableArray array];
+    NSCalendar *currentCalendar = [NSCalendar currentCalendar];
+    NSDateComponents *comps = [[NSDateComponents alloc] init];
+    [comps setDay:1]; // used to increment day by 1 each iteration of while loop below
+    //create start date
+    NSDateComponents *startComps = [[NSDateComponents alloc] init];
+    [startComps setDay:1];
+    [startComps setMonth:7];
+    [startComps setYear:2018];
+    NSDate *startDate = [[NSCalendar currentCalendar] dateFromComponents:startComps];
+    // create endDate
+    NSDateComponents *endComps = [[NSDateComponents alloc] init];
+    [endComps setDay:1];
+    [endComps setMonth:8];
+    [endComps setYear:2019];
+    NSDate *endDate = [[NSCalendar currentCalendar] dateFromComponents:endComps];
+    
+    [dateList addObject:startDate];
+    NSDate *currentDate = startDate;
+    currentDate = [currentCalendar dateByAddingComponents:comps toDate:currentDate options:0];
+    while ([endDate compare:currentDate] != NSOrderedAscending) {
+        [dateList addObject:currentDate];
+        currentDate = [currentCalendar dateByAddingComponents:comps toDate:currentDate options:0];
+    }
+    
+    NSString *dayString;
+    BOOL preceedsData = YES;
+    for (NSDate *date in dateList) {
+        //make sure key and date are
+        dayString = [date dateFromNSDate];
+        if ([self.busynessByDate objectForKey:dayString] == nil && preceedsData) {
+            [self.busynessByDate setValue:@(-1) forKey:dayString]; // points before any data will have value -1
+        } else if ([self.busynessByDate objectForKey:dayString] == nil && !preceedsData){
+            [self.busynessByDate setValue:@(-2) forKey:dayString]; // points with no data after points with data will have value -2
+        } else {
+            preceedsData = NO;
+        }
+        //        NSLog(@"Day: %@, with profit: %@", dayString, self.profitByDate[dayString]);
+    }
+    
 }
+
+//- (NSArray *)getPreviousDays:(int)numDays fromStartDate(NSDate *)NSDate
+//{
+//
+//}
 
 - (Dish *)getDishWithName:(NSString *)name
 {

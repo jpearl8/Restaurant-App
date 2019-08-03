@@ -12,6 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface NSDate (DayMethods)
 - (NSString *)dateFromNSDate;
+- (NSDate *)dateFromString:(NSString *)string;
 @end
 
 NS_ASSUME_NONNULL_END

@@ -29,4 +29,14 @@
     return dateString;
 }
 
+- (NSDate *)dateFromString:(NSString *)string
+{
+    //takes a string with format YYYY-MM-DD and returns an NSDate
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    formatter.dateFormat = @"YYYY-MM-DD HH:MMM:SS";
+    NSString *dateString = [string stringByAppendingString:@" 07:000:00"];
+    NSDate *date = [formatter dateFromString:dateString];
+    return date;
+}
+
 @end
