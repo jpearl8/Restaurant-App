@@ -42,7 +42,6 @@
         button.backgroundColor = [UIColor clearColor];
     }
 }
-
 - (NSArray *)orderArray:(NSArray *)array byType:(NSString *)orderType
 {
     NSArray *sortedArray;

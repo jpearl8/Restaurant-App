@@ -11,14 +11,19 @@
 
 NS_ASSUME_NONNULL_BEGIN
 @protocol AddOrdersDelegate <NSObject>
--(void)addOpenOrders:(NSMutableArray <OpenOrder *>*)additionalOrders;
-@property (strong, nonatomic) Waiter *waiter;
-@property (strong, nonatomic) NSNumber *table;
-@property (strong, nonatomic) NSNumber *customerNum;
+
+-(Waiter *)getWaiter;
+-(NSNumber *)getTable;
+-(NSNumber *)getCustomerNum;
+-(NSMutableArray <OpenOrder *>*)getEditableOpenOrders;
+-(NSArray <OpenOrder *>*)getOldOpenOrders;
+
 @end
 
 @interface AddItemViewController : UIViewController
 @property (nonatomic, weak) id <AddOrdersDelegate> delegate;
+@property (strong, nonatomic) NSNumber *index;
+@property (strong, nonatomic) NSArray <OpenOrder *>* openOrders;
 
 
 @end

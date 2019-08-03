@@ -11,9 +11,16 @@
 #import "Parse/Parse.h"
 #import "MenuManager.h"
 #import "OrderManager.h"
+#import "BEMCheckbox.h"
 
 @interface ReceiptViewController () <UITableViewDelegate, UITableViewDataSource>
+@property (strong, nonatomic) IBOutlet UIImageView *topIm;
+@property (strong, nonatomic) IBOutlet UILabel *receiptLabel;
+@property (strong, nonatomic) IBOutlet UIImageView *backgroundIm;
+@property (strong, nonatomic) IBOutlet BEMCheckBox *checkBox;
+
 @property (weak, nonatomic) IBOutlet UITableView *receiptTable;
+@property (strong, nonatomic) IBOutletCollection(UILabel) NSArray *allLabels;
 @property (weak, nonatomic) IBOutlet UILabel *totalPrice;
 @property (assign, nonatomic) float priceTracker;
 @property (weak, nonatomic) IBOutlet UITextField *tip;
@@ -32,6 +39,32 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    NSString *category = [PFUser currentUser][@"theme"];
+    NSString *category_top = [NSString stringWithFormat:@"%@_top", category];
+    [self.backgroundIm setImage:[UIImage imageNamed:category]];
+    [self.topIm setImage:[UIImage imageNamed:category_top]];
+    if ([category isEqualToString:@"Elegant"]){
+        self.receiptLabel.textColor = [UIColor blackColor];
+    } else {
+        self.receiptLabel.textColor = [UIColor whiteColor];
+    }
+    UIColor *desired = [UIColor whiteColor];
+    if ([category isEqualToString:@"Comfortable"]){
+        self.checkBox.onTintColor = [UIColor whiteColor];
+        self.checkBox.onCheckColor = [UIColor whiteColor];
+        self.checkBox.tintColor = [UIColor whiteColor];
+        
+    } else {
+       
+        desired = [UIColor blackColor];
+        self.checkBox.onTintColor = [UIColor blackColor];
+        self.checkBox.onCheckColor = [UIColor blackColor];
+        self.checkBox.tintColor = [UIColor blackColor];
+    }
+    for (UILabel *aLabel in self.allLabels) {
+        // Set all label in the outlet collection to have center aligned text.
+        aLabel.textColor = desired;
+    }
     self.mutableAmounts = [[NSMutableArray alloc] init];
     self.mutableDishes = [[NSMutableArray alloc] init];
     self.receiptTable.dataSource = self;

@@ -15,6 +15,7 @@ pod 'Parse'
   pod 'BDBOAuth1Manager'
   pod 'AFNetworking'
   pod 'PNChart'
+  pod 'SVProgressHUD'
 
   target 'Fresh-Chef-AnalyticsTests' do
     inherit! :search_paths

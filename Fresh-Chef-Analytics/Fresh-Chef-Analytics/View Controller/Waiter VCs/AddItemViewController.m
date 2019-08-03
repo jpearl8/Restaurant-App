@@ -11,16 +11,25 @@
 #import "Helpful_funs.h"
 #import "MenuManager.h"
 #import "OrderManager.h"
+#import "WaiterManager.h"
+#import "EditOrderViewController.h"
 
 
 @interface AddItemViewController () <UITableViewDelegate, UITableViewDataSource>
 @property (strong, nonatomic) IBOutlet UITableView *ordersTableView;
+@property (strong, nonatomic) NSMutableDictionary<NSString *, NSArray<OpenOrder *>*>* totalOpenTables;
+@property (strong, nonatomic) NSArray<NSString *>* keys;
+@property (strong, nonatomic) NSMutableDictionary<NSString *, Waiter *>*tableWaiterDictionary;
 @property (strong, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
 @property (strong, nonatomic) NSArray <Dish *>*allDishes;
 @property (strong, nonatomic) NSArray <Dish *>*filteredDishes;
 @property (strong, nonatomic) NSMutableArray <Dish *>*orderedDishes;
 @property (strong, nonatomic) NSMutableArray <NSNumber *>*amounts;
+@property (strong, nonatomic) Waiter *waiter;
+@property (strong, nonatomic) NSNumber *table;
+@property (strong, nonatomic) NSNumber *customerNum;
+@property (strong, nonatomic) NSMutableArray <OpenOrder *>* openOrdersFromEdit;
 - (IBAction)addToOrder:(UIBarButtonItem *)sender;
 - (IBAction)cancel:(UIBarButtonItem *)sender;
 
@@ -30,6 +39,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.openOrdersFromEdit = [[NSMutableArray alloc] init];
+    self.openOrdersFromEdit = [self.delegate getEditableOpenOrders];
+    self.waiter = [self.delegate getWaiter];
+    self.table = [self.delegate getTable];
+    self.customerNum = [self.delegate getCustomerNum];
     self.ordersTableView.delegate = self;
     self.ordersTableView.dataSource = self;
     self.orderedDishes = [[NSMutableArray alloc] init];
@@ -108,20 +123,24 @@
         self.amounts[index] = [NSNumber numberWithDouble:sender.value];
     };
 }
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    EditOrderViewController *editVC = [segue destinationViewController];
+    NSArray *oldOpenOrders = [[NSArray alloc] init];
+    oldOpenOrders = [self.delegate getOldOpenOrders];
+    editVC.waiter = self.waiter;
+    editVC.editableOpenOrders =  self.openOrdersFromEdit;
+    editVC.openOrders = oldOpenOrders;
+
 }
-*/
+
+
+
 
 - (IBAction)addToOrder:(UIBarButtonItem *)sender {
     //create new open orders from dish array
     //make an array of openOrders to pass to edit Orders using delegate method
-    NSMutableArray<OpenOrder *>* additionalOrders = [[NSMutableArray alloc] init];
+    
     if (self.amounts.count != 0 && (!([[Helpful_funs shared]arrayOfZeros:self.amounts]))){
         for (int i = 0; i < self.amounts.count; i++){
             if (self.amounts[i] != [NSNumber numberWithInt:0]){
@@ -129,25 +148,18 @@
                 openOrderNew.dish = self.orderedDishes[i];
                 NSLog(@"%@, %@", self.orderedDishes[i].name, self.amounts[i]);
                 openOrderNew.amount = self.amounts[i];
-                openOrderNew.waiter = self.delegate.waiter;
+                openOrderNew.waiter = self.waiter;
                 openOrderNew.restaurant = [PFUser currentUser];
                 NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
                 formatter.numberStyle = NSNumberFormatterDecimalStyle;
-                openOrderNew.table = self.delegate.table;
+                openOrderNew.table = self.table;
                 openOrderNew.restaurantId = [PFUser currentUser].objectId;
-                openOrderNew.customerNum = self.delegate.customerNum;
-                [additionalOrders addObject:openOrderNew];
+                openOrderNew.customerNum = self.customerNum;
+                [self.openOrdersFromEdit addObject:openOrderNew];
             }
         }
-        [[OrderManager shared] postAllOpenOrders:additionalOrders withCompletion:^(NSError * _Nonnull error) {
-            if (!error){
-                [self.delegate addOpenOrders:additionalOrders];
-                [self performSegueWithIdentifier:@"toEdit" sender:self];
-            } else{
-                NSLog(@"%@", error.localizedDescription);
-            }
-        }];
         
+        [self performSegueWithIdentifier:@"toEdit" sender:self];
     }
 }
 

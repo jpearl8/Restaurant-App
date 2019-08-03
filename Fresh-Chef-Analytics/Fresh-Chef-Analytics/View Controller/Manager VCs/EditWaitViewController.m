@@ -11,8 +11,7 @@
 #import "EditWaiterCell.h"
 
 @interface EditWaitViewController ()
-@property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (strong, nonatomic) NSArray *roster;
+
 @end
 
 @implementation EditWaitViewController
@@ -23,53 +22,9 @@
     self.tableView.dataSource = self;
     self.roster = [[WaiterManager shared] roster];
     //make profile pictures round
-    self.profileImage.layer.cornerRadius = 0.5 * self.profileImage.bounds.size.height;
-    self.profileImage.layer.masksToBounds = YES;
-}
-- (IBAction)saveWaiter:(id)sender {
-    Waiter *newWaiter = [Waiter addNewWaiter:self.nameField.text withYears:[NSNumber numberWithFloat:[self.yearsField.text floatValue]] withImage:self.profileImage.image withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
-        if (succeeded)
-        {
-            NSLog(@"yay");
-        }
-        else
-        {
-            NSLog(@"%@", error.localizedDescription);
-        }
-    }];
-    [self didAddWaiter:newWaiter];
+
 }
 
-- (IBAction)didTapWaiterImage:(id)sender {
-    NSLog(@"tapped camera image");
-    UIImagePickerController *imagePickerVC = [UIImagePickerController new];
-    imagePickerVC.delegate = self;
-    imagePickerVC.allowsEditing = YES;
-    // if camera is available, use it, else, use camera roll
-    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
-        imagePickerVC.sourceType = UIImagePickerControllerSourceTypeCamera;
-    }
-    else {
-        NSLog(@"Camera 🚫 available so we will use photo library instead");
-        imagePickerVC.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-    }
-    [self presentViewController:imagePickerVC animated:YES completion:nil];
-}
-
-- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
-    // Get the image captured by the UIImagePickerController
-    UIImage *editedImage = info[UIImagePickerControllerEditedImage];
-    self.profileImage.image = editedImage;
-    // Dismiss UIImagePickerController to go back to original view controller
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
-
-- (void) didAddWaiter: (Waiter *) waiter
-{
-    [[WaiterManager shared] addWaiter:waiter];
-    self.roster = [[WaiterManager shared] roster];
-    [self.tableView reloadData];
-}
 - (void)editWaiterCell:(EditWaiterCell *)editWaiterCell didTap:(Waiter *)waiter
 {
     [[WaiterManager shared] removeWaiterFromTable:waiter withCompletion:^(NSError * _Nullable error) {
@@ -85,13 +40,14 @@
     EditWaiterCell *cell = [tableView dequeueReusableCellWithIdentifier:@"EditWaiterCell" forIndexPath:indexPath];
     Waiter *waiter = self.roster[indexPath.row];
     cell.waiter = waiter;
+    cell.cellView.layer.cornerRadius = cell.cellView.frame.size.width/6;
     cell.delegate = self;
     cell.waiterName.text = waiter.name;
-    cell.waiterYearsAt.text = [[NSString stringWithFormat:@"%@", waiter.yearsWorked] stringByAppendingString:@" years"];
-    cell.waiterRating.text = [[NSString stringWithFormat:@"%@", waiter.rating] stringByAppendingString:@" stars"];
-    cell.waiterTableTops.text = [[NSString stringWithFormat:@"%@", waiter.tableTops] stringByAppendingString:@" tables"];
+    cell.waiterYearsAt.text = [@"Served " stringByAppendingString:[[NSString stringWithFormat:@"%@", waiter.yearsWorked] stringByAppendingString:@"  Years"]];
+    cell.waiterRating.text = [[NSString stringWithFormat:@"%@", waiter.rating] stringByAppendingString:@" ✯'s"];
+    cell.waiterTableTops.text = [[NSString stringWithFormat:@"%@", waiter.tableTops] stringByAppendingString:@" Tabletops"];
     cell.waiterNumCustomers.text = [[NSString stringWithFormat:@"%@", waiter.numOfCustomers] stringByAppendingString:@" customers served"];
-    cell.waiterTips.text = [[NSString stringWithFormat:@"%@", waiter.tipsMade] stringByAppendingString:@" tips made"];
+    cell.waiterTips.text = [@"$" stringByAppendingString:[[NSString stringWithFormat:@"%@", waiter.tipsMade] stringByAppendingString:@" Total Tips"]];
     if(waiter.image!=nil){
         [waiter.image getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
             if(!error){
@@ -103,6 +59,7 @@
     } else {
         cell.profileImage.image = nil;
     }
+    cell.profileImage.layer.cornerRadius = cell.profileImage.frame.size.width / 2;
     return cell;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section

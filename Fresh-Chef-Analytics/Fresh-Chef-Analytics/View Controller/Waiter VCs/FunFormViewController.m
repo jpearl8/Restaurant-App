@@ -140,7 +140,7 @@
             placeHolder = [self.customerRatingsArray[i] floatValue];
         }
         ((Dish *)self.dishesArray[i]).rating = [NSNumber numberWithFloat: ((placeHolder * [((NSNumber *)self.openOrders[i].amount) floatValue])  + totalRating)];
-        if (!([self.customerComments[i] isEqualToString:@""])){
+        if (!([self.customerComments[i] isEqual:[NSNull null]] || [self.customerComments[i] isEqualToString:@""])){
             ((Dish *)self.dishesArray[i]).comments =[((Dish *)self.dishesArray[i]).comments arrayByAddingObject:self.customerComments[i]];
         }
         float totalFrequency = [((Dish *)self.dishesArray[i]).orderFrequency floatValue];
@@ -155,7 +155,7 @@
     }
     self.waiter.rating = [NSNumber numberWithFloat: ([self.waiterRating floatValue] + totalRating)];
     
-    if (!([self.waiterComments.text isEqualToString:@""])){
+    if (!([self.waiterComments.text isEqual:[NSNull null]] || [self.waiterComments.text isEqualToString:@""])){
         self.waiter.comments = [self.waiter.comments arrayByAddingObject:self.waiterComments.text];
     }
     float numOfCustomers = [self.waiter.numOfCustomers floatValue];

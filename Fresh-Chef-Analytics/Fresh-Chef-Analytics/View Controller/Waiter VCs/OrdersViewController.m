@@ -16,6 +16,7 @@
 #import "OrderManager.h"
 #import "MenuManager.h"
 #import "AppDelegate.h"
+#import "SVProgressHUD/SVProgressHUD.h"
 #import "EditOrderViewController.h"
 
 
@@ -39,7 +40,11 @@
 @property (strong, nonatomic) IBOutlet UINavigationBar *navBar;
 @end
 
-@implementation OrdersViewController
+@implementation OrdersViewController {
+    NSIndexPath *selectedIndexPath;
+    int regularHeight;
+    int expandedHeight;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -48,8 +53,9 @@
     self.openOrdersTable.delegate = self;
     self.tableWaiterDictionary = [[NSMutableDictionary alloc] init];
     self.dishesArray = [[NSMutableArray alloc] init];
-     NSString *category = [PFUser currentUser][@"theme"];
-     [self.image setImage:[UIImage imageNamed:category]];
+    NSString *category = [PFUser currentUser][@"theme"];
+    NSString *category_waiter = [NSString stringWithFormat:@"%@_waiter", category];
+     [self.image setImage:[UIImage imageNamed:category_waiter]];
      self.navBar.shadowImage = [UIImage imageNamed:category];
     [self fetchOpenOrders:^(NSError * _Nullable error) {
         if (!error){
@@ -60,15 +66,22 @@
             NSLog(@"%@", error.localizedDescription);
         }
     }];
+    regularHeight = 131;
+    expandedHeight = 300;
 
 }
 - (IBAction)refreshOrders:(UIBarButtonItem *)sender {
+    [SVProgressHUD show];
     [self fetchOpenOrders:^(NSError * _Nullable error) {
         if (error){
             NSLog(@"%@", error.localizedDescription);
         }
+        else {
+            [self.openOrdersTable reloadData];
+            [SVProgressHUD dismiss];
+        }
     }];
-    [self.openOrdersTable reloadData];
+    
 }
 
 
@@ -96,7 +109,7 @@
     cell.amounts.text = items[1];
     cell.openOrders = [[NSArray alloc] init];
     cell.openOrders = [NSArray arrayWithArray:orderInCell];
-
+    cell.indexPath = indexPath;
     cell.waiter = self.tableWaiterDictionary[cell.tableNumber.text];
     cell.waiterName.text = cell.waiter.name;
     cell.customerNumber.text = [NSString stringWithFormat:@"%@", orderInCell[0].customerNum];
@@ -209,6 +222,34 @@
     
 }
 
+-(void)orderForIndex:(NSIndexPath *)indexPath{
+    OrderViewCell *cell = [self.openOrdersTable cellForRowAtIndexPath:indexPath];
+    selectedIndexPath = indexPath;
+    if(cell.isExpanded){
+        cell.isExpanded = NO;
+        [cell.ordersButton setImage:[UIImage imageNamed:@"order"] forState:UIControlStateNormal];
+    } else {
+        cell.isExpanded = YES;
+        [cell.ordersButton setImage:[UIImage imageNamed:@"order_selected"] forState:UIControlStateNormal];
+    }
+    
+    //update cell to reflect new state
+    [self.openOrdersTable beginUpdates];
+    [self.openOrdersTable endUpdates];
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    OrderViewCell *cell = [self.openOrdersTable cellForRowAtIndexPath:indexPath];
+    if(cell.isExpanded){
+        return expandedHeight;
+    } else {
+        return regularHeight;
+    }
+
+}
+
+
 -(NSMutableArray<NSString *>*)fillCellArrays:(NSArray<OpenOrder *>*)openOrders {
     NSArray<Dish*>*dishArray = [[NSArray alloc] init];
     NSMutableArray<NSString*>*array = [[NSMutableArray alloc] init];
@@ -268,23 +309,26 @@
     if ([segue.identifier isEqualToString:@"Edit"]){
         EditOrderViewController *editVC = [segue destinationViewController];
         editVC.waiter = self.tableWaiterDictionary[self.keys[[self.index integerValue]]];
-        editVC.openOrders =  self.totalOpenTables[self.keys[[self.index integerValue]]];;
+        editVC.openOrders =  self.totalOpenTables[self.keys[[self.index integerValue]]];
+        editVC.index = self.index;
+        editVC.editableOpenOrders = [editVC.openOrders mutableCopy];
+
         //editVC.dishesArray = self.dishesArray;
         
     }
     
 
 }
-- (IBAction)newOrderAction:(UIBarButtonItem *)sender {
-    [self dismissViewControllerAnimated:YES completion:^{
-        //Stuff after dismissing
-    }];
-     //[self.navigationController popViewControllerAnimated:YES];
-//    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-//    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-//    UINavigationController *navigationController = [storyboard instantiateViewControllerWithIdentifier:@"waiterView"];
-//    appDelegate.window.rootViewController = navigationController;
-}
+//- (IBAction)newOrderAction:(UIBarButtonItem *)sender {
+//    [self dismissViewControllerAnimated:YES completion:^{
+//        //Stuff after dismissing
+//    }];
+//     //[self.navigationController popViewControllerAnimated:YES];
+////    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+////    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+////    UINavigationController *navigationController = [storyboard instantiateViewControllerWithIdentifier:@"waiterView"];
+////    appDelegate.window.rootViewController = navigationController;
+//}
 
 
 @end

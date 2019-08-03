@@ -25,6 +25,8 @@
 		A5C06F7822E8FECF00F634E3 /* OpenOrder.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C06F7722E8FECF00F634E3 /* OpenOrder.m */; };
 		A5C06F7B22E8FEEB00F634E3 /* ClosedOrder.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C06F7A22E8FEEB00F634E3 /* ClosedOrder.m */; };
 		A5C06F7E22E9028000F634E3 /* OrderManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C06F7D22E9028000F634E3 /* OrderManager.m */; };
+		A5ED3F3D22F3680300C0C031 /* CustomPopUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5ED3F3C22F3680300C0C031 /* CustomPopUpViewController.m */; };
+		A5ED3F4022F3D69900C0C031 /* CustomPopUpWaiterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5ED3F3F22F3D69900C0C031 /* CustomPopUpWaiterViewController.m */; };
 		B6795EA122EB7C6400CCC0F8 /* ManagerOrderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B6795EA022EB7C6400CCC0F8 /* ManagerOrderTableViewCell.m */; };
 		B6795EA422EBB62700CCC0F8 /* ProfitTrendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6795EA322EBB62700CCC0F8 /* ProfitTrendsViewController.m */; };
 		B6848BFF22F105CF0069CC94 /* NSDate+DayMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = B6848BFE22F105CF0069CC94 /* NSDate+DayMethods.m */; };
@@ -66,8 +68,6 @@
 		FF7374CB22F257C400632056 /* AddItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF7374CA22F257C400632056 /* AddItemViewController.m */; };
 		FF7374CE22F265B900632056 /* EditOrderViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FF7374CD22F265B800632056 /* EditOrderViewCell.m */; };
 		FF85DF5122E7BF180056726A /* CompetitorsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FF85DF5022E7BF180056726A /* CompetitorsCell.m */; };
-		FF9AF93322E90B3F00A0D1FE /* order.m in Sources */ = {isa = PBXBuildFile; fileRef = FF9AF93222E90B3F00A0D1FE /* order.m */; };
-		FF9AF93522E914F900A0D1FE /* order.h in Sources */ = {isa = PBXBuildFile; fileRef = FF9AF93122E90B3F00A0D1FE /* order.h */; };
 		FFB3224722DF9DF700BF966F /* WaitTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FFB3224622DF9DF700BF966F /* WaitTableViewCell.m */; };
 		FFC87ACD22EA2650009DE74C /* YelpLinkViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FFC87ACC22EA2650009DE74C /* YelpLinkViewController.m */; };
 		FFC87AD322EA2A91009DE74C /* Link.m in Sources */ = {isa = PBXBuildFile; fileRef = FFC87AD222EA2A91009DE74C /* Link.m */; };
@@ -130,6 +130,10 @@
 		A5C06F7A22E8FEEB00F634E3 /* ClosedOrder.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ClosedOrder.m; sourceTree = "<group>"; };
 		A5C06F7C22E9028000F634E3 /* OrderManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OrderManager.h; sourceTree = "<group>"; };
 		A5C06F7D22E9028000F634E3 /* OrderManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OrderManager.m; sourceTree = "<group>"; };
+		A5ED3F3B22F3680300C0C031 /* CustomPopUpViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomPopUpViewController.h; sourceTree = "<group>"; };
+		A5ED3F3C22F3680300C0C031 /* CustomPopUpViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomPopUpViewController.m; sourceTree = "<group>"; };
+		A5ED3F3E22F3D69900C0C031 /* CustomPopUpWaiterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomPopUpWaiterViewController.h; sourceTree = "<group>"; };
+		A5ED3F3F22F3D69900C0C031 /* CustomPopUpWaiterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomPopUpWaiterViewController.m; sourceTree = "<group>"; };
 		B6795E9F22EB7C6400CCC0F8 /* ManagerOrderTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ManagerOrderTableViewCell.h; sourceTree = "<group>"; };
 		B6795EA022EB7C6400CCC0F8 /* ManagerOrderTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ManagerOrderTableViewCell.m; sourceTree = "<group>"; };
 		B6795EA222EBB62700CCC0F8 /* ProfitTrendsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProfitTrendsViewController.h; sourceTree = "<group>"; };
@@ -218,8 +222,6 @@
 		FF7374CD22F265B800632056 /* EditOrderViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EditOrderViewCell.m; sourceTree = "<group>"; };
 		FF85DF4F22E7BF180056726A /* CompetitorsCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CompetitorsCell.h; sourceTree = "<group>"; };
 		FF85DF5022E7BF180056726A /* CompetitorsCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CompetitorsCell.m; sourceTree = "<group>"; };
-		FF9AF93122E90B3F00A0D1FE /* order.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = order.h; sourceTree = "<group>"; };
-		FF9AF93222E90B3F00A0D1FE /* order.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = order.m; sourceTree = "<group>"; };
 		FFB3224522DF9DF700BF966F /* WaitTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = WaitTableViewCell.h; path = "Fresh-Chef-Analytics/View Controller/Waiter VCs/WaitTableViewCell.h"; sourceTree = SOURCE_ROOT; };
 		FFB3224622DF9DF700BF966F /* WaitTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = WaitTableViewCell.m; path = "Fresh-Chef-Analytics/View Controller/Waiter VCs/WaitTableViewCell.m"; sourceTree = SOURCE_ROOT; };
 		FFC87ACB22EA2650009DE74C /* YelpLinkViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YelpLinkViewController.h; sourceTree = "<group>"; };
@@ -307,8 +309,6 @@
 				A5C06F7A22E8FEEB00F634E3 /* ClosedOrder.m */,
 				A5C06F7C22E9028000F634E3 /* OrderManager.h */,
 				A5C06F7D22E9028000F634E3 /* OrderManager.m */,
-				FF9AF93122E90B3F00A0D1FE /* order.h */,
-				FF9AF93222E90B3F00A0D1FE /* order.m */,
 				FFC87AD122EA2A91009DE74C /* Link.h */,
 				FFC87AD222EA2A91009DE74C /* Link.m */,
 				B6848BFD22F105CF0069CC94 /* NSDate+DayMethods.h */,
@@ -453,6 +453,10 @@
 				B6C4BFEF22E8FE8500FE5EAC /* DataViewTableViewController.m */,
 				B6C4BFF722E9107400FE5EAC /* OrdersManagerViewController.h */,
 				B6C4BFF822E9107400FE5EAC /* OrdersManagerViewController.m */,
+				A5ED3F3B22F3680300C0C031 /* CustomPopUpViewController.h */,
+				A5ED3F3C22F3680300C0C031 /* CustomPopUpViewController.m */,
+				A5ED3F3E22F3D69900C0C031 /* CustomPopUpWaiterViewController.h */,
+				A5ED3F3F22F3D69900C0C031 /* CustomPopUpWaiterViewController.m */,
 			);
 			path = "Manager VCs";
 			sourceTree = "<group>";
@@ -786,7 +790,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				B6795EA122EB7C6400CCC0F8 /* ManagerOrderTableViewCell.m in Sources */,
-				FF9AF93522E914F900A0D1FE /* order.h in Sources */,
 				B6C4BFF922E9107400FE5EAC /* OrdersManagerViewController.m in Sources */,
 				B6C4BFF022E8FE8500FE5EAC /* DataViewTableViewController.m in Sources */,
 				FF318E8922EAC57C003AF015 /* OpenOrderButton.m in Sources */,
@@ -822,6 +825,7 @@
 				A535D7C522DFD4B5002B79CA /* MenuManager.m in Sources */,
 				FF03BF5022DEA04900719E8C /* DishDetailsViewController.m in Sources */,
 				FF03BF5922DEA0C700719E8C /* CompetitorDetailsViewController.m in Sources */,
+				A5ED3F3D22F3680300C0C031 /* CustomPopUpViewController.m in Sources */,
 				FF9AF93322E90B3F00A0D1FE /* order.m in Sources */,
 				FF03BF5C22DEA16600719E8C /* CompetitorListViewController.m in Sources */,
 				A5C06F5622E114E500F634E3 /* WaiterManager.m in Sources */,
@@ -840,6 +844,7 @@
 				A5C06F6522E67E7300F634E3 /* ScatterViewController.m in Sources */,
 				A5C06F7822E8FECF00F634E3 /* OpenOrder.m in Sources */,
 				FF85DF5122E7BF180056726A /* CompetitorsCell.m in Sources */,
+				A5ED3F4022F3D69900C0C031 /* CustomPopUpWaiterViewController.m in Sources */,
 				A535D7BF22DE9FBF002B79CA /* Waiter.m in Sources */,
 				B6795EA422EBB62700CCC0F8 /* ProfitTrendsViewController.m in Sources */,
 				FFFC45E422EE9162003E8FF6 /* OrdersViewController.m in Sources */,

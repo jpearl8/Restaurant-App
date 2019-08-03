@@ -11,13 +11,15 @@
 NS_ASSUME_NONNULL_BEGIN
 @protocol EditOrderDelegate <NSObject>
 -(void)deleteRowAtIndex:(int)index;
+-(void)changeAmount:(NSNumber *)amount atIndex:(int)index;
+
 @end
 
 @interface EditOrderViewCell : UITableViewCell
 @property (strong, nonatomic) IBOutlet UILabel *dishName;
 @property (nonatomic, weak) id <EditOrderDelegate> delegate;
-@property (strong, nonatomic) IBOutlet UITextField *amount;
 @property (assign, nonatomic) int index;
+@property (strong, nonatomic) IBOutlet UITextView *amount;
 
 @end
 

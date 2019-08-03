@@ -205,7 +205,70 @@
     self.rankedDishesByFreq = [[Helpful_funs shared] orderArray:self.dishes byType:@"orderFrequency"];
     self.rankedDishesByProfit = [[Helpful_funs shared] orderArray:self.dishes byType:@"profit"];
 }
-
+- (NSNumber *) averageRating : (Dish *) dish
+{
+    if (dish.rating != nil && ![dish.orderFrequency isEqualToNumber:@(0)])
+    {
+        return [NSNumber numberWithFloat:floorf(([dish.rating floatValue] / [dish.orderFrequency floatValue]*100)/100)];
+    }
+    return @(0);
+}
+//
+//- (void)setDishRankings
+//{
+//    //rank all dishes into an array
+//    float bottomThreshRating = 0.33f;
+//    float upperThreshRating = 0.66f;
+//    float bottomThreshFreq = 0.33f;
+//    float upperThreshFreq = 0.66f;
+//    float bottomThreshProfit = 0.33f;
+//    float upperThreshProfit = 0.66f;
+//    // get length of menu and find indices closest to lower and upper threshold percentile
+//    NSUInteger menuLength = [self.dishes count];
+//    NSUInteger lowerIndexRating = lroundf(bottomThreshRating * menuLength);
+//    NSUInteger upperIndexRating = lroundf(upperThreshRating * menuLength);
+//    NSUInteger lowerIndexFreq = lroundf(bottomThreshFreq * menuLength);
+//    NSUInteger upperIndexFreq = lroundf(upperThreshFreq * menuLength);
+//    NSUInteger lowerIndexProfit = lroundf(bottomThreshProfit * menuLength);
+//    NSUInteger upperIndexProfit = lroundf(upperThreshProfit * menuLength);
+//    // rank all dishes into an array
+//    NSArray *rankedDishesByRating = [[Helpful_funs shared] orderArray:self.dishes byType:@"rating"];
+//    NSArray *rankedDishesByFreq = [[Helpful_funs shared] orderArray:self.dishes byType:@"orderFrequency"];
+//    NSArray *rankedDishesByProfit = [[Helpful_funs shared] orderArray:self.dishes byType:@"profit"];
+//    for (int i = 0; i < menuLength; i++) {
+//        Dish *dish = rankedDishesByRating[i];
+//        // Check Rating
+//        if (i <= lowerIndexRating) {
+//            dish.ratingCategory = @"high"; // if dish is early in array then it has high rating
+//        } else if (i > lowerIndexRating && i < upperIndexRating) {
+//            dish.ratingCategory = @"medium";
+//        } else {
+//            dish.ratingCategory = @"low"; // if dish is later in array then it has a low rating
+//        }
+//    }
+//    // Check Frequency
+//    for (int i = 0; i < menuLength; i++) {
+//        Dish *dish = rankedDishesByFreq[i];
+//        if (i <= lowerIndexFreq) {
+//            dish.freqCategory = @"high"; // if dish is early in array then it has high freq
+//        } else if (i > lowerIndexFreq && i < upperIndexFreq) {
+//            dish.freqCategory = @"medium";
+//        } else {
+//            dish.freqCategory = @"low"; // if dish is later in array then it has a low freq
+//        }
+//    }
+//    // Check Profit
+//    for (int i = 0; i < menuLength; i++) {
+//        Dish *dish = rankedDishesByProfit[i];
+//        if (i <= lowerIndexProfit) {
+//            dish.profitCategory = @"high"; // if dish is early in array then it has high profit
+//        } else if (i > lowerIndexProfit && i < upperIndexProfit) {
+//            dish.profitCategory = @"medium";
+//        } else {
+//            dish.profitCategory = @"low"; // if dish is later in array then it has a low profit
+//        }
+//    }
+//}
 
 - (NSString *)getRankOfType:(NSString *)rankType ForDish:(Dish *)dish
 {

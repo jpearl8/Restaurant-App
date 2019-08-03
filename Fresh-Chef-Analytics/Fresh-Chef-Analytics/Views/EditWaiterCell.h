@@ -23,6 +23,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UILabel *waiterTableTops;
 @property (weak, nonatomic) IBOutlet UILabel *waiterNumCustomers;
 @property (weak, nonatomic) IBOutlet UIButton *removeButton;
+@property (weak, nonatomic) IBOutlet UIView *cellView;
 @property (strong, nonatomic) Waiter *waiter;
 @end
 @protocol EditWaiterCellDelegate

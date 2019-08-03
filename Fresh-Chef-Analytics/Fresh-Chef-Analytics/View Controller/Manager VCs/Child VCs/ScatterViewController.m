@@ -135,7 +135,7 @@
     self.dishFreqLabel.text = [[NSString stringWithFormat:@"%@", dish.orderFrequency] stringByAppendingString:@" orders"];
     [self.dishFreqLabel setTextColor:colorForDish];
     [self.dishRatingLabel setTextColor:colorForDish];
-    self.dishRatingLabel.text = [[NSString stringWithFormat:@"%f", [dish.rating floatValue] / [dish.orderFrequency floatValue]] stringByAppendingString:@" Stars"];
+    self.dishRatingLabel.text = [[NSString stringWithFormat:@"%@", [[MenuManager shared] averageRating:dish]] stringByAppendingString:@" Stars"];
     [self.chooseDishButton setTitleColor:colorForDish
                                 forState:UIControlStateNormal];
     self.selectedDish = self.categoriesOfDishes[self.legend[section]][indexPath.row];
@@ -168,15 +168,7 @@
         NSMutableArray *theseNames = [NSMutableArray array];
         for (Dish *dish in temp)
         {
-            NSNumber *rating;
-            if (dish.rating==nil)
-            {
-                rating = @(0);
-            }
-            else
-            {
-                rating = [NSNumber numberWithFloat:[dish.rating floatValue]/[dish.orderFrequency floatValue]];
-            }
+            NSNumber *rating = [[MenuManager shared] averageRating:dish];
             [theseRatings addObject:rating];
             [theseFreqs addObject:dish.orderFrequency];
             [theseNames addObject:dish.name];

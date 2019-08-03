@@ -59,13 +59,7 @@
     cell.dish = dish;
     cell.name.text = dish.name;
     cell.descriptionLabel.text = dish.dishDescription;
-    if(dish.rating != nil){
-        CGFloat rating = [dish.rating floatValue] / [dish.orderFrequency floatValue];
-        NSString *ratingRounded = [NSString stringWithFormat:@"%.01f", (floorf(rating * 100) / 100)];
-        cell.rating.text = [[NSString stringWithFormat:@"%@", ratingRounded] stringByAppendingString:@"/10"];
-    } else {
-        cell.rating.text = @"No Rating";
-    }
+    cell.rating.text = [[NSString stringWithFormat:@"%@", [[MenuManager shared] averageRating:dish]] stringByAppendingString:@"/10"];;
     cell.frequency.text = [[NSString stringWithFormat:@"%@", dish.orderFrequency] stringByAppendingString:@" orders"];
     cell.price.text = [@"Price: $" stringByAppendingString: [NSString stringWithFormat:@"%@", dish.price]];
     cell.profit.text = [@"Profit: $" stringByAppendingString:[dish.profit stringValue]];
