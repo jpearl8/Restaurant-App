@@ -5677,6 +5677,7 @@
         <image name="minus" width="21.333333969116211" height="21.333333969116211"/>
         <image name="minus-circle_outline_24-4x_ed" width="96" height="96"/>
         <image name="nav-plus_outline_24" width="24" height="24"/>
+        <image name="order" width="700" height="700"/>
         <image name="order-40" width="40" height="40"/>
         <image name="plus" width="21.333333969116211" height="21.333333969116211"/>
         <image name="profile_tab" width="25" height="25"/>

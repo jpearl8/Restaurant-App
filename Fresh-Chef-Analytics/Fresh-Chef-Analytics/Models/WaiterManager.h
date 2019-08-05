@@ -28,15 +28,12 @@ NS_ASSUME_NONNULL_BEGIN
 - (void) removeWaiterFromTable : (Waiter *) delWaiter withCompletion:(void (^)(NSError * _Nullable error))removeWaiter;
 - (void)setOrderedWaiterArrays;
 - (void) findWaiter : (NSString *) objectId withCompletion:(void (^)(NSArray * waiter, NSError * _Nullable error)) completion;
-<<<<<<< HEAD
 - (Waiter *) findWaiterwithRoster : (NSString *) objectId;
-=======
 - (NSNumber *) averageRating : (Waiter *) waiter;
 - (NSNumber *) averageTipsByTable : (Waiter *) waiter;
 - (NSNumber *) averageTipByCustomer : (Waiter *) waiter;
 
 
->>>>>>> a8b81a2fedf93adc595ce874ffec05c170097cf2
 @end
 
 NS_ASSUME_NONNULL_END
