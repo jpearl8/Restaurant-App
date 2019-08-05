@@ -35,13 +35,37 @@
     }];
     
 }
-
+- (NSNumber *) averageTipByCustomer : (Waiter *) waiter
+{
+    if (![waiter.numOfCustomers isEqualToNumber:@(0)])
+    {
+        return [NSNumber numberWithFloat:(round([waiter.tipsMade floatValue] / [waiter.numOfCustomers floatValue]* 100) / 100)];
+    }
+    return @(0);
+}
+- (NSNumber *) averageTipsByTable : (Waiter *) waiter
+{
+    if (![waiter.tableTops isEqualToNumber:@(0)])
+    {
+        return [NSNumber numberWithFloat:(round([waiter.tipsMade floatValue] / [waiter.tableTops floatValue]* 100) / 100)];
+    }
+    return @(0);
+}
 - (void)setOrderedWaiterArrays {
     self.rosterByRating = [[Helpful_funs shared] orderArray:self.roster byType:@"rating"];
     self.rosterByTables = [[Helpful_funs shared] orderArray:self.roster byType:@"tableTops"];
     self.rosterByCustomers = [[Helpful_funs shared] orderArray:self.roster byType:@"numOfCustomers"];
-    self.rosterByTips = [[Helpful_funs shared] orderArray:self.roster byType:@"tipsMade"];
+    self.rosterByTipsCustomers = [[Helpful_funs shared] orderArray:self.roster byType:@"tipsByCustomers"];
+    self.rosterByTipsTables = [[Helpful_funs shared] orderArray:self.roster byType:@"tipsByTable"];
     self.rosterByYears = [[Helpful_funs shared] orderArray:self.roster byType:@"yearsWorked"];
+}
+- (NSNumber *) averageRating : (Waiter *) waiter
+{
+    if (waiter.rating != nil && ![waiter.tableTops isEqualToNumber:@(0)])
+    {
+        return [NSNumber numberWithFloat:floorf(([waiter.rating floatValue] / [waiter.tableTops floatValue]*100)/100)];
+    }
+    return @(0);
 }
 
 - (void) addWaiter:(Waiter *)waiter

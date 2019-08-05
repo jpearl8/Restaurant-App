@@ -7,48 +7,88 @@
 //
 
 #import "WaitListViewController.h"
-#import "WaiterManager.h"
-#import "WaiterListTableViewCell.h"
-#import "WaitDetailsViewController.h"
+
 
 @interface WaitListViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NSArray *roster;
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (strong, nonatomic) NSArray *filteredWaiters;
-@property (weak, nonatomic) IBOutlet UISegmentedControl *sortByControl;
 @property (strong, nonatomic) NSArray *sortedRoster;
-
+@property (weak, nonatomic) IBOutlet MKDropdownMenu *dropDown;
+@property (strong, nonatomic) NSArray *dropDownCats;
+@property (weak, nonatomic) IBOutlet UILabel *dropDownLabel;
 @end
 
 @implementation WaitListViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.dropDown.delegate = self;
+    self.dropDown.dataSource = self;
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     self.searchBar.delegate = self;
+    self.dropDownCats = @[@"Rating", @"Tabletops", @"# Customers Served", @"Tips per Customer", @"Tips per Table", @"Years Served"];
+    self.selectedIndex = 0;
+    self.dropDownLabel.text = @"Rating";
     self.roster = [[WaiterManager shared] roster];
-    self.filteredWaiters = self.roster;
+    self.filteredWaiters = [[WaiterManager shared] rosterByRating];
+    
 }
-
+- (NSInteger)numberOfComponentsInDropdownMenu:(MKDropdownMenu *)dropdownMenu
+{
+    return 1;
+}
+- (NSInteger)dropdownMenu:(MKDropdownMenu *)dropdownMenu numberOfRowsInComponent:(NSInteger)component
+{
+    return [self.dropDownCats count];
+}
+- (NSString *)dropdownMenu:(MKDropdownMenu *)dropdownMenu titleForRow:(NSInteger)row forComponent:(NSInteger)component
+{
+    return self.dropDownCats[row];
+}
+- (void)dropdownMenu:(MKDropdownMenu *)dropdownMenu didSelectRow:(NSInteger)row inComponent:(NSInteger)component
+{
+    self.selectedIndex = row;
+    if (row == 0) {
+        self.sortedRoster = [[WaiterManager shared] rosterByRating];
+    } else if (row == 1) {
+        self.sortedRoster = [[WaiterManager shared] rosterByTables];
+    } else if (row == 2) {
+        self.sortedRoster = [[WaiterManager shared] rosterByCustomers];
+    } else if (row == 3) {
+        self.sortedRoster = [[WaiterManager shared] rosterByTipsCustomers];
+    } else if (row == 4) {
+        self.sortedRoster = [[WaiterManager shared] rosterByTipsTables];
+    } else if (row == 5) {
+        self.sortedRoster = [[WaiterManager shared] rosterByYears];
+    } else {
+        self.sortedRoster = self.roster;
+    }
+    
+    self.dropDownLabel.text = self.dropDownCats[row];
+    self.filteredWaiters = self.sortedRoster;
+    [self.tableView reloadData];
+}
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return self.filteredWaiters.count;
 }
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     WaiterListTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"WaiterListCell" forIndexPath:indexPath];
     Waiter *waiter = self.filteredWaiters[indexPath.row];
     cell.waiter = waiter;
-    cell.selectedIndex = self.selectedIndex;
     cell.waiterName.text = waiter.name;
-    cell.waiterTime.text = [[NSString stringWithFormat:@"%@", waiter.yearsWorked] stringByAppendingString:@" years"];
-    cell.waiterRating.text = [[NSString stringWithFormat:@"%@", waiter.rating] stringByAppendingString:@" stars"];
-    cell.waiterTabletops.text  = [[NSString stringWithFormat:@"%@", waiter.tableTops] stringByAppendingString:@" tables"];
+    cell.selectedIndex = self.selectedIndex;
+    cell.cellView.layer.cornerRadius = cell.cellView.frame.size.width/6;
+    cell.waiterTime.text = [@"Served " stringByAppendingString:[[NSString stringWithFormat:@"%@", waiter.yearsWorked] stringByAppendingString:@"  Years"]];
+    cell.waiterRating.text = [[NSString stringWithFormat:@"%@", [[WaiterManager shared] averageRating:cell.waiter]] stringByAppendingString:@" ✯'s"];
+    cell.waiterTabletops.text  = [[NSString stringWithFormat:@"%@", waiter.tableTops] stringByAppendingString:@" Tabletops"];
     cell.waiterNumCustomers.text = [[NSString stringWithFormat:@"%@", waiter.numOfCustomers] stringByAppendingString:@" customers served"];
-    cell.waiterTips.text = [[NSString stringWithFormat:@"%@", waiter.tipsMade] stringByAppendingString:@" tips made"];
+    cell.waiterTipsPT.text = [@"$" stringByAppendingString:[[NSString stringWithFormat:@"%@", [[WaiterManager shared] averageTipsByTable:cell.waiter]] stringByAppendingString:@" Tips per Table"]];
+    cell.waiterTipsPC.text = [@"$" stringByAppendingString:[[NSString stringWithFormat:@"%@", [[WaiterManager shared] averageTipByCustomer:cell.waiter]] stringByAppendingString:@" Tips per Customer"]];
     if(waiter.image!=nil){
         [waiter.image getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
             if(!error){
@@ -60,6 +100,8 @@
     } else {
         cell.waiterProfileImage.image = [UIImage imageNamed:@"profile_tab"];
     }
+    cell.waiterProfileImage.layer.cornerRadius = cell.waiterProfileImage.frame.size.width / 2;
+
     return cell;
 }
 
@@ -74,27 +116,6 @@
     else {
         self.filteredWaiters = self.roster;
     }
-    [self.tableView reloadData];
-}
-
-- (IBAction)onEditSortBy:(id)sender {
-    // reload data
-    self.selectedIndex = self.sortByControl.selectedSegmentIndex;
-//    NSInteger selectedIndex = self.sortByControl.selectedSegmentIndex;
-    if (self.selectedIndex == 0) {
-        self.sortedRoster = [[WaiterManager shared] rosterByRating];
-    } else if (self.selectedIndex == 1) {
-        self.sortedRoster = [[WaiterManager shared] rosterByTables];
-    } else if (self.selectedIndex == 2) {
-        self.sortedRoster = [[WaiterManager shared] rosterByCustomers];
-    } else if (self.selectedIndex == 3) {
-        self.sortedRoster = [[WaiterManager shared] rosterByTips];
-    } else if (self.selectedIndex == 4) {
-        self.sortedRoster = [[WaiterManager shared] rosterByYears];
-    } else {
-        self.sortedRoster = self.roster;
-    }
-    self.filteredWaiters = self.sortedRoster;
     [self.tableView reloadData];
 }
 

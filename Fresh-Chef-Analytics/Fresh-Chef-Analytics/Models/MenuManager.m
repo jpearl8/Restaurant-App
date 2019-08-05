@@ -209,7 +209,15 @@
 {
     if (dish.rating != nil && ![dish.orderFrequency isEqualToNumber:@(0)])
     {
-        return [NSNumber numberWithFloat:floorf(([dish.rating floatValue] / [dish.orderFrequency floatValue]*100)/100)];
+        return [NSNumber numberWithFloat:floorf([dish.rating floatValue] / [dish.orderFrequency floatValue])];
+    }
+    return @(0);
+}
+- (NSNumber *) averageRatingWithoutFloor : (Dish *) dish
+{
+    if (dish.rating != nil && ![dish.orderFrequency isEqualToNumber:@(0)])
+    {
+        return [NSNumber numberWithFloat:[dish.rating floatValue] / [dish.orderFrequency floatValue]];
     }
     return @(0);
 }

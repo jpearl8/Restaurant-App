@@ -16,10 +16,12 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UILabel *waiterName;
 @property (weak, nonatomic) IBOutlet UILabel *waiterTime;
 @property (weak, nonatomic) IBOutlet UILabel *waiterRating;
-@property (weak, nonatomic) IBOutlet UILabel *waiterTips;
 @property (weak, nonatomic) IBOutlet UILabel *waiterTabletops;
 @property (weak, nonatomic) IBOutlet UILabel *waiterNumCustomers;
+@property (weak, nonatomic) IBOutlet UILabel *waiterTipsPC;
+@property (weak, nonatomic) IBOutlet UILabel *waiterTipsPT;
 @property (assign, nonatomic) NSInteger selectedIndex;
+@property (weak, nonatomic) IBOutlet UIView *cellView;
 @property (strong, nonatomic) Waiter *waiter;
 @end
 

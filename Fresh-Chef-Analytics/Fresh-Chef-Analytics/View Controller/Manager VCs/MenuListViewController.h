@@ -7,10 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "MKDropdownMenu.h"
 NS_ASSUME_NONNULL_BEGIN
 
-@interface MenuListViewController : UIViewController <UISearchBarDelegate, UITableViewDelegate, UITableViewDataSource>
+@interface MenuListViewController : UIViewController <UISearchBarDelegate, UITableViewDelegate, UITableViewDataSource, MKDropdownMenuDelegate, MKDropdownMenuDataSource>
 
 @end
 
