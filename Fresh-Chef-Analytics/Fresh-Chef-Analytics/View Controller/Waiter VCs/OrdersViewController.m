@@ -18,7 +18,7 @@
 #import "AppDelegate.h"
 #import "SVProgressHUD/SVProgressHUD.h"
 #import "EditOrderViewController.h"
-
+#import "LoginViewController.h"
 
 
 @interface OrdersViewController () <OrderViewCellDelegate, UITableViewDelegate, UITableViewDataSource> {
@@ -30,6 +30,7 @@
 //    NSMutableArray <Dish *>*dishArray;
 }
 @property (strong, nonatomic) IBOutlet UITableView *openOrdersTable;
+@property (strong, nonatomic) IBOutlet UIImageView *background;
 @property (strong, nonatomic) NSMutableDictionary<NSString *, NSArray<OpenOrder *>*>* totalOpenTables;
 @property (strong, nonatomic) NSArray<NSString *>* keys;
 @property (strong, nonatomic) NSMutableArray<Dish *>* dishesArray;
@@ -37,7 +38,8 @@
 @property (assign, nonatomic) NSNumber *index;
 //@property (strong, nonatomic) NSMutableArray *objects;
 @property (strong, nonatomic) IBOutlet UIImageView *image;
-@property (strong, nonatomic) IBOutlet UINavigationBar *navBar;
+
+- (IBAction)didLogout:(id)sender;
 @end
 
 @implementation OrdersViewController {
@@ -48,15 +50,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+    [[Helpful_funs shared] setImages:self.background top:[NSNull null] waiterView:YES];
     self.openOrdersTable.dataSource = self;
     self.openOrdersTable.delegate = self;
     self.tableWaiterDictionary = [[NSMutableDictionary alloc] init];
     self.dishesArray = [[NSMutableArray alloc] init];
-    NSString *category = [PFUser currentUser][@"theme"];
-    NSString *category_waiter = [NSString stringWithFormat:@"%@_waiter", category];
-     [self.image setImage:[UIImage imageNamed:category_waiter]];
-     self.navBar.shadowImage = [UIImage imageNamed:category];
+
+    
     [self fetchOpenOrders:^(NSError * _Nullable error) {
         if (!error){
             self.openOrdersTable.delegate = self;
@@ -66,7 +66,7 @@
             NSLog(@"%@", error.localizedDescription);
         }
     }];
-    regularHeight = 131;
+    regularHeight = 150;
     expandedHeight = 300;
 
 }
@@ -184,27 +184,34 @@
             __block int doneWithArray = 0;
             for (NSString *key in self.keys){
                 Waiter *waiter = (Waiter*)((OpenOrder *)self.totalOpenTables[key][0]).waiter;
-                [[WaiterManager shared]findWaiter:waiter.objectId withCompletion:^(NSArray * _Nonnull waiters, NSError * _Nullable error) {
-                    NSLog(@"Waiters array: %@", waiters);
-                    if (error){
-                        NSLog(@"Waiter query: %@", error.localizedDescription);
-                        completion(error);
-                    }
-                    if (waiters.count > 0 && waiters[0]){
-                        
-//                        [waiters[0] fetchIfNeeded];
-                        [self.tableWaiterDictionary setObject:waiters[0] forKey:key];
-                        doneWithArray = doneWithArray + 1;
-                        NSLog(@"DONE monitor: %d", doneWithArray);
-                        NSLog(@"keys count %d", self.keys.count);
-                        if (doneWithArray >= self.keys.count){
-                            [self.openOrdersTable reloadData];
-                            NSLog(@"check 1");
-                            completion(nil);
+                Waiter *fullWaiter = [[WaiterManager shared]findWaiterwithRoster:waiter.objectId];
+                if (fullWaiter){
+                    [self.tableWaiterDictionary setObject:fullWaiter forKey:key];
+                    doneWithArray = doneWithArray + 1;
+                }
+                else {
+                    [[WaiterManager shared]findWaiter:waiter.objectId withCompletion:^(NSArray * _Nonnull waiters, NSError * _Nullable error) {
+                        NSLog(@"Waiters array: %@", waiters);
+                        if (error){
+                            NSLog(@"Waiter query: %@", error.localizedDescription);
+                            completion(error);
                         }
-                    }
+                        if (waiters.count > 0 && waiters[0]){
+                            
+    //                        [waiters[0] fetchIfNeeded];
+                            [self.tableWaiterDictionary setObject:waiters[0] forKey:key];
+                            doneWithArray = doneWithArray + 1;
+                            NSLog(@"DONE monitor: %d", doneWithArray);
+                            NSLog(@"keys count %d", self.keys.count);
+                            if (doneWithArray >= self.keys.count){
+                                [self.openOrdersTable reloadData];
+                                NSLog(@"check 1");
+                                completion(nil);
+                            }
+                        }
 
-                }];
+                    }];
+                }
             }
             if (doneWithArray >= self.keys.count){
                 [self.openOrdersTable reloadData];
@@ -331,4 +338,13 @@
 //}
 
 
+- (IBAction)didLogout:(id)sender {
+    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    LoginViewController *loginViewController = [storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
+    appDelegate.window.rootViewController = loginViewController;
+    [PFUser logOutInBackgroundWithBlock:^(NSError * _Nullable error) {
+        // PFUser.current() will now be nil
+    }];
+}
 @end
