@@ -48,13 +48,13 @@
         self.competitorArray = [[NSMutableArray alloc] initWithObjects:placeholder, placeholder, placeholder, nil];
         PFUser *currentUser = [PFUser currentUser];
         self.userParameters = [[NSMutableArray alloc] initWithObjects:currentUser[@"address"], currentUser[@"category"], currentUser[@"Price"], nil];
-        [self locationTopRatings:self.userParameters[0] withCategory:self.userParameters[1] withPrice:self.userParameters[2] withIndex:0];
+        [self locationTopRatings:self.userParameters[1] withPrice:self.userParameters[2] withIndex:0];
         
         NSLog(@"hello!");
     }
     
 }
--(void)locationTopRatings:(NSString*)locationRes withCategory:(nullable NSString *)categoryRes withPrice:(nullable NSString *)priceRes withIndex:(NSUInteger)index{
+-(void)locationTopRatings:(nullable NSString *)categoryRes withPrice:(nullable NSString *)priceRes withIndex:(NSUInteger)index{
     
         NSDictionary *headers = @{
                                   @"Authorization": @"Bearer Z505A_B9SNUBRJYRkioQ9NX8ZD9AnREWx3MqrxHSny1dop_ox6v0Ptx2-qbqX6fktt79CfqzXYdCcc6j3iE6BMTK6QHsDThNMbPYSf1mWXec1p7zsC6MupJVmkU2XXYx",
@@ -67,51 +67,51 @@
                                   @"accept-encoding": @"gzip, deflate",
                                   @"Connection": @"keep-alive"};
         NSString *baseString = @"https://api.yelp.com/v3/businesses/search?term=restaurants,%20food&type=food,%20restaurants&sort_by=rating&limit=3";
-        if (locationRes){
-            NSString* locationQuery = [NSString stringWithFormat:@"&location=%@", locationRes];
+        if (self.restaurantCoordinates.latitude && self.restaurantCoordinates.longitude){
+            NSString* locationQuery = [NSString stringWithFormat:@"&latitude=%f&longitude=%f", self.restaurantCoordinates.latitude, self.restaurantCoordinates.longitude];
             baseString = [baseString stringByAppendingString:locationQuery];
-        }
-        if (index == 1 && categoryRes){
-            NSString* categoryQuery = [NSString stringWithFormat:@"&categories=%@", categoryRes];
-            baseString = [baseString stringByAppendingString:categoryQuery];
-        }
-        if (index == 2 && priceRes){
-            NSString* priceQuery = [NSString stringWithFormat:@"&price=%@", priceRes];
-            baseString = [baseString stringByAppendingString:priceQuery];
-        }
         
-        
-        NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:baseString]
-                                                               cachePolicy:NSURLRequestReloadIgnoringLocalCacheData
-                                                           timeoutInterval:10.0];
-        [request setHTTPMethod:@"GET"];
-        [request setAllHTTPHeaderFields:headers];
-        NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate:nil delegateQueue:[NSOperationQueue mainQueue]];
-        NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
-            completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-                if (error) {
-                    NSString *er = [error localizedDescription];
-                    NSLog(@"%@", er);
-                    NSLog(@"ERRR %@", error);
-                } else {
-                    
-                    NSDictionary *dataDictionary = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
-
-                    [self.competitorArray replaceObjectAtIndex:index withObject:dataDictionary[@"businesses"]];
-
-                    NSLog(@"HELLO %lu", (unsigned long)index);
-                    NSLog(@"%@", self.competitorArray[index]);
-                    if (index < 2){
-                        NSUInteger newIndex = index + 1;
-                        [self locationTopRatings:self.userParameters[0] withCategory:self.userParameters[1] withPrice:self.userParameters[2] withIndex:newIndex];
+            if (index == 1 && categoryRes){
+                NSString* categoryQuery = [NSString stringWithFormat:@"&categories=%@", categoryRes];
+                baseString = [baseString stringByAppendingString:categoryQuery];
+            }
+            if (index == 2 && priceRes){
+                NSString* priceQuery = [NSString stringWithFormat:@"&price=%@", priceRes];
+                baseString = [baseString stringByAppendingString:priceQuery];
+            }
+            
+            
+            NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:baseString]
+                                                                   cachePolicy:NSURLRequestReloadIgnoringLocalCacheData
+                                                               timeoutInterval:10.0];
+            [request setHTTPMethod:@"GET"];
+            [request setAllHTTPHeaderFields:headers];
+            NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate:nil delegateQueue:[NSOperationQueue mainQueue]];
+            NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
+                completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+                    if (error) {
+                        NSString *er = [error localizedDescription];
+                        NSLog(@"%@", er);
+                        NSLog(@"ERRR %@", error);
+                    } else {
                         
+                        NSDictionary *dataDictionary = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+
+                        [self.competitorArray replaceObjectAtIndex:index withObject:dataDictionary[@"businesses"]];
+
+                        NSLog(@"HELLO %lu", (unsigned long)index);
+                        NSLog(@"%@", self.competitorArray[index]);
+                        if (index < 2){
+                            NSUInteger newIndex = index + 1;
+                            [self locationTopRatings:self.userParameters[1] withPrice:self.userParameters[2] withIndex:newIndex];
+                            
+                        }
                     }
-                }
-                
-            }];
-    
-    [dataTask resume];
-    
+                    
+                }];
+        
+        [dataTask resume];
+        }
 }
 
 @end

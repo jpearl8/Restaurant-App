@@ -20,7 +20,7 @@ NS_ASSUME_NONNULL_BEGIN
 -(void)fetchCompetitors;
 @property (strong, nonatomic) NSMutableArray* userParameters;
 @property (strong, nonatomic) NSMutableArray* competitorArray; // item one location array, item two category array, item three price array
--(void)locationTopRatings:(NSString*)locationRes withCategory:(nullable NSString *)categoryRes withPrice:(nullable NSString *)priceRes withIndex:(NSUInteger)index;
+-(void)locationTopRatings:(nullable NSString *)categoryRes withPrice:(nullable NSString *)priceRes withIndex:(NSUInteger)index;
 @end
 
 NS_ASSUME_NONNULL_END
