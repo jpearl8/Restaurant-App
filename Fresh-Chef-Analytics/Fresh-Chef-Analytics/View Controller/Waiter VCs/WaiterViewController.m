@@ -66,12 +66,12 @@ pass final array on submit button of data table
     self.customerNumber.text = @"";
     self.tableNumber.text = @"";
     
-    NSString *category = [PFUser currentUser][@"theme"];
-    NSString *category_top = [NSString stringWithFormat:@"%@_top", category];
-    NSString *category_waiter = [NSString stringWithFormat:@"%@_waiter", category];
-    [self.backgroundImage setImage:[UIImage imageNamed:category_waiter]];
-    [self.topImage setImage:[UIImage imageNamed:category_top]];
-    
+//    NSString *category = [PFUser currentUser][@"theme"];
+//    NSString *category_top = [NSString stringWithFormat:@"%@_top", category];
+//    NSString *category_waiter = [NSString stringWithFormat:@"%@_waiter", category];
+//    [self.backgroundImage setImage:[UIImage imageNamed:category_waiter]];
+//    [self.topImage setImage:[UIImage imageNamed:category_top]];
+    [[Helpful_funs shared] setImages:self.backgroundImage top:self.topImage waiterView:YES];
     self.waiterTable.hidden = YES;
     self.menuItems.delegate = self;
     self.menuItems.dataSource = self;

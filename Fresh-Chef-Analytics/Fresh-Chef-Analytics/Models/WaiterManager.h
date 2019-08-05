@@ -26,8 +26,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void) removeWaiterFromTable : (Waiter *) delWaiter withCompletion:(void (^)(NSError * _Nullable error))removeWaiter;
 - (void)setOrderedWaiterArrays;
 - (void) findWaiter : (NSString *) objectId withCompletion:(void (^)(NSArray * waiter, NSError * _Nullable error)) completion;
-
-
+- (Waiter *) findWaiterwithRoster : (NSString *) objectId;
 @end
 
 NS_ASSUME_NONNULL_END

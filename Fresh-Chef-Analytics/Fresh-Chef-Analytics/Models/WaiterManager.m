@@ -97,4 +97,16 @@
     }];
 
 }
+- (Waiter *) findWaiterwithRoster : (NSString *) objectId
+{
+    for (int i = 0; i < self.roster.count; i++){
+        if ([((Waiter *)self.roster[0]).objectId isEqual:objectId]){
+            return self.roster[i];
+        }
+    }
+    return nil;
+}
+
+    
+
 @end
