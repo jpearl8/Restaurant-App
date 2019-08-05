@@ -1,6 +1,8 @@
 
 #import "YelpAPIManager.h"
 #import "Parse/Parse.h"
+@import CoreLocation;
+#define SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
 
 @implementation YelpAPIManager
 
@@ -15,17 +17,43 @@
 }
 
 -(void)fetchCompetitors{
+    [self setCoordinates];
+    //  This is gonna need to go inside of didupdatelocation when it searches by coordinates //
+
+}
+- (void) setCoordinates
+{
+    self.locationManager = [[CLLocationManager alloc] init];
+    self.locationManager.delegate = self;
+    if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"8.0"))
+    {
+        if ([self.locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)]) {
+            [self.locationManager requestWhenInUseAuthorization];
+        }
+        [self.locationManager startUpdatingLocation];
+        
+    }
+    else
+    {
+        NSLog(@"System version must be 8.0 or higher");
+    }
+}
+// Location Manager Delegate Methods
+- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
+{
+    self.restaurantCoordinates = [[Coordinate shared] setCoordinateValuesWithLatitude:[[manager location] coordinate].latitude andLongitude: [[manager location] coordinate].longitude];
+    
     NSMutableArray *placeholder = [[NSMutableArray alloc] init];
     if (!self.competitorArray){
         self.competitorArray = [[NSMutableArray alloc] initWithObjects:placeholder, placeholder, placeholder, nil];
         PFUser *currentUser = [PFUser currentUser];
         self.userParameters = [[NSMutableArray alloc] initWithObjects:currentUser[@"address"], currentUser[@"category"], currentUser[@"Price"], nil];
-       [self locationTopRatings:self.userParameters[0] withCategory:self.userParameters[1] withPrice:self.userParameters[2] withIndex:0];
-
+        [self locationTopRatings:self.userParameters[0] withCategory:self.userParameters[1] withPrice:self.userParameters[2] withIndex:0];
+        
         NSLog(@"hello!");
     }
+    
 }
-
 -(void)locationTopRatings:(NSString*)locationRes withCategory:(nullable NSString *)categoryRes withPrice:(nullable NSString *)priceRes withIndex:(NSUInteger)index{
     
         NSDictionary *headers = @{

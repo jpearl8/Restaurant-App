@@ -323,8 +323,8 @@
                                                     </constraints>
                                                     <variation key="default">
                                                         <mask key="constraints">
-                                                            <exclude reference="Ij2-5V-lLi"/>
                                                             <exclude reference="XIa-EI-rvx"/>
+                                                            <exclude reference="Ij2-5V-lLi"/>
                                                             <exclude reference="3gK-TR-ntx"/>
                                                         </mask>
                                                     </variation>
@@ -3358,6 +3358,14 @@
                                     <action selector="segmentChange:" destination="u8h-Qe-cB9" eventType="valueChanged" id="QTz-bD-7Yy"/>
                                 </connections>
                             </segmentedControl>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TIl-B6-45h">
+                                <rect key="frame" x="317" y="100" width="77" height="87"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button" image="map"/>
+                                <connections>
+                                    <segue destination="f7E-s8-AfD" kind="show" id="Oix-2S-nas"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="jJR-Oa-84L"/>
@@ -3400,7 +3408,28 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Yr9-UX-KdR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4126" y="4659"/>
+            <point key="canvasLocation" x="4197" y="4659"/>
+        </scene>
+        <!--Map View Controller-->
+        <scene sceneID="edR-gb-mDn">
+            <objects>
+                <viewController id="f7E-s8-AfD" customClass="MapViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="OzY-3N-wpg">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="mKb-g7-ARm">
+                                <rect key="frame" x="0.0" y="124" width="414" height="625"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </mapView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="RRQ-Y2-sHk"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1eG-0A-wXH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5003" y="4659"/>
         </scene>
         <!--Competitor View-->
         <scene sceneID="o0a-FR-Jto">
@@ -5278,9 +5307,11 @@
         <image name="image_placeholder" width="375" height="375"/>
         <image name="info" width="700" height="700"/>
         <image name="loose-chain" width="700" height="700"/>
+        <image name="map" width="700" height="700"/>
         <image name="minus" width="21.333333969116211" height="21.333333969116211"/>
         <image name="minus-circle_outline_24-4x_ed" width="96" height="96"/>
         <image name="nav-plus_outline_24" width="24" height="24"/>
+        <image name="order" width="700" height="700"/>
         <image name="order-40" width="40" height="40"/>
         <image name="plus" width="21.333333969116211" height="21.333333969116211"/>
         <image name="profile_tab" width="25" height="25"/>

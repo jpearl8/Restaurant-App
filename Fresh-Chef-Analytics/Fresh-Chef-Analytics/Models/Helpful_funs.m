@@ -9,6 +9,8 @@
 #import "Helpful_funs.h"
 #import "MenuManager.h"
 #import "WaiterManager.h"
+@import CoreLocation;
+#define SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
 
 @implementation Helpful_funs
 
@@ -31,7 +33,6 @@
     [scanner scanHexInt:&rgbValue];
     return [UIColor colorWithRed:((rgbValue & 0xFF0000) >> 16)/255.0 green:((rgbValue & 0xFF00) >> 8)/255.0 blue:(rgbValue & 0xFF)/255.0 alpha:1.0];
 }
-
 
 
 -(void)defineSelect:(UIButton *)button withSelect:(BOOL)select {
@@ -83,6 +84,7 @@
     }];
     return sortedArray;
 }
+
 - (bool) scaleArrayByMax:(NSMutableArray *)array
 {
    NSNumber * max = [array valueForKeyPath:@"@max.floatValue"];
