@@ -24,6 +24,13 @@
 @property (weak, nonatomic) IBOutlet UITextView *infoView;
 @property (strong, nonatomic) NSString *menCatSelected;
 @property (strong, nonatomic) NSString *statCatSelected;
+@property (weak, nonatomic) IBOutlet UIButton *superstarButton;
+@property (weak, nonatomic) IBOutlet UIButton *loosechainButton;
+@property (weak, nonatomic) IBOutlet UITextView *loosechainView;
+@property (weak, nonatomic) IBOutlet UITextView *superstarView;
+@property (strong, nonatomic) NSString *superstar;
+@property (strong, nonatomic) NSString *loosechain;
+
 
 @end
 
@@ -34,6 +41,12 @@
     self.categoryPicker.delegate = self;
     self.categoryPicker.dataSource = self;
     self.infoView.hidden = YES;
+    self.superstarView.hidden = YES;
+    self.loosechainView.hidden = YES;
+    self.superstarButton.hidden = YES;
+    self.loosechainButton.hidden = YES;
+    self.superstarButton.layer.cornerRadius = self.superstarButton.frame.size.width/2;
+    self.loosechainButton.layer.cornerRadius = self.loosechainButton.frame.size.width/2;
     self.dishes = [[MenuManager shared] dishes];
     self.menCatSelected = @"All categories";
     self.statCatSelected = @"All Statistics";
@@ -61,6 +74,19 @@
         }
     }
 }
+- (IBAction)showSuperstar:(id)sender {
+    self.superstarView.hidden = !(self.superstarView.hidden);
+    self.infoView.hidden = YES;
+    [self updateInfo];
+    
+}
+- (IBAction)showLooseChain:(id)sender {
+    self.loosechainView.hidden = !(self.loosechainView.hidden);
+    self.infoView.hidden = YES;
+    [self updateInfo];
+    
+}
+
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
 {
     return 2;
@@ -100,9 +126,21 @@
     NSArray *dataArray;
     NSString *selectedMenCat = [self.legend objectAtIndex:[self.categoryPicker selectedRowInComponent:0]];
     self.menCatSelected = selectedMenCat;
+    
     NSString *selectedStatCat = [self.statCats objectAtIndex:[self.categoryPicker selectedRowInComponent:1]];
     self.statCatSelected = selectedStatCat;
-    [self updateInfo];
+    if ([self.statCatSelected isEqualToString:@"All Statistics"])
+    {
+        self.superstarButton.hidden = YES;
+        self.superstarView.hidden = YES;
+        self.loosechainButton.hidden = YES;
+        self.loosechainView.hidden = YES;
+    }
+    else
+    {
+        self.superstarButton.hidden = NO;
+        self.loosechainButton.hidden = NO;
+    }
     if ([selectedMenCat isEqual: @"All categories"] && [[[MenuManager shared] dishes] count] >= 3)
     {
         dataArray = [self populateDataForAllCategories:selectedStatCat];
@@ -133,6 +171,8 @@
         [self makeItemsWithData:dataArray withStats:selectedStatCat];
         [self setUpChartWithData: selectedStatCat];
     }
+    [self updateInfo];
+
 }
 - (NSArray *) populateDataForCategory : (NSString *) category withStats: (NSString *) stats
 {
@@ -149,7 +189,7 @@
         {
             [dishNames addObject:dish.name];
             dishProfit = [dish.price floatValue] * [dish.orderFrequency floatValue];
-            [ratingData addObject:[[MenuManager shared] averageRating:dish]];
+            [ratingData addObject:[[MenuManager shared] averageRatingWithoutFloor:dish]];
             [frequencyData addObject:dish.orderFrequency];
             [profitData addObject:[NSNumber numberWithFloat:dishProfit]];
         }
@@ -205,7 +245,7 @@
         {
             dishProfit = [dish.price floatValue] * [dish.orderFrequency floatValue];
             
-            categoryRating += [[[MenuManager shared] averageRating:dish] floatValue];
+            categoryRating += [[[MenuManager shared] averageRatingWithoutFloor:dish] floatValue];
             categoryFrequency += [dish.orderFrequency floatValue];
             categoryProfit += dishProfit;
         }
@@ -250,7 +290,8 @@
 }
 - (IBAction)toggleInfo:(id)sender {
     self.infoView.hidden = !(self.infoView.hidden);
-
+    self.superstarView.hidden = YES;
+    self.loosechainView.hidden = YES;
     [self updateInfo];
 }
 - (void) updateInfo
@@ -271,6 +312,14 @@
         }
         
     }
+    if (self.superstarView.hidden == NO)
+    {
+        self.superstarView.text = [[NSString stringWithFormat:@"Superstar of %@", self.menCatSelected] stringByAppendingString:[NSString stringWithFormat:@" is %@", self.superstar]];
+    }
+    if (self.loosechainView.hidden == NO)
+    {
+        self.loosechainView.text = [[NSString stringWithFormat:@"Loose Chain of %@", self.menCatSelected] stringByAppendingString:[NSString stringWithFormat:@" is %@", self.loosechain]];
+    }
 }
 - (void)makeItemsWithData : (NSArray *) dataArray withStats: (NSString *) stats
 {
@@ -286,16 +335,22 @@
     }
     else if ([stats isEqualToString:@"Rating"])
     {
+        self.superstar = [dataArray[0] objectAtIndex:[dataArray[1] indexOfObject:[dataArray[1] valueForKeyPath:@"@max.self"]]];
+        self.loosechain = [dataArray[0] objectAtIndex:[dataArray[1] indexOfObject:[dataArray[1] valueForKeyPath:@"@min.self"]]];
         returnAlert = [[Helpful_funs shared] scaleArrayByMax:dataArray[1]];
         self.ratingItems = [self populateDataItemsWithArray:dataArray[1] forDescriptions:dataArray[0]];
     }
     else if ([stats isEqualToString:@"Popularity"])
     {
+        self.superstar = [dataArray[0] objectAtIndex:[dataArray[1] indexOfObject:[dataArray[1] valueForKeyPath:@"@max.self"]]];
+        self.loosechain = [dataArray[0] objectAtIndex:[dataArray[1] indexOfObject:[dataArray[1] valueForKeyPath:@"@min.self"]]];
         returnAlert = [[Helpful_funs shared] scaleArrayByMax:dataArray[1]];
         self.frequencyItems = [self populateDataItemsWithArray:dataArray[1] forDescriptions:dataArray[0]];
     }
     else if ([stats isEqualToString:@"Profit"])
     {
+        self.superstar = [dataArray[0] objectAtIndex:[dataArray[1] indexOfObject:[dataArray[1] valueForKeyPath:@"@max.self"]]];
+        self.loosechain = [dataArray[0] objectAtIndex:[dataArray[1] indexOfObject:[dataArray[1] valueForKeyPath:@"@min.self"]]];
         returnAlert = [[Helpful_funs shared] scaleArrayByMax:dataArray[1]];
         self.profitItems = [self populateDataItemsWithArray:dataArray[1] forDescriptions:dataArray[0]];
     }

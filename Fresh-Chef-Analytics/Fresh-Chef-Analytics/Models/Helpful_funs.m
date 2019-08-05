@@ -8,6 +8,7 @@
 
 #import "Helpful_funs.h"
 #import "MenuManager.h"
+#import "WaiterManager.h"
 
 @implementation Helpful_funs
 
@@ -56,6 +57,21 @@
             first = [NSNumber numberWithFloat:x];
             second = [NSNumber numberWithFloat:y];
         }
+        if ([orderType isEqualToString:@"tipsByCustomers"])
+        {
+            float x = [[[WaiterManager shared] averageTipByCustomer:(Waiter*)a] floatValue];
+            float y = [[[WaiterManager shared] averageTipByCustomer:(Waiter*)b] floatValue];
+            first = [NSNumber numberWithFloat:x];
+            second = [NSNumber numberWithFloat:y];
+        }
+        if ([orderType isEqualToString:@"tipsByTable"])
+        {
+            float x = [[[WaiterManager shared] averageTipsByTable:(Waiter*)a] floatValue];
+            float y = [[[WaiterManager shared] averageTipsByTable:(Waiter*)b] floatValue];
+            first = [NSNumber numberWithFloat:x];
+            second = [NSNumber numberWithFloat:y];
+        }
+        
         //check for nil values
         if(first != nil && second != nil){
             return [second compare:first];
@@ -83,7 +99,6 @@
         return false;
     }
 }
-
 -(int) findAmountIndexwithDishArray:(NSArray <Dish *>*)dishes withDish:(Dish *)dish{
     for (int i = 0; i < dishes.count; i++){
         if ([dishes[i].name isEqualToString:dish.name]){

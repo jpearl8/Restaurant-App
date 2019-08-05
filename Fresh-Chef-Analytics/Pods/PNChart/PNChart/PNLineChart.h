@@ -11,6 +11,11 @@
 #import "PNChartDelegate.h"
 #import "PNGenericChart.h"
 
+//@protocol PNLineChartDelegate <NSObject>
+//@property (strong, nonatomic) NSString *timeSpanSelected;
+//@property (strong, nonatomic) NSString *displayDataSelected;
+//@end
+
 @interface PNLineChart : PNGenericChart
 
 /**
@@ -18,6 +23,7 @@
  */
 - (void)strokeChart;
 
+//@property (nonatomic, weak) id <PNLineChartDelegate> lineChartDelegate;
 @property (nonatomic, weak) id<PNChartDelegate> delegate;
 
 @property (nonatomic) NSArray *xLabels;

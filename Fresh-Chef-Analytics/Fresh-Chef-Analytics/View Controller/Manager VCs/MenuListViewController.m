@@ -17,20 +17,28 @@
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
 @property (strong, nonatomic) NSArray *dishes;
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
-@property (weak, nonatomic) IBOutlet UISegmentedControl *sortByControl;
 @property (strong, nonatomic) NSMutableDictionary *orderedDishesDict;
 @property (strong, nonatomic) NSMutableDictionary *filteredCategoriesOfDishes;
 @property (strong, nonatomic) NSArray *categories;
+@property (weak, nonatomic) IBOutlet MKDropdownMenu *dropDown;
+@property (strong, nonatomic) NSArray *dropDownCats;
+@property (weak, nonatomic) IBOutlet UILabel *dropDownLabel;
 @property (assign, nonatomic) NSInteger selectedIndex;
+
 @end
 
 @implementation MenuListViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.dropDown.delegate = self;
+    self.dropDown.dataSource = self;
     self.menuList.dataSource = self;
     self.menuList.delegate = self;
     self.searchBar.delegate = self;
+    self.dropDownCats = @[@"Frequency", @"Rating", @"Price"];
+    self.selectedIndex = 0;
+    self.dropDownLabel.text = @"Frequency";
     self.dishes = [[MenuManager shared] dishes];
     //setting dictionary elements
     self.categories = [[[MenuManager shared] categoriesOfDishes] allKeys];
@@ -40,7 +48,35 @@
 //    NSLog(@"orderedDishes")
 }
 
+- (NSInteger)numberOfComponentsInDropdownMenu:(MKDropdownMenu *)dropdownMenu
+{
+    return 1;
+}
+- (NSInteger)dropdownMenu:(MKDropdownMenu *)dropdownMenu numberOfRowsInComponent:(NSInteger)component
+{
+    return [self.dropDownCats count];
+}
+- (NSString *)dropdownMenu:(MKDropdownMenu *)dropdownMenu titleForRow:(NSInteger)row forComponent:(NSInteger)component
+{
+    return self.dropDownCats[row];
+}
+- (void)dropdownMenu:(MKDropdownMenu *)dropdownMenu didSelectRow:(NSInteger)row inComponent:(NSInteger)component
+{
+    self.selectedIndex = row;
+    if(self.selectedIndex == 0){
+        self.orderedDishesDict = [[MenuManager shared] dishesByFreq];
+    } else if (self.selectedIndex == 1) {
+        self.orderedDishesDict = [[MenuManager shared] dishesByRating];
+    } else if (self.selectedIndex == 2) {
+        self.orderedDishesDict = [[MenuManager shared] dishesByPrice];
+    } else {
+        NSLog(@"no buttons pressed");
+    }
+    self.dropDownLabel.text = self.dropDownCats[row];
 
+    self.filteredCategoriesOfDishes = [NSMutableDictionary dictionaryWithDictionary:self.orderedDishesDict];
+    [self.menuList reloadData];
+}
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     NSInteger section = indexPath.section;
     MenuListTableViewCell *cell = [self.menuList dequeueReusableCellWithIdentifier: @"Dish"];
@@ -85,22 +121,6 @@
     return [self.filteredCategoriesOfDishes[self.categories[section]] count];
 }
 
-- (IBAction)onEditSortBy:(id)sender {
-    //refresh table view
-    //check which sort button is clicked
-    self.selectedIndex = self.sortByControl.selectedSegmentIndex;
-    if(self.selectedIndex == 0){
-        self.orderedDishesDict = [[MenuManager shared] dishesByFreq];
-    } else if (self.selectedIndex == 1) {
-        self.orderedDishesDict = [[MenuManager shared] dishesByRating];
-    } else if (self.selectedIndex == 2) {
-        self.orderedDishesDict = [[MenuManager shared] dishesByPrice];
-    } else {
-        NSLog(@"no buttons pressed");
-    }
-    self.filteredCategoriesOfDishes = [NSMutableDictionary dictionaryWithDictionary:self.orderedDishesDict];
-    [self.menuList reloadData];
-}
 
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
     if (searchText.length != 0) {

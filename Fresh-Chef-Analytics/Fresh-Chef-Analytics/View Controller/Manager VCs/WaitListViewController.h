@@ -7,10 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MKDropdownMenu.h"
+#import "WaiterManager.h"
+#import "WaiterListTableViewCell.h"
+#import "WaitDetailsViewController.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface WaitListViewController : UIViewController <UISearchBarDelegate, UITableViewDelegate, UITableViewDataSource, UINavigationControllerDelegate>
+@interface WaitListViewController : UIViewController <UISearchBarDelegate, UITableViewDelegate, UITableViewDataSource, UINavigationControllerDelegate, MKDropdownMenuDataSource, MKDropdownMenuDelegate>
 
 @property (assign, nonatomic) NSInteger selectedIndex;
 

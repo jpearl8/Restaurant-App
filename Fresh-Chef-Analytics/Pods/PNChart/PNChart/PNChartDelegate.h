@@ -10,6 +10,13 @@
 
 @protocol PNChartDelegate <NSObject>
 @optional
+//EDITED
+//@property (strong, nonatomic) NSString *timeSpanSelected;
+//@property (strong, nonatomic) NSString *displayDataSelected;
+
+- (NSString *)getTimeSpanSelected;
+- (NSString *)displaySelected;
+
 /**
  * Callback method that gets invoked when the user taps on the chart line.
  */

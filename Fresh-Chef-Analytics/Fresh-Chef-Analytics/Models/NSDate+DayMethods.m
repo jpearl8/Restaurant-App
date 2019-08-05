@@ -25,8 +25,18 @@
         dayString = [@"0" stringByAppendingString:dayString];
     }
     
-    NSString *dateString = [NSString stringWithFormat:@"%ld/%@/%@", (long)[comp1 year], monthString, dayString];
+    NSString *dateString = [NSString stringWithFormat:@"%ld-%@-%@", (long)[comp1 year], monthString, dayString];
     return dateString;
+}
+
+- (NSDate *)dateFromString:(NSString *)string
+{
+    //takes a string with format YYYY-MM-DD and returns an NSDate
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    formatter.dateFormat = @"YYYY-MM-DD HH:MMM:SS";
+    NSString *dateString = [string stringByAppendingString:@" 07:000:00"];
+    NSDate *date = [formatter dateFromString:dateString];
+    return date;
 }
 
 @end
