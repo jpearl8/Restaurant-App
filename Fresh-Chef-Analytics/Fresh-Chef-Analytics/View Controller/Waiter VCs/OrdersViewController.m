@@ -40,7 +40,11 @@
 @property (strong, nonatomic) IBOutlet UINavigationBar *navBar;
 @end
 
-@implementation OrdersViewController
+@implementation OrdersViewController {
+    NSIndexPath *selectedIndexPath;
+    int regularHeight;
+    int expandedHeight;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -62,6 +66,8 @@
             NSLog(@"%@", error.localizedDescription);
         }
     }];
+    regularHeight = 131;
+    expandedHeight = 300;
 
 }
 - (IBAction)refreshOrders:(UIBarButtonItem *)sender {
@@ -103,7 +109,7 @@
     cell.amounts.text = items[1];
     cell.openOrders = [[NSArray alloc] init];
     cell.openOrders = [NSArray arrayWithArray:orderInCell];
-
+    cell.indexPath = indexPath;
     cell.waiter = self.tableWaiterDictionary[cell.tableNumber.text];
     cell.waiterName.text = cell.waiter.name;
     cell.customerNumber.text = [NSString stringWithFormat:@"%@", orderInCell[0].customerNum];
@@ -215,6 +221,34 @@
     
     
 }
+
+-(void)orderForIndex:(NSIndexPath *)indexPath{
+    OrderViewCell *cell = [self.openOrdersTable cellForRowAtIndexPath:indexPath];
+    selectedIndexPath = indexPath;
+    if(cell.isExpanded){
+        cell.isExpanded = NO;
+        [cell.ordersButton setImage:[UIImage imageNamed:@"order"] forState:UIControlStateNormal];
+    } else {
+        cell.isExpanded = YES;
+        [cell.ordersButton setImage:[UIImage imageNamed:@"order_selected"] forState:UIControlStateNormal];
+    }
+    
+    //update cell to reflect new state
+    [self.openOrdersTable beginUpdates];
+    [self.openOrdersTable endUpdates];
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    OrderViewCell *cell = [self.openOrdersTable cellForRowAtIndexPath:indexPath];
+    if(cell.isExpanded){
+        return expandedHeight;
+    } else {
+        return regularHeight;
+    }
+
+}
+
 
 -(NSMutableArray<NSString *>*)fillCellArrays:(NSArray<OpenOrder *>*)openOrders {
     NSArray<Dish*>*dishArray = [[NSArray alloc] init];
