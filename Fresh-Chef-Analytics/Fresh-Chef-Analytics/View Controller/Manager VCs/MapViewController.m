@@ -11,6 +11,8 @@
 #import <MapKit/MapKit.h>
 #import "PhotoAnnotation.h"
 #import "YelpLinkViewController.h"
+#import "Link.h"
+#import "Coordinate.h"
 
 @interface MapViewController () <MKMapViewDelegate>
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
@@ -55,6 +57,8 @@
         {
             annotationView.annotation = annotation;
         }
+//        UIButton *linkButton = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+//        linkButton addTarget:self action:@selector(handlebutt) forControlEvents:<#(UIControlEvents)#>
         return annotationView;
     }
     else
@@ -81,25 +85,37 @@
 - (void) setCoordinatePointWithLatitudeForBusiness : (NSMutableDictionary *) business andImage : (NSString *) imageName
 {
     CLLocationCoordinate2D coordinates = CLLocationCoordinate2DMake([business[@"coordinates"][@"latitude"] doubleValue], [business[@"coordinates"][@"longitude"] doubleValue]);
-    PhotoAnnotation *annotation = [[PhotoAnnotation alloc] initWithLocation:coordinates andImage:imageName andLink:business[@"url"]];
+    PhotoAnnotation *annotation = [[PhotoAnnotation alloc] initWithLocation:coordinates andImage:imageName andLink:business[@"url"] andTitle:business[@"name"]];
     [self.annotations addObject:annotation];
 }
-//- (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view
-//{
+
+- (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view
+{
+    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(calloutTapped:)];
+    [view addGestureRecognizer:tapGesture];
 //    [self performSegueWithIdentifier:@"yelpInfo" sender:view];
-//}
+}
+- (void) calloutTapped:(UITapGestureRecognizer *)sender
+{
+    MKAnnotationView *view = (MKAnnotationView *)sender.view;
+    id <MKAnnotation> annotation = [view annotation];
+    if ([annotation isKindOfClass:[PhotoAnnotation class]])
+    {
+        [self performSegueWithIdentifier:@"yelpInfo" sender:annotation];
+    }
+}
 
 
  #pragma mark - Navigation
  
  // In a storyboard-based application, you will often want to do a little preparation before navigation
-// - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-//     if ([[segue identifier] isEqualToString:@"yelpInfo"])
-//     {
-//         YelpLinkViewController *yelpTab = [segue destinationViewController];
-//         yelpTab.yelpLink = ((Link *)sender).link;
-//     }
-// }
-//
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+     if ([[segue identifier] isEqualToString:@"yelpInfo"])
+     {
+         YelpLinkViewController *yelpTab = [segue destinationViewController];
+         yelpTab.yelpLink = ((PhotoAnnotation *)sender).yelpLink;
+     }
+ }
+
 
 @end

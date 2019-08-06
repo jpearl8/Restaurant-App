@@ -25,7 +25,7 @@
     
     return sharedManager;
 }
-- (id) initWithLocation:(CLLocationCoordinate2D)location andImage: (NSString *) imageName andLink : (Link *) link
+- (id) initWithLocation:(CLLocationCoordinate2D)location andImage: (NSString *) imageName andLink : (NSString *) link andTitle : (NSString *) title
 {
     self = [super init];
     if (self)
@@ -33,8 +33,12 @@
         self.coordinate = location;
         self.imageName = imageName;
         self.yelpLink = link;
+        self.businessTitle = title;
     }
     return self;
+}
+- (NSString *)title {
+    return self.businessTitle;
 }
 - (id) initWithLocation:(CLLocationCoordinate2D)location andImage: (NSString *) imageName
 {
@@ -48,13 +52,19 @@
 }
 - (MKAnnotationView *)selfAnnotationView
 {
+//    UILabel *businessText = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 150, 20)];
     MKAnnotationView *annotationView = [[MKAnnotationView alloc] initWithAnnotation:self reuseIdentifier:@"Photo Annotation"];
     annotationView.enabled = YES;
-    annotationView.canShowCallout = NO;
-//    annotationView.rightCalloutAccessoryView
-    annotationView.backgroundColor = [UIColor redColor];
+    annotationView.canShowCallout = YES;
+//    businessText.text = self.businessTitle;
+//    businessText.numberOfLines = 0;
+//    businessText.lineBreakMode = NSLineBreakByWordWrapping;
+//    [businessText setFont:[UIFont systemFontOfSize:10]];
+//    [businessText setBackgroundColor:[UIColor whiteColor]];
+//
+//    [annotationView addSubview:businessText];
+    annotationView.backgroundColor = [UIColor colorWithRed:225 green:234 blue:254 alpha:1];
     annotationView.image = [UIImage imageNamed:self.imageName];
     return annotationView;
 }
-
 @end

@@ -26,6 +26,7 @@
 		A5C06F7B22E8FEEB00F634E3 /* ClosedOrder.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C06F7A22E8FEEB00F634E3 /* ClosedOrder.m */; };
 		A5C06F7E22E9028000F634E3 /* OrderManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C06F7D22E9028000F634E3 /* OrderManager.m */; };
 		A5CE07B422F8FFA500944539 /* PhotoAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = A5CE07B322F8FFA500944539 /* PhotoAnnotation.m */; };
+		A5CE07B722F9F5F700944539 /* YelpAPIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A5CE07B622F9F5F700944539 /* YelpAPIManager.m */; };
 		A5D3896522F89D5B00B17AEC /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5D3896422F89D5B00B17AEC /* MapViewController.m */; };
 		A5D3896822F8CBE000B17AEC /* Coordinate.m in Sources */ = {isa = PBXBuildFile; fileRef = A5D3896722F8CBE000B17AEC /* Coordinate.m */; };
 		A5ED3F3D22F3680300C0C031 /* CustomPopUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5ED3F3C22F3680300C0C031 /* CustomPopUpViewController.m */; };
@@ -79,7 +80,6 @@
 		FFC87AD322EA2A91009DE74C /* Link.m in Sources */ = {isa = PBXBuildFile; fileRef = FFC87AD222EA2A91009DE74C /* Link.m */; };
 		FFEA6BC622E28DD0008665BD /* ElegantTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FFEA6BC522E28DD0008665BD /* ElegantTableViewCell.m */; };
 		FFEA6BCA22E28E03008665BD /* ComfortableTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FFEA6BC922E28E03008665BD /* ComfortableTableViewCell.m */; };
-		FFECCE4D22E682F20000FDFF /* YelpAPIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FFECCE4C22E682F20000FDFF /* YelpAPIManager.m */; };
 		FFF1C48D22E02A8200C2AC03 /* specialStepper.m in Sources */ = {isa = PBXBuildFile; fileRef = FFF1C48C22E02A8200C2AC03 /* specialStepper.m */; };
 		FFF1C49022E03B5300C2AC03 /* FunTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FFF1C48F22E03B5300C2AC03 /* FunTableViewCell.m */; };
 		FFFC45E122EE097B003E8FF6 /* OrderViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FFFC45E022EE097B003E8FF6 /* OrderViewCell.m */; };
@@ -138,6 +138,8 @@
 		A5C06F7D22E9028000F634E3 /* OrderManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OrderManager.m; sourceTree = "<group>"; };
 		A5CE07B222F8FFA500944539 /* PhotoAnnotation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PhotoAnnotation.h; sourceTree = "<group>"; };
 		A5CE07B322F8FFA500944539 /* PhotoAnnotation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PhotoAnnotation.m; sourceTree = "<group>"; };
+		A5CE07B522F9F5F700944539 /* YelpAPIManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YelpAPIManager.h; sourceTree = "<group>"; };
+		A5CE07B622F9F5F700944539 /* YelpAPIManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YelpAPIManager.m; sourceTree = "<group>"; };
 		A5D3896322F89D5B00B17AEC /* MapViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
 		A5D3896422F89D5B00B17AEC /* MapViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
 		A5D3896622F8CBE000B17AEC /* Coordinate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Coordinate.h; sourceTree = "<group>"; };
@@ -251,8 +253,6 @@
 		FFEA6BC822E28E03008665BD /* ComfortableTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ComfortableTableViewCell.h; sourceTree = "<group>"; };
 		FFEA6BC922E28E03008665BD /* ComfortableTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ComfortableTableViewCell.m; sourceTree = "<group>"; };
 		FFECCE4522E668F40000FDFF /* Fresh-Chef-Analytics-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Fresh-Chef-Analytics-Bridging-Header.h"; sourceTree = "<group>"; };
-		FFECCE4B22E682F20000FDFF /* YelpAPIManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YelpAPIManager.h; sourceTree = "<group>"; };
-		FFECCE4C22E682F20000FDFF /* YelpAPIManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YelpAPIManager.m; sourceTree = "<group>"; };
 		FFF1C48B22E02A8200C2AC03 /* specialStepper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = specialStepper.h; sourceTree = "<group>"; };
 		FFF1C48C22E02A8200C2AC03 /* specialStepper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = specialStepper.m; sourceTree = "<group>"; };
 		FFF1C48E22E03B5300C2AC03 /* FunTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FunTableViewCell.h; sourceTree = "<group>"; };
@@ -304,10 +304,10 @@
 		A535D7B422DE6B8C002B79CA /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				A5CE07B522F9F5F700944539 /* YelpAPIManager.h */,
+				A5CE07B622F9F5F700944539 /* YelpAPIManager.m */,
 				FF318E8722EAC57C003AF015 /* OpenOrderButton.h */,
 				FF318E8822EAC57C003AF015 /* OpenOrderButton.m */,
-				FFECCE4B22E682F20000FDFF /* YelpAPIManager.h */,
-				FFECCE4C22E682F20000FDFF /* YelpAPIManager.m */,
 				A535D7B722DE6CE9002B79CA /* Dish.h */,
 				A535D7B822DE6CE9002B79CA /* Dish.m */,
 				A535D7BD22DE9FBF002B79CA /* Waiter.h */,
@@ -831,13 +831,13 @@
 				B6C4BFF922E9107400FE5EAC /* OrdersManagerViewController.m in Sources */,
 				B6C4BFF022E8FE8500FE5EAC /* DataViewTableViewController.m in Sources */,
 				FF318E8922EAC57C003AF015 /* OpenOrderButton.m in Sources */,
+				A5CE07B722F9F5F700944539 /* YelpAPIManager.m in Sources */,
 				FF5924FF22E2155D00F66EC6 /* ReceiptTableViewCell.m in Sources */,
 				B6D7B35C22DF95BA002093CB /* ManagerLoginViewController.m in Sources */,
 				A535D7BC22DE8FB2002B79CA /* (null) in Sources */,
 				A5D3896522F89D5B00B17AEC /* MapViewController.m in Sources */,
 				FF03BF3D22DE97AD00719E8C /* ThankYouViewController.m in Sources */,
 				FF03BF4C22DE9FFD00719E8C /* MenuListViewController.m in Sources */,
-				FFECCE4D22E682F20000FDFF /* YelpAPIManager.m in Sources */,
 				FF7374CE22F265B900632056 /* EditOrderViewCell.m in Sources */,
 				B6848BFF22F105CF0069CC94 /* NSDate+DayMethods.m in Sources */,
 				FFEA6BCA22E28E03008665BD /* ComfortableTableViewCell.m in Sources */,
@@ -1070,13 +1070,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = X7H39TKG3W;
+				DEVELOPMENT_TEAM = C45J47S9V6;
 				INFOPLIST_FILE = "Fresh-Chef-Analytics/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.jpearl.Fresh-Chef-Analytics1";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.jpearl.Fresh-Chef-Analytics3";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Fresh-Chef-Analytics/Models/Fresh-Chef-Analytics-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -1092,13 +1092,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = X7H39TKG3W;
+				DEVELOPMENT_TEAM = C45J47S9V6;
 				INFOPLIST_FILE = "Fresh-Chef-Analytics/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.jpearl.Fresh-Chef-Analytics1";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.jpearl.Fresh-Chef-Analytics3";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Fresh-Chef-Analytics/Models/Fresh-Chef-Analytics-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
