@@ -60,6 +60,7 @@
     self.trendMult = 1;
     
     isCellExpanded = NO;
+    self.tableView.scrollEnabled = YES;
     self.coverT3B3.hidden = NO;
     self.coverScatter.hidden = NO;
     self.coverRadar.hidden = NO;
@@ -124,9 +125,11 @@
     selectedIndexPath = [NSIndexPath indexPathForRow:index inSection:section];
     if(isCellExpanded){
         isCellExpanded = NO;
+        self.tableView.scrollEnabled = YES;
     } else {
 
         isCellExpanded = YES;
+        self.tableView.scrollEnabled = NO;
     }
     [self.tableView beginUpdates];
     [self.tableView endUpdates];

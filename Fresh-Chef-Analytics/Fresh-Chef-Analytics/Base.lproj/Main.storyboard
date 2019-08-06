@@ -2739,22 +2739,40 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="765"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="B2f-HM-etY">
-                                <rect key="frame" x="0.0" y="507" width="414" height="216"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B2f-HM-etY">
+                                <rect key="frame" x="0.0" y="470.5" width="414" height="216"/>
                             </pickerView>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eIE-tn-fTh" userLabel="Data View">
-                                <rect key="frame" x="0.0" y="107" width="414" height="352"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eIE-tn-fTh" userLabel="Data View">
+                                <rect key="frame" x="0.0" y="105.5" width="414" height="350"/>
                                 <color key="backgroundColor" red="0.96249402049999999" green="1" blue="0.99654776869999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="350" id="5IK-o4-Y7Q"/>
+                                </constraints>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SelectedDate: $Profit/#Busyness" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HG4-Ra-25n">
+                                <rect key="frame" x="20" y="54" width="264.5" height="21.5"/>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="18"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="HG4-Ra-25n" firstAttribute="top" secondItem="s2L-ne-N78" secondAttribute="top" constant="10" id="BOU-Oo-KOI"/>
+                            <constraint firstItem="B2f-HM-etY" firstAttribute="leading" secondItem="s2L-ne-N78" secondAttribute="leading" id="G0u-rY-aH7"/>
+                            <constraint firstItem="B2f-HM-etY" firstAttribute="top" secondItem="eIE-tn-fTh" secondAttribute="bottom" constant="15" id="JKd-Ot-EVD"/>
+                            <constraint firstItem="HG4-Ra-25n" firstAttribute="leading" secondItem="s2L-ne-N78" secondAttribute="leading" constant="20" id="MKj-GO-xrh"/>
+                            <constraint firstItem="eIE-tn-fTh" firstAttribute="leading" secondItem="s2L-ne-N78" secondAttribute="leading" id="UbI-cg-xtD"/>
+                            <constraint firstItem="eIE-tn-fTh" firstAttribute="trailing" secondItem="s2L-ne-N78" secondAttribute="trailing" id="dgq-40-p2e"/>
+                            <constraint firstItem="B2f-HM-etY" firstAttribute="trailing" secondItem="s2L-ne-N78" secondAttribute="trailing" id="nYh-c3-uB4"/>
+                            <constraint firstItem="eIE-tn-fTh" firstAttribute="top" secondItem="HG4-Ra-25n" secondAttribute="bottom" constant="30" id="zL5-Yt-ZKQ"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="s2L-ne-N78"/>
                     </view>
                     <connections>
                         <outlet property="categoryPicker" destination="B2f-HM-etY" id="OTH-jz-6ms"/>
                         <outlet property="dataView" destination="eIE-tn-fTh" id="Ruh-yo-KNr"/>
+                        <outlet property="selectedPointLabel" destination="HG4-Ra-25n" id="U3w-1s-bYl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gl8-qF-h6K" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -3877,20 +3895,26 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mKb-g7-ARm">
-                                <rect key="frame" x="0.0" y="124" width="414" height="625"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="569"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </mapView>
+                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tx0-VY-xic">
+                                <rect key="frame" x="0.0" y="655" width="414" height="158"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            </pickerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="RRQ-Y2-sHk"/>
                     </view>
                     <connections>
                         <outlet property="mapView" destination="mKb-g7-ARm" id="X0j-No-uBm"/>
+                        <outlet property="pickerView" destination="tx0-VY-xic" id="S9b-dX-T8W"/>
+                        <segue destination="T86-7i-b2q" kind="show" identifier="yelpInfo" id="LuD-gu-chP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1eG-0A-wXH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5003" y="4659"/>
+            <point key="canvasLocation" x="5002.898550724638" y="4658.7053571428569"/>
         </scene>
         <!--Competitor View-->
         <scene sceneID="o0a-FR-Jto">
@@ -5885,6 +5909,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="mFX-D1-im0"/>
+        <segue reference="LuD-gu-chP"/>
         <segue reference="r3R-H8-hdI"/>
         <segue reference="yOU-L2-H8u"/>
         <segue reference="SWx-jk-9k2"/>
