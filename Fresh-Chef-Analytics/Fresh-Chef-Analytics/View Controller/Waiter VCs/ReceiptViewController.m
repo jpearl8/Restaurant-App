@@ -83,12 +83,19 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSString *category = [PFUser currentUser][@"theme"];
     ReceiptTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier: @"receiptCell"];
     Dish *dish = self.dishesArray[indexPath.row];
     NSNumber *amount = self.openOrders[indexPath.row].amount;
     cell.dishName.text = dish.name;
     cell.dishAmount.text = [NSString stringWithFormat:@"%.0@", amount];
     cell.calculatedPrice.text = [NSString stringWithFormat:@"%.2f", ([dish.price floatValue] * [amount floatValue])];
+    if ([category isEqualToString:@"Comfortable"]){
+        cell.dishName.textColor = [UIColor whiteColor];
+        cell.dishAmount.textColor = [UIColor whiteColor];
+        cell.calculatedPrice.textColor = [UIColor whiteColor];
+    }
+        
     self.priceTracker += [cell.calculatedPrice.text floatValue];
     self.totalPrice.text = [NSString stringWithFormat:@"%.2f", self.priceTracker];
     return cell;

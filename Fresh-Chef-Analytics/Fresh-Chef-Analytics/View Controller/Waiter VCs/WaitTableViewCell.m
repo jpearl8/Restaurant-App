@@ -13,14 +13,11 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-
+    
     // Initialization code
 }
 
 
-- (IBAction)didStep:(specialStepper *)sender {
-    self.amount.text = [NSString stringWithFormat:@"%.0f",sender.value];
-}
 
 
 - (void) prepareForReuse{
@@ -36,5 +33,22 @@
 }
 
 
+
+- (IBAction)didStep:(UIStepper *)sender {
+    [self.delegate stepperIncrement:sender.value withDish:self.dish];
+    self.amount.text = [NSString stringWithFormat:@"%.0f",sender.value];
+}
+- (IBAction)plusDish:(UIButton *)sender {
+    self.value++;
+    self.amount.text = [NSString stringWithFormat:@"%.0f",self.value];
+    [self.delegate stepperIncrement:self.value withDish:self.dish];
+}
+- (IBAction)minusDish:(UIButton *)sender {
+    if (self.value != 0){
+        self.value--;
+    }
+    self.amount.text = [NSString stringWithFormat:@"%.0f",self.value];
+    [self.delegate stepperIncrement:self.value withDish:self.dish];
+}
 
 @end

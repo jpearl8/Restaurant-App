@@ -66,7 +66,7 @@
             NSLog(@"%@", error.localizedDescription);
         }
     }];
-    regularHeight = 150;
+    regularHeight = 97;
     expandedHeight = 300;
 
 }
