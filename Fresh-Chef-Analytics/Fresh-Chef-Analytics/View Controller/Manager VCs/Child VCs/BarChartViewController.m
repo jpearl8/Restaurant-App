@@ -7,6 +7,7 @@
 //
 
 #import "BarChartViewController.h"
+#import "UIRefs.h"
 
 @interface BarChartViewController ()
 @property (weak, nonatomic) IBOutlet UIView *dataView;
@@ -103,7 +104,7 @@
                 [barPrices addObject:[NSNumber numberWithFloat:categoryPrice]];
                 [xValues addObject:categoryIterating];
                 [yValues addObject:[NSNumber numberWithFloat:categoryFreq]];
-                [colorValues addObject:[[Helpful_funs shared] colorFromHexString:self.colorsFromUI[i]]];
+                [colorValues addObject:[[UIRefs shared] colorFromHexString:self.colorsFromUI[i]]];
             }
             [self.barChart setStrokeColors:colorValues];
         }
@@ -116,7 +117,7 @@
                 [yValues addObject:dish.orderFrequency];
             }
             NSUInteger indexOfCat = [self.legend indexOfObject:category];
-            [self.barChart setStrokeColor:[[Helpful_funs shared] colorFromHexString:self.colorsFromUI[indexOfCat]]];
+            [self.barChart setStrokeColor:[[UIRefs shared] colorFromHexString:self.colorsFromUI[indexOfCat]]];
         }
         NSMutableArray *indexOrder = [self setOrderForDescendingArray:barPrices];
         

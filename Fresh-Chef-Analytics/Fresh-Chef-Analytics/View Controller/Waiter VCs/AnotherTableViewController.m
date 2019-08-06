@@ -8,6 +8,7 @@
 
 #import "AnotherTableViewController.h"
 #import "Helpful_funs.h"
+#import "UIRefs.h"
 @interface AnotherTableViewController ()
 @property (strong, nonatomic) IBOutlet UIImageView *background;
 
@@ -17,7 +18,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [[Helpful_funs shared] setImages:self.background top:[NSNull null] waiterView:YES];
+    [[UIRefs shared] setImage:self.background isCustomerForm:NO];
+
     // Do any additional setup after loading the view.
 }
 - (IBAction)didClick:(id)sender {

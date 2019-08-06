@@ -132,20 +132,4 @@
     return -1;
 }
 
--(void)setImages:(nullable UIImageView *)background top:(nullable UIImageView *)top waiterView:(BOOL)waiterView{
-    NSString *category = [NSString new];
-    NSString *category_top = [NSString stringWithFormat:@"%@_top", category];
-    if (waiterView){
-        category = [NSString stringWithFormat:@"%@_waiter", [PFUser currentUser][@"theme"]];
-    } else {
-        category = [PFUser currentUser][@"theme"];
-    }
-    if (background){
-        [background setImage:[UIImage imageNamed:category]];
-        //background.contentMode = UIViewContentMode.scaleToFill;
-    }
-    if (!([top isEqual:[NSNull null]])){
-        [top setImage:[UIImage imageNamed:category_top]];
-    }
-}
 @end

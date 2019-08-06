@@ -28,6 +28,7 @@ pass final array on submit button of data table
 #import "WaiterManager.h"
 #import "OpenOrder.h"
 #import "OrderManager.h"
+#import "UIRefs.h"
 
 
 @interface WaiterViewController () <UITableViewDelegate, UITableViewDataSource, StepperCell>
@@ -48,9 +49,7 @@ pass final array on submit button of data table
 
 @property (strong, nonatomic) IBOutlet UIImageView *backgroundImage;
 
-@property (strong, nonatomic) IBOutlet UINavigationBar *navBar;
 
-@property (strong, nonatomic) IBOutlet UIImageView *topImage;
 
 
 
@@ -76,18 +75,18 @@ pass final array on submit button of data table
     self.customerNumber.text = @"";
     self.tableNumber.text = @"";
     self.button.layer.borderWidth = .5f;
-    self.button.layer.borderColor = [[Helpful_funs shared] colorFromHexString:@"#2c91fd"].CGColor;
+    self.button.layer.borderColor = [[UIRefs shared] colorFromHexString:@"#2c91fd"].CGColor;
     self.tableNumber.layer.borderWidth = .5f;
-    self.tableNumber.layer.borderColor = [[Helpful_funs shared] colorFromHexString:@"#2c91fd"].CGColor;
+    self.tableNumber.layer.borderColor = [[UIRefs shared] colorFromHexString:@"#2c91fd"].CGColor;
     self.customerNumber.layer.borderWidth = .5f;
-    self.customerNumber.layer.borderColor = [[Helpful_funs shared] colorFromHexString:@"#2c91fd"].CGColor;
+    self.customerNumber.layer.borderColor = [[UIRefs shared] colorFromHexString:@"#2c91fd"].CGColor;
    
 //    NSString *category = [PFUser currentUser][@"theme"];
 //    NSString *category_top = [NSString stringWithFormat:@"%@_top", category];
 //    NSString *category_waiter = [NSString stringWithFormat:@"%@_waiter", category];
 //    [self.backgroundImage setImage:[UIImage imageNamed:category_waiter]];
 //    [self.topImage setImage:[UIImage imageNamed:category_top]];
-    [[Helpful_funs shared] setImages:self.backgroundImage top:self.topImage waiterView:YES];
+    [[UIRefs shared] setImage:self.backgroundImage isCustomerForm:NO] ;
     self.waiterTable.hidden = YES;
     self.menuItems.delegate = self;
     self.menuItems.dataSource = self;
@@ -151,10 +150,8 @@ pass final array on submit button of data table
 
         int index = [[Helpful_funs shared] findAmountIndexwithDishArray:self.orderedDishes withDish:dish];
         if (index == -1){
-            cell.stepper.value = 0;
             cell.value = 0;
         } else {
-            cell.stepper.value = [self.amounts[index] doubleValue];
             cell.value = [self.amounts[index] doubleValue];
         }
         //cell.stepper.value = [self searchForAmount:self.customerOrder withDish:dish];
@@ -266,15 +263,7 @@ pass final array on submit button of data table
     }
 }
 
-- (IBAction)stepperChange:(specialStepper *)sender {
-//    int index = [[Helpful_funs shared] findAmountIndexwithDishArray:self.orderedDishes withDish:sender.dish];
-//    if (index == -1){
-//        [self.orderedDishes addObject:sender.dish];
-//        [self.amounts addObject:[NSNumber numberWithInt:1]];
-//    } else {
-//        self.amounts[index] = [NSNumber numberWithDouble:sender.value];
-//    };
-}
+
 
 -(void)stepperIncrement:(double)amount withDish:(Dish*)dish{
     int index = [[Helpful_funs shared] findAmountIndexwithDishArray:self.orderedDishes withDish:dish];
