@@ -8,9 +8,11 @@
 
 #import "ThankYouViewController.h"
 #import "Parse/Parse.h"
+#import "Helpful_funs.h"
 
 @interface ThankYouViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *restaurantName;
+@property (strong, nonatomic) IBOutlet UIImageView *backgroundIm;
 
 @end
 
@@ -19,6 +21,7 @@
 - (void)viewDidLoad {
     PFUser *currentUser = [PFUser currentUser];
     self.restaurantName.text = currentUser.username;
+    [[Helpful_funs shared] setImages:self.backgroundIm top:[NSNull null] waiterView:(NO)];
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 }

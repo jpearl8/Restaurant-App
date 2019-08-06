@@ -64,6 +64,7 @@
     cell.price.text = business[@"price"];
    // NSMutableAttributedString * link = [[NSMutableAttributedString alloc] initWithString:@"Yelp Link"];
    // [link addAttribute: NSLinkAttributeName value:business[@"url"] range: NSMakeRange(0, link.length)];
+    //to get lat long: business[@"coordinates"][@latitude"] / business[@"coordinates"][@latitude"][@"longitude"]
 
    cell.yelpLink.link = business[@"url"];
     NSString *imageUrl = business[@"image_url"];

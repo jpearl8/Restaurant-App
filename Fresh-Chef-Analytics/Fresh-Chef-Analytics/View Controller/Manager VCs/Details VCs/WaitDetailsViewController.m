@@ -7,6 +7,7 @@
 //
 
 #import "WaitDetailsViewController.h"
+#import "WaiterManager.h"
 
 @interface WaitDetailsViewController ()
 
@@ -18,7 +19,7 @@
     [super viewDidLoad];
     self.waiterName.text = self.waiter.name;
     self.waiterTime.text = [[NSString stringWithFormat:@"%@", self.waiter.yearsWorked] stringByAppendingString:@" years"];
-    self.waiterRating.text = [[NSString stringWithFormat:@"%@", self.waiter.rating] stringByAppendingString:@" stars"];
+    self.waiterRating.text = [[NSString stringWithFormat:@"%@", [[WaiterManager shared] averageRating:self.waiter]] stringByAppendingString:@" stars"];
     self.waiterTabletops.text  = [[NSString stringWithFormat:@"%@", self.waiter.tableTops] stringByAppendingString:@" tables"];
     self.waiterNumCustomers.text = [[NSString stringWithFormat:@"%@", self.waiter.numOfCustomers] stringByAppendingString:@" customers served"];
     self.waiterTips.text = [[NSString stringWithFormat:@"%@", self.waiter.tipsMade] stringByAppendingString:@" tips made"];

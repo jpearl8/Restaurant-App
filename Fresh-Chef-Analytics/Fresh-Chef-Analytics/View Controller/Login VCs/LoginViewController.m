@@ -13,7 +13,7 @@
 #import "MenuManager.h"
 #import "WaiterManager.h"
 #import "OrderManager.h"
-
+#import "Helpful_funs.h"
 @interface LoginViewController ()
 
 @end
@@ -28,6 +28,7 @@
 - (void)loginUser {
     NSString *username = self.usernameField.text;
     NSString *password = self.passwordField.text;
+      
     [PFUser logInWithUsernameInBackground:username password:password block:^(PFUser * user, NSError *  error) {
         if (error != nil) {
             NSLog(@"User log in failed: %@", error.localizedDescription);

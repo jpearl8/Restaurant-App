@@ -3,10 +3,11 @@
 //  Fresh-Chef-Analytics
 //
 //  Created by selinons on 7/22/19.
-//  Copyright © 2019 julia@ipearl.net. All rights reserved.
+//  Copyright © 2019 julia@ipearl.net. rights reserved.
 //
 
 #import "ScatterViewController.h"
+#import "DishDetailsViewController.h"
 
 @interface ScatterViewController ()
 @property (weak, nonatomic) IBOutlet UIView *dataView;
@@ -24,6 +25,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *freqLabel;
 @property (weak, nonatomic) IBOutlet UILabel *dishFreqLabel;
 @property (weak, nonatomic) IBOutlet UILabel *dishRatingLabel;
+@property (weak, nonatomic) IBOutlet UITextView *dishInfo;
 
 @end
 
@@ -41,7 +43,7 @@
     self.colorsFromUI = @[@"#6b48ff", @"#ff6337", @"#b31e6f", @"#00bdaa", @"#58b368", @"#ff487e", @"#226b80", @"52437b"];
     self.arrowButton1.imageView.layer.cornerRadius = 0.5 * self.arrowButton1.imageView.bounds.size.height;
     self.arrowButton2.imageView.layer.cornerRadius = 0.5 * self.arrowButton2.imageView.bounds.size.height;
-
+    self.dishInfo.layer.cornerRadius = self.dishInfo.frame.size.width / 20;
     [self.arrowButton2 setTransform: CGAffineTransformRotate([self.arrowButton2 transform], M_PI/2)];
     [self.arrowButton1 setTransform: CGAffineTransformRotate([self.arrowButton1 transform], M_PI/2)];
     self.arrowMult = -1;
@@ -119,6 +121,7 @@
     Dish *dish = self.categoriesOfDishes[self.legend[section]][indexPath.row];
     if (cell == nil){
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"SimpleTableItem"];
+        cell.backgroundColor = [UIColor whiteColor];
     }
     cell.textLabel.text = dish.name;
     return cell;
@@ -135,9 +138,12 @@
     self.dishFreqLabel.text = [[NSString stringWithFormat:@"%@", dish.orderFrequency] stringByAppendingString:@" orders"];
     [self.dishFreqLabel setTextColor:colorForDish];
     [self.dishRatingLabel setTextColor:colorForDish];
-    self.dishRatingLabel.text = [[NSString stringWithFormat:@"%@", [[MenuManager shared] averageRating:dish]] stringByAppendingString:@" Stars"];
+    self.dishRatingLabel.text = [[NSString stringWithFormat:@"%@", [[MenuManager shared] averageRatingWithoutFloor:dish]] stringByAppendingString:@" Stars"];
     [self.chooseDishButton setTitleColor:colorForDish
                                 forState:UIControlStateNormal];
+    self.dishInfo.text = [self setDishInfoText:dish];
+    self.dishInfo.layer.borderColor = colorForDish.CGColor;
+    self.dishInfo.layer.borderWidth = 0.3;
     self.selectedDish = self.categoriesOfDishes[self.legend[section]][indexPath.row];
     NSUInteger positionOfDish = [self.dataArray[section][0] indexOfObject:self.selectedDish.name];
     self.shownDish.getData = ^(NSUInteger index) {
@@ -156,6 +162,38 @@
     self.dishesTableView.hidden = YES;
     
 }
+- (NSString *) setDishInfoText : (Dish *) dish
+{
+    NSString *freqComments;
+    NSString *ratingComments;
+    NSString *freqRank = [[MenuManager shared] getRankOfType:@"freq" ForDish:dish];
+    NSString *ratingRank = [[MenuManager shared] getRankOfType:@"rating" ForDish:dish];
+    if ([freqRank isEqualToString:@"low"])
+    {
+        freqComments = @"This dish is not very popular. Consider changing it's name or place on the menu. ";
+    }
+    else if ([freqRank isEqualToString:@"high"])
+    {
+        freqComments = @"This dish is very popular. ";
+    }
+    else
+    {
+        freqComments = @"This dish is fairly popular. Consider experimenting with its appearance on the menu. ";
+    }
+    if ([ratingRank isEqualToString:@"low"])
+    {
+        ratingComments = @"This dish needs some work. Customers are not happy with it. Try changing the preparation or lowering the price.";
+    }
+    else if ([ratingRank isEqualToString:@"high"])
+    {
+        ratingComments = @"Customers love this dish.";
+    }
+    else
+    {
+        ratingComments = @"Customers think this dish is OK. Try improving the recipe to land higher ratings.";
+    }
+    return [freqComments stringByAppendingString:ratingComments];
+}
 - (NSArray *)populateDataByRatingAndFreq
 {
     NSMutableArray *theData = [NSMutableArray array];
@@ -168,7 +206,7 @@
         NSMutableArray *theseNames = [NSMutableArray array];
         for (Dish *dish in temp)
         {
-            NSNumber *rating = [[MenuManager shared] averageRating:dish];
+            NSNumber *rating = [[MenuManager shared] averageRatingWithoutFloor:dish];
             [theseRatings addObject:rating];
             [theseFreqs addObject:dish.orderFrequency];
             [theseNames addObject:dish.name];
@@ -187,14 +225,11 @@
     self.arrowMult *= -1;
     self.dishesTableView.hidden = !(self.dishesTableView.hidden);
 }
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    Dish *dish = self.selectedDish;
+    DishDetailsViewController *dishDetailsVC = [segue destinationViewController];
+    dishDetailsVC.dish = dish;
 }
-*/
+
 
 @end

@@ -7,15 +7,20 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
+#import <CoreLocation/CoreLocation.h>
+#import "Coordinate.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface YelpAPIManager : NSObject
+@interface YelpAPIManager : NSObject <CLLocationManagerDelegate>
+@property (strong, nonatomic) CLLocationManager *locationManager;
+@property (strong, nonatomic) Coordinate *restaurantCoordinates;
 + (instancetype) shared;
 -(void)fetchCompetitors;
 @property (strong, nonatomic) NSMutableArray* userParameters;
 @property (strong, nonatomic) NSMutableArray* competitorArray; // item one location array, item two category array, item three price array
--(void)locationTopRatings:(NSString*)locationRes withCategory:(nullable NSString *)categoryRes withPrice:(nullable NSString *)priceRes withIndex:(NSUInteger)index;
+-(void)locationTopRatings:(nullable NSString *)categoryRes withPrice:(nullable NSString *)priceRes withIndex:(NSUInteger)index;
 @end
 
 NS_ASSUME_NONNULL_END

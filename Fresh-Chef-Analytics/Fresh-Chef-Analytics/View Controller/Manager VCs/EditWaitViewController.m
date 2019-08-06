@@ -44,11 +44,12 @@
     cell.delegate = self;
     cell.waiterName.text = waiter.name;
     cell.waiterYearsAt.text = [@"Served " stringByAppendingString:[[NSString stringWithFormat:@"%@", waiter.yearsWorked] stringByAppendingString:@"  Years"]];
-    cell.waiterRating.text = [[NSString stringWithFormat:@"%@", waiter.rating] stringByAppendingString:@" ✯'s"];
+    cell.waiterRating.text = [[NSString stringWithFormat:@"%@", [[WaiterManager shared] averageRating:cell.waiter]] stringByAppendingString:@" ✯'s"];
     cell.waiterTableTops.text = [[NSString stringWithFormat:@"%@", waiter.tableTops] stringByAppendingString:@" Tabletops"];
     cell.waiterNumCustomers.text = [[NSString stringWithFormat:@"%@", waiter.numOfCustomers] stringByAppendingString:@" customers served"];
-    cell.waiterTips.text = [@"$" stringByAppendingString:[[NSString stringWithFormat:@"%@", waiter.tipsMade] stringByAppendingString:@" Total Tips"]];
-    if(waiter.image!=nil){
+    
+    cell.waiterTipsPT.text = [@"$" stringByAppendingString:[[NSString stringWithFormat:@"%@", [[WaiterManager shared] averageTipsByTable:cell.waiter]] stringByAppendingString:@" Tips per Table"]];
+    cell.waiterTipsPC.text = [@"$" stringByAppendingString:[[NSString stringWithFormat:@"%@", [[WaiterManager shared] averageTipByCustomer:cell.waiter]] stringByAppendingString:@" Tips per Customer"]];    if(waiter.image!=nil){
         [waiter.image getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
             if(!error){
                 cell.profileImage.image = [UIImage imageWithData:imageData];

@@ -8,6 +8,9 @@
 
 #import "Helpful_funs.h"
 #import "MenuManager.h"
+#import "WaiterManager.h"
+@import CoreLocation;
+#define SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
 
 @implementation Helpful_funs
 
@@ -30,7 +33,6 @@
     [scanner scanHexInt:&rgbValue];
     return [UIColor colorWithRed:((rgbValue & 0xFF0000) >> 16)/255.0 green:((rgbValue & 0xFF00) >> 8)/255.0 blue:(rgbValue & 0xFF)/255.0 alpha:1.0];
 }
-
 
 
 -(void)defineSelect:(UIButton *)button withSelect:(BOOL)select {
@@ -56,6 +58,21 @@
             first = [NSNumber numberWithFloat:x];
             second = [NSNumber numberWithFloat:y];
         }
+        if ([orderType isEqualToString:@"tipsByCustomers"])
+        {
+            float x = [[[WaiterManager shared] averageTipByCustomer:(Waiter*)a] floatValue];
+            float y = [[[WaiterManager shared] averageTipByCustomer:(Waiter*)b] floatValue];
+            first = [NSNumber numberWithFloat:x];
+            second = [NSNumber numberWithFloat:y];
+        }
+        if ([orderType isEqualToString:@"tipsByTable"])
+        {
+            float x = [[[WaiterManager shared] averageTipsByTable:(Waiter*)a] floatValue];
+            float y = [[[WaiterManager shared] averageTipsByTable:(Waiter*)b] floatValue];
+            first = [NSNumber numberWithFloat:x];
+            second = [NSNumber numberWithFloat:y];
+        }
+        
         //check for nil values
         if(first != nil && second != nil){
             return [second compare:first];
@@ -67,6 +84,7 @@
     }];
     return sortedArray;
 }
+
 - (bool) scaleArrayByMax:(NSMutableArray *)array
 {
    NSNumber * max = [array valueForKeyPath:@"@max.floatValue"];
@@ -83,7 +101,6 @@
         return false;
     }
 }
-
 -(int) findAmountIndexwithDishArray:(NSArray <Dish *>*)dishes withDish:(Dish *)dish{
     for (int i = 0; i < dishes.count; i++){
         if ([dishes[i].name isEqualToString:dish.name]){
@@ -115,6 +132,20 @@
     return -1;
 }
 
-
-
+-(void)setImages:(nullable UIImageView *)background top:(nullable UIImageView *)top waiterView:(BOOL)waiterView{
+    NSString *category = [NSString new];
+    NSString *category_top = [NSString stringWithFormat:@"%@_top", category];
+    if (waiterView){
+        category = [NSString stringWithFormat:@"%@_waiter", [PFUser currentUser][@"theme"]];
+    } else {
+        category = [PFUser currentUser][@"theme"];
+    }
+    if (background){
+        [background setImage:[UIImage imageNamed:category]];
+        //background.contentMode = UIViewContentMode.scaleToFill;
+    }
+    if (!([top isEqual:[NSNull null]])){
+        [top setImage:[UIImage imageNamed:category_top]];
+    }
+}
 @end

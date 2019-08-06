@@ -13,7 +13,8 @@
 #import "MenuManager.h"
 #import "WaiterManager.h"
 #import "OrderManager.h"
-
+#import "Coordinate.h"
+#import "Helpful_funs.h"
 @interface AppDelegate ()
 
 @end
@@ -28,8 +29,10 @@
         configuration.applicationId = @"freshChef";
         configuration.server = @"http://fresh-chef-analytics.herokuapp.com/parse";
     }];
+   
     
     [Parse initializeWithConfiguration:config];
+    
     // Code for persisting user across sessions
     if (PFUser.currentUser) {
     
@@ -60,7 +63,7 @@
                 NSLog(@"Error fetching menu: %@", error.localizedDescription);
             }
         }];
-        
+
 
 //        [[OrderManager shared] fetchOpenOrderItems:PFUser.currentUser withCompletion:^(NSArray * _Nonnull openOrders, NSError * _Nonnull error) {
 //            if (!error)
