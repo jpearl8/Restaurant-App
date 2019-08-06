@@ -16,7 +16,7 @@
 
 - (NSString *)getTimeSpanSelected;
 - (NSString *)displaySelected;
-
+- (void)drawVertLineAtPoint:(CGPoint)point;
 /**
  * Callback method that gets invoked when the user taps on the chart line.
  */
