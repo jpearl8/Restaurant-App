@@ -28,10 +28,9 @@
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor blackColor],NSFontAttributeName:[UIFont systemFontOfSize:21 weight:UIFontWeightThin]}];
     self.restaurantProfileImage.layer.cornerRadius = 0.1 * self.restaurantProfileImage.frame.size.width;
     // Set class variables
-    if ([[PFUser currentUser].objectId isEqualToString:@"XuLMO3Jh3r"])
-    {
-        [[YelpAPIManager shared] fetchCompetitors];
-    }
+
+    
+    
     self.categoryPlaceholder = @"Set Restaurant Category";
     self.pricePlaceholder = @"Set Restaurant Price";
     

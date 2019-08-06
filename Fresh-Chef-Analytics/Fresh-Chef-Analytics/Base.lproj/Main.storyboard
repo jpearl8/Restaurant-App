@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="uaP-dk-Jdk">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="kVb-wj-CZH">
     <device id="retina6_1" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -76,7 +76,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="-1528.985507246377" y="1759.8214285714284"/>
+            <point key="canvasLocation" x="-923" y="1594"/>
         </scene>
         <!--Open Orders-->
         <scene sceneID="LLe-vm-m3N">
@@ -594,6 +594,13 @@
                                 <color key="sectionIndexBackgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="sectionIndexTrackingBackgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nnq-TN-Sw9">
+                                <rect key="frame" x="367" y="100" width="31" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.76282488579420116" green="0.90919582696403189" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                <state key="normal" title="☆"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -638,7 +645,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iW6-5g-hzU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2943.4782608695655" y="-1453.125"/>
+            <point key="canvasLocation" x="-3288.4057971014495" y="-1449.1071428571429"/>
         </scene>
         <!--Profile-->
         <scene sceneID="L7M-nB-u8G">
@@ -2461,7 +2468,7 @@
                                 <rect key="frame" x="180" y="490" width="54" height="30"/>
                                 <state key="normal" title="Sign Up"/>
                                 <connections>
-                                    <segue destination="ISo-vN-uEv" kind="show" id="65M-p0-mxu"/>
+                                    <segue destination="ZOM-KF-QFY" kind="show" id="2nE-k9-VAl"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -2491,7 +2498,7 @@
                     <connections>
                         <outlet property="passwordField" destination="CHl-Kb-Yg7" id="aAJ-g2-FLH"/>
                         <outlet property="usernameField" destination="jJP-nI-o7W" id="ayy-Lm-eSq"/>
-                        <segue destination="yhP-Fu-Fqh" kind="presentation" identifier="loginSegue" id="1KG-em-zD3"/>
+                        <segue destination="XKA-DT-OKT" kind="presentation" identifier="loginSegue" id="eHm-lj-i64"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -2576,7 +2583,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="-2439" y="2554"/>
+            <point key="canvasLocation" x="-1768" y="2589"/>
         </scene>
         <!--Thank You View Controller-->
         <scene sceneID="Mwk-HJ-d4o">
@@ -4913,6 +4920,38 @@
             </objects>
             <point key="canvasLocation" x="-4842.0289855072469" y="5451.5625"/>
         </scene>
+        <!--Gif View Controller-->
+        <scene sceneID="sC0-UI-CIH">
+            <objects>
+                <viewController id="kVb-wj-CZH" customClass="GifViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="fV0-zg-pS5">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bN9-WJ-1M4">
+                                <rect key="frame" x="87" y="328" width="240" height="240"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="240" id="C93-r6-niP"/>
+                                    <constraint firstAttribute="height" constant="240" id="p2H-57-Xwu"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="bN9-WJ-1M4" firstAttribute="centerY" secondItem="fV0-zg-pS5" secondAttribute="centerY" id="3Zd-kT-zfA"/>
+                            <constraint firstItem="bN9-WJ-1M4" firstAttribute="centerX" secondItem="fV0-zg-pS5" secondAttribute="centerX" id="oYO-0G-ttq"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="1ZE-RW-DBQ"/>
+                    </view>
+                    <connections>
+                        <outlet property="gifIm" destination="bN9-WJ-1M4" id="wnA-aE-4Ug"/>
+                        <segue destination="uaP-dk-Jdk" kind="show" identifier="toApp" id="Pj1-OH-o0m"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZSx-Xd-rmU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-4975" y="2063"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="y7a-Kh-vAk">
             <objects>
@@ -4947,7 +4986,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4EG-wX-la3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2439.130434782609" y="1759.8214285714284"/>
+            <point key="canvasLocation" x="-1768" y="1594"/>
         </scene>
         <!--Scatter View Controller-->
         <scene sceneID="v0z-Yd-oo7">
@@ -5749,6 +5788,70 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tZL-3l-iRL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-3662" y="-767"/>
+        </scene>
+        <!--Gif View Controller-->
+        <scene sceneID="Baj-O0-his">
+            <objects>
+                <viewController id="ZOM-KF-QFY" customClass="GifViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="0AW-nO-CdH">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="SO5-Fa-6C1">
+                                <rect key="frame" x="87" y="328" width="240" height="240"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="240" id="JXa-BR-np5"/>
+                                    <constraint firstAttribute="height" constant="240" id="i5U-M4-TPO"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="SO5-Fa-6C1" firstAttribute="centerY" secondItem="0AW-nO-CdH" secondAttribute="centerY" id="HTP-jT-Q7i"/>
+                            <constraint firstItem="SO5-Fa-6C1" firstAttribute="centerX" secondItem="0AW-nO-CdH" secondAttribute="centerX" id="JYE-Ud-s5Z"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="WZA-uI-mJt"/>
+                    </view>
+                    <connections>
+                        <outlet property="gifIm" destination="SO5-Fa-6C1" id="zkr-sA-dxA"/>
+                        <segue destination="ISo-vN-uEv" kind="show" identifier="toApp" id="Fcx-FX-56x"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XPa-vj-ftH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2751" y="2604"/>
+        </scene>
+        <!--Gif View Controller-->
+        <scene sceneID="n52-cg-UJ3">
+            <objects>
+                <viewController storyboardIdentifier="loading" useStoryboardIdentifierAsRestorationIdentifier="YES" id="XKA-DT-OKT" customClass="GifViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="JV6-pr-F0C">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7fZ-M5-YRv">
+                                <rect key="frame" x="87" y="328" width="240" height="240"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="240" id="WWf-Ew-eUx"/>
+                                    <constraint firstAttribute="width" constant="240" id="xHC-Hw-nJN"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="7fZ-M5-YRv" firstAttribute="centerX" secondItem="JV6-pr-F0C" secondAttribute="centerX" id="VMa-Rz-34i"/>
+                            <constraint firstItem="7fZ-M5-YRv" firstAttribute="centerY" secondItem="JV6-pr-F0C" secondAttribute="centerY" id="e8m-wH-57E"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Tpn-ur-1dt"/>
+                    </view>
+                    <connections>
+                        <outlet property="gifIm" destination="7fZ-M5-YRv" id="zvI-j2-y3x"/>
+                        <segue destination="yhP-Fu-Fqh" kind="show" identifier="toApp" id="k2w-N5-myk"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MO8-9X-gZU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2752" y="1594"/>
         </scene>
     </scenes>
     <resources>

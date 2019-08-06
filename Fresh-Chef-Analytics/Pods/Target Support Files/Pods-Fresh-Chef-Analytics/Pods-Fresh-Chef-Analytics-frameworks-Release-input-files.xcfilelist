@@ -1,5 +1,6 @@
 ${PODS_ROOT}/Target Support Files/Pods-Fresh-Chef-Analytics/Pods-Fresh-Chef-Analytics-frameworks.sh
 ${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework
+${BUILT_PRODUCTS_DIR}/Animated-Gif-iOS/Animated_Gif_iOS.framework
 ${BUILT_PRODUCTS_DIR}/BDBOAuth1Manager/BDBOAuth1Manager.framework
 ${BUILT_PRODUCTS_DIR}/BEMCheckBox/BEMCheckBox.framework
 ${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework
