@@ -8,13 +8,16 @@
 
 // PhotoAnnotation.h
 #import <Foundation/Foundation.h>
+#import "Link.h"
 @import MapKit;
 
 @interface PhotoAnnotation : NSObject <MKAnnotation>
 @property (readonly, nonatomic) CLLocationCoordinate2D coordinate;
 @property (assign, nonatomic) NSString *imageName;
+@property (assign, nonatomic) Link *yelpLink;
 - (MKAnnotationView *)selfAnnotationView;
 + (instancetype)shared;
 - (id) initWithLocation:(CLLocationCoordinate2D)location andImage: (NSString *) imageName;
+- (id) initWithLocation:(CLLocationCoordinate2D)location andImage: (NSString *) imageName andLink : (Link *) link;
 
 @end

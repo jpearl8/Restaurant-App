@@ -25,6 +25,17 @@
     
     return sharedManager;
 }
+- (id) initWithLocation:(CLLocationCoordinate2D)location andImage: (NSString *) imageName andLink : (Link *) link
+{
+    self = [super init];
+    if (self)
+    {
+        self.coordinate = location;
+        self.imageName = imageName;
+        self.yelpLink = link;
+    }
+    return self;
+}
 - (id) initWithLocation:(CLLocationCoordinate2D)location andImage: (NSString *) imageName
 {
     self = [super init];
@@ -40,8 +51,10 @@
     MKAnnotationView *annotationView = [[MKAnnotationView alloc] initWithAnnotation:self reuseIdentifier:@"Photo Annotation"];
     annotationView.enabled = YES;
     annotationView.canShowCallout = NO;
+//    annotationView.rightCalloutAccessoryView
     annotationView.backgroundColor = [UIColor redColor];
     annotationView.image = [UIImage imageNamed:self.imageName];
     return annotationView;
 }
+
 @end
