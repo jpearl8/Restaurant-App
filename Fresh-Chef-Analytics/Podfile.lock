@@ -14,6 +14,7 @@ PODS:
   - AFNetworking/Serialization (3.0.4)
   - AFNetworking/UIKit (3.0.4):
     - AFNetworking/NSURLSession
+  - Animated-Gif-iOS (1.1.0)
   - BDBOAuth1Manager (2.0.0):
     - AFNetworking/NSURLSession (~> 3.0.0)
   - BEMCheckBox (1.4.1)
@@ -34,6 +35,7 @@ PODS:
 
 DEPENDENCIES:
   - AFNetworking
+  - Animated-Gif-iOS (~> 1.1)
   - BDBOAuth1Manager
   - BEMCheckBox (~> 1.4)
   - DateTools
@@ -48,6 +50,7 @@ DEPENDENCIES:
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - AFNetworking
+    - Animated-Gif-iOS
     - BDBOAuth1Manager
     - BEMCheckBox
     - Bolts
@@ -63,6 +66,7 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   AFNetworking: a0075feb321559dc78d9d85b55d11caa19eabb93
+  Animated-Gif-iOS: b3c0d798d2f59bed92b4adddfef6ebb7b80355f2
   BDBOAuth1Manager: 92d17d06f8a648602962304cd2f35ae7394fa001
   BEMCheckBox: 5ba6e37ade3d3657b36caecc35c8b75c6c2b1a4e
   Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
@@ -76,6 +80,6 @@ SPEC CHECKSUMS:
   UICountingLabel: 1db4e7d023e1762171eb226d6dff47a7a84f27aa
   "UITextView+Placeholder": 0c3efd97f37ea64bde7f34cc6e90fe02e87b3909
 
-PODFILE CHECKSUM: ae974458f59425f0d9d5afa84309ca4c72a676bb
+PODFILE CHECKSUM: e4d2c81f34d8616d050a512c5ee5cc70cb33fd1b
 
 COCOAPODS: 1.7.2

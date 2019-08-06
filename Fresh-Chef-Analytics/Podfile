@@ -17,6 +17,7 @@ pod 'Parse'
   pod 'PNChart'
   pod 'SVProgressHUD'
   pod 'PKYStepper', '~> 0.0'
+  pod 'Animated-Gif-iOS', '~> 1.1'
 
   target 'Fresh-Chef-AnalyticsTests' do
     inherit! :search_paths

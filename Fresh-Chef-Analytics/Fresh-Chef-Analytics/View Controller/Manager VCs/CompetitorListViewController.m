@@ -56,21 +56,25 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     CompetitorsCell *cell = [tableView dequeueReusableCellWithIdentifier: @"Competitors"];
-    NSDictionary *business = ((NSArray*)self.businesses[self.segmentControl.selectedSegmentIndex])[indexPath.row];
-    
-    cell.competitorName.text = business[@"name"];
-    cell.address.text = [NSString stringWithFormat:@"%@, %@",business[@"location"][@"display_address"][0], business[@"location"][@"display_address"][1]];
-    cell.rating.text = [NSString stringWithFormat:@"%@", business[@"rating"]];
-    cell.price.text = business[@"price"];
-   // NSMutableAttributedString * link = [[NSMutableAttributedString alloc] initWithString:@"Yelp Link"];
-   // [link addAttribute: NSLinkAttributeName value:business[@"url"] range: NSMakeRange(0, link.length)];
-    //to get lat long: business[@"coordinates"][@latitude"] / business[@"coordinates"][@latitude"][@"longitude"]
+    if (((NSArray*)self.businesses[self.segmentControl.selectedSegmentIndex]).count != 0){
+        
+        NSDictionary *business = ((NSArray*)self.businesses[self.segmentControl.selectedSegmentIndex])[indexPath.row];
+        
+        cell.competitorName.text = business[@"name"];
+        cell.address.text = [NSString stringWithFormat:@"%@, %@",business[@"location"][@"display_address"][0], business[@"location"][@"display_address"][1]];
+        cell.rating.text = [NSString stringWithFormat:@"%@", business[@"rating"]];
+        cell.price.text = business[@"price"];
+       // NSMutableAttributedString * link = [[NSMutableAttributedString alloc] initWithString:@"Yelp Link"];
+       // [link addAttribute: NSLinkAttributeName value:business[@"url"] range: NSMakeRange(0, link.length)];
+        //to get lat long: business[@"coordinates"][@latitude"] / business[@"coordinates"][@latitude"][@"longitude"]
 
-   cell.yelpLink.link = business[@"url"];
-    NSString *imageUrl = business[@"image_url"];
-    [NSURLConnection sendAsynchronousRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:imageUrl]] queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
-        cell.competitorImage.image = [UIImage imageWithData:data];
-    }];
+       cell.yelpLink.link = business[@"url"];
+        NSString *imageUrl = business[@"image_url"];
+        [NSURLConnection sendAsynchronousRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:imageUrl]] queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
+            cell.competitorImage.image = [UIImage imageWithData:data];
+        }];
+    }
+
     return cell;
 
 }
