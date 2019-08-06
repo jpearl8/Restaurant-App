@@ -9,7 +9,7 @@
 #import "OrderViewCell.h"
 
 @interface OrderViewCell() <UIGestureRecognizerDelegate>
-
+@property (nonatomic, strong) IBOutletCollection(UIView) NSArray *swipeCollections;
 @property (nonatomic, strong) UIPanGestureRecognizer *panRecognizer;
 @property (nonatomic, assign) CGPoint panStartPoint;
 @property (nonatomic, assign) CGFloat startingRightLayoutConstraintConstant;
@@ -28,6 +28,9 @@ static CGFloat const kBounceValue = 20.0f;
 
 - (void)awakeFromNib {
     [super awakeFromNib];
+    for (UIView *aView in self.swipeCollections){
+        aView.hidden = YES;
+    }
     self.isExpanded = NO;
     [self.ordersButton.imageView setImage:[UIImage imageNamed:@"order"]];
     self.panRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panThisCell:)];
@@ -50,9 +53,15 @@ static CGFloat const kBounceValue = 20.0f;
     self.panRecognizer.delegate = self;
     [self.ordersButton setImage:[UIImage imageNamed:@"order"] forState:UIControlStateNormal];
     [self resetConstraintContstantsToZero:NO notifyDelegateDidClose:NO];
+    for (UIView *aView in self.swipeCollections){
+        aView.hidden = YES;
+    }
 }
 - (void)openCell {
     [self setConstraintsToShowAllButtons:NO notifyDelegateDidOpen:NO];
+    for (UIView *aView in self.swipeCollections){
+        aView.hidden = NO;
+    }
 }
 
 
@@ -89,7 +98,9 @@ static CGFloat const kBounceValue = 20.0f;
 //constraint functions
 - (void)resetConstraintContstantsToZero:(BOOL)animated notifyDelegateDidClose:(BOOL)notifyDelegate {
  
-    
+    for (UIView *aView in self.swipeCollections){
+        aView.hidden = YES;
+    }
     if (self.startingRightLayoutConstraintConstant == 0 &&
         self.contentViewRightConstraint.constant == 0) {
         //Already all the way closed, no bounce necessary
@@ -111,7 +122,9 @@ static CGFloat const kBounceValue = 20.0f;
 
 - (void)setConstraintsToShowAllButtons:(BOOL)animated notifyDelegateDidOpen:(BOOL)notifyDelegate {
 
-    
+    for (UIView *aView in self.swipeCollections){
+        aView.hidden = NO;
+    }
     //1
     if (self.startingRightLayoutConstraintConstant == [self buttonTotalWidth] &&
         self.contentViewRightConstraint.constant == [self buttonTotalWidth]) {
