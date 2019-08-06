@@ -16,6 +16,7 @@ pod 'Parse'
   pod 'AFNetworking'
   pod 'PNChart'
   pod 'SVProgressHUD'
+  pod 'PKYStepper', '~> 0.0'
 
   target 'Fresh-Chef-AnalyticsTests' do
     inherit! :search_paths

@@ -147,7 +147,7 @@
     selectedIndexPath = indexPath;
     if(cell.isExpanded){
         cell.isExpanded = NO;
-        [cell.ordersButton setImage:[UIImage imageNamed:@"order"] forState:UIControlStateNormal];
+        [cell.ordersButton setImage:[UIImage imageNamed:@"order_select"] forState:UIControlStateNormal];
     } else {
         cell.isExpanded = YES;
         [cell.ordersButton setImage:[UIImage imageNamed:@"order_selected"] forState:UIControlStateNormal];

@@ -14,7 +14,7 @@
 #import "OrderManager.h"
 #import "WaiterManager.h"
 #import "AddItemViewController.h"
-
+#import "UIRefs.h"
 @interface EditOrderViewController () <UITableViewDelegate, UITableViewDataSource, AddOrdersDelegate>
 
 @property (strong, nonatomic) IBOutlet UIButton *waiterSelected;
@@ -91,7 +91,6 @@
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:simpleTableIdentifier];
         }
         cell.textLabel.text = self.waiters[indexPath.row].name;
-        cell.backgroundColor =  [[Helpful_funs shared] colorFromHexString:@"#ADD8E6"];
         return cell;
     }
 }

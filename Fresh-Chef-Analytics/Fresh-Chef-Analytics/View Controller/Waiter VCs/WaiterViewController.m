@@ -11,6 +11,7 @@ get dish items from restaurant table
 hookup search bar
 pass final array on submit button of data table
  */
+
 #import "YelpAPIManager.h"
 #import "WaiterViewController.h"
 #import "Dish.h"
@@ -27,9 +28,10 @@ pass final array on submit button of data table
 #import "WaiterManager.h"
 #import "OpenOrder.h"
 #import "OrderManager.h"
+#import "UIRefs.h"
 
 
-@interface WaiterViewController () <UITableViewDelegate, UITableViewDataSource>
+@interface WaiterViewController () <UITableViewDelegate, UITableViewDataSource, StepperCell>
 
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (weak, nonatomic) IBOutlet UITableView *menuItems;
@@ -47,10 +49,16 @@ pass final array on submit button of data table
 
 @property (strong, nonatomic) IBOutlet UIImageView *backgroundImage;
 
-@property (strong, nonatomic) IBOutlet UINavigationBar *navBar;
 
-@property (strong, nonatomic) IBOutlet UIImageView *topImage;
 
+
+
+
+
+@property (strong, nonatomic) NSMutableDictionary *orderedDishesDict;
+@property (strong, nonatomic) NSMutableDictionary *filteredCategoriesOfDishes;
+@property (strong, nonatomic) NSArray *categories;
+@property (assign, nonatomic) NSInteger selectedIndex;
 
 
 
@@ -63,15 +71,22 @@ pass final array on submit button of data table
 - (void)viewDidLoad {
 
     [super viewDidLoad];
+    self.submitButton.layer.cornerRadius = 10;
     self.customerNumber.text = @"";
     self.tableNumber.text = @"";
-    
+    self.button.layer.borderWidth = .5f;
+    self.button.layer.borderColor = [[UIRefs shared] colorFromHexString:@"#2c91fd"].CGColor;
+    self.tableNumber.layer.borderWidth = .5f;
+    self.tableNumber.layer.borderColor = [[UIRefs shared] colorFromHexString:@"#2c91fd"].CGColor;
+    self.customerNumber.layer.borderWidth = .5f;
+    self.customerNumber.layer.borderColor = [[UIRefs shared] colorFromHexString:@"#2c91fd"].CGColor;
+   
 //    NSString *category = [PFUser currentUser][@"theme"];
 //    NSString *category_top = [NSString stringWithFormat:@"%@_top", category];
 //    NSString *category_waiter = [NSString stringWithFormat:@"%@_waiter", category];
 //    [self.backgroundImage setImage:[UIImage imageNamed:category_waiter]];
 //    [self.topImage setImage:[UIImage imageNamed:category_top]];
-    [[Helpful_funs shared] setImages:self.backgroundImage top:self.topImage waiterView:YES];
+    [[UIRefs shared] setImage:self.backgroundImage isCustomerForm:NO] ;
     self.waiterTable.hidden = YES;
     self.menuItems.delegate = self;
     self.menuItems.dataSource = self;
@@ -86,6 +101,12 @@ pass final array on submit button of data table
     [refreshControl addTarget:self action:@selector(runDishQuery) forControlEvents:UIControlEventValueChanged];
     [self.menuItems insertSubview:refreshControl atIndex:0];
     self.menuItems.rowHeight = UITableViewAutomaticDimension;
+    
+    self.selectedIndex = 0;
+    self.categories = [[[MenuManager shared] categoriesOfDishes] allKeys];
+    self.orderedDishesDict = [[NSMutableDictionary alloc] initWithDictionary:[[MenuManager shared] dishesByFreq]];
+    self.filteredCategoriesOfDishes = [NSMutableDictionary alloc];
+    self.filteredCategoriesOfDishes = [self.filteredCategoriesOfDishes initWithDictionary:self.orderedDishesDict];
 }
 
 - (IBAction)selectedWaiter:(UIButton *)sender {
@@ -95,36 +116,59 @@ pass final array on submit button of data table
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if ([tableView.restorationIdentifier isEqualToString:@"menu"]){
-        return self.filteredDishes.count;
+        //return self.filteredDishes.count;
+        return [self.filteredCategoriesOfDishes[self.categories[section]] count];
     }
     else {
         return self.waiters.count;
     }
 }
 
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    if ([tableView.restorationIdentifier isEqualToString:@"menu"]){
+        return self.filteredCategoriesOfDishes.count;
+    } else { return 1; }
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
+    if ([tableView.restorationIdentifier isEqualToString:@"menu"]){
+        return self.categories[section];
+    }
+    return nil;
+}
+
+
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     if ([tableView.restorationIdentifier isEqualToString:@"menu"]){
         WaitTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier: @"Orders"];
-        Dish *dish = self.filteredDishes[indexPath.row];
+        Dish *dish = self.filteredCategoriesOfDishes[self.categories[indexPath.section]][indexPath.row];
         cell.dish = dish;
+        cell.delegate = self;
         cell.name.text = dish.name;
         cell.type.text = dish.type;
-        cell.stepper.dish = dish;
+
         int index = [[Helpful_funs shared] findAmountIndexwithDishArray:self.orderedDishes withDish:dish];
         if (index == -1){
-            cell.stepper.value = 0;
+            cell.value = 0;
         } else {
-            cell.stepper.value = [self.amounts[index] doubleValue];
+            cell.value = [self.amounts[index] doubleValue];
         }
         //cell.stepper.value = [self searchForAmount:self.customerOrder withDish:dish];
         cell.dishDescription.text = dish.dishDescription;
+        NSString *category = [PFUser currentUser][@"theme"];
+        if ([category isEqualToString:@"Comfortable"]){
+            cell.type.textColor = [UIColor whiteColor];
+            //cell.stepper.tintColor = [UIColor whiteColor];
+
+        }
         PFFileObject *dishImageFile = (PFFileObject *)dish.image;
         [dishImageFile getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
             if(!error){
                 cell.image.image = [UIImage imageWithData:imageData];
             }
         }];
-        cell.amount.text = [NSString stringWithFormat:@"%.0f", cell.stepper.value];
+        cell.amount.text = [NSString stringWithFormat:@"%.0f", cell.value];
         return cell;
     }
     else {
@@ -134,7 +178,8 @@ pass final array on submit button of data table
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:simpleTableIdentifier];
         }
         cell.textLabel.text = self.waiters[indexPath.row].name;
-        cell.backgroundColor =  [[Helpful_funs shared] colorFromHexString:@"#ADD8E6"];
+        cell.backgroundColor = [UIColor whiteColor];
+        //[[Helpful_funs shared] colorFromHexString:@"#ADD8E6"];
         return cell;
     }
 }
@@ -165,19 +210,38 @@ pass final array on submit button of data table
 
 
 
+//- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
+//    if (searchText.length != 0) {
+//        NSPredicate *predicate = [NSPredicate predicateWithBlock:^BOOL(NSDictionary *evaluatedObject, NSDictionary *bindings) {
+//            return [evaluatedObject[@"name"] containsString:searchText];
+//        }];
+//        self.filteredDishes = [self.dishes filteredArrayUsingPredicate:predicate];
+//    }
+//    else {
+//        self.filteredDishes = self.dishes;
+//    }
+//    [self.menuItems reloadData];
+//}
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
     if (searchText.length != 0) {
         NSPredicate *predicate = [NSPredicate predicateWithBlock:^BOOL(NSDictionary *evaluatedObject, NSDictionary *bindings) {
-            return [evaluatedObject[@"name"] containsString:searchText];
+            return [[evaluatedObject[@"name"] lowercaseString] containsString:[searchText lowercaseString]];
         }];
-        self.filteredDishes = [self.dishes filteredArrayUsingPredicate:predicate];
+        for (NSString *category in self.categories)
+        {
+            NSArray *filteredCategory = [[NSArray alloc] initWithArray:self.orderedDishesDict[category]];
+            filteredCategory = [filteredCategory filteredArrayUsingPredicate:predicate];
+            [self.filteredCategoriesOfDishes setValue:filteredCategory forKey:category];
+        }
+        [self.menuItems reloadData];
+        
     }
     else {
-        self.filteredDishes = self.dishes;
+        self.filteredCategoriesOfDishes = [NSMutableDictionary dictionaryWithDictionary:self.orderedDishesDict];
+        [self.menuItems reloadData];
+        
     }
-    [self.menuItems reloadData];
 }
-
 
 
 - (IBAction)didTapLogout:(id)sender {
@@ -199,16 +263,17 @@ pass final array on submit button of data table
     }
 }
 
-- (IBAction)stepperChange:(specialStepper *)sender {
-    int index = [[Helpful_funs shared] findAmountIndexwithDishArray:self.orderedDishes withDish:sender.dish];
+
+
+-(void)stepperIncrement:(double)amount withDish:(Dish*)dish{
+    int index = [[Helpful_funs shared] findAmountIndexwithDishArray:self.orderedDishes withDish:dish];
     if (index == -1){
-        [self.orderedDishes addObject:sender.dish];
+        [self.orderedDishes addObject:dish];
         [self.amounts addObject:[NSNumber numberWithInt:1]];
     } else {
-        self.amounts[index] = [NSNumber numberWithDouble:sender.value];
+        self.amounts[index] = [NSNumber numberWithDouble:amount];
     };
 }
-
 
 - (IBAction)onSubmit:(id)sender{
     NSMutableArray<OpenOrder *>*openOrdersArray = [[NSMutableArray alloc] init];

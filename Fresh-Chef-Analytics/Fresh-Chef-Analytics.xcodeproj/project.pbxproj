@@ -25,6 +25,8 @@
 		A5C06F7822E8FECF00F634E3 /* OpenOrder.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C06F7722E8FECF00F634E3 /* OpenOrder.m */; };
 		A5C06F7B22E8FEEB00F634E3 /* ClosedOrder.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C06F7A22E8FEEB00F634E3 /* ClosedOrder.m */; };
 		A5C06F7E22E9028000F634E3 /* OrderManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C06F7D22E9028000F634E3 /* OrderManager.m */; };
+		A5CE07B422F8FFA500944539 /* PhotoAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = A5CE07B322F8FFA500944539 /* PhotoAnnotation.m */; };
+		A5CE07B722F9F5F700944539 /* YelpAPIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A5CE07B622F9F5F700944539 /* YelpAPIManager.m */; };
 		A5D3896522F89D5B00B17AEC /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5D3896422F89D5B00B17AEC /* MapViewController.m */; };
 		A5D3896822F8CBE000B17AEC /* Coordinate.m in Sources */ = {isa = PBXBuildFile; fileRef = A5D3896722F8CBE000B17AEC /* Coordinate.m */; };
 		A5ED3F3D22F3680300C0C031 /* CustomPopUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5ED3F3C22F3680300C0C031 /* CustomPopUpViewController.m */; };
@@ -73,12 +75,12 @@
 		FF91766822F51298007AEDB1 /* OpenOrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF91766722F51298007AEDB1 /* OpenOrderViewController.m */; };
 		FF91766C22F51CFD007AEDB1 /* OrderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FF91766B22F51CFD007AEDB1 /* OrderCell.m */; };
 		FF91767222F8BA53007AEDB1 /* ClosedOrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF91767122F8BA53007AEDB1 /* ClosedOrderViewController.m */; };
+		FFAB492522F9FCE6003E2DA1 /* UIRefs.m in Sources */ = {isa = PBXBuildFile; fileRef = FFAB492422F9FCE6003E2DA1 /* UIRefs.m */; };
 		FFB3224722DF9DF700BF966F /* WaitTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FFB3224622DF9DF700BF966F /* WaitTableViewCell.m */; };
 		FFC87ACD22EA2650009DE74C /* YelpLinkViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FFC87ACC22EA2650009DE74C /* YelpLinkViewController.m */; };
 		FFC87AD322EA2A91009DE74C /* Link.m in Sources */ = {isa = PBXBuildFile; fileRef = FFC87AD222EA2A91009DE74C /* Link.m */; };
 		FFEA6BC622E28DD0008665BD /* ElegantTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FFEA6BC522E28DD0008665BD /* ElegantTableViewCell.m */; };
 		FFEA6BCA22E28E03008665BD /* ComfortableTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FFEA6BC922E28E03008665BD /* ComfortableTableViewCell.m */; };
-		FFECCE4D22E682F20000FDFF /* YelpAPIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FFECCE4C22E682F20000FDFF /* YelpAPIManager.m */; };
 		FFF1C48D22E02A8200C2AC03 /* specialStepper.m in Sources */ = {isa = PBXBuildFile; fileRef = FFF1C48C22E02A8200C2AC03 /* specialStepper.m */; };
 		FFF1C49022E03B5300C2AC03 /* FunTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FFF1C48F22E03B5300C2AC03 /* FunTableViewCell.m */; };
 		FFFC45E122EE097B003E8FF6 /* OrderViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FFFC45E022EE097B003E8FF6 /* OrderViewCell.m */; };
@@ -135,6 +137,10 @@
 		A5C06F7A22E8FEEB00F634E3 /* ClosedOrder.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ClosedOrder.m; sourceTree = "<group>"; };
 		A5C06F7C22E9028000F634E3 /* OrderManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OrderManager.h; sourceTree = "<group>"; };
 		A5C06F7D22E9028000F634E3 /* OrderManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OrderManager.m; sourceTree = "<group>"; };
+		A5CE07B222F8FFA500944539 /* PhotoAnnotation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PhotoAnnotation.h; sourceTree = "<group>"; };
+		A5CE07B322F8FFA500944539 /* PhotoAnnotation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PhotoAnnotation.m; sourceTree = "<group>"; };
+		A5CE07B522F9F5F700944539 /* YelpAPIManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YelpAPIManager.h; sourceTree = "<group>"; };
+		A5CE07B622F9F5F700944539 /* YelpAPIManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YelpAPIManager.m; sourceTree = "<group>"; };
 		A5D3896322F89D5B00B17AEC /* MapViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
 		A5D3896422F89D5B00B17AEC /* MapViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
 		A5D3896622F8CBE000B17AEC /* Coordinate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Coordinate.h; sourceTree = "<group>"; };
@@ -237,6 +243,8 @@
 		FF91766B22F51CFD007AEDB1 /* OrderCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OrderCell.m; sourceTree = "<group>"; };
 		FF91767022F8BA53007AEDB1 /* ClosedOrderViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ClosedOrderViewController.h; sourceTree = "<group>"; };
 		FF91767122F8BA53007AEDB1 /* ClosedOrderViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ClosedOrderViewController.m; sourceTree = "<group>"; };
+		FFAB492322F9FCE6003E2DA1 /* UIRefs.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UIRefs.h; sourceTree = "<group>"; };
+		FFAB492422F9FCE6003E2DA1 /* UIRefs.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UIRefs.m; sourceTree = "<group>"; };
 		FFB3224522DF9DF700BF966F /* WaitTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = WaitTableViewCell.h; path = "Fresh-Chef-Analytics/View Controller/Waiter VCs/WaitTableViewCell.h"; sourceTree = SOURCE_ROOT; };
 		FFB3224622DF9DF700BF966F /* WaitTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = WaitTableViewCell.m; path = "Fresh-Chef-Analytics/View Controller/Waiter VCs/WaitTableViewCell.m"; sourceTree = SOURCE_ROOT; };
 		FFC87ACB22EA2650009DE74C /* YelpLinkViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YelpLinkViewController.h; sourceTree = "<group>"; };
@@ -248,8 +256,6 @@
 		FFEA6BC822E28E03008665BD /* ComfortableTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ComfortableTableViewCell.h; sourceTree = "<group>"; };
 		FFEA6BC922E28E03008665BD /* ComfortableTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ComfortableTableViewCell.m; sourceTree = "<group>"; };
 		FFECCE4522E668F40000FDFF /* Fresh-Chef-Analytics-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Fresh-Chef-Analytics-Bridging-Header.h"; sourceTree = "<group>"; };
-		FFECCE4B22E682F20000FDFF /* YelpAPIManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YelpAPIManager.h; sourceTree = "<group>"; };
-		FFECCE4C22E682F20000FDFF /* YelpAPIManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YelpAPIManager.m; sourceTree = "<group>"; };
 		FFF1C48B22E02A8200C2AC03 /* specialStepper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = specialStepper.h; sourceTree = "<group>"; };
 		FFF1C48C22E02A8200C2AC03 /* specialStepper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = specialStepper.m; sourceTree = "<group>"; };
 		FFF1C48E22E03B5300C2AC03 /* FunTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FunTableViewCell.h; sourceTree = "<group>"; };
@@ -301,16 +307,18 @@
 		A535D7B422DE6B8C002B79CA /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				A5CE07B522F9F5F700944539 /* YelpAPIManager.h */,
+				A5CE07B622F9F5F700944539 /* YelpAPIManager.m */,
 				FF318E8722EAC57C003AF015 /* OpenOrderButton.h */,
 				FF318E8822EAC57C003AF015 /* OpenOrderButton.m */,
-				FFECCE4B22E682F20000FDFF /* YelpAPIManager.h */,
-				FFECCE4C22E682F20000FDFF /* YelpAPIManager.m */,
 				A535D7B722DE6CE9002B79CA /* Dish.h */,
 				A535D7B822DE6CE9002B79CA /* Dish.m */,
 				A535D7BD22DE9FBF002B79CA /* Waiter.h */,
 				A535D7BE22DE9FBF002B79CA /* Waiter.m */,
 				A535D7C322DFD4B5002B79CA /* MenuManager.h */,
 				A535D7C422DFD4B5002B79CA /* MenuManager.m */,
+				FFAB492322F9FCE6003E2DA1 /* UIRefs.h */,
+				FFAB492422F9FCE6003E2DA1 /* UIRefs.m */,
 				FF1EDA9122E2951A00B1B897 /* Helpful_funs.h */,
 				FF1EDA9222E2951A00B1B897 /* Helpful_funs.m */,
 				FFF1C48B22E02A8200C2AC03 /* specialStepper.h */,
@@ -332,6 +340,8 @@
 				B6848C0122F108930069CC94 /* FCADate.m */,
 				A5D3896622F8CBE000B17AEC /* Coordinate.h */,
 				A5D3896722F8CBE000B17AEC /* Coordinate.m */,
+				A5CE07B222F8FFA500944539 /* PhotoAnnotation.h */,
+				A5CE07B322F8FFA500944539 /* PhotoAnnotation.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -826,19 +836,20 @@
 				B6C4BFF922E9107400FE5EAC /* OrdersManagerViewController.m in Sources */,
 				B6C4BFF022E8FE8500FE5EAC /* DataViewTableViewController.m in Sources */,
 				FF318E8922EAC57C003AF015 /* OpenOrderButton.m in Sources */,
+				A5CE07B722F9F5F700944539 /* YelpAPIManager.m in Sources */,
 				FF5924FF22E2155D00F66EC6 /* ReceiptTableViewCell.m in Sources */,
 				B6D7B35C22DF95BA002093CB /* ManagerLoginViewController.m in Sources */,
 				A535D7BC22DE8FB2002B79CA /* (null) in Sources */,
 				A5D3896522F89D5B00B17AEC /* MapViewController.m in Sources */,
 				FF03BF3D22DE97AD00719E8C /* ThankYouViewController.m in Sources */,
 				FF03BF4C22DE9FFD00719E8C /* MenuListViewController.m in Sources */,
-				FFECCE4D22E682F20000FDFF /* YelpAPIManager.m in Sources */,
 				FF7374CE22F265B900632056 /* EditOrderViewCell.m in Sources */,
 				B6848BFF22F105CF0069CC94 /* NSDate+DayMethods.m in Sources */,
 				FFEA6BCA22E28E03008665BD /* ComfortableTableViewCell.m in Sources */,
 				FFEA6BC622E28DD0008665BD /* ElegantTableViewCell.m in Sources */,
 				A535D7B922DE6CE9002B79CA /* Dish.m in Sources */,
 				FF03BF6222DF763300719E8C /* MenuListTableViewCell.m in Sources */,
+				FFAB492522F9FCE6003E2DA1 /* UIRefs.m in Sources */,
 				FF03BF3A22DE975B00719E8C /* ReceiptViewController.m in Sources */,
 				FF03BF3422DE971600719E8C /* ComfortableFormViewController.m in Sources */,
 				FFFC45E122EE097B003E8FF6 /* OrderViewCell.m in Sources */,
@@ -861,6 +872,7 @@
 				FF03BF5622DEA0A000719E8C /* WaitDetailsViewController.m in Sources */,
 				A535D7C522DFD4B5002B79CA /* MenuManager.m in Sources */,
 				FF03BF5022DEA04900719E8C /* DishDetailsViewController.m in Sources */,
+				A5CE07B422F8FFA500944539 /* PhotoAnnotation.m in Sources */,
 				FF03BF5922DEA0C700719E8C /* CompetitorDetailsViewController.m in Sources */,
 				A5ED3F3D22F3680300C0C031 /* CustomPopUpViewController.m in Sources */,
 				FF03BF5C22DEA16600719E8C /* CompetitorListViewController.m in Sources */,
@@ -996,7 +1008,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1049,7 +1061,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -1064,13 +1076,15 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = X7H39TKG3W;
+				DEVELOPMENT_TEAM = C45J47S9V6;
+				DEVELOPMENT_TEAM = HSX3BRP6J4;
 				INFOPLIST_FILE = "Fresh-Chef-Analytics/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.jpearl.Fresh-Chef-Analytics1";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.jpearl.Fresh-Chef-Analytics3";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.jpearl.Fresh-Chef-Analytics2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Fresh-Chef-Analytics/Models/Fresh-Chef-Analytics-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -1086,13 +1100,15 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = X7H39TKG3W;
+				DEVELOPMENT_TEAM = C45J47S9V6;
+				DEVELOPMENT_TEAM = HSX3BRP6J4;
 				INFOPLIST_FILE = "Fresh-Chef-Analytics/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.jpearl.Fresh-Chef-Analytics1";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.jpearl.Fresh-Chef-Analytics3";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.jpearl.Fresh-Chef-Analytics2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Fresh-Chef-Analytics/Models/Fresh-Chef-Analytics-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;

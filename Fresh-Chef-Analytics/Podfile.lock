@@ -25,6 +25,7 @@ PODS:
     - Parse/Core (= 1.17.2)
   - Parse/Core (1.17.2):
     - Bolts/Tasks (~> 1.9)
+  - PKYStepper (0.0.1)
   - PNChart (0.8.9):
     - UICountingLabel (~> 1.2.0)
   - SVProgressHUD (2.2.5)
@@ -39,6 +40,7 @@ DEPENDENCIES:
   - HCSStarRatingView (~> 1.5)
   - MKDropdownMenu
   - Parse
+  - PKYStepper (~> 0.0)
   - PNChart
   - SVProgressHUD
   - "UITextView+Placeholder"
@@ -53,6 +55,7 @@ SPEC REPOS:
     - HCSStarRatingView
     - MKDropdownMenu
     - Parse
+    - PKYStepper
     - PNChart
     - SVProgressHUD
     - UICountingLabel
@@ -67,11 +70,12 @@ SPEC CHECKSUMS:
   HCSStarRatingView: 1d18f79654735514cd6f00e6d90e38cb6320dc31
   MKDropdownMenu: 269df4a41d21a1db684ce8bc709befe419fc5bae
   Parse: 3b31a3dd1777b07ee7f0caee32fafbff544483a5
+  PKYStepper: 8dacefbddf9fa2b6aaec2ef828b46a78daa2db7d
   PNChart: 84774d225c2126ded6c93d4dbe6ae98c3a73c2d2
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   UICountingLabel: 1db4e7d023e1762171eb226d6dff47a7a84f27aa
   "UITextView+Placeholder": 0c3efd97f37ea64bde7f34cc6e90fe02e87b3909
 
-PODFILE CHECKSUM: 12d684b41542e289336929e016619c4bedc47693
+PODFILE CHECKSUM: ae974458f59425f0d9d5afa84309ca4c72a676bb
 
-COCOAPODS: 1.7.4
+COCOAPODS: 1.7.2

@@ -24,7 +24,6 @@ NS_ASSUME_NONNULL_BEGIN
 -(BOOL)arrayOfZeros:(NSArray<NSNumber *>*)array;
 //-(NSMutableArray<NSString *>*)fillCellArrays:(NSArray<OpenOrder *>*)openOrders;
 -(int)findDishItem:(int)index withDishArray:(NSMutableArray <Dish *>*)dishesArray withOpenOrders:(NSArray<OpenOrder *>*)openOrders;
--(void)setImages:(nullable UIImageView *)background top:(nullable UIImageView *)top waiterView:(BOOL)waiterView;
 @end
 
 NS_ASSUME_NONNULL_END

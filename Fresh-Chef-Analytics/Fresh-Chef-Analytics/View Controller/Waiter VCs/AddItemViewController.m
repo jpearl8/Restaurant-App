@@ -15,7 +15,7 @@
 #import "EditOrderViewController.h"
 
 
-@interface AddItemViewController () <UITableViewDelegate, UITableViewDataSource>
+@interface AddItemViewController () <UITableViewDelegate, UITableViewDataSource, StepperCell>
 @property (strong, nonatomic) IBOutlet UITableView *ordersTableView;
 @property (strong, nonatomic) NSMutableDictionary<NSString *, NSArray<OpenOrder *>*>* totalOpenTables;
 @property (strong, nonatomic) NSArray<NSString *>* keys;
@@ -32,6 +32,10 @@
 @property (strong, nonatomic) NSMutableArray <OpenOrder *>* openOrdersFromEdit;
 - (IBAction)addToOrder:(UIBarButtonItem *)sender;
 - (IBAction)cancel:(UIBarButtonItem *)sender;
+@property (strong, nonatomic) NSMutableDictionary *orderedDishesDict;
+@property (strong, nonatomic) NSMutableDictionary *filteredCategoriesOfDishes;
+@property (strong, nonatomic) NSArray *categories;
+@property (assign, nonatomic) NSInteger selectedIndex;
 
 @end
 
@@ -57,25 +61,38 @@
     [refreshControl addTarget:self action:@selector(runDishQuery) forControlEvents:UIControlEventValueChanged];
     [self.ordersTableView insertSubview:refreshControl atIndex:0];
     self.ordersTableView.rowHeight = UITableViewAutomaticDimension;
-    // Do any additional setup after loading the view.
+    self.categories = [[[MenuManager shared] categoriesOfDishes] allKeys];
+    self.orderedDishesDict = [[NSMutableDictionary alloc] initWithDictionary:[[MenuManager shared] dishesByFreq]];
+    self.filteredCategoriesOfDishes = [NSMutableDictionary alloc];
+    self.filteredCategoriesOfDishes = [self.filteredCategoriesOfDishes initWithDictionary:self.orderedDishesDict];
+  
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-        return self.filteredDishes.count;
+    return  [self.filteredCategoriesOfDishes[self.categories[section]] count];
+
+    //return self.filteredDishes.count;
+}
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+        return self.filteredCategoriesOfDishes.count;
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
+        return self.categories[section];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     WaitTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier: @"Item"];
-    Dish *dish = self.filteredDishes[indexPath.row];
+    Dish *dish = self.filteredCategoriesOfDishes[self.categories[indexPath.section]][indexPath.row];
     cell.dish = dish;
     cell.name.text = dish.name;
     cell.type.text = dish.type;
-    cell.stepper.dish = dish;
+    cell.delegate = self;
     int index = [[Helpful_funs shared] findAmountIndexwithDishArray:self.orderedDishes withDish:dish];
     if (index == -1){
-        cell.stepper.value = 0;
+        cell.value = 0;
     } else {
-        cell.stepper.value = [self.amounts[index] doubleValue];
+        cell.value = [self.amounts[index] doubleValue];
     }
     cell.dishDescription.text = dish.dishDescription;
     PFFileObject *dishImageFile = (PFFileObject *)dish.image;
@@ -84,7 +101,13 @@
             cell.image.image = [UIImage imageWithData:imageData];
         }
     }];
-    cell.amount.text = [NSString stringWithFormat:@"%.0f", cell.stepper.value];
+    NSString *category = [PFUser currentUser][@"theme"];
+    if ([category isEqualToString:@"Comfortable"]){
+        cell.type.textColor = [UIColor whiteColor];
+        //cell.stepper.tintColor = [UIColor whiteColor];
+        
+    }
+    cell.amount.text  = [NSString stringWithFormat:@"%.0f", cell.value];
     return cell;
 }
 
@@ -114,13 +137,13 @@
     [self.ordersTableView reloadData];
 }
 
-- (IBAction)stepperChange:(specialStepper *)sender {
-    int index = [[Helpful_funs shared] findAmountIndexwithDishArray:self.orderedDishes withDish:sender.dish];
+-(void)stepperIncrement:(double)amount withDish:(Dish*)dish{
+    int index = [[Helpful_funs shared] findAmountIndexwithDishArray:self.orderedDishes withDish:dish];
     if (index == -1){
-        [self.orderedDishes addObject:sender.dish];
+        [self.orderedDishes addObject:dish];
         [self.amounts addObject:[NSNumber numberWithInt:1]];
     } else {
-        self.amounts[index] = [NSNumber numberWithDouble:sender.value];
+        self.amounts[index] = [NSNumber numberWithDouble:amount];
     };
 }
 
