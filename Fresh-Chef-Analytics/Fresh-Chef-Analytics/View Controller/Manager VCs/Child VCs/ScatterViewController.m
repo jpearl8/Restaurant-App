@@ -8,6 +8,7 @@
 
 #import "ScatterViewController.h"
 #import "DishDetailsViewController.h"
+#import "UIRefs.h"
 
 @interface ScatterViewController ()
 @property (weak, nonatomic) IBOutlet UIView *dataView;
@@ -68,7 +69,7 @@
     for (int i = 0; i < self.legend.count; i ++)
     {
         categoryScatter[i] = [PNScatterChartData new];
-        categoryScatter[i].fillColor = [[Helpful_funs shared] colorFromHexString:self.colorsFromUI[i]];
+        categoryScatter[i].fillColor = [[UIRefs shared] colorFromHexString:self.colorsFromUI[i]];
         categoryScatter[i].size = 5;
         categoryScatter[i].itemCount = [[self.dataArray[i] objectAtIndex:0] count];
         categoryScatter[i].inflexionPointStyle = PNScatterChartPointStyleCircle;
@@ -112,7 +113,7 @@
 - (void)tableView:(UITableView *)tableView willDisplayHeaderView:(UIView *)view forSection:(NSInteger)section
 {
     UITableViewHeaderFooterView *header = (UITableViewHeaderFooterView *)view;
-    [header.textLabel setTextColor: [[Helpful_funs shared] colorFromHexString:self.colorsFromUI[section]]];
+    [header.textLabel setTextColor: [[UIRefs shared] colorFromHexString:self.colorsFromUI[section]]];
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -132,7 +133,7 @@
     NSInteger section = indexPath.section;
     UITableViewCell *cell = [self.dishesTableView cellForRowAtIndexPath:indexPath];
     self.shownDish.fillColor = [UIColor colorWithWhite:0.0 alpha:0.0];
-    UIColor *colorForDish = [[Helpful_funs shared] colorFromHexString:self.colorsFromUI[section]];
+    UIColor *colorForDish = [[UIRefs shared] colorFromHexString:self.colorsFromUI[section]];
     [self.chooseDishButton setTitle:cell.textLabel.text forState:UIControlStateNormal];
    Dish *dish = self.categoriesOfDishes[self.legend[indexPath.section]][indexPath.row];
     self.dishFreqLabel.text = [[NSString stringWithFormat:@"%@", dish.orderFrequency] stringByAppendingString:@" orders"];
@@ -151,7 +152,7 @@
         CGFloat yValue = [self.dataArray[section][2][positionOfDish] floatValue];
         return [PNScatterChartDataItem dataItemWithX:xValue AndWithY:yValue];
     };
-    self.shownDish.fillColor = [[Helpful_funs shared] colorFromHexString:self.colorsFromUI[section]];
+    self.shownDish.fillColor = [[UIRefs shared] colorFromHexString:self.colorsFromUI[section]];
     self.shownDish.strokeColor = [UIColor blackColor];
     [self.scatterChart changePointInGraph:self.shownDish forShape:self.square];
     [self.scatterChart.layer addSublayer:self.square];

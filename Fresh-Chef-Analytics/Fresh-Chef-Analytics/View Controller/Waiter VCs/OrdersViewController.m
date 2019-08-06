@@ -18,6 +18,7 @@
 #import "AppDelegate.h"
 #import "SVProgressHUD/SVProgressHUD.h"
 #import "EditOrderViewController.h"
+#import "UIRefs.h"
 #import "LoginViewController.h"
 
 
@@ -50,7 +51,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [[Helpful_funs shared] setImages:self.background top:[NSNull null] waiterView:YES];
+    [[UIRefs shared] setImage:self.background  isCustomerForm:NO];
     self.openOrdersTable.dataSource = self;
     self.openOrdersTable.delegate = self;
     self.tableWaiterDictionary = [[NSMutableDictionary alloc] init];
@@ -234,7 +235,7 @@
     selectedIndexPath = indexPath;
     if(cell.isExpanded){
         cell.isExpanded = NO;
-        [cell.ordersButton setImage:[UIImage imageNamed:@"order"] forState:UIControlStateNormal];
+        [cell.ordersButton setImage:[UIImage imageNamed:@"order_select"] forState:UIControlStateNormal];
     } else {
         cell.isExpanded = YES;
         [cell.ordersButton setImage:[UIImage imageNamed:@"order_selected"] forState:UIControlStateNormal];

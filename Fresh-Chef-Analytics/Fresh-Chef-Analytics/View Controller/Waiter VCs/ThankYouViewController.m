@@ -9,6 +9,7 @@
 #import "ThankYouViewController.h"
 #import "Parse/Parse.h"
 #import "Helpful_funs.h"
+#import "UIRefs.h"
 
 @interface ThankYouViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *restaurantName;
@@ -21,7 +22,7 @@
 - (void)viewDidLoad {
     PFUser *currentUser = [PFUser currentUser];
     self.restaurantName.text = currentUser.username;
-    [[Helpful_funs shared] setImages:self.backgroundIm top:[NSNull null] waiterView:(NO)];
+    [[UIRefs shared] setImage:self.backgroundIm isCustomerForm:YES];
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 }

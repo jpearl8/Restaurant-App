@@ -74,6 +74,7 @@
 		FF91766822F51298007AEDB1 /* OpenOrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF91766722F51298007AEDB1 /* OpenOrderViewController.m */; };
 		FF91766C22F51CFD007AEDB1 /* OrderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FF91766B22F51CFD007AEDB1 /* OrderCell.m */; };
 		FF91767222F8BA53007AEDB1 /* ClosedOrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF91767122F8BA53007AEDB1 /* ClosedOrderViewController.m */; };
+		FFAB492522F9FCE6003E2DA1 /* UIRefs.m in Sources */ = {isa = PBXBuildFile; fileRef = FFAB492422F9FCE6003E2DA1 /* UIRefs.m */; };
 		FFB3224722DF9DF700BF966F /* WaitTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FFB3224622DF9DF700BF966F /* WaitTableViewCell.m */; };
 		FFC87ACD22EA2650009DE74C /* YelpLinkViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FFC87ACC22EA2650009DE74C /* YelpLinkViewController.m */; };
 		FFC87AD322EA2A91009DE74C /* Link.m in Sources */ = {isa = PBXBuildFile; fileRef = FFC87AD222EA2A91009DE74C /* Link.m */; };
@@ -240,6 +241,8 @@
 		FF91766B22F51CFD007AEDB1 /* OrderCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OrderCell.m; sourceTree = "<group>"; };
 		FF91767022F8BA53007AEDB1 /* ClosedOrderViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ClosedOrderViewController.h; sourceTree = "<group>"; };
 		FF91767122F8BA53007AEDB1 /* ClosedOrderViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ClosedOrderViewController.m; sourceTree = "<group>"; };
+		FFAB492322F9FCE6003E2DA1 /* UIRefs.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UIRefs.h; sourceTree = "<group>"; };
+		FFAB492422F9FCE6003E2DA1 /* UIRefs.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UIRefs.m; sourceTree = "<group>"; };
 		FFB3224522DF9DF700BF966F /* WaitTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = WaitTableViewCell.h; path = "Fresh-Chef-Analytics/View Controller/Waiter VCs/WaitTableViewCell.h"; sourceTree = SOURCE_ROOT; };
 		FFB3224622DF9DF700BF966F /* WaitTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = WaitTableViewCell.m; path = "Fresh-Chef-Analytics/View Controller/Waiter VCs/WaitTableViewCell.m"; sourceTree = SOURCE_ROOT; };
 		FFC87ACB22EA2650009DE74C /* YelpLinkViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YelpLinkViewController.h; sourceTree = "<group>"; };
@@ -314,6 +317,8 @@
 				A535D7BE22DE9FBF002B79CA /* Waiter.m */,
 				A535D7C322DFD4B5002B79CA /* MenuManager.h */,
 				A535D7C422DFD4B5002B79CA /* MenuManager.m */,
+				FFAB492322F9FCE6003E2DA1 /* UIRefs.h */,
+				FFAB492422F9FCE6003E2DA1 /* UIRefs.m */,
 				FF1EDA9122E2951A00B1B897 /* Helpful_funs.h */,
 				FF1EDA9222E2951A00B1B897 /* Helpful_funs.m */,
 				FFF1C48B22E02A8200C2AC03 /* specialStepper.h */,
@@ -844,6 +849,7 @@
 				FFEA6BC622E28DD0008665BD /* ElegantTableViewCell.m in Sources */,
 				A535D7B922DE6CE9002B79CA /* Dish.m in Sources */,
 				FF03BF6222DF763300719E8C /* MenuListTableViewCell.m in Sources */,
+				FFAB492522F9FCE6003E2DA1 /* UIRefs.m in Sources */,
 				FF03BF3A22DE975B00719E8C /* ReceiptViewController.m in Sources */,
 				FF03BF3422DE971600719E8C /* ComfortableFormViewController.m in Sources */,
 				FFFC45E122EE097B003E8FF6 /* OrderViewCell.m in Sources */,
@@ -1002,7 +1008,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1055,7 +1061,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -1070,13 +1076,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = X7H39TKG3W;
+				DEVELOPMENT_TEAM = HSX3BRP6J4;
 				INFOPLIST_FILE = "Fresh-Chef-Analytics/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.jpearl.Fresh-Chef-Analytics1";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.jpearl.Fresh-Chef-Analytics2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Fresh-Chef-Analytics/Models/Fresh-Chef-Analytics-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -1092,13 +1098,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = X7H39TKG3W;
+				DEVELOPMENT_TEAM = HSX3BRP6J4;
 				INFOPLIST_FILE = "Fresh-Chef-Analytics/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.jpearl.Fresh-Chef-Analytics1";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.jpearl.Fresh-Chef-Analytics2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Fresh-Chef-Analytics/Models/Fresh-Chef-Analytics-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;

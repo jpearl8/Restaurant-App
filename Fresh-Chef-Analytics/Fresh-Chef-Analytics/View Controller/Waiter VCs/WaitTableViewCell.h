@@ -19,8 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface WaitTableViewCell : UITableViewCell 
 
 
-@property (strong, nonatomic) IBOutlet UIStepper *stepper;
-- (IBAction)didStep:(UIStepper *)sender;
+
 @property (strong, nonatomic) IBOutlet UIButton *plus;
 - (IBAction)plusDish:(UIButton *)sender;
 

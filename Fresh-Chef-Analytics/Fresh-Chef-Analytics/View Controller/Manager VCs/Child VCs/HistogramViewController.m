@@ -7,6 +7,7 @@
 //
 
 #import "HistogramViewController.h"
+#import "UIRefs.h"
 
 @interface HistogramViewController ()
 @property (weak, nonatomic) IBOutlet UIView *dataView;
@@ -375,21 +376,21 @@
 {
     if ([stats isEqualToString:@"All Statistics"])
     {
-        self.radarChart = [[PNRadarChart alloc] initWithFrameAndColor:CGRectMake(0, 0, self.dataView.bounds.size.width, self.dataView.bounds.size.height) items:self.ratingItems valueDivider:0.25 withColor:[[[Helpful_funs shared] colorFromHexString:self.chartColors[0]] colorWithAlphaComponent:0.4]];
+        self.radarChart = [[PNRadarChart alloc] initWithFrameAndColor:CGRectMake(0, 0, self.dataView.bounds.size.width, self.dataView.bounds.size.height) items:self.ratingItems valueDivider:0.25 withColor:[[[UIRefs shared] colorFromHexString:self.chartColors[0]] colorWithAlphaComponent:0.4]];
         [self.radarChart addPlotWithData:self.frequencyItems withColor:[[[Helpful_funs shared] colorFromHexString:self.chartColors[1]] colorWithAlphaComponent:0.4]];
-        [self.radarChart addPlotWithData:self.profitItems withColor:[[[Helpful_funs shared] colorFromHexString:self.chartColors[2]] colorWithAlphaComponent:0.4]];
+        [self.radarChart addPlotWithData:self.profitItems withColor:[[[UIRefs shared] colorFromHexString:self.chartColors[2]] colorWithAlphaComponent:0.4]];
     }
     else if ([stats isEqualToString:@"Rating"])
     {
-        self.radarChart = [[PNRadarChart alloc] initWithFrameAndColor:CGRectMake(0, 0, self.dataView.bounds.size.width, self.dataView.bounds.size.height) items:self.ratingItems valueDivider:0.25 withColor:[[[Helpful_funs shared] colorFromHexString:self.chartColors[0]] colorWithAlphaComponent:0.4]];
+        self.radarChart = [[PNRadarChart alloc] initWithFrameAndColor:CGRectMake(0, 0, self.dataView.bounds.size.width, self.dataView.bounds.size.height) items:self.ratingItems valueDivider:0.25 withColor:[[[UIRefs shared] colorFromHexString:self.chartColors[0]] colorWithAlphaComponent:0.4]];
     }
     else if ([stats isEqualToString:@"Popularity"])
     {
-        self.radarChart = [[PNRadarChart alloc] initWithFrameAndColor:CGRectMake(0, 0, self.dataView.bounds.size.width, self.dataView.bounds.size.height) items:self.frequencyItems valueDivider:0.25 withColor:[[[Helpful_funs shared] colorFromHexString:self.chartColors[1]] colorWithAlphaComponent:0.4]];
+        self.radarChart = [[PNRadarChart alloc] initWithFrameAndColor:CGRectMake(0, 0, self.dataView.bounds.size.width, self.dataView.bounds.size.height) items:self.frequencyItems valueDivider:0.25 withColor:[[[UIRefs shared] colorFromHexString:self.chartColors[1]] colorWithAlphaComponent:0.4]];
     }
     else if ([stats isEqualToString:@"Profit"])
     {
-        self.radarChart = [[PNRadarChart alloc] initWithFrameAndColor:CGRectMake(0, 0, self.dataView.bounds.size.width, self.dataView.bounds.size.height) items:self.profitItems valueDivider:0.25 withColor:[[[Helpful_funs shared] colorFromHexString:self.chartColors[2]] colorWithAlphaComponent:0.4]];
+        self.radarChart = [[PNRadarChart alloc] initWithFrameAndColor:CGRectMake(0, 0, self.dataView.bounds.size.width, self.dataView.bounds.size.height) items:self.profitItems valueDivider:0.25 withColor:[[[UIRefs shared] colorFromHexString:self.chartColors[2]] colorWithAlphaComponent:0.4]];
     }
     [self.dataView addSubview:self.radarChart];
 }
