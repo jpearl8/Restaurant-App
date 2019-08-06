@@ -52,19 +52,24 @@
 }
 - (MKAnnotationView *)selfAnnotationView
 {
-//    UILabel *businessText = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 150, 20)];
     MKAnnotationView *annotationView = [[MKAnnotationView alloc] initWithAnnotation:self reuseIdentifier:@"Photo Annotation"];
     annotationView.enabled = YES;
     annotationView.canShowCallout = YES;
-//    businessText.text = self.businessTitle;
-//    businessText.numberOfLines = 0;
-//    businessText.lineBreakMode = NSLineBreakByWordWrapping;
-//    [businessText setFont:[UIFont systemFontOfSize:10]];
-//    [businessText setBackgroundColor:[UIColor whiteColor]];
-//
-//    [annotationView addSubview:businessText];
-    annotationView.backgroundColor = [UIColor colorWithRed:225 green:234 blue:254 alpha:1];
+    if ([self.imageName isEqualToString:@"pizza-40"])
+    {
+        annotationView.backgroundColor = [UIColor colorWithRed:(0.61) green:(0.99) blue:(0.796) alpha:0.8];
+    }
+    else if ([self.imageName isEqualToString:@"rating-40"])
+    {
+        annotationView.backgroundColor = [UIColor colorWithRed:(0.98) green:(0.61) blue:(0.99) alpha:0.8];
+    }
+    else if ([self.imageName isEqualToString:@"price-40"])
+    {
+        annotationView.backgroundColor = [UIColor colorWithRed:(.73) green:(.61) blue:(0.99) alpha:0.8];
+    }
     annotationView.image = [UIImage imageNamed:self.imageName];
+    annotationView.layer.cornerRadius = annotationView.frame.size.width/2;
+
     return annotationView;
 }
 @end
