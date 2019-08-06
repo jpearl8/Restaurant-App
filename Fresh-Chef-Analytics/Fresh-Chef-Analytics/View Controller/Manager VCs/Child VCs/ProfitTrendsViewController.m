@@ -16,6 +16,8 @@
 @property (weak, nonatomic) IBOutlet UIPickerView *categoryPicker;
 @property (strong, nonatomic) PNLineChart *lineChart;
 @property (strong, nonatomic) UIView *legend;
+@property (strong, nonatomic) UIBezierPath *vertLine;
+@property (strong, nonatomic) CAShapeLayer *vertShapeLayer;
 @property (strong, nonatomic) NSMutableDictionary *profitByDay;
 @property (strong, nonatomic) NSMutableDictionary *busynessByDay;
 @property (strong, nonatomic) NSMutableArray *currentXLabels;
@@ -51,6 +53,9 @@
 //    //Move legend to the desired position and add to view
 //    [self.legend setFrame:CGRectMake(100, 400, self.legend.frame.size.width, self.legend.frame.size.height)];
 //    [self.view addSubview:self.legend];
+    // initialize vertical line
+    self.vertLine = [UIBezierPath bezierPath];
+    self.vertShapeLayer = [CAShapeLayer layer];
     
     [self setupData];
     [self loadGraph];
@@ -115,12 +120,13 @@
         [self.currentDataArray addObject:self.profitByDay[key]];
         [self.busynessDataArray addObject:self.busynessByDay[key]];
     }
+    
 }
 
 - (void)loadGraph
 {
     //view setup
-    [self.view willRemoveSubview:self.legend];
+    [self.legend removeFromSuperview];
     //set initial values
     int startIdx = 0;
     int range = (int)[self.currentDataArray count];
@@ -149,7 +155,6 @@
     self.lineChart.delegate = self;
     // set up Profit data
     NSArray * data01Array = [self.currentDataArray subarrayWithRange:NSMakeRange(startIdx, range)];
-//    [lineChart setXLabels:@[@"Mon", @"Tues", @"Wed", @"Thurs"]];
     [self.lineChart setXLabels:[self.currentXLabels subarrayWithRange:NSMakeRange(startIdx, range)]];
     
     PNLineChartData *data01 = [PNLineChartData new];
@@ -177,7 +182,7 @@
         return [PNLineChartDataItem dataItemWithY:yValue];
     };
     
-    
+//    data01.showPointLabel = YES; // show label when screen is touched
     NSArray *dataArray;
     if ([self.selectedDataDisplay isEqualToString:@"Profit"]) {
         dataArray = @[data01];
@@ -209,11 +214,6 @@
     [self.dataView addSubview:self.lineChart];
 }
 
-- (void)fixNilValuesInArrays
-{
-    //For any nil value in self.currentDataArray set them equal to the average of the points on either side
-}
-
 - (NSString *)getTimeSpanSelected
 {
     NSString *selectedSpan = self.timeSpanSelected;
@@ -225,5 +225,19 @@
     return selectedDisplay;
 }
 
+- (void)drawVertLineAtPoint:(CGPoint)point
+{
+    [self.vertShapeLayer removeFromSuperlayer]; // should call these two lines when user releases touch
+    [self.vertLine removeAllPoints];
+    NSLog(@"Draw virtical line at x-cord: %f", point.x);
+//    UIBezierPath *vertLine = [UIBezierPath bezierPath];
+    [self.vertLine moveToPoint:CGPointMake(point.x, 100)];
+    [self.vertLine addLineToPoint:CGPointMake(point.x, 350)];
+    self.vertShapeLayer.path = [self.vertLine CGPath];
+    self.vertShapeLayer.strokeColor = [[UIColor lightGrayColor] CGColor];
+    self.vertShapeLayer.lineWidth = 0.5;
+    self.vertShapeLayer.fillColor = [[UIColor clearColor] CGColor];
+    [self.view.layer addSublayer:self.vertShapeLayer];
+}
 
 @end

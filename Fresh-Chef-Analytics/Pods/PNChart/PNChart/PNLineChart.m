@@ -321,62 +321,62 @@
 
 - (void)touchPoint:(NSSet *)touches withEvent:(UIEvent *)event {
     // Get the point user touched
-//    UITouch *touch = [touches anyObject];
-//    CGPoint touchPoint = [touch locationInView:self];
-//
-//    for (NSInteger p = _pathPoints.count - 1; p >= 0; p--) {
-//        NSArray *linePointsArray = _endPointsOfPath[p];
-//
-//        for (int i = 0; i < (int) linePointsArray.count - 1; i += 2) {
-//            CGPoint p1 = [linePointsArray[i] CGPointValue];
-//            CGPoint p2 = [linePointsArray[i + 1] CGPointValue];
-//
-//            // Closest distance from point to line
-//            float distance = fabs(((p2.x - p1.x) * (touchPoint.y - p1.y)) - ((p1.x - touchPoint.x) * (p1.y - p2.y)));
-//            distance /= hypot(p2.x - p1.x, p1.y - p2.y);
-//
-//            if (distance <= 5.0) {
-//                // Conform to delegate parameters, figure out what bezier path this CGPoint belongs to.
-//                for (UIBezierPath *path in _chartPath) {
-//                    BOOL pointContainsPath = CGPathContainsPoint(path.CGPath, NULL, p1, NO);
-//
-//                    if (pointContainsPath) {
-//                        [_delegate userClickedOnLinePoint:touchPoint lineIndex:[_chartPath indexOfObject:path]];
-//
-//                        return;
-//                    }
-//                }
-//            }
-//        }
-//    }
+    UITouch *touch = [touches anyObject];
+    CGPoint touchPoint = [touch locationInView:self];
+    
+    // Draw a line through the data point nearest to touchPoint.x
+    // get x value of nearest data point
+    CGPoint closestDataPoint = [[_endPointsOfPath[0] objectAtIndex:0] CGPointValue];
+    
+    for (NSInteger p = _pathPoints.count - 1; p >= 0; p--) {
+        NSArray *linePointsArray = _endPointsOfPath[p];
+        int endPoint;
+        if (((int) linePointsArray.count) % 2 == 0) {
+            endPoint = (int) linePointsArray.count; // if count is even then incrementing by two will leave off the last point
+        } else {
+            endPoint = (int) linePointsArray.count - 1;
+        }
+
+        for (int i = 0; i < endPoint; i += 2) {
+            CGPoint p1 = [linePointsArray[i] CGPointValue];
+
+            if (fabs(touchPoint.x - p1.x) < fabs(touchPoint.x - closestDataPoint.x)) {
+                closestDataPoint = p1;
+            }
+
+        }
+    }
+    
+    [self.delegate drawVertLineAtPoint:closestDataPoint];
+
 }
 
 - (void)touchKeyPoint:(NSSet *)touches withEvent:(UIEvent *)event {
     // Get the point user touched
-//    UITouch *touch = [touches anyObject];
-//    CGPoint touchPoint = [touch locationInView:self];
-//
-//    for (NSInteger p = _pathPoints.count - 1; p >= 0; p--) {
-//        NSArray *linePointsArray = _pathPoints[p];
-//
-//        for (int i = 0; i < (int) linePointsArray.count - 1; i += 1) {
-//            CGPoint p1 = [linePointsArray[i] CGPointValue];
-//            CGPoint p2 = [linePointsArray[i + 1] CGPointValue];
-//
-//            float distanceToP1 = fabs(hypot(touchPoint.x - p1.x, touchPoint.y - p1.y));
-//            float distanceToP2 = hypot(touchPoint.x - p2.x, touchPoint.y - p2.y);
-//
-//            float distance = MIN(distanceToP1, distanceToP2);
-//
-//            if (distance <= 10.0) {
+    UITouch *touch = [touches anyObject];
+    CGPoint touchPoint = [touch locationInView:self];
+
+    for (NSInteger p = _pathPoints.count - 1; p >= 0; p--) {
+        NSArray *linePointsArray = _pathPoints[p];
+
+        for (int i = 0; i < (int) linePointsArray.count - 1; i += 1) {
+            CGPoint p1 = [linePointsArray[i] CGPointValue];
+            CGPoint p2 = [linePointsArray[i + 1] CGPointValue];
+
+            float distanceToP1 = fabs(hypot(touchPoint.x - p1.x, touchPoint.y - p1.y));
+            float distanceToP2 = hypot(touchPoint.x - p2.x, touchPoint.y - p2.y);
+
+            float distance = MIN(distanceToP1, distanceToP2);
+
+            if (distance <= 10.0) {
 //                [_delegate userClickedOnLineKeyPoint:touchPoint
 //                                           lineIndex:p
 //                                          pointIndex:(distance == distanceToP2 ? i + 1 : i)];
-//
-//                return;
-//            }
-//        }
-//    }
+
+                return;
+            }
+        }
+    }
 }
 
 #pragma mark - Draw Chart
@@ -393,8 +393,11 @@
         CAShapeLayer *chartLine = (CAShapeLayer *) self.chartLineArray[lineIndex];
         CAShapeLayer *pointLayer = (CAShapeLayer *) self.chartPointArray[lineIndex];
         UIGraphicsBeginImageContext(self.frame.size);
+        // get yValue for setting color
+        
         // setup the color of the chart line
         if (chartData.color) {
+            
             chartLine.strokeColor = [[chartData.color colorWithAlphaComponent:chartData.alpha] CGColor];
 //            chartLine.strokeColor = [[UIColor.blackColor colorWithAlphaComponent:chartData.alpha] CGColor];
             if (chartData.inflexionPointColor) {
@@ -479,96 +482,102 @@
                 int y = _chartCavanHeight - (innerGrade * _chartCavanHeight) + (_yLabelHeight / 2) + _chartMarginTop - _chartMarginBottom;
 
                 // Circular point
-                if (chartData.inflexionPointStyle == PNLineChartPointStyleCircle) {
+                if (yValue != -1) {
+                    if (chartData.inflexionPointStyle == PNLineChartPointStyleCircle) {
 
-                    CGRect circleRect = CGRectMake(x - inflexionWidth / 2, y - inflexionWidth / 2, inflexionWidth, inflexionWidth);
-                    CGPoint circleCenter = CGPointMake(circleRect.origin.x + (circleRect.size.width / 2), circleRect.origin.y + (circleRect.size.height / 2));
+                        CGRect circleRect = CGRectMake(x - inflexionWidth / 2, y - inflexionWidth / 2, inflexionWidth, inflexionWidth);
+                        CGPoint circleCenter = CGPointMake(circleRect.origin.x + (circleRect.size.width / 2), circleRect.origin.y + (circleRect.size.height / 2));
 
-                    [pointPath moveToPoint:CGPointMake(circleCenter.x + (inflexionWidth / 2), circleCenter.y)];
-                    [pointPath addArcWithCenter:circleCenter radius:inflexionWidth / 2 startAngle:0 endAngle:2 * M_PI clockwise:YES];
+                        [pointPath moveToPoint:CGPointMake(circleCenter.x + (inflexionWidth / 2), circleCenter.y)];
+                        [pointPath addArcWithCenter:circleCenter radius:inflexionWidth / 2 startAngle:0 endAngle:2 * M_PI clockwise:YES];
 
-                    //jet text display text
-                    if (chartData.showPointLabel) {
-                        [gradePathArray addObject:[self createPointLabelFor:chartData.getData(i).rawY pointCenter:circleCenter width:inflexionWidth withChartData:chartData]];
+                        //jet text display text
+                        if (chartData.showPointLabel) {
+                            [gradePathArray addObject:[self createPointLabelFor:chartData.getData(i).rawY pointCenter:circleCenter width:inflexionWidth withChartData:chartData]];
+                        }
+
+                        if (i > 0) {
+
+                            // calculate the point for line
+                            float distance = sqrt(pow(x - last_x, 2) + pow(y - last_y, 2));
+                            float last_x1 = last_x + (inflexionWidth / 2) / distance * (x - last_x);
+                            float last_y1 = last_y + (inflexionWidth / 2) / distance * (y - last_y);
+                            float x1 = x - (inflexionWidth / 2) / distance * (x - last_x);
+                            float y1 = y - (inflexionWidth / 2) / distance * (y - last_y);
+
+                            [progrssLinePaths addObject:@{@"from" : [NSValue valueWithCGPoint:CGPointMake(last_x1, last_y1)],
+                                    @"to" : [NSValue valueWithCGPoint:CGPointMake(x1, y1)]}];
+                        }
                     }
+                        // Square point
+                    else if (chartData.inflexionPointStyle == PNLineChartPointStyleSquare) {
 
-                    if (i > 0) {
+                        CGRect squareRect = CGRectMake(x - inflexionWidth / 2, y - inflexionWidth / 2, inflexionWidth, inflexionWidth);
+                        CGPoint squareCenter = CGPointMake(squareRect.origin.x + (squareRect.size.width / 2), squareRect.origin.y + (squareRect.size.height / 2));
 
-                        // calculate the point for line
-                        float distance = sqrt(pow(x - last_x, 2) + pow(y - last_y, 2));
-                        float last_x1 = last_x + (inflexionWidth / 2) / distance * (x - last_x);
-                        float last_y1 = last_y + (inflexionWidth / 2) / distance * (y - last_y);
-                        float x1 = x - (inflexionWidth / 2) / distance * (x - last_x);
-                        float y1 = y - (inflexionWidth / 2) / distance * (y - last_y);
+                        [pointPath moveToPoint:CGPointMake(squareCenter.x - (inflexionWidth / 2), squareCenter.y - (inflexionWidth / 2))];
+                        [pointPath addLineToPoint:CGPointMake(squareCenter.x + (inflexionWidth / 2), squareCenter.y - (inflexionWidth / 2))];
+                        [pointPath addLineToPoint:CGPointMake(squareCenter.x + (inflexionWidth / 2), squareCenter.y + (inflexionWidth / 2))];
+                        [pointPath addLineToPoint:CGPointMake(squareCenter.x - (inflexionWidth / 2), squareCenter.y + (inflexionWidth / 2))];
+                        [pointPath closePath];
 
-                        [progrssLinePaths addObject:@{@"from" : [NSValue valueWithCGPoint:CGPointMake(last_x1, last_y1)],
-                                @"to" : [NSValue valueWithCGPoint:CGPointMake(x1, y1)]}];
+                        // text display text
+                        if (chartData.showPointLabel) {
+                            [gradePathArray addObject:[self createPointLabelFor:chartData.getData(i).rawY pointCenter:squareCenter width:inflexionWidth withChartData:chartData]];
+                        }
+
+                        if (i > 0) {
+
+                            // calculate the point for line
+                            float distance = sqrt(pow(x - last_x, 2) + pow(y - last_y, 2));
+                            float last_x1 = last_x + (inflexionWidth / 2);
+                            float last_y1 = last_y + (inflexionWidth / 2) / distance * (y - last_y);
+                            float x1 = x - (inflexionWidth / 2);
+                            float y1 = y - (inflexionWidth / 2) / distance * (y - last_y);
+
+                            [progrssLinePaths addObject:@{@"from" : [NSValue valueWithCGPoint:CGPointMake(last_x1, last_y1)],
+                                    @"to" : [NSValue valueWithCGPoint:CGPointMake(x1, y1)]}];
+                        }
                     }
-                }
-                    // Square point
-                else if (chartData.inflexionPointStyle == PNLineChartPointStyleSquare) {
+                        // Triangle point
+                    else if (chartData.inflexionPointStyle == PNLineChartPointStyleTriangle && yValue != -1) {
 
-                    CGRect squareRect = CGRectMake(x - inflexionWidth / 2, y - inflexionWidth / 2, inflexionWidth, inflexionWidth);
-                    CGPoint squareCenter = CGPointMake(squareRect.origin.x + (squareRect.size.width / 2), squareRect.origin.y + (squareRect.size.height / 2));
+                        CGRect squareRect = CGRectMake(x - inflexionWidth / 2, y - inflexionWidth / 2, inflexionWidth, inflexionWidth);
 
-                    [pointPath moveToPoint:CGPointMake(squareCenter.x - (inflexionWidth / 2), squareCenter.y - (inflexionWidth / 2))];
-                    [pointPath addLineToPoint:CGPointMake(squareCenter.x + (inflexionWidth / 2), squareCenter.y - (inflexionWidth / 2))];
-                    [pointPath addLineToPoint:CGPointMake(squareCenter.x + (inflexionWidth / 2), squareCenter.y + (inflexionWidth / 2))];
-                    [pointPath addLineToPoint:CGPointMake(squareCenter.x - (inflexionWidth / 2), squareCenter.y + (inflexionWidth / 2))];
-                    [pointPath closePath];
+                        CGPoint startPoint = CGPointMake(squareRect.origin.x, squareRect.origin.y + squareRect.size.height);
+                        CGPoint endPoint = CGPointMake(squareRect.origin.x + (squareRect.size.width / 2), squareRect.origin.y);
+                        CGPoint middlePoint = CGPointMake(squareRect.origin.x + (squareRect.size.width), squareRect.origin.y + squareRect.size.height);
 
-                    // text display text
-                    if (chartData.showPointLabel) {
-                        [gradePathArray addObject:[self createPointLabelFor:chartData.getData(i).rawY pointCenter:squareCenter width:inflexionWidth withChartData:chartData]];
-                    }
+                        [pointPath moveToPoint:startPoint];
+                        [pointPath addLineToPoint:middlePoint];
+                        [pointPath addLineToPoint:endPoint];
+                        [pointPath closePath];
 
-                    if (i > 0) {
+                        // text display text
+                        if (chartData.showPointLabel) {
+                            [gradePathArray addObject:[self createPointLabelFor:chartData.getData(i).rawY pointCenter:middlePoint width:inflexionWidth withChartData:chartData]];
+                        }
 
-                        // calculate the point for line
-                        float distance = sqrt(pow(x - last_x, 2) + pow(y - last_y, 2));
-                        float last_x1 = last_x + (inflexionWidth / 2);
-                        float last_y1 = last_y + (inflexionWidth / 2) / distance * (y - last_y);
-                        float x1 = x - (inflexionWidth / 2);
-                        float y1 = y - (inflexionWidth / 2) / distance * (y - last_y);
-
-                        [progrssLinePaths addObject:@{@"from" : [NSValue valueWithCGPoint:CGPointMake(last_x1, last_y1)],
-                                @"to" : [NSValue valueWithCGPoint:CGPointMake(x1, y1)]}];
-                    }
-                }
-                    // Triangle point
-                else if (chartData.inflexionPointStyle == PNLineChartPointStyleTriangle) {
-
-                    CGRect squareRect = CGRectMake(x - inflexionWidth / 2, y - inflexionWidth / 2, inflexionWidth, inflexionWidth);
-
-                    CGPoint startPoint = CGPointMake(squareRect.origin.x, squareRect.origin.y + squareRect.size.height);
-                    CGPoint endPoint = CGPointMake(squareRect.origin.x + (squareRect.size.width / 2), squareRect.origin.y);
-                    CGPoint middlePoint = CGPointMake(squareRect.origin.x + (squareRect.size.width), squareRect.origin.y + squareRect.size.height);
-
-                    [pointPath moveToPoint:startPoint];
-                    [pointPath addLineToPoint:middlePoint];
-                    [pointPath addLineToPoint:endPoint];
-                    [pointPath closePath];
-
-                    // text display text
-                    if (chartData.showPointLabel) {
-                        [gradePathArray addObject:[self createPointLabelFor:chartData.getData(i).rawY pointCenter:middlePoint width:inflexionWidth withChartData:chartData]];
-                    }
-
-                    if (i > 0) {
-                        // calculate the point for triangle
-                        float distance = sqrt(pow(x - last_x, 2) + pow(y - last_y, 2)) * 1.4;
-                        float last_x1 = last_x + (inflexionWidth / 2) / distance * (x - last_x);
-                        float last_y1 = last_y + (inflexionWidth / 2) / distance * (y - last_y);
-                        float x1 = x - (inflexionWidth / 2) / distance * (x - last_x);
-                        float y1 = y - (inflexionWidth / 2) / distance * (y - last_y);
-                        [progrssLinePaths addObject:@{@"from" : [NSValue valueWithCGPoint:CGPointMake(last_x1, last_y1)],
-                                                          @"to" : [NSValue valueWithCGPoint:CGPointMake(x1, y1)]}];
+                        if (i > 0) {
+                            // calculate the point for triangle
+                            float distance = sqrt(pow(x - last_x, 2) + pow(y - last_y, 2)) * 1.4;
+                            float last_x1 = last_x + (inflexionWidth / 2) / distance * (x - last_x);
+                            float last_y1 = last_y + (inflexionWidth / 2) / distance * (y - last_y);
+                            float x1 = x - (inflexionWidth / 2) / distance * (x - last_x);
+                            float y1 = y - (inflexionWidth / 2) / distance * (y - last_y);
+                            [progrssLinePaths addObject:@{@"from" : [NSValue valueWithCGPoint:CGPointMake(last_x1, last_y1)],
+                                                              @"to" : [NSValue valueWithCGPoint:CGPointMake(x1, y1)]}];
+                        }
+                    } else {
+                        if (i > 0) {
+                            [progrssLinePaths addObject:@{@"from" : [NSValue valueWithCGPoint:CGPointMake(last_x, last_y)],
+                                    @"to" : [NSValue valueWithCGPoint:CGPointMake(x, y)]}];
+                        }
                     }
                 } else {
-
                     if (i > 0) {
                         [progrssLinePaths addObject:@{@"from" : [NSValue valueWithCGPoint:CGPointMake(last_x, last_y)],
-                                @"to" : [NSValue valueWithCGPoint:CGPointMake(x, y)]}];
+                                                      @"to" : [NSValue valueWithCGPoint:CGPointMake(x, y)]}];
                     }
                 }
                 [linePointsArray addObject:[NSValue valueWithCGPoint:CGPointMake(x, y)]];
