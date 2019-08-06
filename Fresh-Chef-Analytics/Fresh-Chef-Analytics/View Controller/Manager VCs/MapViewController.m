@@ -8,8 +8,10 @@
 
 #import "MapViewController.h"
 #import "YelpAPIManager.h"
+#import <MapKit/MapKit.h>
 
 @interface MapViewController ()
+@property (weak, nonatomic) IBOutlet MKMapView *mapView;
 @property (strong, nonatomic) Coordinate * me;
 @end
 
@@ -20,7 +22,9 @@
     self.me = [[YelpAPIManager shared] restaurantCoordinates];
     NSLog(@"Longitude of restaurant is %f", self.me.longitude);
     NSLog(@"Latitude of restaurant is %f", self.me.latitude);
-
+    CLLocation *meLocation = [[CLLocation alloc] initWithLatitude:self.me.latitude longitude:self.me.longitude];
+    MKCoordinateRegion meRegion = MKCoordinateRegionMake(meLocation.coordinate, MKCoordinateSpanMake(0.1, 0.1));
+    [self.mapView setRegion:meRegion];
 }
 
 /*

@@ -3806,6 +3806,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="RRQ-Y2-sHk"/>
                     </view>
+                    <connections>
+                        <outlet property="mapView" destination="mKb-g7-ARm" id="RlS-QG-sJU"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1eG-0A-wXH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
