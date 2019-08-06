@@ -319,6 +319,7 @@
     [self touchKeyPoint:touches withEvent:event];
 }
 
+// EDITED
 - (void)touchPoint:(NSSet *)touches withEvent:(UIEvent *)event {
     // Get the point user touched
     UITouch *touch = [touches anyObject];
@@ -326,28 +327,46 @@
     
     // Draw a line through the data point nearest to touchPoint.x
     // get x value of nearest data point
-    CGPoint closestDataPoint = [[_endPointsOfPath[0] objectAtIndex:0] CGPointValue];
-    
+
+    CGPoint actualPoint = [[_pathPoints[0] objectAtIndex:0] CGPointValue];
+    int pointIdx = 0;
     for (NSInteger p = _pathPoints.count - 1; p >= 0; p--) {
-        NSArray *linePointsArray = _endPointsOfPath[p];
-        int endPoint;
-        if (((int) linePointsArray.count) % 2 == 0) {
-            endPoint = (int) linePointsArray.count; // if count is even then incrementing by two will leave off the last point
-        } else {
-            endPoint = (int) linePointsArray.count - 1;
-        }
+        NSArray *linePointsArray = _pathPoints[p];
 
-        for (int i = 0; i < endPoint; i += 2) {
+        for (int i = 0; i < linePointsArray.count; i ++) {
             CGPoint p1 = [linePointsArray[i] CGPointValue];
-
-            if (fabs(touchPoint.x - p1.x) < fabs(touchPoint.x - closestDataPoint.x)) {
-                closestDataPoint = p1;
+            
+            if (fabs(touchPoint.x - p1.x) <= fabs(touchPoint.x - actualPoint.x)) {
+                actualPoint = p1;
+                pointIdx = i;
             }
-
         }
     }
+    // only call following method if point clicked is valid ie not -1
+//    self.chartData set public variable to chart data so can access it in other places
+   // use three different cases for different timespans
     
-    [self.delegate drawVertLineAtPoint:closestDataPoint];
+    // display profit/busyness (Y value of point)
+    [self.delegate updateSelectedPointDisplayForIdx:pointIdx];
+    [self.delegate drawVertLineAtPoint:actualPoint];
+//        CGPoint closestDataPoint = [[_endPointsOfPath[0] objectAtIndex:0] CGPointValue];
+//    for (NSInteger p = _pathPoints.count - 1; p >= 0; p--) {
+//        NSArray *linePointsArray = _endPointsOfPath[p];
+//        int endPoint;
+//        if (((int) linePointsArray.count) % 2 == 0) {
+//            endPoint = (int) linePointsArray.count; // if count is even then incrementing by two will leave off the last point
+//        } else {
+//            endPoint = (int) linePointsArray.count - 1;
+//        }
+//
+//        for (int i = 1; i < endPoint; i += 2) {
+//            CGPoint p1 = [linePointsArray[i] CGPointValue];
+//
+//            if (fabs(touchPoint.x - p1.x) < fabs(touchPoint.x - closestDataPoint.x)) {
+//                closestDataPoint = p1;
+//            }
+//        }
+//    }
 
 }
 

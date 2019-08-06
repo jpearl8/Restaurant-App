@@ -144,7 +144,14 @@
         [self.profitByDate setValue:@(daysRevenue) forKey:date];
     }
     NSLog(@"Profit by date: %@", self.profitByDate);
-    
+    // ***** set self.originals before adding previous dates to the dictionary *****
+    NSArray *unsortedArr = [self.profitByDate allKeys];
+    self.originalXLabels = [[unsortedArr sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)] mutableCopy];
+    self.originalProfitByDate = [[NSMutableArray alloc] init];
+    for(NSString *date in self.originalXLabels){
+        [self.originalProfitByDate addObject:self.profitByDate[date]];
+//        [self.originalBusynessByDate addObject:self.busynessByDate[date]];
+    }
 
     NSMutableArray *dateList = [NSMutableArray array];
     NSCalendar *currentCalendar = [NSCalendar currentCalendar];
@@ -162,10 +169,6 @@
     [endComps setMonth:8];
     [endComps setYear:2019];
     NSDate *endDate = [[NSCalendar currentCalendar] dateFromComponents:endComps];
-//    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-//    formatter.dateFormat = @"YYYY-MM-DD";
-//    NSDate *startDate = [formatter dateFromString:@"2018-07-01"];
-//    NSDate *endDate = [formatter dateFromString:@"2019-08-01"];
 
     [dateList addObject:startDate];
     NSDate *currentDate = startDate;
@@ -177,7 +180,6 @@
     // For dates that are not in self.profitByDate, add a key with that date and a value of nil
     NSString *dayString;
     // keep track of last index before a value exists and add -1 each time
-    // then after a date exists add ....
     BOOL preceedsData = YES;
     for (NSDate *date in dateList) {
         //make sure key and date are
@@ -189,7 +191,12 @@
         } else {
             preceedsData = NO;
         }
-//        NSLog(@"Day: %@, with profit: %@", dayString, self.profitByDate[dayString]);
+    }
+    NSArray *unsortedArr2 = [self.profitByDate allKeys];
+    self.xLabelsArray = [[unsortedArr2 sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)] mutableCopy];
+    for (NSString *date in self.xLabelsArray) {
+        [self.profitArray addObject:self.profitByDate[date]];
+//        [self.busynessArray addObject:self.busynessByDate[date]];
     }
     
 //    NSLog(@"Date list: %@", dateList);
@@ -293,11 +300,6 @@
     
 }
 
-//- (NSArray *)getPreviousDays:(int)numDays fromStartDate(NSDate *)NSDate
-//{
-//
-//}
-
 - (Dish *)getDishWithName:(NSString *)name
 {
     NSArray<Dish*>*dishArray = [[NSArray alloc] init];
@@ -314,23 +316,23 @@
     NSLog(@"No dish was found with name: %@", name);
     return nil;
 }
-
-- (void)dict:(NSMutableDictionary *)dict toSortedArraysArr1:(NSMutableArray *)arr1 andArr2:(NSMutableArray *)arr2
-{
-    // *******Method Causes Crash currently *********//
-    
-    
-//    arr1 = [[NSArray alloc] init];
-//    arr2 = [[NSArray alloc] init];
-    NSArray *unsortedArr1 = [dict allKeys];
-    arr1 = [[unsortedArr1 sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)] mutableCopy];
-    for(NSString *key in arr1){
-        [arr2 addObject:dict[key]];
-//        NSLog(@"%@, %@", key, dict[key]);
-    }
-    NSLog(@"Array of Keys: %@", arr1);
-    NSLog(@"Array of Values: %@", arr2);
-}
+//
+//- (void)dict:(NSMutableDictionary *)dict toSortedArraysArr1:(NSMutableArray *)arr1 andArr2:(NSMutableArray *)arr2
+//{
+//    // *******Method Causes Crash currently *********//
+//
+//
+////    arr1 = [[NSArray alloc] init];
+////    arr2 = [[NSArray alloc] init];
+//    NSArray *unsortedArr1 = [dict allKeys];
+//    arr1 = [[unsortedArr1 sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)] mutableCopy];
+//    for(NSString *key in arr1){
+//        [arr2 addObject:dict[key]];
+////        NSLog(@"%@, %@", key, dict[key]);
+//    }
+//    NSLog(@"Array of Keys: %@", arr1);
+//    NSLog(@"Array of Values: %@", arr2);
+//}
 
 //- (void)setArraysWithDict:(NSMutableDictionary *)dict
 //{

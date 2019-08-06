@@ -21,12 +21,30 @@
 @property (strong, nonatomic) NSMutableDictionary *profitByDay;
 @property (strong, nonatomic) NSMutableDictionary *busynessByDay;
 @property (strong, nonatomic) NSMutableArray *currentXLabels;
-@property (strong, nonatomic) NSMutableArray *currentYLabels;
-@property (strong, nonatomic) NSMutableArray *currentDataArray;
+@property (strong, nonatomic) NSMutableArray *originalXLabels;
+@property (strong, nonatomic) NSMutableArray *profitDataArray;
+@property (strong, nonatomic) NSMutableArray *originalProfit;
 @property (strong, nonatomic) NSMutableArray *busynessDataArray;
+@property (strong, nonatomic) NSMutableArray *originalBusyness;
+
+// Corrected arrays used for displaying data so they only have values
+// for the points displayed on the plot
+@property (strong, nonatomic) NSMutableArray *correctedWeekXLabels;
+@property (strong, nonatomic) NSMutableArray *correctedWeekProfit;
+@property (strong, nonatomic) NSMutableArray *correctedWeekBusyness;
+
+@property (strong, nonatomic) NSMutableArray *correctedMonthXLabels;
+@property (strong, nonatomic) NSMutableArray *correctedMonthProfit;
+@property (strong, nonatomic) NSMutableArray *correctedMonthBusyness;
+
+@property (strong, nonatomic) NSMutableArray *correctedYearXLabels;
+@property (strong, nonatomic) NSMutableArray *correctedYearProfit;
+@property (strong, nonatomic) NSMutableArray *correctedYearBusyness;
+
 @property (strong, nonatomic) NSMutableArray *dates;
 @property (strong, nonatomic) NSArray *timeSpans;
 @property (strong, nonatomic) NSArray *dataCategories;
+@property (weak, nonatomic) IBOutlet UILabel *selectedPointLabel;
 
 @end
 
@@ -40,19 +58,21 @@
 //    self.lineChart.dataSource = self;
     self.profitByDay = [[NSMutableDictionary alloc] init];
     self.profitByDay = [[OrderManager shared] profitByDate];
+    self.originalProfit = [[NSMutableArray alloc] init];
+    self.originalProfit = [[OrderManager shared] originalProfitByDate];
     self.busynessByDay = [[NSMutableDictionary alloc] init];
     self.busynessByDay = [[OrderManager shared] busynessByDate];
+    self.originalBusyness = [[NSMutableArray alloc] init];
+    self.originalBusyness = [[OrderManager shared] originalBusynessByDate];
+    self.originalXLabels = [[NSMutableArray alloc] init];
+    self.originalXLabels = [[OrderManager shared] originalXLabels];
     self.currentXLabels = [[NSMutableArray alloc] init];
-    self.currentDataArray = [[NSMutableArray alloc] init];
+    self.profitDataArray = [[NSMutableArray alloc] init];
     self.busynessDataArray = [[NSMutableArray alloc] init];
-    self.timeSpans = @[@"Week", @"Month", @"Year"]; // could use an enum with integers representing the days
+    self.timeSpans = @[@"Week", @"Month", @"Year"];
     self.dataCategories = @[@"Profit", @"Busyness", @"Both"];
     self.timeSpanSelected = @"Week";
     self.selectedDataDisplay = @"Profit";
-//    self.legend = [self.lineChart getLegendWithMaxWidth:320];
-//    //Move legend to the desired position and add to view
-//    [self.legend setFrame:CGRectMake(100, 400, self.legend.frame.size.width, self.legend.frame.size.height)];
-//    [self.view addSubview:self.legend];
     // initialize vertical line
     self.vertLine = [UIBezierPath bezierPath];
     self.vertShapeLayer = [CAShapeLayer layer];
@@ -111,16 +131,25 @@
 
 - (void)setupData
 {
-//    PNLineChart * lineChart = [[PNLineChart alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH * 0.9, 250.0)];
-    // Set x labels
-    // if week is selected, labels = days of week
     NSArray *unsortedArr1 = [self.profitByDay allKeys];
     self.currentXLabels = [[unsortedArr1 sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)] mutableCopy];
     for(NSString *key in self.currentXLabels){
-        [self.currentDataArray addObject:self.profitByDay[key]];
+        [self.profitDataArray addObject:self.profitByDay[key]];
         [self.busynessDataArray addObject:self.busynessByDay[key]];
     }
     
+    self.correctedWeekXLabels = [[NSMutableArray alloc] init];
+    self.correctedWeekProfit = [[NSMutableArray alloc] init];
+    self.correctedWeekBusyness = [[NSMutableArray alloc] init];
+    [self makeCorrectedXLabelArr:self.correctedWeekXLabels andProfitArr:self.correctedWeekProfit andBusyArr:self.correctedWeekBusyness overDays:7];
+    self.correctedMonthXLabels = [[NSMutableArray alloc] init];
+    self.correctedMonthProfit = [[NSMutableArray alloc] init];
+    self.correctedMonthBusyness = [[NSMutableArray alloc] init];
+    [self makeCorrectedXLabelArr:self.correctedMonthXLabels andProfitArr:self.correctedMonthProfit andBusyArr:self.correctedMonthBusyness overDays:30];
+    self.correctedYearXLabels = [[NSMutableArray alloc] init];
+    self.correctedYearProfit = [[NSMutableArray alloc] init];
+    self.correctedYearBusyness = [[NSMutableArray alloc] init];
+    [self makeCorrectedXLabelArr:self.correctedYearXLabels andProfitArr:self.correctedYearProfit andBusyArr:self.correctedYearBusyness overDays:365];
 }
 
 - (void)loadGraph
@@ -129,7 +158,7 @@
     [self.legend removeFromSuperview];
     //set initial values
     int startIdx = 0;
-    int range = (int)[self.currentDataArray count];
+    int range = (int)[self.profitDataArray count];
     if (self.timeSpanSelected == nil){
         self.timeSpanSelected = @"Week";
     }
@@ -139,22 +168,22 @@
     // set x axis ranges
     if ([self.timeSpanSelected isEqualToString:@"Week"]) {
         range = 7;
-        startIdx = (int)[self.currentDataArray count] - range;
+        startIdx = (int)[self.profitDataArray count] - range;
     } else if ([self.timeSpanSelected isEqualToString:@"Month"]) {
         range = 31;
-        startIdx = (int)[self.currentDataArray count] - range;
+        startIdx = (int)[self.profitDataArray count] - range;
     } else if ([self.timeSpanSelected isEqualToString:@"Year"]) {
         range = 365;
-        startIdx = (int)[self.currentDataArray count] - range;
+        startIdx = (int)[self.profitDataArray count] - range;
     } else {
-        range = (int)[self.currentDataArray count];
+        range = (int)[self.profitDataArray count];
         startIdx = 0;
     }
     // initialize chart
     self.lineChart = [[PNLineChart alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH * 0.95, 250.0)];
     self.lineChart.delegate = self;
     // set up Profit data
-    NSArray * data01Array = [self.currentDataArray subarrayWithRange:NSMakeRange(startIdx, range)];
+    NSArray * data01Array = [self.profitDataArray subarrayWithRange:NSMakeRange(startIdx, range)];
     [self.lineChart setXLabels:[self.currentXLabels subarrayWithRange:NSMakeRange(startIdx, range)]];
     
     PNLineChartData *data01 = [PNLineChartData new];
@@ -229,7 +258,7 @@
 {
     [self.vertShapeLayer removeFromSuperlayer]; // should call these two lines when user releases touch
     [self.vertLine removeAllPoints];
-    NSLog(@"Draw virtical line at x-cord: %f", point.x);
+//    NSLog(@"Draw virtical line at x-cord: %f", point.x);
 //    UIBezierPath *vertLine = [UIBezierPath bezierPath];
     [self.vertLine moveToPoint:CGPointMake(point.x, 100)];
     [self.vertLine addLineToPoint:CGPointMake(point.x, 350)];
@@ -238,6 +267,84 @@
     self.vertShapeLayer.lineWidth = 0.5;
     self.vertShapeLayer.fillColor = [[UIColor clearColor] CGColor];
     [self.view.layer addSublayer:self.vertShapeLayer];
+}
+
+//- (void)makeArraysWithPoints
+//{
+//    NSMutableArray *arr1 = [[NSMutableArray alloc] init];
+//    NSMutableArray *arr2 = [[NSMutableArray alloc] init];
+//    // WEEK - take last 7 values from xlabels and currentDataArray
+//    //        then add them to a new array with -2's
+//    NSMutableArray *tempArr1 = [[NSMutableArray alloc] initWithArray:self.currentXLabels];
+//    NSMutableArray *tempArr2 = [[NSMutableArray alloc] initWithArray:self.profitDataArray];
+//
+//    for (int i = [tempArr1 count] - 8; i < [tempArr1 count]; i++) {
+//        if ([tempArr2[i] integerValue] != -2) {
+//            // remove data point from arrays so it will match num points displayed on graph
+//            [arr1 addObject:tempArr1[i]];
+//            [arr2 addObject:tempArr2[i]];
+//        }
+//    }
+//
+//    self.correctedWeekXLabels = [[NSMutableArray alloc] init];
+//    self.correctedWeekProfit = [[NSMutableArray alloc] init];
+//    [self.correctedWeekXLabels addObjectsFromArray:arr1];
+//    [self.correctedWeekProfit addObjectsFromArray:arr2];
+//}
+
+- (void)makeCorrectedXLabelArr:(NSMutableArray *)arr1 andProfitArr:(NSMutableArray *)arr2 andBusyArr:(NSMutableArray *)arr3 overDays:(int)numDays
+{
+    // WEEK - take last 7 values from xlabels and profitDataArray
+    //        then add them to a new array with -2's
+    NSMutableArray *tempArr1 = [[NSMutableArray alloc] initWithArray:self.currentXLabels];
+    NSMutableArray *tempArr2 = [[NSMutableArray alloc] initWithArray:self.profitDataArray];
+    NSMutableArray *tempArr3 = [[NSMutableArray alloc] initWithArray:self.busynessDataArray];
+    
+    for (int i = [tempArr1 count] - numDays - 1; i < [tempArr1 count]; i++) {
+        if ([tempArr2[i] integerValue] != -2) {
+            // remove data point from arrays so it will match num points displayed on graph
+            [arr1 addObject:tempArr1[i]];
+            [arr2 addObject:tempArr2[i]];
+            [arr3 addObject:tempArr3[i]];
+        }
+    }
+}
+
+- (void)updateSelectedPointDisplayForIdx:(int)idx
+{
+    NSMutableArray *tempXLabs = [[NSMutableArray alloc] init];
+    NSMutableArray *tempProfitArr = [[NSMutableArray alloc] init];
+    NSMutableArray *tempBusynessArr = [[NSMutableArray alloc] init];
+    if ([self.timeSpanSelected isEqualToString:@"Week"]) {
+        [tempXLabs addObjectsFromArray:self.correctedWeekXLabels];
+        [tempProfitArr addObjectsFromArray:self.correctedWeekProfit];
+        [tempBusynessArr addObjectsFromArray:self.correctedWeekBusyness];
+    } else if ([self.timeSpanSelected isEqualToString:@"Month"]) {
+        [tempXLabs addObjectsFromArray:self.correctedMonthXLabels];
+        [tempProfitArr addObjectsFromArray:self.correctedMonthProfit];
+        [tempBusynessArr addObjectsFromArray:self.correctedMonthBusyness];
+    } else {
+        [tempXLabs addObjectsFromArray:self.correctedYearXLabels];
+        [tempProfitArr addObjectsFromArray:self.correctedYearProfit];
+        [tempBusynessArr addObjectsFromArray:self.correctedYearBusyness];
+    }
+    if ([tempProfitArr[idx] integerValue] != -1) {
+        if ([self.selectedDataDisplay isEqualToString:@"Profit"]) {
+            self.selectedPointLabel.text = [NSString stringWithFormat:@"Date: %@ \nProfit: $%@", tempXLabs[idx], tempProfitArr[idx]];
+        } else if ([self.selectedDataDisplay isEqualToString:@"Busyness"]) {
+            self.selectedPointLabel.text = [NSString stringWithFormat:@"Date: %@ \nCustomers: %@", tempXLabs[idx], tempBusynessArr[idx]];
+        } else { //both is selected
+            self.selectedPointLabel.text = [NSString stringWithFormat:@"Date: %@ \nProfit: $%@ \nCustomers: %@", tempXLabs[idx], tempProfitArr[idx], tempBusynessArr[idx]];
+        }
+    } else {
+        self.selectedPointLabel.text = [NSString stringWithFormat:@"No Data For, %@", tempXLabs[idx]];
+    }
+    CGSize labelSize = [self.selectedPointLabel.text sizeWithAttributes:@{NSFontAttributeName:self.selectedPointLabel.font}];
+    
+    self.selectedPointLabel.frame = CGRectMake(
+                             self.selectedPointLabel.frame.origin.x, self.selectedPointLabel.frame.origin.y,
+                             self.selectedPointLabel.frame.size.width, labelSize.height);
+    
 }
 
 @end
