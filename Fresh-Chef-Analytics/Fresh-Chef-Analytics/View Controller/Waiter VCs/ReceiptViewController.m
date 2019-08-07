@@ -14,6 +14,7 @@
 #import "BEMCheckbox.h"
 
 @interface ReceiptViewController () <UITableViewDelegate, UITableViewDataSource>
+@property (strong, nonatomic) IBOutlet UITextField *emailText;
 @property (strong, nonatomic) IBOutlet UIImageView *topIm;
 @property (strong, nonatomic) IBOutlet UILabel *receiptLabel;
 @property (strong, nonatomic) IBOutlet UIImageView *backgroundIm;
@@ -73,7 +74,9 @@
     self.restaurantName.text = currentUser.username;
     self.restaurantAddress.text = currentUser[@"address"];
     self.date.text = self.waiter[@"updatedAt"];
-    
+    if (self.openOrders.count > 0){
+        self.emailText.text = self.openOrders[0].customerEmail;
+    }
     //NSString *test = @"XuLMO3Jh3r";
     // Do any additional setup after loading the view.
 }

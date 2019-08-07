@@ -12,6 +12,7 @@
 #import "WaiterManager.h"
 #import "ClosedOrderViewController.h"
 #import "SVProgressHUD/SVProgressHUD.h"
+#import "UIRefs.h"
 
 @interface ClosedOrderViewController () <UITableViewDelegate, UITableViewDataSource>
 @property (strong, nonatomic) IBOutlet UITableView *closedOrderTable;
@@ -87,6 +88,23 @@
     } else {
         cell.waiterName.text = cell.waiter.name;
     }
+    NSString *content = @"☆";
+    UIColor *starColor;
+    if (!(closedOrder.customerLevel) || [closedOrder.customerLevel isEqual:[NSNumber numberWithInteger:0]]){
+        starColor = [[UIRefs shared] colorFromHexString:([UIRefs shared].blueHighlight)];
+    } else {
+        content = @"★";
+        if ([closedOrder.customerLevel isEqual:[NSNumber numberWithInt:1]]){
+            starColor = [[UIRefs shared] colorFromHexString:([UIRefs shared].bronze)];
+        } else if ([closedOrder.customerLevel isEqual:[NSNumber numberWithInt:2]]){
+            starColor = [[UIRefs shared] colorFromHexString:([UIRefs shared].silver)];
+        } else {
+            starColor = [[UIRefs shared] colorFromHexString:([UIRefs shared].gold)];
+        }
+    }
+    [cell.customerLevel setTitle:content forState:UIControlStateNormal];
+    [cell.customerLevel setTitleColor:starColor forState:UIControlStateNormal];
+    
     cell.customerNumber.text = [NSString stringWithFormat:@"%@", closedOrder.numCustomers];
     
     

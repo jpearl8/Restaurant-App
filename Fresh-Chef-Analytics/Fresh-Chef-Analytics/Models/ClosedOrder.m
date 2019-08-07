@@ -9,6 +9,7 @@
 @dynamic table;
 @dynamic numCustomers;
 @dynamic restaurantId;
+@dynamic customerLevel;
 
 + (nonnull NSString *)parseClassName {
     return @"ClosedOrder";

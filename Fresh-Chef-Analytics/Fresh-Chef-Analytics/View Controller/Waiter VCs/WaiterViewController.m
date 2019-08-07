@@ -47,6 +47,9 @@ pass final array on submit button of data table
 - (IBAction)cancelAction:(UIBarButtonItem *)sender;
 @property (strong, nonatomic) IBOutlet UIButton *submitButton;
 
+
+
+
 @property (strong, nonatomic) IBOutlet UIImageView *backgroundImage;
 
 
@@ -74,6 +77,24 @@ pass final array on submit button of data table
     self.submitButton.layer.cornerRadius = 10;
     self.customerNumber.text = @"";
     self.tableNumber.text = @"";
+    NSString *content = @"☆";
+    UIColor *starColor;
+    if (!(self.customerLevelNumber) || [self.customerLevelNumber isEqual:[NSNumber numberWithInteger:0]]){
+        starColor = [[UIRefs shared] colorFromHexString:([UIRefs shared].blueHighlight)];
+    } else {
+        content = @"★";
+        if ([self.customerLevelNumber isEqual:[NSNumber numberWithInt:1]]){
+            starColor = [[UIRefs shared] colorFromHexString:([UIRefs shared].bronze)];
+        } else if ([self.customerLevelNumber isEqual:[NSNumber numberWithInt:2]]){
+            starColor = [[UIRefs shared] colorFromHexString:([UIRefs shared].silver)];
+        } else {
+            starColor = [[UIRefs shared] colorFromHexString:([UIRefs shared].gold)];
+        }
+    }
+    [self.customerLevel setTitle:content forState:UIControlStateNormal];
+    [self.customerLevel setTitleColor:starColor forState:UIControlStateNormal];
+    self.customerLevel.layer.borderWidth = .5f;
+    self.customerLevel.layer.borderColor = [[UIRefs shared] colorFromHexString:@"#2c91fd"].CGColor;
     self.button.layer.borderWidth = .5f;
     self.button.layer.borderColor = [[UIRefs shared] colorFromHexString:@"#2c91fd"].CGColor;
     self.tableNumber.layer.borderWidth = .5f;
@@ -286,11 +307,13 @@ pass final array on submit button of data table
                 openOrderNew.amount = self.amounts[i];
                 openOrderNew.waiter = self.selectedWaiter;
                 openOrderNew.restaurant = [PFUser currentUser];
+                openOrderNew.customerEmail = self.customerEmail;
                 NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
                 formatter.numberStyle = NSNumberFormatterDecimalStyle;
                 openOrderNew.table = [formatter numberFromString:self.tableNumber.text];
                 openOrderNew.restaurantId = [PFUser currentUser].objectId;
                 openOrderNew.customerNum = [formatter numberFromString:self.customerNumber.text];
+                openOrderNew.customerLevel = self.customerLevelNumber;
                 [openOrdersArray addObject:openOrderNew];
             }
         }
