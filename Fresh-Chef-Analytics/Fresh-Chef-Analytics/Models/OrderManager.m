@@ -417,6 +417,7 @@
 -(void)closeOpenOrdersArray:(NSArray <OpenOrder *>*)ordersToClose withDishArray:(NSArray <NSString *>*)dishNames withAmounts:(NSArray*)amounts withCompletion : (void (^)(NSError * error))completion{
     if (ordersToClose.count > 0){
         ClosedOrder *newAddition = [ClosedOrder new];
+        newAddition.customerLevel = ordersToClose[0].customerLevel;
         newAddition.restaurantId = ordersToClose[0].restaurantId;;
         newAddition.table = ordersToClose[0].table;
         newAddition.numCustomers = ordersToClose[0].customerNum;

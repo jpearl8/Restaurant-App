@@ -14,7 +14,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UIButton *button;
 @property (weak, nonatomic) IBOutlet UITableView *waiterTable;
 - (IBAction)selectedWaiter:(UIButton *)sender;
-
+@property (strong, nonatomic) NSNumber *customerLevelNumber;
+@property (strong, nonatomic) NSString *customerEmail;
+@property (strong, nonatomic) IBOutlet UIButton *customerLevel;
 @end
 
 NS_ASSUME_NONNULL_END

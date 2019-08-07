@@ -16,6 +16,9 @@
 @dynamic restaurant;
 @dynamic restaurantId;
 @dynamic customerNum;
+@dynamic customerLevel;
+@dynamic customerEmail;
+
 + (nonnull NSString *)parseClassName {
     return @"OpenOrder";
 }

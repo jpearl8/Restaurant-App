@@ -24,9 +24,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    if ([self.restorationIdentifier isEqualToString:@"loading"]){
-        self.login = [NSNumber numberWithInt:1];
-    }
     AnimatedGif * gif = [AnimatedGif getAnimationForGifAtUrl:[NSURL URLWithString:@"https://d3jnkp3lrs2hd5.cloudfront.net/IDC/static/images/loading.gif"]];
     [self.gifIm setAnimatedGif:gif];
     [gif start];
@@ -43,7 +40,7 @@
 
 - (void)setupForApp:(void (^)( NSError * _Nullable error))completion
 {
-    NSLog(@"%d", self.login);
+
     PFUser *currentUser = [PFUser currentUser];
     if (currentUser){
         [[YelpAPIManager shared] fetchCompetitors];
