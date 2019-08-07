@@ -191,7 +191,7 @@
     
     //EDITED
     // Show first of each month for year,
-    // every 5 days for month
+    // every 4 days for month
     // every day for week
     if (_showLabel) {
         // set up date formatting for labels
@@ -215,7 +215,7 @@
                 labelDate = [formatter dateFromString:dateText];
                 labelDate = [formatter dateFromString:dateText];
                 labelText = [weekday stringFromDate:labelDate];
-                NSInteger x = (index * _xLabelWidth + _chartMarginLeft + _xLabelWidth / 2.0);
+                NSInteger x = (index * _xLabelWidth + _chartMarginLeft);// + _xLabelWidth / 2.0);
                 NSInteger y = _chartMarginBottom + _chartCavanHeight;
                 PNChartLabel *label = [[PNChartLabel alloc] initWithFrame:CGRectMake(x, y, (NSInteger) _xLabelWidth, (NSInteger) _chartMarginBottom)];
                 [label setTextAlignment:NSTextAlignmentCenter];
@@ -233,9 +233,9 @@
                     labelDate = [formatter dateFromString:dateText];
                     labelDate = [formatter dateFromString:dateText];
                     labelText = [monthAndDay stringFromDate:labelDate];
-                    NSInteger x = (index * _xLabelWidth + _chartMarginLeft + _xLabelWidth / 2.0);
+                    NSInteger x = (index * _xLabelWidth + _chartMarginLeft);// + _xLabelWidth / 2.0);
                     NSInteger y = _chartMarginBottom + _chartCavanHeight;
-                    PNChartLabel *label = [[PNChartLabel alloc] initWithFrame:CGRectMake(x, y, (NSInteger) _xLabelWidth, (NSInteger) _chartMarginBottom)];
+                    PNChartLabel *label = [[PNChartLabel alloc] initWithFrame:CGRectMake(x, y, (NSInteger) _xLabelWidth * 2.5, (NSInteger) _chartMarginBottom)];
                     [label setTextAlignment:NSTextAlignmentCenter];
                     label.text = labelText;
                     [self setCustomStyleForXLabel:label];
@@ -256,9 +256,9 @@
                 NSDateComponents *components = [[NSCalendar currentCalendar] components:NSCalendarUnitDay fromDate:labelDate];
                 if ([components day] == 1) {
                     labelText = [monthAndDay stringFromDate:labelDate];
-                    NSInteger x = (index * _xLabelWidth + _chartMarginLeft + _xLabelWidth / 2.0);
+                    NSInteger x = (index * _xLabelWidth + _chartMarginLeft);// + _xLabelWidth / 2.0);
                     NSInteger y = _chartMarginBottom + _chartCavanHeight;
-                    PNChartLabel *label = [[PNChartLabel alloc] initWithFrame:CGRectMake(x, y, (NSInteger) _xLabelWidth, (NSInteger) _chartMarginBottom)];
+                    PNChartLabel *label = [[PNChartLabel alloc] initWithFrame:CGRectMake(x, y, (NSInteger) (_xLabelWidth + 1) * 20, (NSInteger) _chartMarginBottom)];
                     [label setTextAlignment:NSTextAlignmentCenter];
                     label.text = labelText;
                     [self setCustomStyleForXLabel:label];
@@ -342,32 +342,9 @@
             }
         }
     }
-    // only call following method if point clicked is valid ie not -1
-//    self.chartData set public variable to chart data so can access it in other places
-   // use three different cases for different timespans
-    
     // display profit/busyness (Y value of point)
     [self.delegate updateSelectedPointDisplayForIdx:pointIdx];
     [self.delegate drawVertLineAtPoint:actualPoint];
-//        CGPoint closestDataPoint = [[_endPointsOfPath[0] objectAtIndex:0] CGPointValue];
-//    for (NSInteger p = _pathPoints.count - 1; p >= 0; p--) {
-//        NSArray *linePointsArray = _endPointsOfPath[p];
-//        int endPoint;
-//        if (((int) linePointsArray.count) % 2 == 0) {
-//            endPoint = (int) linePointsArray.count; // if count is even then incrementing by two will leave off the last point
-//        } else {
-//            endPoint = (int) linePointsArray.count - 1;
-//        }
-//
-//        for (int i = 1; i < endPoint; i += 2) {
-//            CGPoint p1 = [linePointsArray[i] CGPointValue];
-//
-//            if (fabs(touchPoint.x - p1.x) < fabs(touchPoint.x - closestDataPoint.x)) {
-//                closestDataPoint = p1;
-//            }
-//        }
-//    }
-
 }
 
 - (void)touchKeyPoint:(NSSet *)touches withEvent:(UIEvent *)event {
