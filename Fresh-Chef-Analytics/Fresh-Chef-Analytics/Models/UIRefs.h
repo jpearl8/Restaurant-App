@@ -19,6 +19,10 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong, nonatomic) NSString *elegantHexString;
 @property (strong, nonatomic) NSString *purpleAccent;
 @property (strong, nonatomic) NSString *blueHighlight;
+@property (strong, nonatomic) NSString *bronze;
+@property (strong, nonatomic) NSString *silver;
+@property (strong, nonatomic) NSString *gold;
+
 - (UIColor *)colorFromHexString:(NSString *)hexString;
 @end
 

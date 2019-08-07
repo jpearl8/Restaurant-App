@@ -114,8 +114,24 @@
     cell.waiter = self.tableWaiterDictionary[cell.tableNumber.text];
     cell.waiterName.text = cell.waiter.name;
     cell.customerNumber.text = [NSString stringWithFormat:@"%@", orderInCell[0].customerNum];
-
-
+    NSString *content = @"☆";
+    UIColor *starColor;
+    if (orderInCell.count > 0){
+        if (!(orderInCell[0].customerLevel) || [orderInCell[0].customerLevel isEqual:[NSNumber numberWithInteger:0]]){
+            starColor = [[UIRefs shared] colorFromHexString:([UIRefs shared].blueHighlight)];
+        } else {
+            content = @"★";
+            if ([orderInCell[0].customerLevel isEqual:[NSNumber numberWithInt:1]]){
+                starColor = [[UIRefs shared] colorFromHexString:([UIRefs shared].bronze)];
+            } else if ([orderInCell[0].customerLevel isEqual:[NSNumber numberWithInt:2]]){
+                starColor = [[UIRefs shared] colorFromHexString:([UIRefs shared].silver)];
+            } else {
+                starColor = [[UIRefs shared] colorFromHexString:([UIRefs shared].gold)];
+            }
+        }
+        [cell.customerLevel setTitle:content forState:UIControlStateNormal];
+        [cell.customerLevel setTitleColor:starColor forState:UIControlStateNormal];
+    }
     
     return cell;
 }

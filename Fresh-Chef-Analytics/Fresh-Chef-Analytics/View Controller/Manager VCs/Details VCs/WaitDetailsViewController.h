@@ -11,15 +11,19 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface WaitDetailsViewController : UIViewController
+@interface WaitDetailsViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+@property (weak, nonatomic) IBOutlet UIView *ratingView;
+
 @property (weak, nonatomic) IBOutlet UIImageView *waiterProfileImage;
 @property (strong, nonatomic) Waiter *waiter;
 @property (weak, nonatomic) IBOutlet UILabel *waiterName;
 @property (weak, nonatomic) IBOutlet UILabel *waiterTime;
-@property (weak, nonatomic) IBOutlet UILabel *waiterRating;
 @property (weak, nonatomic) IBOutlet UILabel *waiterTabletops;
 @property (weak, nonatomic) IBOutlet UILabel *waiterNumCustomers;
-@property (weak, nonatomic) IBOutlet UILabel *waiterTips;
+@property (weak, nonatomic) IBOutlet UILabel *waiterTipsPC;
+@property (weak, nonatomic) IBOutlet UILabel *waiterTipsPT;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+
 
 @end
 

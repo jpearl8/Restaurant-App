@@ -187,11 +187,11 @@
     }
     else if ([ratingRank isEqualToString:@"high"])
     {
-        ratingComments = @"Customers love this dish.";
+        ratingComments = @"Customers who have tried this dish love it.";
     }
     else
     {
-        ratingComments = @"Customers think this dish is OK. Try improving the recipe to land higher ratings.";
+        ratingComments = @"Customers who have tried this dish think it is OK. Try improving the recipe to land higher ratings.";
     }
     return [freqComments stringByAppendingString:ratingComments];
 }

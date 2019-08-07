@@ -22,6 +22,9 @@
     uiRefs.comfortableHexString = @"#cdcdcd";
     uiRefs.purpleAccent = @"#392382";
     uiRefs.blueHighlight = @"#2c91fd";
+    uiRefs.bronze = @"#cc6633";
+    uiRefs.silver = @"#c0c0c0";
+    uiRefs.gold = @"#d4af37";
     return uiRefs;
 }
 

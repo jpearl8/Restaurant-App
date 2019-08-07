@@ -31,7 +31,7 @@
 @property (weak, nonatomic) IBOutlet UITextView *superstarView;
 @property (strong, nonatomic) NSString *superstar;
 @property (strong, nonatomic) NSString *loosechain;
-
+@property (assign, nonatomic) BOOL isPaused;
 
 @end
 
@@ -44,6 +44,18 @@
     self.infoView.hidden = YES;
     self.superstarView.hidden = YES;
     self.loosechainView.hidden = YES;
+    self.isPaused = NO;
+    CABasicAnimation *theAnimation;
+    
+    theAnimation=[CABasicAnimation animationWithKeyPath:@"opacity"];
+    theAnimation.duration=1.0;
+    theAnimation.repeatCount=HUGE_VALF;
+    theAnimation.autoreverses=YES;
+    theAnimation.fromValue=[NSNumber numberWithFloat:1.0];
+    theAnimation.toValue=[NSNumber numberWithFloat:0.5];
+    [self.superstarButton.layer addAnimation:theAnimation forKey:@"animateOpacity"];
+    [self.loosechainButton.layer addAnimation:theAnimation forKey:@"animateOpacity"];
+
     self.superstarButton.hidden = YES;
     self.loosechainButton.hidden = YES;
     self.superstarButton.layer.cornerRadius = self.superstarButton.frame.size.width/2;
@@ -76,18 +88,52 @@
     }
 }
 - (IBAction)showSuperstar:(id)sender {
+    
     self.superstarView.hidden = !(self.superstarView.hidden);
+    self.isPaused = !(self.superstarView.hidden);
+    if (self.isPaused)
+    {
+        [self pauseLayer:self.superstarButton.layer];
+    }
+    else
+    {
+        [self resumeLayer:self.superstarButton.layer];
+    }
     self.infoView.hidden = YES;
     [self updateInfo];
     
 }
 - (IBAction)showLooseChain:(id)sender {
     self.loosechainView.hidden = !(self.loosechainView.hidden);
+    self.isPaused = !(self.loosechainView.hidden);
+    if (self.isPaused)
+    {
+        [self pauseLayer:self.loosechainButton.layer];
+    }
+    else
+    {
+        [self resumeLayer:self.loosechainButton.layer];
+    }
     self.infoView.hidden = YES;
     [self updateInfo];
     
 }
+-(void)pauseLayer:(CALayer*)layer
+{
+    CFTimeInterval pausedTime = [layer convertTime:CACurrentMediaTime() fromLayer:nil];
+    layer.speed = 0.0;
+    layer.timeOffset = pausedTime;
+}
 
+-(void)resumeLayer:(CALayer*)layer
+{
+    CFTimeInterval pausedTime = [layer timeOffset];
+    layer.speed = 1.0;
+    layer.timeOffset = 0.0;
+    layer.beginTime = 0.0;
+    CFTimeInterval timeSincePause = [layer convertTime:CACurrentMediaTime() fromLayer:nil] - pausedTime;
+    layer.beginTime = timeSincePause;
+}
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
 {
     return 2;
@@ -315,11 +361,11 @@
     }
     if (self.superstarView.hidden == NO)
     {
-        self.superstarView.text = [[NSString stringWithFormat:@"Superstar of %@", self.menCatSelected] stringByAppendingString:[NSString stringWithFormat:@" is %@", self.superstar]];
+        self.superstarView.text = [[NSString stringWithFormat:@"Highest performing of %@", self.menCatSelected] stringByAppendingString:[NSString stringWithFormat:@" is %@", self.superstar]];
     }
     if (self.loosechainView.hidden == NO)
     {
-        self.loosechainView.text = [[NSString stringWithFormat:@"Loose Chain of %@", self.menCatSelected] stringByAppendingString:[NSString stringWithFormat:@" is %@", self.loosechain]];
+        self.loosechainView.text = [[NSString stringWithFormat:@"Lowest performing of %@", self.menCatSelected] stringByAppendingString:[NSString stringWithFormat:@" is %@", self.loosechain]];
     }
 }
 - (void)makeItemsWithData : (NSArray *) dataArray withStats: (NSString *) stats
