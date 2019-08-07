@@ -4056,12 +4056,21 @@
                                 <rect key="frame" x="0.0" y="655" width="414" height="158"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             </pickerView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M3w-ac-XXk">
+                                <rect key="frame" x="330" y="579" width="40" height="40"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="restaurant-40"/>
+                                <connections>
+                                    <action selector="returnToMe:" destination="f7E-s8-AfD" eventType="touchUpInside" id="SXq-6z-H0F"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="RRQ-Y2-sHk"/>
                     </view>
                     <connections>
                         <outlet property="mapView" destination="mKb-g7-ARm" id="X0j-No-uBm"/>
+                        <outlet property="meButton" destination="M3w-ac-XXk" id="1kC-c4-nsV"/>
                         <outlet property="pickerView" destination="tx0-VY-xic" id="S9b-dX-T8W"/>
                         <segue destination="T86-7i-b2q" kind="show" identifier="yelpInfo" id="LuD-gu-chP"/>
                     </connections>

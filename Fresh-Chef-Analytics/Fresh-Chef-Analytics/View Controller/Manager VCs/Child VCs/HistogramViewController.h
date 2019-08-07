@@ -13,7 +13,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface HistogramViewController : UIViewController <UIPickerViewDelegate, UIPickerViewDataSource> //<UITableViewDelegate, UITableViewDataSource>
+@interface HistogramViewController : UIViewController <UIPickerViewDelegate, UIPickerViewDataSource> 
 @property (weak, nonatomic) IBOutlet UITableView *categoriesTableView;
 @property (weak, nonatomic) IBOutlet UIButton *chooseCategoryButton;
 

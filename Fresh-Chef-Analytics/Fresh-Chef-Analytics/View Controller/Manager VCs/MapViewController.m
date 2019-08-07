@@ -22,26 +22,48 @@
 @property (strong, nonatomic) NSArray *iconTypes;
 @property (weak, nonatomic) IBOutlet UIPickerView *pickerView;
 @property (strong, nonatomic) NSArray *categories;
+@property (strong, nonatomic) NSArray *showBy;
+@property (weak, nonatomic) IBOutlet UIButton *meButton;
+@property (assign, nonatomic) MKCoordinateRegion meRegion;
 @end
 
 @implementation MapViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.meButton.backgroundColor = [UIColor colorWithRed:.976 green:.356 blue:.27 alpha:.8];
+    self.meButton.layer.cornerRadius = self.meButton.frame.size.width/2;
+    
+    CABasicAnimation *theAnimation;
+    
+    theAnimation=[CABasicAnimation animationWithKeyPath:@"opacity"];
+    theAnimation.duration=1.0;
+    theAnimation.repeatCount=HUGE_VALF;
+    theAnimation.autoreverses=YES;
+    theAnimation.fromValue=[NSNumber numberWithFloat:1.0];
+    theAnimation.toValue=[NSNumber numberWithFloat:0.0];
+    [self.meButton.layer addAnimation:theAnimation forKey:@"animateOpacity"];
     self.mapView.delegate = self;
-    self.iconTypes = @[@"rating-20", @"pizza-20", @"price-20"];
+    
+    self.iconTypes = @[@"rating-40", @"pizza-40", @"price-40"];
+    self.showBy = @[@"All Competitors", @"By Rating", @"By Category", @"By Price"];
     self.annotations = [[NSMutableArray alloc] initWithCapacity:9];
     self.me = [[YelpAPIManager shared] restaurantCoordinates];
     CLLocationCoordinate2D meCoordinates = CLLocationCoordinate2DMake(self.me.latitude, self.me.longitude);
-    MKCoordinateRegion meRegion = MKCoordinateRegionMake(meCoordinates, MKCoordinateSpanMake(0.1, 0.1));
+    self.meRegion = MKCoordinateRegionMake(meCoordinates, MKCoordinateSpanMake(0.1, 0.1));
+    self.pickerView.delegate = self;
+    self.pickerView.dataSource = self;
 //        MKCoordinateRegion meRegion =  MKCoordinateRegionMakeWithDistance(meCoordinates, 50, 50);
-    [self.mapView setRegion:meRegion animated:NO];
+    [self.mapView setRegion:self.meRegion animated:NO];
     self.businesses = [[YelpAPIManager shared] competitorArray];
-    [self populateMapWithBusinesses];
+    
     PhotoAnnotation *restaurantAnnotation = [[PhotoAnnotation alloc]initWithLocation:meCoordinates andImage:@"restaurant-40"];
-    [self.annotations addObject:restaurantAnnotation];
+    [self.mapView addAnnotation:restaurantAnnotation];
+    [self populateMapWithBusinesses];
     [self.mapView addAnnotations:self.annotations];
     [self.mapView showAnnotations:self.annotations animated:YES];
+
+
 }
 - (MKAnnotationView *) mapView: (MKMapView *)mapView viewForAnnotation:(nonnull id<MKAnnotation>)annotation
 {
@@ -66,6 +88,35 @@
         return nil;
     }
 }
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
+{
+    return 1;
+}
+- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
+{
+    return [self.showBy count];
+}
+- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
+{
+    return self.showBy[row];
+}
+- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
+{
+    [self.mapView removeAnnotations:self.annotations];
+    [self.annotations removeAllObjects];
+    if ([self.showBy[row] isEqualToString:@"All Competitors"])
+    {
+        [self populateMapWithBusinesses];
+        
+    }
+    else
+    {
+        [self populateMapWithBusinessesBy:self.showBy[row]];
+        
+    }
+    [self.mapView addAnnotations:self.annotations];
+    [self.mapView showAnnotations:self.annotations animated:YES];
+}
 - (void) populateMapWithBusinesses
 {
     int count = 0;
@@ -82,11 +133,26 @@
         count+=1;
     }
 }
+- (void) populateMapWithBusinessesBy : (NSString *) type
+{
+    NSString *imageName;
+    for (NSMutableDictionary *business in self.businesses[([self.showBy indexOfObject:type]-1)])
+    {
+        imageName = self.iconTypes[([self.showBy indexOfObject:type]-1)];
+        [self setCoordinatePointWithLatitudeForBusiness:business andImage:imageName];
+    }
+}
 - (void) setCoordinatePointWithLatitudeForBusiness : (NSMutableDictionary *) business andImage : (NSString *) imageName
 {
     CLLocationCoordinate2D coordinates = CLLocationCoordinate2DMake([business[@"coordinates"][@"latitude"] doubleValue], [business[@"coordinates"][@"longitude"] doubleValue]);
     PhotoAnnotation *annotation = [[PhotoAnnotation alloc] initWithLocation:coordinates andImage:imageName andLink:business[@"url"] andTitle:business[@"name"]];
     [self.annotations addObject:annotation];
+    [self mapView:self.mapView viewForAnnotation:annotation];
+    
+}
+- (IBAction)returnToMe:(id)sender {
+    [self.mapView setRegion:self.meRegion animated:NO];
+
 }
 
 - (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view
