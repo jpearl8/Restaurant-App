@@ -11,7 +11,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface DishDetailsViewController : UIViewController
+@interface DishDetailsViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 @property (strong, nonatomic) Dish *dish;
 @end
 

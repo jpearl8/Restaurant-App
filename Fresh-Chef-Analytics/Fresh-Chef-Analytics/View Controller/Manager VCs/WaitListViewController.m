@@ -7,7 +7,7 @@
 //
 
 #import "WaitListViewController.h"
-
+#import "HCSStarRatingView.h"
 
 @interface WaitListViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -84,8 +84,17 @@
     cell.selectedIndex = self.selectedIndex;
     cell.cellView.layer.cornerRadius = cell.cellView.frame.size.width/6;
     cell.waiterTime.text = [@"Served " stringByAppendingString:[[NSString stringWithFormat:@"%@", waiter.yearsWorked] stringByAppendingString:@"  Years"]];
-    cell.waiterRating.text = [[NSString stringWithFormat:@"%@", [[WaiterManager shared] averageRating:cell.waiter]] stringByAppendingString:@" ✯'s"];
-    cell.waiterTabletops.text  = [[NSString stringWithFormat:@"%@", waiter.tableTops] stringByAppendingString:@" Tabletops"];
+    HCSStarRatingView *starRatingView = [[HCSStarRatingView alloc] initWithFrame:CGRectMake(0, 0, 150, 30)];
+    starRatingView.value = [[[WaiterManager shared] averageRating:cell.waiter] doubleValue];
+    if (cell.highlightRatingView == NO)
+    {
+        starRatingView.tintColor = [UIColor grayColor];
+    }
+    else if (cell.highlightRatingView == YES)
+    {
+        starRatingView.tintColor = [UIColor blueColor];
+    }
+    [cell.ratingView addSubview:starRatingView];    cell.waiterTabletops.text  = [[NSString stringWithFormat:@"%@", waiter.tableTops] stringByAppendingString:@" Tabletops"];
     cell.waiterNumCustomers.text = [[NSString stringWithFormat:@"%@", waiter.numOfCustomers] stringByAppendingString:@" customers served"];
     cell.waiterTipsPT.text = [@"$" stringByAppendingString:[[NSString stringWithFormat:@"%@", [[WaiterManager shared] averageTipsByTable:cell.waiter]] stringByAppendingString:@" Tips per Table"]];
     cell.waiterTipsPC.text = [@"$" stringByAppendingString:[[NSString stringWithFormat:@"%@", [[WaiterManager shared] averageTipByCustomer:cell.waiter]] stringByAppendingString:@" Tips per Customer"]];
