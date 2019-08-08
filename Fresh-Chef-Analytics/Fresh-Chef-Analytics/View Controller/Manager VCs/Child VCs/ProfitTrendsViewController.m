@@ -177,7 +177,7 @@
         startIdx = 0;
     }
     // initialize chart
-    self.lineChart = [[PNLineChart alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH * 0.95, 250.0)];
+    self.lineChart = [[PNLineChart alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, self.dataView.frame.size.height)];
     self.lineChart.delegate = self;
     // set up Profit data
     NSArray * data01Array = [self.profitDataArray subarrayWithRange:NSMakeRange(startIdx, range)];
@@ -258,7 +258,7 @@
 //    NSLog(@"Draw virtical line at x-cord: %f", point.x);
 //    UIBezierPath *vertLine = [UIBezierPath bezierPath];
     [self.vertLine moveToPoint:CGPointMake(point.x, 100)];
-    [self.vertLine addLineToPoint:CGPointMake(point.x, 350)];
+    [self.vertLine addLineToPoint:CGPointMake(point.x, 325)];
     self.vertShapeLayer.path = [self.vertLine CGPath];
     self.vertShapeLayer.strokeColor = [[UIColor lightGrayColor] CGColor];
     self.vertShapeLayer.lineWidth = 0.5;
