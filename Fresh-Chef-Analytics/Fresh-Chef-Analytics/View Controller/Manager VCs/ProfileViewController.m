@@ -65,10 +65,21 @@
     // set price range from yelp
 //    [[YelpAPIManager shared] userParameters];
     //alert view for picker
-//    self.alert = [UIAlertController alertControllerWithTitle:@"Title" message:@"Message" preferredStyle:(UIAlertControllerStyleActionSheet)];
+    self.alert = [UIAlertController alertControllerWithTitle:@"Set Theme" message:@"Choose a theme for your customer form" preferredStyle:(UIAlertControllerStyleActionSheet)];
 //    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"Done" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
 //        // handle response here.
 //    }];
+//    [self.alert addAction:okAction];
+    int i = 0;
+    for (NSString *theme in self.themesArr) {
+        UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:theme style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            // handle response here.
+            [self didSelectRowInAlertController:i];
+        }];
+        [self.alert addAction:defaultAction];
+        i++;
+    }
+    
 //    [self.alert.view addSubview:self.themePickerView];
 //    // add the OK action to the alert controller
 //    [self.alert addAction:okAction];
@@ -267,20 +278,20 @@
 - (IBAction)didTapEditTheme:(id)sender {
     
     if (self.isThemePickerOpen == YES) {
-        self.themePickerView.hidden = YES;
-        self.themePickerView.userInteractionEnabled = NO;
-        self.isThemePickerOpen = NO;
+//        self.themePickerView.hidden = YES;
+//        self.themePickerView.userInteractionEnabled = NO;
+//        self.isThemePickerOpen = NO;
         
-//        [self presentViewController:self.alert animated:YES completion:^{
+        [self presentViewController:self.alert animated:YES completion:^{
             // optional code for what happens after the alert controller has finished presenting
             
-//        }];
+        }];
     } else {
-        self.themePickerView.hidden = NO;
-        self.themePickerView.userInteractionEnabled = YES;
+//        self.themePickerView.hidden = NO;
+//        self.themePickerView.userInteractionEnabled = YES;
 //        [self.alert.view addSubview:self.themePickerView];
-        self.isThemePickerOpen = YES;
-//        [self presentViewController:self.alert animated:YES completion:^{}];
+//        self.isThemePickerOpen = YES;
+        [self presentViewController:self.alert animated:YES completion:^{}];
         
     }
     
@@ -361,5 +372,14 @@
             }];
         }
     }
+}
+
+- (void)didSelectRowInAlertController:(NSInteger)row
+{
+    // set button text to picker
+    NSString *themeLabelPlaceholder = self.themesArr[row];
+    self.themeButton.titleLabel.text = themeLabelPlaceholder;
+    self.restaurantThemeLabel.text = themeLabelPlaceholder;
+    
 }
 @end

@@ -71,6 +71,12 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    // ***** Set height of views *****
+//    CGRect t3b3Frame = self.t3b3View.frame;
+//    t3b3Frame.size.height = self.view.frame.size.height - self.tabBarController.tabBar.frame.size.height;
+//    t3b3Frame.size.width = self.view.frame.size.width;
+//    [self.t3b3View setFrame:t3b3Frame];
+    
 }
 
 #pragma mark - Table view data source
