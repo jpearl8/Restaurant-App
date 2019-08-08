@@ -4181,19 +4181,17 @@
                                     <action selector="segmentChange:" destination="u8h-Qe-cB9" eventType="valueChanged" id="QTz-bD-7Yy"/>
                                 </connections>
                             </segmentedControl>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TIl-B6-45h">
-                                <rect key="frame" x="317" y="100" width="77" height="87"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button" image="map"/>
-                                <connections>
-                                    <segue destination="f7E-s8-AfD" kind="show" id="Oix-2S-nas"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="jJR-Oa-84L"/>
                     </view>
-                    <navigationItem key="navigationItem" id="1ot-eD-206"/>
+                    <navigationItem key="navigationItem" id="1ot-eD-206">
+                        <barButtonItem key="rightBarButtonItem" title="View in Map" id="dib-NE-Zyg">
+                            <connections>
+                                <segue destination="f7E-s8-AfD" kind="show" id="Qg4-pg-MZN"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="competitorList" destination="HgO-cH-06V" id="ioD-s1-kcP"/>
                         <outlet property="segmentControl" destination="0UP-7g-d6X" id="PvM-Nc-Ndo"/>
@@ -5573,50 +5571,21 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bRc-PS-JVt">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="316"/>
+                                <rect key="frame" x="38" y="0.0" width="376" height="316"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Frequency" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="juV-JS-i4V">
+                                <rect key="frame" x="0.0" y="61" width="101" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="61C-Se-hAV">
                                 <rect key="frame" x="0.0" y="419" width="414" height="159"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </pickerView>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Rte-KR-ABO">
-                                <rect key="frame" x="20" y="344" width="118" height="10"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.36608070135116577" green="0.9109916090965271" blue="0.46459448337554932" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rcB-jq-Q8L">
-                                <rect key="frame" x="138" y="344" width="137" height="10"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.13035190105438232" green="0.93925690650939941" blue="0.78966414928436279" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="C7u-mj-8t2">
-                                <rect key="frame" x="275" y="344" width="119" height="10"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.42504894733428955" green="0.7241055965423584" blue="0.91164761781692505" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Expensive" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lyj-8g-YTj">
-                                <rect key="frame" x="31" y="325" width="77" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Moderate" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ok1-f8-Ogx">
-                                <rect key="frame" x="168" y="324" width="73" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Cheap" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oQu-Fs-G75">
-                                <rect key="frame" x="314" y="324" width="50" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Menu Category" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AUJ-ET-V6P">
                                 <rect key="frame" x="97" y="380" width="220" height="42"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -5624,6 +5593,37 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Price" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HP1-cW-ceL">
+                                <rect key="frame" x="20" y="333" width="39" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ucn-ot-9FL">
+                                <rect key="frame" x="89" y="338" width="20" height="10"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.18113803863525391" green="0.60311329364776611" blue="0.092188499867916107" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9Mi-WV-qpa">
+                                <rect key="frame" x="118" y="338" width="40" height="10"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.18113803863525391" green="0.60311329364776611" blue="0.092188499867916107" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zdw-Ed-zLV">
+                                <rect key="frame" x="167" y="338" width="80" height="10"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.3091580867767334" green="0.5927281379699707" blue="0.19204357266426086" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zkB-xo-rME">
+                                <rect key="frame" x="255" y="338" width="120" height="10"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.18113803863525391" green="0.60311329364776611" blue="0.092188499867916107" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="arrow-green" translatesAutoresizingMaskIntoConstraints="NO" id="XPb-a4-fUn">
+                                <rect key="frame" x="357" y="321" width="40" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="uDy-CV-Bir"/>
@@ -5631,6 +5631,7 @@
                     <connections>
                         <outlet property="categoryPicker" destination="61C-Se-hAV" id="pQ2-qs-qeY"/>
                         <outlet property="dataView" destination="bRc-PS-JVt" id="JAr-pq-sbh"/>
+                        <outlet property="freqLabel" destination="juV-JS-i4V" id="oli-s5-igi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eJk-30-aI8" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -6271,6 +6272,7 @@
         <image name="Screen Shot 2019-07-30 at 3.47.14 PM" width="182" height="326"/>
         <image name="Screen Shot 2019-07-30 at 4.10.34 PM" width="268" height="362"/>
         <image name="arrow-40" width="40" height="40"/>
+        <image name="arrow-green" width="700" height="700"/>
         <image name="bad-40" width="40" height="40"/>
         <image name="competitor-40" width="40" height="40"/>
         <image name="data-40" width="40" height="40"/>
@@ -6278,7 +6280,6 @@
         <image name="histogram-83.5" width="83.5" height="83.5"/>
         <image name="image_placeholder" width="375" height="375"/>
         <image name="info-40" width="40" height="40"/>
-        <image name="map" width="700" height="700"/>
         <image name="menu-83.5" width="83.5" height="83.5"/>
         <image name="minus" width="21.333333969116211" height="21.333333969116211"/>
         <image name="minus-circle_outline_24-4x_ed" width="96" height="96"/>
@@ -6298,7 +6299,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="mFX-D1-im0"/>
         <segue reference="ACF-OQ-zwx"/>
-        <segue reference="r3R-H8-hdI"/>
+        <segue reference="ziY-mK-j7I"/>
         <segue reference="VpL-yV-74Y"/>
         <segue reference="SWx-jk-9k2"/>
         <segue reference="oPI-sQ-S9b"/>
