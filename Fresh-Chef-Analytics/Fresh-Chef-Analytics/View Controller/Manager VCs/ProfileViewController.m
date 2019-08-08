@@ -10,12 +10,19 @@
 #import "AppDelegate.h"
 #import "LoginViewController.h"
 #import "YelpAPIManager.h"
+#import "MenuManager.h"
 
 @interface ProfileViewController ()
 
 @property (nonatomic, assign) BOOL isEditable;
+@property (nonatomic, assign) BOOL isThemePickerOpen;
 @property (weak, nonatomic) NSString *categoryPlaceholder;
 @property (weak, nonatomic) NSString *pricePlaceholder;
+@property (weak, nonatomic) NSString *themePlaceholder;
+@property (strong, nonatomic) NSArray *themesArr;
+@property (strong, nonatomic) UIAlertController *alert;
+@property (weak, nonatomic) IBOutlet UIImageView *backgroundPic1;
+@property (weak, nonatomic) IBOutlet UIImageView *backgroundPic2;
 
 @end
 
@@ -33,6 +40,7 @@
     
     self.categoryPlaceholder = @"Set Restaurant Category";
     self.pricePlaceholder = @"Set Restaurant Price";
+    self.themePlaceholder = @"Set Restaurant Theme";
     
     // Set restaurant name, category and price labels
     self.user = [PFUser currentUser];
@@ -44,6 +52,28 @@
     if(self.user[@"image"] != nil){
         [self setProfilePicture];
     }
+    // setup picker for theme
+//    self.themePickerView = [[UIPickerView alloc] initWithFrame:CGRectMake(0, 44, 0, 0)];
+    self.themePickerView.delegate = self;
+    self.themePickerView.dataSource = self;
+    self.themePickerView.showsSelectionIndicator = YES;
+    self.themesArr = @[@"Fun", @"Comfortable", @"Elegant"];
+//    self.themePickerView set
+//    self.themeTextField.inputView = self.themePickerView;
+    self.themeTextField.hidden = YES;
+    self.themeTextField.enabled = NO;
+    // set price range from yelp
+//    [[YelpAPIManager shared] userParameters];
+    //alert view for picker
+//    self.alert = [UIAlertController alertControllerWithTitle:@"Title" message:@"Message" preferredStyle:(UIAlertControllerStyleActionSheet)];
+//    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"Done" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+//        // handle response here.
+//    }];
+//    [self.alert.view addSubview:self.themePickerView];
+//    // add the OK action to the alert controller
+//    [self.alert addAction:okAction];
+    // set pics
+    [self setBackgroundPics];
 }
 
 - (IBAction)didTapLogout:(id)sender {
@@ -70,6 +100,7 @@
         //set text fields if their labels have been set
         self.restaurantNameField.text = self.restaurantNameLabel.text; // restaurant name will already be set
         self.restaurantEmailField.text = self.restaurantEmailLabel.text; // email will already be set
+        self.themeButton.titleLabel.text = self.restaurantThemeLabel.text;
         // if user has a category then set field text to category
         if(![self.restaurantCategoryLabel.text isEqualToString: self.categoryPlaceholder]){
             self.restaurantCategoryField.text = self.restaurantCategoryLabel.text;
@@ -77,6 +108,9 @@
         // if user has a price then set field text to price
         if(![self.restaurantPriceLabel.text isEqualToString: self.pricePlaceholder]){
             self.restaurantPriceField.text = self.restaurantPriceLabel.text;
+        }
+        if(![self.restaurantThemeLabel.text isEqualToString:self.themePlaceholder]) {
+            self.themeButton.titleLabel.text = self.restaurantThemeLabel.text;
         }
     } else {
         //User pressed 'save' button
@@ -88,6 +122,7 @@
         self.user[@"username"] = self.restaurantNameField.text;
         self.user[@"category"] = self.restaurantCategoryField.text;
         self.user[@"email"] = self.restaurantEmailField.text;
+        self.user[@"theme"] = self.restaurantThemeLabel.text;
         self.user[@"image"] = [self getPFFileFromImage:self.restaurantProfileImage.image];
 //        self.user[@"price"] = self.restaurantPriceField;
         [self.user saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
@@ -106,6 +141,7 @@
     NSString *category = self.user[@"category"];
     NSString *price = self.user[@"price"];
     NSString *email = self.user[@"email"];
+    NSString *theme = self.user[@"theme"];
     if(category != nil && ![category isEqualToString: @""]){
         self.restaurantCategoryLabel.text = category;
     } else {
@@ -118,11 +154,16 @@
         self.restaurantPriceLabel.text = self.pricePlaceholder;
         self.restaurantPriceField.placeholder = self.pricePlaceholder;
     }
-    if(email != nil && ![email isEqualToString:@""]){
+    if (email != nil && ![email isEqualToString:@""]){
         self.restaurantEmailLabel.text = email;
     } else {
-        self.restaurantEmailLabel.text = @"Set Restaurant Email";
+        self.restaurantEmailLabel.text = @"No email registered";
         self.restaurantEmailField.placeholder = @"Set Restaurant Email";
+    }
+    if (theme != nil && ![theme isEqualToString:@""]) {
+        self.restaurantThemeLabel.text = theme;
+    } else {
+        self.restaurantThemeLabel.text = @"No Theme Chosen";
     }
 }
 
@@ -152,11 +193,18 @@
     self.restaurantEmailLabel.hidden = !trueFalse;
     self.restaurantEmailField.enabled = !trueFalse;
     self.restaurantEmailField.hidden = trueFalse;
+    //theme
+    self.restaurantThemeLabel.hidden = !trueFalse;
+    self.themeButton.enabled = !trueFalse;
+    self.themeButton.hidden = trueFalse;
+    
     
     self.tapToEditLabel.hidden = trueFalse;
     self.cancelButton.enabled = !trueFalse;
     if(trueFalse == YES){
         self.cancelButton.tintColor = UIColor.clearColor;
+        self.themePickerView.hidden = YES;
+        self.themePickerView.userInteractionEnabled = NO;
     } else {
         self.cancelButton.tintColor = self.view.tintColor;
     }
@@ -187,14 +235,8 @@
 }
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
-    
     // Get the image captured by the UIImagePickerController
     UIImage *editedImage = info[UIImagePickerControllerEditedImage];
-    // Resize image to avoid memory issues in Parse
-    //----------- Necessary???????????-----------------
-    
-    
-//    UIImage *resizedImage = [self resizeImage:editedImage withSize:CGSizeMake(400, 400)];
     self.restaurantProfileImage.image = editedImage;
     // Dismiss UIImagePickerController to go back to original view controller
     [self dismissViewControllerAnimated:YES completion:nil];
@@ -220,9 +262,33 @@
             self.restaurantProfileImage.image = [UIImage imageWithData:imageData];
         }
     }];
+}
 
-//    self.restaurantProfileImage.image = self.user[@"image"];
-//    [self.restaurantProfileImage loadInBackground];
+- (IBAction)didTapEditTheme:(id)sender {
+    
+    if (self.isThemePickerOpen == YES) {
+        self.themePickerView.hidden = YES;
+        self.themePickerView.userInteractionEnabled = NO;
+        self.isThemePickerOpen = NO;
+        
+//        [self presentViewController:self.alert animated:YES completion:^{
+            // optional code for what happens after the alert controller has finished presenting
+            
+//        }];
+    } else {
+        self.themePickerView.hidden = NO;
+        self.themePickerView.userInteractionEnabled = YES;
+//        [self.alert.view addSubview:self.themePickerView];
+        self.isThemePickerOpen = YES;
+//        [self presentViewController:self.alert animated:YES completion:^{}];
+        
+    }
+    
+}
+
+- (void)displayThemePicker
+{
+    
 }
 
 /*
@@ -235,4 +301,65 @@
 }
 */
 
+- (NSInteger)numberOfComponentsInPickerView:(nonnull UIPickerView *)pickerView {
+    return 1;
+}
+
+- (NSInteger)pickerView:(nonnull UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
+    return [self.themesArr count];
+}
+
+- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
+{
+    if (component == 0) {
+        return self.themesArr[row];
+    } else {
+        NSLog(@"There should only be one component in picker view");
+        return nil;
+    }
+}
+
+- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
+{
+    // set button text to picker
+    self.themeButton.titleLabel.text = self.themesArr[row];
+    self.restaurantThemeLabel.text = self.themeButton.titleLabel.text;
+    self.themePickerView.hidden = YES;
+    self.themePickerView.userInteractionEnabled = NO;
+    self.isThemePickerOpen = NO;
+}
+
+- (void)setBackgroundPics
+{
+    NSArray *dishes = [[MenuManager shared] dishes];
+    __block BOOL isFirstPicSet = NO;
+    __block BOOL isSecondPicSet = NO;
+    NSData *placeholderPic = UIImagePNGRepresentation([UIImage imageNamed:@"image_placeholder"]);
+    for (Dish *dish in dishes) {
+//        UIImage *dishImage = dish.image;
+        if (isFirstPicSet && isSecondPicSet) {
+            break;
+        } else if (dish.image != nil) {
+            PFFileObject *dishImageFile = (PFFileObject *)dish.image;
+            [dishImageFile getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
+                if(!error){
+                    //check if image is placeholder
+//                    NSData *imageData = imageData; //UIImagePNGRepresentation()
+                    if (![placeholderPic isEqual:imageData]) {
+                
+                        if (!isFirstPicSet) {
+                            self.backgroundPic1.image = [UIImage imageWithData:imageData];
+                            isFirstPicSet = YES;
+                        } else if (!isSecondPicSet) {
+                            self.backgroundPic2.image = [UIImage imageWithData:imageData];
+                            isSecondPicSet = YES;
+                        } else {
+                            //both set so will break
+                        }
+                    }
+                }
+            }];
+        }
+    }
+}
 @end
