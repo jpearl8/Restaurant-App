@@ -86,35 +86,42 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
-- (IBAction)didTapMenu:(id)sender {
-    [self performSegueWithIdentifier:@"menu" sender:nil];
-}
 
 - (IBAction)didTapT3B3:(id)sender {
+    [self.t3b3Button setTransform: CGAffineTransformRotate([self.t3b3Button transform], (self.t3b3Mult * M_PI/2))];
+
     self.t3b3Mult *= -1;
     self.selectedView = self.t3b3View;
     self.coverT3B3.hidden = !(self.coverT3B3.hidden);
     [self didSelectCellAtIndex:1 inSection:0];
 }
 - (IBAction)didTapSPHeader:(id)sender {
+    [self.scatterButton setTransform: CGAffineTransformRotate([self.scatterButton transform], (self.scatterMult * M_PI/2))];
+
     self.scatterMult *= -1;
     self.selectedView = self.scatterView;
     self.coverScatter.hidden = !(self.coverScatter.hidden);
     [self didSelectCellAtIndex:2 inSection:0];
 }
 - (IBAction)didTapRCHeader:(id)sender {
+    [self.radarButton setTransform: CGAffineTransformRotate([self.radarButton transform], (self.radarMult * M_PI/2))];
+
     self.radarMult *= -1;
     self.selectedView = self.radarView;
     self.coverRadar.hidden = !(self.coverRadar.hidden);
     [self didSelectCellAtIndex:3 inSection:0];
 }
 - (IBAction)didTapHistHeader:(id)sender {
+    [self.histogramButton setTransform: CGAffineTransformRotate([self.histogramButton transform], (self.histogramMult * M_PI/2))];
+
     self.histogramMult *= -1;
     self.selectedView = self.histogramView;
     self.coverHistogram.hidden = !(self.coverHistogram.hidden);
     [self didSelectCellAtIndex:4 inSection:0];
 }
 - (IBAction)didTapPTHeader:(id)sender {
+    [self.trendButton setTransform: CGAffineTransformRotate([self.trendButton transform], (self.trendMult * M_PI/2))];
+
     self.trendMult *= -1;
     self.selectedView = self.trendView;
     self.coverTrend.hidden = !(self.coverTrend.hidden);
@@ -148,10 +155,10 @@
 //                                                  6);
         } else {
             return ([UIScreen mainScreen].bounds.size.height /
-            6)-20;
+            6) - (self.tabBarController.tabBar.frame.size.height/3);
         }
     } else {
-        return ([UIScreen mainScreen].bounds.size.height / 6)-20;
+        return ([UIScreen mainScreen].bounds.size.height / 6)- (self.tabBarController.tabBar.frame.size.height/3);
     }
 }
 /*

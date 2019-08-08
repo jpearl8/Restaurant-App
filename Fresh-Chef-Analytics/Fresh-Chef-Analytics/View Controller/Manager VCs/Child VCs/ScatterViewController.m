@@ -39,6 +39,7 @@
     self.dishesTableView.delegate = self;
     self.dishesTableView.dataSource = self;
     self.categoriesOfDishes = [[MenuManager shared] categoriesOfDishes];
+    self.chooseDishButton.layer.cornerRadius = self.chooseDishButton.frame.size.width/8;
     self.legend = [[[MenuManager shared] categoriesOfDishes] allKeys];
     self.dataArray = [self populateDataByRatingAndFreq];
     self.colorsFromUI = @[@"#6b48ff", @"#ff6337", @"#b31e6f", @"#00bdaa", @"#58b368", @"#ff487e", @"#226b80", @"52437b"];

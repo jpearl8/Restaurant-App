@@ -23,7 +23,6 @@ NS_ASSUME_NONNULL_BEGIN
 @property (assign, nonatomic) NSInteger selectedIndex;
 @property (weak, nonatomic) IBOutlet UIView *cellView;
 @property (strong, nonatomic) Waiter *waiter;
-@property (assign, nonatomic) BOOL highlightRatingView;
 @end
 
 NS_ASSUME_NONNULL_END
