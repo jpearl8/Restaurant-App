@@ -6432,39 +6432,28 @@
         <image name="Fun_top" width="1196" height="984"/>
         <image name="Screen Shot 2019-07-30 at 3.47.14 PM" width="182" height="326"/>
         <image name="Screen Shot 2019-07-30 at 4.10.34 PM" width="268" height="362"/>
-<<<<<<< HEAD
         <image name="arrow" width="700" height="700"/>
         <image name="arrow_grey" width="700" height="700"/>
-=======
         <image name="arrow-40" width="40" height="40"/>
         <image name="arrow-green" width="700" height="700"/>
         <image name="bad-40" width="40" height="40"/>
->>>>>>> f5a3d266ba604edfa9169dbc814c9c21585b7d12
         <image name="competitor-40" width="40" height="40"/>
         <image name="data-40" width="40" height="40"/>
         <image name="good-40" width="40" height="40"/>
         <image name="histogram-83.5" width="83.5" height="83.5"/>
         <image name="image_placeholder" width="375" height="375"/>
-<<<<<<< HEAD
         <image name="info" width="700" height="700"/>
         <image name="loading" width="320" height="280"/>
         <image name="loose-chain" width="700" height="700"/>
         <image name="map" width="700" height="700"/>
         <image name="minus" width="18" height="18"/>
-=======
         <image name="info-40" width="40" height="40"/>
         <image name="menu-83.5" width="83.5" height="83.5"/>
         <image name="minus" width="21.333333969116211" height="21.333333969116211"/>
->>>>>>> f5a3d266ba604edfa9169dbc814c9c21585b7d12
         <image name="minus-circle_outline_24-4x_ed" width="96" height="96"/>
         <image name="nav-plus_outline_24" width="24" height="24"/>
         <image name="order_select" width="192" height="72"/>
-<<<<<<< HEAD
         <image name="plus" width="18" height="18"/>
-=======
-        <image name="orders-40" width="40" height="40"/>
-        <image name="plus" width="21.333333969116211" height="21.333333969116211"/>
->>>>>>> f5a3d266ba604edfa9169dbc814c9c21585b7d12
         <image name="profile_tab" width="25" height="25"/>
         <image name="profit-83.5" width="83.5" height="83.5"/>
         <image name="radar-83.5" width="83.5" height="83.5"/>
@@ -6475,17 +6464,8 @@
         <image name="waiter-40" width="40" height="40"/>
     </resources>
     <inferredMetricsTieBreakers>
-<<<<<<< HEAD
         <segue reference="LuD-gu-chP"/>
         <segue reference="r3R-H8-hdI"/>
         <segue reference="kyq-sQ-kui"/>
-=======
-        <segue reference="mFX-D1-im0"/>
-        <segue reference="ACF-OQ-zwx"/>
-        <segue reference="ziY-mK-j7I"/>
-        <segue reference="VpL-yV-74Y"/>
-        <segue reference="SWx-jk-9k2"/>
-        <segue reference="oPI-sQ-S9b"/>
->>>>>>> f5a3d266ba604edfa9169dbc814c9c21585b7d12
     </inferredMetricsTieBreakers>
 </document>
