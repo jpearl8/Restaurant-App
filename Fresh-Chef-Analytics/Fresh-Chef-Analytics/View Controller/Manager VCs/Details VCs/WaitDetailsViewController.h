@@ -14,6 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface WaitDetailsViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UIView *ratingView;
 
+@property (weak, nonatomic) IBOutlet UILabel *rating;
 @property (weak, nonatomic) IBOutlet UIImageView *waiterProfileImage;
 @property (strong, nonatomic) Waiter *waiter;
 @property (weak, nonatomic) IBOutlet UILabel *waiterName;

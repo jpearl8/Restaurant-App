@@ -8,7 +8,8 @@
 
 #import "WaitDetailsViewController.h"
 #import "WaiterManager.h"
-#import "HCSStarRatingView.h"
+#import "UIRefs.h"
+
 @interface WaitDetailsViewController ()
 
 @end
@@ -19,17 +20,16 @@
     [super viewDidLoad];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
-    double numberStars = [[[WaiterManager shared] averageRating:self.waiter] doubleValue];
-    HCSStarRatingView *starRatingView = [[HCSStarRatingView alloc] initWithFrame:CGRectMake(self.ratingView.frame.size.width/2, self.ratingView.frame.size.height/2, (30 * numberStars), 30)];
-    starRatingView.value = numberStars;
-    starRatingView.minimumValue = numberStars;
-    starRatingView.maximumValue = numberStars;
-    starRatingView.tintColor = [UIColor grayColor];
-    [self.ratingView addSubview:starRatingView];
+    self.ratingView.layer.shadowRadius  = 1.5f;
+    self.ratingView.layer.shadowColor   = [UIColor colorWithRed:176.f/255.f green:199.f/255.f blue:226.f/255.f alpha:1.f].CGColor;
+    self.ratingView.layer.shadowOffset  = CGSizeMake(0.0f, 0.0f);
+    self.ratingView.layer.shadowOpacity = 0.9f;
+    self.ratingView.layer.masksToBounds = NO;
     self.waiterName.text = self.waiter.name;
-    self.waiterTime.text = [@"Served " stringByAppendingString:[[NSString stringWithFormat:@"%@", self.waiter.yearsWorked] stringByAppendingString:@"  Years"]];
-    self.waiterTabletops.text  = [[NSString stringWithFormat:@"%@", self.waiter.tableTops] stringByAppendingString:@" Tabletops"];
-    self.waiterNumCustomers.text = [[NSString stringWithFormat:@"%@", self.waiter.numOfCustomers] stringByAppendingString:@" customers served"];
+    self.waiterTime.text = [[NSString stringWithFormat:@"%@", self.waiter.yearsWorked] stringByAppendingString:@"  YEARS"];
+    self.rating.text = [NSString stringWithFormat:@"%@", [[WaiterManager shared] averageRating:self.waiter]];
+    self.waiterTabletops.text  = [NSString stringWithFormat:@"%@", self.waiter.tableTops];
+    self.waiterNumCustomers.text = [NSString stringWithFormat:@"%@", self.waiter.numOfCustomers];
     if(self.waiter.image!=nil){
         [self.waiter.image getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
             if(!error){
@@ -41,10 +41,8 @@
     } else {
         self.waiterProfileImage.image = nil;
     }
-    self.waiterTipsPT.text = [@"$" stringByAppendingString:[[NSString stringWithFormat:@"%@", [[WaiterManager shared] averageTipsByTable:self.waiter]] stringByAppendingString:@" Tips per Table"]];
-    self.waiterTipsPC.text = [@"$" stringByAppendingString:[[NSString stringWithFormat:@"%@", [[WaiterManager shared] averageTipByCustomer:self.waiter]] stringByAppendingString:@" Tips per Customer"]];
-
-
+    self.waiterTipsPT.text = [@"$" stringByAppendingString:[NSString stringWithFormat:@"%.2f", [[[WaiterManager shared] averageTipsByTable:self.waiter] floatValue]]];
+    self.waiterTipsPC.text = [@"$" stringByAppendingString:[NSString stringWithFormat:@"%.2f", [[[WaiterManager shared] averageTipByCustomer:self.waiter] floatValue]]];
 }
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -62,7 +60,7 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"SimpleTableView"];
     }
     UIView *backgroundView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 50)];
-    backgroundView.backgroundColor = [UIColor colorWithRed:.94 green:.72 blue:.69 alpha:0.8];
+    backgroundView.backgroundColor = [[UIRefs shared] colorFromHexString:@"#fbfaf1"];
     [cell addSubview:backgroundView];
     [cell sendSubviewToBack:backgroundView];
     cell.textLabel.text = self.waiter.comments[indexPath.row];

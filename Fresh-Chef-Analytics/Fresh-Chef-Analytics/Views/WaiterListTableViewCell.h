@@ -22,6 +22,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UILabel *waiterTipsPT;
 @property (assign, nonatomic) NSInteger selectedIndex;
 @property (weak, nonatomic) IBOutlet UIView *cellView;
+@property (weak, nonatomic) IBOutlet UILabel *averageTableLabel;
+@property (weak, nonatomic) IBOutlet UILabel *averageCustomerLabel;
+
 @property (strong, nonatomic) Waiter *waiter;
 @end
 

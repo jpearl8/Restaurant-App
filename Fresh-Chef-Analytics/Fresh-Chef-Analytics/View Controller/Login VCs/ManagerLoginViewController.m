@@ -26,6 +26,7 @@
 -(void)viewDidLayoutSubviews{
     [super viewDidLayoutSubviews];
     [self.otherLogin setFrame:CGRectMake(104.5, 260, 205, 39)];
+    
 }
 
 - (void)viewDidLoad {
