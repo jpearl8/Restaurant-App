@@ -14,6 +14,8 @@
 @interface ThankYouViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *restaurantName;
 @property (strong, nonatomic) IBOutlet UIImageView *backgroundIm;
+@property (strong, nonatomic) IBOutlet UIButton *button;
+@property (strong, nonatomic) IBOutlet UILabel *label;
 
 @end
 
@@ -23,6 +25,14 @@
     PFUser *currentUser = [PFUser currentUser];
     self.restaurantName.text = currentUser.username;
     [[UIRefs shared] setImage:self.backgroundIm isCustomerForm:YES];
+    self.button.layer.borderWidth = .5f;
+    self.button.layer.borderColor = [UIColor blackColor].CGColor;
+    NSString *category = [PFUser currentUser][@"theme"];
+    if ([category isEqualToString:@"Comfortable"]){
+        self.restaurantName.textColor = [UIColor whiteColor];
+        self.label.textColor = [UIColor whiteColor];
+        
+    }
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 }

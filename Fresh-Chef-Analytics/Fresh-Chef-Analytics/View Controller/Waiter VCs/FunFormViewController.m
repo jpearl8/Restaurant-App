@@ -9,25 +9,26 @@
 #import "FunFormViewController.h"
 #import "ReceiptViewController.h"
 #import "Helpful_funs.h"
+#import "WaiterCell.h"
 
 
 @interface FunFormViewController () <UITableViewDelegate, UITableViewDataSource, UITextViewDelegate, FunCellDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *menuRatings;
-@property (weak, nonatomic) IBOutlet UILabel *waiterNameLabel;
-@property (weak, nonatomic) IBOutlet UITextView *waiterComments;
-@property (weak, nonatomic) IBOutlet UILabel *charsRemaining;
+//@property (weak, nonatomic) IBOutlet UILabel *waiterNameLabel;
+//@property (weak, nonatomic) IBOutlet UITextView *waiterComments;
+//@property (weak, nonatomic) IBOutlet UILabel *charsRemaining;
 @property (strong, nonatomic) NSNumber *waiterRating;
-@property (weak, nonatomic) IBOutlet UIImageView *waiterPic;
+//@property (weak, nonatomic) IBOutlet UIImageView *waiterPic;
 @property (strong, nonatomic) NSMutableArray *customerRatingsArray;
 @property (strong, nonatomic) NSMutableArray *customerComments;
+@property (strong, nonatomic) NSString *waiterComments;
 
-
-@property (weak, nonatomic) IBOutlet UIButton *b010;
-@property (weak, nonatomic) IBOutlet UIButton *b08;
-@property (weak, nonatomic) IBOutlet UIButton *b06;
-@property (weak, nonatomic) IBOutlet UIButton *b04;
-@property (weak, nonatomic) IBOutlet UIButton *b02;
-@property (weak, nonatomic) IBOutlet UIButton *b00;
+//@property (weak, nonatomic) IBOutlet UIButton *b010;
+//@property (weak, nonatomic) IBOutlet UIButton *b08;
+//@property (weak, nonatomic) IBOutlet UIButton *b06;
+//@property (weak, nonatomic) IBOutlet UIButton *b04;
+//@property (weak, nonatomic) IBOutlet UIButton *b02;
+//@property (weak, nonatomic) IBOutlet UIButton *b00;
 
 @end
 
@@ -45,10 +46,10 @@
     //[self.waiter fetchIfNeeded];
     self.menuRatings.delegate = self;
     self.menuRatings.dataSource = self;
-    self.waiterNameLabel.text = self.waiter.name;
-    self.waiterComments.delegate = self;
-    self.waiterComments.placeholder = @"Comments on your waiter";
-    self.waiterComments.placeholderColor = [UIColor lightGrayColor];
+//    self.waiterNameLabel.text = self.waiter.name;
+//    self.waiterComments.delegate = self;
+//    self.waiterComments.placeholder = @"Comments on your waiter";
+//    self.waiterComments.placeholderColor = [UIColor lightGrayColor];
     self.customerRatingsArray = [[NSMutableArray alloc] init];
     self.customerComments =[[NSMutableArray alloc] init];
     for (int i = 0; i < self.openOrders.count; i++){
@@ -60,74 +61,94 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.openOrders.count;
+    return (self.openOrders.count + 1);
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    FunTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier: @"Fun" forIndexPath:indexPath];
-    NSNumber *amount = self.openOrders[indexPath.row][@"amount"];
-    int index = [[Helpful_funs shared] findDishItem:(int)indexPath.row withDishArray:self.dishesArray withOpenOrders:self.openOrders];
-    if (index != -1){
-        Dish *dish = self.dishesArray[index];
-        
-        
-        cell.dishName.text = dish.name;
-        cell.dishType.text = dish.type;
-        cell.dishDescription.text = dish.dishDescription;
-        PFFileObject *dishImageFile = (PFFileObject *)dish.image;
-        [dishImageFile getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
+    if (indexPath.row == 0){
+        WaiterCell *cell = [tableView dequeueReusableCellWithIdentifier: @"Waiter" forIndexPath:indexPath];
+        cell.waiter = self.waiter;
+        cell.waiterDelegate = self;
+        cell.waiterNameLabel.text = cell.waiter.name;
+        PFFileObject *waiterImageFile = (PFFileObject *)self.waiter.image;
+        [waiterImageFile getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
             if(!error){
-                cell.image.image = [UIImage imageWithData:imageData];
+                cell.waiterPic.image = [UIImage imageWithData:imageData];
             }
         }];
-    }
-    cell.index = (int)indexPath.row;
-    cell.customerRatings = self.customerRatingsArray;
-    cell.customerComments = self.customerComments;
-    cell.delegate = self;
-    cell.amount.text = [NSString stringWithFormat:@"%@", amount];
-    NSArray <UIButton *>* buttons = @[cell.b0, cell.b2, cell.b4, cell.b6, cell.b8, cell.b10];
-        for (int i = 0; i < buttons.count; i++){
-            if (self.customerRatingsArray.count > 0 && self.customerRatingsArray[indexPath.row] == i*2){
-                [[Helpful_funs shared] defineSelect:buttons[i] withSelect:YES];
-                
-            } else {
-                [[Helpful_funs shared] defineSelect:buttons[i] withSelect:NO];
-            }
-        }
-    return cell;
-}
-
-
--(void)textViewDidChange:(UITextView *)textView{
-
-    //handle text editing finished
-}
-
-- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text{
-    int characterLimit = 140;
-    NSString *newText = [self.waiterComments.text stringByReplacingCharactersInRange:range withString:text];
-    self.charsRemaining.text = [NSString stringWithFormat: @"%d", (int)(characterLimit - newText.length)];
-    return newText.length < characterLimit;
-}
-
-
-- (IBAction)buttonTouch:(UIButton *)sender {
-    NSArray <UIButton *>* buttons = @[self.b00, self.b02, self.b04, self.b06, self.b08, self.b010];
-    for (int i = 0; i < buttons.count; i++){
-        if ([buttons[i].restorationIdentifier isEqualToString:sender.restorationIdentifier]){
-            [[Helpful_funs shared] defineSelect:buttons[i] withSelect:YES];
+        return cell;
+    } else {
+        FunTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier: @"Fun" forIndexPath:indexPath];
+        NSNumber *amount = self.openOrders[indexPath.row - 1][@"amount"];
+        int index = [[Helpful_funs shared] findDishItem:((int)indexPath.row - 1) withDishArray:self.dishesArray withOpenOrders:self.openOrders];
+        if (index != -1){
+            Dish *dish = self.dishesArray[index];
             
-        } else {
-            [[Helpful_funs shared] defineSelect:buttons[i] withSelect:NO];
+            
+            cell.dishName.text = dish.name;
+            cell.dishType.text = dish.type;
+            cell.dishDescription.text = dish.dishDescription;
+            PFFileObject *dishImageFile = (PFFileObject *)dish.image;
+            [dishImageFile getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
+                if(!error){
+                    cell.image.image = [UIImage imageWithData:imageData];
+                }
+            }];
         }
-    }
-    if ([sender.restorationIdentifier floatValue]< 0){
-        self.waiterRating = 0;
-    } else{
-        self.waiterRating = [NSNumber numberWithDouble:([sender.restorationIdentifier floatValue] / 10.0)];
+        cell.index = (int)indexPath.row - 1;
+        cell.customerRatings = self.customerRatingsArray;
+        cell.customerComments = self.customerComments;
+        cell.delegate = self;
+        cell.amount.text = [NSString stringWithFormat:@"%@", amount];
+        NSArray <UIButton *>* buttons = @[cell.b0, cell.b2, cell.b4, cell.b6, cell.b8, cell.b10];
+            for (int i = 0; i < buttons.count; i++){
+                if (self.customerRatingsArray.count > 0 && self.customerRatingsArray[indexPath.row - 1] == i*2){
+                    [[Helpful_funs shared] defineSelect:buttons[i] withSelect:YES];
+                    
+                } else {
+                    [[Helpful_funs shared] defineSelect:buttons[i] withSelect:NO];
+                }
+            }
+        return cell;
     }
 }
+
+- (void)waiterComment:(NSString *)comment{
+    self.waiterComments = comment;
+}
+
+- (void)waiterRating:(NSNumber *)rating{
+    self.waiterRating = [NSNumber numberWithDouble:(2*[rating doubleValue])];
+}
+//-(void)textViewDidChange:(UITextView *)textView{
+//
+//    //handle text editing finished
+//}
+//
+//- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text{
+//    int characterLimit = 140;
+//    NSString *newText = [self.waiterComments.text stringByReplacingCharactersInRange:range withString:text];
+//    self.charsRemaining.text = [NSString stringWithFormat: @"%d", (int)(characterLimit - newText.length)];
+//    return newText.length < characterLimit;
+//}
+//
+//
+//- (IBAction)buttonTouch:(UIButton *)sender {
+//    NSArray <UIButton *>* buttons = @[self.b00, self.b02, self.b04, self.b06, self.b08, self.b010];
+//    for (int i = 0; i < buttons.count; i++){
+//        if ([buttons[i].restorationIdentifier isEqualToString:sender.restorationIdentifier]){
+//            [[Helpful_funs shared] defineSelect:buttons[i] withSelect:YES];
+//
+//        } else {
+//            [[Helpful_funs shared] defineSelect:buttons[i] withSelect:NO];
+//        }
+//    }
+//    if ([sender.restorationIdentifier floatValue]< 0){
+//        self.waiterRating = 0;
+//    } else{
+//        self.waiterRating = [NSNumber numberWithDouble:([sender.restorationIdentifier floatValue] / 10.0)];
+//    }
+//}
 
 - (IBAction)didSubmit:(UIButton *)sender {
     for (int i = 0; i < self.openOrders.count; i++){
@@ -155,8 +176,8 @@
     }
     self.waiter.rating = [NSNumber numberWithFloat: ([self.waiterRating floatValue] + totalRating)];
     
-    if (!([self.waiterComments.text isEqual:[NSNull null]] || [self.waiterComments.text isEqualToString:@""])){
-        self.waiter.comments = [self.waiter.comments arrayByAddingObject:self.waiterComments.text];
+    if (!(self.waiterComments == nil || [self.waiterComments isEqualToString:@""])){
+        self.waiter.comments = [self.waiter.comments arrayByAddingObject:self.waiterComments];
     }
     float numOfCustomers = [self.waiter.numOfCustomers floatValue];
     self.waiter.numOfCustomers = [NSNumber numberWithFloat: ([self.customerNumber floatValue] + numOfCustomers)];
@@ -190,6 +211,7 @@
     
     
 }
+
 
 
 

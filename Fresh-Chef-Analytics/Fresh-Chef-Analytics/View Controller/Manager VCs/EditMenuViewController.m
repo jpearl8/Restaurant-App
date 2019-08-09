@@ -231,6 +231,10 @@
     self.categoriesOfDishes = [[MenuManager shared] categoriesOfDishes];
     self.categories = [self.categoriesOfDishes allKeys];
 }
+- (IBAction)dismiss:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
 // Table View Protocol Methods
 
 /*
