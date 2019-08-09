@@ -58,6 +58,13 @@
             first = [NSNumber numberWithFloat:x];
             second = [NSNumber numberWithFloat:y];
         }
+        if([orderType isEqualToString:@"waiterRating"]) {
+            // calculate actual rating based on frequency
+            float x = [a[@"rating"] floatValue] / [a[@"tableTops"] floatValue];
+            float y = [b[@"rating"] floatValue] / [b[@"tableTops"] floatValue];
+            first = [NSNumber numberWithFloat:x];
+            second = [NSNumber numberWithFloat:y];
+        }
         if ([orderType isEqualToString:@"tipsByCustomers"])
         {
             float x = [[[WaiterManager shared] averageTipByCustomer:(Waiter*)a] floatValue];

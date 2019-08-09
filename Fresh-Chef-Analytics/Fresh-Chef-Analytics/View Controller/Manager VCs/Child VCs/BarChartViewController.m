@@ -17,6 +17,8 @@
 @property (strong, nonatomic) PNBarChart * barChart;
 @property (strong, nonatomic) NSMutableArray *legend;
 @property (strong, nonatomic) NSArray *colorsFromUI;
+@property (weak, nonatomic) IBOutlet UILabel *freqLabel;
+
 @end
 
 @implementation BarChartViewController
@@ -30,7 +32,9 @@
     [self.pickerData insertObject:@"All Categories" atIndex:0];
     self.colorsFromUI = @[@"#6b48ff", @"#ff6337", @"#b31e6f", @"#00bdaa", @"#58b368", @"#ff487e", @"#226b80", @"52437b"];    self.legend = [NSMutableArray arrayWithArray:[[[MenuManager shared] categoriesOfDishes] allKeys]];
     [self.legend insertObject:@"All Categories" atIndex:0];
-
+    [self.freqLabel setTransform:CGAffineTransformMakeTranslation(-30, 30)];
+    
+    [self.freqLabel setTransform:CGAffineTransformRotate([self.freqLabel transform], -M_PI/2)];
     self.categoriesOfDishes = [[MenuManager shared] categoriesOfDishes];
     if ([[[MenuManager shared] dishes] count] > 0)
     {
@@ -131,7 +135,7 @@
         
         self.barChart.delegate = self;
         
-        [self.view addSubview:self.barChart];
+        [self.dataView addSubview:self.barChart];
     }
     else
     {
@@ -150,15 +154,17 @@
 
     
 }
+// This function does the opposite actually!! In ascending order please ignore the names until this gets cleaned //
 - (NSMutableArray *) setOrderForDescendingArray : (NSMutableArray *) arr
 {
     NSMutableArray *indexArr = [[NSMutableArray alloc] init];
     NSMutableArray *copyOfArr = [[NSMutableArray alloc] initWithArray:arr];
+    NSNumber *veryLargeNum = [NSNumber numberWithDouble: HUGE_VAL];
     for (int i = 0; i < [arr count]; i++)
     {
     
-        NSUInteger maxIndex = [copyOfArr indexOfObject:[copyOfArr valueForKeyPath:@"@max.self"]];
-        [copyOfArr replaceObjectAtIndex:maxIndex withObject:@(0)];
+        NSUInteger maxIndex = [copyOfArr indexOfObject:[copyOfArr valueForKeyPath:@"@min.self"]];
+        [copyOfArr replaceObjectAtIndex:maxIndex withObject:veryLargeNum];
         [indexArr addObject:[NSNumber numberWithInteger:maxIndex]];
     }
     return indexArr;

@@ -15,20 +15,21 @@
     // Initialization code
     self.waiterProfileImage.layer.cornerRadius = 0.8 * self.waiterProfileImage.bounds.size.height;
     self.waiterProfileImage.layer.masksToBounds = YES;
+    
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
     
     // Configure the view for the selected state
-    [self.waiterRating setFont:[UIFont systemFontOfSize:18]];
+//    [self.waiterRating setFont:[UIFont systemFontOfSize:18]];
     [self.waiterTabletops setFont:[UIFont systemFontOfSize:18]];
     [self.waiterNumCustomers setFont:[UIFont systemFontOfSize:18]];
     [self.waiterTipsPT setFont:[UIFont systemFontOfSize:18]];
     [self.waiterTipsPC setFont:[UIFont systemFontOfSize:18]];
     [self.waiterTime setFont:[UIFont systemFontOfSize:18]];
     if (self.selectedIndex == 0) {
-        [self.waiterRating setFont:[UIFont boldSystemFontOfSize:25]];
+        NSLog(@"Will change rating through vc");
     } else if (self.selectedIndex == 1) {
         [self.waiterTabletops setFont:[UIFont boldSystemFontOfSize:25]];
     } else if (self.selectedIndex == 2) {

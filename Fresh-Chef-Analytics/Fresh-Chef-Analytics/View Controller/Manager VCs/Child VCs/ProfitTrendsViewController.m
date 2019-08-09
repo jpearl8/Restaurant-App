@@ -9,7 +9,6 @@
 #import "ProfitTrendsViewController.h"
 #import "OrderManager.h"
 #import "PNChartDelegate.h"
-//#import "FCADate.h"
 
 @interface ProfitTrendsViewController ()
 @property (weak, nonatomic) IBOutlet UIView *dataView;
@@ -54,8 +53,6 @@
     [super viewDidLoad];
     self.categoryPicker.delegate = self;
     self.categoryPicker.dataSource = self;
-    
-//    self.lineChart.dataSource = self;
     self.profitByDay = [[NSMutableDictionary alloc] init];
     self.profitByDay = [[OrderManager shared] profitByDate];
     self.originalProfit = [[NSMutableArray alloc] init];
@@ -180,7 +177,7 @@
         startIdx = 0;
     }
     // initialize chart
-    self.lineChart = [[PNLineChart alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH * 0.95, 250.0)];
+    self.lineChart = [[PNLineChart alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, self.dataView.frame.size.height)];
     self.lineChart.delegate = self;
     // set up Profit data
     NSArray * data01Array = [self.profitDataArray subarrayWithRange:NSMakeRange(startIdx, range)];
@@ -261,36 +258,13 @@
 //    NSLog(@"Draw virtical line at x-cord: %f", point.x);
 //    UIBezierPath *vertLine = [UIBezierPath bezierPath];
     [self.vertLine moveToPoint:CGPointMake(point.x, 100)];
-    [self.vertLine addLineToPoint:CGPointMake(point.x, 350)];
+    [self.vertLine addLineToPoint:CGPointMake(point.x, 325)];
     self.vertShapeLayer.path = [self.vertLine CGPath];
     self.vertShapeLayer.strokeColor = [[UIColor lightGrayColor] CGColor];
     self.vertShapeLayer.lineWidth = 0.5;
     self.vertShapeLayer.fillColor = [[UIColor clearColor] CGColor];
     [self.view.layer addSublayer:self.vertShapeLayer];
 }
-
-//- (void)makeArraysWithPoints
-//{
-//    NSMutableArray *arr1 = [[NSMutableArray alloc] init];
-//    NSMutableArray *arr2 = [[NSMutableArray alloc] init];
-//    // WEEK - take last 7 values from xlabels and currentDataArray
-//    //        then add them to a new array with -2's
-//    NSMutableArray *tempArr1 = [[NSMutableArray alloc] initWithArray:self.currentXLabels];
-//    NSMutableArray *tempArr2 = [[NSMutableArray alloc] initWithArray:self.profitDataArray];
-//
-//    for (int i = [tempArr1 count] - 8; i < [tempArr1 count]; i++) {
-//        if ([tempArr2[i] integerValue] != -2) {
-//            // remove data point from arrays so it will match num points displayed on graph
-//            [arr1 addObject:tempArr1[i]];
-//            [arr2 addObject:tempArr2[i]];
-//        }
-//    }
-//
-//    self.correctedWeekXLabels = [[NSMutableArray alloc] init];
-//    self.correctedWeekProfit = [[NSMutableArray alloc] init];
-//    [self.correctedWeekXLabels addObjectsFromArray:arr1];
-//    [self.correctedWeekProfit addObjectsFromArray:arr2];
-//}
 
 - (void)makeCorrectedXLabelArr:(NSMutableArray *)arr1 andProfitArr:(NSMutableArray *)arr2 andBusyArr:(NSMutableArray *)arr3 overDays:(int)numDays
 {

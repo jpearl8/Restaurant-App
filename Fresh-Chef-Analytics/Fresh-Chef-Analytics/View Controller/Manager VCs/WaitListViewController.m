@@ -7,7 +7,7 @@
 //
 
 #import "WaitListViewController.h"
-
+#import "HCSStarRatingView.h"
 
 @interface WaitListViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -84,7 +84,22 @@
     cell.selectedIndex = self.selectedIndex;
     cell.cellView.layer.cornerRadius = cell.cellView.frame.size.width/6;
     cell.waiterTime.text = [@"Served " stringByAppendingString:[[NSString stringWithFormat:@"%@", waiter.yearsWorked] stringByAppendingString:@"  Years"]];
-    cell.waiterRating.text = [[NSString stringWithFormat:@"%@", [[WaiterManager shared] averageRating:cell.waiter]] stringByAppendingString:@" ✯'s"];
+    double numberStars = [[[WaiterManager shared] averageRating:cell.waiter] doubleValue];
+    HCSStarRatingView *starRatingView = [[HCSStarRatingView alloc] initWithFrame:CGRectMake(0, 0, (5*30), 30)];
+    starRatingView.userInteractionEnabled = NO;
+    starRatingView.value = numberStars;
+    starRatingView.minimumValue = numberStars;
+    starRatingView.maximumValue = 5;
+    if (self.selectedIndex == 0)
+    {
+        starRatingView.tintColor = [UIColor blueColor];
+    }
+    else
+    {
+        starRatingView.tintColor = [UIColor grayColor];
+    }
+    [cell.ratingView addSubview:starRatingView];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.waiterTabletops.text  = [[NSString stringWithFormat:@"%@", waiter.tableTops] stringByAppendingString:@" Tabletops"];
     cell.waiterNumCustomers.text = [[NSString stringWithFormat:@"%@", waiter.numOfCustomers] stringByAppendingString:@" customers served"];
     cell.waiterTipsPT.text = [@"$" stringByAppendingString:[[NSString stringWithFormat:@"%@", [[WaiterManager shared] averageTipsByTable:cell.waiter]] stringByAppendingString:@" Tips per Table"]];
@@ -104,7 +119,12 @@
 
     return cell;
 }
-
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+    [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
+    
+}
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
     if (searchText.length != 0) {
         NSPredicate *predicate = [NSPredicate predicateWithBlock:^BOOL(NSDictionary *evaluatedObject, NSDictionary *bindings) {
@@ -126,7 +146,8 @@
     if ([[segue identifier] isEqualToString:@"waiterDetails"]) {
         WaiterListTableViewCell *tappedCell = sender;
         NSIndexPath *indexPath = [self.tableView indexPathForCell:tappedCell];
-        Waiter *waiter = self.roster[indexPath.row];
+        
+        Waiter *waiter = self.filteredWaiters[indexPath.row];
         WaitDetailsViewController *deetController = [segue destinationViewController];
         deetController.waiter = waiter;
     }

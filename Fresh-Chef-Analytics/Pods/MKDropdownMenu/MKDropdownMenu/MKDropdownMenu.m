@@ -29,7 +29,7 @@
 static const NSTimeInterval kAnimationDuration = 0.25;
 
 static const CGFloat kDefaultRowHeight = 44;
-static const CGFloat kDefaultDisclosureIndicatorSize = 8;
+static const CGFloat kDefaultDisclosureIndicatorSize = 20;
 static const CGFloat kDefaultCornerRadius = 2;
 static const CGFloat kDefaultBackgroundDimmingOpacity = 0.2;
 

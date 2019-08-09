@@ -52,7 +52,7 @@
     return @(0);
 }
 - (void)setOrderedWaiterArrays {
-    self.rosterByRating = [[Helpful_funs shared] orderArray:self.roster byType:@"rating"];
+    self.rosterByRating = [[Helpful_funs shared] orderArray:self.roster byType:@"waiterRating"];
     self.rosterByTables = [[Helpful_funs shared] orderArray:self.roster byType:@"tableTops"];
     self.rosterByCustomers = [[Helpful_funs shared] orderArray:self.roster byType:@"numOfCustomers"];
     self.rosterByTipsCustomers = [[Helpful_funs shared] orderArray:self.roster byType:@"tipsByCustomers"];
