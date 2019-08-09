@@ -13,6 +13,7 @@
 @interface DishDetailsViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *dishName;
 @property (weak, nonatomic) IBOutlet UIImageView *dishPic;
+@property (strong, nonatomic) IBOutlet UIView *noComments;
 @property (weak, nonatomic) IBOutlet UILabel *dishDescription;
 @property (weak, nonatomic) IBOutlet UILabel *dishRating;
 @property (weak, nonatomic) IBOutlet UILabel *dishPrice;
@@ -90,6 +91,21 @@
         }
     }];
 }
+
+-(void)noCommentsCheck {
+    if ([self.dish.comments count] == 0){
+        self.dishCommentsTable.hidden = YES;
+        self.noComments.hidden = NO;
+        self.noComments.layer.cornerRadius = 5;
+        //self.noOrders.frame.size.width/2;
+        self.noComments.layer.borderWidth = .5f;
+        self.noComments.layer.borderColor = [[UIRefs shared] colorFromHexString:[UIRefs shared].purpleAccent].CGColor;
+    } else {
+        self.dishCommentsTable.hidden = NO;
+        self.noComments.hidden = YES;
+    }
+}
+
 - (IBAction)dismiss:(id)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
@@ -100,6 +116,7 @@
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+    [self noCommentsCheck];
     return [self.dish.comments count];
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath

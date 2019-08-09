@@ -40,7 +40,7 @@
     PFUser *currentUser = [PFUser currentUser];
     NSString *location = currentUser[@"address"];
     self.params = [[NSMutableArray alloc] initWithObjects:location, @"0", @"0", nil];
-    self.dropDownCats = @[@"General Competitors", @"Competitors of same Category", @"Competitors of same Price Point"];
+    self.dropDownCats = @[@"General Competitors", @"Cagegory Competitors", @"Price Point Competitors"];
     self.selectedIndex = 0;
     self.dropDownLabel.text = @"General Competitors";
 
@@ -59,7 +59,7 @@
 }
 - (NSAttributedString *)dropdownMenu:(MKDropdownMenu *)dropdownMenu attributedTitleForRow:(NSInteger)row forComponent:(NSInteger)component
 {
-    UIFont * font = [UIFont systemFontOfSize:15
+    UIFont * font = [UIFont systemFontOfSize:13
                      ];
     
     NSDictionary *attributes = [NSDictionary dictionaryWithObject:font forKey:NSFontAttributeName];
@@ -80,7 +80,7 @@
 //        NSLog(@"no buttons pressed");
 //    }
     self.dropDownLabel.text = self.dropDownCats[row];
-    
+
     [self.competitorList reloadData];
 }
 
@@ -100,7 +100,7 @@
 {
     CompetitorsCell *cell = [tableView dequeueReusableCellWithIdentifier: @"Competitors"];
     if (((NSArray*)self.businesses[self.selectedIndex]).count != 0){
-        cell.yelpLink.layer.shadowRadius  = 1.5f;
+        cell.yelpLink.layer.shadowRadius  = 1.f;
         cell.yelpLink.layer.shadowColor   = [UIColor colorWithRed:176.f/255.f green:199.f/255.f blue:226.f/255.f alpha:1.f].CGColor;
         cell.yelpLink.layer.shadowOffset  = CGSizeMake(0.0f, 0.0f);
         cell.yelpLink.layer.shadowOpacity = 0.9f;

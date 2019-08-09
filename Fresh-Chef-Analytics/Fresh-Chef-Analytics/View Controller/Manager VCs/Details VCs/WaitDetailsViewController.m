@@ -11,6 +11,7 @@
 #import "UIRefs.h"
 
 @interface WaitDetailsViewController ()
+@property (strong, nonatomic) IBOutlet UIView *noComments;
 
 @end
 
@@ -44,12 +45,28 @@
     self.waiterTipsPT.text = [@"$" stringByAppendingString:[NSString stringWithFormat:@"%.2f", [[[WaiterManager shared] averageTipsByTable:self.waiter] floatValue]]];
     self.waiterTipsPC.text = [@"$" stringByAppendingString:[NSString stringWithFormat:@"%.2f", [[[WaiterManager shared] averageTipByCustomer:self.waiter] floatValue]]];
 }
+
+
+-(void)noCommentsCheck {
+    if ([self.waiter.comments count] == 0){
+        self.tableView.hidden = YES;
+        self.noComments.hidden = NO;
+        self.noComments.layer.cornerRadius = 5;
+        //self.noOrders.frame.size.width/2;
+        self.noComments.layer.borderWidth = .5f;
+        self.noComments.layer.borderColor = [[UIRefs shared] colorFromHexString:[UIRefs shared].purpleAccent].CGColor;
+    } else {
+        self.tableView.hidden = NO;
+        self.noComments.hidden = YES;
+    }
+}
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return 1;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+    [self noCommentsCheck];
     return [self.waiter.comments count];
     
 }
