@@ -1305,11 +1305,17 @@
                                 <rect key="frame" x="32" y="185" width="362" height="438"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Add a Dish" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y4C-vC-mZ4">
-                                        <rect key="frame" x="58" y="32" width="125" height="34"/>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="pngguru.com-id-bymze" translatesAutoresizingMaskIntoConstraints="NO" id="GTa-ti-JaM">
+                                        <rect key="frame" x="0.0" y="0.0" width="362" height="438"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" weight="thin" pointSize="28"/>
-                                        <nil key="textColor"/>
+                                        <color key="backgroundColor" red="0.23870837689999999" green="0.17501464489999999" blue="0.5098323226" alpha="0.20000000000000001" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <color key="tintColor" red="0.23870837689999999" green="0.17501464489999999" blue="0.5098323226" alpha="0.20000000000000001" colorSpace="custom" customColorSpace="displayP3"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ADD A DISH" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y4C-vC-mZ4">
+                                        <rect key="frame" x="116" y="28" width="131" height="28"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="23"/>
+                                        <color key="textColor" red="0.23870837689999999" green="0.17501464489999999" blue="0.5098323226" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Dish Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="u46-BN-EAy">
@@ -1335,18 +1341,8 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j0X-Cs-iHb">
-                                        <rect key="frame" x="280" y="366" width="47" height="42"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" red="0.86601585469999998" green="0.87178102310000005" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                        <fontDescription key="fontDescription" type="system" weight="black" pointSize="35"/>
-                                        <state key="normal" title="+"/>
-                                        <connections>
-                                            <action selector="saveItem:" destination="KWt-3O-9wh" eventType="touchUpInside" id="ZJt-gf-Pzn"/>
-                                        </connections>
-                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bbJ-T4-1aG">
-                                        <rect key="frame" x="8" y="391" width="67" height="39"/>
+                                        <rect key="frame" x="38" y="387" width="67" height="39"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                         <state key="normal" title="Cancel"/>
@@ -1368,8 +1364,18 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
+                                    <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j0X-Cs-iHb">
+                                        <rect key="frame" x="266" y="385" width="47" height="42"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" type="system" weight="black" pointSize="35"/>
+                                        <state key="normal" title="+"/>
+                                        <connections>
+                                            <action selector="saveItem:" destination="KWt-3O-9wh" eventType="touchUpInside" id="ZJt-gf-Pzn"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
-                                <color key="backgroundColor" red="0.73994592479999999" green="0.87727101009999997" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="0.70878565220019296" green="0.71596418422674024" blue="0.82550761421319796" alpha="0.223726455479452" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1407,13 +1413,11 @@
                                 <rect key="frame" x="32" y="253" width="362" height="260"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Add a Waiter" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UxR-ld-nHF">
-                                        <rect key="frame" x="58" y="32" width="146" height="34"/>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="pngguru.com-id-bymze" translatesAutoresizingMaskIntoConstraints="NO" id="CHA-o1-cRI">
+                                        <rect key="frame" x="0.0" y="0.0" width="362" height="260"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" weight="thin" pointSize="28"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
+                                        <color key="backgroundColor" red="0.23870837689999999" green="0.17501464489999999" blue="0.5098323226" alpha="0.20000000000000001" colorSpace="custom" customColorSpace="displayP3"/>
+                                    </imageView>
                                     <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Waiter Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4pS-jS-R5F">
                                         <rect key="frame" x="8" y="85" width="224" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -1457,11 +1461,18 @@
                                             <action selector="saveWaiter:" destination="VxI-5P-NHl" eventType="touchUpInside" id="Mi9-i9-1fD"/>
                                         </connections>
                                     </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ADD A WAITER" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wCT-9L-ZiL">
+                                        <rect key="frame" x="100" y="31" width="162" height="28"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="23"/>
+                                        <color key="textColor" red="0.23870837689999999" green="0.17501464489999999" blue="0.5098323226" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
-                                <color key="backgroundColor" red="0.73994592479999999" green="0.87727101009999997" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" red="0.86373377085333114" green="0.80489476437356289" blue="1" alpha="0.51511665239726023" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="backgroundColor" red="0.7087856522" green="0.71596418419999996" blue="0.82550761419999996" alpha="0.2237264555" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="sie-LB-LgZ"/>
                     </view>
                     <connections>
@@ -1478,7 +1489,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="-4842" y="6171"/>
+            <point key="canvasLocation" x="-4842.0289855072469" y="6170.7589285714284"/>
         </scene>
         <!--Edit Menu View Controller-->
         <scene sceneID="Frf-J4-g92">
@@ -6694,7 +6705,7 @@
                                                     </constraints>
                                                 </imageView>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8d3-fa-2Ae">
-                                                    <rect key="frame" x="368" y="31" width="16" height="22"/>
+                                                    <rect key="frame" x="344" y="22" width="40" height="40"/>
                                                     <state key="normal" image="arrow-40"/>
                                                 </button>
                                                 <view alpha="0.10000000000000001" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ecN-e3-Fw0" userLabel="Clickable Header View">
@@ -6768,7 +6779,7 @@
                                                     </constraints>
                                                 </view>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xvX-M4-SF8">
-                                                    <rect key="frame" x="368" y="31" width="16" height="22"/>
+                                                    <rect key="frame" x="344" y="22" width="40" height="40"/>
                                                     <state key="normal" image="arrow-40"/>
                                                 </button>
                                                 <view alpha="0.10000000000000001" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TYK-Ki-chS" userLabel="Clickable Header View">
@@ -6842,7 +6853,7 @@
                                                     </constraints>
                                                 </imageView>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AbU-px-x4i">
-                                                    <rect key="frame" x="380" y="28" width="16" height="22"/>
+                                                    <rect key="frame" x="356" y="19" width="40" height="40"/>
                                                     <state key="normal" image="arrow-40"/>
                                                 </button>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oPh-29-xIS">
@@ -6916,7 +6927,7 @@
                                                     </connections>
                                                 </containerView>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nM0-HL-lff">
-                                                    <rect key="frame" x="380" y="28" width="16" height="22"/>
+                                                    <rect key="frame" x="356" y="19" width="40" height="40"/>
                                                     <state key="normal" image="arrow-40"/>
                                                 </button>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="See how individual dishes fare in their menu categories." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="fB1-9b-3So">
@@ -7008,7 +7019,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fcw-l4-lJm">
-                                                    <rect key="frame" x="380" y="28" width="16" height="22"/>
+                                                    <rect key="frame" x="356" y="19" width="40" height="40"/>
                                                     <state key="normal" image="arrow-40"/>
                                                 </button>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="histogram-83.5" translatesAutoresizingMaskIntoConstraints="NO" id="SOl-3D-O48">
@@ -7098,7 +7109,7 @@
                                                     </constraints>
                                                 </imageView>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S2k-6j-G3g">
-                                                    <rect key="frame" x="380" y="28" width="16" height="22"/>
+                                                    <rect key="frame" x="356" y="19" width="40" height="40"/>
                                                     <state key="normal" image="arrow-40"/>
                                                 </button>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NKg-36-ri0">
