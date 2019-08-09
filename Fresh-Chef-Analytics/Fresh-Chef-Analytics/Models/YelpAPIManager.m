@@ -45,7 +45,7 @@
     
     NSMutableArray *placeholder = [[NSMutableArray alloc] init];
     if (!self.competitorArray){
-        self.competitorArray = [[NSMutableArray alloc] initWithObjects:placeholder, placeholder, placeholder, placeholder, placeholder, nil];
+        self.competitorArray = [[NSMutableArray alloc] initWithObjects:placeholder, placeholder, placeholder, nil];
         PFUser *currentUser = [PFUser currentUser];
         self.userParameters = [[NSMutableArray alloc] initWithObjects:currentUser[@"address"], currentUser[@"category"], currentUser[@"Price"], nil];
         [self locationTopRatings:self.userParameters[1] withPrice:self.userParameters[2] withIndex:0];
@@ -101,7 +101,7 @@
 
                         NSLog(@"HELLO %lu", (unsigned long)index);
                         NSLog(@"%@", self.competitorArray[index]);
-                        if (index < 4){
+                        if (index < 2){
                             NSUInteger newIndex = index + 1;
                             [self locationTopRatings:self.userParameters[1] withPrice:self.userParameters[2] withIndex:newIndex];
                             
