@@ -36,7 +36,7 @@
     self.top3Bottom3Rating = [[MenuManager shared] top3Bottom3Rating];
     self.top3Bottom3Selected = [[NSMutableDictionary alloc] initWithDictionary: self.top3Bottom3Freq];
     self.categories = [self.top3Bottom3Selected allKeys];
-    regularHeight = 100;
+    regularHeight = (self.view.frame.size.height - self.rankByControl.frame.size.height - 40)/6;
     expandedHeight = 300;
 }
 
@@ -58,10 +58,10 @@
 //    cell.selectedIndex = self.selectedIndex; //for toggling between frequency and rating
     cell.dish = dish;
     cell.name.text = dish.name;
-    cell.descriptionLabel.text = dish.dishDescription;
-    cell.rating.text = [[NSString stringWithFormat:@"%@", [[MenuManager shared] averageRating:dish]] stringByAppendingString:@"/10"];;
+    cell.rating.text = [NSString stringWithFormat:@"%@", [[MenuManager shared] averageRating:dish]];
     cell.frequency.text = [[NSString stringWithFormat:@"%@", dish.orderFrequency] stringByAppendingString:@" orders"];
-    cell.price.text = [@"Price: $" stringByAppendingString: [NSString stringWithFormat:@"%@", dish.price]];
+    cell.price.text = [@"Price: $"  stringByAppendingString:[NSString stringWithFormat:@"%.2f", [dish.price floatValue]]];
+
     cell.profit.text = [@"Profit: $" stringByAppendingString:[dish.profit stringValue]];
     cell.ratingCategory = [[MenuManager shared] getRankOfType:@"rating" ForDish:dish];
     cell.freqCategory = [[MenuManager shared] getRankOfType:@"freq" ForDish:dish];;
@@ -99,13 +99,25 @@
     selectedIndexPath = indexPath;
     if(cell.isExpanded){
         cell.isExpanded = NO;
+        [UIView animateWithDuration:0.4 animations:^{
+            cell.arrow.transform = CGAffineTransformMakeRotation((0.0 * M_PI) / 180.0);
+        }];
+        cell.showMore.hidden = NO;
     } else {
         cell.isExpanded = YES;
+        [UIView animateWithDuration:0.4 animations:^{
+
+            cell.arrow.transform = CGAffineTransformMakeRotation((180.0 * M_PI) / 180.0);
+        }];
+        cell.showMore.hidden = YES;
     }
     
     //update cell to reflect new state
     [self.tableView beginUpdates];
     [self.tableView endUpdates];
+    [self.tableView scrollToRowAtIndexPath:indexPath
+                         atScrollPosition:UITableViewScrollPositionTop
+                                 animated:YES];
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
@@ -116,11 +128,11 @@
         if(cell.isExpanded){
             return expandedHeight;
         } else {
-            return regularHeight;
+            return (self.view.frame.size.height - self.rankByControl.frame.size.height - 85)/6;;
         }
     } else {
         cell.isExpanded = NO; //when another cell is clicked unexpand opened cell
-        return regularHeight;
+        return (self.view.frame.size.height - self.rankByControl.frame.size.height - 85)/6;;
     }
 }
 
