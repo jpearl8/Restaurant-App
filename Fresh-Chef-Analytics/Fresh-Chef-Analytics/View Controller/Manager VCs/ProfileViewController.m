@@ -11,6 +11,7 @@
 #import "LoginViewController.h"
 #import "YelpAPIManager.h"
 #import "MenuManager.h"
+#import "Parse/Parse.h"
 
 @interface ProfileViewController ()
 
@@ -226,7 +227,7 @@
         UIImagePickerController *imagePickerVC = [UIImagePickerController new];
         imagePickerVC.delegate = self;
         imagePickerVC.allowsEditing = YES;
-        // if camera is available, use it, else, use camera roll
+        // if camera is available, ask which one to use, else, use camera roll
         if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
             imagePickerVC.sourceType = UIImagePickerControllerSourceTypeCamera;
         }
