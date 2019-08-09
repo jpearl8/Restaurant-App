@@ -22,7 +22,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong, nonatomic) NSString *bronze;
 @property (strong, nonatomic) NSString *silver;
 @property (strong, nonatomic) NSString *gold;
-
+@property (strong, nonatomic) NSString *green;
+@property (strong, nonatomic) NSString *red;
 - (UIColor *)colorFromHexString:(NSString *)hexString;
 @end
 

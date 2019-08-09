@@ -25,6 +25,8 @@
     uiRefs.bronze = @"#cc6633";
     uiRefs.silver = @"#c0c0c0";
     uiRefs.gold = @"#d4af37";
+    uiRefs.green = @"#2c9916";
+    uiRefs.red = @"#bf2726";
     return uiRefs;
 }
 

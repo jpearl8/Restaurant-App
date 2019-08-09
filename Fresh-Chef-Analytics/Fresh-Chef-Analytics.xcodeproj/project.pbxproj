@@ -1095,12 +1095,14 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = X7H39TKG3W;
+				DEVELOPMENT_TEAM = C45J47S9V6;
 				INFOPLIST_FILE = "Fresh-Chef-Analytics/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.jpearl.Fresh-Chef-Analytics1";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.jpearl.Fresh-Chef-Analytics4";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Fresh-Chef-Analytics/Models/Fresh-Chef-Analytics-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -1117,12 +1119,14 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = X7H39TKG3W;
+				DEVELOPMENT_TEAM = C45J47S9V6;
 				INFOPLIST_FILE = "Fresh-Chef-Analytics/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.jpearl.Fresh-Chef-Analytics1";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.jpearl.Fresh-Chef-Analytics4";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Fresh-Chef-Analytics/Models/Fresh-Chef-Analytics-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
