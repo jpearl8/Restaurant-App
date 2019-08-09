@@ -6,6 +6,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "EditOrderViewController.h"
 
 
 NS_ASSUME_NONNULL_BEGIN
@@ -17,6 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong, nonatomic) NSNumber *customerLevelNumber;
 @property (strong, nonatomic) NSString *customerEmail;
 @property (strong, nonatomic) IBOutlet UIButton *customerLevel;
+@property (nonatomic, weak) id <VCDelegate> vcDelegate;
 @end
 
 NS_ASSUME_NONNULL_END

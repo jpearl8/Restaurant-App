@@ -8,10 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "OpenOrder.h"
+#import "EditOrderViewController.h"
 
 NS_ASSUME_NONNULL_BEGIN
 @protocol AddOrdersDelegate <NSObject>
-
+-(void)callEditRefresh:(NSMutableArray <OpenOrder *>*)changedOpenOrders;
 -(Waiter *)getWaiter;
 -(NSNumber *)getTable;
 -(NSNumber *)getCustomerNum;
@@ -22,6 +23,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface AddItemViewController : UIViewController
 @property (nonatomic, weak) id <AddOrdersDelegate> delegate;
+
 @property (strong, nonatomic) NSNumber *index;
 @property (strong, nonatomic) NSArray <OpenOrder *>* openOrders;
 

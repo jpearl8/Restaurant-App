@@ -9,6 +9,8 @@
 #import "AnotherTableViewController.h"
 #import "Helpful_funs.h"
 #import "UIRefs.h"
+#import "AppDelegate.h"
+
 @interface AnotherTableViewController ()
 @property (strong, nonatomic) IBOutlet UIImageView *background;
 
@@ -23,7 +25,10 @@
     // Do any additional setup after loading the view.
 }
 - (IBAction)didClick:(id)sender {
-    [self performSegueWithIdentifier:@"toBeginning" sender:self];
+    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    UINavigationController *navigationController = [storyboard instantiateViewControllerWithIdentifier:@"waiterFlow"];
+    appDelegate.window.rootViewController = navigationController;
 }
 
 /*

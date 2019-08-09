@@ -10,8 +10,12 @@
 #import "OpenOrder.h"
 
 NS_ASSUME_NONNULL_BEGIN
+@protocol VCDelegate <NSObject>
+- (void)callSuperRefresh;
+@end
 
 @interface EditOrderViewController : UIViewController
+@property (nonatomic, weak) id <VCDelegate> vcDelegate;
 @property (strong, nonatomic) NSArray <OpenOrder *>* openOrders;
 @property (strong, nonatomic) NSMutableArray <OpenOrder *>* editableOpenOrders;
 @property (strong, nonatomic) Waiter *waiter;
