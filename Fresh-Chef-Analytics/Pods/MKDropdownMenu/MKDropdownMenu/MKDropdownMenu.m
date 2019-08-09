@@ -29,7 +29,7 @@
 static const NSTimeInterval kAnimationDuration = 0.25;
 
 static const CGFloat kDefaultRowHeight = 44;
-static const CGFloat kDefaultDisclosureIndicatorSize = 20;
+static const CGFloat kDefaultDisclosureIndicatorSize = 15;
 static const CGFloat kDefaultCornerRadius = 2;
 static const CGFloat kDefaultBackgroundDimmingOpacity = 0.2;
 
@@ -62,7 +62,7 @@ static UIImage * MKDropdownMenuDisclosureIndicatorImage() {
     [path addLineToPoint:CGPointMake(CGRectGetMidX(rect), CGRectGetMaxY(rect))];
     [path addLineToPoint:CGPointMake(CGRectGetMinX(rect), CGRectGetMinY(rect))];
     [path closePath];
-    [[UIColor blackColor] setFill];
+    [[UIColor whiteColor] setFill];
     [path fill];
     UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();

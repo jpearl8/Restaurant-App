@@ -16,7 +16,15 @@
     UITapGestureRecognizer *buttonTapGesture = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(didTapRemove:)];
     [self.removeButton addGestureRecognizer:buttonTapGesture];
     [self.removeButton setUserInteractionEnabled:YES];
+    self.removeButton.layer.shadowRadius  = 1.5f;
+    self.removeButton.layer.shadowColor   = [UIColor colorWithRed:176.f/255.f green:199.f/255.f blue:226.f/255.f alpha:1.f].CGColor;
+    self.removeButton.layer.shadowOffset  = CGSizeMake(0.0f, 0.0f);
+    self.removeButton.layer.shadowOpacity = 0.9f;
+    self.removeButton.layer.masksToBounds = NO;
     
+    UIEdgeInsets shadowInsets     = UIEdgeInsetsMake(0, 0, -1.5f, 0);
+    UIBezierPath *shadowPath      = [UIBezierPath bezierPathWithRect:UIEdgeInsetsInsetRect(self.removeButton.bounds, shadowInsets)];
+    self.removeButton.layer.shadowPath    = shadowPath.CGPath;
 }
 - (void) didTapRemove:(UITapGestureRecognizer *)sender
 {

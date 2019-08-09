@@ -55,7 +55,8 @@
     theAnimation.toValue=[NSNumber numberWithFloat:0.5];
     [self.superstarButton.layer addAnimation:theAnimation forKey:@"animateOpacity"];
     [self.loosechainButton.layer addAnimation:theAnimation forKey:@"animateOpacity"];
-
+    self.superstarButton.layer.cornerRadius = self.superstarButton.frame.size.width/2;
+    self.loosechainButton.layer.cornerRadius = self.loosechainButton.frame.size.width/2;
     self.superstarButton.hidden = YES;
     self.loosechainButton.hidden = YES;
     self.superstarButton.layer.cornerRadius = self.superstarButton.frame.size.width/2;

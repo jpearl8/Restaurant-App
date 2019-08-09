@@ -16,13 +16,10 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) id<EditMenuCellDelegate>delegate;
 @property (weak, nonatomic) IBOutlet UIImageView *dishView;
 @property (weak, nonatomic) IBOutlet UILabel *dishName;
-@property (weak, nonatomic) IBOutlet UILabel *dishType;
-@property (weak, nonatomic) IBOutlet UILabel *dishPrice;
-@property (weak, nonatomic) IBOutlet UILabel *dishRating;
-@property (weak, nonatomic) IBOutlet UILabel *dishFrequency;
 @property (weak, nonatomic) IBOutlet UILabel *dishDescription;
 @property (weak, nonatomic) IBOutlet UIButton *removeButton;
 @property (weak, nonatomic) IBOutlet UIView *cellView;
+@property (weak, nonatomic) IBOutlet UILabel *dishPrice;
 
 @property (strong, nonatomic) Dish *dish;
 @end

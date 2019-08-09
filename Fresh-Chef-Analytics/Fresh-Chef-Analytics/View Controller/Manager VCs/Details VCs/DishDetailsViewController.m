@@ -9,28 +9,62 @@
 #import "DishDetailsViewController.h"
 #import "Parse/Parse.h"
 #import "MenuManager.h"
-
+#import "UIRefs.h"
 @interface DishDetailsViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *dishName;
 @property (weak, nonatomic) IBOutlet UIImageView *dishPic;
 @property (weak, nonatomic) IBOutlet UILabel *dishDescription;
 @property (weak, nonatomic) IBOutlet UILabel *dishRating;
 @property (weak, nonatomic) IBOutlet UILabel *dishPrice;
-@property (weak, nonatomic) IBOutlet UITableView *dishCommentsTable;
+@property (weak, nonatomic) IBOutlet UIView *ratingView;
+@property (weak, nonatomic) IBOutlet UILabel *dishFrequency;
 
+@property (weak, nonatomic) IBOutlet UITableView *dishCommentsTable;
+@property (weak, nonatomic) NSString *ratingCategory;
+@property (weak, nonatomic) NSString *freqCategory;
+@property (weak, nonatomic) NSString *profitCategory;
 @end
 
 @implementation DishDetailsViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    NSString *greenGood = [[UIRefs shared] green];
+    NSString *redBad = [[UIRefs shared] red];
     self.dishCommentsTable.delegate = self;
     self.dishCommentsTable.dataSource = self;
+    self.ratingView.layer.shadowRadius  = 1.5f;
+    self.ratingView.layer.shadowColor   = [UIColor colorWithRed:176.f/255.f green:199.f/255.f blue:226.f/255.f alpha:1.f].CGColor;
+    self.ratingView.layer.shadowOffset  = CGSizeMake(0.0f, 0.0f);
+    self.ratingView.layer.shadowOpacity = 0.9f;
+    self.ratingView.layer.masksToBounds = NO;
+    
+    UIEdgeInsets shadowInsets     = UIEdgeInsetsMake(0, 0, -1.5f, 0);
+    UIBezierPath *shadowPath      = [UIBezierPath bezierPathWithRect:UIEdgeInsetsInsetRect(self.ratingView.bounds, shadowInsets)];
+    self.ratingView.layer.shadowPath    = shadowPath.CGPath;
+    self.ratingCategory = [[MenuManager shared] getRankOfType:@"rating" ForDish:self.dish];
+    //    cell.freqCategory = dish.freqCategory;
+    self.freqCategory = [[MenuManager shared] getRankOfType:@"freq" ForDish:self.dish];;
+    //    cell.profitCategory = dish.profitCategory;
+    self.profitCategory = [[MenuManager shared] getRankOfType:@"profit" ForDish:self.dish];
+    if ([self.ratingCategory isEqualToString: @"high"]) {
+        self.ratingView.backgroundColor = [[UIRefs shared] colorFromHexString:greenGood];
+    } else if ([self.ratingCategory isEqualToString: @"medium"]) {
+        self.ratingView.backgroundColor = [UIColor grayColor];
+    } else {
+        self.ratingView.backgroundColor = [[UIRefs shared] colorFromHexString:redBad];    }
+    if ([self.freqCategory isEqualToString: @"high"]) {
+        [self.dishFrequency setTextColor:[[UIRefs shared] colorFromHexString:greenGood]];
+    } else if ([self.freqCategory isEqualToString: @"medium"]) {
+        [self.dishFrequency setTextColor:UIColor.grayColor];
+    } else {
+        [self.dishFrequency setTextColor:[[UIRefs shared] colorFromHexString:redBad]];
+    }
     self.dishName.text = self.dish.name;
     self.dishDescription.text = self.dish.dishDescription;
-    
-    self.dishRating.text = [[NSString stringWithFormat:@"%@",[[MenuManager shared] averageRating:self.dish]] stringByAppendingString:@"/10"];
-    self.dishPrice.text = [@"$" stringByAppendingString: [self.dish.price stringValue]];
+    self.dishFrequency.text = [[NSString stringWithFormat:@"%@", self.dish.orderFrequency] stringByAppendingString:@" sold"];
+    self.dishRating.text = [NSString stringWithFormat:@"%@",[[MenuManager shared] averageRating:self.dish]];
+    self.dishPrice.text = [@"$" stringByAppendingString: [NSString stringWithFormat:@"%.2f", [self.dish.price floatValue]]];
     PFFileObject *dishImageFile = (PFFileObject *)self.dish.image;
     [dishImageFile getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
         if(!error){
@@ -38,6 +72,10 @@
         }
     }];
 }
+- (IBAction)dismiss:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return 1;
@@ -53,12 +91,12 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"SimpleTableView"];
     }
     UIView *backgroundView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 50)];
-    backgroundView.backgroundColor = [UIColor colorWithRed:.94 green:.72 blue:.69 alpha:0.8];
+    backgroundView.backgroundColor = [[UIRefs shared] colorFromHexString:@"#fbfaf1"];
     [cell addSubview:backgroundView];
     [cell sendSubviewToBack:backgroundView];
-    cell.textLabel.text = self.dish.comments[indexPath.row];
+    cell.textLabel.text = [[[NSString stringWithFormat:@"%ld", (indexPath.row+1)] stringByAppendingString:@". "] stringByAppendingString:self.dish.comments[indexPath.row]];
     
-    [cell.textLabel setFont:[UIFont systemFontOfSize:21 weight:UIFontWeightThin]];
+    [cell.textLabel setFont:[UIFont systemFontOfSize:15 weight:UIFontWeightThin]];
     return cell;
 }
 /*
