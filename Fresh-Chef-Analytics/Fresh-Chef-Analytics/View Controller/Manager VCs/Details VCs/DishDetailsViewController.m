@@ -18,17 +18,21 @@
 @property (weak, nonatomic) IBOutlet UILabel *dishPrice;
 @property (weak, nonatomic) IBOutlet UIView *ratingView;
 @property (weak, nonatomic) IBOutlet UILabel *dishFrequency;
+@property (weak, nonatomic) IBOutlet UILabel *dishProfit;
 
 @property (weak, nonatomic) IBOutlet UITableView *dishCommentsTable;
 @property (weak, nonatomic) NSString *ratingCategory;
 @property (weak, nonatomic) NSString *freqCategory;
 @property (weak, nonatomic) NSString *profitCategory;
+@property (weak, nonatomic) IBOutlet UIImageView *ratingImage;
+@property (strong, nonatomic) NSArray *ratingImages;
 @end
 
 @implementation DishDetailsViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.ratingImages = @[@"happy.png", @"meh.png", @"sad.png"];
     NSString *greenGood = [[UIRefs shared] green];
     NSString *redBad = [[UIRefs shared] red];
     self.dishCommentsTable.delegate = self;
@@ -49,10 +53,16 @@
     self.profitCategory = [[MenuManager shared] getRankOfType:@"profit" ForDish:self.dish];
     if ([self.ratingCategory isEqualToString: @"high"]) {
         self.ratingView.backgroundColor = [[UIRefs shared] colorFromHexString:greenGood];
+        self.ratingImage.image = [UIImage imageNamed:self.ratingImages[0]];
     } else if ([self.ratingCategory isEqualToString: @"medium"]) {
         self.ratingView.backgroundColor = [UIColor grayColor];
+        self.ratingImage.image = [UIImage imageNamed:self.ratingImages[1]];
+
     } else {
-        self.ratingView.backgroundColor = [[UIRefs shared] colorFromHexString:redBad];    }
+        self.ratingView.backgroundColor = [[UIRefs shared] colorFromHexString:redBad];
+        self.ratingImage.image = [UIImage imageNamed:self.ratingImages[2]];
+
+    }
     if ([self.freqCategory isEqualToString: @"high"]) {
         [self.dishFrequency setTextColor:[[UIRefs shared] colorFromHexString:greenGood]];
     } else if ([self.freqCategory isEqualToString: @"medium"]) {
@@ -60,11 +70,19 @@
     } else {
         [self.dishFrequency setTextColor:[[UIRefs shared] colorFromHexString:redBad]];
     }
+    if ([self.profitCategory isEqualToString: @"high"]) {
+        [self.dishProfit setTextColor:[[UIRefs shared] colorFromHexString:greenGood]];
+    } else if ([self.profitCategory isEqualToString: @"medium"]) {
+        [self.dishProfit setTextColor:UIColor.grayColor];
+    } else {
+        [self.dishProfit setTextColor:[[UIRefs shared] colorFromHexString:redBad]];
+    }
     self.dishName.text = self.dish.name;
     self.dishDescription.text = self.dish.dishDescription;
-    self.dishFrequency.text = [[NSString stringWithFormat:@"%@", self.dish.orderFrequency] stringByAppendingString:@" sold"];
+    self.dishFrequency.text = [NSString stringWithFormat:@"%@", self.dish.orderFrequency];
     self.dishRating.text = [NSString stringWithFormat:@"%@",[[MenuManager shared] averageRating:self.dish]];
     self.dishPrice.text = [@"$" stringByAppendingString: [NSString stringWithFormat:@"%.2f", [self.dish.price floatValue]]];
+    self.dishProfit.text = [@"$" stringByAppendingString:[NSString stringWithFormat:@"%.2f", ([self.dish.price floatValue] * [self.dish.orderFrequency floatValue])]];
     PFFileObject *dishImageFile = (PFFileObject *)self.dish.image;
     [dishImageFile getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
         if(!error){
