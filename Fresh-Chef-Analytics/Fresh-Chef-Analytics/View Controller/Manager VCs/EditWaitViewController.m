@@ -56,9 +56,10 @@
     cell.waiterRating.text = [NSString stringWithFormat:@"%@", [[WaiterManager shared] averageRating:cell.waiter]];
     cell.waiterTableTops.text = [[NSString stringWithFormat:@"%li", (long)[waiter.tableTops integerValue]] stringByAppendingString:@" Tabletops"];
     cell.waiterNumCustomers.text = [[NSString stringWithFormat:@"%ld", (long)[waiter.numOfCustomers integerValue]] stringByAppendingString:@" customers"];
-    
-    cell.waiterTipsPT.text = [@"$" stringByAppendingString:[[NSString stringWithFormat:@"%.2f", [[[WaiterManager shared] averageTipsByTable:cell.waiter] floatValue]] stringByAppendingString:@" Tips per Table"]];
-    cell.waiterTipsPC.text = [@"$" stringByAppendingString:[[NSString stringWithFormat:@"%.2f", [[[WaiterManager shared] averageTipByCustomer:cell.waiter] floatValue]] stringByAppendingString:@" Tips per Customer"]];    if(waiter.image!=nil){
+    cell.waiterTipsPT.text = [@"Average Tips: $" stringByAppendingString:[NSString stringWithFormat:@"%.2f", [[[WaiterManager shared] averageTipsByTable:cell.waiter] floatValue]]];
+    cell.waiterTipsPC.text = [@"Average Tips: $" stringByAppendingString:[NSString stringWithFormat:@"%.2f", [[[WaiterManager shared] averageTipByCustomer:cell.waiter] floatValue]]];
+
+    if(waiter.image!=nil){
         [waiter.image getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
             if(!error){
                 cell.profileImage.image = [UIImage imageWithData:imageData];
