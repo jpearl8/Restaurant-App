@@ -25,6 +25,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong, nonatomic) IBOutlet UIButton *ordersButton;
 @property (strong, nonatomic) NSIndexPath *indexPath;
 @property (strong, nonatomic) IBOutlet UIButton *customerLevel;
+@property (strong, nonatomic) IBOutlet UIButton *flipButton;
 @property (nonatomic, weak) id <OrderViewCellDelegate> delegate;
 @property (nonatomic, weak) IBOutlet UIButton *edit;
 @property (nonatomic, weak) IBOutlet UIButton *complete;

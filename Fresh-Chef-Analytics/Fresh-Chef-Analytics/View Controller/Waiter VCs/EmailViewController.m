@@ -17,7 +17,7 @@
 @property (strong, nonatomic) IBOutlet UITextField *emailText;
 - (IBAction)barButtonAction:(UIBarButtonItem *)sender;
 @property (assign, nonatomic) NSNumber *level;
-
+@property (strong, nonatomic) IBOutletCollection(UILabel) NSArray *allLabels;
 
 @end
 
@@ -26,8 +26,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     PFUser *currentUser = [PFUser currentUser];
+    NSString *category = [PFUser currentUser][@"theme"];
     self.restaurantName.text =  currentUser.username;
+    self.emailText.text = self.email;
     [[UIRefs shared] setImage:self.backgroundIm isCustomerForm:YES];
+    if ([category isEqualToString:@"Comfortable"]){
+        for (UILabel *aLabel in self.allLabels){
+            aLabel.textColor = [UIColor whiteColor];
+        }
+    }
     // Do any additional setup after loading the view.
 }
 
@@ -41,14 +48,15 @@
         [[CustomerTrack shared] changeCustomer:self.emailText.text withCompletion:^(int level, NSError * _Nullable error) {
             if (!error){
                 self.level = [NSNumber numberWithInteger:level];
-                [self performSegueWithIdentifier:@"order" sender:self];
+                [self.customerLevelDelegate changeLevel:self.level withEmail:self.emailText.text];
+                [self dismissModalViewControllerAnimated:YES];
             } else {
                 NSLog(@"%@", error.localizedDescription);
             }
         }];
     } else {
        // [self.navigationController popViewControllerAnimated:YES];
-        [self performSegueWithIdentifier:@"order" sender:self];
+       [self dismissModalViewControllerAnimated:YES];
     }
 }
 
@@ -59,18 +67,6 @@
      waitVC.customerEmail = self.emailText.text;
      NSString *content = @"☆";
      UIColor *starColor;
-//     if (!(self.level) || [self.level isEqual:[NSNumber numberWithInteger:0]]){
-//         starColor = [[UIRefs shared] colorFromHexString:([UIRefs shared].blueHighlight)];
-//     } else {
-//         content = @"★";
-//         if ([self.level isEqual:[NSNumber numberWithInt:1]]){
-//             starColor = [[UIRefs shared] colorFromHexString:([UIRefs shared].bronze)];
-//         } else if ([self.level isEqual:[NSNumber numberWithInt:2]]){
-//             starColor = [[UIRefs shared] colorFromHexString:([UIRefs shared].silver)];
-//         } else {
-//             starColor = [[UIRefs shared] colorFromHexString:([UIRefs shared].gold)];
-//         }
-//     }
      [waitVC.customerLevel setTitle:content forState:UIControlStateNormal];
      [waitVC.customerLevel setTitleColor:starColor forState:UIControlStateNormal];
  }
