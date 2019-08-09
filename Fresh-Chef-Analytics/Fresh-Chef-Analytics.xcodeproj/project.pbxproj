@@ -68,6 +68,7 @@
 		FF46E1A022DE436400E15A0E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FF46E19F22DE436400E15A0E /* main.m */; };
 		FF46E1AA22DE436400E15A0E /* Fresh_Chef_AnalyticsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FF46E1A922DE436400E15A0E /* Fresh_Chef_AnalyticsTests.m */; };
 		FF46E1B522DE436400E15A0E /* Fresh_Chef_AnalyticsUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = FF46E1B422DE436400E15A0E /* Fresh_Chef_AnalyticsUITests.m */; };
+		FF50D5A422FD2BC9002C5AAE /* WaiterCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FF50D5A322FD2BC9002C5AAE /* WaiterCell.m */; };
 		FF5924FF22E2155D00F66EC6 /* ReceiptTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FF5924FE22E2155D00F66EC6 /* ReceiptTableViewCell.m */; };
 		FF7374CB22F257C400632056 /* AddItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF7374CA22F257C400632056 /* AddItemViewController.m */; };
 		FF7374CE22F265B900632056 /* EditOrderViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FF7374CD22F265B800632056 /* EditOrderViewCell.m */; };
@@ -231,6 +232,8 @@
 		FF46E1B022DE436400E15A0E /* Fresh-Chef-AnalyticsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Fresh-Chef-AnalyticsUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF46E1B422DE436400E15A0E /* Fresh_Chef_AnalyticsUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Fresh_Chef_AnalyticsUITests.m; sourceTree = "<group>"; };
 		FF46E1B622DE436400E15A0E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FF50D5A222FD2BC9002C5AAE /* WaiterCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WaiterCell.h; sourceTree = "<group>"; };
+		FF50D5A322FD2BC9002C5AAE /* WaiterCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WaiterCell.m; sourceTree = "<group>"; };
 		FF5924FD22E2155D00F66EC6 /* ReceiptTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReceiptTableViewCell.h; sourceTree = "<group>"; };
 		FF5924FE22E2155D00F66EC6 /* ReceiptTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReceiptTableViewCell.m; sourceTree = "<group>"; };
 		FF6EE1A222E01D85000AD729 /* order.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = order.m; sourceTree = "<group>"; };
@@ -616,6 +619,8 @@
 		FFDB60FD22E91BCE00902FE3 /* Form Views */ = {
 			isa = PBXGroup;
 			children = (
+				FF50D5A222FD2BC9002C5AAE /* WaiterCell.h */,
+				FF50D5A322FD2BC9002C5AAE /* WaiterCell.m */,
 				FFEA6BC822E28E03008665BD /* ComfortableTableViewCell.h */,
 				FFEA6BC922E28E03008665BD /* ComfortableTableViewCell.m */,
 				FFEA6BC422E28DD0008665BD /* ElegantTableViewCell.h */,
@@ -854,6 +859,7 @@
 				FF318E8922EAC57C003AF015 /* OpenOrderButton.m in Sources */,
 				A5CE07B722F9F5F700944539 /* YelpAPIManager.m in Sources */,
 				FF5924FF22E2155D00F66EC6 /* ReceiptTableViewCell.m in Sources */,
+				FF50D5A422FD2BC9002C5AAE /* WaiterCell.m in Sources */,
 				B6D7B35C22DF95BA002093CB /* ManagerLoginViewController.m in Sources */,
 				A535D7BC22DE8FB2002B79CA /* (null) in Sources */,
 				A5D3896522F89D5B00B17AEC /* MapViewController.m in Sources */,

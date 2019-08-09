@@ -14,14 +14,22 @@
 #import "WaiterManager.h"
 #import "OrderManager.h"
 #import "Helpful_funs.h"
+#import "UIRefs.h"
 @interface LoginViewController ()
-
+@property (strong, nonatomic) IBOutlet UIView *largerView;
+@property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *allButtons;
 @end
 
 @implementation LoginViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.largerView.layer.borderWidth = .5f;
+    self.largerView.layer.borderColor = [[UIRefs shared] colorFromHexString:[UIRefs shared].purpleAccent].CGColor;
+    for (UIButton *aButton in self.allButtons){
+        aButton.layer.borderWidth = .5f;
+        aButton.layer.borderColor = [[UIRefs shared] colorFromHexString:[UIRefs shared].purpleAccent].CGColor;
+    }
     // Do any additional setup after loading the view.
 }
 

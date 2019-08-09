@@ -124,17 +124,37 @@
     }
 }
 
+//- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
+//    if (searchText.length != 0) {
+//        NSPredicate *predicate = [NSPredicate predicateWithBlock:^BOOL(NSDictionary *evaluatedObject, NSDictionary *bindings) {
+//            return [evaluatedObject[@"name"] containsString:searchText];
+//        }];
+//        self.filteredDishes = [self.allDishes filteredArrayUsingPredicate:predicate];
+//    }
+//    else {
+//        self.filteredDishes = self.allDishes;
+//    }
+//    [self.ordersTableView reloadData];
+//}
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
     if (searchText.length != 0) {
         NSPredicate *predicate = [NSPredicate predicateWithBlock:^BOOL(NSDictionary *evaluatedObject, NSDictionary *bindings) {
-            return [evaluatedObject[@"name"] containsString:searchText];
+            return [[evaluatedObject[@"name"] lowercaseString] containsString:[searchText lowercaseString]];
         }];
-        self.filteredDishes = [self.allDishes filteredArrayUsingPredicate:predicate];
+        for (NSString *category in self.categories)
+        {
+            NSArray *filteredCategory = [[NSArray alloc] initWithArray:self.orderedDishesDict[category]];
+            filteredCategory = [filteredCategory filteredArrayUsingPredicate:predicate];
+            [self.filteredCategoriesOfDishes setValue:filteredCategory forKey:category];
+        }
+        [self.ordersTableView reloadData];
+        
     }
     else {
-        self.filteredDishes = self.allDishes;
+        self.filteredCategoriesOfDishes = [NSMutableDictionary dictionaryWithDictionary:self.orderedDishesDict];
+        [self.ordersTableView reloadData];
+        
     }
-    [self.ordersTableView reloadData];
 }
 
 -(void)stepperIncrement:(double)amount withDish:(Dish*)dish{

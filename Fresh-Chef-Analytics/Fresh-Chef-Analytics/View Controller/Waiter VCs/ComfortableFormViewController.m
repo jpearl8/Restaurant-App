@@ -9,19 +9,22 @@
 #import "ComfortableFormViewController.h"
 #import "ReceiptViewController.h"
 #import "Helpful_funs.h"
-
+#import "WaiterCell.h"
+#import "UIRefs.h"
 
 @interface ComfortableFormViewController () <UITableViewDelegate, UITableViewDataSource, UITextViewDelegate, ComfortableCellDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *menuRatings;
-@property (weak, nonatomic) IBOutlet UILabel *waiterNameLabel;
-@property (weak, nonatomic) IBOutlet UITextView *waiterComments;
-@property (weak, nonatomic) IBOutlet UILabel *charsRemaining;
-@property (weak, nonatomic) IBOutlet UIImageView *waiterPic;
+//@property (weak, nonatomic) IBOutlet UILabel *waiterNameLabel;
+//@property (weak, nonatomic) IBOutlet UITextView *waiterComments;
+//@property (weak, nonatomic) IBOutlet UILabel *charsRemaining;
+//@property (weak, nonatomic) IBOutlet UIImageView *waiterPic;
+@property (strong, nonatomic) IBOutlet UIButton *submit;
 @property (strong, nonatomic) NSMutableArray *customerRatings;
 @property (strong, nonatomic) NSMutableArray *customerComments;
 @property (assign, nonatomic) NSNumber *waiterRatingNum;
-@property (weak, nonatomic) IBOutlet HCSStarRatingView *waiterRating;
+@property (strong, nonatomic) NSString *waiterComments;
+//@property (weak, nonatomic) IBOutlet HCSStarRatingView *waiterRating;
 @end
 
 @implementation ComfortableFormViewController
@@ -30,10 +33,10 @@
      [super viewDidLoad];
     self.menuRatings.delegate = self;
     self.menuRatings.dataSource = self;
-    self.waiterNameLabel.text = self.waiter.name;
-    self.waiterComments.delegate = self;
-    self.waiterComments.placeholder = @"Comments on your waiter";
-    self.waiterComments.placeholderColor = [UIColor lightGrayColor];
+//    self.waiterNameLabel.text = self.waiter.name;
+//    self.waiterComments.delegate = self;
+//    self.waiterComments.placeholder = @"Comments on your waiter";
+//    self.waiterComments.placeholderColor = [UIColor lightGrayColor];
     self.customerRatings = [[NSMutableArray alloc] init];
     self.customerComments = [[NSMutableArray alloc] init];
     NSNumber *defaultRating = [NSNumber numberWithFloat:5];
@@ -41,58 +44,81 @@
         [self.customerRatings addObject:defaultRating];
         [self.customerComments addObject:[NSNull null]];
     }
-   
+    self.submit.layer.borderWidth = .5f;
+    self.submit.layer.borderColor = [[UIRefs shared] colorFromHexString:[UIRefs shared].purpleAccent].CGColor;
     // Do any additional setup after loading the view.
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.openOrders.count;
+    return (self.openOrders.count + 1);
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    ComfortableTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier: @"Comf" forIndexPath:indexPath];
-    NSNumber *amount = self.openOrders[indexPath.row][@"amount"];
-    int index = [[Helpful_funs shared] findDishItem:(int)indexPath.row withDishArray:self.dishesArray withOpenOrders:self.openOrders];
-    if (index != -1){
-        Dish *dish = self.dishesArray[index];
-        
-    
-        cell.dishName.text = dish.name;
-        cell.dishType.text = dish.type;
-        cell.dishDescription.text = dish.dishDescription;
-        PFFileObject *dishImageFile = (PFFileObject *)dish.image;
-        [dishImageFile getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
+    if (indexPath.row == 0){
+        WaiterCell *cell = [tableView dequeueReusableCellWithIdentifier: @"Waiter" forIndexPath:indexPath];
+        cell.waiter = self.waiter;
+        cell.waiterDelegate = self;
+        cell.waiterNameLabel.text = cell.waiter.name;
+        PFFileObject *waiterImageFile = (PFFileObject *)self.waiter.image;
+        [waiterImageFile getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
             if(!error){
-                cell.image.image = [UIImage imageWithData:imageData];
+                cell.waiterPic.image = [UIImage imageWithData:imageData];
             }
         }];
+        return cell;
+        
+    } else {
+        ComfortableTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier: @"Comf" forIndexPath:indexPath];
+        NSNumber *amount = self.openOrders[indexPath.row - 1][@"amount"];
+        int index = [[Helpful_funs shared] findDishItem:((int)indexPath.row - 1) withDishArray:self.dishesArray withOpenOrders:self.openOrders];
+        if (index != -1){
+            Dish *dish = self.dishesArray[index];
+            
+        
+            cell.dishName.text = dish.name;
+            cell.dishType.text = dish.type;
+            cell.dishDescription.text = dish.dishDescription;
+            PFFileObject *dishImageFile = (PFFileObject *)dish.image;
+            [dishImageFile getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
+                if(!error){
+                    cell.image.image = [UIImage imageWithData:imageData];
+                }
+            }];
+        }
+        cell.index = (int)indexPath.row - 1;
+        cell.customerComments = self.customerComments;
+        
+        cell.delegate = self;
+        cell.amount.text = [NSString stringWithFormat:@"%@", amount];
+        
+        cell.customerRating.value = ([self.customerRatings[indexPath.row - 1] floatValue]/ 2);
+        return cell;
     }
-    cell.index = (int)indexPath.row;
-    cell.customerComments = self.customerComments;
-    
-    cell.delegate = self;
-    cell.amount.text = [NSString stringWithFormat:@"%@", amount];
-    
-    cell.customerRating.value = ([self.customerRatings[indexPath.row] floatValue]/ 2);
-    return cell;
 }
 
-- (IBAction)changeWaiterRating:(HCSStarRatingView *)sender {
-    NSLog(@"%f", sender.value);
-    self.waiterRatingNum = [NSNumber numberWithDouble:(2*sender.value)];
+- (void)waiterComment:(NSString *)comment{
+    self.waiterComments = comment;
 }
 
--(void)textViewDidChange:(UITextView *)textView{
-    //self.customerOrder[0].waiterReview = self.waiterComments.text;
-    //handle text editing finished
+- (void)waiterRating:(NSNumber *)rating{
+    self.waiterRatingNum = [NSNumber numberWithDouble:(2*[rating doubleValue])];
 }
+//- (IBAction)changeWaiterRating:(HCSStarRatingView *)sender {
+//    NSLog(@"%f", sender.value);
+//    self.waiterRatingNum = [NSNumber numberWithDouble:(2*sender.value)];
+//}
 
-- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text{
-    int characterLimit = 140;
-    NSString *newText = [self.waiterComments.text stringByReplacingCharactersInRange:range withString:text];
-    self.charsRemaining.text = [NSString stringWithFormat: @"%d", (int)(characterLimit - newText.length)];
-    return newText.length < characterLimit;
-}
+//-(void)textViewDidChange:(UITextView *)textView{
+//    //self.customerOrder[0].waiterReview = self.waiterComments.text;
+//    //handle text editing finished
+//}
+//
+//- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text{
+//    int characterLimit = 140;
+//    NSString *newText = [self.waiterComments.text stringByReplacingCharactersInRange:range withString:text];
+//    self.charsRemaining.text = [NSString stringWithFormat: @"%d", (int)(characterLimit - newText.length)];
+//    return newText.length < characterLimit;
+//}
 
 
 - (IBAction)didSubmit:(UIButton *)sender {
@@ -120,9 +146,9 @@
         totalRating = 0;
     }
     self.waiter.rating = [NSNumber numberWithFloat: ([self.waiterRatingNum floatValue] + totalRating)];
-    
-    if (!([self.waiterComments.text isEqual:[NSNull null]] || [self.waiterComments.text isEqualToString:@""])){
-        self.waiter.comments = [self.waiter.comments arrayByAddingObject:self.waiterComments.text];
+    NSLog(@"%d", self.waiterComments==nil);
+    if (!(self.waiterComments==nil || [self.waiterComments isEqualToString:@""])){
+        self.waiter.comments = [self.waiter.comments arrayByAddingObject:self.waiterComments];
     }
     float numOfCustomers = [self.waiter.numOfCustomers floatValue];
     self.waiter.numOfCustomers = [NSNumber numberWithFloat: ([self.customerNumber floatValue] + numOfCustomers)];
