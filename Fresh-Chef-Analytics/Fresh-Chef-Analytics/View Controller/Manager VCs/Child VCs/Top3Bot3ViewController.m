@@ -9,6 +9,8 @@
 #import "Top3Bot3ViewController.h"
 #import "Top3Bottom3TableViewCell.h"
 #import "MenuManager.h"
+#import "MKDropdownMenu.h"
+#import "UIRefs.h"
 
 @interface Top3Bot3ViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -17,6 +19,7 @@
 @property (strong, nonatomic) NSMutableDictionary *top3Bottom3Selected;
 @property (strong, nonatomic) NSArray *categories;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *rankByControl;
+
 
 @end
 
@@ -32,6 +35,8 @@
     // Do any additional setup after loading the view.
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
+    self.rankByControl.tintColor = [[UIRefs shared] colorFromHexString:[UIRefs shared].purpleAccent];
+    [[UISegmentedControl appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]} forState:UIControlStateSelected];
     self.top3Bottom3Freq = [[MenuManager shared] top3Bottom3Freq];
     self.top3Bottom3Rating = [[MenuManager shared] top3Bottom3Rating];
     self.top3Bottom3Selected = [[NSMutableDictionary alloc] initWithDictionary: self.top3Bottom3Freq];
