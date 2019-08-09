@@ -562,7 +562,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xxm-oP-hGD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3703" y="-733"/>
+            <point key="canvasLocation" x="-3997" y="-982"/>
         </scene>
         <!--Email View Controller-->
         <scene sceneID="hrX-b1-FC8">
@@ -642,7 +642,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mNh-LX-Aru" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-4065" y="-1460"/>
+            <point key="canvasLocation" x="-3996" y="-2571"/>
         </scene>
         <!--Waiter View Controller-->
         <scene sceneID="Prp-0H-dph">
@@ -913,7 +913,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iW6-5g-hzU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-71.014492753623188" y="-1431.0267857142856"/>
+            <point key="canvasLocation" x="-4052" y="-1712"/>
         </scene>
         <!--Profile-->
         <scene sceneID="L7M-nB-u8G">
@@ -1757,7 +1757,7 @@
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
                                 <state key="normal" title="+ Add new item"/>
                                 <connections>
-                                    <action selector="addNewItem:" destination="6Sk-gV-AHo" eventType="touchUpInside" id="DpU-fg-78R"/>
+                                    <segue destination="zQd-xl-Nch" kind="presentation" id="4KX-kj-n4q"/>
                                 </connections>
                             </button>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rd1-J6-fz4">
@@ -1863,7 +1863,6 @@
                         <outlet property="tableNumber" destination="pqL-iF-0cK" id="afz-qB-4fH"/>
                         <outlet property="waiterSelected" destination="SSA-QS-fr7" id="P9M-ab-nsk"/>
                         <outlet property="waiterTable" destination="WQI-1G-lpJ" id="PjZ-qY-EEd"/>
-                        <segue destination="zQd-xl-Nch" kind="showDetail" identifier="toAdd" id="Qit-w7-US4"/>
                         <segue destination="r2A-fg-CFG" kind="show" identifier="toOrders" id="OoC-gz-o7l"/>
                     </connections>
                 </viewController>
@@ -2014,12 +2013,11 @@
                     <connections>
                         <outlet property="ordersTableView" destination="IBe-to-zWZ" id="8qC-D5-efm"/>
                         <outlet property="searchBar" destination="uC6-xQ-zaV" id="2Os-mA-Dyh"/>
-                        <segue destination="6Sk-gV-AHo" kind="showDetail" identifier="toEdit" id="1qa-yJ-39n"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="owy-Jp-6aM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2120" y="-1431"/>
+            <point key="canvasLocation" x="-5206" y="31"/>
         </scene>
         <!--Fun Form View Controller-->
         <scene sceneID="LC7-Sh-b8u">
@@ -3017,7 +3015,7 @@
                                         </constraints>
                                         <state key="normal" title="Sign Up"/>
                                         <connections>
-                                            <segue destination="ZOM-KF-QFY" kind="show" id="2nE-k9-VAl"/>
+                                            <segue destination="ZOM-KF-QFY" kind="show" identifier="signUp" id="2nE-k9-VAl"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -3073,7 +3071,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="-278.26086956521743" y="1593.75"/>
+            <point key="canvasLocation" x="-3529" y="2018"/>
         </scene>
         <!--Sign Up View Controller-->
         <scene sceneID="uwI-dw-2Wz">
@@ -3872,7 +3870,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oRf-Nq-vmO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-254" y="4353"/>
+            <point key="canvasLocation" x="-1057" y="4709"/>
         </scene>
         <!--Closed Order View Controller-->
         <scene sceneID="mf9-Y1-z5e">
@@ -7376,10 +7374,9 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="r3R-H8-hdI"/>
-        <segue reference="mFX-D1-im0"/>
+        <segue reference="OoC-gz-o7l"/>
         <segue reference="ACF-OQ-zwx"/>
         <segue reference="kyq-sQ-kui"/>
-        <segue reference="1qa-yJ-39n"/>
         <segue reference="oPI-sQ-S9b"/>
     </inferredMetricsTieBreakers>
 </document>
