@@ -53,23 +53,16 @@
         [self setProfilePicture];
     }
     // setup picker for theme
-//    self.themePickerView = [[UIPickerView alloc] initWithFrame:CGRectMake(0, 44, 0, 0)];
-    self.themePickerView.delegate = self;
-    self.themePickerView.dataSource = self;
-    self.themePickerView.showsSelectionIndicator = YES;
+//    self.themePickerView.delegate = self;
+//    self.themePickerView.dataSource = self;
+//    self.themePickerView.showsSelectionIndicator = YES;
     self.themesArr = @[@"Fun", @"Comfortable", @"Elegant"];
-//    self.themePickerView set
-//    self.themeTextField.inputView = self.themePickerView;
-    self.themeTextField.hidden = YES;
-    self.themeTextField.enabled = NO;
-    // set price range from yelp
-//    [[YelpAPIManager shared] userParameters];
+//    self.themeTextField.hidden = YES;
+//    self.themeTextField.enabled = NO;
+
     //alert view for picker
     self.alert = [UIAlertController alertControllerWithTitle:@"Set Theme" message:@"Choose a theme for your customer form" preferredStyle:(UIAlertControllerStyleActionSheet)];
-//    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"Done" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-//        // handle response here.
-//    }];
-//    [self.alert addAction:okAction];
+
     int i = 0;
     for (NSString *theme in self.themesArr) {
         UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:theme style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
@@ -135,7 +128,7 @@
         self.user[@"email"] = self.restaurantEmailField.text;
         self.user[@"theme"] = self.restaurantThemeLabel.text;
         self.user[@"image"] = [self getPFFileFromImage:self.restaurantProfileImage.image];
-//        self.user[@"price"] = self.restaurantPriceField;
+        self.user[@"price"] = self.restaurantPriceField.text;
         [self.user saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
             if(succeeded){
                 NSLog(@"successfully saved updates");
@@ -278,19 +271,11 @@
 - (IBAction)didTapEditTheme:(id)sender {
     
     if (self.isThemePickerOpen == YES) {
-//        self.themePickerView.hidden = YES;
-//        self.themePickerView.userInteractionEnabled = NO;
-//        self.isThemePickerOpen = NO;
-        
         [self presentViewController:self.alert animated:YES completion:^{
             // optional code for what happens after the alert controller has finished presenting
             
         }];
     } else {
-//        self.themePickerView.hidden = NO;
-//        self.themePickerView.userInteractionEnabled = YES;
-//        [self.alert.view addSubview:self.themePickerView];
-//        self.isThemePickerOpen = YES;
         [self presentViewController:self.alert animated:YES completion:^{}];
         
     }
