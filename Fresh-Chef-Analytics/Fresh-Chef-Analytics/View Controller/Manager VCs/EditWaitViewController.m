@@ -11,6 +11,7 @@
 #import "EditWaiterCell.h"
 
 @interface EditWaitViewController ()
+@property (weak, nonatomic) IBOutlet UIButton *addButton;
 
 @end
 
@@ -21,8 +22,16 @@
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     self.roster = [[WaiterManager shared] roster];
-    //make profile pictures round
-
+    self.addButton.layer.shadowRadius  = 1.5f;
+    self.addButton.layer.shadowColor   = [UIColor colorWithRed:176.f/255.f green:199.f/255.f blue:226.f/255.f alpha:1.f].CGColor;
+    self.addButton.layer.shadowOffset  = CGSizeMake(0.0f, 0.0f);
+    self.addButton.layer.shadowOpacity = 0.9f;
+    self.addButton.layer.masksToBounds = NO;
+    
+    UIEdgeInsets shadowInsets     = UIEdgeInsetsMake(0, 0, -1.5f, 0);
+    UIBezierPath *shadowPath      = [UIBezierPath bezierPathWithRect:UIEdgeInsetsInsetRect(self.addButton.bounds, shadowInsets)];
+    
+    self.addButton.layer.shadowPath    = shadowPath.CGPath;
 }
 
 - (void)editWaiterCell:(EditWaiterCell *)editWaiterCell didTap:(Waiter *)waiter
@@ -44,12 +53,13 @@
     cell.delegate = self;
     cell.waiterName.text = waiter.name;
     cell.waiterYearsAt.text = [@"Served " stringByAppendingString:[[NSString stringWithFormat:@"%@", waiter.yearsWorked] stringByAppendingString:@"  Years"]];
-    cell.waiterRating.text = [[NSString stringWithFormat:@"%@", [[WaiterManager shared] averageRating:cell.waiter]] stringByAppendingString:@" ✯'s"];
-    cell.waiterTableTops.text = [[NSString stringWithFormat:@"%@", waiter.tableTops] stringByAppendingString:@" Tabletops"];
-    cell.waiterNumCustomers.text = [[NSString stringWithFormat:@"%@", waiter.numOfCustomers] stringByAppendingString:@" customers served"];
-    
-    cell.waiterTipsPT.text = [@"$" stringByAppendingString:[[NSString stringWithFormat:@"%@", [[WaiterManager shared] averageTipsByTable:cell.waiter]] stringByAppendingString:@" Tips per Table"]];
-    cell.waiterTipsPC.text = [@"$" stringByAppendingString:[[NSString stringWithFormat:@"%@", [[WaiterManager shared] averageTipByCustomer:cell.waiter]] stringByAppendingString:@" Tips per Customer"]];    if(waiter.image!=nil){
+    cell.waiterRating.text = [NSString stringWithFormat:@"%@", [[WaiterManager shared] averageRating:cell.waiter]];
+    cell.waiterTableTops.text = [[NSString stringWithFormat:@"%li", (long)[waiter.tableTops integerValue]] stringByAppendingString:@" Tabletops"];
+    cell.waiterNumCustomers.text = [[NSString stringWithFormat:@"%ld", (long)[waiter.numOfCustomers integerValue]] stringByAppendingString:@" customers"];
+    cell.waiterTipsPT.text = [@"Average Tips: $" stringByAppendingString:[NSString stringWithFormat:@"%.2f", [[[WaiterManager shared] averageTipsByTable:cell.waiter] floatValue]]];
+    cell.waiterTipsPC.text = [@"Average Tips: $" stringByAppendingString:[NSString stringWithFormat:@"%.2f", [[[WaiterManager shared] averageTipByCustomer:cell.waiter] floatValue]]];
+
+    if(waiter.image!=nil){
         [waiter.image getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
             if(!error){
                 cell.profileImage.image = [UIImage imageWithData:imageData];
@@ -66,6 +76,9 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return self.roster.count;
+}
+- (IBAction)dismiss:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 /*
 #pragma mark - Navigation
