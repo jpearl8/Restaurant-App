@@ -16,6 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 @end
 
 @interface EditOrderViewCell : UITableViewCell
+@property (strong, nonatomic) IBOutlet UIView *contentView;
 @property (strong, nonatomic) IBOutlet UILabel *dishName;
 @property (nonatomic, weak) id <EditOrderDelegate> delegate;
 @property (assign, nonatomic) int index;

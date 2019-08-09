@@ -45,7 +45,7 @@
     
     NSMutableArray *placeholder = [[NSMutableArray alloc] init];
     if (!self.competitorArray){
-        self.competitorArray = [[NSMutableArray alloc] initWithObjects:placeholder, placeholder, placeholder, nil];
+        self.competitorArray = [[NSMutableArray alloc] initWithObjects:placeholder, placeholder, placeholder, placeholder, placeholder, nil];
         PFUser *currentUser = [PFUser currentUser];
         self.userParameters = [[NSMutableArray alloc] initWithObjects:currentUser[@"address"], currentUser[@"category"], currentUser[@"Price"], nil];
         [self locationTopRatings:self.userParameters[1] withPrice:self.userParameters[2] withIndex:0];
@@ -66,7 +66,7 @@
                                 @"cookie": @"__cfduid=d6047e6fa93475a54ffb5335f93cd9fbb1563860170",
                                   @"accept-encoding": @"gzip, deflate",
                                   @"Connection": @"keep-alive"};
-        NSString *baseString = @"https://api.yelp.com/v3/businesses/search?term=restaurants,%20food&type=food,%20restaurants&sort_by=rating&limit=3";
+        NSString *baseString = @"https://api.yelp.com/v3/businesses/search?term=restaurants,%20food&type=food,%20restaurants&sort_by=rating&limit=5";
         if (self.restaurantCoordinates.latitude && self.restaurantCoordinates.longitude){
             NSString* locationQuery = [NSString stringWithFormat:@"&latitude=%f&longitude=%f", self.restaurantCoordinates.latitude, self.restaurantCoordinates.longitude];
             baseString = [baseString stringByAppendingString:locationQuery];
@@ -101,7 +101,7 @@
 
                         NSLog(@"HELLO %lu", (unsigned long)index);
                         NSLog(@"%@", self.competitorArray[index]);
-                        if (index < 2){
+                        if (index < 4){
                             NSUInteger newIndex = index + 1;
                             [self locationTopRatings:self.userParameters[1] withPrice:self.userParameters[2] withIndex:newIndex];
                             

@@ -7,12 +7,15 @@
 //
 
 #import "EditOrderViewCell.h"
+#import "UIRefs.h"
 
 @implementation EditOrderViewCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
     self.amount.delegate = self;
+    self.contentView.layer.borderWidth = .5f;
+    self.contentView.layer.borderColor = [[UIRefs shared] colorFromHexString:[UIRefs shared].purpleAccent].CGColor;
 
     // Initialization code
 }

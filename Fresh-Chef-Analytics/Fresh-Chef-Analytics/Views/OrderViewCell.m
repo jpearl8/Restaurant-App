@@ -74,7 +74,7 @@ static CGFloat const kBounceValue = 20.0f;
     } else if (sender == self.complete) {
         NSLog(@"Clicked complete!");
         [self.delegate completeForIndex:self.index];
-    } else if (sender == self.ordersButton) {
+    } else if (sender == self.ordersButton || sender == self.flipButton) {
         NSLog(@"Clicked orders!");
         for (NSLayoutConstraint *aConstraint in self.expandedConstraints){
             if (self.isExpanded){
