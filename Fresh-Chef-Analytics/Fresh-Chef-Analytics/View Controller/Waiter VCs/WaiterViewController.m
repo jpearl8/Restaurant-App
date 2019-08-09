@@ -36,6 +36,7 @@ pass final array on submit button of data table
 
 @interface WaiterViewController () <UITableViewDelegate, UITableViewDataSource, StepperCell, CustomerLevelDelegate>
 
+@property (strong, nonatomic) IBOutlet UIView *contentView;
 
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (weak, nonatomic) IBOutlet UITableView *menuItems;
@@ -108,6 +109,8 @@ pass final array on submit button of data table
     self.tableNumber.layer.borderColor = [[UIRefs shared] colorFromHexString:@"#2c91fd"].CGColor;
     self.customerNumber.layer.borderWidth = .5f;
     self.customerNumber.layer.borderColor = [[UIRefs shared] colorFromHexString:@"#2c91fd"].CGColor;
+    self.contentView.layer.borderWidth = .5f;
+    self.contentView.layer.borderColor = [[UIRefs shared] colorFromHexString:[UIRefs shared].purpleAccent].CGColor;
    
 //    NSString *category = [PFUser currentUser][@"theme"];
 //    NSString *category_top = [NSString stringWithFormat:@"%@_top", category];
