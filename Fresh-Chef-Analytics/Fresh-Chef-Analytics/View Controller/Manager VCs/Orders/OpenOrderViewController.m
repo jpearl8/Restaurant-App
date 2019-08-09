@@ -47,8 +47,8 @@
             NSLog(@"%@", error.localizedDescription);
         }
     }];
-    regularHeight = 150;
-    expandedHeight = 300;
+    regularHeight = 92;
+    expandedHeight = 263;
     
 }
     // Do any additional setup after loading the view.
@@ -198,10 +198,10 @@
     selectedIndexPath = indexPath;
     if(cell.isExpanded){
         cell.isExpanded = NO;
-        [cell.ordersButton setImage:[UIImage imageNamed:@"order_select"] forState:UIControlStateNormal];
+        [cell.flipButton setImage:[UIImage imageNamed:@"arrow_grey"] forState:UIControlStateNormal];
     } else {
         cell.isExpanded = YES;
-        [cell.ordersButton setImage:[UIImage imageNamed:@"order_selected"] forState:UIControlStateNormal];
+        [cell.flipButton setImage:[UIImage imageNamed:@"arrow_down"] forState:UIControlStateNormal];
     }
     
     //update cell to reflect new state
