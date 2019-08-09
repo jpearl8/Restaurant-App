@@ -339,7 +339,34 @@ pass final array on submit button of data table
 }
 - (IBAction)onSubmit:(id)sender{
     NSMutableArray<OpenOrder *>*openOrdersArray = [[NSMutableArray alloc] init];
-    if (self.amounts.count != 0 && (!([[Helpful_funs shared]arrayOfZeros:self.amounts]))){
+    if (self.amounts.count == 0 || [[Helpful_funs shared]arrayOfZeros:self.amounts] || self.selectedWaiter == nil || [self.tableNumber.text isEqualToString:@""] || [self.customerNumber.text isEqualToString:@""]){
+        NSString *missing;
+        if (self.amounts.count == 0 || [[Helpful_funs shared]arrayOfZeros:self.amounts]){
+            missing = @"There are no dishes in this order";
+        } else if (self.selectedWaiter == nil) {
+            missing = @"Please select a waiter";
+        } else if ([self.tableNumber.text isEqualToString:@""]){
+            missing = @"Please record the table number";
+        } else {
+            missing = @"Please record the number of customers";
+        }
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Missing Order Information" message:missing preferredStyle:(UIAlertControllerStyleAlert)];
+        // create an OK action
+        UIAlertAction *tryAgain = [UIAlertAction actionWithTitle:@"OK"
+                                                           style:UIAlertActionStyleDefault
+                                                         handler:^(UIAlertAction * _Nonnull action) {
+    
+                                                            
+                                                         }];
+        [alert addAction:tryAgain];
+        [self presentViewController:alert animated:YES completion:^{
+            // optional code for what happens after the alert controller has finished presenting
+    
+
+        }];
+    }
+
+    else {
         for (int i = 0; i < self.amounts.count; i++){
             if (self.amounts[i] != [NSNumber numberWithInt:0]){
                 OpenOrder *openOrderNew = [OpenOrder new];

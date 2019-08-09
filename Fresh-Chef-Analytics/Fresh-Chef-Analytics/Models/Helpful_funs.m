@@ -119,7 +119,7 @@
 -(BOOL)arrayOfZeros:(NSArray<NSNumber *>*)array{
     int i = 0;
     while (i < array.count){
-        if (array[i] == [NSNumber numberWithInt:0]){
+        if ([array[i] isEqual:[NSNumber numberWithInt:0]]){
             i++;
         } else {
             return NO;
