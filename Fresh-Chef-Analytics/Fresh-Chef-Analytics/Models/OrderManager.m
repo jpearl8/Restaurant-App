@@ -433,6 +433,13 @@
                 completion(error);
             }
         }];
+        PFUser.currentUser[@"totalTableTops"] = [NSNumber numberWithFloat: ([(NSNumber*)PFUser.currentUser[@"totalTableTops"] floatValue] + 1)];
+        PFUser.currentUser[@"totalCustomers"] = [NSNumber numberWithFloat: ([(NSNumber*)PFUser.currentUser[@"totalCustomers"] floatValue] + [ordersToClose[0].customerNum floatValue])];
+        [PFUser.currentUser saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+            if(error){
+                NSLog(@"Error saving updates: %@", error.localizedDescription);
+            }
+        }];
         for (int i = 0; i < ordersToClose.count; i++){
             [ordersToClose[i] deleteInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
                 if (error){

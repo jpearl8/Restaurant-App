@@ -45,12 +45,14 @@
     self.dishesByFreq = [self orderDictionary:self.categoriesOfDishes byType:@"orderFrequency"];
     self.dishesByRating = [self orderDictionary:self.categoriesOfDishes byType:@"rating"];
     self.dishesByPrice = [self orderDictionary:self.categoriesOfDishes byType:@"price"];
+    self.dishesByAlphabet = [self orderDictionary:self.categoriesOfDishes byType:@"alphabet"];
 //    NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES];
 //    self.alphabet =[self.categoriesOfDishes sortedArrayUsingDescriptors:@[sort]];
 }
 
 - (NSMutableDictionary *)orderDictionary:(NSMutableDictionary *)dict byType:(NSString *)orderType
 {
+    
     NSMutableDictionary *orderedDict = [[NSMutableDictionary alloc] init];
     for(NSString *key in dict){
         orderedDict[key] = [[Helpful_funs shared] orderArray:dict[key] byType:orderType];

@@ -47,48 +47,55 @@
 - (NSArray *)orderArray:(NSArray *)array byType:(NSString *)orderType
 {
     NSArray *sortedArray;
-    sortedArray = [array sortedArrayUsingComparator:^NSComparisonResult(id a, id b) {
-        NSNumber *first = a[orderType];
-        NSNumber *second = b[orderType];
-        
-        if ([orderType isEqualToString:@"rating"]) {
-            // calculate actual rating based on frequency
-            float x = [a[@"rating"] floatValue] / [a[@"orderFrequency"] floatValue];
-            float y = [b[@"rating"] floatValue] / [b[@"orderFrequency"] floatValue];
-            first = [NSNumber numberWithFloat:x];
-            second = [NSNumber numberWithFloat:y];
-        }
-        if([orderType isEqualToString:@"waiterRating"]) {
-            // calculate actual rating based on frequency
-            float x = [a[@"rating"] floatValue] / [a[@"tableTops"] floatValue];
-            float y = [b[@"rating"] floatValue] / [b[@"tableTops"] floatValue];
-            first = [NSNumber numberWithFloat:x];
-            second = [NSNumber numberWithFloat:y];
-        }
-        if ([orderType isEqualToString:@"tipsByCustomers"])
-        {
-            float x = [[[WaiterManager shared] averageTipByCustomer:(Waiter*)a] floatValue];
-            float y = [[[WaiterManager shared] averageTipByCustomer:(Waiter*)b] floatValue];
-            first = [NSNumber numberWithFloat:x];
-            second = [NSNumber numberWithFloat:y];
-        }
-        if ([orderType isEqualToString:@"tipsByTable"])
-        {
-            float x = [[[WaiterManager shared] averageTipsByTable:(Waiter*)a] floatValue];
-            float y = [[[WaiterManager shared] averageTipsByTable:(Waiter*)b] floatValue];
-            first = [NSNumber numberWithFloat:x];
-            second = [NSNumber numberWithFloat:y];
-        }
-        
-        //check for nil values
-        if(first != nil && second != nil){
-            return [second compare:first];
-        } else if(first == nil){
-            return 1;
-        } else {
-            return -1; // if second is nil or if both are nil assume second is smaller
-        }
-    }];
+    if([orderType isEqualToString:@"alphabet"]){
+        NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES];
+        sortedArray=[array sortedArrayUsingDescriptors:@[sort]];
+
+    }
+    else {
+        sortedArray = [array sortedArrayUsingComparator:^NSComparisonResult(id a, id b) {
+            NSNumber *first = a[orderType];
+            NSNumber *second = b[orderType];
+            
+            if ([orderType isEqualToString:@"rating"]) {
+                // calculate actual rating based on frequency
+                float x = [a[@"rating"] floatValue] / [a[@"orderFrequency"] floatValue];
+                float y = [b[@"rating"] floatValue] / [b[@"orderFrequency"] floatValue];
+                first = [NSNumber numberWithFloat:x];
+                second = [NSNumber numberWithFloat:y];
+            }
+            if([orderType isEqualToString:@"waiterRating"]) {
+                // calculate actual rating based on frequency
+                float x = [a[@"rating"] floatValue] / [a[@"tableTops"] floatValue];
+                float y = [b[@"rating"] floatValue] / [b[@"tableTops"] floatValue];
+                first = [NSNumber numberWithFloat:x];
+                second = [NSNumber numberWithFloat:y];
+            }
+            if ([orderType isEqualToString:@"tipsByCustomers"])
+            {
+                float x = [[[WaiterManager shared] averageTipByCustomer:(Waiter*)a] floatValue];
+                float y = [[[WaiterManager shared] averageTipByCustomer:(Waiter*)b] floatValue];
+                first = [NSNumber numberWithFloat:x];
+                second = [NSNumber numberWithFloat:y];
+            }
+            if ([orderType isEqualToString:@"tipsByTable"])
+            {
+                float x = [[[WaiterManager shared] averageTipsByTable:(Waiter*)a] floatValue];
+                float y = [[[WaiterManager shared] averageTipsByTable:(Waiter*)b] floatValue];
+                first = [NSNumber numberWithFloat:x];
+                second = [NSNumber numberWithFloat:y];
+            }
+            
+            //check for nil values
+            if(first != nil && second != nil){
+                return [second compare:first];
+            } else if(first == nil){
+                return 1;
+            } else {
+                return -1; // if second is nil or if both are nil assume second is smaller
+            }
+        }];
+    }
     return sortedArray;
 }
 

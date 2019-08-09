@@ -22,6 +22,7 @@
 @property (strong, nonatomic) NSMutableArray<Dish *>* dishesArray;
 @property (strong, nonatomic) NSMutableDictionary<NSString *, Waiter *>*tableWaiterDictionary;
 @property (assign, nonatomic) NSNumber *index;
+@property (strong, nonatomic) IBOutlet UIView *noOrders;
 
 
 @end
@@ -42,6 +43,7 @@
         if (!error){
             self.openOrdersTable.delegate = self;
             self.openOrdersTable.dataSource = self;
+            [self noOrdersCheck];
         }
         else {
             NSLog(@"%@", error.localizedDescription);
@@ -60,10 +62,25 @@
         }
         else {
             [self.openOrdersTable reloadData];
+            [self noOrdersCheck];
             [SVProgressHUD dismiss];
         }
     }];
     
+}
+
+-(void)noOrdersCheck {
+    if (self.keys.count == 0){
+        self.openOrdersTable.hidden = YES;
+        self.noOrders.hidden = NO;
+        self.noOrders.layer.cornerRadius = 5;
+        //self.noOrders.frame.size.width/2;
+        self.noOrders.layer.borderWidth = .5f;
+        self.noOrders.layer.borderColor = [[UIRefs shared] colorFromHexString:[UIRefs shared].purpleAccent].CGColor;
+    } else {
+        self.openOrdersTable.hidden = NO;
+        self.noOrders.hidden = YES;
+    }
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {

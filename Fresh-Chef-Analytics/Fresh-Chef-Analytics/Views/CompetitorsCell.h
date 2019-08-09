@@ -10,14 +10,16 @@
 #import "Link.h"
 NS_ASSUME_NONNULL_BEGIN
 
-@interface CompetitorsCell : UITableViewCell 
-@property (weak, nonatomic) IBOutlet UILabel *rating;
+@interface CompetitorsCell : UITableViewCell
+//@property (weak, nonatomic) IBOutlet UILabel *rating;
 @property (weak, nonatomic) IBOutlet UILabel *address;
 @property (weak, nonatomic) IBOutlet UILabel *competitorName;
 @property (weak, nonatomic) IBOutlet UILabel *price;
 @property (weak, nonatomic) IBOutlet Link *yelpLink;
 
 @property (weak, nonatomic) IBOutlet UIImageView *competitorImage;
+@property (strong, nonatomic) IBOutlet UIImageView *yelpRating;
+@property (strong, nonatomic) IBOutlet UILabel *reviewCount;
 
 
 @end
