@@ -115,7 +115,7 @@
     WaiterListTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"WaiterListCell" forIndexPath:indexPath];
     Waiter *waiter = self.filteredWaiters[indexPath.row];
     cell.waiter = waiter;
-    cell.waiterName.text = waiter.name;
+    cell.waiterName.text = [waiter.name uppercaseString];
     cell.selectedIndex = self.selectedIndex;
     cell.waiterTime.text = [@"Served " stringByAppendingString:[[NSString stringWithFormat:@"%@", waiter.yearsWorked] stringByAppendingString:@" Years"]];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
