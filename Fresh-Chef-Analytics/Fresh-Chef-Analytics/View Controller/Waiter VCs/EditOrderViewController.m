@@ -25,7 +25,7 @@
 @property (strong, nonatomic) IBOutlet UITextField *customerNumber;
 
 @property (strong, nonatomic) IBOutlet UITableView *ordersTable;
-- (IBAction)addNewItem:(UIButton *)sender;
+@property (strong, nonatomic) IBOutlet UIImageView *backgroundIm;
 
 @property (strong, nonatomic) NSMutableArray <NSString*>*dishNames;
 
@@ -45,6 +45,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [[UIRefs shared] setImage:self.backgroundIm isCustomerForm:NO];
     self.dishNames = [[NSMutableArray alloc] init];
     [self fillCellArrays:self.editableOpenOrders];
     self.editChange = NO;
@@ -59,6 +60,8 @@
     self.waiterTable.dataSource = self;
     self.ordersTable.delegate = self;
     self.ordersTable.dataSource = self;
+    self.waiterSelected.layer.borderWidth = .5f;
+    self.waiterSelected.layer.borderColor = [[UIRefs shared] colorFromHexString:@"#2c91fd"].CGColor;
 
     
 }
@@ -82,6 +85,8 @@
         cell.amount.text = [NSString stringWithFormat:@"%@", self.editableOpenOrders[indexPath.row][@"amount"]];
      //   cell.amount.attributedPlaceholder = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@", self.editableOpenOrders[indexPath.row][@"amount"]] attributes:@{NSForegroundColorAttributeName: [UIColor blackColor]}];
        // cell.amount.attributedPlaceholder color [NSForegroundColorAttributeName: yellowColor])
+        cell.amount.layer.borderWidth = .5f;
+        cell.amount.layer.borderColor = [[UIRefs shared] colorFromHexString:[UIRefs shared].purpleAccent].CGColor;
         cell.index = (int)indexPath.row;
         return cell;
     } else {
@@ -187,7 +192,11 @@
     }
     [[OrderManager shared] changeOpenOrders:self.openOrders withEditedArray:self.editableOpenOrders withCompletion:^(NSError * _Nonnull error) {
         if (!error){
-            [self performSegueWithIdentifier:@"toOrders" sender:self];
+            [self.vcDelegate callSuperRefresh];
+            [self dismissViewControllerAnimated:YES completion:^{
+                NSLog(@"good");
+            }];
+            //[self dismissModalViewControllerAnimated:YES];
         } else {
             NSLog(@"%@", error.localizedDescription);
         }
@@ -195,19 +204,31 @@
 }
 
 - (IBAction)hitCancel:(UIBarButtonItem *)sender {
-    [self performSegueWithIdentifier:@"toOrders" sender:self];
+    [self.vcDelegate callSuperRefresh];
+    [self dismissViewControllerAnimated:YES completion:^{
+        NSLog(@"good");
+    }];
+    //[self dismissModalViewControllerAnimated:YES];
 }
 
 - (IBAction)hitDelete:(UIButton *)sender {
     [[OrderManager shared] changeOpenOrders:self.openOrders withEditedArray:NULL withCompletion:^(NSError * _Nonnull error) {
         if (!error){
-            [self performSegueWithIdentifier:@"toOrders" sender:self];
+            [self.vcDelegate callSuperRefresh];
+            [self dismissViewControllerAnimated:YES completion:^{
+                NSLog(@"good");
+            }];
         } else {
             NSLog(@"%@", error.localizedDescription);
         }
     }];
 }
-
+-(void)callEditRefresh:(NSMutableArray <OpenOrder *>*)changedOpenOrders{
+    //[self.editableOpenOrders removeAllObjects];
+    self.editableOpenOrders = changedOpenOrders;
+    [self viewDidLoad];
+    [self.ordersTable reloadData];
+}
 - (IBAction)customerNumEdited:(UITextField *)sender {
     self.editChange = YES;
 }
@@ -226,9 +247,6 @@
 }
 
 
-- (IBAction)addNewItem:(UIButton *)sender {
-    [self performSegueWithIdentifier:@"toAdd" sender:self];
-}
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
     return YES;

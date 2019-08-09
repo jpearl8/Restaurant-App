@@ -20,9 +20,10 @@
 #import "EditOrderViewController.h"
 #import "UIRefs.h"
 #import "LoginViewController.h"
+#import "WaiterViewController.h"
 
 
-@interface OrdersViewController () <OrderViewCellDelegate, UITableViewDelegate, UITableViewDataSource> {
+@interface OrdersViewController () <OrderViewCellDelegate, UITableViewDelegate, UITableViewDataSource, VCDelegate> {
 //    NSMutableArray *_objects;
 //    //    NSLog(@"In the delegate, Clicked button one for %@", itemText);
 //    NSString *customerNumber;
@@ -35,10 +36,13 @@
 @property (strong, nonatomic) NSMutableDictionary<NSString *, NSArray<OpenOrder *>*>* totalOpenTables;
 @property (strong, nonatomic) NSArray<NSString *>* keys;
 @property (strong, nonatomic) NSMutableArray<Dish *>* dishesArray;
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *refreshButton;
 @property (strong, nonatomic) NSMutableDictionary<NSString *, Waiter *>*tableWaiterDictionary;
 @property (assign, nonatomic) NSNumber *index;
 //@property (strong, nonatomic) NSMutableArray *objects;
 @property (strong, nonatomic) IBOutlet UIImageView *image;
+@property (strong, nonatomic) IBOutlet UIView *noOrders;
+
 
 - (IBAction)didLogout:(id)sender;
 @end
@@ -51,7 +55,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [[UIRefs shared] setImage:self.background  isCustomerForm:NO];
+    //[[UIRefs shared] setImage:self.background  isCustomerForm:NO];
     self.openOrdersTable.dataSource = self;
     self.openOrdersTable.delegate = self;
     self.tableWaiterDictionary = [[NSMutableDictionary alloc] init];
@@ -62,13 +66,15 @@
         if (!error){
             self.openOrdersTable.delegate = self;
             self.openOrdersTable.dataSource = self;
+            [self noOrdersCheck];
+
         }
         else {
             NSLog(@"%@", error.localizedDescription);
         }
     }];
     regularHeight = 97;
-    expandedHeight = 300;
+    expandedHeight = 238;
 
 }
 - (IBAction)refreshOrders:(UIBarButtonItem *)sender {
@@ -79,12 +85,26 @@
         }
         else {
             [self.openOrdersTable reloadData];
+            [self noOrdersCheck];
             [SVProgressHUD dismiss];
         }
     }];
     
 }
 
+-(void)noOrdersCheck {
+    if (self.keys.count == 0){
+        self.openOrdersTable.hidden = YES;
+        self.noOrders.hidden = NO;
+        self.noOrders.layer.cornerRadius = 5;
+        //self.noOrders.frame.size.width/2;
+        self.noOrders.layer.borderWidth = .5f;
+        self.noOrders.layer.borderColor = [[UIRefs shared] colorFromHexString:[UIRefs shared].purpleAccent].CGColor;
+    } else {
+        self.openOrdersTable.hidden = NO;
+        self.noOrders.hidden = YES;
+    }
+}
 
 
 #pragma mark - Table view data source
@@ -98,6 +118,8 @@
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     OrderViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+    cell.layer.borderWidth = .5f;
+    cell.layer.borderColor = [[UIRefs shared] colorFromHexString:[UIRefs shared].purpleAccent].CGColor;
     cell.tableNumber.text = self.keys[indexPath.row];
     cell.index = [NSNumber numberWithInteger:indexPath.row];
     NSString *tableString = [NSString stringWithFormat:@"%@", cell.tableNumber.text];
@@ -116,22 +138,27 @@
     cell.customerNumber.text = [NSString stringWithFormat:@"%@", orderInCell[0].customerNum];
     NSString *content = @"☆";
     UIColor *starColor;
+
     if (orderInCell.count > 0){
-        if (!(orderInCell[0].customerLevel) || [orderInCell[0].customerLevel isEqual:[NSNumber numberWithInteger:0]]){
-            starColor = [[UIRefs shared] colorFromHexString:([UIRefs shared].blueHighlight)];
-        } else {
-            content = @"★";
-            if ([orderInCell[0].customerLevel isEqual:[NSNumber numberWithInt:1]]){
-                starColor = [[UIRefs shared] colorFromHexString:([UIRefs shared].bronze)];
-            } else if ([orderInCell[0].customerLevel isEqual:[NSNumber numberWithInt:2]]){
-                starColor = [[UIRefs shared] colorFromHexString:([UIRefs shared].silver)];
+            if ([orderInCell[0].customerLevel isEqual:[NSNumber numberWithInt:-1]]){
+                starColor = [[UIRefs shared] colorFromHexString:([UIRefs shared].blueHighlight)];
             } else {
-                starColor = [[UIRefs shared] colorFromHexString:([UIRefs shared].gold)];
+                content = @"★";
+                if ([orderInCell[0].customerLevel isEqual:[NSNumber numberWithInt:0]]){
+                    starColor = [[UIRefs shared] colorFromHexString:([UIRefs shared].blueHighlight)];
+                } else if ([orderInCell[0].customerLevel isEqual:[NSNumber numberWithInt:1]]){
+                    starColor = [[UIRefs shared] colorFromHexString:([UIRefs shared].bronze)];
+                } else if ([orderInCell[0].customerLevel isEqual:[NSNumber numberWithInt:2]]){
+                    starColor = [[UIRefs shared] colorFromHexString:([UIRefs shared].silver)];
+                } else {
+                    starColor = [[UIRefs shared] colorFromHexString:([UIRefs shared].gold)];
             }
         }
         [cell.customerLevel setTitle:content forState:UIControlStateNormal];
         [cell.customerLevel setTitleColor:starColor forState:UIControlStateNormal];
     }
+
+    
     
     return cell;
 }
@@ -177,7 +204,10 @@
     
 }
 
-
+-(void) callSuperRefresh{
+    //[self viewDidLoad];
+    [self refreshOrders:self.refreshButton];
+}
 
 /*
  // Override to support rearranging the table view.
@@ -251,10 +281,10 @@
     selectedIndexPath = indexPath;
     if(cell.isExpanded){
         cell.isExpanded = NO;
-        [cell.ordersButton setImage:[UIImage imageNamed:@"order_select"] forState:UIControlStateNormal];
+        [cell.flipButton setImage:[UIImage imageNamed:@"arrow_grey"] forState:UIControlStateNormal];
     } else {
         cell.isExpanded = YES;
-        [cell.ordersButton setImage:[UIImage imageNamed:@"order_selected"] forState:UIControlStateNormal];
+        [cell.flipButton setImage:[UIImage imageNamed:@"arrow_down"] forState:UIControlStateNormal];
     }
     
     //update cell to reflect new state
@@ -287,8 +317,13 @@
             NSLog(@"%@", openOrders[i]);
             NSLog(@"%@", ((Dish*)openOrders[i].dish).objectId);
             if ([((Dish *)dishArray[j]).objectId isEqualToString:((Dish*)openOrders[i].dish).objectId]){
-                dishesString = [NSString stringWithFormat:@"%@\n%@", dishesString, ((Dish *)dishArray[j]).name];
-                amountsString = [NSString stringWithFormat:@"%@\n%@", amountsString, [openOrders[i].amount stringValue]];
+                if (i == 0 || i == (openOrders.count)){
+                    dishesString = [NSString stringWithFormat:@"%@%@", dishesString, ((Dish *)dishArray[j]).name];
+                    amountsString = [NSString stringWithFormat:@"%@%@", amountsString, [openOrders[i].amount stringValue]];
+                } else {
+                    dishesString = [NSString stringWithFormat:@"%@\n%@", dishesString, ((Dish *)dishArray[j]).name];
+                    amountsString = [NSString stringWithFormat:@"%@\n%@", amountsString, [openOrders[i].amount stringValue]];
+                }
                 [self.dishesArray addObject:dishArray[j]];
             }
         }
@@ -336,7 +371,13 @@
         editVC.openOrders =  self.totalOpenTables[self.keys[[self.index integerValue]]];
         editVC.index = self.index;
         editVC.editableOpenOrders = [editVC.openOrders mutableCopy];
-
+        editVC.vcDelegate = self;
+        //editVC.dishesArray = self.dishesArray;
+        
+    }
+    if ([segue.identifier isEqualToString:@"Add"]){
+        WaiterViewController *waitVC = [segue destinationViewController];
+        waitVC.vcDelegate = self;
         //editVC.dishesArray = self.dishesArray;
         
     }

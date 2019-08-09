@@ -16,6 +16,7 @@
 @property (nonatomic, weak) IBOutlet NSLayoutConstraint *contentViewRightConstraint;
 @property (nonatomic, weak) IBOutlet NSLayoutConstraint *contentViewLeftConstraint;
 
+
 @property (strong, nonatomic) IBOutletCollection(NSLayoutConstraint) NSArray *expandedConstraints;
 
 
@@ -32,7 +33,7 @@ static CGFloat const kBounceValue = 20.0f;
         aView.hidden = YES;
     }
     self.isExpanded = NO;
-    [self.ordersButton.imageView setImage:[UIImage imageNamed:@"order"]];
+    [self.flipButton.imageView setImage:[UIImage imageNamed:@"arrow_grey"]];
     self.panRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panThisCell:)];
     self.panRecognizer.delegate = self;
 
@@ -51,7 +52,7 @@ static CGFloat const kBounceValue = 20.0f;
 - (void)prepareForReuse {
     [super prepareForReuse];
     self.panRecognizer.delegate = self;
-    [self.ordersButton setImage:[UIImage imageNamed:@"order"] forState:UIControlStateNormal];
+    [self.flipButton setImage:[UIImage imageNamed:@"arrow_grey"] forState:UIControlStateNormal];
     [self resetConstraintContstantsToZero:NO notifyDelegateDidClose:NO];
     for (UIView *aView in self.swipeCollections){
         aView.hidden = YES;

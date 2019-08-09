@@ -14,6 +14,8 @@ pass final array on submit button of data table
 
 #import "YelpAPIManager.h"
 #import "WaiterViewController.h"
+#import "OrdersViewController.h"
+
 #import "Dish.h"
 #import "WaitTableViewCell.h"
 #import "Parse/Parse.h"
@@ -28,10 +30,12 @@ pass final array on submit button of data table
 #import "WaiterManager.h"
 #import "OpenOrder.h"
 #import "OrderManager.h"
+#import "EmailViewController.h"
 #import "UIRefs.h"
 
 
-@interface WaiterViewController () <UITableViewDelegate, UITableViewDataSource, StepperCell>
+@interface WaiterViewController () <UITableViewDelegate, UITableViewDataSource, StepperCell, CustomerLevelDelegate>
+
 
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (weak, nonatomic) IBOutlet UITableView *menuItems;
@@ -74,12 +78,15 @@ pass final array on submit button of data table
 - (void)viewDidLoad {
 
     [super viewDidLoad];
+    self.navigationItem.hidesBackButton = true;
     self.submitButton.layer.cornerRadius = 10;
+    self.customerLevelNumber = [NSNumber numberWithInteger:-1];
     self.customerNumber.text = @"";
     self.tableNumber.text = @"";
     NSString *content = @"☆";
     UIColor *starColor;
-    if (!(self.customerLevelNumber) || [self.customerLevelNumber isEqual:[NSNumber numberWithInteger:0]]){
+    
+    if ([self.customerLevelNumber isEqual:[NSNumber numberWithInteger:-1]]){
         starColor = [[UIRefs shared] colorFromHexString:([UIRefs shared].blueHighlight)];
     } else {
         content = @"★";
@@ -95,7 +102,7 @@ pass final array on submit button of data table
     [self.customerLevel setTitleColor:starColor forState:UIControlStateNormal];
     self.customerLevel.layer.borderWidth = .5f;
     self.customerLevel.layer.borderColor = [[UIRefs shared] colorFromHexString:@"#2c91fd"].CGColor;
-    self.button.layer.borderWidth = .5f;
+    self.button.layer.borderWidth = 1.f;
     self.button.layer.borderColor = [[UIRefs shared] colorFromHexString:@"#2c91fd"].CGColor;
     self.tableNumber.layer.borderWidth = .5f;
     self.tableNumber.layer.borderColor = [[UIRefs shared] colorFromHexString:@"#2c91fd"].CGColor;
@@ -158,6 +165,20 @@ pass final array on submit button of data table
     return nil;
 }
 
+- (void)tableView:(UITableView *)tableView willDisplayHeaderView:(UIView *)view forSection:(NSInteger)section
+{
+    // Background color
+    view.tintColor = [UIColor whiteColor];
+    
+    // Text Color
+    UITableViewHeaderFooterView *header = (UITableViewHeaderFooterView *)view;
+    UIColor *purple = [[UIRefs shared] colorFromHexString:[UIRefs shared].purpleAccent];
+    [header.textLabel setTextColor:purple];
+    
+    // Another way to set the background color
+    // Note: does not preserve gradient effect of original header
+     header.contentView.backgroundColor = [[UIRefs shared] colorFromHexString:@"#EFEFF4"];
+}
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -296,6 +317,26 @@ pass final array on submit button of data table
     };
 }
 
+-(void)changeLevel:(NSNumber *)newLevel withEmail:(nonnull NSString *)email{
+    self.customerLevelNumber = newLevel;
+    self.customerEmail = email;
+    NSString *content = @"★";;
+    UIColor *starColor;
+     if (!(newLevel) || [newLevel isEqual:[NSNumber numberWithInteger:0]]){
+         starColor = [[UIRefs shared] colorFromHexString:([UIRefs shared].blueHighlight)];
+     } else {
+         if ([newLevel isEqual:[NSNumber numberWithInt:1]]){
+             starColor = [[UIRefs shared] colorFromHexString:([UIRefs shared].bronze)];
+         } else if ([newLevel isEqual:[NSNumber numberWithInt:2]]){
+             starColor = [[UIRefs shared] colorFromHexString:([UIRefs shared].silver)];
+         } else {
+             starColor = [[UIRefs shared] colorFromHexString:([UIRefs shared].gold)];
+         }
+     }
+    [self.customerLevel setTitle:content forState:UIControlStateNormal];
+    [self.customerLevel setTitleColor:starColor forState:UIControlStateNormal];
+    
+}
 - (IBAction)onSubmit:(id)sender{
     NSMutableArray<OpenOrder *>*openOrdersArray = [[NSMutableArray alloc] init];
     if (self.amounts.count != 0 && (!([[Helpful_funs shared]arrayOfZeros:self.amounts]))){
@@ -319,7 +360,10 @@ pass final array on submit button of data table
         }
         [[OrderManager shared] postAllOpenOrders:openOrdersArray withCompletion:^(NSError * _Nonnull error) {
             if (!error){
-                [self performSegueWithIdentifier:@"toOpen" sender:self];
+                [self.vcDelegate callSuperRefresh];
+                [self dismissViewControllerAnimated:YES completion:^{
+                    NSLog(@"good");
+                }];
             } else{
                 NSLog(@"%@", error.localizedDescription);
             }
@@ -331,11 +375,19 @@ pass final array on submit button of data table
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    EmailViewController *emailVC = [segue destinationViewController];
+    emailVC.customerLevelDelegate = self;
+    emailVC.email = self.customerEmail;
+    
+    
 }
 
 
+
 - (IBAction)cancelAction:(UIBarButtonItem *)sender {
-    [self performSegueWithIdentifier:@"toOpen" sender:self];
+    [self dismissViewControllerAnimated:YES completion:^{
+        NSLog(@"good");
+    }];
 }
 
 

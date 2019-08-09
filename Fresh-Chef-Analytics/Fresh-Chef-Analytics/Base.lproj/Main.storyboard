@@ -6298,7 +6298,6 @@
                                                 <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4oC-Rg-Ghl">
                                                     <rect key="frame" x="0.0" y="117" width="414" height="694"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="694" id="kbo-sP-3fr"/>
                                                     </constraints>
                                                     <connections>
                                                         <segue destination="4pO-Ap-iSk" kind="embed" id="W2D-aH-4t3"/>

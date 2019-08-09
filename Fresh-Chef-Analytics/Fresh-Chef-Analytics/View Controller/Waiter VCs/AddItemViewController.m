@@ -147,15 +147,15 @@
     };
 }
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    EditOrderViewController *editVC = [segue destinationViewController];
-    NSArray *oldOpenOrders = [[NSArray alloc] init];
-    oldOpenOrders = [self.delegate getOldOpenOrders];
-    editVC.waiter = self.waiter;
-    editVC.editableOpenOrders =  self.openOrdersFromEdit;
-    editVC.openOrders = oldOpenOrders;
-
-}
+//- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+//    EditOrderViewController *editVC = [segue destinationViewController];
+//    NSArray *oldOpenOrders = [[NSArray alloc] init];
+//    oldOpenOrders = [self.delegate getOldOpenOrders];
+//    editVC.waiter = self.waiter;
+//    editVC.editableOpenOrders =  self.openOrdersFromEdit;
+//    editVC.openOrders = oldOpenOrders;
+//
+//}
 
 
 
@@ -181,12 +181,19 @@
                 [self.openOrdersFromEdit addObject:openOrderNew];
             }
         }
-        
-        [self performSegueWithIdentifier:@"toEdit" sender:self];
+        [self.delegate callEditRefresh:self.openOrdersFromEdit];
+        [self dismissViewControllerAnimated:YES completion:^{
+            NSLog(@"good");
+        }];
+     // [self performSegueWithIdentifier:@"toEdit" sender:self];
     }
 }
 
 - (IBAction)cancel:(UIBarButtonItem *)sender {
-    [self performSegueWithIdentifier:@"toEdit" sender:self];
+   // [self.vcDelegate callSuperRefresh:(NSMutableArray <OpenOrder *>*)editableOpenOrders]
+    [self dismissViewControllerAnimated:YES completion:^{
+        NSLog(@"good");
+    }];
+  // [self performSegueWithIdentifier:@"toEdit" sender:self];
 }
 @end
