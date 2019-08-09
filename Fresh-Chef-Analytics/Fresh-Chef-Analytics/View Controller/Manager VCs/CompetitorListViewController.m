@@ -11,13 +11,17 @@
 #import "YelpAPIManager.h"
 #import "Parse/Parse.h"
 #import "YelpLinkViewController.h"
+#import "MKDropdownMenu.h"
 
 
-@interface CompetitorListViewController () <UITableViewDelegate, UITableViewDataSource>
+@interface CompetitorListViewController () <UITableViewDelegate, UITableViewDataSource, MKDropdownMenuDelegate, MKDropdownMenuDataSource>
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segmentControl; // location, category, price
 @property (weak, nonatomic) IBOutlet UITableView *competitorList;
 @property (strong, nonatomic) NSMutableArray* businesses;
-
+@property (weak, nonatomic) IBOutlet MKDropdownMenu *dropDown;
+@property (strong, nonatomic) NSArray *dropDownCats;
+@property (weak, nonatomic) IBOutlet UILabel *dropDownLabel;
+@property (assign, nonatomic) NSInteger selectedIndex;
 @property (strong, nonatomic) NSMutableArray* params;
 
 
@@ -28,18 +32,57 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.dropDown.delegate = self;
+    self.dropDown.dataSource = self;
     self.competitorList.dataSource = self;
     self.competitorList.delegate = self;
     self.businesses = [YelpAPIManager shared].competitorArray;
     PFUser *currentUser = [PFUser currentUser];
     NSString *location = currentUser[@"address"];
     self.params = [[NSMutableArray alloc] initWithObjects:location, @"0", @"0", nil];
-    [self.competitorList reloadData];
+    self.dropDownCats = @[@"General Competitors", @"Cagegory Competitors", @"Price Point Competitors"];
+    self.selectedIndex = 0;
+    self.dropDownLabel.text = @"General Competitors";
+
+   // [self.competitorList reloadData];
    
     // Do any additional setup after loading the view.
 }
 
+- (NSInteger)numberOfComponentsInDropdownMenu:(MKDropdownMenu *)dropdownMenu
+{
+    return 1;
+}
+- (NSInteger)dropdownMenu:(MKDropdownMenu *)dropdownMenu numberOfRowsInComponent:(NSInteger)component
+{
+    return [self.dropDownCats count];
+}
+- (NSAttributedString *)dropdownMenu:(MKDropdownMenu *)dropdownMenu attributedTitleForRow:(NSInteger)row forComponent:(NSInteger)component
+{
+    UIFont * font = [UIFont systemFontOfSize:13
+                     ];
+    
+    NSDictionary *attributes = [NSDictionary dictionaryWithObject:font forKey:NSFontAttributeName];
+    
+    NSAttributedString *titleForComponent = [[NSAttributedString alloc] initWithString:self.dropDownCats[row] attributes:attributes];
+    return titleForComponent;
+}
+- (void)dropdownMenu:(MKDropdownMenu *)dropdownMenu didSelectRow:(NSInteger)row inComponent:(NSInteger)component
+{
+    self.selectedIndex = row;
+//    if(self.selectedIndex == 0){
+//        self.orderedDishesDict = [[MenuManager shared] dishesByFreq];
+//    } else if (self.selectedIndex == 1) {
+//        self.orderedDishesDict = [[MenuManager shared] dishesByRating];
+//    } else if (self.selectedIndex == 2) {
+//        self.orderedDishesDict = [[MenuManager shared] dishesByPrice];
+//    } else {
+//        NSLog(@"no buttons pressed");
+//    }
+    self.dropDownLabel.text = self.dropDownCats[row];
 
+    [self.competitorList reloadData];
+}
 
 
 - (IBAction)segmentChange:(UISegmentedControl *)sender {
@@ -56,13 +99,22 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     CompetitorsCell *cell = [tableView dequeueReusableCellWithIdentifier: @"Competitors"];
-    if (((NSArray*)self.businesses[self.segmentControl.selectedSegmentIndex]).count != 0){
+    if (((NSArray*)self.businesses[self.selectedIndex]).count != 0){
+        cell.yelpLink.layer.shadowRadius  = 1.f;
+        cell.yelpLink.layer.shadowColor   = [UIColor colorWithRed:176.f/255.f green:199.f/255.f blue:226.f/255.f alpha:1.f].CGColor;
+        cell.yelpLink.layer.shadowOffset  = CGSizeMake(0.0f, 0.0f);
+        cell.yelpLink.layer.shadowOpacity = 0.9f;
+        cell.yelpLink.layer.masksToBounds = NO;
         
-        NSDictionary *business = ((NSArray*)self.businesses[self.segmentControl.selectedSegmentIndex])[indexPath.row];
+        UIEdgeInsets shadowInsets     = UIEdgeInsetsMake(0, 0, -1.5f, 0);
+        UIBezierPath *shadowPath      = [UIBezierPath bezierPathWithRect:UIEdgeInsetsInsetRect(cell.yelpLink.bounds, shadowInsets)];
+        cell.yelpLink.layer.shadowPath    = shadowPath.CGPath;
+        NSDictionary *business = ((NSArray*)self.businesses[self.selectedIndex])[indexPath.row];
         
         cell.competitorName.text = business[@"name"];
         cell.address.text = [NSString stringWithFormat:@"%@, %@",business[@"location"][@"display_address"][0], business[@"location"][@"display_address"][1]];
-        cell.rating.text = [NSString stringWithFormat:@"%@", business[@"rating"]];
+        
+      //  NSString *rating = [NSString stringWithFormat:@"%@", business[@"rating"]];
         cell.price.text = business[@"price"];
        // NSMutableAttributedString * link = [[NSMutableAttributedString alloc] initWithString:@"Yelp Link"];
        // [link addAttribute: NSLinkAttributeName value:business[@"url"] range: NSMakeRange(0, link.length)];
@@ -73,10 +125,20 @@
         [NSURLConnection sendAsynchronousRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:imageUrl]] queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
             cell.competitorImage.image = [UIImage imageWithData:data];
         }];
+        cell.reviewCount.text = [NSString stringWithFormat:@"%@", business[@"review_count"] ];
+        NSString *yelpStars = [self floatToYelpStars:[business[@"rating"] floatValue]];
+       [cell.yelpRating setImage:[UIImage imageNamed:yelpStars]];
     }
 
     return cell;
 
+}
+-(NSString *)floatToYelpStars:(float)rating{
+    NSString *yelpStars = [NSString stringWithFormat:@"small_%0.f", floorf(rating)];
+    if(rating != floorf(rating)){
+        yelpStars = [NSString stringWithFormat:@"%@_half", yelpStars];
+    }
+    return yelpStars;
 }
 
 - (IBAction)clickLink:(Link *)sender {
