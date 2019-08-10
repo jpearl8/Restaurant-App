@@ -562,7 +562,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xxm-oP-hGD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3997" y="-982"/>
+            <point key="canvasLocation" x="-4126" y="-902"/>
         </scene>
         <!--Email View Controller-->
         <scene sceneID="hrX-b1-FC8">
@@ -574,6 +574,7 @@
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="b0u-T5-LXL">
                                 <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <color key="backgroundColor" red="0.42107246260755393" green="0.39780435834194539" blue="0.47769273477157359" alpha="0.4997859589041096" colorSpace="custom" customColorSpace="displayP3"/>
                             </imageView>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter email here" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="u6z-xE-iMF">
                                 <rect key="frame" x="40" y="203" width="304" height="30"/>
@@ -603,7 +604,7 @@
                                 <rect key="frame" x="32" y="121" width="118" height="24"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" weight="thin" pointSize="20"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Restaurant Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PBl-DK-qFp">
@@ -637,7 +638,6 @@
                         <outlet property="backgroundIm" destination="b0u-T5-LXL" id="br6-gy-4oy"/>
                         <outlet property="emailText" destination="u6z-xE-iMF" id="zu0-DA-9cM"/>
                         <outlet property="restaurantName" destination="PBl-DK-qFp" id="Zhh-7C-C5P"/>
-                        <segue destination="avW-EL-1xc" kind="show" identifier="order" id="1gv-Qw-m3z"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mNh-LX-Aru" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1768,7 +1768,7 @@
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
                                 <state key="normal" title="+ Add new item"/>
                                 <connections>
-                                    <segue destination="zQd-xl-Nch" kind="presentation" id="4KX-kj-n4q"/>
+                                    <segue destination="zQd-xl-Nch" kind="presentation" identifier="toAdd" id="4KX-kj-n4q"/>
                                 </connections>
                             </button>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rd1-J6-fz4">
@@ -1874,12 +1874,11 @@
                         <outlet property="tableNumber" destination="pqL-iF-0cK" id="afz-qB-4fH"/>
                         <outlet property="waiterSelected" destination="SSA-QS-fr7" id="P9M-ab-nsk"/>
                         <outlet property="waiterTable" destination="WQI-1G-lpJ" id="PjZ-qY-EEd"/>
-                        <segue destination="r2A-fg-CFG" kind="show" identifier="toOrders" id="OoC-gz-o7l"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OCW-FY-qpL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-4352" y="31"/>
+            <point key="canvasLocation" x="-4161" y="139"/>
         </scene>
         <!--Add Item View Controller-->
         <scene sceneID="6LF-3u-KYs">
@@ -2586,7 +2585,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="52O-Wm-5Ln" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3110" y="-249"/>
+            <point key="canvasLocation" x="-3080" y="228"/>
         </scene>
         <!--Receipt View Controller-->
         <scene sceneID="S9k-Qu-NaI">
@@ -3227,7 +3226,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VFi-MH-MgW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1768.1159420289857" y="-711.16071428571422"/>
+            <point key="canvasLocation" x="497" y="-682"/>
         </scene>
         <!--Another Table View Controller-->
         <scene sceneID="F5c-dp-3iW">
@@ -3301,7 +3300,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tVp-lJ-7RO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-881.15942028985512" y="825.66964285714278"/>
+            <point key="canvasLocation" x="1384" y="-591"/>
         </scene>
         <!--Profile-->
         <scene sceneID="3Ak-IO-zVV">
@@ -3578,7 +3577,7 @@
             <objects>
                 <viewController id="gl1-Ag-ae1" customClass="DishDetailsViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5WH-Cg-wUQ">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="717"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="image_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="K6m-qJ-2DW">
@@ -5275,7 +5274,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Comfortable_back_2" translatesAutoresizingMaskIntoConstraints="NO" id="75t-tB-gQ1">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Comfortable" translatesAutoresizingMaskIntoConstraints="NO" id="75t-tB-gQ1">
                                 <rect key="frame" x="-9" y="77" width="423" height="833"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -5410,7 +5409,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
-                                                    <color key="backgroundColor" red="0.66422420739999999" green="0.66424006219999998" blue="0.66423153879999997" alpha="0.72739190924657537" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
                                                         <constraint firstItem="CKh-uS-vfw" firstAttribute="leading" secondItem="qXM-eo-ldA" secondAttribute="leading" constant="13" id="0sE-6c-C6Y"/>
                                                         <constraint firstItem="gF3-zu-Vaj" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="qXM-eo-ldA" secondAttribute="leading" constant="20" symbolic="YES" id="3Et-uG-qNx"/>
@@ -5998,7 +5997,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GIr-ID-JGb" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="7oT-AP-d5j" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="-1529" y="88"/>
+            <point key="canvasLocation" x="-2991" y="-591"/>
         </scene>
         <!--Edit Wait View Controller-->
         <scene sceneID="ddZ-b9-iIW">
@@ -7359,8 +7358,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Comfortable" width="484" height="1000"/>
-        <image name="Comfortable_back_2" width="1174" height="984"/>
+        <image name="Comfortable" width="650" height="649"/>
         <image name="Comfortable_top" width="548" height="388"/>
         <image name="Elegant2" width="548" height="936"/>
         <image name="Elegant_top" width="562" height="190"/>
@@ -7413,10 +7411,9 @@
         <image name="yelp" width="432" height="216"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="r3R-H8-hdI"/>
-        <segue reference="OoC-gz-o7l"/>
-        <segue reference="ACF-OQ-zwx"/>
-        <segue reference="kyq-sQ-kui"/>
         <segue reference="oPI-sQ-S9b"/>
+        <segue reference="r3R-H8-hdI"/>
+        <segue reference="ACF-OQ-zwx"/>
+        <segue reference="NEe-eN-3ly"/>
     </inferredMetricsTieBreakers>
 </document>
