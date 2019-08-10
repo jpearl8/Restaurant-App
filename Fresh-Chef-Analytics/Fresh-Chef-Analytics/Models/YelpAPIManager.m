@@ -49,7 +49,10 @@
         self.competitorArray = [[NSMutableArray alloc] initWithObjects:placeholder, placeholder, placeholder, nil];
         
         PFUser *currentUser = [PFUser currentUser];
-        self.userParameters = [[NSMutableArray alloc] initWithObjects:currentUser[@"address"], placeholder2, placeholder2, nil];
+        self.userParameters = [[NSMutableArray alloc] initWithObjects:placeholder2, placeholder2, placeholder2, nil];
+        if (currentUser[@"address"] != nil){
+            [self.userParameters replaceObjectAtIndex:0 withObject:currentUser[@"address"]];
+        }
         if (currentUser[@"category"] != nil){
             [self.userParameters replaceObjectAtIndex:1 withObject:currentUser[@"category"]];
         }
