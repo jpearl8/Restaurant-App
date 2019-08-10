@@ -235,7 +235,28 @@
         imagePickerVC.allowsEditing = YES;
         // if camera is available, use it, else, use camera roll
         if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
-            imagePickerVC.sourceType = UIImagePickerControllerSourceTypeCamera;
+            // alert user that they need to fill out all fields
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Incomplete Fields"
+                                                                           message:@"Please fill out every field to sign up"
+                                                                    preferredStyle:(UIAlertControllerStyleAlert)];
+            
+            // create an OK action
+            UIAlertAction *cameraAction = [UIAlertAction actionWithTitle:@"Use Camera"
+                                                               style:UIAlertActionStyleDefault
+                                                             handler:^(UIAlertAction * _Nonnull action) {
+                                                                 // handle response here.
+                                                             }];
+            // add the OK action to the alert controller
+            [alert addAction:cameraAction];
+            [self presentViewController:alert animated:YES completion:^{
+                imagePickerVC.sourceType = UIImagePickerControllerSourceTypeCamera;
+            }];
+            // create an OK action
+            UIAlertAction *libraryAction = [UIAlertAction actionWithTitle:@"Choose from Library" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                imagePickerVC.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+            }];
+            // add the OK action to the alert controller
+            [alert addAction:libraryAction];
         }
         else {
             NSLog(@"Camera 🚫 available so we will use photo library instead");
