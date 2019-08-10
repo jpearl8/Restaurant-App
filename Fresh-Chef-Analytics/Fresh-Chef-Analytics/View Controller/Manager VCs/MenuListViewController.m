@@ -213,6 +213,12 @@
 
     self.filteredCategoriesOfDishes = [NSMutableDictionary dictionaryWithDictionary:self.orderedDishesDict];
     [self.menuList reloadData];
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:self.expandedSectionHeaderNumber];
+
+    [self.menuList scrollToRowAtIndexPath:indexPath
+                         atScrollPosition:UITableViewScrollPositionTop
+                                 animated:YES];
+
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     NSInteger section = indexPath.section;

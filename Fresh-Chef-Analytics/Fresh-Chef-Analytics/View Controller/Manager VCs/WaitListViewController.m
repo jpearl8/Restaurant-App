@@ -17,6 +17,7 @@
 @property (strong, nonatomic) NSArray *sortedRoster;
 @property (weak, nonatomic) IBOutlet MKDropdownMenu *dropDown;
 @property (strong, nonatomic) NSArray *dropDownCats;
+@property (weak, nonatomic) IBOutlet UIView *searchLabelView;
 @property (weak, nonatomic) IBOutlet UILabel *dropDownLabel;
 @end
 
@@ -29,11 +30,15 @@
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     self.searchBar.delegate = self;
-    self.dropDownCats = @[@"Rating", @"Tabletops", @"# Customers Served", @"Tips per Customer", @"Tips per Table", @"Years Served"];
+    self.searchLabelView.layer.borderColor = [UIColor whiteColor].CGColor;
+    self.searchLabelView.layer.borderWidth = 0.3;
+    self.dropDownCats = @[@"RATING", @"TABLETOPS", @"# CUSTOMERS SERVED", @"AVERAGE CUSTOMER TIP", @"AVERAGE TABLE TIP"];
     self.selectedIndex = 0;
-    self.dropDownLabel.text = @"Rating";
+    self.dropDownLabel.text = @"SORT";
     self.roster = [[WaiterManager shared] roster];
     self.filteredWaiters = [[WaiterManager shared] rosterByRating];
+    self.searchBar.hidden = YES;
+    [self.tableView setContentOffset:CGPointMake(0, self.searchBar.frame.size.height) animated:YES];
     
 }
 - (NSInteger)numberOfComponentsInDropdownMenu:(MKDropdownMenu *)dropdownMenu
@@ -43,6 +48,29 @@
 - (NSInteger)dropdownMenu:(MKDropdownMenu *)dropdownMenu numberOfRowsInComponent:(NSInteger)component
 {
     return [self.dropDownCats count];
+}
+- (NSAttributedString *)dropdownMenu:(MKDropdownMenu *)dropdownMenu attributedTitleForRow:(NSInteger)row forComponent:(NSInteger)component
+{
+    UIFont * font = [UIFont systemFontOfSize:10];
+    
+    NSDictionary *attributes = [NSDictionary dictionaryWithObject:font forKey:NSFontAttributeName];
+    
+    NSAttributedString *titleForComponent = [[NSAttributedString alloc] initWithString:self.dropDownCats[row] attributes:attributes];
+    return titleForComponent;
+}
+
+
+
+- (IBAction)pressedSearch:(id)sender {
+    self.searchBar.hidden = !(self.searchBar.hidden);
+    if (self.searchBar.hidden == NO)
+    {
+        [self.tableView setContentOffset:CGPointZero animated:YES];
+    }
+    else
+    {
+        [self.tableView setContentOffset:CGPointMake(0, self.searchBar.frame.size.height) animated:YES];
+    }
 }
 - (NSString *)dropdownMenu:(MKDropdownMenu *)dropdownMenu titleForRow:(NSInteger)row forComponent:(NSInteger)component
 {
@@ -70,6 +98,13 @@
     self.dropDownLabel.text = self.dropDownCats[row];
     self.filteredWaiters = self.sortedRoster;
     [self.tableView reloadData];
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+    
+    [self.tableView scrollToRowAtIndexPath:indexPath
+                         atScrollPosition:UITableViewScrollPositionTop
+                                 animated:YES];
+    [self.tableView setContentOffset:CGPointMake(0, self.searchBar.frame.size.height) animated:YES];
+
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -82,28 +117,12 @@
     cell.waiter = waiter;
     cell.waiterName.text = waiter.name;
     cell.selectedIndex = self.selectedIndex;
-    cell.cellView.layer.cornerRadius = cell.cellView.frame.size.width/6;
-    cell.waiterTime.text = [@"Served " stringByAppendingString:[[NSString stringWithFormat:@"%@", waiter.yearsWorked] stringByAppendingString:@"  Years"]];
-    double numberStars = [[[WaiterManager shared] averageRating:cell.waiter] doubleValue];
-    HCSStarRatingView *starRatingView = [[HCSStarRatingView alloc] initWithFrame:CGRectMake(0, 0, (5*30), 30)];
-    starRatingView.userInteractionEnabled = NO;
-    starRatingView.value = numberStars;
-    starRatingView.minimumValue = numberStars;
-    starRatingView.maximumValue = 5;
-    if (self.selectedIndex == 0)
-    {
-        starRatingView.tintColor = [UIColor blueColor];
-    }
-    else
-    {
-        starRatingView.tintColor = [UIColor grayColor];
-    }
-    [cell.ratingView addSubview:starRatingView];
+    cell.waiterTime.text = [@"Served " stringByAppendingString:[[NSString stringWithFormat:@"%@", waiter.yearsWorked] stringByAppendingString:@" Years"]];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.waiterTabletops.text  = [[NSString stringWithFormat:@"%@", waiter.tableTops] stringByAppendingString:@" Tabletops"];
-    cell.waiterNumCustomers.text = [[NSString stringWithFormat:@"%@", waiter.numOfCustomers] stringByAppendingString:@" customers served"];
-    cell.waiterTipsPT.text = [@"$" stringByAppendingString:[[NSString stringWithFormat:@"%@", [[WaiterManager shared] averageTipsByTable:cell.waiter]] stringByAppendingString:@" Tips per Table"]];
-    cell.waiterTipsPC.text = [@"$" stringByAppendingString:[[NSString stringWithFormat:@"%@", [[WaiterManager shared] averageTipByCustomer:cell.waiter]] stringByAppendingString:@" Tips per Customer"]];
+    cell.waiterNumCustomers.text = [[NSString stringWithFormat:@"%@", waiter.numOfCustomers] stringByAppendingString:@" Customers"];
+    cell.waiterTipsPT.text = [@"$" stringByAppendingString:[NSString stringWithFormat:@"%.2f", [[[WaiterManager shared] averageTipsByTable:cell.waiter] floatValue]]];
+    cell.waiterTipsPC.text = [@"$" stringByAppendingString:[NSString stringWithFormat:@"%.2f", [[[WaiterManager shared] averageTipByCustomer:cell.waiter] floatValue]]];
     if(waiter.image!=nil){
         [waiter.image getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
             if(!error){
@@ -121,7 +140,8 @@
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
+
+
     [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
     
 }
