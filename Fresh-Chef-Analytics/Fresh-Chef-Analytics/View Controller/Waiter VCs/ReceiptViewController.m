@@ -49,19 +49,19 @@
     } else {
         self.receiptLabel.textColor = [UIColor whiteColor];
     }
-    UIColor *desired = [UIColor whiteColor];
-    if ([category isEqualToString:@"Comfortable"]){
-        self.checkBox.onTintColor = [UIColor whiteColor];
-        self.checkBox.onCheckColor = [UIColor whiteColor];
-        self.checkBox.tintColor = [UIColor whiteColor];
-        
-    } else {
-       
-        desired = [UIColor blackColor];
-        self.checkBox.onTintColor = [UIColor blackColor];
-        self.checkBox.onCheckColor = [UIColor blackColor];
-        self.checkBox.tintColor = [UIColor blackColor];
-    }
+    UIColor *desired = [UIColor blackColor];
+//    if ([category isEqualToString:@"Comfortable"]){
+//        self.checkBox.onTintColor = [UIColor whiteColor];
+//        self.checkBox.onCheckColor = [UIColor whiteColor];
+//        self.checkBox.tintColor = [UIColor whiteColor];
+//
+//    } else {
+    
+        //desired = [UIColor blackColor];
+    self.checkBox.onTintColor = [UIColor blackColor];
+    self.checkBox.onCheckColor = [UIColor blackColor];
+    self.checkBox.tintColor = [UIColor blackColor];
+   // }
     for (UILabel *aLabel in self.allLabels) {
         // Set all label in the outlet collection to have center aligned text.
         aLabel.textColor = desired;
