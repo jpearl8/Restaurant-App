@@ -65,6 +65,8 @@
                 cell.waiterPic.image = [UIImage imageWithData:imageData];
             }
         }];
+        cell.specialView.layer.borderWidth = .5f;
+        cell.specialView.layer.borderColor = [[UIRefs shared] colorFromHexString:[UIRefs shared].purpleAccent].CGColor;
         return cell;
         
     } else {
@@ -87,7 +89,8 @@
         }
         cell.index = (int)indexPath.row - 1;
         cell.customerComments = self.customerComments;
-        
+        cell.specialView.layer.borderWidth = .5f;
+        cell.specialView.layer.borderColor = [[UIRefs shared] colorFromHexString:[UIRefs shared].purpleAccent].CGColor;
         cell.delegate = self;
         cell.amount.text = [NSString stringWithFormat:@"%@", amount];
         

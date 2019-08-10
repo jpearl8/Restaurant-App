@@ -37,6 +37,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UIButton *b02;
 @property (weak, nonatomic) IBOutlet UIButton *b00;
 @property (strong, nonatomic) NSNumber *waiterRatingNum;
+@property (strong, nonatomic) IBOutlet UIView *specialView;
 @end
 
 NS_ASSUME_NONNULL_END

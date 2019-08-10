@@ -47,14 +47,16 @@
     NSString *placeholder2 = @"no item here";
     if (!self.competitorArray){
         self.competitorArray = [[NSMutableArray alloc] initWithObjects:placeholder, placeholder, placeholder, nil];
+        
         PFUser *currentUser = [PFUser currentUser];
-        if (currentUser[@"category"] == nil){
-            currentUser[@"category"] = placeholder2;
-        }
-        if (currentUser[@"price"] == nil){
-            currentUser[@"price"] = placeholder2;
-        }
         self.userParameters = [[NSMutableArray alloc] initWithObjects:currentUser[@"address"], currentUser[@"category"], currentUser[@"Price"], nil];
+        if (currentUser[@"category"] == nil){
+            [self.userParameters replaceObjectAtIndex:1 withObject:placeholder2];
+        }
+        if (currentUser[@"Price"] == nil){
+            [self.userParameters replaceObjectAtIndex:2 withObject:placeholder2];
+        }
+        
         [self locationTopRatings:self.userParameters[1] withPrice:self.userParameters[2] withIndex:0];
         
         NSLog(@"hello!");

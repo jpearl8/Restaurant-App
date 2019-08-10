@@ -2038,7 +2038,8 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Fun" translatesAutoresizingMaskIntoConstraints="NO" id="bXS-8e-HcN">
-                                <rect key="frame" x="0.0" y="44" width="414" height="852"/>
+                                <rect key="frame" x="0.0" y="44" width="414.00000000000045" height="852"/>
+                                <color key="backgroundColor" red="0.21285966040000001" green="0.14175727960000001" blue="0.49022626879999998" alpha="0.20000000000000001" colorSpace="custom" customColorSpace="displayP3"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bUk-bk-KS0">
                                 <rect key="frame" x="300" y="832" width="78" height="30"/>
@@ -2559,7 +2560,7 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="bXS-8e-HcN" firstAttribute="top" secondItem="1v2-aY-wte" secondAttribute="top" constant="44" id="3Cj-5T-Jy7"/>
@@ -2598,6 +2599,7 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Comfortable" translatesAutoresizingMaskIntoConstraints="NO" id="gHn-AD-W86">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.21285966040000001" green="0.14175727960000001" blue="0.49022626879999998" alpha="0.20000000000000001" colorSpace="custom" customColorSpace="displayP3"/>
                             </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="z0w-uR-nrd">
                                 <rect key="frame" x="0.0" y="196" width="414" height="302"/>
@@ -2838,7 +2840,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="0.38000321061643838" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="1" alpha="0.7283015839041096" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="Uxp-aI-dmD" firstAttribute="top" secondItem="cNN-7g-GW3" secondAttribute="bottom" constant="8" id="4AY-Xv-n4r"/>
                                     <constraint firstAttribute="bottom" secondItem="Uyq-fz-sf6" secondAttribute="bottom" constant="20" id="4EW-dR-ONU"/>
@@ -3169,6 +3171,7 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ojj-34-tFt">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.21285966040000001" green="0.14175727960000001" blue="0.49022626879999998" alpha="0.20000000000000001" colorSpace="custom" customColorSpace="displayP3"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thank you for dining with" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LFl-j7-tze">
                                 <rect key="frame" x="38" y="231" width="339" height="48"/>
@@ -5448,6 +5451,7 @@
                                         <color key="backgroundColor" red="0.72940486669540405" green="0.72940713167190552" blue="0.72941207885742188" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <connections>
                                             <outlet property="charsRemaining" destination="6iE-lK-86z" id="lAO-rB-5mS"/>
+                                            <outlet property="specialView" destination="qXM-eo-ldA" id="cog-ce-XgE"/>
                                             <outlet property="waiterComment" destination="5O0-24-xMF" id="JTG-Hz-le5"/>
                                             <outlet property="waiterNameLabel" destination="v4H-TL-gVu" id="uXj-Xl-hvK"/>
                                             <outlet property="waiterPic" destination="Ubb-Kh-WFX" id="0jR-1P-vbj"/>
@@ -5639,6 +5643,7 @@
                                             <outlet property="dishName" destination="rnK-a6-GT4" id="nkj-qW-noH"/>
                                             <outlet property="dishType" destination="laH-7c-6YV" id="cXB-N0-tyD"/>
                                             <outlet property="image" destination="3Yc-E1-Z2h" id="eAw-ho-wSh"/>
+                                            <outlet property="specialView" destination="QOA-sY-K58" id="UIO-xW-Qc3"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -7362,7 +7367,7 @@
         <image name="Comfortable_top" width="548" height="388"/>
         <image name="Elegant2" width="548" height="936"/>
         <image name="Elegant_top" width="562" height="190"/>
-        <image name="Fun" width="275" height="458"/>
+        <image name="Fun" width="2276" height="5111"/>
         <image name="Fun_top" width="1196" height="984"/>
         <image name="Screen Shot 2019-07-30 at 3.47.14 PM" width="182" height="326"/>
         <image name="Screen Shot 2019-07-30 at 4.10.34 PM" width="268" height="362"/>
@@ -7414,6 +7419,6 @@
         <segue reference="oPI-sQ-S9b"/>
         <segue reference="r3R-H8-hdI"/>
         <segue reference="ACF-OQ-zwx"/>
-        <segue reference="NEe-eN-3ly"/>
+        <segue reference="eop-xl-c0C"/>
     </inferredMetricsTieBreakers>
 </document>
