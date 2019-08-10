@@ -5681,8 +5681,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Elegant2" translatesAutoresizingMaskIntoConstraints="NO" id="h2c-Dt-ne2">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Elegant" translatesAutoresizingMaskIntoConstraints="NO" id="h2c-Dt-ne2">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <color key="backgroundColor" red="0.21285966040000001" green="0.14175727960000001" blue="0.49022626879999998" alpha="0.20000000000000001" colorSpace="custom" customColorSpace="displayP3"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BtZ-g1-rBC">
                                 <rect key="frame" x="24" y="95" width="366" height="211"/>
@@ -7365,7 +7366,7 @@
     <resources>
         <image name="Comfortable" width="650" height="649"/>
         <image name="Comfortable_top" width="548" height="388"/>
-        <image name="Elegant2" width="548" height="936"/>
+        <image name="Elegant" width="524" height="524"/>
         <image name="Elegant_top" width="562" height="190"/>
         <image name="Fun" width="2276" height="5111"/>
         <image name="Fun_top" width="1196" height="984"/>
