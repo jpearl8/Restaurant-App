@@ -3549,11 +3549,7 @@
             <objects>
                 <viewController id="4pO-Ap-iSk" customClass="ProfitTrendsViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Zi5-JF-zSf">
-<<<<<<< HEAD
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="579"/>
-=======
                         <rect key="frame" x="0.0" y="0.0" width="414" height="500"/>
->>>>>>> 605e4cfb44b64c79709c82f6148b927c3592e1da
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <pickerView contentMode="scaleToFill" verticalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="B2f-HM-etY">
@@ -7027,13 +7023,8 @@
                                                     <state key="normal" image="arrow-40"/>
                                                 </button>
                                                 <view alpha="0.10000000000000001" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ecN-e3-Fw0" userLabel="Clickable Header View">
-<<<<<<< HEAD
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="117"/>
-                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-=======
                                                     <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
                                                     <color key="backgroundColor" red="0.21285966040000001" green="0.14175727960000001" blue="0.49022626879999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
->>>>>>> 605e4cfb44b64c79709c82f6148b927c3592e1da
                                                     <gestureRecognizers/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="100" id="VlL-0g-BDq"/>
@@ -7069,12 +7060,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pngguru.com-id-bymze" translatesAutoresizingMaskIntoConstraints="NO" id="fGj-D9-7OG">
-<<<<<<< HEAD
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="113"/>
-                                                    <color key="backgroundColor" red="0.21285966040000001" green="0.14175727960000001" blue="0.49022626879999998" alpha="0.20000000000000001" colorSpace="custom" customColorSpace="displayP3"/>
-=======
                                                     <rect key="frame" x="0.0" y="0.0" width="414" height="75"/>
->>>>>>> 605e4cfb44b64c79709c82f6148b927c3592e1da
                                                 </imageView>
                                                 <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LlJ-BQ-deD">
                                                     <rect key="frame" x="0.0" y="75" width="414" height="480"/>
@@ -7116,13 +7102,8 @@
                                                     <state key="normal" image="arrow-40"/>
                                                 </button>
                                                 <view alpha="0.10000000000000001" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TYK-Ki-chS" userLabel="Clickable Header View">
-<<<<<<< HEAD
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="117"/>
-                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-=======
                                                     <rect key="frame" x="0.0" y="0.0" width="414" height="75"/>
                                                     <color key="backgroundColor" red="0.21285966040000001" green="0.14175727960000001" blue="0.49022626879999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
->>>>>>> 605e4cfb44b64c79709c82f6148b927c3592e1da
                                                     <gestureRecognizers/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="75" id="Ldy-XQ-Q4r"/>
@@ -7160,27 +7141,16 @@
                                         </tableViewCellContentView>
                                         <gestureRecognizers/>
                                     </tableViewCell>
-<<<<<<< HEAD
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="ScatterPlotCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="854" id="Fe2-f8-t2S" userLabel="Scatter Plot Cell">
-                                        <rect key="frame" x="0.0" y="978" width="375" height="854"/>
-=======
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="ScatterPlotCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="853" id="Fe2-f8-t2S" userLabel="Scatter Plot Cell">
                                         <rect key="frame" x="0.0" y="972" width="414" height="853"/>
->>>>>>> 605e4cfb44b64c79709c82f6148b927c3592e1da
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Fe2-f8-t2S" id="Y2r-Go-eXv">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="852.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-<<<<<<< HEAD
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pngguru.com-id-bymze" translatesAutoresizingMaskIntoConstraints="NO" id="iDh-VB-V5f">
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="113"/>
-                                                    <color key="backgroundColor" red="0.21285966040000001" green="0.14175727960000001" blue="0.49022626879999998" alpha="0.20000000000000001" colorSpace="custom" customColorSpace="displayP3"/>
-=======
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="pngguru.com-id-bymze" translatesAutoresizingMaskIntoConstraints="NO" id="iDh-VB-V5f">
                                                     <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
->>>>>>> 605e4cfb44b64c79709c82f6148b927c3592e1da
                                                 </imageView>
                                                 <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iR5-Qk-TsC">
                                                     <rect key="frame" x="0.0" y="65" width="414" height="600"/>
@@ -7219,19 +7189,11 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <view alpha="0.10000000000000001" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n2K-VE-xmP" userLabel="Clickable Header View">
-<<<<<<< HEAD
-                                                    <rect key="frame" x="0.0" y="-11" width="375" height="128"/>
-                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <gestureRecognizers/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="128" id="e5I-79-swi"/>
-=======
                                                     <rect key="frame" x="0.0" y="0.0" width="414" height="65"/>
                                                     <color key="backgroundColor" red="0.21285966040000001" green="0.14175727960000001" blue="0.49022626879999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <gestureRecognizers/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="65" id="e5I-79-swi"/>
->>>>>>> 605e4cfb44b64c79709c82f6148b927c3592e1da
                                                     </constraints>
                                                     <connections>
                                                         <outletCollection property="gestureRecognizers" destination="jy1-Uf-fau" appends="YES" id="0Yq-eq-cm6"/>
@@ -7249,50 +7211,30 @@
                                                 <constraint firstItem="AbU-px-x4i" firstAttribute="centerY" secondItem="GYo-F8-BRd" secondAttribute="centerY" id="JLS-oc-hMd"/>
                                                 <constraint firstAttribute="trailing" secondItem="n2K-VE-xmP" secondAttribute="trailing" id="KP1-lE-Ix1"/>
                                                 <constraint firstItem="oPh-29-xIS" firstAttribute="leading" secondItem="Y2r-Go-eXv" secondAttribute="leading" id="OJ2-WZ-5UK"/>
-<<<<<<< HEAD
-                                                <constraint firstItem="iDh-VB-V5f" firstAttribute="leading" secondItem="Y2r-Go-eXv" secondAttribute="leading" id="SGO-zx-ODf"/>
-=======
                                                 <constraint firstItem="7fN-on-hur" firstAttribute="height" secondItem="oPh-29-xIS" secondAttribute="height" id="TgE-UL-5Vy"/>
->>>>>>> 605e4cfb44b64c79709c82f6148b927c3592e1da
                                                 <constraint firstItem="oPh-29-xIS" firstAttribute="top" secondItem="n2K-VE-xmP" secondAttribute="bottom" id="Zyn-ex-EJU"/>
                                                 <constraint firstAttribute="trailing" secondItem="iR5-Qk-TsC" secondAttribute="trailing" id="bBt-6m-mbq"/>
                                                 <constraint firstItem="7fN-on-hur" firstAttribute="centerX" secondItem="oPh-29-xIS" secondAttribute="centerX" id="da0-5z-rEQ"/>
                                                 <constraint firstItem="UYe-Jz-X9y" firstAttribute="centerY" secondItem="GYo-F8-BRd" secondAttribute="centerY" id="hvO-9T-8gg"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="AbU-px-x4i" secondAttribute="trailing" constant="10" id="iro-hH-MhM"/>
-<<<<<<< HEAD
-                                                <constraint firstAttribute="trailing" secondItem="iDh-VB-V5f" secondAttribute="trailing" id="lTO-Od-GFK"/>
-                                                <constraint firstItem="GYo-F8-BRd" firstAttribute="top" secondItem="Y2r-Go-eXv" secondAttribute="topMargin" id="rcK-zK-lsf"/>
-                                                <constraint firstItem="UYe-Jz-X9y" firstAttribute="leading" secondItem="GYo-F8-BRd" secondAttribute="trailing" constant="8" id="w46-LT-lBm"/>
-                                                <constraint firstItem="n2K-VE-xmP" firstAttribute="top" secondItem="Y2r-Go-eXv" secondAttribute="top" constant="-11" id="wuK-dX-nh9"/>
-=======
                                                 <constraint firstItem="7fN-on-hur" firstAttribute="width" secondItem="oPh-29-xIS" secondAttribute="width" id="phw-Md-co6"/>
                                                 <constraint firstItem="GYo-F8-BRd" firstAttribute="top" secondItem="Y2r-Go-eXv" secondAttribute="topMargin" id="rcK-zK-lsf"/>
                                                 <constraint firstItem="UYe-Jz-X9y" firstAttribute="leading" secondItem="GYo-F8-BRd" secondAttribute="trailing" constant="8" id="w46-LT-lBm"/>
                                                 <constraint firstItem="n2K-VE-xmP" firstAttribute="top" secondItem="Y2r-Go-eXv" secondAttribute="top" id="wuK-dX-nh9"/>
                                                 <constraint firstItem="7fN-on-hur" firstAttribute="centerY" secondItem="oPh-29-xIS" secondAttribute="centerY" id="yUs-Rz-Ph3"/>
->>>>>>> 605e4cfb44b64c79709c82f6148b927c3592e1da
                                             </constraints>
                                         </tableViewCellContentView>
                                         <gestureRecognizers/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="859" id="h60-FC-6Pe" userLabel="Radar Chart Cell">
-<<<<<<< HEAD
-                                        <rect key="frame" x="0.0" y="1832" width="375" height="859"/>
-=======
                                         <rect key="frame" x="0.0" y="1825" width="414" height="859"/>
->>>>>>> 605e4cfb44b64c79709c82f6148b927c3592e1da
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="h60-FC-6Pe" id="Iz4-iK-DPe">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="858.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pngguru.com-id-bymze" translatesAutoresizingMaskIntoConstraints="NO" id="COq-pF-ULc">
-<<<<<<< HEAD
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="113"/>
-                                                    <color key="backgroundColor" red="0.21285966040000001" green="0.14175727960000001" blue="0.49022626879999998" alpha="0.20000000000000001" colorSpace="custom" customColorSpace="displayP3"/>
-=======
                                                     <rect key="frame" x="0.0" y="0.0" width="414" height="75"/>
->>>>>>> 605e4cfb44b64c79709c82f6148b927c3592e1da
                                                 </imageView>
                                                 <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7sC-lJ-9fO">
                                                     <rect key="frame" x="0.0" y="75" width="414" height="500"/>
@@ -7332,13 +7274,8 @@
                                                     </constraints>
                                                 </view>
                                                 <view alpha="0.10000000000000001" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ddq-QM-zZd" userLabel="Clickable Header View">
-<<<<<<< HEAD
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="117"/>
-                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-=======
                                                     <rect key="frame" x="0.0" y="0.0" width="414" height="75"/>
                                                     <color key="backgroundColor" red="0.21285966040000001" green="0.14175727960000001" blue="0.49022626879999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
->>>>>>> 605e4cfb44b64c79709c82f6148b927c3592e1da
                                                     <gestureRecognizers/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="75" id="aHE-ka-R40"/>
@@ -7377,23 +7314,14 @@
                                         <gestureRecognizers/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="887" id="UT4-CN-vqe" userLabel="Histogram Cell">
-<<<<<<< HEAD
-                                        <rect key="frame" x="0.0" y="2691" width="375" height="887"/>
-=======
                                         <rect key="frame" x="0.0" y="2684" width="414" height="887"/>
->>>>>>> 605e4cfb44b64c79709c82f6148b927c3592e1da
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="UT4-CN-vqe" id="4Ng-sd-Q9J">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="886.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pngguru.com-id-bymze" translatesAutoresizingMaskIntoConstraints="NO" id="UA4-Z3-rNb">
-<<<<<<< HEAD
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="113"/>
-                                                    <color key="backgroundColor" red="0.21285966040000001" green="0.14175727960000001" blue="0.49022626879999998" alpha="0.20000000000000001" colorSpace="custom" customColorSpace="displayP3"/>
-=======
                                                     <rect key="frame" x="0.0" y="0.0" width="414" height="75"/>
->>>>>>> 605e4cfb44b64c79709c82f6148b927c3592e1da
                                                 </imageView>
                                                 <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0QH-Zr-UGb">
                                                     <rect key="frame" x="0.0" y="75" width="414" height="600"/>
@@ -7433,13 +7361,8 @@
                                                     </constraints>
                                                 </view>
                                                 <view alpha="0.10000000000000001" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g5Q-aA-lkr" userLabel="Clickable Header View">
-<<<<<<< HEAD
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="117"/>
-                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-=======
                                                     <rect key="frame" x="0.0" y="0.0" width="414" height="75"/>
                                                     <color key="backgroundColor" red="0.21285966040000001" green="0.14175727960000001" blue="0.49022626879999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
->>>>>>> 605e4cfb44b64c79709c82f6148b927c3592e1da
                                                     <gestureRecognizers/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="75" id="2AG-CR-bFW"/>
@@ -7455,11 +7378,8 @@
                                                 <constraint firstAttribute="trailing" secondItem="UA4-Z3-rNb" secondAttribute="trailing" id="4Lt-Wj-5a0"/>
                                                 <constraint firstItem="HYB-JN-Mbt" firstAttribute="leading" secondItem="4Ng-sd-Q9J" secondAttribute="leading" id="4Uk-Pl-sfU"/>
                                                 <constraint firstItem="UA4-Z3-rNb" firstAttribute="leading" secondItem="4Ng-sd-Q9J" secondAttribute="leading" id="7op-ED-1hS"/>
-<<<<<<< HEAD
-=======
                                                 <constraint firstItem="e2A-Su-Zwf" firstAttribute="width" secondItem="HYB-JN-Mbt" secondAttribute="width" id="8Hk-El-yzT"/>
                                                 <constraint firstItem="0QH-Zr-UGb" firstAttribute="top" secondItem="UA4-Z3-rNb" secondAttribute="bottom" id="8T4-Wh-Dpa"/>
->>>>>>> 605e4cfb44b64c79709c82f6148b927c3592e1da
                                                 <constraint firstItem="UA4-Z3-rNb" firstAttribute="top" secondItem="4Ng-sd-Q9J" secondAttribute="top" id="8k8-MT-SOi"/>
                                                 <constraint firstAttribute="trailing" secondItem="g5Q-aA-lkr" secondAttribute="trailing" id="BAM-aW-6dD"/>
                                                 <constraint firstItem="0QH-Zr-UGb" firstAttribute="top" secondItem="UA4-Z3-rNb" secondAttribute="bottom" constant="4" id="HnE-V9-tMK"/>
@@ -7482,33 +7402,19 @@
                                         <gestureRecognizers/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="858" id="mUH-8b-F3k" userLabel="Profit Trends Cell">
-<<<<<<< HEAD
-                                        <rect key="frame" x="0.0" y="3578" width="375" height="858"/>
-=======
                                         <rect key="frame" x="0.0" y="3571" width="414" height="858"/>
->>>>>>> 605e4cfb44b64c79709c82f6148b927c3592e1da
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="mUH-8b-F3k" id="7ZL-9m-Rn9">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="857.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pngguru.com-id-bymze" translatesAutoresizingMaskIntoConstraints="NO" id="ATf-Jp-NZ3">
-<<<<<<< HEAD
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="113"/>
-                                                    <color key="backgroundColor" red="0.21285966040000001" green="0.14175727960000001" blue="0.49022626879999998" alpha="0.20000000000000001" colorSpace="custom" customColorSpace="displayP3"/>
-                                                </imageView>
-                                                <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4oC-Rg-Ghl">
-                                                    <rect key="frame" x="0.0" y="117" width="375" height="579"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="579" id="bgF-Uq-UVA"/>
-=======
                                                     <rect key="frame" x="0.0" y="0.0" width="414" height="75"/>
                                                 </imageView>
                                                 <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4oC-Rg-Ghl">
                                                     <rect key="frame" x="0.0" y="75" width="414" height="500"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="500" id="XTN-qQ-6aY"/>
->>>>>>> 605e4cfb44b64c79709c82f6148b927c3592e1da
                                                     </constraints>
                                                     <connections>
                                                         <segue destination="4pO-Ap-iSk" kind="embed" id="W2D-aH-4t3"/>
@@ -7543,13 +7449,8 @@
                                                     </constraints>
                                                 </view>
                                                 <view alpha="0.10000000000000001" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bUn-ue-fVo" userLabel="Clickable Header View">
-<<<<<<< HEAD
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="117"/>
-                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-=======
                                                     <rect key="frame" x="0.0" y="0.0" width="414" height="75"/>
                                                     <color key="backgroundColor" red="0.21285966040000001" green="0.14175727960000001" blue="0.49022626879999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
->>>>>>> 605e4cfb44b64c79709c82f6148b927c3592e1da
                                                     <gestureRecognizers/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="75" id="kNQ-R1-bjy"/>
@@ -8018,11 +7919,6 @@
         <segue reference="ItX-oe-Uta"/>
         <segue reference="r3R-H8-hdI"/>
         <segue reference="ACF-OQ-zwx"/>
-<<<<<<< HEAD
         <segue reference="kyq-sQ-kui"/>
-=======
-        <segue reference="NEe-eN-3ly"/>
-        <segue reference="gAF-Pm-RHv"/>
->>>>>>> 605e4cfb44b64c79709c82f6148b927c3592e1da
     </inferredMetricsTieBreakers>
 </document>
