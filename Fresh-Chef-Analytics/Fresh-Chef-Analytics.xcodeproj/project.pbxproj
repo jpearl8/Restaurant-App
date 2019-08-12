@@ -61,6 +61,7 @@
 		FF03BF6222DF763300719E8C /* MenuListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FF03BF6122DF763300719E8C /* MenuListTableViewCell.m */; };
 		FF1EDA9322E2951A00B1B897 /* Helpful_funs.m in Sources */ = {isa = PBXBuildFile; fileRef = FF1EDA9222E2951A00B1B897 /* Helpful_funs.m */; };
 		FF318E8922EAC57C003AF015 /* OpenOrderButton.m in Sources */ = {isa = PBXBuildFile; fileRef = FF318E8822EAC57C003AF015 /* OpenOrderButton.m */; };
+		FF343C842302336800912646 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF343C832302336500912646 /* Assets.xcassets */; };
 		FF46E19222DE436400E15A0E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FF46E19122DE436400E15A0E /* AppDelegate.m */; };
 		FF46E19822DE436400E15A0E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF46E19622DE436400E15A0E /* Main.storyboard */; };
 		FF46E19D22DE436400E15A0E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF46E19B22DE436400E15A0E /* LaunchScreen.storyboard */; };
@@ -69,7 +70,6 @@
 		FF46E1B522DE436400E15A0E /* Fresh_Chef_AnalyticsUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = FF46E1B422DE436400E15A0E /* Fresh_Chef_AnalyticsUITests.m */; };
 		FF4CA2F02302166600E5A304 /* Invoice.m in Sources */ = {isa = PBXBuildFile; fileRef = FF4CA2EF2302166600E5A304 /* Invoice.m */; };
 		FF4CA2F3230216C100E5A304 /* Item.m in Sources */ = {isa = PBXBuildFile; fileRef = FF4CA2F2230216C100E5A304 /* Item.m */; };
-		FF4CA2F523021F6E00E5A304 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF4CA2F423021F6C00E5A304 /* Assets.xcassets */; };
 		FF4CA2F82302245D00E5A304 /* fakePayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF4CA2F72302245D00E5A304 /* fakePayViewController.m */; };
 		FF50D5A422FD2BC9002C5AAE /* WaiterCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FF50D5A322FD2BC9002C5AAE /* WaiterCell.m */; };
 		FF5924FF22E2155D00F66EC6 /* ReceiptTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FF5924FE22E2155D00F66EC6 /* ReceiptTableViewCell.m */; };
@@ -221,6 +221,7 @@
 		FF1EDA9222E2951A00B1B897 /* Helpful_funs.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Helpful_funs.m; sourceTree = "<group>"; };
 		FF318E8722EAC57C003AF015 /* OpenOrderButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OpenOrderButton.h; sourceTree = "<group>"; };
 		FF318E8822EAC57C003AF015 /* OpenOrderButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OpenOrderButton.m; sourceTree = "<group>"; };
+		FF343C832302336500912646 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FF46E18D22DE436400E15A0E /* Fresh-Chef-Analytics.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Fresh-Chef-Analytics.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF46E19022DE436400E15A0E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		FF46E19122DE436400E15A0E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -238,7 +239,6 @@
 		FF4CA2EF2302166600E5A304 /* Invoice.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = Invoice.m; path = "Fresh-Chef-Analytics/Invoice.m"; sourceTree = "<group>"; };
 		FF4CA2F1230216C100E5A304 /* Item.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Item.h; sourceTree = "<group>"; };
 		FF4CA2F2230216C100E5A304 /* Item.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Item.m; sourceTree = "<group>"; };
-		FF4CA2F423021F6C00E5A304 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../../../../.Trash/Assets.xcassets; sourceTree = "<group>"; };
 		FF4CA2F62302245D00E5A304 /* fakePayViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = fakePayViewController.h; sourceTree = "<group>"; };
 		FF4CA2F72302245D00E5A304 /* fakePayViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = fakePayViewController.m; sourceTree = "<group>"; };
 		FF50D5A222FD2BC9002C5AAE /* WaiterCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WaiterCell.h; sourceTree = "<group>"; };
@@ -579,7 +579,7 @@
 				FF46E19022DE436400E15A0E /* AppDelegate.h */,
 				FF46E19122DE436400E15A0E /* AppDelegate.m */,
 				FF46E19622DE436400E15A0E /* Main.storyboard */,
-				FF4CA2F423021F6C00E5A304 /* Assets.xcassets */,
+				FF343C832302336500912646 /* Assets.xcassets */,
 				FF46E19B22DE436400E15A0E /* LaunchScreen.storyboard */,
 				FF46E19E22DE436400E15A0E /* Info.plist */,
 				FF46E19F22DE436400E15A0E /* main.m */,
@@ -764,7 +764,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FF46E19D22DE436400E15A0E /* LaunchScreen.storyboard in Resources */,
-				FF4CA2F523021F6E00E5A304 /* Assets.xcassets in Resources */,
+				FF343C842302336800912646 /* Assets.xcassets in Resources */,
 				FF46E19822DE436400E15A0E /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
