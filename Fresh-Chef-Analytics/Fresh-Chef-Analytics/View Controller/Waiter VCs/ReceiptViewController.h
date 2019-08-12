@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "OpenOrder.h"
 #import "ClosedOrder.h"
+//@class Invoice;
+
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -16,6 +18,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong, nonatomic) NSArray<OpenOrder *>*openOrders;
 @property (strong, nonatomic) Waiter *waiter;
 @property (strong, nonatomic) NSMutableArray <Dish *>*dishesArray;
+//- (IBAction)launchPayPalHere:(id)sender;
+////- (NSString *)urlEncode:(NSString *)rawStr;
+//@property (strong, nonatomic) Invoice *invoice;
 @end
 
 NS_ASSUME_NONNULL_END
