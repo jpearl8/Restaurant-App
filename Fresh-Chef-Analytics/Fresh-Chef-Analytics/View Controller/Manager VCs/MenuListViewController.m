@@ -34,8 +34,8 @@
 @end
 
 @implementation MenuListViewController
-
-- (void)viewDidLoad {
+- (void) viewDidLoad
+{
     [super viewDidLoad];
     self.dropDown.delegate = self;
     self.dropDown.dataSource = self;
@@ -62,8 +62,8 @@
     [self.menuList scrollToRowAtIndexPath:indexPath
                          atScrollPosition:UITableViewScrollPositionTop
                                  animated:YES];
-//    NSLog(@"orderedDishes")
 }
+
 
 - (NSInteger)numberOfComponentsInDropdownMenu:(MKDropdownMenu *)dropdownMenu
 {
@@ -107,9 +107,8 @@
         [viewWithTag removeFromSuperview];
     }
     // add the arrow image
-    CGSize headerFrame = self.view.frame.size;
-    UIImageView *theImageView = [[UIImageView alloc] initWithFrame:CGRectMake(headerFrame.width - 80, 20, 50, 50)];
-    theImageView.image = [UIImage imageNamed:@"purple-arrow"];
+    UIImageView *theImageView = [[UIImageView alloc] initWithFrame:CGRectMake(tableView.frame.size.width-tableView.sectionHeaderHeight, 0, tableView.sectionHeaderHeight, tableView.sectionHeaderHeight)];
+    theImageView.image = [UIImage imageNamed:@"purple-arrow-down"];
     theImageView.tintColor = [UIColor whiteColor];
     theImageView.tag = 10203 + section;
     [header addSubview:theImageView];
@@ -246,7 +245,7 @@
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    return ((self.menuList.frame.size.height - 30) / [self.categories count]/2);
+    return (self.menuList.frame.size.height / [self.categories count]);
 }
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     if (self.sectionNames.count > 0) {

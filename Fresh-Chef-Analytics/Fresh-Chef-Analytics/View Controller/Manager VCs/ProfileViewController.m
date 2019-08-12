@@ -11,6 +11,7 @@
 #import "LoginViewController.h"
 #import "YelpAPIManager.h"
 #import "MenuManager.h"
+#import "UIRefs.h"
 
 @interface ProfileViewController ()
 
@@ -23,7 +24,7 @@
 @property (strong, nonatomic) UIAlertController *alert;
 @property (weak, nonatomic) IBOutlet UIImageView *backgroundPic1;
 @property (weak, nonatomic) IBOutlet UIImageView *backgroundPic2;
-
+@property (strong, nonatomic) UIButton *chooseLibrary;
 @end
 
 @implementation ProfileViewController
@@ -31,6 +32,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     //setup display
+    self.chooseLibrary = [UIButton buttonWithType:UIButtonTypeCustom];
+    [self.chooseLibrary addTarget:self
+               action:@selector(didTapLibrary:)
+     forControlEvents:UIControlEventTouchUpInside];
+    [self.chooseLibrary setTitle:@"Choose from Library" forState:UIControlStateNormal];
+    self.chooseLibrary.frame = CGRectMake(300, 212, 100, 40.0);
+    self.chooseLibrary.backgroundColor = [[UIRefs shared] colorFromHexString:[UIRefs shared].purpleAccent];
+    [self.view addSubview:self.chooseLibrary];
+    self.chooseLibrary.hidden = YES;
     [self.navigationItem setTitle:@"Profile"];
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor blackColor],NSFontAttributeName:[UIFont systemFontOfSize:21 weight:UIFontWeightThin]}];
     self.restaurantProfileImage.layer.cornerRadius = 0.1 * self.restaurantProfileImage.frame.size.width;
@@ -86,7 +96,15 @@
     // set pics
     [self setBackgroundPics];
 }
-
+- (IBAction)didTapLibrary:(id)sender
+{
+    UIImagePickerController *imagePickerVC = [UIImagePickerController new];
+    imagePickerVC.delegate = self;
+    imagePickerVC.allowsEditing = YES;
+    imagePickerVC.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    [self presentViewController:imagePickerVC animated:YES completion:nil];
+    
+}
 - (IBAction)didTapLogout:(id)sender {
     AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
@@ -102,6 +120,13 @@
      if button says edit then the profile will become editable and
      if button says 'save' then the profile will save edits
      */
+    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+        self.chooseLibrary.hidden = NO;
+    }
+    else
+    {
+        self.chooseLibrary.hidden = YES;
+    }
     if(self.isEditable == NO){
         self.isEditable = YES;
         //change edit label to 'save' and logout button to 'cancel'
@@ -235,34 +260,17 @@
         imagePickerVC.allowsEditing = YES;
         // if camera is available, use it, else, use camera roll
         if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
-            // alert user that they need to fill out all fields
-            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Incomplete Fields"
-                                                                           message:@"Please fill out every field to sign up"
-                                                                    preferredStyle:(UIAlertControllerStyleAlert)];
-            
-            // create an OK action
-            UIAlertAction *cameraAction = [UIAlertAction actionWithTitle:@"Use Camera"
-                                                               style:UIAlertActionStyleDefault
-                                                             handler:^(UIAlertAction * _Nonnull action) {
-                                                                 // handle response here.
-                                                             }];
-            // add the OK action to the alert controller
-            [alert addAction:cameraAction];
-            [self presentViewController:alert animated:YES completion:^{
-                imagePickerVC.sourceType = UIImagePickerControllerSourceTypeCamera;
-            }];
-            // create an OK action
-            UIAlertAction *libraryAction = [UIAlertAction actionWithTitle:@"Choose from Library" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-                imagePickerVC.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-            }];
-            // add the OK action to the alert controller
-            [alert addAction:libraryAction];
+            imagePickerVC.sourceType = UIImagePickerControllerSourceTypeCamera;
         }
-        else {
+        else
+        {
             NSLog(@"Camera 🚫 available so we will use photo library instead");
             imagePickerVC.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
         }
         [self presentViewController:imagePickerVC animated:YES completion:nil];
+
+        
+        
     }
 }
 
@@ -271,7 +279,7 @@
     UIImage *editedImage = info[UIImagePickerControllerEditedImage];
     self.restaurantProfileImage.image = editedImage;
     // Dismiss UIImagePickerController to go back to original view controller
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [picker dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (PFFileObject *)getPFFileFromImage: (UIImage * _Nullable)image {
@@ -297,7 +305,7 @@
 }
 
 - (IBAction)didTapEditTheme:(id)sender {
-    
+   
     if (self.isThemePickerOpen == YES) {
 //        self.themePickerView.hidden = YES;
 //        self.themePickerView.userInteractionEnabled = NO;

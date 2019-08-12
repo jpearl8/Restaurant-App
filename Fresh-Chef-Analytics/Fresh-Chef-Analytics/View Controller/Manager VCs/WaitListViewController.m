@@ -22,9 +22,9 @@
 @end
 
 @implementation WaitListViewController
-
-- (void)viewDidLoad {
-    [super viewDidLoad];
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:NO];
     self.dropDown.delegate = self;
     self.dropDown.dataSource = self;
     self.tableView.dataSource = self;
@@ -39,6 +39,10 @@
     self.filteredWaiters = [[WaiterManager shared] rosterByRating];
     self.searchBar.hidden = YES;
     [self.tableView setContentOffset:CGPointMake(0, self.searchBar.frame.size.height) animated:YES];
+}
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
     
 }
 - (NSInteger)numberOfComponentsInDropdownMenu:(MKDropdownMenu *)dropdownMenu
