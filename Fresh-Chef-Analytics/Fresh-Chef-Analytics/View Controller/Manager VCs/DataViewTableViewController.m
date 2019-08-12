@@ -28,18 +28,23 @@
 
 @property (weak, nonatomic) IBOutlet UIView *t3b3View;
 @property (weak, nonatomic) IBOutlet UIView *coverT3B3;
+@property (weak, nonatomic) IBOutlet UIImageView *coverPict3b3;
 
 @property (weak, nonatomic) IBOutlet UIView *scatterView;
 @property (weak, nonatomic) IBOutlet UIView *coverScatter;
+@property (weak, nonatomic) IBOutlet UIImageView *coverPicScatter;
 
 @property (weak, nonatomic) IBOutlet UIView *radarView;
 @property (weak, nonatomic) IBOutlet UIView *coverRadar;
+@property (weak, nonatomic) IBOutlet UIImageView *coverPicRadar;
 
 @property (weak, nonatomic) IBOutlet UIView *histogramView;
 @property (weak, nonatomic) IBOutlet UIView *coverHistogram;
+@property (weak, nonatomic) IBOutlet UIImageView *coverPicHistogram;
 
 @property (weak, nonatomic) IBOutlet UIView *trendView;
 @property (weak, nonatomic) IBOutlet UIView *coverTrend;
+@property (weak, nonatomic) IBOutlet UIImageView *coverPicTrend;
 
 
 
@@ -48,6 +53,8 @@
 @implementation DataViewTableViewController {
     BOOL isCellExpanded;
     NSIndexPath *selectedIndexPath;
+    int defaultCellHeight;
+    int expandedCellHeight;
 }
 
 - (void)viewDidLoad {
@@ -62,10 +69,19 @@
     isCellExpanded = NO;
     self.tableView.scrollEnabled = YES;
     self.coverT3B3.hidden = NO;
+    self.coverPict3b3.hidden = NO;
     self.coverScatter.hidden = NO;
+    self.coverPicScatter.hidden = NO;
     self.coverRadar.hidden = NO;
+    self.coverPicRadar.hidden = NO;
     self.coverHistogram.hidden = NO;
+    self.coverPicHistogram.hidden = NO;
     self.coverTrend.hidden = NO;
+    self.coverPicTrend.hidden = NO;
+    
+    defaultCellHeight = ([UIScreen mainScreen].bounds.size.height /
+                         6) - (self.tabBarController.tabBar.frame.size.height/3);
+    expandedCellHeight = ([UIScreen mainScreen].bounds.size.height) - (self.tabBarController.tabBar.frame.size.height + self.navigationController.navigationBar.frame.size.height + 20);
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
@@ -99,6 +115,7 @@
     self.t3b3Mult *= -1;
     self.selectedView = self.t3b3View;
     self.coverT3B3.hidden = !(self.coverT3B3.hidden);
+    self.coverPict3b3.hidden = !(self.coverPict3b3.hidden);
     [self didSelectCellAtIndex:1 inSection:0];
 }
 - (IBAction)didTapSPHeader:(id)sender {
@@ -107,6 +124,7 @@
     self.scatterMult *= -1;
     self.selectedView = self.scatterView;
     self.coverScatter.hidden = !(self.coverScatter.hidden);
+    self.coverPicScatter.hidden = !(self.coverPicScatter.hidden);
     [self didSelectCellAtIndex:2 inSection:0];
 }
 - (IBAction)didTapRCHeader:(id)sender {
@@ -115,14 +133,16 @@
     self.radarMult *= -1;
     self.selectedView = self.radarView;
     self.coverRadar.hidden = !(self.coverRadar.hidden);
+    self.coverPicRadar.hidden = !(self.coverPicRadar.hidden);
     [self didSelectCellAtIndex:3 inSection:0];
 }
 - (IBAction)didTapHistHeader:(id)sender {
     [self.histogramButton setTransform: CGAffineTransformRotate([self.histogramButton transform], (self.histogramMult * M_PI/2))];
 
     self.histogramMult *= -1;
-    self.selectedView = self.histogramView;
+    self.selectedView= self.histogramView;
     self.coverHistogram.hidden = !(self.coverHistogram.hidden);
+    self.coverPicHistogram.hidden = !(self.coverPicHistogram.hidden);
     [self didSelectCellAtIndex:4 inSection:0];
 }
 - (IBAction)didTapPTHeader:(id)sender {
@@ -131,6 +151,7 @@
     self.trendMult *= -1;
     self.selectedView = self.trendView;
     self.coverTrend.hidden = !(self.coverTrend.hidden);
+    self.coverPicTrend.hidden = !(self.coverPicTrend.hidden);
     [self didSelectCellAtIndex:5 inSection:0];
 }
 
@@ -156,15 +177,15 @@
 //    if([indexPath compare:selectedIndexPath] == NSOrderedSame) {
     if(indexPath.row == selectedIndexPath.row) {
         if(isCellExpanded == YES){
-            return self.selectedView.frame.size.height + 100;
+            return expandedCellHeight; //self.selectedView.frame.size.height;// + 100;
 //            return self.view.frame.size.height - ([UIScreen mainScreen].bounds.size.height /
 //                                                  6);
         } else {
-            return ([UIScreen mainScreen].bounds.size.height /
-            6) - (self.tabBarController.tabBar.frame.size.height/3);
+            return defaultCellHeight;//([UIScreen mainScreen].bounds.size.height /
+            //6) - (self.tabBarController.tabBar.frame.size.height/3);
         }
     } else {
-        return ([UIScreen mainScreen].bounds.size.height / 6)- (self.tabBarController.tabBar.frame.size.height/3);
+        return defaultCellHeight;//([UIScreen mainScreen].bounds.size.height / 6)- (self.tabBarController.tabBar.frame.size.height/3);
     }
 }
 /*
