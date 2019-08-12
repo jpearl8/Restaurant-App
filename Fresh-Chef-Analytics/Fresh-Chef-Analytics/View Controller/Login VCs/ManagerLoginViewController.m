@@ -23,15 +23,15 @@
 @end
 
 @implementation ManagerLoginViewController
--(void)viewDidLayoutSubviews{
-    [super viewDidLayoutSubviews];
-    [self.otherLogin setFrame:CGRectMake(104.5, 260, 205, 39)];
-    
-}
+//-(void)viewDidLayoutSubviews{
+//    [super viewDidLayoutSubviews];
+//    [self.otherLogin setFrame:CGRectMake(104.5, 260, 205, 39)];
+//
+//}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self.otherLogin setFrame:CGRectMake(104.5, 260, 205, 39)];
+    [self.otherLogin setFrame:CGRectMake(85, 260, 205, 34)];
     self.passwordView.hidden = YES;
     
     for (UIButton *aButton in self.allButtons){
@@ -46,19 +46,22 @@
     self.managerPass.layer.borderColor = [[UIRefs shared] colorFromHexString:[UIRefs shared].blueHighlight].CGColor;
     self.loginButton.layer.borderWidth = .5f;
     self.loginButton.layer.borderColor = [[UIRefs shared] colorFromHexString:[UIRefs shared].blueHighlight].CGColor;
-    self.passwordView.layer.borderWidth = .5f;
-    self.passwordView.layer.borderColor = [[UIRefs shared] colorFromHexString:[UIRefs shared].purpleAccent].CGColor;
+    
     [UIView animateWithDuration:.5 animations:^{
         if (self.passwordView.hidden){
-            [sender setFrame:CGRectMake(62, 260, 290, 39)];
+            [sender setFrame:CGRectMake(43, 260, 290, 34)];
         } else {
             
-            [sender setFrame:CGRectMake(104.5, 260, 205, 39)];
+            [sender setFrame:CGRectMake(85, 260, 205, 34)];
         }
         
-        self.passwordView.hidden = !(self.passwordView.hidden);
+        
     }];
-    
+    [UIView animateWithDuration:1 animations:^{
+        self.passwordView.hidden = !(self.passwordView.hidden);
+        self.passwordView.layer.borderWidth = .5f;
+        self.passwordView.layer.borderColor = [[UIRefs shared] colorFromHexString:[UIRefs shared].purpleAccent].CGColor;
+    }];
  
     
 }

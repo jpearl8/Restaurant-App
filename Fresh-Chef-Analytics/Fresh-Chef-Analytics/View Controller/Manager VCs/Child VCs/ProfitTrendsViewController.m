@@ -67,9 +67,9 @@
     self.profitDataArray = [[NSMutableArray alloc] init];
     self.busynessDataArray = [[NSMutableArray alloc] init];
     self.timeSpans = @[@"Week", @"Month", @"Year"];
-    self.dataCategories = @[@"Profit", @"Busyness", @"Both"];
+    self.dataCategories = @[@"Revenue", @"Busyness", @"Both"];
     self.timeSpanSelected = @"Week";
-    self.selectedDataDisplay = @"Profit";
+    self.selectedDataDisplay = @"Revenue";
     // initialize vertical line
     self.vertLine = [UIBezierPath bezierPath];
     self.vertShapeLayer = [CAShapeLayer layer];
@@ -160,7 +160,7 @@
         self.timeSpanSelected = @"Week";
     }
     if (self.selectedDataDisplay == nil) {
-        self.selectedDataDisplay = @"Profit";
+        self.selectedDataDisplay = @"Revenue";
     }
     // set x axis ranges
     if ([self.timeSpanSelected isEqualToString:@"Week"]) {
@@ -210,9 +210,9 @@
     
 //    data01.showPointLabel = YES; // show label when screen is touched
     NSArray *dataArray;
-    if ([self.selectedDataDisplay isEqualToString:@"Profit"]) {
+    if ([self.selectedDataDisplay isEqualToString:@"Revenue"]) {
         dataArray = @[data01];
-        data01.dataTitle = @"Profit";
+        data01.dataTitle = @"Revenue";
         data02.dataTitle = @"";
     } else if ([self.selectedDataDisplay isEqualToString:@"Busyness"]){
         dataArray = @[data02];
@@ -220,7 +220,7 @@
         data02.dataTitle = @"Busyness";
     } else {
         dataArray = @[data01, data02];
-        data01.dataTitle = @"Profit";
+        data01.dataTitle = @"Revenue";
         data02.dataTitle = @"Busyness";
     }
     self.lineChart.chartData = dataArray;
@@ -230,7 +230,7 @@
     self.lineChart.legendStyle = PNLegendItemStyleSerial;
     self.legend = [self.lineChart getLegendWithMaxWidth:320];
     //Move legend to the desired position and add to view
-    [self.legend setFrame:CGRectMake(100, 400, self.legend.frame.size.width, self.legend.frame.size.height)];
+    [self.legend setFrame:CGRectMake(100, self.dataView.frame.origin.y + self.dataView.frame.size.height, self.legend.frame.size.width, self.legend.frame.size.height)];
     [self.view addSubview:self.legend];
     
     //GRID LINES
@@ -303,21 +303,21 @@
         [tempBusynessArr addObjectsFromArray:self.correctedYearBusyness];
     }
     if ([tempProfitArr[idx] integerValue] != -1) {
-        if ([self.selectedDataDisplay isEqualToString:@"Profit"]) {
-            self.selectedPointLabel.text = [NSString stringWithFormat:@"Date: %@ \nProfit: $%@", tempXLabs[idx], tempProfitArr[idx]];
+        if ([self.selectedDataDisplay isEqualToString:@"Revenue"]) {
+            self.selectedPointLabel.text = [NSString stringWithFormat:@"Date: %@ \nRevenue: $%@", tempXLabs[idx], tempProfitArr[idx]];
         } else if ([self.selectedDataDisplay isEqualToString:@"Busyness"]) {
             self.selectedPointLabel.text = [NSString stringWithFormat:@"Date: %@ \nCustomers: %@", tempXLabs[idx], tempBusynessArr[idx]];
         } else { //both is selected
-            self.selectedPointLabel.text = [NSString stringWithFormat:@"Date: %@ \nProfit: $%@ \nCustomers: %@", tempXLabs[idx], tempProfitArr[idx], tempBusynessArr[idx]];
+            self.selectedPointLabel.text = [NSString stringWithFormat:@"Date: %@ \nRevenue: $%@ \nCustomers: %@", tempXLabs[idx], tempProfitArr[idx], tempBusynessArr[idx]];
         }
     } else {
         self.selectedPointLabel.text = [NSString stringWithFormat:@"No Data For, %@", tempXLabs[idx]];
     }
-    CGSize labelSize = [self.selectedPointLabel.text sizeWithAttributes:@{NSFontAttributeName:self.selectedPointLabel.font}];
-    
-    self.selectedPointLabel.frame = CGRectMake(
-                             self.selectedPointLabel.frame.origin.x, self.selectedPointLabel.frame.origin.y,
-                             self.selectedPointLabel.frame.size.width, labelSize.height);
+//    CGSize labelSize = [self.selectedPointLabel.text sizeWithAttributes:@{NSFontAttributeName:self.selectedPointLabel.font}];
+//
+//    self.selectedPointLabel.frame = CGRectMake(
+//                             self.selectedPointLabel.frame.origin.x, self.selectedPointLabel.frame.origin.y,
+//                             self.selectedPointLabel.frame.size.width, labelSize.height);
     
 }
 

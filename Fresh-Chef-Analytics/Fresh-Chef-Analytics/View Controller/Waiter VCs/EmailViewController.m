@@ -7,7 +7,7 @@
 //
 #import "UIRefs.h"
 #import "CustomerTrack.h"
-#import "Parse.h"
+#import "Parse/Parse.h"
 #import "EmailViewController.h"
 #import "WaiterViewController.h"
 
