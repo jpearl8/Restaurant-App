@@ -21,8 +21,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface FunTableViewCell : UITableViewCell <UITextViewDelegate> 
 @property (weak, nonatomic) IBOutlet UILabel *charsRemaining;
-@property (nonatomic, weak) id <FunCellDelegate> delegate;
+@property (nonatomic, weak) id <FunCellDelegate> funDelegate;
 @property (weak, nonatomic) IBOutlet UILabel *dishName;
+@property (strong, nonatomic) IBOutlet UIView *specialView;
 @property (weak, nonatomic) IBOutlet UILabel *dishType;
 @property (weak, nonatomic) IBOutlet UILabel *dishDescription;
 @property (weak, nonatomic) IBOutlet UIImageView *image;

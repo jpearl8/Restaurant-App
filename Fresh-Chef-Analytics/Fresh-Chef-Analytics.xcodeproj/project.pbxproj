@@ -63,11 +63,14 @@
 		FF318E8922EAC57C003AF015 /* OpenOrderButton.m in Sources */ = {isa = PBXBuildFile; fileRef = FF318E8822EAC57C003AF015 /* OpenOrderButton.m */; };
 		FF46E19222DE436400E15A0E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FF46E19122DE436400E15A0E /* AppDelegate.m */; };
 		FF46E19822DE436400E15A0E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF46E19622DE436400E15A0E /* Main.storyboard */; };
-		FF46E19A22DE436400E15A0E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF46E19922DE436400E15A0E /* Assets.xcassets */; };
 		FF46E19D22DE436400E15A0E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF46E19B22DE436400E15A0E /* LaunchScreen.storyboard */; };
 		FF46E1A022DE436400E15A0E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FF46E19F22DE436400E15A0E /* main.m */; };
 		FF46E1AA22DE436400E15A0E /* Fresh_Chef_AnalyticsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FF46E1A922DE436400E15A0E /* Fresh_Chef_AnalyticsTests.m */; };
 		FF46E1B522DE436400E15A0E /* Fresh_Chef_AnalyticsUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = FF46E1B422DE436400E15A0E /* Fresh_Chef_AnalyticsUITests.m */; };
+		FF4CA2F02302166600E5A304 /* Invoice.m in Sources */ = {isa = PBXBuildFile; fileRef = FF4CA2EF2302166600E5A304 /* Invoice.m */; };
+		FF4CA2F3230216C100E5A304 /* Item.m in Sources */ = {isa = PBXBuildFile; fileRef = FF4CA2F2230216C100E5A304 /* Item.m */; };
+		FF4CA2F523021F6E00E5A304 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF4CA2F423021F6C00E5A304 /* Assets.xcassets */; };
+		FF4CA2F82302245D00E5A304 /* fakePayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF4CA2F72302245D00E5A304 /* fakePayViewController.m */; };
 		FF50D5A422FD2BC9002C5AAE /* WaiterCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FF50D5A322FD2BC9002C5AAE /* WaiterCell.m */; };
 		FF5924FF22E2155D00F66EC6 /* ReceiptTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FF5924FE22E2155D00F66EC6 /* ReceiptTableViewCell.m */; };
 		FF7374CB22F257C400632056 /* AddItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF7374CA22F257C400632056 /* AddItemViewController.m */; };
@@ -222,7 +225,6 @@
 		FF46E19022DE436400E15A0E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		FF46E19122DE436400E15A0E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		FF46E19722DE436400E15A0E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		FF46E19922DE436400E15A0E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FF46E19C22DE436400E15A0E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FF46E19E22DE436400E15A0E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FF46E19F22DE436400E15A0E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -232,6 +234,13 @@
 		FF46E1B022DE436400E15A0E /* Fresh-Chef-AnalyticsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Fresh-Chef-AnalyticsUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF46E1B422DE436400E15A0E /* Fresh_Chef_AnalyticsUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Fresh_Chef_AnalyticsUITests.m; sourceTree = "<group>"; };
 		FF46E1B622DE436400E15A0E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FF4CA2EE2302166600E5A304 /* Invoice.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Invoice.h; path = "Fresh-Chef-Analytics/Invoice.h"; sourceTree = "<group>"; };
+		FF4CA2EF2302166600E5A304 /* Invoice.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = Invoice.m; path = "Fresh-Chef-Analytics/Invoice.m"; sourceTree = "<group>"; };
+		FF4CA2F1230216C100E5A304 /* Item.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Item.h; sourceTree = "<group>"; };
+		FF4CA2F2230216C100E5A304 /* Item.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Item.m; sourceTree = "<group>"; };
+		FF4CA2F423021F6C00E5A304 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../../../../.Trash/Assets.xcassets; sourceTree = "<group>"; };
+		FF4CA2F62302245D00E5A304 /* fakePayViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = fakePayViewController.h; sourceTree = "<group>"; };
+		FF4CA2F72302245D00E5A304 /* fakePayViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = fakePayViewController.m; sourceTree = "<group>"; };
 		FF50D5A222FD2BC9002C5AAE /* WaiterCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WaiterCell.h; sourceTree = "<group>"; };
 		FF50D5A322FD2BC9002C5AAE /* WaiterCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WaiterCell.m; sourceTree = "<group>"; };
 		FF5924FD22E2155D00F66EC6 /* ReceiptTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReceiptTableViewCell.h; sourceTree = "<group>"; };
@@ -446,17 +455,20 @@
 		FF03BF2922DE95C900719E8C /* Waiter VCs */ = {
 			isa = PBXGroup;
 			children = (
+				FF4CA2F62302245D00E5A304 /* fakePayViewController.h */,
+				FF03BF3822DE975B00719E8C /* ReceiptViewController.h */,
+				FF03BF3922DE975B00719E8C /* ReceiptViewController.m */,
+				FF4CA2F72302245D00E5A304 /* fakePayViewController.m */,
 				FFAB492F22FA4B8B003E2DA1 /* EmailViewController.h */,
 				FFAB493022FA4B8B003E2DA1 /* EmailViewController.m */,
 				FF7374C922F257C400632056 /* AddItemViewController.h */,
+				FF4CA2ED2302163500E5A304 /* PayPal */,
 				FF7374CA22F257C400632056 /* AddItemViewController.m */,
 				FFDB60FD22E91BCE00902FE3 /* Form Views */,
 				FF03BF3E22DE97C900719E8C /* AnotherTableViewController.h */,
 				FF03BF3F22DE97C900719E8C /* AnotherTableViewController.m */,
 				FF03BF3B22DE97AD00719E8C /* ThankYouViewController.h */,
 				FF03BF3C22DE97AD00719E8C /* ThankYouViewController.m */,
-				FF03BF3822DE975B00719E8C /* ReceiptViewController.h */,
-				FF03BF3922DE975B00719E8C /* ReceiptViewController.m */,
 				FF03BF3522DE973B00719E8C /* ElegantFormViewController.h */,
 				FF03BF3622DE973B00719E8C /* ElegantFormViewController.m */,
 				FF03BF3222DE971600719E8C /* ComfortableFormViewController.h */,
@@ -567,7 +579,7 @@
 				FF46E19022DE436400E15A0E /* AppDelegate.h */,
 				FF46E19122DE436400E15A0E /* AppDelegate.m */,
 				FF46E19622DE436400E15A0E /* Main.storyboard */,
-				FF46E19922DE436400E15A0E /* Assets.xcassets */,
+				FF4CA2F423021F6C00E5A304 /* Assets.xcassets */,
 				FF46E19B22DE436400E15A0E /* LaunchScreen.storyboard */,
 				FF46E19E22DE436400E15A0E /* Info.plist */,
 				FF46E19F22DE436400E15A0E /* main.m */,
@@ -591,6 +603,18 @@
 				FF46E1B622DE436400E15A0E /* Info.plist */,
 			);
 			path = "Fresh-Chef-AnalyticsUITests";
+			sourceTree = "<group>";
+		};
+		FF4CA2ED2302163500E5A304 /* PayPal */ = {
+			isa = PBXGroup;
+			children = (
+				FF4CA2EE2302166600E5A304 /* Invoice.h */,
+				FF4CA2EF2302166600E5A304 /* Invoice.m */,
+				FF4CA2F1230216C100E5A304 /* Item.h */,
+				FF4CA2F2230216C100E5A304 /* Item.m */,
+			);
+			name = PayPal;
+			path = ../../..;
 			sourceTree = "<group>";
 		};
 		FF91766922F512A0007AEDB1 /* Orders */ = {
@@ -740,7 +764,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FF46E19D22DE436400E15A0E /* LaunchScreen.storyboard in Resources */,
-				FF46E19A22DE436400E15A0E /* Assets.xcassets in Resources */,
+				FF4CA2F523021F6E00E5A304 /* Assets.xcassets in Resources */,
 				FF46E19822DE436400E15A0E /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -873,6 +897,7 @@
 				FF03BF6222DF763300719E8C /* MenuListTableViewCell.m in Sources */,
 				FFAB492522F9FCE6003E2DA1 /* UIRefs.m in Sources */,
 				FF03BF3A22DE975B00719E8C /* ReceiptViewController.m in Sources */,
+				FF4CA2F02302166600E5A304 /* Invoice.m in Sources */,
 				FF03BF3422DE971600719E8C /* ComfortableFormViewController.m in Sources */,
 				FFFC45E122EE097B003E8FF6 /* OrderViewCell.m in Sources */,
 				B6D7B35322DE6D27002093CB /* LoginViewController.m in Sources */,
@@ -891,6 +916,7 @@
 				A5D3896822F8CBE000B17AEC /* Coordinate.m in Sources */,
 				FF03BF3722DE973B00719E8C /* ElegantFormViewController.m in Sources */,
 				FF03BF2E22DE963B00719E8C /* WaiterViewController.m in Sources */,
+				FF4CA2F3230216C100E5A304 /* Item.m in Sources */,
 				FF03BF5622DEA0A000719E8C /* WaitDetailsViewController.m in Sources */,
 				A535D7C522DFD4B5002B79CA /* MenuManager.m in Sources */,
 				FF03BF5022DEA04900719E8C /* DishDetailsViewController.m in Sources */,
@@ -908,6 +934,7 @@
 				A590E1AC22EFB71300D85B20 /* BarChartViewController.m in Sources */,
 				FF91767222F8BA53007AEDB1 /* ClosedOrderViewController.m in Sources */,
 				FF03BF3122DE96EC00719E8C /* FunFormViewController.m in Sources */,
+				FF4CA2F82302245D00E5A304 /* fakePayViewController.m in Sources */,
 				B6BC874D22E6867000264995 /* Top3Bottom3TableViewCell.m in Sources */,
 				FF03BF4922DE9FE000719E8C /* EditWaitViewController.m in Sources */,
 				FF03BF4022DE97C900719E8C /* AnotherTableViewController.m in Sources */,

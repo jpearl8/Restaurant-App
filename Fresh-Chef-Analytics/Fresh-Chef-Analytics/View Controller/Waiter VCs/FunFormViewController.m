@@ -10,9 +10,11 @@
 #import "ReceiptViewController.h"
 #import "Helpful_funs.h"
 #import "WaiterCell.h"
+#import "UIRefs.h"
 
 
 @interface FunFormViewController () <UITableViewDelegate, UITableViewDataSource, UITextViewDelegate, FunCellDelegate>
+
 @property (weak, nonatomic) IBOutlet UITableView *menuRatings;
 //@property (weak, nonatomic) IBOutlet UILabel *waiterNameLabel;
 //@property (weak, nonatomic) IBOutlet UITextView *waiterComments;
@@ -50,6 +52,7 @@
 //    self.waiterComments.delegate = self;
 //    self.waiterComments.placeholder = @"Comments on your waiter";
 //    self.waiterComments.placeholderColor = [UIColor lightGrayColor];
+    
     self.customerRatingsArray = [[NSMutableArray alloc] init];
     self.customerComments =[[NSMutableArray alloc] init];
     for (int i = 0; i < self.openOrders.count; i++){
@@ -63,12 +66,22 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return (self.openOrders.count + 1);
 }
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.row == 0){
+        return 211;
+    } else {
+        return 250;
+    }
+}
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.row == 0){
         WaiterCell *cell = [tableView dequeueReusableCellWithIdentifier: @"Waiter" forIndexPath:indexPath];
         cell.waiter = self.waiter;
         cell.waiterDelegate = self;
+        cell.aView.layer.borderWidth = .5f;
+        cell.aView.layer.borderColor = [[UIRefs shared] colorFromHexString:[UIRefs shared].purpleAccent].CGColor;
         cell.waiterNameLabel.text = cell.waiter.name;
         PFFileObject *waiterImageFile = (PFFileObject *)self.waiter.image;
         [waiterImageFile getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
@@ -78,7 +91,7 @@
         }];
         return cell;
     } else {
-        FunTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier: @"Fun" forIndexPath:indexPath];
+        FunTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier: @"Fun1" forIndexPath:indexPath];
         NSNumber *amount = self.openOrders[indexPath.row - 1][@"amount"];
         int index = [[Helpful_funs shared] findDishItem:((int)indexPath.row - 1) withDishArray:self.dishesArray withOpenOrders:self.openOrders];
         if (index != -1){
@@ -98,11 +111,13 @@
         cell.index = (int)indexPath.row - 1;
         cell.customerRatings = self.customerRatingsArray;
         cell.customerComments = self.customerComments;
-        cell.delegate = self;
+        cell.funDelegate = self;
         cell.amount.text = [NSString stringWithFormat:@"%@", amount];
+        cell.specialView.layer.borderWidth = .5f;
+        cell.specialView.layer.borderColor = [[UIRefs shared] colorFromHexString:[UIRefs shared].purpleAccent].CGColor;
         NSArray <UIButton *>* buttons = @[cell.b0, cell.b2, cell.b4, cell.b6, cell.b8, cell.b10];
             for (int i = 0; i < buttons.count; i++){
-                if (self.customerRatingsArray.count > 0 && self.customerRatingsArray[indexPath.row - 1] == i*2){
+                if (self.customerRatingsArray.count > 0 && (int)self.customerRatingsArray[indexPath.row - 1] == i*2){
                     [[Helpful_funs shared] defineSelect:buttons[i] withSelect:YES];
                     
                 } else {
