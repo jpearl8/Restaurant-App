@@ -229,7 +229,8 @@
 }
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     Dish *dish = self.selectedDish;
-    DishDetailsViewController *dishDetailsVC = [segue destinationViewController];
+    UINavigationController *navController = [segue destinationViewController];
+    DishDetailsViewController *dishDetailsVC = (DishDetailsViewController *)navController.topViewController;
     dishDetailsVC.dish = dish;
 }
 

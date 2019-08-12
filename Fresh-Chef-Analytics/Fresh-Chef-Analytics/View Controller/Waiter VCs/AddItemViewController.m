@@ -62,7 +62,7 @@
     [self.ordersTableView insertSubview:refreshControl atIndex:0];
     self.ordersTableView.rowHeight = UITableViewAutomaticDimension;
     self.categories = [[[MenuManager shared] categoriesOfDishes] allKeys];
-    self.orderedDishesDict = [[NSMutableDictionary alloc] initWithDictionary:[[MenuManager shared] dishesByFreq]];
+    self.orderedDishesDict = [[NSMutableDictionary alloc] initWithDictionary:[[MenuManager shared] dishesByAlphabet]];
     self.filteredCategoriesOfDishes = [NSMutableDictionary alloc];
     self.filteredCategoriesOfDishes = [self.filteredCategoriesOfDishes initWithDictionary:self.orderedDishesDict];
   

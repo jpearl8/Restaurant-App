@@ -44,9 +44,16 @@
     self.restaurantCoordinates = [[Coordinate shared] setCoordinateValuesWithLatitude:[[manager location] coordinate].latitude andLongitude: [[manager location] coordinate].longitude];
     
     NSMutableArray *placeholder = [[NSMutableArray alloc] init];
+    NSString *placeholder2 = @"no item here";
     if (!self.competitorArray){
         self.competitorArray = [[NSMutableArray alloc] initWithObjects:placeholder, placeholder, placeholder, nil];
         PFUser *currentUser = [PFUser currentUser];
+        if (currentUser[@"category"] == nil){
+            currentUser[@"category"] = placeholder2;
+        }
+        if (currentUser[@"price"] == nil){
+            currentUser[@"price"] = placeholder2;
+        }
         self.userParameters = [[NSMutableArray alloc] initWithObjects:currentUser[@"address"], currentUser[@"category"], currentUser[@"Price"], nil];
         [self locationTopRatings:self.userParameters[1] withPrice:self.userParameters[2] withIndex:0];
         
@@ -71,11 +78,11 @@
             NSString* locationQuery = [NSString stringWithFormat:@"&latitude=%f&longitude=%f", self.restaurantCoordinates.latitude, self.restaurantCoordinates.longitude];
             baseString = [baseString stringByAppendingString:locationQuery];
         
-            if (index == 1 && categoryRes){
+            if (index == 1 && categoryRes && !([categoryRes isEqualToString:@"no item here"])){
                 NSString* categoryQuery = [NSString stringWithFormat:@"&categories=%@", categoryRes];
                 baseString = [baseString stringByAppendingString:categoryQuery];
             }
-            if (index == 2 && priceRes){
+            if (index == 2 && priceRes && !([priceRes isEqualToString:@"no item here"])){
                 NSString* priceQuery = [NSString stringWithFormat:@"&price=%@", priceRes];
                 baseString = [baseString stringByAppendingString:priceQuery];
             }

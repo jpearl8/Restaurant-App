@@ -11,6 +11,7 @@
 #import "UIRefs.h"
 
 @interface WaitDetailsViewController ()
+@property (strong, nonatomic) IBOutlet UIView *noComments;
 
 @end
 
@@ -25,7 +26,7 @@
     self.ratingView.layer.shadowOffset  = CGSizeMake(0.0f, 0.0f);
     self.ratingView.layer.shadowOpacity = 0.9f;
     self.ratingView.layer.masksToBounds = NO;
-    self.waiterName.text = self.waiter.name;
+    self.waiterName.text = [self.waiter.name uppercaseString];
     self.waiterTime.text = [[NSString stringWithFormat:@"%@", self.waiter.yearsWorked] stringByAppendingString:@"  YEARS"];
     self.rating.text = [NSString stringWithFormat:@"%@", [[WaiterManager shared] averageRating:self.waiter]];
     self.waiterTabletops.text  = [NSString stringWithFormat:@"%@", self.waiter.tableTops];
@@ -44,12 +45,28 @@
     self.waiterTipsPT.text = [@"$" stringByAppendingString:[NSString stringWithFormat:@"%.2f", [[[WaiterManager shared] averageTipsByTable:self.waiter] floatValue]]];
     self.waiterTipsPC.text = [@"$" stringByAppendingString:[NSString stringWithFormat:@"%.2f", [[[WaiterManager shared] averageTipByCustomer:self.waiter] floatValue]]];
 }
+
+
+-(void)noCommentsCheck {
+    if ([self.waiter.comments count] == 0){
+        self.tableView.hidden = YES;
+        self.noComments.hidden = NO;
+        self.noComments.layer.cornerRadius = 5;
+        //self.noOrders.frame.size.width/2;
+        self.noComments.layer.borderWidth = .5f;
+        self.noComments.layer.borderColor = [[UIRefs shared] colorFromHexString:[UIRefs shared].purpleAccent].CGColor;
+    } else {
+        self.tableView.hidden = NO;
+        self.noComments.hidden = YES;
+    }
+}
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return 1;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+    [self noCommentsCheck];
     return [self.waiter.comments count];
     
 }

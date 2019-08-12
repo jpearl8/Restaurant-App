@@ -39,7 +39,15 @@ static CGFloat const kBounceValue = 20.0f;
 
   
     [self.myContentView addGestureRecognizer:self.panRecognizer];
+    self.ordersButton.layer.shadowRadius  = 1.5f;
+    self.ordersButton.layer.shadowColor   = [UIColor colorWithRed:176.f/255.f green:199.f/255.f blue:226.f/255.f alpha:1.f].CGColor;
+    self.ordersButton.layer.shadowOffset  = CGSizeMake(0.0f, 0.0f);
+    self.ordersButton.layer.shadowOpacity = 0.9f;
+    self.ordersButton.layer.masksToBounds = NO;
     
+    UIEdgeInsets shadowInsets     = UIEdgeInsetsMake(0, 0, -1.5f, 0);
+    UIBezierPath *shadowPath      = [UIBezierPath bezierPathWithRect:UIEdgeInsetsInsetRect(self.ordersButton.bounds, shadowInsets)];
+    self.ordersButton.layer.shadowPath    = shadowPath.CGPath;
     // Initialization code
 }
 

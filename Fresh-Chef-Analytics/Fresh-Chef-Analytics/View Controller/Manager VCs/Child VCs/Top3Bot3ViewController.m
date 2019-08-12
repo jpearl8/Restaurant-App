@@ -133,11 +133,11 @@
         if(cell.isExpanded){
             return expandedHeight;
         } else {
-            return (self.view.frame.size.height - self.rankByControl.frame.size.height - 85)/6;;
+            return (self.view.frame.size.height - self.rankByControl.frame.size.height - 85)/4;;
         }
     } else {
         cell.isExpanded = NO; //when another cell is clicked unexpand opened cell
-        return (self.view.frame.size.height - self.rankByControl.frame.size.height - 85)/6;;
+        return (self.view.frame.size.height - self.rankByControl.frame.size.height - 85)/4;;
     }
 }
 
