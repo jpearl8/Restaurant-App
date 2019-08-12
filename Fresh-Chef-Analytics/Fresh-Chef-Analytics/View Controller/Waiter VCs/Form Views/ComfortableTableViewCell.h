@@ -20,6 +20,7 @@ NS_ASSUME_NONNULL_BEGIN
 @end
 
 @interface ComfortableTableViewCell : UITableViewCell <UITextViewDelegate>
+@property (strong, nonatomic) IBOutlet UIView *specialView;
 @property (weak, nonatomic) IBOutlet UILabel *charsRemaining;
 @property (nonatomic, weak) id <ComfortableCellDelegate> delegate;
 @property (weak, nonatomic) IBOutlet UILabel *dishName;

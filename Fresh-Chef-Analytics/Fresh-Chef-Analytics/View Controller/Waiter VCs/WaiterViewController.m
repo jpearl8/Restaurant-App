@@ -111,12 +111,6 @@ pass final array on submit button of data table
     self.customerNumber.layer.borderColor = [[UIRefs shared] colorFromHexString:@"#2c91fd"].CGColor;
     self.contentView.layer.borderWidth = .5f;
     self.contentView.layer.borderColor = [[UIRefs shared] colorFromHexString:[UIRefs shared].purpleAccent].CGColor;
-   
-//    NSString *category = [PFUser currentUser][@"theme"];
-//    NSString *category_top = [NSString stringWithFormat:@"%@_top", category];
-//    NSString *category_waiter = [NSString stringWithFormat:@"%@_waiter", category];
-//    [self.backgroundImage setImage:[UIImage imageNamed:category_waiter]];
-//    [self.topImage setImage:[UIImage imageNamed:category_top]];
     [[UIRefs shared] setImage:self.backgroundImage isCustomerForm:NO] ;
     self.waiterTable.hidden = YES;
     self.menuItems.delegate = self;
@@ -147,7 +141,6 @@ pass final array on submit button of data table
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if ([tableView.restorationIdentifier isEqualToString:@"menu"]){
-        //return self.filteredDishes.count;
         return [self.filteredCategoriesOfDishes[self.categories[section]] count];
     }
     else {
@@ -170,16 +163,10 @@ pass final array on submit button of data table
 
 - (void)tableView:(UITableView *)tableView willDisplayHeaderView:(UIView *)view forSection:(NSInteger)section
 {
-    // Background color
     view.tintColor = [UIColor whiteColor];
-    
-    // Text Color
     UITableViewHeaderFooterView *header = (UITableViewHeaderFooterView *)view;
     UIColor *purple = [[UIRefs shared] colorFromHexString:[UIRefs shared].purpleAccent];
     [header.textLabel setTextColor:purple];
-    
-    // Another way to set the background color
-    // Note: does not preserve gradient effect of original header
      header.contentView.backgroundColor = [[UIRefs shared] colorFromHexString:@"#EFEFF4"];
 }
 
@@ -199,13 +186,10 @@ pass final array on submit button of data table
         } else {
             cell.value = [self.amounts[index] doubleValue];
         }
-        //cell.stepper.value = [self searchForAmount:self.customerOrder withDish:dish];
         cell.dishDescription.text = dish.dishDescription;
         NSString *category = [PFUser currentUser][@"theme"];
         if ([category isEqualToString:@"Comfortable"]){
             cell.type.textColor = [UIColor whiteColor];
-            //cell.stepper.tintColor = [UIColor whiteColor];
-
         }
         PFFileObject *dishImageFile = (PFFileObject *)dish.image;
         [dishImageFile getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
@@ -224,7 +208,6 @@ pass final array on submit button of data table
         }
         cell.textLabel.text = self.waiters[indexPath.row].name;
         cell.backgroundColor = [UIColor whiteColor];
-        //[[Helpful_funs shared] colorFromHexString:@"#ADD8E6"];
         return cell;
     }
 }
@@ -255,18 +238,6 @@ pass final array on submit button of data table
 
 
 
-//- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
-//    if (searchText.length != 0) {
-//        NSPredicate *predicate = [NSPredicate predicateWithBlock:^BOOL(NSDictionary *evaluatedObject, NSDictionary *bindings) {
-//            return [evaluatedObject[@"name"] containsString:searchText];
-//        }];
-//        self.filteredDishes = [self.dishes filteredArrayUsingPredicate:predicate];
-//    }
-//    else {
-//        self.filteredDishes = self.dishes;
-//    }
-//    [self.menuItems reloadData];
-//}
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
     if (searchText.length != 0) {
         NSPredicate *predicate = [NSPredicate predicateWithBlock:^BOOL(NSDictionary *evaluatedObject, NSDictionary *bindings) {
@@ -295,7 +266,7 @@ pass final array on submit button of data table
     LoginViewController *loginViewController = [storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
     appDelegate.window.rootViewController = loginViewController;
     [PFUser logOutInBackgroundWithBlock:^(NSError * _Nullable error) {
-        // PFUser.current() will now be nil
+
     }];
 }
 
@@ -354,7 +325,7 @@ pass final array on submit button of data table
             missing = @"Please record the number of customers";
         }
         UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Missing Order Information" message:missing preferredStyle:(UIAlertControllerStyleAlert)];
-        // create an OK action
+
         UIAlertAction *tryAgain = [UIAlertAction actionWithTitle:@"OK"
                                                            style:UIAlertActionStyleDefault
                                                          handler:^(UIAlertAction * _Nonnull action) {
@@ -363,7 +334,7 @@ pass final array on submit button of data table
                                                          }];
         [alert addAction:tryAgain];
         [self presentViewController:alert animated:YES completion:^{
-            // optional code for what happens after the alert controller has finished presenting
+
     
 
         }];
