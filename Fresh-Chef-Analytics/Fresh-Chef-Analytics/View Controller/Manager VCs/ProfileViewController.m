@@ -54,25 +54,21 @@
         [self setProfilePicture];
     }
     // setup picker for theme
-//    self.themePickerView.delegate = self;
-//    self.themePickerView.dataSource = self;
-//    self.themePickerView.showsSelectionIndicator = YES;
     self.themesArr = @[@"Fun", @"Comfortable", @"Elegant"];
-//    self.themeTextField.hidden = YES;
-//    self.themeTextField.enabled = NO;
-
     //alert view for picker
     self.alert = [UIAlertController alertControllerWithTitle:@"Set Theme" message:@"Choose a theme for your customer form" preferredStyle:(UIAlertControllerStyleActionSheet)];
 
     int i = 0;
     for (NSString *theme in self.themesArr) {
         UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:theme style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-            // handle response here.
+            // handle response here.nn
             [self didSelectRowInAlertController:i];
         }];
         [self.alert addAction:defaultAction];
         i++;
     }
+    self.numCustomersServed.text = [NSString stringWithFormat:@"%@",  PFUser.currentUser[@"totalCustomers"]];
+    self.numTables.text = [NSString stringWithFormat:@"%@", PFUser.currentUser[@"totalTableTops"]];
     
 //    [self.alert.view addSubview:self.themePickerView];
 //    // add the OK action to the alert controller
