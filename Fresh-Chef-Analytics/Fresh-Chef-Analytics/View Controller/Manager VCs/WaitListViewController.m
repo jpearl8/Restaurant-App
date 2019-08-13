@@ -19,6 +19,8 @@
 @property (strong, nonatomic) NSArray *dropDownCats;
 @property (weak, nonatomic) IBOutlet UIView *searchLabelView;
 @property (weak, nonatomic) IBOutlet UILabel *dropDownLabel;
+@property (weak, nonatomic) IBOutlet UIView *headerView;
+
 @end
 
 @implementation WaitListViewController
@@ -30,6 +32,7 @@
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     self.searchBar.delegate = self;
+    self.headerView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"pngguru.com-id-bymze"]];
     self.searchLabelView.layer.borderColor = [UIColor whiteColor].CGColor;
     self.searchLabelView.layer.borderWidth = 0.3;
     self.dropDownCats = @[@"RATING", @"TABLETOPS", @"# CUSTOMERS SERVED", @"AVERAGE CUSTOMER TIP", @"AVERAGE TABLE TIP"];
@@ -125,6 +128,7 @@
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.waiterTabletops.text  = [[NSString stringWithFormat:@"%@", waiter.tableTops] stringByAppendingString:@" Tabletops"];
     cell.waiterNumCustomers.text = [[NSString stringWithFormat:@"%@", waiter.numOfCustomers] stringByAppendingString:@" Customers"];
+    cell.rating.text = [NSString stringWithFormat:@"%@", [[WaiterManager shared] averageRating:cell.waiter]];
     cell.waiterTipsPT.text = [@"$" stringByAppendingString:[NSString stringWithFormat:@"%.2f", [[[WaiterManager shared] averageTipsByTable:cell.waiter] floatValue]]];
     cell.waiterTipsPC.text = [@"$" stringByAppendingString:[NSString stringWithFormat:@"%.2f", [[[WaiterManager shared] averageTipByCustomer:cell.waiter] floatValue]]];
     if(waiter.image!=nil){
