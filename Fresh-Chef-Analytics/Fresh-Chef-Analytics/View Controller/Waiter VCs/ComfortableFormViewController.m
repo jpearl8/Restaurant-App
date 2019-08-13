@@ -95,7 +95,7 @@
 }
 
 - (void)waiterRating:(NSNumber *)rating{
-    self.waiterRatingNum = [NSNumber numberWithDouble:(2*[rating doubleValue])];
+    self.waiterRatingNum = [NSNumber numberWithDouble:([rating doubleValue])];
 }
 
 - (IBAction)onTap:(id)sender {
