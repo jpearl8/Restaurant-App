@@ -25,7 +25,6 @@
     PFQuery *dishQuery;
     dishQuery = [Dish query];
     [dishQuery whereKey:@"restaurantID" equalTo:restaurant.objectId];
-    dishQuery.limit = 20;
     
     // fetch data asynchronously
     [dishQuery findObjectsInBackgroundWithBlock:^(NSArray<Dish *> * _Nullable dishes, NSError * _Nullable error) {

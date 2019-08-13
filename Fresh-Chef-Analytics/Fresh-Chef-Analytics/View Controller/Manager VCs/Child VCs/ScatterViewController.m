@@ -27,13 +27,14 @@
 @property (weak, nonatomic) IBOutlet UILabel *dishFreqLabel;
 @property (weak, nonatomic) IBOutlet UILabel *dishRatingLabel;
 @property (weak, nonatomic) IBOutlet UITextView *dishInfo;
-
+@property (assign, nonatomic) CGFloat maxVal;
 @end
 
 @implementation ScatterViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.maxVal = 100;
     self.square = [CAShapeLayer layer];
     [self.scatterChart.layer addSublayer:self.square];
     self.dishesTableView.delegate = self;
@@ -56,8 +57,7 @@
     //For Scatter Chart
     self.scatterChart = [[PNScatterChart alloc] initWithFrame:CGRectMake(0, 0, self.dataView.bounds.size.width, self.dataView.bounds.size.height)];
     [self.scatterChart setAxisXWithMinimumValue:0 andMaxValue:10 toTicks:11];
-    
-    [self.scatterChart setAxisYWithMinimumValue:0 andMaxValue:50 toTicks:11];
+    [self.scatterChart setAxisYWithMinimumValue:0 andMaxValue:self.maxVal toTicks:11];
     NSMutableArray <PNScatterChartData*> *categoryScatter = [[NSMutableArray alloc] init];
     
     //initialize data point
@@ -83,6 +83,7 @@
             return [PNScatterChartDataItem dataItemWithX:xValue AndWithY:yValue];
 
         };
+        
         [self.scatterChart setup];
         
         self.scatterChart.chartData = @[categoryScatter[i]];
@@ -199,6 +200,7 @@
 - (NSArray *)populateDataByRatingAndFreq
 {
     NSMutableArray *theData = [NSMutableArray array];
+    NSMutableArray *theMaxes = [NSMutableArray array];
     for (NSString *category in self.legend)
     {
         NSMutableArray *categoryData = [NSMutableArray array];
@@ -217,7 +219,9 @@
         [categoryData addObject:theseRatings];
         [categoryData addObject:theseFreqs];
         [theData addObject:categoryData];
+        [theMaxes addObject:[theseFreqs valueForKeyPath:@"@max.self"]];
     }
+    self.maxVal = [[theMaxes valueForKeyPath:@"@max.self"] floatValue];
     
     return theData;
 }

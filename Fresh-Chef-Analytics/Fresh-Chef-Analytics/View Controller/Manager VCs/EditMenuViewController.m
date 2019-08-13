@@ -15,8 +15,7 @@
 @property (assign) NSInteger expandedSectionHeaderNumber;
 @property (assign) UITableViewHeaderFooterView *expandedSectionHeader;
 
-@property (strong) NSDictionary *sectionItems;
-@property (strong) NSArray *sectionNames;
+
 @end
 
 @implementation EditMenuViewController
@@ -38,12 +37,16 @@
     self.categories = [[[MenuManager shared] categoriesOfDishes] allKeys];
 
     self.addButton.layer.shadowPath    = shadowPath.CGPath;
-    self.sectionNames = [[NSArray alloc] initWithArray:self.categories];
-    self.sectionItems = [[NSDictionary alloc] initWithDictionary:self.categoriesOfDishes];
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
-    [self.tableView scrollToRowAtIndexPath:indexPath
-                         atScrollPosition:UITableViewScrollPositionTop
-                                 animated:YES];
+    self.sectionNames = self.categories;
+    self.sectionItems = self.categoriesOfDishes;
+    if (self.categoriesOfDishes.count != nil)
+    {
+        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+        [self.tableView scrollToRowAtIndexPath:indexPath
+                              atScrollPosition:UITableViewScrollPositionTop
+                                      animated:YES];
+    }
+
     // Do any additional setup after loading the view.
 }
 
@@ -57,6 +60,8 @@
             NSLog(@"Updating ui");
             self.categoriesOfDishes = categoriesOfDishes;
             self.categories = [self.categoriesOfDishes allKeys];
+            self.sectionNames = self.categories;
+            self.sectionItems = self.categoriesOfDishes;
             
             //[self updateLocalFromData];
             [self.tableView reloadData];
@@ -239,7 +244,7 @@
 
 /*
  #pragma mark - Navigation
- 
+ x
  // In a storyboard-based application, you will often want to do a little preparation before navigation
  - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
  // Get the new view controller using [segue destinationViewController].

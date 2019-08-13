@@ -689,7 +689,7 @@
         yMax = 5.0f;
     }
 
-    _yValueMin = (_yFixedValueMin > -FLT_MAX) ? _yFixedValueMin : yMin;
+    _yValueMin = 0;//(_yFixedValueMin > -FLT_MAX) ? _yFixedValueMin : yMin;
     _yValueMax = (_yFixedValueMax > -FLT_MAX) ? _yFixedValueMax : yMax + yMax / 10.0;
 
     if (_showGenYLabels) {

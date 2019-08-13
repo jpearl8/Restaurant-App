@@ -37,6 +37,9 @@ NS_ASSUME_NONNULL_BEGIN
 //@property (retain, nonatomic) IBOutlet UIPickerView *themePickerView;
 @property (weak, nonatomic) IBOutlet UITextField *themeTextField;
 
+@property (weak, nonatomic) IBOutlet UILabel *numCustomersServed;
+@property (weak, nonatomic) IBOutlet UILabel *numTables;
+
 @end
 
 NS_ASSUME_NONNULL_END

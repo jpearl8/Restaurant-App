@@ -18,7 +18,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong, nonatomic) NSArray *dishes;
 @property (strong, nonatomic) NSMutableDictionary *categoriesOfDishes;
 @property (strong, nonatomic) NSArray *categories;
-
+@property (strong) NSDictionary *sectionItems;
+@property (strong) NSArray *sectionNames;
 
 @end
 

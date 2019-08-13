@@ -9,21 +9,40 @@
 #import "CustomPopUpViewController.h"
 #import "EditMenuViewController.h"
 #import "UITextView+Placeholder.h"
+#import "UIRefs.h"
 
 @interface CustomPopUpViewController ()
 @property (strong, nonatomic) IBOutlet UIView *viewClear;
 @property (strong, nonatomic) Dish *theNewDish;
+@property (strong, nonatomic) UIButton *chooseLibrary;
+
 @end
 
 @implementation CustomPopUpViewController
-
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.chooseLibrary = [UIButton buttonWithType:UIButtonTypeCustom];
+    [self.chooseLibrary addTarget:self
+                           action:@selector(didTapLibrary:)
+                 forControlEvents:UIControlEventTouchUpInside];
+    [self.chooseLibrary setTitle:@"Choose from Library" forState:UIControlStateNormal];
+    self.chooseLibrary.frame = CGRectMake(300, 212, 100, 40.0);
+    self.chooseLibrary.backgroundColor = [[UIRefs shared] colorFromHexString:[UIRefs shared].purpleAccent];
+    [self.view addSubview:self.chooseLibrary];
+    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera])
+    {
+        self.chooseLibrary.hidden = NO;
+    }
+    else
+    {
+        self.chooseLibrary.hidden = YES;
+    }
     self.viewClear.backgroundColor = [UIColor colorWithWhite:0.4 alpha:0.3];
     self.descriptionView.placeholder = @"Dish description";
     self.descriptionView.placeholderColor = [UIColor lightGrayColor];
     // Do any additional setup after loading the view.
 }
+
 - (IBAction)saveItem:(id)sender {
     self.theNewDish = [Dish postNewDish:self.nameField.text withType:self.typeField.text withDescription:self.descriptionView.text withPrice:[NSNumber numberWithFloat:[self.priceField.text floatValue]] withImage:self.dishView.image withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
         if (succeeded)
@@ -36,6 +55,15 @@
         }
     }];
     [self didAddItem:self.theNewDish];
+    
+}
+- (IBAction)didTapLibrary:(id)sender
+{
+    UIImagePickerController *imagePickerVC = [UIImagePickerController new];
+    imagePickerVC.delegate = self;
+    imagePickerVC.allowsEditing = YES;
+    imagePickerVC.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    [self presentViewController:imagePickerVC animated:YES completion:nil];
     
 }
 
@@ -66,6 +94,11 @@
     }
     [picker dismissViewControllerAnimated:YES completion:nil];
 }
+- (IBAction)keyboardBye:(id)sender {
+    [self.view endEditing:YES];
+
+}
+
 - (void) didAddItem: (Dish *) dish
 {
     NSArray *dishesOfType;
@@ -73,7 +106,9 @@
     if ([self.presentingViewController isKindOfClass:[EditMenuViewController class]])
     {
         EditMenuViewController *editMVC = (EditMenuViewController*)self.presentingViewController;
-        editMVC.categories = [editMVC.categories arrayByAddingObject:self.theNewDish.type];
+        editMVC.categories = [[[MenuManager shared] categoriesOfDishes] allKeys];
+//        editMVC.categories = [editMVC.categories arrayByAddingObject:self.theNewDish.type];
+        editMVC.sectionNames = editMVC.categories;
         [editMVC.tableView reloadData];
     }
     [self dismissViewControllerAnimated:YES completion:nil];
