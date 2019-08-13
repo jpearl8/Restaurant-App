@@ -7493,11 +7493,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="T3B3Dish" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="T3B3Dish" rowHeight="300" id="y1s-kg-EPL" customClass="Top3Bottom3TableViewCell">
-<<<<<<< HEAD
-                                        <rect key="frame" x="0.0" y="28" width="16" height="300"/>
-=======
                                         <rect key="frame" x="0.0" y="28" width="650" height="300"/>
->>>>>>> f3406b9d12909c19e08014bc788a758bbbeebbe1
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="y1s-kg-EPL" id="KE4-kz-8Um">
                                             <rect key="frame" x="0.0" y="0.0" width="650" height="299.5"/>
