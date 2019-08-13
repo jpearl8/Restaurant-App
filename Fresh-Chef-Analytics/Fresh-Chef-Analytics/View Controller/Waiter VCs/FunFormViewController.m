@@ -136,7 +136,7 @@
 }
 
 - (void)waiterRating:(NSNumber *)rating{
-    self.waiterRating = [NSNumber numberWithDouble:(2*[rating doubleValue])];
+    self.waiterRating = [NSNumber numberWithDouble:([rating doubleValue])];
 }
 //-(void)textViewDidChange:(UITextView *)textView{
 //
@@ -184,7 +184,6 @@
         }
         float totalFrequency = [((Dish *)self.dishesArray[i]).orderFrequency floatValue];
         ((Dish *)self.dishesArray[i]).orderFrequency = [NSNumber numberWithFloat: ( [self.openOrders[i][@"amount"] floatValue] + totalFrequency)];
-        NSLog(@"%@", ((Dish *)self.dishesArray[i]));
         [((Dish *)self.dishesArray[i]) saveInBackground];
         
     }
@@ -200,8 +199,6 @@
     float numOfCustomers = [self.waiter.numOfCustomers floatValue];
     self.waiter.numOfCustomers = [NSNumber numberWithFloat: ([self.customerNumber floatValue] + numOfCustomers)];
     self.waiter.tableTops = [NSNumber numberWithFloat: ([self.waiter.tableTops floatValue] + 1)];
-   
-    NSLog(@"%@", self.waiter);
     [self.waiter saveInBackground];
     
     [self performSegueWithIdentifier:@"toReceipt" sender:self];

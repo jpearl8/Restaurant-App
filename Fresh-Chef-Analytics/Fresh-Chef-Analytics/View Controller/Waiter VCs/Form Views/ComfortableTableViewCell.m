@@ -15,17 +15,15 @@
     self.customerComment.delegate = self;
     self.customerComment.placeholder = @"Comments for the chef";
     self.customerComment.placeholderColor = [UIColor lightGrayColor];
-    // Initialization code
+
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 
-    // Configure the view for the selected state
 }
 -(void)textViewDidChange:(UITextView *)textView{
     [self.delegate customerCommentForIndex:self.index withComment:self.customerComment.text];
-   // self.customerComments[self.index] = self.customerComment.text;
 }
 
 - (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text{
@@ -42,8 +40,6 @@
 }
 
 - (IBAction)changeCustomerRating:(HCSStarRatingView *)sender {
-    NSLog(@"%f", sender.value);
-    //self.customerRatings[self.index] = [NSNumber numberWithDouble:(2 * sender.value)];
     [self.delegate customerRatingForIndex:self.index withRating:[NSNumber numberWithDouble:(2 * sender.value)]];
 }
 

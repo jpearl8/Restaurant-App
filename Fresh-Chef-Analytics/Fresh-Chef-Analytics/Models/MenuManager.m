@@ -33,8 +33,6 @@
         [self setProfitForDishes]; // set profit for each dish locally
         [self categorizeDishes];
         [self setThresholdValues];
-        NSLog(@"Step 3");
-        
         fetchedDishes(self.categoriesOfDishes, nil);
     }];
 }
@@ -45,8 +43,6 @@
     self.dishesByRating = [self orderDictionary:self.categoriesOfDishes byType:@"rating"];
     self.dishesByPrice = [self orderDictionary:self.categoriesOfDishes byType:@"price"];
     self.dishesByAlphabet = [self orderDictionary:self.categoriesOfDishes byType:@"alphabet"];
-//    NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES];
-//    self.alphabet =[self.categoriesOfDishes sortedArrayUsingDescriptors:@[sort]];
 }
 
 - (NSMutableDictionary *)orderDictionary:(NSMutableDictionary *)dict byType:(NSString *)orderType
@@ -70,14 +66,10 @@
             [dish deleteInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
                 if (succeeded)
                 {
-                    NSLog(@"Object removed");
                     [self fetchMenuItems:PFUser.currentUser withCompletion:^(NSMutableDictionary * _Nonnull categoriesOfDishes, NSError * _Nullable error) {
                         if (error==nil)
                         {
                             self.categoriesOfDishes = categoriesOfDishes;
-                            NSLog(@"New menu successfuly fetched");
-                            NSLog(@"Step 4");
-
                             removedDish(self.categoriesOfDishes, nil);
                         }
                     }];
@@ -100,7 +92,6 @@
     {
         [self addDishToDict:dish toArray:dishesOfType];
     }
-    NSLog(@"Step 2");
 }
 
 - (void) addDishToDict : (Dish *) dish toArray: (NSArray *) dishesOfType
@@ -130,8 +121,6 @@
     {
         Dish *checkDish = [self.dishes objectAtIndex:0];
         if (![checkDish.name isEqualToString:@"test"]){
-            // make sorted array of every menu item
-//            NSLog(@"dishes %@", self.dishes);
             NSArray *dishesByFreqArray = [[Helpful_funs shared] orderArray:self.dishes byType:@"orderFrequency"];
             NSArray *dishesByRatingArray = [[Helpful_funs shared] orderArray:self.dishes byType:@"rating"];
             // take top 3 and bottom 3 based on reviews/frequency

@@ -45,7 +45,6 @@
     customerQuery = [CustomerTrack query];
     [customerQuery whereKey:@"email" equalTo:email];
     [customerQuery findObjectsInBackgroundWithBlock:^(NSArray * _Nullable customers, NSError * _Nullable error) {
-        NSLog(@"finished querying for waiters");
         if (!error)
         {
             if(customers && customers.count != 0){

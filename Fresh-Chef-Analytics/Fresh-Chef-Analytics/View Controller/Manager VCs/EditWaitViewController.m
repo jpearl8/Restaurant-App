@@ -12,6 +12,7 @@
 
 @interface EditWaitViewController ()
 @property (weak, nonatomic) IBOutlet UIButton *addButton;
+@property (weak, nonatomic) IBOutlet UIView *headerView;
 
 @end
 
@@ -21,6 +22,7 @@
     [super viewDidLoad];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
+    self.headerView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"pngguru.com-id-bymze"]];
     self.roster = [[WaiterManager shared] roster];
     self.addButton.layer.shadowRadius  = 1.5f;
     self.addButton.layer.shadowColor   = [UIColor colorWithRed:176.f/255.f green:199.f/255.f blue:226.f/255.f alpha:1.f].CGColor;

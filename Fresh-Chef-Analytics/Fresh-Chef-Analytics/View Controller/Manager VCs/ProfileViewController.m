@@ -157,7 +157,6 @@
         self.user[@"price"] = self.restaurantPriceField.text;
         [self.user saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
             if(succeeded){
-                NSLog(@"successfully saved updates");
                 [self setProfileLabels];
             } else {
                 NSLog(@"Error saving updates: %@", error.localizedDescription);
@@ -249,7 +248,6 @@
 
 - (IBAction)didTapProfilePic:(id)sender {
     if(self.isEditable == YES){
-        NSLog(@"tapped camera image");
         UIImagePickerController *imagePickerVC = [UIImagePickerController new];
         imagePickerVC.delegate = self;
         imagePickerVC.allowsEditing = YES;

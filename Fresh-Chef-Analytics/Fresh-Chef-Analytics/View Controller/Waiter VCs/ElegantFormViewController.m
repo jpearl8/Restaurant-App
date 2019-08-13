@@ -86,8 +86,7 @@
 
 
 - (IBAction)changeWaiterReview:(UISlider *)sender {
-    NSLog(@"%f", sender.value);
-   // self.customerOrder[0].waiterRating = sender.value;
+
 }
 
 - (IBAction)didSubmit:(UIButton *)sender {
@@ -106,7 +105,6 @@
         }
         float totalFrequency = [((Dish *)self.dishesArray[i]).orderFrequency floatValue];
         ((Dish *)self.dishesArray[i]).orderFrequency = [NSNumber numberWithFloat: ( [self.openOrders[i][@"amount"] floatValue] + totalFrequency)];
-        NSLog(@"%@", ((Dish *)self.dishesArray[i]));
         [((Dish *)self.dishesArray[i]) saveInBackground];
     }
     float totalRating = [self.waiter.rating floatValue];
@@ -121,7 +119,6 @@
     float numOfCustomers = [self.waiter.numOfCustomers floatValue];
     self.waiter.numOfCustomers = [NSNumber numberWithFloat: ([self.customerNumber floatValue] + numOfCustomers)];
     self.waiter.tableTops = [NSNumber numberWithFloat: ([self.waiter.tableTops floatValue] + 1)];
-    NSLog(@"%@", self.waiter);
     [self.waiter saveInBackground];
     
     [self performSegueWithIdentifier:@"toReceipt" sender:self];

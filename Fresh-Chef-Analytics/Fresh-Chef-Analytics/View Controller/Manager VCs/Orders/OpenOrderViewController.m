@@ -112,11 +112,13 @@
     NSString *content = @"☆";
     UIColor *starColor;
     if (orderInCell.count > 0){
-        if (!(orderInCell[0].customerLevel) || [orderInCell[0].customerLevel isEqual:[NSNumber numberWithInteger:0]]){
+        if (!(orderInCell[0].customerLevel) || [orderInCell[0].customerLevel isEqual:[NSNumber numberWithInteger:-1]]){
             starColor = [[UIRefs shared] colorFromHexString:([UIRefs shared].blueHighlight)];
         } else {
             content = @"★";
-            if ([orderInCell[0].customerLevel isEqual:[NSNumber numberWithInt:1]]){
+            if ([orderInCell[0].customerLevel isEqual:[NSNumber numberWithInt:0]]){
+                starColor = [[UIRefs shared] colorFromHexString:([UIRefs shared].blueHighlight)];
+            } else if ([orderInCell[0].customerLevel isEqual:[NSNumber numberWithInt:1]]){
                 starColor = [[UIRefs shared] colorFromHexString:([UIRefs shared].bronze)];
             } else if ([orderInCell[0].customerLevel isEqual:[NSNumber numberWithInt:2]]){
                 starColor = [[UIRefs shared] colorFromHexString:([UIRefs shared].silver)];
@@ -138,15 +140,17 @@
     NSString *dishesString = @"";
     NSString *amountsString = @"";
     dishArray = [[MenuManager shared] dishes];
-    NSLog(@"%@", dishArray);
     for (int i = 0; i < openOrders.count; i++){
         for (int j = 0; j < dishArray.count; j++)
         {
-            NSLog(@"%@", openOrders[i]);
-            NSLog(@"%@", ((Dish*)openOrders[i].dish).objectId);
             if ([((Dish *)dishArray[j]).objectId isEqualToString:((Dish*)openOrders[i].dish).objectId]){
-                dishesString = [NSString stringWithFormat:@"%@\n%@", dishesString, ((Dish *)dishArray[j]).name];
-                amountsString = [NSString stringWithFormat:@"%@\n%@", amountsString, [openOrders[i].amount stringValue]];
+                if (i == 0 || i == (openOrders.count)){
+                    dishesString = [NSString stringWithFormat:@"%@%@", dishesString, ((Dish *)dishArray[j]).name];
+                    amountsString = [NSString stringWithFormat:@"%@%@", amountsString, [openOrders[i].amount stringValue]];
+                } else {
+                    dishesString = [NSString stringWithFormat:@"%@\n%@", dishesString, ((Dish *)dishArray[j]).name];
+                    amountsString = [NSString stringWithFormat:@"%@\n%@", amountsString, [openOrders[i].amount stringValue]];
+                }
                 [self.dishesArray addObject:dishArray[j]];
             }
         }
@@ -172,7 +176,6 @@
                 }
                 else {
                     [[WaiterManager shared]findWaiter:waiter.objectId withCompletion:^(NSArray * _Nonnull waiters, NSError * _Nullable error) {
-                        NSLog(@"Waiters array: %@", waiters);
                         if (error){
                             NSLog(@"Waiter query: %@", error.localizedDescription);
                             completion(error);
@@ -182,11 +185,8 @@
                             //                        [waiters[0] fetchIfNeeded];
                             [self.tableWaiterDictionary setObject:waiters[0] forKey:key];
                             doneWithArray = doneWithArray + 1;
-                            NSLog(@"DONE monitor: %d", doneWithArray);
-                            NSLog(@"keys count %d", self.keys.count);
                             if (doneWithArray >= self.keys.count){
                                 [self.openOrdersTable reloadData];
-                                NSLog(@"check 1");
                                 completion(nil);
                             }
                         }
@@ -197,7 +197,6 @@
             if (doneWithArray >= self.keys.count){
                 [self.openOrdersTable reloadData];
                 completion(nil);
-                NSLog(@"check 2");
             }
             
         } else {

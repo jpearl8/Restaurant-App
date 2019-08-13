@@ -43,7 +43,6 @@
     self.theNewWaiter = [Waiter addNewWaiter:self.nameField.text withYears:[NSNumber numberWithFloat:[self.yearsField.text floatValue]] withImage:self.profileImage.image withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
         if (succeeded)
         {
-            NSLog(@"yay");
         }
         else
         {
@@ -54,7 +53,7 @@
 }
 
 - (IBAction)didTapWaiterImage:(id)sender {
-    NSLog(@"tapped camera image");
+
     UIImagePickerController *imagePickerVC = [UIImagePickerController new];
     imagePickerVC.delegate = self;
     imagePickerVC.allowsEditing = YES;

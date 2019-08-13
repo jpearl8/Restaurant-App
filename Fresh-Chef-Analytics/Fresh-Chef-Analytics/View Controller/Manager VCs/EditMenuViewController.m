@@ -15,6 +15,7 @@
 @property (assign) NSInteger expandedSectionHeaderNumber;
 @property (assign) UITableViewHeaderFooterView *expandedSectionHeader;
 
+@property (weak, nonatomic) IBOutlet UIView *headerView;
 
 @end
 
@@ -24,7 +25,7 @@
     [super viewDidLoad];
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
-    
+    self.headerView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"pngguru.com-id-bymze"]];
     [self updateLocalFromData];
     self.addButton.layer.shadowRadius  = 1.5f;
     self.addButton.layer.shadowColor   = [UIColor colorWithRed:176.f/255.f green:199.f/255.f blue:226.f/255.f alpha:1.f].CGColor;
@@ -55,9 +56,6 @@
     [[MenuManager shared] removeDishFromTable:dish withCompletion:^(NSMutableDictionary * _Nonnull categoriesOfDishes, NSError * _Nonnull error) {
         if (error==nil)
         {
-            NSLog(@"Step 5");
-
-            NSLog(@"Updating ui");
             self.categoriesOfDishes = categoriesOfDishes;
             self.categories = [self.categoriesOfDishes allKeys];
             self.sectionNames = self.categories;
@@ -126,9 +124,9 @@
         [viewWithTag removeFromSuperview];
     }
     // add the arrow image
-    CGSize headerFrame = self.view.frame.size;
-    UIImageView *theImageView = [[UIImageView alloc] initWithFrame:CGRectMake(headerFrame.width - 80, 20, 50, 50)];
-    theImageView.image = [UIImage imageNamed:@"purple-arrow"];
+//    CGSize headerFrame = self.view.frame.size;
+    UIImageView *theImageView = [[UIImageView alloc] initWithFrame:CGRectMake(tableView.frame.size.width-tableView.sectionHeaderHeight, 0, tableView.sectionHeaderHeight, tableView.sectionHeaderHeight)];
+    theImageView.image = [UIImage imageNamed:@"purple-arrow-down"];
     theImageView.tintColor = [UIColor whiteColor];
     theImageView.tag = 10203 + section;
     [header addSubview:theImageView];
@@ -206,7 +204,7 @@
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    return ((self.tableView.frame.size.height - 30) / [self.categories count]/2);
+    return (self.tableView.frame.size.height / [self.categories count]);
 }
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     if (self.sectionNames.count > 0) {
@@ -236,7 +234,7 @@
     self.categoriesOfDishes = [[MenuManager shared] categoriesOfDishes];
     self.categories = [self.categoriesOfDishes allKeys];
 }
-- (IBAction)dismiss:(id)sender {
+- (IBAction)dismissView:(id)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
@@ -244,7 +242,7 @@
 
 /*
  #pragma mark - Navigation
- x
+ 
  // In a storyboard-based application, you will often want to do a little preparation before navigation
  - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
  // Get the new view controller using [segue destinationViewController].

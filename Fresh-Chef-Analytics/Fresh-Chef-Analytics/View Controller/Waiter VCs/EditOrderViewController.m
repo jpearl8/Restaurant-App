@@ -125,12 +125,9 @@
 -(void)fillCellArrays:(NSMutableArray<OpenOrder *>*)ordersArray {
     NSArray<Dish*>*dishArray = [[NSArray alloc] init];
     dishArray = [[MenuManager shared] dishes];
-    NSLog(@"%@", dishArray);
     for (int i = 0; i < ordersArray.count; i++){
         for (int j = 0; j < dishArray.count; j++)
         {
-            NSLog(@"%@", ordersArray[i]);
-            NSLog(@"%@", ((Dish*)ordersArray[i].dish).objectId);
             if ([((Dish *)dishArray[j]).objectId isEqualToString:((Dish*)ordersArray[i].dish).objectId]){
                 [self.dishNames addObject:((Dish *)dishArray[j]).name];
             }
@@ -197,7 +194,6 @@
         if (!error){
             [self.vcDelegate callSuperRefresh];
             [self dismissViewControllerAnimated:YES completion:^{
-                NSLog(@"good");
             }];
             //[self dismissModalViewControllerAnimated:YES];
         } else {
@@ -209,7 +205,7 @@
 - (IBAction)hitCancel:(UIBarButtonItem *)sender {
     [self.vcDelegate callSuperRefresh];
     [self dismissViewControllerAnimated:YES completion:^{
-        NSLog(@"good");
+
     }];
     //[self dismissModalViewControllerAnimated:YES];
 }
@@ -219,7 +215,7 @@
         if (!error){
             [self.vcDelegate callSuperRefresh];
             [self dismissViewControllerAnimated:YES completion:^{
-                NSLog(@"good");
+
             }];
         } else {
             NSLog(@"%@", error.localizedDescription);

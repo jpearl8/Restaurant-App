@@ -348,7 +348,6 @@ pass final array on submit button of data table
             if (self.amounts[i] != [NSNumber numberWithInt:0]){
                 OpenOrder *openOrderNew = [OpenOrder new];
                 openOrderNew.dish = self.orderedDishes[i];
-                NSLog(@"%@, %@", self.orderedDishes[i].name, self.amounts[i]);
                 openOrderNew.amount = self.amounts[i];
                 openOrderNew.waiter = self.selectedWaiter;
                 openOrderNew.restaurant = [PFUser currentUser];
@@ -366,7 +365,6 @@ pass final array on submit button of data table
             if (!error){
                 [self.vcDelegate callSuperRefresh];
                 [self dismissViewControllerAnimated:YES completion:^{
-                    NSLog(@"good");
                 }];
             } else{
                 NSLog(@"%@", error.localizedDescription);
@@ -390,7 +388,6 @@ pass final array on submit button of data table
 
 - (IBAction)cancelAction:(UIBarButtonItem *)sender {
     [self dismissViewControllerAnimated:YES completion:^{
-        NSLog(@"good");
     }];
 }
 

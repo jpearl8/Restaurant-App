@@ -45,7 +45,7 @@
         self.averageTableLabel.hidden = NO;
     }
     else {
-        NSLog(@"Nothing selected?????");
+       
     }
 }
 - (void) allHidden

@@ -28,7 +28,6 @@
 
 
 -(void)textViewDidChange:(UITextView *)textView{
-    NSLog(@"%@", self.amount.text);
     NSNumberFormatter *f = [[NSNumberFormatter alloc] init];
     f.numberStyle = NSNumberFormatterDecimalStyle;
     [self.delegate changeAmount:[f numberFromString:self.amount.text] atIndex:self.index];
