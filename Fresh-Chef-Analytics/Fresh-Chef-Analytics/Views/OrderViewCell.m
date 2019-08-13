@@ -15,7 +15,9 @@
 @property (nonatomic, assign) CGFloat startingRightLayoutConstraintConstant;
 @property (nonatomic, weak) IBOutlet NSLayoutConstraint *contentViewRightConstraint;
 @property (nonatomic, weak) IBOutlet NSLayoutConstraint *contentViewLeftConstraint;
+@property (strong, nonatomic) IBOutlet UILabel *amountLabel;
 
+@property (strong, nonatomic) IBOutlet UILabel *dishLabel;
 
 @property (strong, nonatomic) IBOutletCollection(NSLayoutConstraint) NSArray *expandedConstraints;
 
@@ -37,17 +39,23 @@ static CGFloat const kBounceValue = 20.0f;
     self.panRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panThisCell:)];
     self.panRecognizer.delegate = self;
 
-  
+   //self.amountLabel.layer.cornerRadius = 5;
+   [self.amountLabel.layer setMasksToBounds:TRUE];
+    [self.amountLabel.layer setCornerRadius:6];
+    [self.amountLabel.layer setBorderWidth:.25];
+    [self.dishLabel.layer setMasksToBounds:TRUE];
+    [self.dishLabel.layer setCornerRadius:6];
+    [self.dishLabel.layer setBorderWidth:.25];
     [self.myContentView addGestureRecognizer:self.panRecognizer];
-    self.ordersButton.layer.shadowRadius  = .5f;
-    self.ordersButton.layer.shadowColor   = [UIColor colorWithRed:176.f/255.f green:199.f/255.f blue:226.f/255.f alpha:1.f].CGColor;
-    self.ordersButton.layer.shadowOffset  = CGSizeMake(0.0f, 0.0f);
-    self.ordersButton.layer.shadowOpacity = 0.9f;
-    self.ordersButton.layer.masksToBounds = NO;
-    
-    UIEdgeInsets shadowInsets     = UIEdgeInsetsMake(0, 0, -1.5f, 0);
-    UIBezierPath *shadowPath      = [UIBezierPath bezierPathWithRect:UIEdgeInsetsInsetRect(self.ordersButton.bounds, shadowInsets)];
-    self.ordersButton.layer.shadowPath    = shadowPath.CGPath;
+//    self.ordersButton.layer.shadowRadius  = .5f;
+//    self.ordersButton.layer.shadowColor   = [UIColor colorWithRed:176.f/255.f green:199.f/255.f blue:226.f/255.f alpha:1.f].CGColor;
+//    self.ordersButton.layer.shadowOffset  = CGSizeMake(0.0f, 0.0f);
+//    self.ordersButton.layer.shadowOpacity = 0.9f;
+//    self.ordersButton.layer.masksToBounds = NO;
+//
+//    UIEdgeInsets shadowInsets     = UIEdgeInsetsMake(0, 0, -1.5f, 0);
+//    UIBezierPath *shadowPath      = [UIBezierPath bezierPathWithRect:UIEdgeInsetsInsetRect(self.ordersButton.bounds, shadowInsets)];
+//    self.ordersButton.layer.shadowPath    = shadowPath.CGPath;
     // Initialization code
 }
 

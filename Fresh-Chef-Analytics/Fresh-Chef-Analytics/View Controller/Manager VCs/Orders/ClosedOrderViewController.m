@@ -90,11 +90,13 @@
     }
     NSString *content = @"☆";
     UIColor *starColor;
-    if (!(closedOrder.customerLevel) || [closedOrder.customerLevel isEqual:[NSNumber numberWithInteger:0]]){
+    if (!(closedOrder.customerLevel) || [closedOrder.customerLevel isEqual:[NSNumber numberWithInteger:-1]]){
         starColor = [[UIRefs shared] colorFromHexString:([UIRefs shared].blueHighlight)];
     } else {
         content = @"★";
-        if ([closedOrder.customerLevel isEqual:[NSNumber numberWithInt:1]]){
+        if ([closedOrder.customerLevel isEqual:[NSNumber numberWithInt:0]]){
+            starColor = [[UIRefs shared] colorFromHexString:([UIRefs shared].blueHighlight)];
+        } else if ([closedOrder.customerLevel isEqual:[NSNumber numberWithInt:1]]){
             starColor = [[UIRefs shared] colorFromHexString:([UIRefs shared].bronze)];
         } else if ([closedOrder.customerLevel isEqual:[NSNumber numberWithInt:2]]){
             starColor = [[UIRefs shared] colorFromHexString:([UIRefs shared].silver)];
@@ -118,11 +120,16 @@
     NSString *amountsString = @"";
     if (closedOrder.dishes.count == closedOrder.amounts.count){
         for (int i = 0; i < closedOrder.dishes.count; i++){
-            dishesString = [NSString stringWithFormat:@"%@\n%@", dishesString, closedOrder.dishes[i]];
-            amountsString = [NSString stringWithFormat:@"%@\n%@", amountsString, closedOrder.amounts[i]];
+            if (i == 0 || i == (closedOrder.dishes.count)){
+                dishesString = [NSString stringWithFormat:@"%@%@", dishesString, closedOrder.dishes[i]];
+                amountsString = [NSString stringWithFormat:@"%@%@", amountsString, closedOrder.amounts[i]];
+            } else {
+                dishesString = [NSString stringWithFormat:@"%@\n%@", dishesString, closedOrder.dishes[i]];
+                amountsString = [NSString stringWithFormat:@"%@\n%@", amountsString, closedOrder.amounts[i]];
         }
         [array addObject:dishesString];
         [array addObject:amountsString];
+        }
         
         return array;
     }
