@@ -39,6 +39,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (weak, nonatomic) IBOutlet UILabel *numCustomersServed;
 @property (weak, nonatomic) IBOutlet UILabel *numTables;
+@property (weak, nonatomic) IBOutlet UILabel *netRevenue;
 
 @end
 

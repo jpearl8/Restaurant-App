@@ -80,6 +80,7 @@
     }
     self.numCustomersServed.text = [NSString stringWithFormat:@"%@",  PFUser.currentUser[@"totalCustomers"]];
     self.numTables.text = [NSString stringWithFormat:@"%@", PFUser.currentUser[@"totalTableTops"]];
+    self.netRevenue.text = [NSString stringWithFormat:@"%@", PFUser.currentUser[@"totalRevenue"]];
     
 //    [self.alert.view addSubview:self.themePickerView];
 //    // add the OK action to the alert controller
@@ -201,6 +202,7 @@
     [self setProfilePicture];
     self.isEditable = NO;
     self.editButton.title = @"Edit";
+    self.chooseLibrary.hidden = YES;
 }
 
 -(void) showLabels: (BOOL)trueFalse {

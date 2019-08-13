@@ -1495,6 +1495,7 @@
                         <outlet property="editButton" destination="iyW-hx-2JC" id="IaJ-AK-C1d"/>
                         <outlet property="headerView" destination="D0L-DQ-94I" id="WQd-9D-IdH"/>
                         <outlet property="logoutButton" destination="P6E-nN-b1J" id="68H-dB-u1f"/>
+                        <outlet property="netRevenue" destination="fai-TL-Vcw" id="D8a-Jg-4f7"/>
                         <outlet property="numCustomersServed" destination="Q20-dc-og0" id="j1M-ZD-oZk"/>
                         <outlet property="numTables" destination="EKM-rr-zx4" id="jel-ge-Jcp"/>
                         <outlet property="restaurantCategoryField" destination="8kZ-yh-Uor" id="BWX-e8-NUM"/>
@@ -2324,7 +2325,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Fun" translatesAutoresizingMaskIntoConstraints="NO" id="bXS-8e-HcN">
-                                <rect key="frame" x="0.0" y="20" width="375.00000000000045" height="647"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <color key="backgroundColor" red="0.21285966040000001" green="0.14175727960000001" blue="0.49022626879999998" alpha="0.20000000000000001" colorSpace="custom" customColorSpace="displayP3"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bUk-bk-KS0">
@@ -7207,7 +7208,7 @@
                                 <rect key="frame" x="0.0" y="35" width="16" height="445"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" restorationIdentifier="T3B3Dish" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="T3B3Dish" rowHeight="300" id="y1s-kg-EPL" customClass="Top3Bottom3TableViewCell">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="T3B3Dish" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="T3B3Dish" rowHeight="300" id="y1s-kg-EPL" customClass="Top3Bottom3TableViewCell">
                                         <rect key="frame" x="0.0" y="28" width="16" height="300"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="y1s-kg-EPL" id="KE4-kz-8Um">
