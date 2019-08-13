@@ -8,17 +8,37 @@
 
 #import "CustomPopUpWaiterViewController.h"
 #import "EditWaitViewController.h"
+#import "UIRefs.h"
 
 @interface CustomPopUpWaiterViewController ()
 @property (strong, nonatomic) Waiter *theNewWaiter;
+@property (strong, nonatomic) UIButton *chooseLibrary;
+
 @end
 
 @implementation CustomPopUpWaiterViewController
-
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.chooseLibrary = [UIButton buttonWithType:UIButtonTypeCustom];
+    [self.chooseLibrary addTarget:self
+                           action:@selector(didTapLibrary:)
+                 forControlEvents:UIControlEventTouchUpInside];
+    [self.chooseLibrary setTitle:@"Choose from Library" forState:UIControlStateNormal];
+    self.chooseLibrary.frame = CGRectMake(300, 212, 100, 40.0);
+    self.chooseLibrary.backgroundColor = [[UIRefs shared] colorFromHexString:[UIRefs shared].purpleAccent];
+    [self.view addSubview:self.chooseLibrary];
+    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera])
+        {
+            self.chooseLibrary.hidden = NO;
+        }
+    else
+    {
+        self.chooseLibrary.hidden = YES;
+    }
     self.profileImage.layer.cornerRadius = 0.5 * self.profileImage.bounds.size.height;
-    self.profileImage.layer.masksToBounds = YES;}
+    self.profileImage.layer.masksToBounds = YES;
+    
+}
 - (IBAction)saveWaiter:(id)sender {
     self.theNewWaiter = [Waiter addNewWaiter:self.nameField.text withYears:[NSNumber numberWithFloat:[self.yearsField.text floatValue]] withImage:self.profileImage.image withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
         if (succeeded)
@@ -75,6 +95,18 @@
         [self dismissViewControllerAnimated:YES completion:nil];
     }
 
+}
+- (IBAction)didTapLibrary:(id)sender
+{
+    UIImagePickerController *imagePickerVC = [UIImagePickerController new];
+    imagePickerVC.delegate = self;
+    imagePickerVC.allowsEditing = YES;
+    imagePickerVC.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    [self presentViewController:imagePickerVC animated:YES completion:nil];
+    
+}
+- (IBAction)keyboardBye:(id)sender {
+    [self.view endEditing:YES];
 }
 /*
 #pragma mark - Navigation
