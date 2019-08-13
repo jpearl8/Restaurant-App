@@ -21,6 +21,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong, nonatomic) NSMutableDictionary *profitByDateTest; // Fake closed orders to test profit chart
 @property (strong, nonatomic) NSMutableDictionary *profitByDate;
 @property (strong, nonatomic) NSMutableDictionary *busynessByDate;
+@property (strong, nonatomic) NSMutableDictionary *busynessByDateTest;
 @property (strong, nonatomic) NSMutableArray *busynessArray;
 @property (strong, nonatomic) NSMutableArray *profitArray;
 @property (strong, nonatomic) NSMutableArray *xLabelsArray;

@@ -201,37 +201,38 @@
 //    NSLog(@"Date list: %@", dateList);
     
     //--********* TEST FOR PROFIT TRENDS **************//
-//    self.profitByDateTest = [[NSMutableDictionary alloc] init];
-//    NSString *dateString = @"";
-//    int year = 2019;
-//    int month = 1;
-//    int day = 1;
-//    float daysProfit = 0;
-//    for (int i = 0; i < 384; i++) {
-//        if (day >= 31) {
-//            if (month >= 12) {
-//                year++;
-//                month = 1;
-//            } else {
-//                month++;
-//            }
-//            day = 1;
-//        } else {
-//            day++;
-//        }
-//        NSString *monthString = [NSString stringWithFormat:@"%d", month];
-//        if ([monthString length] == 1) {
-//            monthString = [@"0" stringByAppendingString:monthString];
-//        }
-//        NSString *dayString = [NSString stringWithFormat:@"%d", day];
-//        if ([dayString length] == 1) {
-//            dayString = [@"0" stringByAppendingString:dayString];
-//        }
-//        dateString = [NSString stringWithFormat:@"%d-%@-%@", year, monthString, dayString];
-//        daysProfit = 400 / day;
-//        [self.profitByDateTest setObject:@(daysProfit) forKey:dateString];
-//
-//    }
+    self.profitByDateTest = [[NSMutableDictionary alloc] init];
+    self.busynessByDateTest = [[NSMutableDictionary alloc] init];
+    NSString *dateString = @"";
+    int year = 2019;
+    int month = 1;
+    int day = 1;
+    float daysProfit = 0;
+    for (int i = 0; i < 384; i++) {
+        if (day >= 31) {
+            if (month >= 12) {
+                year++;
+                month = 1;
+            } else {
+                month++;
+            }
+            day = 1;
+        } else {
+            day++;
+        }
+        NSString *monthString = [NSString stringWithFormat:@"%d", month];
+        if ([monthString length] == 1) {
+            monthString = [@"0" stringByAppendingString:monthString];
+        }
+        NSString *dayString = [NSString stringWithFormat:@"%d", day];
+        if ([dayString length] == 1) {
+            dayString = [@"0" stringByAppendingString:dayString];
+        }
+        dateString = [NSString stringWithFormat:@"%d-%@-%@", year, monthString, dayString];
+        daysProfit = 400 / day;
+        [self.profitByDateTest setObject:@(daysProfit) forKey:dateString];
+
+    }
 //    NSLog(@"Test profit dict: %@", self.profitByDateTest);
     
 }
@@ -296,6 +297,8 @@
         }
         //        NSLog(@"Day: %@, with profit: %@", dayString, self.profitByDate[dayString]);
     }
+    
+    
     
 }
 
