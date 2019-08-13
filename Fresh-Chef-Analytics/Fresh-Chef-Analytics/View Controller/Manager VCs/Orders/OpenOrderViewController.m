@@ -112,11 +112,13 @@
     NSString *content = @"☆";
     UIColor *starColor;
     if (orderInCell.count > 0){
-        if (!(orderInCell[0].customerLevel) || [orderInCell[0].customerLevel isEqual:[NSNumber numberWithInteger:0]]){
+        if (!(orderInCell[0].customerLevel) || [orderInCell[0].customerLevel isEqual:[NSNumber numberWithInteger:-1]]){
             starColor = [[UIRefs shared] colorFromHexString:([UIRefs shared].blueHighlight)];
         } else {
             content = @"★";
-            if ([orderInCell[0].customerLevel isEqual:[NSNumber numberWithInt:1]]){
+            if ([orderInCell[0].customerLevel isEqual:[NSNumber numberWithInt:0]]){
+                starColor = [[UIRefs shared] colorFromHexString:([UIRefs shared].blueHighlight)];
+            } else if ([orderInCell[0].customerLevel isEqual:[NSNumber numberWithInt:1]]){
                 starColor = [[UIRefs shared] colorFromHexString:([UIRefs shared].bronze)];
             } else if ([orderInCell[0].customerLevel isEqual:[NSNumber numberWithInt:2]]){
                 starColor = [[UIRefs shared] colorFromHexString:([UIRefs shared].silver)];
@@ -137,12 +139,18 @@
     NSMutableArray<NSString*>*array = [[NSMutableArray alloc] init];
     NSString *dishesString = @"";
     NSString *amountsString = @"";
+    dishArray = [[MenuManager shared] dishes];
     for (int i = 0; i < openOrders.count; i++){
         for (int j = 0; j < dishArray.count; j++)
         {
             if ([((Dish *)dishArray[j]).objectId isEqualToString:((Dish*)openOrders[i].dish).objectId]){
-                dishesString = [NSString stringWithFormat:@"%@\n%@", dishesString, ((Dish *)dishArray[j]).name];
-                amountsString = [NSString stringWithFormat:@"%@\n%@", amountsString, [openOrders[i].amount stringValue]];
+                if (i == 0 || i == (openOrders.count)){
+                    dishesString = [NSString stringWithFormat:@"%@%@", dishesString, ((Dish *)dishArray[j]).name];
+                    amountsString = [NSString stringWithFormat:@"%@%@", amountsString, [openOrders[i].amount stringValue]];
+                } else {
+                    dishesString = [NSString stringWithFormat:@"%@\n%@", dishesString, ((Dish *)dishArray[j]).name];
+                    amountsString = [NSString stringWithFormat:@"%@\n%@", amountsString, [openOrders[i].amount stringValue]];
+                }
                 [self.dishesArray addObject:dishArray[j]];
             }
         }

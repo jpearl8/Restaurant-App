@@ -136,7 +136,7 @@
 }
 
 - (void)waiterRating:(NSNumber *)rating{
-    self.waiterRating = [NSNumber numberWithDouble:(2*[rating doubleValue])];
+    self.waiterRating = [NSNumber numberWithDouble:([rating doubleValue])];
 }
 //-(void)textViewDidChange:(UITextView *)textView{
 //

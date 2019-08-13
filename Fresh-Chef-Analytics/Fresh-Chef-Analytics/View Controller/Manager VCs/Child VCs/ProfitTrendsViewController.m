@@ -54,11 +54,11 @@
     self.categoryPicker.delegate = self;
     self.categoryPicker.dataSource = self;
     self.profitByDay = [[NSMutableDictionary alloc] init];
-    self.profitByDay = [[OrderManager shared] profitByDate];
+    self.profitByDay = [[OrderManager shared] profitByDateTest];
     self.originalProfit = [[NSMutableArray alloc] init];
     self.originalProfit = [[OrderManager shared] originalProfitByDate];
     self.busynessByDay = [[NSMutableDictionary alloc] init];
-    self.busynessByDay = [[OrderManager shared] busynessByDate];
+    self.busynessByDay = [[OrderManager shared] busynessByDateTest];
     self.originalBusyness = [[NSMutableArray alloc] init];
     self.originalBusyness = [[OrderManager shared] originalBusynessByDate];
     self.originalXLabels = [[NSMutableArray alloc] init];
