@@ -119,7 +119,6 @@
         }
         float totalFrequency = [((Dish *)self.dishesArray[i]).orderFrequency floatValue];
         ((Dish *)self.dishesArray[i]).orderFrequency = [NSNumber numberWithFloat: ( [self.openOrders[i][@"amount"] floatValue] + totalFrequency)];
-        NSLog(@"%@", ((Dish *)self.dishesArray[i]));
         [((Dish *)self.dishesArray[i]) saveInBackground];
     }
     float totalRating = [self.waiter.rating floatValue];
@@ -127,7 +126,6 @@
         totalRating = 0;
     }
     self.waiter.rating = [NSNumber numberWithFloat: ([self.waiterRatingNum floatValue] + totalRating)];
-    NSLog(@"%d", self.waiterComments==nil);
     if (!(self.waiterComments==nil || [self.waiterComments isEqualToString:@""])){
         self.waiter.comments = [self.waiter.comments arrayByAddingObject:self.waiterComments];
     }

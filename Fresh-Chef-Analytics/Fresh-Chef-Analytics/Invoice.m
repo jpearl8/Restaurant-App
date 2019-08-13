@@ -41,7 +41,6 @@
 }
 
 - (void)addItemWithName:(NSString *)itemName description:(NSString *)description taxRate:(NSString *)taxRate unitPrice:(NSString *)unitPrice taxName:(NSString *)taxName quantity:(NSString *)quantity {
-    NSLog(@"Adding Item w/ Name: %@", itemName);
     Item *item;
     NSDate *today = [NSDate date];
     item = [[Item alloc] initWithName:itemName description:description taxRate:taxRate unitPrice:unitPrice taxName:taxName quantity:quantity date:today];

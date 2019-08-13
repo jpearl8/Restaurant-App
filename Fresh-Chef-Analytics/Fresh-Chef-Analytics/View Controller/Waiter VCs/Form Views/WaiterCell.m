@@ -37,8 +37,6 @@
     return newText.length < characterLimit;
 }
 - (IBAction)changeWaiterRating:(HCSStarRatingView *)sender {
-    NSLog(@"%f", sender.value);
-    //self.customerRatings[self.index] = [NSNumber numberWithDouble:(2 * sender.value)];
     [self.waiterDelegate waiterRating:[NSNumber numberWithDouble:(2 * sender.value)]];
 }
 

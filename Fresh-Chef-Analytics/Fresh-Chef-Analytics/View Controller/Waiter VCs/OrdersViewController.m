@@ -24,12 +24,6 @@
 
 
 @interface OrdersViewController () <OrderViewCellDelegate, UITableViewDelegate, UITableViewDataSource, VCDelegate> {
-//    NSMutableArray *_objects;
-//    //    NSLog(@"In the delegate, Clicked button one for %@", itemText);
-//    NSString *customerNumber;
-//    NSArray<OpenOrder *>*openOrders;
-//    Waiter *waiter;
-//    NSMutableArray <Dish *>*dishArray;
 }
 @property (strong, nonatomic) IBOutlet UITableView *openOrdersTable;
 @property (strong, nonatomic) IBOutlet UIImageView *background;
@@ -55,7 +49,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    //[[UIRefs shared] setImage:self.background  isCustomerForm:NO];
+
     self.openOrdersTable.dataSource = self;
     self.openOrdersTable.delegate = self;
     self.tableWaiterDictionary = [[NSMutableDictionary alloc] init];
@@ -172,29 +166,13 @@
     return NO;
 }
 
-//- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-//    if (editingStyle == UITableViewCellEditingStyleDelete) {
-//        NSLog(@"Cell recursive description:\n\n%@\n\n", [[self.openOrdersTable cellForRowAtIndexPath:indexPath] performSelector:@selector(recursiveDescription)]);
-//        [_objects removeObjectAtIndex:indexPath.row];
-//        [self.openOrdersTable deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-//    } else {
-//        NSLog(@"Unhandled editing style! %d", editingStyle);
-//    }
-//}
+
 #pragma mark - SwipeableCellDelegate
 - (void)editForIndex:(NSNumber *)index {
     self.index = index;
     [self performSegueWithIdentifier:@"Edit" sender:self];
-    NSLog(@"yo");
 }
-//- (void)editForItemText:(NSArray <OpenOrder *>*)openOrders withCustomerNumber:(NSString*)number withWaiter:(Waiter *)waiter withDishArray:(NSMutableArray <Dish *>*)dishArray {
-//    FunFormViewController
-////    NSLog(@"In the delegate, Clicked button one for %@", itemText);
-////    @property (strong, nonatomic) NSString *customerNumber;
-////    @property (strong, nonatomic) NSArray<OpenOrder *>*openOrders;
-////    @property (strong, nonatomic) Waiter *waiter;
-////    @property (strong, nonatomic) NSMutableArray <Dish *>*dishArray;
-//}
+
 
 - (void)completeForIndex:(NSNumber *)index {
   
@@ -205,23 +183,9 @@
 }
 
 -(void) callSuperRefresh{
-    //[self viewDidLoad];
     [self refreshOrders:self.refreshButton];
 }
 
-/*
- // Override to support rearranging the table view.
- - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
- }
- */
-
-/*
- // Override to support conditional rearranging of the table view.
- - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
- // Return NO if you do not want the item to be re-orderable.
- return YES;
- }
- */
 
 -(void) fetchOpenOrders:(void (^)(NSError * _Nullable error)) completion{
     [[OrderManager shared] fetchOpenOrderItems:[PFUser currentUser] withCompletion:^(NSArray * _Nonnull openOrders, NSError * _Nonnull error) {
@@ -238,7 +202,6 @@
                 }
                 else {
                     [[WaiterManager shared]findWaiter:waiter.objectId withCompletion:^(NSArray * _Nonnull waiters, NSError * _Nullable error) {
-                        NSLog(@"Waiters array: %@", waiters);
                         if (error){
                             NSLog(@"Waiter query: %@", error.localizedDescription);
                             completion(error);
@@ -248,11 +211,8 @@
     //                        [waiters[0] fetchIfNeeded];
                             [self.tableWaiterDictionary setObject:waiters[0] forKey:key];
                             doneWithArray = doneWithArray + 1;
-                            NSLog(@"DONE monitor: %d", doneWithArray);
-                            NSLog(@"keys count %d", self.keys.count);
                             if (doneWithArray >= self.keys.count){
                                 [self.openOrdersTable reloadData];
-                                NSLog(@"check 1");
                                 completion(nil);
                             }
                         }
@@ -263,7 +223,6 @@
             if (doneWithArray >= self.keys.count){
                 [self.openOrdersTable reloadData];
                 completion(nil);
-                NSLog(@"check 2");
             }
             
         } else {
@@ -310,12 +269,9 @@
     NSString *dishesString = @"";
     NSString *amountsString = @"";
     dishArray = [[MenuManager shared] dishes];
-    NSLog(@"%@", dishArray);
     for (int i = 0; i < openOrders.count; i++){
         for (int j = 0; j < dishArray.count; j++)
         {
-            NSLog(@"%@", openOrders[i]);
-            NSLog(@"%@", ((Dish*)openOrders[i].dish).objectId);
             if ([((Dish *)dishArray[j]).objectId isEqualToString:((Dish*)openOrders[i].dish).objectId]){
                 if (i == 0 || i == (openOrders.count)){
                     dishesString = [NSString stringWithFormat:@"%@%@", dishesString, ((Dish *)dishArray[j]).name];
@@ -337,11 +293,6 @@
 
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    NSLog(@"%@", sender);
-    NSLog(@"%@", segue.identifier);
-   
-//         NSString *category = [PFUser currentUser][@"theme"];
-//
     if ([segue.identifier isEqualToString:@"Fun"]){
         FunFormViewController *funVC = [segue destinationViewController];
         funVC.waiter = self.tableWaiterDictionary[self.keys[[self.index integerValue]]];
@@ -372,29 +323,18 @@
         editVC.index = self.index;
         editVC.editableOpenOrders = [editVC.openOrders mutableCopy];
         editVC.vcDelegate = self;
-        //editVC.dishesArray = self.dishesArray;
+
         
     }
     if ([segue.identifier isEqualToString:@"Add"]){
         WaiterViewController *waitVC = [segue destinationViewController];
         waitVC.vcDelegate = self;
-        //editVC.dishesArray = self.dishesArray;
+
         
     }
     
 
 }
-//- (IBAction)newOrderAction:(UIBarButtonItem *)sender {
-//    [self dismissViewControllerAnimated:YES completion:^{
-//        //Stuff after dismissing
-//    }];
-//     //[self.navigationController popViewControllerAnimated:YES];
-////    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-////    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-////    UINavigationController *navigationController = [storyboard instantiateViewControllerWithIdentifier:@"waiterView"];
-////    appDelegate.window.rootViewController = navigationController;
-//}
-
 
 - (IBAction)didLogout:(id)sender {
     AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
@@ -402,7 +342,7 @@
     LoginViewController *loginViewController = [storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
     appDelegate.window.rootViewController = loginViewController;
     [PFUser logOutInBackgroundWithBlock:^(NSError * _Nullable error) {
-        // PFUser.current() will now be nil
+
     }];
 }
 @end

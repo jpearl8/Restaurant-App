@@ -42,8 +42,6 @@
 }
 
 - (IBAction)changeCustomerRating:(UISlider *)sender {
-    NSLog(@"%f", sender.value);
-//    self.customerRatings[self.index] = [NSNumber numberWithFloat:sender.value];
     [self.delegate customerRatingForIndex:self.index withRating:[NSNumber numberWithFloat:[sender.restorationIdentifier floatValue]]];
 }
 

@@ -55,9 +55,6 @@
     [[MenuManager shared] removeDishFromTable:dish withCompletion:^(NSMutableDictionary * _Nonnull categoriesOfDishes, NSError * _Nonnull error) {
         if (error==nil)
         {
-            NSLog(@"Step 5");
-
-            NSLog(@"Updating ui");
             self.categoriesOfDishes = categoriesOfDishes;
             self.categories = [self.categoriesOfDishes allKeys];
             self.sectionNames = self.categories;

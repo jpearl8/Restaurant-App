@@ -85,7 +85,6 @@
             [waiter deleteInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
                 if (succeeded)
                 {
-                    NSLog(@"Object removed");
                     [self fetchWaiters:PFUser.currentUser withCompletion:^(NSError * _Nullable error) {
                         if (error==nil)
                         {
@@ -107,10 +106,8 @@
     waiterQuery = [Waiter query];
     [waiterQuery whereKey:@"objectId" equalTo:objectId];
     [waiterQuery findObjectsInBackgroundWithBlock:^(NSArray * _Nullable waiters, NSError * _Nullable error) {
-        NSLog(@"finished querying for waiters");
         if (!error)
         {
-            NSLog(@"found waiters %@", waiters);
             completion(waiters, nil);
         }
         else

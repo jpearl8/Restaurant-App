@@ -137,13 +137,9 @@
     NSMutableArray<NSString*>*array = [[NSMutableArray alloc] init];
     NSString *dishesString = @"";
     NSString *amountsString = @"";
-    dishArray = [[MenuManager shared] dishes];
-    NSLog(@"%@", dishArray);
     for (int i = 0; i < openOrders.count; i++){
         for (int j = 0; j < dishArray.count; j++)
         {
-            NSLog(@"%@", openOrders[i]);
-            NSLog(@"%@", ((Dish*)openOrders[i].dish).objectId);
             if ([((Dish *)dishArray[j]).objectId isEqualToString:((Dish*)openOrders[i].dish).objectId]){
                 dishesString = [NSString stringWithFormat:@"%@\n%@", dishesString, ((Dish *)dishArray[j]).name];
                 amountsString = [NSString stringWithFormat:@"%@\n%@", amountsString, [openOrders[i].amount stringValue]];
@@ -172,7 +168,6 @@
                 }
                 else {
                     [[WaiterManager shared]findWaiter:waiter.objectId withCompletion:^(NSArray * _Nonnull waiters, NSError * _Nullable error) {
-                        NSLog(@"Waiters array: %@", waiters);
                         if (error){
                             NSLog(@"Waiter query: %@", error.localizedDescription);
                             completion(error);
@@ -182,11 +177,8 @@
                             //                        [waiters[0] fetchIfNeeded];
                             [self.tableWaiterDictionary setObject:waiters[0] forKey:key];
                             doneWithArray = doneWithArray + 1;
-                            NSLog(@"DONE monitor: %d", doneWithArray);
-                            NSLog(@"keys count %d", self.keys.count);
                             if (doneWithArray >= self.keys.count){
                                 [self.openOrdersTable reloadData];
-                                NSLog(@"check 1");
                                 completion(nil);
                             }
                         }
@@ -197,7 +189,6 @@
             if (doneWithArray >= self.keys.count){
                 [self.openOrdersTable reloadData];
                 completion(nil);
-                NSLog(@"check 2");
             }
             
         } else {
