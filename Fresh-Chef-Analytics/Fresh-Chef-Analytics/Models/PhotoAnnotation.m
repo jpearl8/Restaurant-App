@@ -8,7 +8,7 @@
 //
 
 #import "PhotoAnnotation.h"
-
+#import "UIRefs.h"
 @interface PhotoAnnotation()
 
 @property (nonatomic) CLLocationCoordinate2D coordinate;
@@ -57,15 +57,15 @@
     annotationView.canShowCallout = YES;
     if ([self.imageName isEqualToString:@"pizza-40"])
     {
-        annotationView.backgroundColor = [UIColor colorWithRed:(0.61) green:(0.99) blue:(0.796) alpha:0.8];
+        annotationView.backgroundColor = [[UIRefs shared] colorFromHexString:@"caf2d7"];;
     }
     else if ([self.imageName isEqualToString:@"rating-40"])
     {
-        annotationView.backgroundColor = [UIColor colorWithRed:(0.98) green:(0.61) blue:(0.99) alpha:0.8];
+        annotationView.backgroundColor = [[UIRefs shared] colorFromHexString:@"ccc1ff"];;
     }
     else if ([self.imageName isEqualToString:@"price-40"])
     {
-        annotationView.backgroundColor = [UIColor colorWithRed:(.73) green:(.61) blue:(0.99) alpha:0.8];
+        annotationView.backgroundColor = [[UIRefs shared] colorFromHexString:@"ffeafe"];;
     }
     annotationView.image = [UIImage imageNamed:self.imageName];
     annotationView.layer.cornerRadius = annotationView.frame.size.width/2;
