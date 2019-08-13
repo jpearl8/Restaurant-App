@@ -104,7 +104,6 @@
     NSString *category = [PFUser currentUser][@"theme"];
     if ([category isEqualToString:@"Comfortable"]){
         cell.type.textColor = [UIColor whiteColor];
-        //cell.stepper.tintColor = [UIColor whiteColor];
         
     }
     cell.amount.text  = [NSString stringWithFormat:@"%.0f", cell.value];
@@ -124,18 +123,10 @@
     }
 }
 
-//- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
-//    if (searchText.length != 0) {
-//        NSPredicate *predicate = [NSPredicate predicateWithBlock:^BOOL(NSDictionary *evaluatedObject, NSDictionary *bindings) {
-//            return [evaluatedObject[@"name"] containsString:searchText];
-//        }];
-//        self.filteredDishes = [self.allDishes filteredArrayUsingPredicate:predicate];
-//    }
-//    else {
-//        self.filteredDishes = self.allDishes;
-//    }
-//    [self.ordersTableView reloadData];
-//}
+- (IBAction)onTap:(id)sender {
+    [self.view endEditing:(YES)];
+}
+
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
     if (searchText.length != 0) {
         NSPredicate *predicate = [NSPredicate predicateWithBlock:^BOOL(NSDictionary *evaluatedObject, NSDictionary *bindings) {
@@ -167,22 +158,11 @@
     };
 }
 
-//- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-//    EditOrderViewController *editVC = [segue destinationViewController];
-//    NSArray *oldOpenOrders = [[NSArray alloc] init];
-//    oldOpenOrders = [self.delegate getOldOpenOrders];
-//    editVC.waiter = self.waiter;
-//    editVC.editableOpenOrders =  self.openOrdersFromEdit;
-//    editVC.openOrders = oldOpenOrders;
-//
-//}
 
 
 
 
 - (IBAction)addToOrder:(UIBarButtonItem *)sender {
-    //create new open orders from dish array
-    //make an array of openOrders to pass to edit Orders using delegate method
     
     if (self.amounts.count != 0 && (!([[Helpful_funs shared]arrayOfZeros:self.amounts]))){
         for (int i = 0; i < self.amounts.count; i++){
@@ -205,15 +185,14 @@
         [self dismissViewControllerAnimated:YES completion:^{
             NSLog(@"good");
         }];
-     // [self performSegueWithIdentifier:@"toEdit" sender:self];
+
     }
 }
 
 - (IBAction)cancel:(UIBarButtonItem *)sender {
-   // [self.vcDelegate callSuperRefresh:(NSMutableArray <OpenOrder *>*)editableOpenOrders]
     [self dismissViewControllerAnimated:YES completion:^{
         NSLog(@"good");
     }];
-  // [self performSegueWithIdentifier:@"toEdit" sender:self];
+
 }
 @end

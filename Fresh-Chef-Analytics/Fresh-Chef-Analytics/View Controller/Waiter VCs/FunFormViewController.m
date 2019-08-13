@@ -62,6 +62,9 @@
     
     // Do any additional setup after loading the view.
 }
+- (IBAction)onTap:(id)sender {
+    [self.view endEditing:(YES)];
+}
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return (self.openOrders.count + 1);
@@ -69,7 +72,7 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.row == 0){
-        return 211;
+        return 223;
     } else {
         return 250;
     }

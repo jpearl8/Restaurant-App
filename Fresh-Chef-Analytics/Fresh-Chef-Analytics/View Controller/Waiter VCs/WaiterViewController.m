@@ -237,6 +237,9 @@ pass final array on submit button of data table
 }
 
 
+- (IBAction)onTap:(id)sender {
+    [self.view endEditing:(YES)];
+}
 
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
     if (searchText.length != 0) {
