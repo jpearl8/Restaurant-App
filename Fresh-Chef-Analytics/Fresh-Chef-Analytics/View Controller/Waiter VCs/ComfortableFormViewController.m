@@ -15,16 +15,11 @@
 @interface ComfortableFormViewController () <UITableViewDelegate, UITableViewDataSource, UITextViewDelegate, ComfortableCellDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *menuRatings;
-//@property (weak, nonatomic) IBOutlet UILabel *waiterNameLabel;
-//@property (weak, nonatomic) IBOutlet UITextView *waiterComments;
-//@property (weak, nonatomic) IBOutlet UILabel *charsRemaining;
-//@property (weak, nonatomic) IBOutlet UIImageView *waiterPic;
 @property (strong, nonatomic) IBOutlet UIButton *submit;
 @property (strong, nonatomic) NSMutableArray *customerRatings;
 @property (strong, nonatomic) NSMutableArray *customerComments;
 @property (assign, nonatomic) NSNumber *waiterRatingNum;
 @property (strong, nonatomic) NSString *waiterComments;
-//@property (weak, nonatomic) IBOutlet HCSStarRatingView *waiterRating;
 @end
 
 @implementation ComfortableFormViewController
@@ -33,10 +28,6 @@
      [super viewDidLoad];
     self.menuRatings.delegate = self;
     self.menuRatings.dataSource = self;
-//    self.waiterNameLabel.text = self.waiter.name;
-//    self.waiterComments.delegate = self;
-//    self.waiterComments.placeholder = @"Comments on your waiter";
-//    self.waiterComments.placeholderColor = [UIColor lightGrayColor];
     self.customerRatings = [[NSMutableArray alloc] init];
     self.customerComments = [[NSMutableArray alloc] init];
     NSNumber *defaultRating = [NSNumber numberWithFloat:5];
@@ -46,7 +37,7 @@
     }
     self.submit.layer.borderWidth = .5f;
     self.submit.layer.borderColor = [[UIRefs shared] colorFromHexString:[UIRefs shared].purpleAccent].CGColor;
-    // Do any additional setup after loading the view.
+
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -106,23 +97,10 @@
 - (void)waiterRating:(NSNumber *)rating{
     self.waiterRatingNum = [NSNumber numberWithDouble:(2*[rating doubleValue])];
 }
-//- (IBAction)changeWaiterRating:(HCSStarRatingView *)sender {
-//    NSLog(@"%f", sender.value);
-//    self.waiterRatingNum = [NSNumber numberWithDouble:(2*sender.value)];
-//}
 
-//-(void)textViewDidChange:(UITextView *)textView{
-//    //self.customerOrder[0].waiterReview = self.waiterComments.text;
-//    //handle text editing finished
-//}
-//
-//- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text{
-//    int characterLimit = 140;
-//    NSString *newText = [self.waiterComments.text stringByReplacingCharactersInRange:range withString:text];
-//    self.charsRemaining.text = [NSString stringWithFormat: @"%d", (int)(characterLimit - newText.length)];
-//    return newText.length < characterLimit;
-//}
-
+- (IBAction)onTap:(id)sender {
+    [self.view endEditing:(YES)];
+}
 
 - (IBAction)didSubmit:(UIButton *)sender {
     for (int i = 0; i < self.openOrders.count; i++){

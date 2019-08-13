@@ -40,7 +40,7 @@
     PFUser *currentUser = [PFUser currentUser];
     NSString *location = currentUser[@"address"];
     self.params = [[NSMutableArray alloc] initWithObjects:location, @"0", @"0", nil];
-    self.dropDownCats = @[@"General Competitors", @"Cagegory Competitors", @"Price Point Competitors"];
+    self.dropDownCats = @[@"General Competitors", @"Category Competitors", @"Price Point Competitors"];
     self.selectedIndex = 0;
     self.dropDownLabel.text = @"General Competitors";
 

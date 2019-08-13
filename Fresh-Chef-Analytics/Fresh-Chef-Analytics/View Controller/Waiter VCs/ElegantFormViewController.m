@@ -129,12 +129,12 @@
 }
 - (void)customerCommentForIndex:(int)index withComment:(NSString *)comment{
     self.customerComments[index] = comment;
-    // [self.customerComments replaceObjectAtIndex:index withObject:comment];
 }
 - (void)customerRatingForIndex:(int)index withRating:(NSNumber *)rating{
     self.customerRatings[index] = rating;
-    
-    //[self.customerRatingsArray replaceObjectAtIndex:index withObject:rating];
+}
+- (IBAction)onTap:(id)sender {
+    [self.view endEditing:(YES)];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {

@@ -109,6 +109,9 @@
     }
 }
 
+- (IBAction)onTap:(id)sender {
+    [self.view endEditing:(YES)];
+}
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(nonnull NSIndexPath *)indexPath{
     if (!([tableView.restorationIdentifier isEqualToString:@"menu"])){

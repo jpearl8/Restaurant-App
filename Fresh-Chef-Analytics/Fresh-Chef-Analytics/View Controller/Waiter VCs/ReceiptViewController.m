@@ -116,6 +116,10 @@
     // Pass the selected object to the new view controller.
 }
 */
+- (IBAction)onTap:(id)sender {
+    [self.view endEditing:(YES)];
+}
+
 - (IBAction)didSubmit:(id)sender {
     float pastTotalTips = [self.waiter.tipsMade floatValue];
     self.waiter.tipsMade = [NSNumber numberWithFloat: ([self.tip.text floatValue] + pastTotalTips)];
