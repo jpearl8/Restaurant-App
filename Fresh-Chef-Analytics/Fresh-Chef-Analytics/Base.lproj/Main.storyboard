@@ -7398,7 +7398,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="Price" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HP1-cW-ceL">
-                                <rect key="frame" x="20" y="260" width="0.0" height="21"/>
+                                <rect key="frame" x="50" y="280" width="110" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -7444,21 +7444,21 @@
                         <constraints>
                             <constraint firstItem="AUJ-ET-V6P" firstAttribute="top" secondItem="ucn-ot-9FL" secondAttribute="bottom" constant="20" id="0WW-2S-7bn"/>
                             <constraint firstItem="zkB-xo-rME" firstAttribute="height" secondItem="ucn-ot-9FL" secondAttribute="height" id="34v-Ne-bYV"/>
-                            <constraint firstItem="HP1-cW-ceL" firstAttribute="leading" secondItem="uDy-CV-Bir" secondAttribute="leading" constant="20" id="7OL-p9-41D"/>
+                            <constraint firstItem="HP1-cW-ceL" firstAttribute="leading" secondItem="uDy-CV-Bir" secondAttribute="leading" constant="50" id="7OL-p9-41D"/>
                             <constraint firstItem="bRc-PS-JVt" firstAttribute="trailing" secondItem="uDy-CV-Bir" secondAttribute="trailing" id="9FZ-UB-RND"/>
-                            <constraint firstItem="zdw-Ed-zLV" firstAttribute="centerY" secondItem="HP1-cW-ceL" secondAttribute="centerY" id="9Sv-70-wcW"/>
+                            <constraint firstItem="zdw-Ed-zLV" firstAttribute="centerY" secondItem="HP1-cW-ceL" secondAttribute="centerY" constant="-20" id="9Sv-70-wcW"/>
                             <constraint firstItem="zkB-xo-rME" firstAttribute="leading" secondItem="zdw-Ed-zLV" secondAttribute="trailing" constant="9" id="FgK-Io-OaP"/>
                             <constraint firstItem="XPb-a4-fUn" firstAttribute="leading" secondItem="zkB-xo-rME" secondAttribute="trailing" constant="-10" id="Ghr-Su-8FF"/>
                             <constraint firstItem="61C-Se-hAV" firstAttribute="top" secondItem="AUJ-ET-V6P" secondAttribute="bottom" constant="-10" id="HL6-R8-KCj"/>
-                            <constraint firstItem="XPb-a4-fUn" firstAttribute="centerY" secondItem="HP1-cW-ceL" secondAttribute="centerY" id="IB4-oB-VAI"/>
-                            <constraint firstItem="ucn-ot-9FL" firstAttribute="centerY" secondItem="HP1-cW-ceL" secondAttribute="centerY" id="NOg-wp-Ing"/>
-                            <constraint firstItem="9Mi-WV-qpa" firstAttribute="centerY" secondItem="HP1-cW-ceL" secondAttribute="centerY" id="Odn-Wd-fxE"/>
+                            <constraint firstItem="XPb-a4-fUn" firstAttribute="centerY" secondItem="HP1-cW-ceL" secondAttribute="centerY" constant="-20" id="IB4-oB-VAI"/>
+                            <constraint firstItem="ucn-ot-9FL" firstAttribute="centerY" secondItem="HP1-cW-ceL" secondAttribute="centerY" constant="-20" id="NOg-wp-Ing"/>
+                            <constraint firstItem="9Mi-WV-qpa" firstAttribute="centerY" secondItem="HP1-cW-ceL" secondAttribute="centerY" constant="-20" id="Odn-Wd-fxE"/>
                             <constraint firstItem="bRc-PS-JVt" firstAttribute="leading" secondItem="uDy-CV-Bir" secondAttribute="leading" constant="30" id="P6T-iD-hFD"/>
-                            <constraint firstItem="ucn-ot-9FL" firstAttribute="leading" secondItem="HP1-cW-ceL" secondAttribute="trailing" constant="30" id="S1Q-aY-UQk"/>
-                            <constraint firstItem="zkB-xo-rME" firstAttribute="centerY" secondItem="HP1-cW-ceL" secondAttribute="centerY" id="YgS-Hs-gvS"/>
+                            <constraint firstItem="ucn-ot-9FL" firstAttribute="leading" secondItem="HP1-cW-ceL" secondAttribute="trailing" constant="-110" id="S1Q-aY-UQk"/>
+                            <constraint firstItem="zkB-xo-rME" firstAttribute="centerY" secondItem="HP1-cW-ceL" secondAttribute="centerY" constant="-20" id="YgS-Hs-gvS"/>
                             <constraint firstItem="9Mi-WV-qpa" firstAttribute="leading" secondItem="ucn-ot-9FL" secondAttribute="trailing" constant="9" id="aQX-pi-Ta8"/>
                             <constraint firstAttribute="bottom" secondItem="61C-Se-hAV" secondAttribute="bottom" constant="100" id="ev6-yz-6Zx"/>
-                            <constraint firstItem="HP1-cW-ceL" firstAttribute="top" secondItem="bRc-PS-JVt" secondAttribute="bottom" id="foe-WK-gX9"/>
+                            <constraint firstItem="HP1-cW-ceL" firstAttribute="top" secondItem="bRc-PS-JVt" secondAttribute="bottom" constant="20" id="foe-WK-gX9"/>
                             <constraint firstItem="AUJ-ET-V6P" firstAttribute="centerX" secondItem="61C-Se-hAV" secondAttribute="centerX" id="iS6-GW-mwc"/>
                             <constraint firstItem="zdw-Ed-zLV" firstAttribute="height" secondItem="ucn-ot-9FL" secondAttribute="height" id="khZ-b2-HtS"/>
                             <constraint firstItem="zdw-Ed-zLV" firstAttribute="leading" secondItem="9Mi-WV-qpa" secondAttribute="trailing" constant="9" id="ndO-PT-XBp"/>
