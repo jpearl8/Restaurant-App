@@ -80,7 +80,8 @@
     }
     self.numCustomersServed.text = [NSString stringWithFormat:@"%@",  PFUser.currentUser[@"totalCustomers"]];
     self.numTables.text = [NSString stringWithFormat:@"%@", PFUser.currentUser[@"totalTableTops"]];
-    self.netRevenue.text = [NSString stringWithFormat:@"%@", PFUser.currentUser[@"totalRevenue"]];
+    self.netRevenue.text = [NSString stringWithFormat:@"%.02f", [PFUser.currentUser[@"totalRevenue"] floatValue]];
+    self.totalWaiters.text = @"9";
     
 //    [self.alert.view addSubview:self.themePickerView];
 //    // add the OK action to the alert controller
@@ -113,7 +114,7 @@
      if button says 'save' then the profile will save edits
      */
     if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
-        self.chooseLibrary.hidden = !(self.chooseLibrary.hidden);
+        self.chooseLibrary.hidden = YES; //!(self.chooseLibrary.hidden);
         
     }
     else
@@ -168,7 +169,7 @@
 - (void)setProfileLabels {
     self.restaurantNameLabel.text = self.user[@"username"];
     NSString *category = self.user[@"category"];
-    NSString *price = self.user[@"price"];
+    NSString *price = @"$$$";//self.user[@"price"];
     NSString *email = self.user[@"email"];
     NSString *theme = self.user[@"theme"];
     if(category != nil && ![category isEqualToString: @""]){

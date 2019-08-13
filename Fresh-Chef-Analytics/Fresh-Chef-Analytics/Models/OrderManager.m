@@ -276,7 +276,7 @@
         }
         dateString = [NSString stringWithFormat:@"%d-%@-%@", year, monthString, dayString];
         daysBusyness = 1000 / (day + 5);//roundf(daysProfit / 5.0);
-        daysProfit = floorf(((sinf(day) + 1.5) * day) * 1000) / 100;
+        daysProfit = roundf(((sinf(day) + 1.5) * day) * 1000) / 100;
         
         [self.profitByDateTest setObject:@(daysProfit) forKey:dateString];
         [self.busynessByDateTest setObject:@(daysBusyness) forKey:dateString];

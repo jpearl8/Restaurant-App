@@ -98,6 +98,7 @@
 */
 
 - (IBAction)didTapFullLogin:(id)sender {
+    [self.passwordView endEditing:YES];
     PFUser *currentUser = [PFUser currentUser];
     NSString *managerPassword = currentUser[@"managerPassword"];
     if([self.managerPasswordField.text isEqualToString: managerPassword]){

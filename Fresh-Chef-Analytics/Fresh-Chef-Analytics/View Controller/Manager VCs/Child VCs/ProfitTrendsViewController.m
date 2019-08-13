@@ -302,6 +302,7 @@
         [tempProfitArr addObjectsFromArray:self.correctedYearProfit];
         [tempBusynessArr addObjectsFromArray:self.correctedYearBusyness];
     }
+    
     if ([tempProfitArr[idx] integerValue] != -1) {
         if ([self.selectedDataDisplay isEqualToString:@"Revenue"]) {
             self.selectedPointLabel.text = [NSString stringWithFormat:@"Date: %@ \nRevenue: $%@", tempXLabs[idx], tempProfitArr[idx]];
