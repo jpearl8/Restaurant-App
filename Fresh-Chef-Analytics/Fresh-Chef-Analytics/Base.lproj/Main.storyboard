@@ -958,6 +958,10 @@
                                                     <view alpha="0.80000000000000004" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KNO-WQ-B0L" userLabel="Blurry View">
                                                         <rect key="frame" x="0.0" y="0.0" width="375" height="300"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <gestureRecognizers/>
+                                                        <connections>
+                                                            <outletCollection property="gestureRecognizers" destination="Qy2-hj-JFc" appends="YES" id="XyD-vx-FPm"/>
+                                                        </connections>
                                                     </view>
                                                     <view contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="SVu-hJ-q8B" userLabel="Name View">
                                                         <rect key="frame" x="65" y="114" width="245" height="37"/>
@@ -1469,6 +1473,7 @@
                         <outlet property="backgroundPic2" destination="J7E-Wc-rOZ" id="hdF-Aq-V5x"/>
                         <outlet property="cancelButton" destination="Xzg-GN-LbH" id="8bo-V9-p59"/>
                         <outlet property="editButton" destination="iyW-hx-2JC" id="IaJ-AK-C1d"/>
+                        <outlet property="headerView" destination="D0L-DQ-94I" id="WQd-9D-IdH"/>
                         <outlet property="logoutButton" destination="P6E-nN-b1J" id="68H-dB-u1f"/>
                         <outlet property="numCustomersServed" destination="Q20-dc-og0" id="j1M-ZD-oZk"/>
                         <outlet property="numTables" destination="EKM-rr-zx4" id="jel-ge-Jcp"/>
@@ -1495,6 +1500,11 @@
                 <tapGestureRecognizer id="I9X-di-8Zs" userLabel="Tap Gesture Recognizer Profile Image">
                     <connections>
                         <action selector="didTapProfilePic:" destination="oPt-aN-7eF" id="cIg-Rz-0cu"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="Qy2-hj-JFc" userLabel="Tap Gesture Recognizer Blurry View">
+                    <connections>
+                        <action selector="didTapBlurryView:" destination="oPt-aN-7eF" id="eb0-vQ-804"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
@@ -7116,18 +7126,18 @@
             <objects>
                 <viewController id="R9x-8j-sGD" customClass="Top3Bot3ViewController" sceneMemberID="viewController">
                     <view key="view" alpha="0.90000000000000002" contentMode="scaleToFill" id="sku-Dk-eDA">
-                        <rect key="frame" x="0.0" y="0.0" width="650" height="480"/>
+                        <rect key="frame" x="0.0" y="0.0" width="16" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="M6r-M2-Ogb">
-                                <rect key="frame" x="0.0" y="35" width="650" height="445"/>
+                                <rect key="frame" x="0.0" y="35" width="16" height="445"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" restorationIdentifier="T3B3Dish" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="T3B3Dish" rowHeight="300" id="y1s-kg-EPL" customClass="Top3Bottom3TableViewCell">
-                                        <rect key="frame" x="0.0" y="28" width="650" height="300"/>
+                                        <rect key="frame" x="0.0" y="28" width="16" height="300"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="y1s-kg-EPL" id="KE4-kz-8Um">
-                                            <rect key="frame" x="0.0" y="0.0" width="650" height="299.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="16" height="299.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cd0-fa-WW1" userLabel="DishSuggestionsView">
@@ -7234,7 +7244,7 @@
                                 <sections/>
                             </tableView>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Azl-iw-YN7">
-                                <rect key="frame" x="246.5" y="5" width="157" height="31"/>
+                                <rect key="frame" x="-70.5" y="5" width="157" height="31"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="xjg-jo-mNL"/>
                                 </constraints>
@@ -7303,7 +7313,7 @@
                                                     </constraints>
                                                 </imageView>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8d3-fa-2Ae">
-                                                    <rect key="frame" x="309" y="22" width="40" height="40"/>
+                                                    <rect key="frame" x="333" y="31" width="16" height="22"/>
                                                     <state key="normal" image="arrow-40"/>
                                                 </button>
                                                 <view alpha="0.10000000000000001" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ecN-e3-Fw0" userLabel="Clickable Header View">
@@ -7344,10 +7354,10 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pngguru.com-id-bymze" translatesAutoresizingMaskIntoConstraints="NO" id="fGj-D9-7OG">
-                                                    <rect key="frame" x="0.0" y="0.0" width="650" height="75"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="16" height="71"/>
                                                 </imageView>
                                                 <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LlJ-BQ-deD">
-                                                    <rect key="frame" x="0.0" y="75" width="650" height="480"/>
+                                                    <rect key="frame" x="0.0" y="75" width="16" height="480"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="480" id="Af5-Sa-bN0"/>
                                                     </constraints>
@@ -7382,11 +7392,11 @@
                                                     </constraints>
                                                 </view>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xvX-M4-SF8">
-                                                    <rect key="frame" x="584" y="22" width="40" height="40"/>
+                                                    <rect key="frame" x="-26" y="31" width="16" height="22"/>
                                                     <state key="normal" image="arrow-40"/>
                                                 </button>
                                                 <view alpha="0.10000000000000001" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TYK-Ki-chS" userLabel="Clickable Header View">
-                                                    <rect key="frame" x="0.0" y="0.0" width="650" height="75"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="16" height="75"/>
                                                     <color key="backgroundColor" red="0.21285966040000001" green="0.14175727960000001" blue="0.49022626879999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <gestureRecognizers/>
                                                     <constraints>
@@ -7426,7 +7436,7 @@
                                         <gestureRecognizers/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="ScatterPlotCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="853" id="Fe2-f8-t2S" userLabel="Scatter Plot Cell">
-                                        <rect key="frame" x="0.0" y="972" width="375" height="853"/>
+                                        <rect key="frame" x="0.0" y="978" width="375" height="853"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Fe2-f8-t2S" id="Y2r-Go-eXv">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="852.5"/>
@@ -7452,7 +7462,7 @@
                                                     </constraints>
                                                 </imageView>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AbU-px-x4i">
-                                                    <rect key="frame" x="356" y="19" width="40" height="40"/>
+                                                    <rect key="frame" x="341" y="28" width="16" height="22"/>
                                                     <state key="normal" image="arrow-40"/>
                                                 </button>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pngguru.com-id-bymze" translatesAutoresizingMaskIntoConstraints="NO" id="7fN-on-hur">
@@ -7510,7 +7520,7 @@
                                         <gestureRecognizers/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="859" id="h60-FC-6Pe" userLabel="Radar Chart Cell">
-                                        <rect key="frame" x="0.0" y="1825" width="375" height="859"/>
+                                        <rect key="frame" x="0.0" y="1831" width="375" height="859"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="h60-FC-6Pe" id="Iz4-iK-DPe">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="858.5"/>
@@ -7529,7 +7539,7 @@
                                                     </connections>
                                                 </containerView>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nM0-HL-lff">
-                                                    <rect key="frame" x="356" y="19" width="40" height="40"/>
+                                                    <rect key="frame" x="341" y="28" width="16" height="22"/>
                                                     <state key="normal" image="arrow-40"/>
                                                 </button>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="radar-83.5" translatesAutoresizingMaskIntoConstraints="NO" id="4Fp-xb-M2M">
@@ -7597,7 +7607,7 @@
                                         <gestureRecognizers/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="887" id="UT4-CN-vqe" userLabel="Histogram Cell">
-                                        <rect key="frame" x="0.0" y="2684" width="375" height="887"/>
+                                        <rect key="frame" x="0.0" y="2690" width="375" height="887"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="UT4-CN-vqe" id="4Ng-sd-Q9J">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="886.5"/>
@@ -7622,7 +7632,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fcw-l4-lJm">
-                                                    <rect key="frame" x="356" y="19" width="40" height="40"/>
+                                                    <rect key="frame" x="341" y="28" width="16" height="22"/>
                                                     <state key="normal" image="arrow-40"/>
                                                 </button>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="histogram-83.5" translatesAutoresizingMaskIntoConstraints="NO" id="SOl-3D-O48">
@@ -7685,7 +7695,7 @@
                                         <gestureRecognizers/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="858" id="mUH-8b-F3k" userLabel="Profit Trends Cell">
-                                        <rect key="frame" x="0.0" y="3571" width="375" height="858"/>
+                                        <rect key="frame" x="0.0" y="3577" width="375" height="858"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="mUH-8b-F3k" id="7ZL-9m-Rn9">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="857.5"/>
@@ -7717,7 +7727,7 @@
                                                     </constraints>
                                                 </imageView>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S2k-6j-G3g">
-                                                    <rect key="frame" x="356" y="19" width="40" height="40"/>
+                                                    <rect key="frame" x="341" y="28" width="16" height="22"/>
                                                     <state key="normal" image="arrow-40"/>
                                                 </button>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pngguru.com-id-bymze" translatesAutoresizingMaskIntoConstraints="NO" id="FoF-HR-cfl">

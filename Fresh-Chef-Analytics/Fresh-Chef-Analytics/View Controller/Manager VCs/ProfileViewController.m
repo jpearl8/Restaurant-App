@@ -26,6 +26,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *backgroundPic1;
 @property (weak, nonatomic) IBOutlet UIImageView *backgroundPic2;
 @property (strong, nonatomic) UIButton *chooseLibrary;
+@property (weak, nonatomic) IBOutlet UIView *headerView;
 @end
 
 @implementation ProfileViewController
@@ -38,9 +39,9 @@
                action:@selector(didTapLibrary:)
      forControlEvents:UIControlEventTouchUpInside];
     [self.chooseLibrary setTitle:@"Choose from Library" forState:UIControlStateNormal];
-    self.chooseLibrary.frame = CGRectMake(300, 212, 100, 40.0);
+    self.chooseLibrary.frame = CGRectMake(self.view.frame.size.width-100, 30, 150, 40.0); // camera button
     self.chooseLibrary.backgroundColor = [[UIRefs shared] colorFromHexString:[UIRefs shared].purpleAccent];
-    [self.view addSubview:self.chooseLibrary];
+    [self.headerView addSubview:self.chooseLibrary];
     self.chooseLibrary.hidden = YES;
     [self.navigationItem setTitle:@"Profile"];
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor blackColor],NSFontAttributeName:[UIFont systemFontOfSize:21 weight:UIFontWeightThin]}];
@@ -111,11 +112,13 @@
      if button says 'save' then the profile will save edits
      */
     if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
-        self.chooseLibrary.hidden = NO;
+        self.chooseLibrary.hidden = !(self.chooseLibrary.hidden);
+        
     }
     else
     {
         self.chooseLibrary.hidden = YES;
+        
     }
     if(self.isEditable == NO){
         self.isEditable = YES;
@@ -391,6 +394,10 @@
     NSString *themeLabelPlaceholder = self.themesArr[row];
     self.themeButton.titleLabel.text = themeLabelPlaceholder;
     self.restaurantThemeLabel.text = themeLabelPlaceholder;
-    
 }
+
+- (IBAction)didTapBlurryView:(id)sender {
+    [self.view endEditing:YES];
+}
+
 @end
