@@ -77,13 +77,10 @@ static CGFloat const kBounceValue = 20.0f;
 //button functions
 - (IBAction)buttonClicked:(id)sender {
     if (sender == self.edit) {
-        NSLog(@"Clicked edit!");
         [self.delegate editForIndex:self.index];
     } else if (sender == self.complete) {
-        NSLog(@"Clicked complete!");
         [self.delegate completeForIndex:self.index];
     } else if (sender == self.ordersButton || sender == self.flipButton) {
-        NSLog(@"Clicked orders!");
         for (NSLayoutConstraint *aConstraint in self.expandedConstraints){
             if (self.isExpanded){
                 [self removeConstraint: aConstraint];

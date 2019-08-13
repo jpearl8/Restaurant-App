@@ -70,15 +70,6 @@
 - (void)dropdownMenu:(MKDropdownMenu *)dropdownMenu didSelectRow:(NSInteger)row inComponent:(NSInteger)component
 {
     self.selectedIndex = row;
-//    if(self.selectedIndex == 0){
-//        self.orderedDishesDict = [[MenuManager shared] dishesByFreq];
-//    } else if (self.selectedIndex == 1) {
-//        self.orderedDishesDict = [[MenuManager shared] dishesByRating];
-//    } else if (self.selectedIndex == 2) {
-//        self.orderedDishesDict = [[MenuManager shared] dishesByPrice];
-//    } else {
-//        NSLog(@"no buttons pressed");
-//    }
     self.dropDownLabel.text = self.dropDownCats[row];
 
     [self.competitorList reloadData];

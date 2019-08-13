@@ -131,7 +131,6 @@
         {
             // find  order total
             float orderTotal = 0;
-            NSLog(@"Order: %@", anOrder);
             for(int i = 0; i < anOrder.amounts.count; i++){
                 // get the dish object from the dish name then get its price
                 Dish *dish = [self getDishWithName:anOrder.dishes[i]];

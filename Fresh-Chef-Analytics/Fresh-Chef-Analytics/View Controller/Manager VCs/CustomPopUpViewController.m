@@ -48,7 +48,7 @@
         if (succeeded)
         {
             // Here we should add the table view reload so new value pops up
-            NSLog(@"yay");
+
         }
         else{
             NSLog(@"%@", error.localizedDescription);

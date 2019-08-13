@@ -169,7 +169,6 @@
             if (self.amounts[i] != [NSNumber numberWithInt:0]){
                 OpenOrder *openOrderNew = [OpenOrder new];
                 openOrderNew.dish = self.orderedDishes[i];
-                NSLog(@"%@, %@", self.orderedDishes[i].name, self.amounts[i]);
                 openOrderNew.amount = self.amounts[i];
                 openOrderNew.waiter = self.waiter;
                 openOrderNew.restaurant = [PFUser currentUser];
@@ -183,7 +182,6 @@
         }
         [self.delegate callEditRefresh:self.openOrdersFromEdit];
         [self dismissViewControllerAnimated:YES completion:^{
-            NSLog(@"good");
         }];
 
     }
@@ -191,7 +189,6 @@
 
 - (IBAction)cancel:(UIBarButtonItem *)sender {
     [self dismissViewControllerAnimated:YES completion:^{
-        NSLog(@"good");
     }];
 
 }

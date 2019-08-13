@@ -42,7 +42,7 @@
     } else if (self.selectedIndex == 2) {
         [self.price setFont:[UIFont boldSystemFontOfSize:20]];
     } else {
-        NSLog(@"Nothing selected?????");
+
     }
 
     if ([self.ratingCategory isEqualToString: @"high"]) {

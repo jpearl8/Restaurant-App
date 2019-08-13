@@ -216,12 +216,9 @@
 -(void)fillCellArrays:(NSArray<OpenOrder *>*)openOrders {
     NSArray<Dish*>*dishArray = [[NSArray alloc] init];
     dishArray = [[MenuManager shared] dishes];
-    NSLog(@"%@", dishArray);
     for (int i = 0; i < openOrders.count; i++){
         for (int j = 0; j < dishArray.count; j++)
         {
-            NSLog(@"%@", openOrders[i]);
-            NSLog(@"%@", ((Dish*)openOrders[i].dish).objectId);
             if ([((Dish *)dishArray[j]).objectId isEqualToString:((Dish*)openOrders[i].dish).objectId]){
                  [self.mutableDishes addObject:((Dish *)dishArray[j]).name];
                  [self.mutableAmounts addObject:openOrders[i].amount];

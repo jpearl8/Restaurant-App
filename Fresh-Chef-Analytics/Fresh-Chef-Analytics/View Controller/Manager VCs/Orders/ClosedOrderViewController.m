@@ -150,7 +150,6 @@
             if (doneWithArray >= self.totalClosedTables.count){
                 [self.closedOrderTable reloadData];
                 completion(nil);
-                NSLog(@"check 2");
             }
         
         } else {
