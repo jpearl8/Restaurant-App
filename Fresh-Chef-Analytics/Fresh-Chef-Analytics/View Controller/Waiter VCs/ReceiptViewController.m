@@ -126,6 +126,12 @@
     [self fillCellArrays:self.openOrders];
     NSArray *dishNameStrings = [self.mutableDishes copy];
     NSArray *amounts = [self.mutableAmounts copy];
+    PFUser.currentUser[@"totalRevenue"] = [NSNumber numberWithFloat: ([(NSNumber*)PFUser.currentUser[@"totalRevenue"] floatValue] + [self.totalPrice.text floatValue])];
+    [PFUser.currentUser saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+        if(error){
+            NSLog(@"Error saving updates: %@", error.localizedDescription);
+        }
+    }];
     [[OrderManager shared] closeOpenOrdersArray:self.openOrders withDishArray:dishNameStrings withAmounts:amounts withCompletion:^(NSError * _Nonnull error) {
         if (error){
             NSLog(@"%@", error.localizedDescription);
