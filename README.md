@@ -1,4 +1,4 @@
-# Restaurant-App
+# Fresh Chef Analytics
 An app to help restaurants use customer reviews to make informed decisions
 
 ## 1. User Stories (Required and Optional)
@@ -26,25 +26,39 @@ An app to help restaurants use customer reviews to make informed decisions
 
 ## 2. Screen Archetypes
 
- * screen with form for customers to fill out
+ * Login Screen/Sign up
+ * Restaurant profile (editable)
+ * Competitor screen (uses to Yelp API)
  * screen for waiter profile
- * settings to change profile
  * Screen with restaurant stats (most popular dish, least popular dish etc.)
- * Login Screen
+ * waiter profiles/stats
+ * screen with form for customers to fill out
+
 
 ## 3. Navigation
 
 **Tab Navigation** (Tab to Screen)
 
- * [fill out your first tab]
- * [fill out your second tab]
- * [fill out your third tab]
+ * Restaurant Profile
+ * Restaurant Data
+ * Waiter Profiles
+ * Competitors
 
 **Flow Navigation** (Screen to Screen)
 
- * [list first screen here]
-   * [list screen navigation here]
+ * Restaurant Profile
+   * menu (editable)
    * ...
- * [list second screen here]
-   * [list screen navigation here]
-   * ...
+ * Restaurant Data
+   * List of menu items with stats (ie. number sold, reviews etc)
+   * graphical display (ie. histogram, pie charts etc)
+   * summary view (shortened list view)
+ * Waiter Profiles
+   * Details for a waiter with comments and ratings
+ * Competitors based on:
+   * location
+   * price
+   * category/type of food
+   
+ **Low Fidelity Wireframe Sketch**
+   * ![](https://scontent-sjc3-1.xx.fbcdn.net/v/t1.15752-0/p280x280/66153801_2413268448949883_6371729063316291584_n.jpg?_nc_cat=110&_nc_oc=AQmAb_63jJdMhk7KmYRkgVX6QgBZyJhJO03hekLQ8xdZPq7uTJlLM2S1Xv8qXi16Csk&_nc_ht=scontent-sjc3-1.xx&oh=8e037924045997a9a48d49bfb22e47d9&oe=5DA3B778)

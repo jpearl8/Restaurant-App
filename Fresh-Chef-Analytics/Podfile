@@ -1,0 +1,32 @@
+# Uncomment the next line to define a global platform for your project
+# platform :ios, '9.0'
+
+target 'Fresh-Chef-Analytics' do
+  # Comment the next line if you don't want to use dynamic frameworks
+  use_frameworks!
+
+  # Pods for Fresh-Chef-Analytics
+pod 'Parse'
+  pod 'BEMCheckBox', '~> 1.4'
+  pod 'MKDropdownMenu'
+  pod 'UITextView+Placeholder'
+  pod 'DateTools'
+  pod 'HCSStarRatingView', '~> 1.5'
+  pod 'BDBOAuth1Manager'
+  pod 'AFNetworking'
+  pod 'PNChart'
+  pod 'SVProgressHUD'
+  pod 'PKYStepper', '~> 0.0'
+  pod 'Animated-Gif-iOS', '~> 1.1'
+
+  target 'Fresh-Chef-AnalyticsTests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+  target 'Fresh-Chef-AnalyticsUITests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+end
